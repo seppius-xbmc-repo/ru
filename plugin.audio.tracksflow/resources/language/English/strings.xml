@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<strings>
+  <string id="30000">TracksFlow</string>
+  <string id="30002">Login</string>
+  <string id="30003">Password</string>
+  <string id="30004">Items per page</string>
+  <string id="30005">Days</string>
+  <string id="30006">Download Path</string>
+  <string id="30007">Download</string>
+</strings>

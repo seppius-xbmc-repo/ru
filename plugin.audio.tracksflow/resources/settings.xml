@@ -1,0 +1,11 @@
+<settings>
+    <category label="General">
+        <setting id="Login" type="text" label="30002"/>
+        <setting id="Password" type="text" label="30003" option="hidden"/>
+    </category>
+    <category label="Playlists">
+        <setting id="Items per page" type="select" values="10|25|50|100" label="30004" default="10"/>
+        <setting id="Days" type="text" label="30005" default="1"/>
+        <setting id="Download Path" label="30006" type="folder" source="auto" option="writeable"/>
+    </category>
+</settings>
