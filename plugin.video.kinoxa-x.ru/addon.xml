@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="plugin.video.kinoxa-x.ru" name="[COLOR FFcFFF48]Kinoxa-X.ru[/COLOR]" version="0.5.2" provider-name="Silhouette">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+    <import addon="script.module.beautifulsoup" version="3.0.8"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"  provides="video" library="default.py"><provides>video</provides></extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>KINOXA-X.RU у нас Вы можите смотреть кино онлайн</summary>
+    <description>Добро пожаловать в лучший онлайн кинотеатр KINOXA-X.RU у нас Вы можите смотреть кино онлайн. Выберите фильм любого жанра и наслаждайтесь просмотром</description>
+    <platform>all</platform>
+  </extension>
+</addon>
