@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="plugin.image.demotivators.to" name="demotivators.to" version="0.0.7"
+       provider-name="NuisMons">
+  <requires>
+    <import addon="script.module.simplejson" version="2.0.10"/>
+	<import addon="script.module.beautifulsoup"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource" library="default.py">
+    <provides>image</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <platform>all</platform>
+    <summary lang="en">View demotivators</summary>
+    <description>
+      View demotivators
+    </description> 
+    <license>GPL 2.0</license>
+  </extension>
+</addon>
