@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<strings>
+    <!-- Category strings -->
+	<string id="30000">Настройки</string>
+	
+    <string id="30001">Сортировка</string>
+	<string id="30002">Результатов на страницу</string>
+	<string id="30003">Ваш логин (e-mail)</string>
+	<string id="30004">Ваш пароль</string>
+	
+	<string id="30005">лучшее</string>
+	<string id="30006">популярное</string>
+	<string id="30007">по дате добавления</string>
+	
+	<string id="30010">Недоступно</string>
+	
+	<string id="30020">Еще</string>
+	
+	<string id="30021">Поиск по music.ivi.ru</string>
+	<string id="30022">Ничего не найдено</string>
+	
+	<string id="30040">Рекомендованное</string>
+	<string id="30041">Жанры</string>
+	<string id="30042">Исполнители</string>
+	<string id="30043">Любимые клипы исполнителей</string>
+	<string id="30044">Каналы редакции</string>
+	<string id="30045">Ваши Плейлисты</string>
+	<string id="30046">Поиск</string>
+	<string id="30047">Проверьте Логин/Пароль</string>
+	
+	<string id="30060">Добавить в плейлист</string>
+	<string id="30061">Удалить из плейлиста</string>
+	<string id="30062">Удалить плейлист</string>
+	<string id="30063">Выберите плейлист</string>
+	<string id="30064">Создать новый</string>
+	<string id="30064">Введите название плейлиста</string>
+	<string id="30065">Добавлено в плейлист</string>
+	<string id="30066">Удалено из плейлиста</string>
+	<string id="30067">Плейлист удален</string>
+	
+</strings>

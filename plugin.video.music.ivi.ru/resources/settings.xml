@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<settings>
+<category label="30000">
+
+    <setting id="sort_v" type="enum" label="30001" lvalues="30005|30006|30007" default=2 />
+	<setting id="cnt_v" type="enum" label="30002" values="10|25|50|75|100" default="2" />
+    <setting type="sep" />
+	<setting id="username" type="text" label="30003" default="" />
+	<setting id="password" type="text" label="30004" option="hidden" default="" />
+  </category>
+</settings>

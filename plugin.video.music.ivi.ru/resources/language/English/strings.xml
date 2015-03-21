@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<strings>
+    <!-- Category strings -->
+	<string id="30000">Settings</string>
+	
+    <string id="30001">Sort by </string>
+	<string id="30002">Results on page</string>
+	<string id="30003">Login (e-mail)</string>
+	<string id="30004">Password</string>
+	
+	<string id="30005">best</string>
+	<string id="30006">popular</string>
+	<string id="30007">date added</string>
+	
+	<string id="30010">Forbidden</string>
+	
+	<string id="30020">More</string>
+	
+	<string id="30021">Search on music.ivi.ru</string>
+	<string id="30022">Nothing</string>
+	
+	<string id="30040">Recommendation</string>
+	<string id="30041">Genres</string>
+	<string id="30042">Artists</string>
+	<string id="30043">Artists favorites clips</string>
+	<string id="30044">Channels</string>
+	<string id="30045">Your playlists</string>
+	<string id="30046">Search</string>
+	<string id="30047">Check login/password</string>
+	
+	<string id="30060">Add to playlist</string>
+	<string id="30061">Delete form playlist</string>
+	<string id="30062">Delete playlist</string>
+	<string id="30063">Choose playlist</string>
+	<string id="30064">Create New</string>
+	<string id="30064">Enter name of playlist</string>
+	<string id="30065">Added to playlist</string>
+	<string id="30066">Deleted from playlist</string>
+	<string id="30067">Playlist deleted</string>
+	
+</strings>
