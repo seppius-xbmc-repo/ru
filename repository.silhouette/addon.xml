@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="repository.silhouette" name="Silhouette XBMC Add-ons" version="1.0.2" provider-name="Silhouette">
+	<extension point="xbmc.addon.repository" name="Silhouette XBMC Add-ons">
+		<info compressed="false">http://silhouette-xbmc-repo.googlecode.com/svn/trunk/addons/addons.xml</info>
+		<checksum>http://silhouette-xbmc-repo.googlecode.com/svn/trunk/addons/addons.xml.md5</checksum>
+		<datadir zip="false">http://silhouette-xbmc-repo.googlecode.com/svn/trunk/addons/</datadir>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary>Install Add-ons from Silhouette Add-on Repository</summary>
+		<description>Plug-ins for XBMC</description>
+		<disclaimer>add-ons for home usage in XBMC</disclaimer>
+		<platform>all</platform>
+	</extension>
+</addon>
