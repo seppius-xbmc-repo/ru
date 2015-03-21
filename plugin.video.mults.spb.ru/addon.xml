@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="plugin.video.mults.spb.ru"
+       name="Каталог мультфильмов"
+       version="1.0.3"
+       provider-name="HD-Lab Team">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Лучшие мультфильмы из вашего детства</summary>
+    <description>На сайте http://mults.spb.ru/ вы можете бесплатно посмотреть мультфильмы онлайн, а также скачать мультики для просмотра на компьютере или телевизоре. На сайте собрана коллекция мультфильмов советских времен и не только. Самые лучшие мультики из вашего детства! Коллекция мультфильмов постоянно пополняется новыми и старыми мультиками.</description>
+    <platform>all</platform>
+  </extension>
+</addon>
