@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<settings>
+<category label="Настройки">
+
+    <setting id="ip_addr" type="text" label="2000" default="127.0.0.1" />
+	<setting id="pausable" type="bool" label="2001" default="false" />
+	
+	<setting id="prog" type="text" label="path to execute tsengine" default="" />
+    <setting id="cache" type="text" label="XBMC Cache" default="252420" />
+	<setting id="save" type="bool" label="Сохранять скаченное на диск" default="false" />
+    <setting id="folder" type="folder" label="path to save"/>
+    <setting id="log" type="bool" label="Debug mode"/>
+  </category>
+<category label="Пока не работают"> 
+	<setting id="autoexit" type="bool" label="2002" default="false" />
+	<setting id="autobuf" type="bool" label="2003" default="false" />
+ </category>
+</settings>
