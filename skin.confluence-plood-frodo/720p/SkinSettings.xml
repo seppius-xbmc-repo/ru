@@ -1,0 +1,3530 @@
+﻿<window>
+	<defaultcontrol always="true">9000</defaultcontrol>
+	<controls>
+		<include>CommonBackground</include>
+		<include>CommonSettingsBackground</include>
+		<control type="image">
+			<posx>0</posx>
+			<posy>100r</posy>
+			<width>1280</width>
+			<height>100</height>
+			<texture>floor.png</texture>
+			<include>VisibleFadeEffect</include>
+			<visible>!Skin.HasSetting(NoFloorAll)</visible>
+		</control>
+		<control type="image">
+			<description>Section header image</description>
+			<posx>20</posx>
+			<posy>3</posy>
+			<width>35</width>
+			<height>35</height>
+			<aspectratio>keep</aspectratio>
+			<texture>icon_system.png</texture>
+		</control>
+		<control type="grouplist">
+			<posx>65</posx>
+			<posy>5</posy>
+			<width>1000</width>
+			<height>30</height>
+			<orientation>horizontal</orientation>
+			<align>left</align>
+			<itemgap>5</itemgap>
+			<control type="label">
+				<include>WindowTitleCommons</include>
+				<label>$LOCALIZE[20077]</label>
+			</control>
+			<control type="label">
+				<include>WindowTitleCommons</include>
+				<label>[COLOR=blue] - [/COLOR]$INFO[Container.FolderName]</label>
+				<visible>!IsEmpty(Container.FolderName)</visible>
+			</control>
+		</control>
+		<control type="group">
+			<posx>90</posx>
+			<posy>30</posy>
+			<animation type="WindowOpen" reversible="false">
+				<effect type="zoom" start="80" end="100" center="640,360" easing="out" tween="back" time="300" />
+				<effect type="fade" start="0" end="100" time="300" />
+			</animation>
+			<animation type="WindowClose" reversible="false">
+				<effect type="zoom" start="100" end="80" center="640,360" easing="in" tween="back" time="300" />
+				<effect type="fade" start="100" end="0" time="300" />
+			</animation>
+			<control type="image">
+				<posx>5</posx>
+				<posy>5</posy>
+				<width>1090</width>
+				<height>630</height>
+				<texture border="15">ContentPanel.png</texture>
+			</control>
+			<control type="image">
+				<posx>5</posx>
+				<posy>625</posy>
+				<width>1090</width>
+				<height>64</height>
+				<texture border="15">ContentPanelMirror.png</texture> 
+ 	 	 	 	<visible>!Skin.HasSetting(NoFloorAll)</visible>
+			</control>
+			<control type="button">
+				<description>Close Window button</description>
+				<posx>980</posx>
+				<posy>11</posy>
+				<width>64</width>
+				<height>32</height>
+				<label>-</label>
+				<font>-</font>
+				<onclick>PreviousMenu</onclick>
+				<texturefocus>DialogCloseButton-focus.png</texturefocus>
+				<texturenofocus>DialogCloseButton.png</texturenofocus>
+				<onleft>1</onleft>
+				<onright>1</onright>
+				<onup>1</onup>
+				<ondown>1</ondown>
+				<visible>system.getbool(input.enablemouse)</visible>
+			</control>
+			<control type="image">
+				<description>LOGO</description>
+				<posx>30</posx>
+				<posy>15</posy>
+				<width>220</width>
+				<height>80</height>
+				<aspectratio>keep</aspectratio>
+				<texture>Confluence_Logo.png</texture>
+			</control>
+			<control type="list" id="9000">
+				<posx>10</posx>
+				<posy>90</posy>
+				<width>260</width>
+				<height>481</height>
+				<onleft>9010</onleft>
+				<onright>9010</onright>
+				<onup>9000</onup>
+				<ondown>9000</ondown>
+				<pagecontrol>-</pagecontrol>
+				<scrolltime>300</scrolltime>
+				<itemlayout height="80" width="260">
+					<control type="image">
+						<posx>0</posx>
+						<posy>0</posy>
+						<width>260</width>
+						<height>81</height>
+						<texture border="5">MenuItemNF.png</texture>
+					</control>
+					<control type="label">
+						<posx>250</posx>
+						<posy>15</posy>
+						<width>380</width>
+						<height>25</height>
+						<font>font24_title</font>
+						<textcolor>grey3</textcolor>
+						<align>right</align>
+						<aligny>center</aligny>
+						<label>$INFO[ListItem.Label]</label>
+					</control>
+					<control type="label">
+						<posx>250</posx>
+						<posy>42</posy>
+						<width>870</width>
+						<height>25</height>
+						<font>font13</font>
+						<textcolor>grey2</textcolor>
+						<align>right</align>
+						<aligny>center</aligny>
+						<label>$INFO[ListItem.Label2]</label>
+					</control>
+				</itemlayout>
+				<focusedlayout height="80" width="260">
+					<control type="image">
+						<posx>0</posx>
+						<posy>0</posy>
+						<width>260</width>
+						<height>81</height>
+						<texture border="5">MenuItemFO.png</texture>
+						<animation effect="fade" start="100" end="30" time="100" condition="!Control.HasFocus(9000)">Conditional</animation>
+					</control>
+					<control type="label">
+						<posx>250</posx>
+						<posy>15</posy>
+						<width>380</width>
+						<height>25</height>
+						<font>font24_title</font>
+						<textcolor>white</textcolor>
+						<align>right</align>
+						<aligny>center</aligny>
+						<label>$INFO[ListItem.Label]</label>
+					</control>
+					<control type="label">
+						<posx>250</posx>
+						<posy>42</posy>
+						<width>870</width>
+						<height>25</height>
+						<font>font13</font>
+						<textcolor>grey2</textcolor>
+						<align>right</align>
+						<aligny>center</aligny>
+						<label>$INFO[ListItem.Label2]</label>
+					</control>
+				</focusedlayout>
+				<content>
+					<item id="1">
+						<label>128</label>
+						<label2>5</label2>
+						<onclick>-</onclick>
+					</item>
+					<item id="2">
+						<label>513</label>
+						<label2>31112</label2>
+						<onclick>-</onclick>
+					</item>
+					<item id="6">
+						<label>513</label>
+						<label2>31200</label2>
+						<onclick>-</onclick>
+						<visible>Skin.HasSetting(CustomFavorites)</visible>
+					</item>		
+					<item id="3">
+						<label>31102</label>
+						<label2>31112</label2>
+						<onclick>-</onclick>
+					</item>
+					<item id="5">
+						<label>513</label>
+						<label2>31102</label2>
+						<onclick>-</onclick>
+						<visible>Skin.HasSetting(SeparateBackground)</visible>
+					</item>		
+					<item id="4">
+						<label>24000</label>
+						<label2>31200</label2>
+						<onclick>-</onclick>
+					</item>
+				</content>
+			</control>
+			<control type="image">
+				<posx>268</posx>
+				<posy>10</posy>
+				<width>790</width>
+				<height>618</height>
+				<texture border="5">black-back2.png</texture>
+			</control>
+			<control type="image">
+				<posx>268</posx>
+				<posy>10</posy>
+				<width>804</width>
+				<height>100</height>
+				<aspectratio>stretch</aspectratio>
+				<texture>GlassTitleBar.png</texture>
+			</control>
+			<control type="label">
+				<description>header label</description>
+				<posx>300</posx>
+				<posy>20</posy>
+				<width>740</width>
+				<height>30</height>
+				<font>font16</font>
+				<label>$LOCALIZE[20077] - $INFO[Container(9000).ListItem.Label]</label>
+				<align>left</align>
+				<aligny>center</aligny>
+				<textcolor>white</textcolor>
+				<shadowcolor>black</shadowcolor>
+			</control>
+			<control type="group" id="9010">
+				<control type="grouplist" id="9001">
+					<visible>Container(9000).Hasfocus(1)</visible>
+					<posx>290</posx>
+					<posy>60</posy>
+					<width>750</width>
+					<height>530</height>
+					<itemgap>-1</itemgap>
+					<pagecontrol>60</pagecontrol>
+					<onleft>9000</onleft>
+					<onright>60</onright>
+					<onup>9001</onup>
+					<ondown>9001</ondown>
+					<control type="label" id="100">
+						<width>750</width>
+						<height>45</height>
+						<font>font13_title</font>
+						<label>31106</label>
+						<textcolor>blue</textcolor>
+						<shadowcolor>black</shadowcolor>
+						<align>left</align>
+						<aligny>center</aligny>
+					</control>
+					<control type="radiobutton" id="101">
+						<width>750</width>
+						<height>40</height>
+						<font>font13</font>
+						<label>20189</label>
+						<textcolor>grey2</textcolor>
+						<focusedcolor>white</focusedcolor>
+						<texturefocus>MenuItemFO.png</texturefocus>
+						<texturenofocus>MenuItemNF.png</texturenofocus>
+						<onclick>Skin.ToggleSetting(AutoScroll)</onclick>
+						<selected>Skin.HasSetting(AutoScroll)</selected>
+					</control>
+					<control type="radiobutton" id="102">
+						<width>750</width>
+						<height>40</height>
+						<font>font13</font>
+						<label>31103</label>
+						<textcolor>grey2</textcolor>
+						<focusedcolor>white</focusedcolor>
+						<texturefocus>MenuItemFO.png</texturefocus>
+						<texturenofocus>MenuItemNF.png</texturenofocus>
+						<onclick>Skin.ToggleSetting(Show_SlideShow_Paused)</onclick>
+						<selected>!Skin.HasSetting(Show_SlideShow_Paused)</selected>
+					</control>
+					<control type="radiobutton" id="112">
+						<width>750</width>
+						<height>40</height>
+						<font>font13</font>
+						<label>31104</label>
+						<textcolor>grey2</textcolor>
+						<focusedcolor>white</focusedcolor>
+						<texturefocus>MenuItemFO.png</texturefocus>
+						<texturenofocus>MenuItemNF.png</texturenofocus>
+						<onclick>Skin.ToggleSetting(WindowedTrailer)</onclick>
+						<selected>Skin.HasSetting(WindowedTrailer)</selected>
+					</control>
+					<control type="radiobutton" id="113">
+						<width>750</width>
+						<height>40</height>
+						<font>font13</font>
+						<label>31107</label>
+						<textcolor>grey2</textcolor>
+						<focusedcolor>white</focusedcolor>
+						<texturefocus>MenuItemFO.png</texturefocus>
+						<texturenofocus>MenuItemNF.png</texturenofocus>
+						<onclick>Skin.ToggleSetting(HideFilenameFlagging)</onclick>
+						<selected>Skin.HasSetting(HideFilenameFlagging)</selected>
+					</control>
+					<control type="label" id="104">
+						<width>750</width>
+						<height>45</height>
+						<font>font13_title</font>
+						<label>20343</label>
+						<textcolor>blue</textcolor>
+						<shadowcolor>black</shadowcolor>
+						<align>left</align>
+						<aligny>center</aligny>
+						<visible>System.HasAddon(script.tvtunes)</visible>
+					</control>
+					<control type="radiobutton" id="115">
+						<width>750</width>
+						<height>40</height>
+						<font>font13</font>
+						<label>31126</label>
+						<textcolor>grey2</textcolor>
+						<focusedcolor>white</focusedcolor>
+						<texturefocus>MenuItemFO.png</texturefocus>
+						<texturenofocus>MenuItemNF.png</texturenofocus>
+						<onclick>Skin.ToggleSetting(ActivateTvTunes)</onclick>
+						<selected>Skin.HasSetting(ActivateTvTunes)</selected>
+						<visible>System.HasAddon(script.tvtunes)</visible>
+					</control>
+					<control type="label" id="106">
+						<width>750</width>
+						<height>45</height>
+						<font>font13_title</font>
+						<label>512</label>
+						<textcolor>blue</textcolor>
+						<shadowcolor>black</shadowcolor>
+						<align>left</align>
+						<aligny>center</aligny>
+					</control>
+					<control type="radiobutton" id="107">
+						<width>750</width>
+						<height>40</height>
+						<font>font13</font>
+						<label>21398</label>
+						<textcolor>grey2</textcolor>
+						<focusedcolor>white</focusedcolor>
+						<texturefocus>MenuItemFO.png</texturefocus>
+						<texturenofocus>MenuItemNF.png</texturenofocus>
+						<onclick>Skin.ToggleSetting(Use_Startup_Playlist)</onclick>
+						<selected>Skin.HasSetting(Use_Startup_Playlist)</selected>
+					</control>
+					<control type="button" id="108">
+						<description>Startup Playlist Path</description>
+						<width>750</width>
+						<height>40</height>
+						<font>font13</font>
+						<textcolor>grey2</textcolor>
+						<focusedcolor>white</focusedcolor>
+						<label>15311</label>
+						<label2>$INFO[Skin.String(Startup_Playlist_Path)]</label2>
+						<onclick>Skin.SetFile(Startup_Playlist_Path,,special://MusicPlaylists/)</onclick>
+						<texturefocus>MenuItemFO.png</texturefocus>
+						<texturenofocus>MenuItemNF.png</texturenofocus>
+						<enable>Skin.HasSetting(Use_Startup_Playlist)</enable>
+					</control>
+				</control>
+				<control type="scrollbar" id="60">
+					<posx>1060</posx>
+					<posy>60</posy>
+					<width>25</width>
+					<height>530</height>
+					<texturesliderbackground border="0,14,0,14">ScrollBarV.png</texturesliderbackground>
+					<texturesliderbar border="0,14,0,14">ScrollBarV_bar.png</texturesliderbar>
+					<texturesliderbarfocus border="0,14,0,14">ScrollBarV_bar_focus.png</texturesliderbarfocus>
+					<textureslidernib>ScrollBarNib.png</textureslidernib>
+					<textureslidernibfocus>ScrollBarNib.png</textureslidernibfocus>
+					<onleft>9001</onleft>
+					<onright>9000</onright>
+					<showonepage>false</showonepage>
+					<orientation>vertical</orientation>
+					<visible>Container(9000).Hasfocus(1)</visible>
+				</control>
+				<control type="grouplist" id="9002">
+					<visible>Container(9000).Hasfocus(2)</visible>
+					<posx>290</posx>
+					<posy>60</posy>
+					<width>750</width>
+					<height>530</height>
+					<itemgap>-1</itemgap>
+					<pagecontrol>60</pagecontrol>
+					<onleft>9000</onleft>
+					<onright>60</onright>
+					<onup>9002</onup>
+					<ondown>9002</ondown>
+					<control type="label" id="200">
+						<width>750</width>
+						<height>45</height>
+						<font>font13_title</font>
+						<label>31101</label>
+						<textcolor>blue</textcolor>
+						<shadowcolor>black</shadowcolor>
+						<align>left</align>
+						<aligny>center</aligny>
+					</control>
+					<control type="radiobutton" id="202">
+						<description>enable video info</description>
+						<width>750</width>
+						<height>40</height>
+						<font>font13</font>
+						<textcolor>grey2</textcolor>
+						<focusedcolor>white</focusedcolor>
+						<label>20176</label>
+						<onclick>Skin.ToggleSetting(homepageVideoinfo)</onclick>
+						<selected>!Skin.HasSetting(homepageVideoinfo)</selected>
+						<texturefocus>MenuItemFO.png</texturefocus>
+						<texturenofocus>MenuItemNF.png</texturenofocus>
+					</control>
+					<control type="radiobutton" id="203">
+						<description>enable music info</description>
+						<width>750</width>
+						<height>40</height>
+						<font>font13</font>
+						<textcolor>grey2</textcolor>
+						<focusedcolor>white</focusedcolor>
+						<label>20083</label>
+						<onclick>Skin.ToggleSetting(homepageMusicinfo)</onclick>
+						<selected>!Skin.HasSetting(homepageMusicinfo)</selected>
+						<texturefocus>MenuItemFO.png</texturefocus>
+						<texturenofocus>MenuItemNF.png</texturenofocus>
+					</control>
+					<control type="radiobutton" id="204">
+						<description>enable weather info</description>
+						<width>750</width>
+						<height>40</height>
+						<font>font13</font>
+						<textcolor>grey2</textcolor>
+						<focusedcolor>white</focusedcolor>
+						<label>20084</label>
+						<onclick>Skin.ToggleSetting(homepageWeatherinfo)</onclick>
+						<selected>Skin.HasSetting(homepageWeatherinfo)</selected>
+						<texturefocus>MenuItemFO.png</texturefocus>
+						<texturenofocus>MenuItemNF.png</texturenofocus>
+						<visible>!IsEmpty(Weather.Plugin)</visible>
+					</control>
+					<control type="radiobutton" id="205">
+						<description>Show Recently added Video info</description>
+						<width>750</width>
+						<height>40</height>
+						<font>font13</font>
+						<textcolor>grey2</textcolor>
+						<focusedcolor>white</focusedcolor>
+						<label>31117</label>
+						<onclick>Skin.ToggleSetting(HomepageHideRecentlyAddedVideo)</onclick>
+						<selected>!Skin.HasSetting(HomepageHideRecentlyAddedVideo)</selected>
+						<texturefocus>MenuItemFO.png</texturefocus>
+						<texturenofocus>MenuItemNF.png</texturenofocus>
+					</control>
+					<control type="radiobutton" id="206">
+						<description>Show Recently added info</description>
+						<width>750</width>
+						<height>40</height>
+						<font>font13</font>
+						<textcolor>grey2</textcolor>
+						<focusedcolor>white</focusedcolor>
+						<label>31116</label>
+						<onclick>Skin.ToggleSetting(HomepageHideRecentlyAddedAlbums)</onclick>
+						<selected>!Skin.HasSetting(HomepageHideRecentlyAddedAlbums)</selected>
+						<texturefocus>MenuItemFO.png</texturefocus>
+						<texturenofocus>MenuItemNF.png</texturenofocus>
+					</control>
+					<control type="label" id="2232">
+						<width>750</width>
+						<height>45</height>
+						<font>font13_title</font>
+						<label>31106</label>
+						<textcolor>blue</textcolor>
+						<shadowcolor>black</shadowcolor>
+						<align>left</align>
+						<aligny>center</aligny>
+					</control>
+					<control type="radiobutton" id="2209">
+						<description>Video open Files</description>
+						<width>750</width>
+						<height>40</height>
+						<font>font13</font>
+						<textcolor>grey2</textcolor>
+						<focusedcolor>white</focusedcolor>
+						<label>$LOCALIZE[88050]</label>
+						<onclick>Skin.ToggleSetting(HomeVideostoFiles)</onclick>
+						<selected>Skin.HasSetting(HomeVideostoFiles)</selected>
+						<texturefocus>MenuItemFO.png</texturefocus>
+						<texturenofocus>MenuItemNF.png</texturenofocus>
+					</control>
+					<control type="radiobutton" id="2204">
+						<description>Disable XBMC logo in Home</description>
+						<width>750</width>
+						<height>40</height>
+						<font>font13</font>
+						<textcolor>grey2</textcolor>
+						<focusedcolor>white</focusedcolor>
+						<label>$LOCALIZE[513] - $LOCALIZE[31111] XBMC logo </label>
+						<onclick>Skin.ToggleSetting(NoLogo)</onclick>
+						<selected>Skin.HasSetting(NoLogo)</selected>
+						<texturefocus>MenuItemFO.png</texturefocus>
+						<texturenofocus>MenuItemNF.png</texturenofocus>
+					</control>
+					<control type="radiobutton" id="2203">
+						<description>Lower Menu Button</description>
+						<width>750</width>
+						<height>40</height>
+						<font>font13</font>
+						<textcolor>grey2</textcolor>
+						<focusedcolor>white</focusedcolor>
+						<label>$LOCALIZE[513] - $LOCALIZE[13333]</label>
+						<onclick>Skin.ToggleSetting(LowerMenu)</onclick>
+						<selected>Skin.HasSetting(LowerMenu)</selected>
+						<texturefocus>MenuItemFO.png</texturefocus>
+						<texturenofocus>MenuItemNF.png</texturenofocus>
+					</control>
+					<control type="radiobutton" id="2111">
+						<description>Weather Widget</description>
+						<width>750</width>
+						<height>40</height>
+						<font>font13</font>
+						<textcolor>grey2</textcolor>
+						<focusedcolor>white</focusedcolor>
+						<label>88101</label>
+						<onclick>Skin.ToggleSetting(WeatherWidget)</onclick>
+						<selected>Skin.HasSetting(WeatherWidget)</selected>
+						<texturefocus>MenuItemFO.png</texturefocus>
+						<texturenofocus>MenuItemNF.png</texturenofocus>
+						<enable>Skin.HasSetting(LowerMenu)</enable>						
+					</control>
+					<control type="radiobutton" id="2107">
+						<description>No Slide SubMenu</description>
+						<width>750</width>
+						<height>40</height>
+						<font>font13</font>
+						<textcolor>grey2</textcolor>
+						<focusedcolor>white</focusedcolor>
+						<label> 88049 </label>
+						<onclick>Skin.ToggleSetting(NoSlide)</onclick>
+						<selected>Skin.HasSetting(NoSlide)</selected>
+						<texturefocus>MenuItemFO.png</texturefocus>
+						<texturenofocus>MenuItemNF.png</texturenofocus>
+					</control>	
+					<control type="radiobutton" id="2110">
+						<description>No Slide Addon</description>
+						<width>750</width>
+						<height>40</height>
+						<font>font13</font>
+						<textcolor>grey2</textcolor>
+						<focusedcolor>white</focusedcolor>
+						<label>88102</label>
+						<onclick>Skin.ToggleSetting(NoSlideAddon)</onclick>
+						<selected>Skin.HasSetting(NoSlideAddon)</selected>
+						<texturefocus>MenuItemFO.png</texturefocus>
+						<texturenofocus>MenuItemNF.png</texturenofocus>
+					</control>												
+					<control type="radiobutton" id="2108">
+						<description>No label addon</description>
+						<width>750</width>
+						<height>40</height>
+						<font>font13</font>
+						<textcolor>grey2</textcolor>
+						<focusedcolor>white</focusedcolor>
+						<label>88104</label>
+						<onclick>Skin.ToggleSetting(Nolabeladdon)</onclick>
+						<selected>Skin.HasSetting(Nolabeladdon)</selected>
+						<texturefocus>MenuItemFO.png</texturefocus>
+						<texturenofocus>MenuItemNF.png</texturenofocus>
+					</control>						
+					<control type="radiobutton" id="2207">
+						<description>No Floor Button</description>
+						<width>750</width>
+						<height>40</height>
+						<font>font13</font>
+						<textcolor>grey2</textcolor>
+						<focusedcolor>white</focusedcolor>
+						<label>$LOCALIZE[88024]</label>
+						<onclick>Skin.ToggleSetting(NoFloor)</onclick>
+						<selected>Skin.HasSetting(NoFloor)</selected>
+						<texturefocus>MenuItemFO.png</texturefocus>
+						<texturenofocus>MenuItemNF.png</texturenofocus>
+					</control>	
+					<control type="radiobutton" id="2208">
+						<description>No Floor everywhere Button</description>
+						<width>750</width>
+						<height>40</height>
+						<font>font13</font>
+						<textcolor>grey2</textcolor>
+						<focusedcolor>white</focusedcolor>
+						<label>$LOCALIZE[88025]</label>
+						<onclick>Skin.ToggleSetting(NoFloorAll)</onclick>
+						<selected>Skin.HasSetting(NoFloorAll)</selected>
+						<texturefocus>MenuItemFO.png</texturefocus>
+						<texturenofocus>MenuItemNF.png</texturenofocus>
+					</control>	
+					<control type="radiobutton" id="2201">
+						<description>Hide Custom Button</description>
+						<width>750</width>
+						<height>40</height>
+						<font>font13</font>
+						<textcolor>grey2</textcolor>
+						<focusedcolor>white</focusedcolor>
+						<label>$LOCALIZE[31111] - $LOCALIZE[31200]</label>
+						<onclick>Skin.ToggleSetting(CustomFavorites)</onclick>
+						<selected>!Skin.HasSetting(CustomFavorites)</selected>
+						<texturefocus>MenuItemFO.png</texturefocus>
+						<texturenofocus>MenuItemNF.png</texturenofocus>
+					</control>					
+					<control type="radiobutton" id="2202">
+						<description>Hide Search Button</description>
+						<width>750</width>
+						<height>40</height>
+						<font>font13</font>
+						<textcolor>grey2</textcolor>
+						<focusedcolor>white</focusedcolor>
+						<label>$LOCALIZE[31111] - $LOCALIZE[137]</label>
+						<onclick>Skin.ToggleSetting(ActivateSearch)</onclick>
+						<selected>!Skin.HasSetting(ActivateSearch)</selected>
+						<texturefocus>MenuItemFO.png</texturefocus>
+						<texturenofocus>MenuItemNF.png</texturenofocus>
+					</control>
+					<control type="radiobutton" id="2109">
+						<description>No Player panel</description>
+						<width>750</width>
+						<height>40</height>
+						<font>font13</font>
+						<textcolor>grey2</textcolor>
+						<focusedcolor>white</focusedcolor>
+						<label>88103</label>
+						<onclick>Skin.ToggleSetting(HidePlayerPanel)</onclick>
+						<selected>Skin.HasSetting(HidePlayerPanel)</selected>
+						<texturefocus>MenuItemFO.png</texturefocus>
+						<texturenofocus>MenuItemNF.png</texturenofocus>
+					</control>
+					<control type="button" id="2112">
+						<description>MenuColor</description>
+						<width>750</width>
+						<height>40</height>
+						<font>font13</font>
+						<textcolor>grey2</textcolor>
+						<focusedcolor>white</focusedcolor>
+						<label>$LOCALIZE[88105] [B][COLOR=$INFO[Skin.String(menuColor)]]$INFO[Skin.String(MenuColorName)][/COLOR][/B] $LOCALIZE[88106]</label>
+						<onclick>ActivateWindow(2210)</onclick>
+						<texturefocus>MenuItemFO.png</texturefocus>
+						<texturenofocus>MenuItemNF.png</texturenofocus>
+					</control>
+					<control type="label" id="9052">
+						<width>750</width>
+						<height>40</height>
+						<font>font13</font>
+						<label> $LOCALIZE[88023] [COLOR=selected]$INFO[Skin.String(CustomFocus)][/COLOR]</label>
+						<textcolor>grey2</textcolor>
+						<align>left</align>
+						<aligny>center</aligny>
+					</control>
+					<control type="multiselect" id="2212">
+						<description>Startup focus control</description>
+						<width>750</width>
+						<height>28</height>
+						<label>[ONCLICK Skin.SetString(CustomFocus,-2,)] 2 [/ONCLICK][ONCLICK Skin.SetString(CustomFocus,-1,)] 1 [/ONCLICK][COLOR=grey3]- $LOCALIZE[88020] [/COLOR]|[ONCLICK Skin.Reset(CustomFocus)] $LOCALIZE[571] [/ONCLICK]|[COLOR=grey3] $LOCALIZE[88021] -[/COLOR][ONCLICK Skin.SetString(CustomFocus,1,)] 1 [/ONCLICK][ONCLICK Skin.SetString(CustomFocus,2,)] 2 [/ONCLICK] |[ONCLICK Skin.SetNumeric(CustomFocus)] $LOCALIZE[88022] [/ONCLICK]</label>
+						<font>font13</font>
+						<textcolor>grey2</textcolor>
+						<focusedcolor>white</focusedcolor>
+						<texturefocus>MenuItemFO.png</texturefocus>	
+						<aligny>center</aligny>						
+						<onup>2</onup>
+						<ondown>3</ondown>
+						<onleft>1</onleft>
+						<onright>1</onright>
+					</control>					
+					<control type="label" id="220">
+						<width>750</width>
+						<height>45</height>
+						<font>font13_title</font>
+						<label>31108</label>
+						<textcolor>blue</textcolor>
+						<shadowcolor>black</shadowcolor>
+						<align>left</align>
+						<aligny>center</aligny>
+					</control>
+					<control type="radiobutton" id="221">
+						<description>Hide Videos Button</description>
+						<width>750</width>
+						<height>40</height>
+						<font>font13</font>
+						<textcolor>grey2</textcolor>
+						<focusedcolor>white</focusedcolor>
+						<label>$LOCALIZE[31111] - $LOCALIZE[3]</label>
+						<onclick>Skin.ToggleSetting(HomeMenuNoVideosButton)</onclick>
+						<selected>Skin.HasSetting(HomeMenuNoVideosButton)</selected>
+						<texturefocus>MenuItemFO.png</texturefocus>
+						<texturenofocus>MenuItemNF.png</texturenofocus>
+					</control>
+					<control type="radiobutton" id="222">
+						<description>Hide Movies Button</description>
+						<width>750</width>
+						<height>40</height>
+						<font>font13</font>
+						<textcolor>grey2</textcolor>
+						<focusedcolor>white</focusedcolor>
+						<label>$LOCALIZE[31111] - $LOCALIZE[20342] [COLOR=grey3] ($LOCALIZE[20314])[/COLOR]</label>
+						<onclick>Skin.ToggleSetting(HomeMenuNoMovieButton)</onclick>
+						<selected>Skin.HasSetting(HomeMenuNoMovieButton)</selected>
+						<texturefocus>MenuItemFO.png</texturefocus>
+						<texturenofocus>MenuItemNF.png</texturenofocus>
+						<enable>Library.HasContent(Movies)</enable>
+					</control>
+					<control type="radiobutton" id="223">
+						<description>Hide TV Shows Button</description>
+						<width>750</width>
+						<height>40</height>
+						<font>font13</font>
+						<textcolor>grey2</textcolor>
+						<focusedcolor>white</focusedcolor>
+						<label>$LOCALIZE[31111] - $LOCALIZE[20343] [COLOR=grey3] ($LOCALIZE[20314])[/COLOR]</label>
+						<onclick>Skin.ToggleSetting(HomeMenuNoTVShowButton)</onclick>
+						<selected>Skin.HasSetting(HomeMenuNoTVShowButton)</selected>
+						<texturefocus>MenuItemFO.png</texturefocus>
+						<texturenofocus>MenuItemNF.png</texturenofocus>
+						<enable>Library.HasContent(TVShows)</enable>
+					</control>
+					<control type="radiobutton" id="224">
+						<description>Hide Music Button</description>
+						<width>750</width>
+						<height>40</height>
+						<font>font13</font>
+						<textcolor>grey2</textcolor>
+						<focusedcolor>white</focusedcolor>
+						<label>$LOCALIZE[31111] - $LOCALIZE[2]</label>
+						<onclick>Skin.ToggleSetting(HomeMenuNoMusicButton)</onclick>
+						<selected>Skin.HasSetting(HomeMenuNoMusicButton)</selected>
+						<texturefocus>MenuItemFO.png</texturefocus>
+						<texturenofocus>MenuItemNF.png</texturenofocus>
+					</control>
+					<control type="radiobutton" id="225">
+						<description>Hide Pictures Button</description>
+						<width>750</width>
+						<height>40</height>
+						<font>font13</font>
+						<textcolor>grey2</textcolor>
+						<focusedcolor>white</focusedcolor>
+						<label>$LOCALIZE[31111] - $LOCALIZE[1]</label>
+						<onclick>Skin.ToggleSetting(HomeMenuNoPicturesButton)</onclick>
+						<selected>Skin.HasSetting(HomeMenuNoPicturesButton)</selected>
+						<texturefocus>MenuItemFO.png</texturefocus>
+						<texturenofocus>MenuItemNF.png</texturenofocus>
+					</control>
+					<control type="radiobutton" id="226">
+						<description>Hide Programs Button</description>
+						<width>750</width>
+						<height>40</height>
+						<font>font13</font>
+						<textcolor>grey2</textcolor>
+						<focusedcolor>white</focusedcolor>
+						<label>$LOCALIZE[31111] - $LOCALIZE[0]</label>
+						<onclick>Skin.ToggleSetting(HomeMenuNoProgramsButton)</onclick>
+						<selected>Skin.HasSetting(HomeMenuNoProgramsButton)</selected>
+						<texturefocus>MenuItemFO.png</texturefocus>
+						<texturenofocus>MenuItemNF.png</texturenofocus>
+					</control>
+					<control type="radiobutton" id="228">
+						<description>Hide Weather Button</description>
+						<width>750</width>
+						<height>40</height>
+						<font>font13</font>
+						<textcolor>grey2</textcolor>
+						<focusedcolor>white</focusedcolor>
+						<label>$LOCALIZE[31111] - $LOCALIZE[8]</label>
+						<onclick>Skin.ToggleSetting(HomeMenuNoWeatherButton)</onclick>
+						<selected>Skin.HasSetting(HomeMenuNoWeatherButton)</selected>
+						<texturefocus>MenuItemFO.png</texturefocus>
+						<texturenofocus>MenuItemNF.png</texturenofocus>
+					</control>
+				</control>
+				<control type="scrollbar" id="60">
+					<posx>1060</posx>
+					<posy>60</posy>
+					<width>25</width>
+					<height>530</height>
+					<texturesliderbackground border="0,14,0,14">ScrollBarV.png</texturesliderbackground>
+					<texturesliderbar border="0,14,0,14">ScrollBarV_bar.png</texturesliderbar>
+					<texturesliderbarfocus border="0,14,0,14">ScrollBarV_bar_focus.png</texturesliderbarfocus>
+					<textureslidernib>ScrollBarNib.png</textureslidernib>
+					<textureslidernibfocus>ScrollBarNib.png</textureslidernibfocus>
+					<onleft>9002</onleft>
+					<onright>9000</onright>
+					<showonepage>false</showonepage>
+					<orientation>vertical</orientation>
+					<visible>Container(9000).Hasfocus(2)</visible>
+				</control>
+				<control type="grouplist" id="9003">
+					<visible>Container(9000).Hasfocus(3)</visible>
+					<posx>290</posx>
+					<posy>60</posy>
+					<width>750</width>
+					<height>530</height>
+					<itemgap>-1</itemgap>
+					<pagecontrol>60</pagecontrol>
+					<onleft>9000</onleft>
+					<onright>60</onright>
+					<onup>9003</onup>
+					<ondown>9003</ondown>
+					<control type="label" id="300">
+						<width>750</width>
+						<height>45</height>
+						<font>font13_title</font>
+						<label>31106</label>
+						<textcolor>blue</textcolor>
+						<shadowcolor>black</shadowcolor>
+						<align>left</align>
+						<aligny>center</aligny>
+					</control>
+					<control type="radiobutton" id="301">
+						<width>750</width>
+						<height>40</height>
+						<font>font13</font>
+						<label>31119</label>
+						<textcolor>grey2</textcolor>
+						<focusedcolor>white</focusedcolor>
+						<texturefocus>MenuItemFO.png</texturefocus>
+						<texturenofocus>MenuItemNF.png</texturenofocus>
+						<onclick>Skin.ToggleSetting(HideBackGroundFanart)</onclick>
+						<selected>Skin.HasSetting(HideBackGroundFanart)</selected>
+					</control>
+					
+					<control type="radiobutton" id="302">
+						<width>750</width>
+						<height>40</height>
+						<font>font13</font>
+						<label>31129</label>
+						<textcolor>grey2</textcolor>
+						<focusedcolor>white</focusedcolor>
+						<texturefocus>MenuItemFO.png</texturefocus>
+						<texturenofocus>MenuItemNF.png</texturenofocus>
+						<onclick>Skin.ToggleSetting(HideVisualizationFanart)</onclick>
+						<selected>Skin.HasSetting(HideVisualizationFanart)</selected>
+					</control>
+					<control type="radiobutton" id="303">
+						<width>750</width>
+						<height>40</height>
+						<font>font13</font>
+						<label>31124</label>
+						<textcolor>grey2</textcolor>
+						<focusedcolor>white</focusedcolor>
+						<texturefocus>MenuItemFO.png</texturefocus>
+						<texturenofocus>MenuItemNF.png</texturenofocus>
+						<onclick>Skin.ToggleSetting(ShowBackgroundVideo)</onclick>
+						<selected>!Skin.HasSetting(ShowBackgroundVideo)</selected>
+					</control>
+					<control type="radiobutton" id="304">
+						<width>750</width>
+						<height>40</height>
+						<font>font13</font>
+						<label>31125</label>
+						<textcolor>grey2</textcolor>
+						<focusedcolor>white</focusedcolor>
+						<texturefocus>MenuItemFO.png</texturefocus>
+						<texturenofocus>MenuItemNF.png</texturenofocus>
+						<onclick>Skin.ToggleSetting(ShowBackgroundVis)</onclick>
+						<selected>!Skin.HasSetting(ShowBackgroundVis)</selected>
+					</control>
+					<control type="label" id="310">
+						<width>750</width>
+						<height>45</height>
+						<font>font13_title</font>
+						<label>31102</label>
+						<textcolor>blue</textcolor>
+						<shadowcolor>black</shadowcolor>
+						<align>left</align>
+						<aligny>center</aligny>
+					</control>
+					<control type="radiobutton" id="3101">
+						<width>750</width>
+						<height>40</height>
+						<font>font13</font>
+						<label>$LOCALIZE[513] - $LOCALIZE[31102] - $LOCALIZE[31026]</label>
+						<textcolor>grey2</textcolor>
+						<focusedcolor>white</focusedcolor>
+						<texturefocus>MenuItemFO.png</texturefocus>
+						<texturenofocus>MenuItemNF.png</texturenofocus>
+						<onclick>Skin.ToggleSetting(SeparateBackground)</onclick>
+						<selected>Skin.HasSetting(SeparateBackground)</selected>
+						<enable>!Skin.HasSetting(UseCustomBackground)</enable>
+					</control>
+					<control type="radiobutton" id="311">
+						<width>750</width>
+						<height>40</height>
+						<font>font13</font>
+						<label>31109</label>
+						<textcolor>grey2</textcolor>
+						<focusedcolor>white</focusedcolor>
+						<texturefocus>MenuItemFO.png</texturefocus>
+						<texturenofocus>MenuItemNF.png</texturenofocus>
+						<onclick>Skin.ToggleSetting(UseCustomBackground)</onclick>
+						<selected>Skin.HasSetting(UseCustomBackground)</selected>
+						<enable>!Skin.HasSetting(SeparateBackground)</enable>
+					</control>
+					<control type="button" id="312">
+						<width>750</width>
+						<height>40</height>
+						<font>font13</font>
+						<label>- $LOCALIZE[31110]</label>
+						<label2>[COLOR=selected]$INFO[Skin.String(CustomBackgroundPath)][/COLOR]</label2>
+						<textcolor>grey2</textcolor>
+						<focusedcolor>white</focusedcolor>
+						<texturefocus>MenuItemFO.png</texturefocus>
+						<texturenofocus>MenuItemNF.png</texturenofocus>
+						<onclick>Skin.SetImage(CustomBackgroundPath)</onclick>
+						<enable>Skin.HasSetting(UseCustomBackground)</enable>
+					</control>
+				</control>
+				<control type="group">
+					<control type="grouplist" id="9004">
+						<visible>Container(9000).Hasfocus(4)</visible>
+						<posx>290</posx>
+						<posy>60</posy>
+						<width>750</width>
+						<height>530</height>
+						<itemgap>-1</itemgap>
+						<pagecontrol>61</pagecontrol>
+						<onleft>9000</onleft>
+						<onright>61</onright>
+						<onup>9004</onup>
+						<ondown>9004</ondown>
+						<control type="label" id="453">
+							<width>750</width>
+							<height>45</height>
+							<font>font13_title</font>
+							<label>31140</label>
+							<textcolor>blue</textcolor>
+							<shadowcolor>black</shadowcolor>
+							<align>left</align>
+							<aligny>center</aligny>
+						</control>
+						<control type="button" id="455">
+							<width>750</width>
+							<height>40</height>
+							<font>font13</font>
+							<label>$LOCALIZE[31132]</label>
+							<label2>[COLOR=selected]$INFO[system.addontitle(Skin.String(LyricScript_Path))][/COLOR]</label2>
+							<textcolor>grey2</textcolor>
+							<focusedcolor>white</focusedcolor>
+							<texturefocus>MenuItemFO.png</texturefocus>
+							<texturenofocus>MenuItemNF.png</texturenofocus>
+							<onclick>Skin.SetAddon(LyricScript_Path,xbmc.python.lyrics)</onclick>
+						</control>
+						<control type="button" id="456">
+							<width>750</width>
+							<height>40</height>
+							<font>font13</font>
+							<label>- $LOCALIZE[24020]</label>
+							<textcolor>grey2</textcolor>
+							<focusedcolor>white</focusedcolor>
+							<texturefocus>MenuItemFO.png</texturefocus>
+							<texturenofocus>MenuItemNF.png</texturenofocus>
+							<enable>!IsEmpty(Skin.String(LyricScript_Path))</enable>
+							<onclick>Addon.OpenSettings($INFO[Skin.String(LyricScript_Path)])</onclick>
+						</control> 
+						<control type="label" id="457">
+							<width>750</width>
+							<height>45</height>
+							<font>font13_title</font>
+							<label>31141</label>
+							<textcolor>blue</textcolor>
+							<shadowcolor>black</shadowcolor>
+							<align>left</align>
+							<aligny>center</aligny>
+						</control>
+						<control type="button" id="458">
+							<width>750</width>
+							<height>40</height>
+							<font>font13</font>
+							<label>$LOCALIZE[31133]</label>
+							<label2>[COLOR=selected]$INFO[system.addontitle(Skin.String(SubtitleScript_Path))][/COLOR]</label2>
+							<textcolor>grey2</textcolor>
+							<focusedcolor>white</focusedcolor>
+							<texturefocus>MenuItemFO.png</texturefocus>
+							<texturenofocus>MenuItemNF.png</texturenofocus>
+							<onclick>Skin.SetAddon(SubtitleScript_Path,xbmc.python.subtitles)</onclick>
+						</control>
+						<control type="button" id="459">
+							<width>750</width>
+							<height>40</height>
+							<font>font13</font>
+							<label>- $LOCALIZE[24020]</label>
+							<textcolor>grey2</textcolor>
+							<focusedcolor>white</focusedcolor>
+							<texturefocus>MenuItemFO.png</texturefocus>
+							<texturenofocus>MenuItemNF.png</texturenofocus>
+							<enable>!IsEmpty(Skin.String(SubtitleScript_Path))</enable>
+							<onclick>Addon.OpenSettings($INFO[Skin.String(SubtitleScript_Path)])</onclick>
+						</control> 
+						<control type="label" id="4101">
+							<width>750</width>
+							<height>45</height>
+							<font>font13_title</font>
+							<label>88340</label>
+							<textcolor>blue</textcolor>
+							<shadowcolor>black</shadowcolor>
+							<align>left</align>
+							<aligny>center</aligny>
+						</control>
+						<control type="button" id="4111">
+							<width>750</width>
+							<height>40</height>
+							<font>font13</font>
+							<label>$LOCALIZE[24000] [B]1[/B]</label>
+							<label2>[COLOR=selected]$INFO[system.addontitle(Skin.String(HomeTVPVRButton1))][/COLOR]</label2>
+							<textcolor>grey2</textcolor>
+							<focusedcolor>white</focusedcolor>
+							<texturefocus>MenuItemFO.png</texturefocus>
+							<texturenofocus>MenuItemNF.png</texturenofocus>
+							<onclick>Skin.SetAddon(HomeTVPVRButton1,xbmc.addon.video,xbmc.addon.executable)</onclick>
+						</control>
+						<control type="button" id="4121">
+							<width>750</width>
+							<height>40</height>
+							<font>font13</font>
+							<label>$LOCALIZE[24000] [B]2[/B]</label>
+							<label2>[COLOR=selected]$INFO[system.addontitle(Skin.String(HomeTVPVRButton2))][/COLOR]</label2>
+							<textcolor>grey2</textcolor>
+							<focusedcolor>white</focusedcolor>
+							<texturefocus>MenuItemFO.png</texturefocus>
+							<texturenofocus>MenuItemNF.png</texturenofocus>
+							<onclick>Skin.SetAddon(HomeTVPVRButton2,xbmc.addon.video,xbmc.addon.executable)</onclick>
+						</control>
+						<control type="button" id="4131">
+							<width>750</width>
+							<height>40</height>
+							<font>font13</font>
+							<label>$LOCALIZE[24000] [B]3[/B]</label>
+							<label2>[COLOR=selected]$INFO[system.addontitle(Skin.String(HomeTVPVRButton3))][/COLOR]</label2>
+							<textcolor>grey2</textcolor>
+							<focusedcolor>white</focusedcolor>
+							<texturefocus>MenuItemFO.png</texturefocus>
+							<texturenofocus>MenuItemNF.png</texturenofocus>
+							<onclick>Skin.SetAddon(HomeTVPVRButton3,xbmc.addon.video,xbmc.addon.executable)</onclick>
+						</control>
+						<control type="button" id="4141">
+							<width>750</width>
+							<height>40</height>
+							<font>font13</font>
+							<label>$LOCALIZE[24000] [B]4[/B]</label>
+							<label2>[COLOR=selected]$INFO[system.addontitle(Skin.String(HomeTVPVRButton4))][/COLOR]</label2>
+							<textcolor>grey2</textcolor>
+							<focusedcolor>white</focusedcolor>
+							<texturefocus>MenuItemFO.png</texturefocus>
+							<texturenofocus>MenuItemNF.png</texturenofocus>
+							<onclick>Skin.SetAddon(HomeTVPVRButton4,xbmc.addon.video,xbmc.addon.executable)</onclick>
+						</control>
+						<control type="button" id="4151">
+							<width>750</width>
+							<height>40</height>
+							<font>font13</font>
+							<label>$LOCALIZE[24000] [B]5[/B]</label>
+							<label2>[COLOR=selected]$INFO[system.addontitle(Skin.String(HomeTVPVRButton5))][/COLOR]</label2>
+							<textcolor>grey2</textcolor>
+							<focusedcolor>white</focusedcolor>
+							<texturefocus>MenuItemFO.png</texturefocus>
+							<texturenofocus>MenuItemNF.png</texturenofocus>
+							<onclick>Skin.SetAddon(HomeTVPVRButton5,xbmc.addon.video,xbmc.addon.executable)</onclick>
+						</control>
+						<control type="label" id="410">
+							<width>750</width>
+							<height>45</height>
+							<font>font13_title</font>
+							<label>31134</label>
+							<textcolor>blue</textcolor>
+							<shadowcolor>black</shadowcolor>
+							<align>left</align>
+							<aligny>center</aligny>
+						</control>
+						<control type="button" id="411">
+							<width>750</width>
+							<height>40</height>
+							<font>font13</font>
+							<label>$LOCALIZE[24000] [B]1[/B]</label>
+							<label2>[COLOR=selected]$INFO[system.addontitle(Skin.String(HomeVideosButton1))][/COLOR]</label2>
+							<textcolor>grey2</textcolor>
+							<focusedcolor>white</focusedcolor>
+							<texturefocus>MenuItemFO.png</texturefocus>
+							<texturenofocus>MenuItemNF.png</texturenofocus>
+							<onclick>Skin.SetAddon(HomeVideosButton1,xbmc.addon.video,xbmc.addon.executable)</onclick>
+						</control>
+						<control type="button" id="412">
+							<width>750</width>
+							<height>40</height>
+							<font>font13</font>
+							<label>$LOCALIZE[24000] [B]2[/B]</label>
+							<label2>[COLOR=selected]$INFO[system.addontitle(Skin.String(HomeVideosButton2))][/COLOR]</label2>
+							<textcolor>grey2</textcolor>
+							<focusedcolor>white</focusedcolor>
+							<texturefocus>MenuItemFO.png</texturefocus>
+							<texturenofocus>MenuItemNF.png</texturenofocus>
+							<onclick>Skin.SetAddon(HomeVideosButton2,xbmc.addon.video,xbmc.addon.executable)</onclick>
+						</control>
+						<control type="button" id="413">
+							<width>750</width>
+							<height>40</height>
+							<font>font13</font>
+							<label>$LOCALIZE[24000] [B]3[/B]</label>
+							<label2>[COLOR=selected]$INFO[system.addontitle(Skin.String(HomeVideosButton3))][/COLOR]</label2>
+							<textcolor>grey2</textcolor>
+							<focusedcolor>white</focusedcolor>
+							<texturefocus>MenuItemFO.png</texturefocus>
+							<texturenofocus>MenuItemNF.png</texturenofocus>
+							<onclick>Skin.SetAddon(HomeVideosButton3,xbmc.addon.video,xbmc.addon.executable)</onclick>
+						</control>
+						<control type="button" id="414">
+							<width>750</width>
+							<height>40</height>
+							<font>font13</font>
+							<label>$LOCALIZE[24000] [B]4[/B]</label>
+							<label2>[COLOR=selected]$INFO[system.addontitle(Skin.String(HomeVideosButton4))][/COLOR]</label2>
+							<textcolor>grey2</textcolor>
+							<focusedcolor>white</focusedcolor>
+							<texturefocus>MenuItemFO.png</texturefocus>
+							<texturenofocus>MenuItemNF.png</texturenofocus>
+							<onclick>Skin.SetAddon(HomeVideosButton4,xbmc.addon.video,xbmc.addon.executable)</onclick>
+						</control>
+						<control type="button" id="415">
+							<width>750</width>
+							<height>40</height>
+							<font>font13</font>
+							<label>$LOCALIZE[24000] [B]5[/B]</label>
+							<label2>[COLOR=selected]$INFO[system.addontitle(Skin.String(HomeVideosButton5))][/COLOR]</label2>
+							<textcolor>grey2</textcolor>
+							<focusedcolor>white</focusedcolor>
+							<texturefocus>MenuItemFO.png</texturefocus>
+							<texturenofocus>MenuItemNF.png</texturenofocus>
+							<onclick>Skin.SetAddon(HomeVideosButton5,xbmc.addon.video,xbmc.addon.executable)</onclick>
+						</control>
+
+						<control type="label" id="420">
+							<width>750</width>
+							<height>45</height>
+							<font>font13_title</font>
+							<label>31135</label>
+							<textcolor>blue</textcolor>
+							<shadowcolor>black</shadowcolor>
+							<align>left</align>
+							<aligny>center</aligny>
+						</control>
+						<control type="button" id="421">
+							<width>750</width>
+							<height>40</height>
+							<font>font13</font>
+							<label>$LOCALIZE[24000] [B]1[/B]</label>
+							<label2>[COLOR=selected]$INFO[system.addontitle(Skin.String(HomeMusicButton1))][/COLOR]</label2>
+							<textcolor>grey2</textcolor>
+							<focusedcolor>white</focusedcolor>
+							<texturefocus>MenuItemFO.png</texturefocus>
+							<texturenofocus>MenuItemNF.png</texturenofocus>
+							<onclick>Skin.SetAddon(HomeMusicButton1,xbmc.addon.audio,xbmc.addon.executable)</onclick>
+						</control>
+						<control type="button" id="422">
+							<width>750</width>
+							<height>40</height>
+							<font>font13</font>
+							<label>$LOCALIZE[24000] [B]2[/B]</label>
+							<label2>[COLOR=selected]$INFO[system.addontitle(Skin.String(HomeMusicButton2))][/COLOR]</label2>
+							<textcolor>grey2</textcolor>
+							<focusedcolor>white</focusedcolor>
+							<texturefocus>MenuItemFO.png</texturefocus>
+							<texturenofocus>MenuItemNF.png</texturenofocus>
+							<onclick>Skin.SetAddon(HomeMusicButton2,xbmc.addon.audio,xbmc.addon.executable)</onclick>
+						</control>
+						<control type="button" id="423">
+							<width>750</width>
+							<height>40</height>
+							<font>font13</font>
+							<label>$LOCALIZE[24000] [B]3[/B]</label>
+							<label2>[COLOR=selected]$INFO[system.addontitle(Skin.String(HomeMusicButton3))][/COLOR]</label2>
+							<textcolor>grey2</textcolor>
+							<focusedcolor>white</focusedcolor>
+							<texturefocus>MenuItemFO.png</texturefocus>
+							<texturenofocus>MenuItemNF.png</texturenofocus>
+							<onclick>Skin.SetAddon(HomeMusicButton3,xbmc.addon.audio,xbmc.addon.executable)</onclick>
+						</control>
+						<control type="button" id="424">
+							<width>750</width>
+							<height>40</height>
+							<font>font13</font>
+							<label>$LOCALIZE[24000] [B]4[/B]</label>
+							<label2>[COLOR=selected]$INFO[system.addontitle(Skin.String(HomeMusicButton4))][/COLOR]</label2>
+							<textcolor>grey2</textcolor>
+							<focusedcolor>white</focusedcolor>
+							<texturefocus>MenuItemFO.png</texturefocus>
+							<texturenofocus>MenuItemNF.png</texturenofocus>
+							<onclick>Skin.SetAddon(HomeMusicButton4,xbmc.addon.audio,xbmc.addon.executable)</onclick>
+						</control>
+						<control type="button" id="425">
+							<width>750</width>
+							<height>40</height>
+							<font>font13</font>
+							<label>$LOCALIZE[24000] [B]5[/B]</label>
+							<label2>[COLOR=selected]$INFO[system.addontitle(Skin.String(HomeMusicButton5))][/COLOR]</label2>
+							<textcolor>grey2</textcolor>
+							<focusedcolor>white</focusedcolor>
+							<texturefocus>MenuItemFO.png</texturefocus>
+							<texturenofocus>MenuItemNF.png</texturenofocus>
+							<onclick>Skin.SetAddon(HomeMusicButton5,xbmc.addon.audio,xbmc.addon.executable)</onclick>
+						</control>
+
+						<control type="label" id="430">
+							<width>750</width>
+							<height>45</height>
+							<font>font13_title</font>
+							<label>31136</label>
+							<textcolor>blue</textcolor>
+							<shadowcolor>black</shadowcolor>
+							<align>left</align>
+							<aligny>center</aligny>
+						</control>
+						<control type="button" id="431">
+							<width>750</width>
+							<height>40</height>
+							<font>font13</font>
+							<label>$LOCALIZE[24000] [B]1[/B]</label>
+							<label2>[COLOR=selected]$INFO[system.addontitle(Skin.String(HomePictureButton1))][/COLOR]</label2>
+							<textcolor>grey2</textcolor>
+							<focusedcolor>white</focusedcolor>
+							<texturefocus>MenuItemFO.png</texturefocus>
+							<texturenofocus>MenuItemNF.png</texturenofocus>
+							<onclick>Skin.SetAddon(HomePictureButton1,xbmc.addon.image,xbmc.addon.executable)</onclick>
+						</control>
+						<control type="button" id="432">
+							<width>750</width>
+							<height>40</height>
+							<font>font13</font>
+							<label>$LOCALIZE[24000] [B]2[/B]</label>
+							<label2>[COLOR=selected]$INFO[system.addontitle(Skin.String(HomePictureButton2))][/COLOR]</label2>
+							<textcolor>grey2</textcolor>
+							<focusedcolor>white</focusedcolor>
+							<texturefocus>MenuItemFO.png</texturefocus>
+							<texturenofocus>MenuItemNF.png</texturenofocus>
+							<onclick>Skin.SetAddon(HomePictureButton2,xbmc.addon.image,xbmc.addon.executable)</onclick>
+						</control>
+						<control type="button" id="433">
+							<width>750</width>
+							<height>40</height>
+							<font>font13</font>
+							<label>$LOCALIZE[24000] [B]3[/B]</label>
+							<label2>[COLOR=selected]$INFO[system.addontitle(Skin.String(HomePictureButton3))][/COLOR]</label2>
+							<textcolor>grey2</textcolor>
+							<focusedcolor>white</focusedcolor>
+							<texturefocus>MenuItemFO.png</texturefocus>
+							<texturenofocus>MenuItemNF.png</texturenofocus>
+							<onclick>Skin.SetAddon(HomePictureButton3,xbmc.addon.image,xbmc.addon.executable)</onclick>
+						</control>
+						<control type="button" id="434">
+							<width>750</width>
+							<height>40</height>
+							<font>font13</font>
+							<label>$LOCALIZE[24000] [B]4[/B]</label>
+							<label2>[COLOR=selected]$INFO[system.addontitle(Skin.String(HomePictureButton4))][/COLOR]</label2>
+							<textcolor>grey2</textcolor>
+							<focusedcolor>white</focusedcolor>
+							<texturefocus>MenuItemFO.png</texturefocus>
+							<texturenofocus>MenuItemNF.png</texturenofocus>
+							<onclick>Skin.SetAddon(HomePictureButton4,xbmc.addon.image,xbmc.addon.executable)</onclick>
+						</control>
+						<control type="button" id="435">
+							<width>750</width>
+							<height>40</height>
+							<font>font13</font>
+							<label>$LOCALIZE[24000] [B]5[/B]</label>
+							<label2>[COLOR=selected]$INFO[system.addontitle(Skin.String(HomePictureButton5))][/COLOR]</label2>
+							<textcolor>grey2</textcolor>
+							<focusedcolor>white</focusedcolor>
+							<texturefocus>MenuItemFO.png</texturefocus>
+							<texturenofocus>MenuItemNF.png</texturenofocus>
+							<onclick>Skin.SetAddon(HomePictureButton5,xbmc.addon.image,xbmc.addon.executable)</onclick>
+						</control>
+
+						<control type="label" id="440">
+							<width>750</width>
+							<height>45</height>
+							<font>font13_title</font>
+							<label>31118</label>
+							<textcolor>blue</textcolor>
+							<shadowcolor>black</shadowcolor>
+							<align>left</align>
+							<aligny>center</aligny>
+						</control>
+						<control type="button" id="441">
+							<width>750</width>
+							<height>40</height>
+							<font>font13</font>
+							<label>$LOCALIZE[24000] [B]1[/B]</label>
+							<label2>[COLOR=selected]$INFO[system.addontitle(Skin.String(HomeProgramButton1))][/COLOR]</label2>
+							<textcolor>grey2</textcolor>
+							<focusedcolor>white</focusedcolor>
+							<texturefocus>MenuItemFO.png</texturefocus>
+							<texturenofocus>MenuItemNF.png</texturenofocus>
+							<onclick>Skin.SetAddon(HomeProgramButton1,xbmc.addon.executable)</onclick>
+						</control>
+						<control type="button" id="442">
+							<width>750</width>
+							<height>40</height>
+							<font>font13</font>
+							<label>$LOCALIZE[24000] [B]2[/B]</label>
+							<label2>[COLOR=selected]$INFO[system.addontitle(Skin.String(HomeProgramButton2))][/COLOR]</label2>
+							<textcolor>grey2</textcolor>
+							<focusedcolor>white</focusedcolor>
+							<texturefocus>MenuItemFO.png</texturefocus>
+							<texturenofocus>MenuItemNF.png</texturenofocus>
+							<onclick>Skin.SetAddon(HomeProgramButton2,xbmc.addon.executable)</onclick>
+						</control>
+						<control type="button" id="443">
+							<width>750</width>
+							<height>40</height>
+							<font>font13</font>
+							<label>$LOCALIZE[24000] [B]3[/B]</label>
+							<label2>[COLOR=selected]$INFO[system.addontitle(Skin.String(HomeProgramButton3))][/COLOR]</label2>
+							<textcolor>grey2</textcolor>
+							<focusedcolor>white</focusedcolor>
+							<texturefocus>MenuItemFO.png</texturefocus>
+							<texturenofocus>MenuItemNF.png</texturenofocus>
+							<onclick>Skin.SetAddon(HomeProgramButton3,xbmc.addon.executable)</onclick>
+						</control>
+						<control type="button" id="444">
+							<width>750</width>
+							<height>40</height>
+							<font>font13</font>
+							<label>$LOCALIZE[24000] [B]4[/B]</label>
+							<label2>[COLOR=selected]$INFO[system.addontitle(Skin.String(HomeProgramButton4))][/COLOR]</label2>
+							<textcolor>grey2</textcolor>
+							<focusedcolor>white</focusedcolor>
+							<texturefocus>MenuItemFO.png</texturefocus>
+							<texturenofocus>MenuItemNF.png</texturenofocus>
+							<onclick>Skin.SetAddon(HomeProgramButton4,xbmc.addon.executable)</onclick>
+						</control>
+						<control type="button" id="445">
+							<width>750</width>
+							<height>40</height>
+							<font>font13</font>
+							<label>$LOCALIZE[24000] [B]5[/B]</label>
+							<label2>[COLOR=selected]$INFO[system.addontitle(Skin.String(HomeProgramButton5))][/COLOR]</label2>
+							<textcolor>grey2</textcolor>
+							<focusedcolor>white</focusedcolor>
+							<texturefocus>MenuItemFO.png</texturefocus>
+							<texturenofocus>MenuItemNF.png</texturenofocus>
+							<onclick>Skin.SetAddon(HomeProgramButton5,xbmc.addon.executable)</onclick>
+						</control>
+						<control type="button" id="446">
+							<width>750</width>
+							<height>40</height>
+							<font>font13</font>
+							<label>$LOCALIZE[24000] [B]6[/B]</label>
+							<label2>[COLOR=selected]$INFO[system.addontitle(Skin.String(HomeProgramButton6))][/COLOR]</label2>
+							<textcolor>grey2</textcolor>
+							<focusedcolor>white</focusedcolor>
+							<texturefocus>MenuItemFO.png</texturefocus>
+							<texturenofocus>MenuItemNF.png</texturenofocus>
+							<onclick>Skin.SetAddon(HomeProgramButton6,xbmc.addon.executable)</onclick>
+						</control>
+						<control type="label" id="4201">
+							<width>750</width>
+							<height>45</height>
+							<font>font13_title</font>
+							<label>$LOCALIZE[1034] $INFO[Skin.String(CustomFavourite1.Label)] $LOCALIZE[88341]</label>
+							<textcolor>blue</textcolor>
+							<shadowcolor>black</shadowcolor>
+							<align>left</align>
+							<aligny>center</aligny>
+							<visible>!IsEmpty(Skin.String(CustomFavourite1.Label))</visible>
+						</control>
+						<control type="button" id="4202">
+							<width>750</width>
+							<height>40</height>
+							<font>font13</font>
+							<label>$LOCALIZE[24000] [B]1[/B]</label>
+							<label2>[COLOR=selected]$INFO[system.addontitle(Skin.String(HomeFavourite1Button1))][/COLOR]</label2>
+							<textcolor>grey2</textcolor>
+							<focusedcolor>white</focusedcolor>
+							<texturefocus>MenuItemFO.png</texturefocus>
+							<texturenofocus>MenuItemNF.png</texturenofocus>
+							<onclick>Skin.SetAddon(HomeFavourite1Button1,xbmc.addon.video,xbmc.addon.executable)</onclick>
+							<visible>!IsEmpty(Skin.String(CustomFavourite1.Label))</visible>
+						</control>
+						<control type="button" id="4203">
+							<width>750</width>
+							<height>40</height>
+							<font>font13</font>
+							<label>$LOCALIZE[24000] [B]2[/B]</label>
+							<label2>[COLOR=selected]$INFO[system.addontitle(Skin.String(HomeFavourite1Button2))][/COLOR]</label2>
+							<textcolor>grey2</textcolor>
+							<focusedcolor>white</focusedcolor>
+							<texturefocus>MenuItemFO.png</texturefocus>
+							<texturenofocus>MenuItemNF.png</texturenofocus>
+							<onclick>Skin.SetAddon(HomeFavourite1Button2,xbmc.addon.video,xbmc.addon.executable)</onclick>
+							<visible>!IsEmpty(Skin.String(CustomFavourite1.Label))</visible>
+						</control>
+						<control type="button" id="4204">
+							<width>750</width>
+							<height>40</height>
+							<font>font13</font>
+							<label>$LOCALIZE[24000] [B]3[/B]</label>
+							<label2>[COLOR=selected]$INFO[system.addontitle(Skin.String(HomeFavourite1Button3))][/COLOR]</label2>
+							<textcolor>grey2</textcolor>
+							<focusedcolor>white</focusedcolor>
+							<texturefocus>MenuItemFO.png</texturefocus>
+							<texturenofocus>MenuItemNF.png</texturenofocus>
+							<onclick>Skin.SetAddon(HomeFavourite1Button3,xbmc.addon.video,xbmc.addon.executable)</onclick>
+							<visible>!IsEmpty(Skin.String(CustomFavourite1.Label))</visible>
+						</control>
+						<control type="button" id="4205">
+							<width>750</width>
+							<height>40</height>
+							<font>font13</font>
+							<label>$LOCALIZE[24000] [B]4[/B]</label>
+							<label2>[COLOR=selected]$INFO[system.addontitle(Skin.String(HomeFavourite1Button4))][/COLOR]</label2>
+							<textcolor>grey2</textcolor>
+							<focusedcolor>white</focusedcolor>
+							<texturefocus>MenuItemFO.png</texturefocus>
+							<texturenofocus>MenuItemNF.png</texturenofocus>
+							<onclick>Skin.SetAddon(HomeFavourite1Button4,xbmc.addon.video,xbmc.addon.executable)</onclick>
+							<visible>!IsEmpty(Skin.String(CustomFavourite1.Label))</visible>
+						</control>
+						<control type="button" id="4206">
+							<width>750</width>
+							<height>40</height>
+							<font>font13</font>
+							<label>$LOCALIZE[24000] [B]5[/B]</label>
+							<label2>[COLOR=selected]$INFO[system.addontitle(Skin.String(HomeFavourite1Button5))][/COLOR]</label2>
+							<textcolor>grey2</textcolor>
+							<focusedcolor>white</focusedcolor>
+							<texturefocus>MenuItemFO.png</texturefocus>
+							<texturenofocus>MenuItemNF.png</texturenofocus>
+							<onclick>Skin.SetAddon(HomeFavourite1Button5,xbmc.addon.video,xbmc.addon.executable)</onclick>
+							<visible>!IsEmpty(Skin.String(CustomFavourite1.Label))</visible>
+						</control>
+						<control type="label" id="4211">
+							<width>750</width>
+							<height>45</height>
+							<font>font13_title</font>
+							<label>$LOCALIZE[1034] $INFO[Skin.String(CustomFavourite2.Label)] $LOCALIZE[88341]</label>
+							<textcolor>blue</textcolor>
+							<shadowcolor>black</shadowcolor>
+							<align>left</align>
+							<aligny>center</aligny>
+							<visible>!IsEmpty(Skin.String(CustomFavourite2.Label))</visible>
+						</control>
+						<control type="button" id="4212">
+							<width>750</width>
+							<height>40</height>
+							<font>font13</font>
+							<label>$LOCALIZE[24000] [B]1[/B]</label>
+							<label2>[COLOR=selected]$INFO[system.addontitle(Skin.String(HomeFavourite2Button1))][/COLOR]</label2>
+							<textcolor>grey2</textcolor>
+							<focusedcolor>white</focusedcolor>
+							<texturefocus>MenuItemFO.png</texturefocus>
+							<texturenofocus>MenuItemNF.png</texturenofocus>
+							<onclick>Skin.SetAddon(HomeFavourite2Button1,xbmc.addon.video,xbmc.addon.executable)</onclick>
+							<visible>!IsEmpty(Skin.String(CustomFavourite2.Label))</visible>
+						</control>
+						<control type="button" id="4213">
+							<width>750</width>
+							<height>40</height>
+							<font>font13</font>
+							<label>$LOCALIZE[24000] [B]2[/B]</label>
+							<label2>[COLOR=selected]$INFO[system.addontitle(Skin.String(HomeFavourite2Button2))][/COLOR]</label2>
+							<textcolor>grey2</textcolor>
+							<focusedcolor>white</focusedcolor>
+							<texturefocus>MenuItemFO.png</texturefocus>
+							<texturenofocus>MenuItemNF.png</texturenofocus>
+							<onclick>Skin.SetAddon(HomeFavourite2Button2,xbmc.addon.video,xbmc.addon.executable)</onclick>
+							<visible>!IsEmpty(Skin.String(CustomFavourite2.Label))</visible>
+						</control>
+						<control type="button" id="4214">
+							<width>750</width>
+							<height>40</height>
+							<font>font13</font>
+							<label>$LOCALIZE[24000] [B]3[/B]</label>
+							<label2>[COLOR=selected]$INFO[system.addontitle(Skin.String(HomeFavourite2Button3))][/COLOR]</label2>
+							<textcolor>grey2</textcolor>
+							<focusedcolor>white</focusedcolor>
+							<texturefocus>MenuItemFO.png</texturefocus>
+							<texturenofocus>MenuItemNF.png</texturenofocus>
+							<onclick>Skin.SetAddon(HomeFavourite2Button3,xbmc.addon.video,xbmc.addon.executable)</onclick>
+							<visible>!IsEmpty(Skin.String(CustomFavourite2.Label))</visible>
+						</control>
+						<control type="button" id="4215">
+							<width>750</width>
+							<height>40</height>
+							<font>font13</font>
+							<label>$LOCALIZE[24000] [B]4[/B]</label>
+							<label2>[COLOR=selected]$INFO[system.addontitle(Skin.String(HomeFavourite2Button4))][/COLOR]</label2>
+							<textcolor>grey2</textcolor>
+							<focusedcolor>white</focusedcolor>
+							<texturefocus>MenuItemFO.png</texturefocus>
+							<texturenofocus>MenuItemNF.png</texturenofocus>
+							<onclick>Skin.SetAddon(HomeFavourite2Button4,xbmc.addon.video,xbmc.addon.executable)</onclick>
+							<visible>!IsEmpty(Skin.String(CustomFavourite2.Label))</visible>
+						</control>
+						<control type="button" id="4216">
+							<width>750</width>
+							<height>40</height>
+							<font>font13</font>
+							<label>$LOCALIZE[24000] [B]5[/B]</label>
+							<label2>[COLOR=selected]$INFO[system.addontitle(Skin.String(HomeFavourite2Button5))][/COLOR]</label2>
+							<textcolor>grey2</textcolor>
+							<focusedcolor>white</focusedcolor>
+							<texturefocus>MenuItemFO.png</texturefocus>
+							<texturenofocus>MenuItemNF.png</texturenofocus>
+							<onclick>Skin.SetAddon(HomeFavourite2Button5,xbmc.addon.video,xbmc.addon.executable)</onclick>
+							<visible>!IsEmpty(Skin.String(CustomFavourite2.Label))</visible>
+						</control>
+						<control type="label" id="4221">
+							<width>750</width>
+							<height>45</height>
+							<font>font13_title</font>
+							<label>$LOCALIZE[1034] $INFO[Skin.String(CustomFavourite3.Label)] $LOCALIZE[88341]</label>
+							<textcolor>blue</textcolor>
+							<shadowcolor>black</shadowcolor>
+							<align>left</align>
+							<aligny>center</aligny>
+							<visible>!IsEmpty(Skin.String(CustomFavourite3.Label))</visible>
+						</control>
+						<control type="button" id="4222">
+							<width>750</width>
+							<height>40</height>
+							<font>font13</font>
+							<label>$LOCALIZE[24000] [B]1[/B]</label>
+							<label2>[COLOR=selected]$INFO[system.addontitle(Skin.String(HomeFavourite3Button1))][/COLOR]</label2>
+							<textcolor>grey2</textcolor>
+							<focusedcolor>white</focusedcolor>
+							<texturefocus>MenuItemFO.png</texturefocus>
+							<texturenofocus>MenuItemNF.png</texturenofocus>
+							<onclick>Skin.SetAddon(HomeFavourite3Button1,xbmc.addon.video,xbmc.addon.executable)</onclick>
+							<visible>!IsEmpty(Skin.String(CustomFavourite3.Label))</visible>
+						</control>
+						<control type="button" id="4223">
+							<width>750</width>
+							<height>40</height>
+							<font>font13</font>
+							<label>$LOCALIZE[24000] [B]2[/B]</label>
+							<label2>[COLOR=selected]$INFO[system.addontitle(Skin.String(HomeFavourite3Button2))][/COLOR]</label2>
+							<textcolor>grey2</textcolor>
+							<focusedcolor>white</focusedcolor>
+							<texturefocus>MenuItemFO.png</texturefocus>
+							<texturenofocus>MenuItemNF.png</texturenofocus>
+							<onclick>Skin.SetAddon(HomeFavourite3Button2,xbmc.addon.video,xbmc.addon.executable)</onclick>
+							<visible>!IsEmpty(Skin.String(CustomFavourite3.Label))</visible>
+						</control>
+						<control type="button" id="4224">
+							<width>750</width>
+							<height>40</height>
+							<font>font13</font>
+							<label>$LOCALIZE[24000] [B]3[/B]</label>
+							<label2>[COLOR=selected]$INFO[system.addontitle(Skin.String(HomeFavourite3Button3))][/COLOR]</label2>
+							<textcolor>grey2</textcolor>
+							<focusedcolor>white</focusedcolor>
+							<texturefocus>MenuItemFO.png</texturefocus>
+							<texturenofocus>MenuItemNF.png</texturenofocus>
+							<onclick>Skin.SetAddon(HomeFavourite3Button3,xbmc.addon.video,xbmc.addon.executable)</onclick>
+							<visible>!IsEmpty(Skin.String(CustomFavourite3.Label))</visible>
+						</control>
+						<control type="button" id="4225">
+							<width>750</width>
+							<height>40</height>
+							<font>font13</font>
+							<label>$LOCALIZE[24000] [B]4[/B]</label>
+							<label2>[COLOR=selected]$INFO[system.addontitle(Skin.String(HomeFavourite3Button4))][/COLOR]</label2>
+							<textcolor>grey2</textcolor>
+							<focusedcolor>white</focusedcolor>
+							<texturefocus>MenuItemFO.png</texturefocus>
+							<texturenofocus>MenuItemNF.png</texturenofocus>
+							<onclick>Skin.SetAddon(HomeFavourite3Button4,xbmc.addon.video,xbmc.addon.executable)</onclick>
+							<visible>!IsEmpty(Skin.String(CustomFavourite3.Label))</visible>
+						</control>
+						<control type="button" id="4226">
+							<width>750</width>
+							<height>40</height>
+							<font>font13</font>
+							<label>$LOCALIZE[24000] [B]5[/B]</label>
+							<label2>[COLOR=selected]$INFO[system.addontitle(Skin.String(HomeFavourite3Button5))][/COLOR]</label2>
+							<textcolor>grey2</textcolor>
+							<focusedcolor>white</focusedcolor>
+							<texturefocus>MenuItemFO.png</texturefocus>
+							<texturenofocus>MenuItemNF.png</texturenofocus>
+							<onclick>Skin.SetAddon(HomeFavourite3Button5,xbmc.addon.video,xbmc.addon.executable)</onclick>
+							<visible>!IsEmpty(Skin.String(CustomFavourite3.Label))</visible>
+						</control>
+						<control type="label" id="4231">
+							<width>750</width>
+							<height>45</height>
+							<font>font13_title</font>
+							<label>$LOCALIZE[1034] $INFO[Skin.String(CustomFavourite4.Label)] $LOCALIZE[88341]</label>
+							<textcolor>blue</textcolor>
+							<shadowcolor>black</shadowcolor>
+							<align>left</align>
+							<aligny>center</aligny>
+							<visible>!IsEmpty(Skin.String(CustomFavourite4.Label))</visible>
+						</control>
+						<control type="button" id="4232">
+							<width>750</width>
+							<height>40</height>
+							<font>font13</font>
+							<label>$LOCALIZE[24000] [B]1[/B]</label>
+							<label2>[COLOR=selected]$INFO[system.addontitle(Skin.String(HomeFavourite4Button1))][/COLOR]</label2>
+							<textcolor>grey2</textcolor>
+							<focusedcolor>white</focusedcolor>
+							<texturefocus>MenuItemFO.png</texturefocus>
+							<texturenofocus>MenuItemNF.png</texturenofocus>
+							<onclick>Skin.SetAddon(HomeFavourite4Button1,xbmc.addon.video,xbmc.addon.executable)</onclick>
+							<visible>!IsEmpty(Skin.String(CustomFavourite4.Label))</visible>
+						</control>
+						<control type="button" id="4233">
+							<width>750</width>
+							<height>40</height>
+							<font>font13</font>
+							<label>$LOCALIZE[24000] [B]2[/B]</label>
+							<label2>[COLOR=selected]$INFO[system.addontitle(Skin.String(HomeFavourite4Button2))][/COLOR]</label2>
+							<textcolor>grey2</textcolor>
+							<focusedcolor>white</focusedcolor>
+							<texturefocus>MenuItemFO.png</texturefocus>
+							<texturenofocus>MenuItemNF.png</texturenofocus>
+							<onclick>Skin.SetAddon(HomeFavourite4Button2,xbmc.addon.video,xbmc.addon.executable)</onclick>
+							<visible>!IsEmpty(Skin.String(CustomFavourite4.Label))</visible>
+						</control>
+						<control type="button" id="4234">
+							<width>750</width>
+							<height>40</height>
+							<font>font13</font>
+							<label>$LOCALIZE[24000] [B]3[/B]</label>
+							<label2>[COLOR=selected]$INFO[system.addontitle(Skin.String(HomeFavourite4Button3))][/COLOR]</label2>
+							<textcolor>grey2</textcolor>
+							<focusedcolor>white</focusedcolor>
+							<texturefocus>MenuItemFO.png</texturefocus>
+							<texturenofocus>MenuItemNF.png</texturenofocus>
+							<onclick>Skin.SetAddon(HomeFavourite4Button3,xbmc.addon.video,xbmc.addon.executable)</onclick>
+							<visible>!IsEmpty(Skin.String(CustomFavourite4.Label))</visible>
+						</control>
+						<control type="button" id="4235">
+							<width>750</width>
+							<height>40</height>
+							<font>font13</font>
+							<label>$LOCALIZE[24000] [B]4[/B]</label>
+							<label2>[COLOR=selected]$INFO[system.addontitle(Skin.String(HomeFavourite4Button4))][/COLOR]</label2>
+							<textcolor>grey2</textcolor>
+							<focusedcolor>white</focusedcolor>
+							<texturefocus>MenuItemFO.png</texturefocus>
+							<texturenofocus>MenuItemNF.png</texturenofocus>
+							<onclick>Skin.SetAddon(HomeFavourite4Button4,xbmc.addon.video,xbmc.addon.executable)</onclick>
+							<visible>!IsEmpty(Skin.String(CustomFavourite4.Label))</visible>
+						</control>
+						<control type="button" id="4236">
+							<width>750</width>
+							<height>40</height>
+							<font>font13</font>
+							<label>$LOCALIZE[24000] [B]5[/B]</label>
+							<label2>[COLOR=selected]$INFO[system.addontitle(Skin.String(HomeFavourite4Button5))][/COLOR]</label2>
+							<textcolor>grey2</textcolor>
+							<focusedcolor>white</focusedcolor>
+							<texturefocus>MenuItemFO.png</texturefocus>
+							<texturenofocus>MenuItemNF.png</texturenofocus>
+							<onclick>Skin.SetAddon(HomeFavourite4Button5,xbmc.addon.video,xbmc.addon.executable)</onclick>
+							<visible>!IsEmpty(Skin.String(CustomFavourite4.Label))</visible>
+						</control>
+						<control type="label" id="4241">
+							<width>750</width>
+							<height>45</height>
+							<font>font13_title</font>
+							<label>$LOCALIZE[1034] $INFO[Skin.String(CustomFavourite5.Label)] $LOCALIZE[88341]</label>
+							<textcolor>blue</textcolor>
+							<shadowcolor>black</shadowcolor>
+							<align>left</align>
+							<aligny>center</aligny>
+							<visible>!IsEmpty(Skin.String(CustomFavourite5.Label))</visible>
+						</control>
+						<control type="button" id="4242">
+							<width>750</width>
+							<height>40</height>
+							<font>font13</font>
+							<label>$LOCALIZE[24000] [B]1[/B]</label>
+							<label2>[COLOR=selected]$INFO[system.addontitle(Skin.String(HomeFavourite5Button1))][/COLOR]</label2>
+							<textcolor>grey2</textcolor>
+							<focusedcolor>white</focusedcolor>
+							<texturefocus>MenuItemFO.png</texturefocus>
+							<texturenofocus>MenuItemNF.png</texturenofocus>
+							<onclick>Skin.SetAddon(HomeFavourite5Button1,xbmc.addon.video,xbmc.addon.executable)</onclick>
+							<visible>!IsEmpty(Skin.String(CustomFavourite5.Label))</visible>
+						</control>
+						<control type="button" id="4243">
+							<width>750</width>
+							<height>40</height>
+							<font>font13</font>
+							<label>$LOCALIZE[24000] [B]2[/B]</label>
+							<label2>[COLOR=selected]$INFO[system.addontitle(Skin.String(HomeFavourite5Button2))][/COLOR]</label2>
+							<textcolor>grey2</textcolor>
+							<focusedcolor>white</focusedcolor>
+							<texturefocus>MenuItemFO.png</texturefocus>
+							<texturenofocus>MenuItemNF.png</texturenofocus>
+							<onclick>Skin.SetAddon(HomeFavourite5Button2,xbmc.addon.video,xbmc.addon.executable)</onclick>
+							<visible>!IsEmpty(Skin.String(CustomFavourite5.Label))</visible>
+						</control>
+						<control type="button" id="4244">
+							<width>750</width>
+							<height>40</height>
+							<font>font13</font>
+							<label>$LOCALIZE[24000] [B]3[/B]</label>
+							<label2>[COLOR=selected]$INFO[system.addontitle(Skin.String(HomeFavourite5Button3))][/COLOR]</label2>
+							<textcolor>grey2</textcolor>
+							<focusedcolor>white</focusedcolor>
+							<texturefocus>MenuItemFO.png</texturefocus>
+							<texturenofocus>MenuItemNF.png</texturenofocus>
+							<onclick>Skin.SetAddon(HomeFavourite5Button3,xbmc.addon.video,xbmc.addon.executable)</onclick>
+							<visible>!IsEmpty(Skin.String(CustomFavourite5.Label))</visible>
+						</control>
+						<control type="button" id="4245">
+							<width>750</width>
+							<height>40</height>
+							<font>font13</font>
+							<label>$LOCALIZE[24000] [B]4[/B]</label>
+							<label2>[COLOR=selected]$INFO[system.addontitle(Skin.String(HomeFavourite5Button4))][/COLOR]</label2>
+							<textcolor>grey2</textcolor>
+							<focusedcolor>white</focusedcolor>
+							<texturefocus>MenuItemFO.png</texturefocus>
+							<texturenofocus>MenuItemNF.png</texturenofocus>
+							<onclick>Skin.SetAddon(HomeFavourite5Button4,xbmc.addon.video,xbmc.addon.executable)</onclick>
+							<visible>!IsEmpty(Skin.String(CustomFavourite5.Label))</visible>
+						</control>
+						<control type="button" id="4246">
+							<width>750</width>
+							<height>40</height>
+							<font>font13</font>
+							<label>$LOCALIZE[24000] [B]5[/B]</label>
+							<label2>[COLOR=selected]$INFO[system.addontitle(Skin.String(HomeFavourite5Button5))][/COLOR]</label2>
+							<textcolor>grey2</textcolor>
+							<focusedcolor>white</focusedcolor>
+							<texturefocus>MenuItemFO.png</texturefocus>
+							<texturenofocus>MenuItemNF.png</texturenofocus>
+							<onclick>Skin.SetAddon(HomeFavourite5Button5,xbmc.addon.video,xbmc.addon.executable)</onclick>
+							<visible>!IsEmpty(Skin.String(CustomFavourite5.Label))</visible>
+						</control>
+						<control type="label" id="4251">
+							<width>750</width>
+							<height>45</height>
+							<font>font13_title</font>
+							<label>$LOCALIZE[1034] $INFO[Skin.String(CustomFavourite6.Label)] $LOCALIZE[88341]</label>
+							<textcolor>blue</textcolor>
+							<shadowcolor>black</shadowcolor>
+							<align>left</align>
+							<aligny>center</aligny>
+							<visible>!IsEmpty(Skin.String(CustomFavourite6.Label))</visible>
+						</control>
+						<control type="button" id="4252">
+							<width>750</width>
+							<height>40</height>
+							<font>font13</font>
+							<label>$LOCALIZE[24000] [B]1[/B]</label>
+							<label2>[COLOR=selected]$INFO[system.addontitle(Skin.String(HomeFavourite6Button1))][/COLOR]</label2>
+							<textcolor>grey2</textcolor>
+							<focusedcolor>white</focusedcolor>
+							<texturefocus>MenuItemFO.png</texturefocus>
+							<texturenofocus>MenuItemNF.png</texturenofocus>
+							<onclick>Skin.SetAddon(HomeFavourite6Button1,xbmc.addon.video,xbmc.addon.executable)</onclick>
+							<visible>!IsEmpty(Skin.String(CustomFavourite6.Label))</visible>
+						</control>
+						<control type="button" id="4253">
+							<width>750</width>
+							<height>40</height>
+							<font>font13</font>
+							<label>$LOCALIZE[24000] [B]2[/B]</label>
+							<label2>[COLOR=selected]$INFO[system.addontitle(Skin.String(HomeFavourite6Button2))][/COLOR]</label2>
+							<textcolor>grey2</textcolor>
+							<focusedcolor>white</focusedcolor>
+							<texturefocus>MenuItemFO.png</texturefocus>
+							<texturenofocus>MenuItemNF.png</texturenofocus>
+							<onclick>Skin.SetAddon(HomeFavourite6Button2,xbmc.addon.video,xbmc.addon.executable)</onclick>
+							<visible>!IsEmpty(Skin.String(CustomFavourite6.Label))</visible>
+						</control>
+						<control type="button" id="4254">
+							<width>750</width>
+							<height>40</height>
+							<font>font13</font>
+							<label>$LOCALIZE[24000] [B]3[/B]</label>
+							<label2>[COLOR=selected]$INFO[system.addontitle(Skin.String(HomeFavourite6Button3))][/COLOR]</label2>
+							<textcolor>grey2</textcolor>
+							<focusedcolor>white</focusedcolor>
+							<texturefocus>MenuItemFO.png</texturefocus>
+							<texturenofocus>MenuItemNF.png</texturenofocus>
+							<onclick>Skin.SetAddon(HomeFavourite6Button3,xbmc.addon.video,xbmc.addon.executable)</onclick>
+							<visible>!IsEmpty(Skin.String(CustomFavourite6.Label))</visible>
+						</control>
+						<control type="button" id="4255">
+							<width>750</width>
+							<height>40</height>
+							<font>font13</font>
+							<label>$LOCALIZE[24000] [B]4[/B]</label>
+							<label2>[COLOR=selected]$INFO[system.addontitle(Skin.String(HomeFavourite6Button4))][/COLOR]</label2>
+							<textcolor>grey2</textcolor>
+							<focusedcolor>white</focusedcolor>
+							<texturefocus>MenuItemFO.png</texturefocus>
+							<texturenofocus>MenuItemNF.png</texturenofocus>
+							<onclick>Skin.SetAddon(HomeFavourite6Button4,xbmc.addon.video,xbmc.addon.executable)</onclick>
+							<visible>!IsEmpty(Skin.String(CustomFavourite6.Label))</visible>
+						</control>
+						<control type="button" id="4256">
+							<width>750</width>
+							<height>40</height>
+							<font>font13</font>
+							<label>$LOCALIZE[24000] [B]5[/B]</label>
+							<label2>[COLOR=selected]$INFO[system.addontitle(Skin.String(HomeFavourite6Button5))][/COLOR]</label2>
+							<textcolor>grey2</textcolor>
+							<focusedcolor>white</focusedcolor>
+							<texturefocus>MenuItemFO.png</texturefocus>
+							<texturenofocus>MenuItemNF.png</texturenofocus>
+							<onclick>Skin.SetAddon(HomeFavourite6Button5,xbmc.addon.video,xbmc.addon.executable)</onclick>
+							<visible>!IsEmpty(Skin.String(CustomFavourite6.Label))</visible>
+						</control>
+						<control type="label" id="4261">
+							<width>750</width>
+							<height>45</height>
+							<font>font13_title</font>
+							<label>$LOCALIZE[1034] $INFO[Skin.String(CustomFavourite7.Label)] $LOCALIZE[88341]</label>
+							<textcolor>blue</textcolor>
+							<shadowcolor>black</shadowcolor>
+							<align>left</align>
+							<aligny>center</aligny>
+							<visible>!IsEmpty(Skin.String(CustomFavourite7.Label))</visible>
+						</control>
+						<control type="button" id="4262">
+							<width>750</width>
+							<height>40</height>
+							<font>font13</font>
+							<label>$LOCALIZE[24000] [B]1[/B]</label>
+							<label2>[COLOR=selected]$INFO[system.addontitle(Skin.String(HomeFavourite7Button1))][/COLOR]</label2>
+							<textcolor>grey2</textcolor>
+							<focusedcolor>white</focusedcolor>
+							<texturefocus>MenuItemFO.png</texturefocus>
+							<texturenofocus>MenuItemNF.png</texturenofocus>
+							<onclick>Skin.SetAddon(HomeFavourite7Button1,xbmc.addon.video,xbmc.addon.executable)</onclick>
+							<visible>!IsEmpty(Skin.String(CustomFavourite7.Label))</visible>
+						</control>
+						<control type="button" id="4263">
+							<width>750</width>
+							<height>40</height>
+							<font>font13</font>
+							<label>$LOCALIZE[24000] [B]2[/B]</label>
+							<label2>[COLOR=selected]$INFO[system.addontitle(Skin.String(HomeFavourite7Button2))][/COLOR]</label2>
+							<textcolor>grey2</textcolor>
+							<focusedcolor>white</focusedcolor>
+							<texturefocus>MenuItemFO.png</texturefocus>
+							<texturenofocus>MenuItemNF.png</texturenofocus>
+							<onclick>Skin.SetAddon(HomeFavourite7Button2,xbmc.addon.video,xbmc.addon.executable)</onclick>
+							<visible>!IsEmpty(Skin.String(CustomFavourite7.Label))</visible>
+						</control>
+						<control type="button" id="4264">
+							<width>750</width>
+							<height>40</height>
+							<font>font13</font>
+							<label>$LOCALIZE[24000] [B]3[/B]</label>
+							<label2>[COLOR=selected]$INFO[system.addontitle(Skin.String(HomeFavourite7Button3))][/COLOR]</label2>
+							<textcolor>grey2</textcolor>
+							<focusedcolor>white</focusedcolor>
+							<texturefocus>MenuItemFO.png</texturefocus>
+							<texturenofocus>MenuItemNF.png</texturenofocus>
+							<onclick>Skin.SetAddon(HomeFavourite7Button3,xbmc.addon.video,xbmc.addon.executable)</onclick>
+							<visible>!IsEmpty(Skin.String(CustomFavourite7.Label))</visible>
+						</control>
+						<control type="button" id="4265">
+							<width>750</width>
+							<height>40</height>
+							<font>font13</font>
+							<label>$LOCALIZE[24000] [B]4[/B]</label>
+							<label2>[COLOR=selected]$INFO[system.addontitle(Skin.String(HomeFavourite7Button4))][/COLOR]</label2>
+							<textcolor>grey2</textcolor>
+							<focusedcolor>white</focusedcolor>
+							<texturefocus>MenuItemFO.png</texturefocus>
+							<texturenofocus>MenuItemNF.png</texturenofocus>
+							<onclick>Skin.SetAddon(HomeFavourite7Button4,xbmc.addon.video,xbmc.addon.executable)</onclick>
+							<visible>!IsEmpty(Skin.String(CustomFavourite7.Label))</visible>
+						</control>
+						<control type="button" id="4266">
+							<width>750</width>
+							<height>40</height>
+							<font>font13</font>
+							<label>$LOCALIZE[24000] [B]5[/B]</label>
+							<label2>[COLOR=selected]$INFO[system.addontitle(Skin.String(HomeFavourite7Button5))][/COLOR]</label2>
+							<textcolor>grey2</textcolor>
+							<focusedcolor>white</focusedcolor>
+							<texturefocus>MenuItemFO.png</texturefocus>
+							<texturenofocus>MenuItemNF.png</texturenofocus>
+							<onclick>Skin.SetAddon(HomeFavourite7Button5,xbmc.addon.video,xbmc.addon.executable)</onclick>
+							<visible>!IsEmpty(Skin.String(CustomFavourite7.Label))</visible>
+						</control>
+						<control type="label" id="4271">
+							<width>750</width>
+							<height>45</height>
+							<font>font13_title</font>
+							<label>$LOCALIZE[1034] $INFO[Skin.String(CustomFavourite8.Label)] $LOCALIZE[88341]</label>
+							<textcolor>blue</textcolor>
+							<shadowcolor>black</shadowcolor>
+							<align>left</align>
+							<aligny>center</aligny>
+							<visible>!IsEmpty(Skin.String(CustomFavourite8.Label))</visible>
+						</control>
+						<control type="button" id="4272">
+							<width>750</width>
+							<height>40</height>
+							<font>font13</font>
+							<label>$LOCALIZE[24000] [B]1[/B]</label>
+							<label2>[COLOR=selected]$INFO[system.addontitle(Skin.String(HomeFavourite8Button1))][/COLOR]</label2>
+							<textcolor>grey2</textcolor>
+							<focusedcolor>white</focusedcolor>
+							<texturefocus>MenuItemFO.png</texturefocus>
+							<texturenofocus>MenuItemNF.png</texturenofocus>
+							<onclick>Skin.SetAddon(HomeFavourite8Button1,xbmc.addon.video,xbmc.addon.executable)</onclick>
+							<visible>!IsEmpty(Skin.String(CustomFavourite8.Label))</visible>
+						</control>
+						<control type="button" id="4273">
+							<width>750</width>
+							<height>40</height>
+							<font>font13</font>
+							<label>$LOCALIZE[24000] [B]2[/B]</label>
+							<label2>[COLOR=selected]$INFO[system.addontitle(Skin.String(HomeFavourite8Button2))][/COLOR]</label2>
+							<textcolor>grey2</textcolor>
+							<focusedcolor>white</focusedcolor>
+							<texturefocus>MenuItemFO.png</texturefocus>
+							<texturenofocus>MenuItemNF.png</texturenofocus>
+							<onclick>Skin.SetAddon(HomeFavourite8Button2,xbmc.addon.video,xbmc.addon.executable)</onclick>
+							<visible>!IsEmpty(Skin.String(CustomFavourite8.Label))</visible>
+						</control>
+						<control type="button" id="4274">
+							<width>750</width>
+							<height>40</height>
+							<font>font13</font>
+							<label>$LOCALIZE[24000] [B]3[/B]</label>
+							<label2>[COLOR=selected]$INFO[system.addontitle(Skin.String(HomeFavourite8Button3))][/COLOR]</label2>
+							<textcolor>grey2</textcolor>
+							<focusedcolor>white</focusedcolor>
+							<texturefocus>MenuItemFO.png</texturefocus>
+							<texturenofocus>MenuItemNF.png</texturenofocus>
+							<onclick>Skin.SetAddon(HomeFavourite8Button3,xbmc.addon.video,xbmc.addon.executable)</onclick>
+							<visible>!IsEmpty(Skin.String(CustomFavourite8.Label))</visible>
+						</control>
+						<control type="button" id="4275">
+							<width>750</width>
+							<height>40</height>
+							<font>font13</font>
+							<label>$LOCALIZE[24000] [B]4[/B]</label>
+							<label2>[COLOR=selected]$INFO[system.addontitle(Skin.String(HomeFavourite8Button4))][/COLOR]</label2>
+							<textcolor>grey2</textcolor>
+							<focusedcolor>white</focusedcolor>
+							<texturefocus>MenuItemFO.png</texturefocus>
+							<texturenofocus>MenuItemNF.png</texturenofocus>
+							<onclick>Skin.SetAddon(HomeFavourite8Button4,xbmc.addon.video,xbmc.addon.executable)</onclick>
+							<visible>!IsEmpty(Skin.String(CustomFavourite8.Label))</visible>
+						</control>
+						<control type="button" id="4276">
+							<width>750</width>
+							<height>40</height>
+							<font>font13</font>
+							<label>$LOCALIZE[24000] [B]5[/B]</label>
+							<label2>[COLOR=selected]$INFO[system.addontitle(Skin.String(HomeFavourite8Button5))][/COLOR]</label2>
+							<textcolor>grey2</textcolor>
+							<focusedcolor>white</focusedcolor>
+							<texturefocus>MenuItemFO.png</texturefocus>
+							<texturenofocus>MenuItemNF.png</texturenofocus>
+							<onclick>Skin.SetAddon(HomeFavourite8Button5,xbmc.addon.video,xbmc.addon.executable)</onclick>
+							<visible>!IsEmpty(Skin.String(CustomFavourite8.Label))</visible>
+						</control>
+						<control type="label" id="4281">
+							<width>750</width>
+							<height>45</height>
+							<font>font13_title</font>
+							<label>$LOCALIZE[1034] $INFO[Skin.String(CustomFavourite9.Label)] $LOCALIZE[88341]</label>
+							<textcolor>blue</textcolor>
+							<shadowcolor>black</shadowcolor>
+							<align>left</align>
+							<aligny>center</aligny>
+							<visible>!IsEmpty(Skin.String(CustomFavourite9.Label))</visible>
+						</control>
+						<control type="button" id="4282">
+							<width>750</width>
+							<height>40</height>
+							<font>font13</font>
+							<label>$LOCALIZE[24000] [B]1[/B]</label>
+							<label2>[COLOR=selected]$INFO[system.addontitle(Skin.String(HomeFavourite9Button1))][/COLOR]</label2>
+							<textcolor>grey2</textcolor>
+							<focusedcolor>white</focusedcolor>
+							<texturefocus>MenuItemFO.png</texturefocus>
+							<texturenofocus>MenuItemNF.png</texturenofocus>
+							<onclick>Skin.SetAddon(HomeFavourite9Button1,xbmc.addon.video,xbmc.addon.executable)</onclick>
+							<visible>!IsEmpty(Skin.String(CustomFavourite9.Label))</visible>
+						</control>
+						<control type="button" id="4283">
+							<width>750</width>
+							<height>40</height>
+							<font>font13</font>
+							<label>$LOCALIZE[24000] [B]2[/B]</label>
+							<label2>[COLOR=selected]$INFO[system.addontitle(Skin.String(HomeFavourite9Button2))][/COLOR]</label2>
+							<textcolor>grey2</textcolor>
+							<focusedcolor>white</focusedcolor>
+							<texturefocus>MenuItemFO.png</texturefocus>
+							<texturenofocus>MenuItemNF.png</texturenofocus>
+							<onclick>Skin.SetAddon(HomeFavourite9Button2,xbmc.addon.video,xbmc.addon.executable)</onclick>
+							<visible>!IsEmpty(Skin.String(CustomFavourite9.Label))</visible>
+						</control>
+						<control type="button" id="4284">
+							<width>750</width>
+							<height>40</height>
+							<font>font13</font>
+							<label>$LOCALIZE[24000] [B]3[/B]</label>
+							<label2>[COLOR=selected]$INFO[system.addontitle(Skin.String(HomeFavourite9Button3))][/COLOR]</label2>
+							<textcolor>grey2</textcolor>
+							<focusedcolor>white</focusedcolor>
+							<texturefocus>MenuItemFO.png</texturefocus>
+							<texturenofocus>MenuItemNF.png</texturenofocus>
+							<onclick>Skin.SetAddon(HomeFavourite9Button3,xbmc.addon.video,xbmc.addon.executable)</onclick>
+							<visible>!IsEmpty(Skin.String(CustomFavourite9.Label))</visible>
+						</control>
+						<control type="button" id="4285">
+							<width>750</width>
+							<height>40</height>
+							<font>font13</font>
+							<label>$LOCALIZE[24000] [B]4[/B]</label>
+							<label2>[COLOR=selected]$INFO[system.addontitle(Skin.String(HomeFavourite9Button4))][/COLOR]</label2>
+							<textcolor>grey2</textcolor>
+							<focusedcolor>white</focusedcolor>
+							<texturefocus>MenuItemFO.png</texturefocus>
+							<texturenofocus>MenuItemNF.png</texturenofocus>
+							<onclick>Skin.SetAddon(HomeFavourite9Button4,xbmc.addon.video,xbmc.addon.executable)</onclick>
+							<visible>!IsEmpty(Skin.String(CustomFavourite9.Label))</visible>
+						</control>
+						<control type="button" id="4286">
+							<width>750</width>
+							<height>40</height>
+							<font>font13</font>
+							<label>$LOCALIZE[24000] [B]5[/B]</label>
+							<label2>[COLOR=selected]$INFO[system.addontitle(Skin.String(HomeFavourite9Button5))][/COLOR]</label2>
+							<textcolor>grey2</textcolor>
+							<focusedcolor>white</focusedcolor>
+							<texturefocus>MenuItemFO.png</texturefocus>
+							<texturenofocus>MenuItemNF.png</texturenofocus>
+							<onclick>Skin.SetAddon(HomeFavourite9Button5,xbmc.addon.video,xbmc.addon.executable)</onclick>
+							<visible>!IsEmpty(Skin.String(CustomFavourite9.Label))</visible>
+						</control>
+						<control type="label" id="4291">
+							<width>750</width>
+							<height>45</height>
+							<font>font13_title</font>
+							<label>$LOCALIZE[1034] $INFO[Skin.String(CustomFavourite10.Label)] $LOCALIZE[88341]</label>
+							<textcolor>blue</textcolor>
+							<shadowcolor>black</shadowcolor>
+							<align>left</align>
+							<aligny>center</aligny>
+							<visible>!IsEmpty(Skin.String(CustomFavourite10.Label))</visible>
+						</control>
+						<control type="button" id="4292">
+							<width>750</width>
+							<height>40</height>
+							<font>font13</font>
+							<label>$LOCALIZE[24000] [B]1[/B]</label>
+							<label2>[COLOR=selected]$INFO[system.addontitle(Skin.String(HomeFavourite10Button1))][/COLOR]</label2>
+							<textcolor>grey2</textcolor>
+							<focusedcolor>white</focusedcolor>
+							<texturefocus>MenuItemFO.png</texturefocus>
+							<texturenofocus>MenuItemNF.png</texturenofocus>
+							<onclick>Skin.SetAddon(HomeFavourite10Button1,xbmc.addon.video,xbmc.addon.executable)</onclick>
+							<visible>!IsEmpty(Skin.String(CustomFavourite10.Label))</visible>
+						</control>
+						<control type="button" id="4293">
+							<width>750</width>
+							<height>40</height>
+							<font>font13</font>
+							<label>$LOCALIZE[24000] [B]2[/B]</label>
+							<label2>[COLOR=selected]$INFO[system.addontitle(Skin.String(HomeFavourite10Button2))][/COLOR]</label2>
+							<textcolor>grey2</textcolor>
+							<focusedcolor>white</focusedcolor>
+							<texturefocus>MenuItemFO.png</texturefocus>
+							<texturenofocus>MenuItemNF.png</texturenofocus>
+							<onclick>Skin.SetAddon(HomeFavourite10Button2,xbmc.addon.video,xbmc.addon.executable)</onclick>
+							<visible>!IsEmpty(Skin.String(CustomFavourite10.Label))</visible>
+						</control>
+						<control type="button" id="4294">
+							<width>750</width>
+							<height>40</height>
+							<font>font13</font>
+							<label>$LOCALIZE[24000] [B]3[/B]</label>
+							<label2>[COLOR=selected]$INFO[system.addontitle(Skin.String(HomeFavourite10Button3))][/COLOR]</label2>
+							<textcolor>grey2</textcolor>
+							<focusedcolor>white</focusedcolor>
+							<texturefocus>MenuItemFO.png</texturefocus>
+							<texturenofocus>MenuItemNF.png</texturenofocus>
+							<onclick>Skin.SetAddon(HomeFavourite10Button3,xbmc.addon.video,xbmc.addon.executable)</onclick>
+							<visible>!IsEmpty(Skin.String(CustomFavourite10.Label))</visible>
+						</control>
+						<control type="button" id="4295">
+							<width>750</width>
+							<height>40</height>
+							<font>font13</font>
+							<label>$LOCALIZE[24000] [B]4[/B]</label>
+							<label2>[COLOR=selected]$INFO[system.addontitle(Skin.String(HomeFavourite10Button4))][/COLOR]</label2>
+							<textcolor>grey2</textcolor>
+							<focusedcolor>white</focusedcolor>
+							<texturefocus>MenuItemFO.png</texturefocus>
+							<texturenofocus>MenuItemNF.png</texturenofocus>
+							<onclick>Skin.SetAddon(HomeFavourite10Button4,xbmc.addon.video,xbmc.addon.executable)</onclick>
+							<visible>!IsEmpty(Skin.String(CustomFavourite10.Label))</visible>
+						</control>
+						<control type="button" id="4296">
+							<width>750</width>
+							<height>40</height>
+							<font>font13</font>
+							<label>$LOCALIZE[24000] [B]5[/B]</label>
+							<label2>[COLOR=selected]$INFO[system.addontitle(Skin.String(HomeFavourite10Button5))][/COLOR]</label2>
+							<textcolor>grey2</textcolor>
+							<focusedcolor>white</focusedcolor>
+							<texturefocus>MenuItemFO.png</texturefocus>
+							<texturenofocus>MenuItemNF.png</texturenofocus>
+							<onclick>Skin.SetAddon(HomeFavourite10Button5,xbmc.addon.video,xbmc.addon.executable)</onclick>
+							<visible>!IsEmpty(Skin.String(CustomFavourite10.Label))</visible>
+						</control>
+					</control>
+				</control>
+				<control type="scrollbar" id="61">
+					<posx>1060</posx>
+					<posy>60</posy>
+					<width>25</width>
+					<height>530</height>
+					<texturesliderbackground border="0,14,0,14">ScrollBarV.png</texturesliderbackground>
+					<texturesliderbar border="0,14,0,14">ScrollBarV_bar.png</texturesliderbar>
+					<texturesliderbarfocus border="0,14,0,14">ScrollBarV_bar_focus.png</texturesliderbarfocus>
+					<textureslidernib>ScrollBarNib.png</textureslidernib>
+					<textureslidernibfocus>ScrollBarNib.png</textureslidernibfocus>
+					<onleft>9004</onleft>
+					<onright>9000</onright>
+					<showonepage>false</showonepage>
+					<orientation>vertical</orientation>
+					<visible>Container(9000).Hasfocus(4)</visible>
+				</control>
+				
+					<control type="grouplist" id="9006">
+					<visible>Container(9000).Hasfocus(6)</visible>
+						<posx>290</posx>
+						<posy>60</posy>
+						<width>750</width>
+						<height>530</height>
+						<itemgap>-1</itemgap>
+						<pagecontrol>61</pagecontrol>
+						<onleft>9000</onleft>
+						<onright>61</onright>
+						<onup>9006</onup>
+						<ondown>9006</ondown>
+					<control type="label">
+						<posx>0</posx>
+						<posy>0</posy>
+						<width>680</width>
+						<height>45</height>
+						<font>font13_title</font>
+						<label>$LOCALIZE[31200] - $LOCALIZE[513]</label>
+						<textcolor>blue</textcolor>
+						<shadowcolor>black</shadowcolor>
+						<align>left</align>
+						<aligny>center</aligny>
+					</control>
+						<control type="button" id="8266">
+							<description>Favourite 1</description>
+							<label>[COLOR=white]$LOCALIZE[1036] 1[/COLOR]</label>
+							<label2>[COLOR=selected]$INFO[Skin.String(CustomFavourite1.Label)][/COLOR]</label2>
+							<width>750</width>
+							<height>40</height>
+							<textcolor>grey2</textcolor>
+							<focusedcolor>white</focusedcolor>
+							<texturefocus>MenuItemFO.png</texturefocus>
+							<texturenofocus>MenuItemNF.png</texturenofocus>
+							<onclick>RunScript(script.favourites,changetitle=true&amp;property=CustomFavourite1)</onclick>
+						</control>
+							<control type="button" id="82661">
+								<description>SubFavourite 1</description>
+								<label> - $LOCALIZE[1034] 1</label>
+								<label2>[COLOR=gray]$INFO[Skin.String(SubCustomFavourite1.Label)][/COLOR]</label2>
+								<width>750</width>
+								<height>40</height>
+								<textcolor>grey2</textcolor>
+								<focusedcolor>white</focusedcolor>
+								<texturefocus>MenuItemFO.png</texturefocus>
+								<texturenofocus>MenuItemNF.png</texturenofocus>
+								<onclick>RunScript(script.favourites,changetitle=true&amp;property=SubCustomFavourite1)</onclick>
+								<visible>!IsEmpty(Skin.String(CustomFavourite1.Label))</visible>
+							</control>
+							<control type="button" id="82662">
+								<description>SubFavourite 2</description>
+								<label> - $LOCALIZE[1034] 2</label>
+								<label2>[COLOR=gray]$INFO[Skin.String(SubCustomFavourite2.Label)][/COLOR]</label2>
+								<width>750</width>
+								<height>40</height>
+								<textcolor>grey2</textcolor>
+								<focusedcolor>white</focusedcolor>
+								<texturefocus>MenuItemFO.png</texturefocus>
+								<texturenofocus>MenuItemNF.png</texturenofocus>
+								<onclick>RunScript(script.favourites,changetitle=true&amp;property=SubCustomFavourite2)</onclick>
+								<visible>!IsEmpty(Skin.String(CustomFavourite1.Label))</visible>
+								<visible>!IsEmpty(Skin.String(SubCustomFavourite1.Label))</visible>
+							</control>							
+							<control type="button" id="82663">
+								<description>SubFavourite 3</description>
+								<label> - $LOCALIZE[1034] 3</label>
+								<label2>[COLOR=gray]$INFO[Skin.String(SubCustomFavourite3.Label)][/COLOR]</label2>
+								<width>750</width>
+								<height>40</height>
+								<textcolor>grey2</textcolor>
+								<focusedcolor>white</focusedcolor>
+								<texturefocus>MenuItemFO.png</texturefocus>
+								<texturenofocus>MenuItemNF.png</texturenofocus>
+								<onclick>RunScript(script.favourites,changetitle=true&amp;property=SubCustomFavourite3)</onclick>
+								<visible>!IsEmpty(Skin.String(CustomFavourite1.Label))</visible>
+								<visible>!IsEmpty(Skin.String(SubCustomFavourite2.Label))</visible>
+							</control>							
+							<control type="button" id="82664">
+								<description>SubFavourite 4</description>
+								<label> - $LOCALIZE[1034] 4</label>
+								<label2>[COLOR=gray]$INFO[Skin.String(SubCustomFavourite4.Label)][/COLOR]</label2>
+								<width>750</width>
+								<height>40</height>
+								<textcolor>grey2</textcolor>
+								<focusedcolor>white</focusedcolor>
+								<texturefocus>MenuItemFO.png</texturefocus>
+								<texturenofocus>MenuItemNF.png</texturenofocus>
+								<onclick>RunScript(script.favourites,changetitle=true&amp;property=SubCustomFavourite4)</onclick>
+								<visible>!IsEmpty(Skin.String(CustomFavourite1.Label))</visible>
+								<visible>!IsEmpty(Skin.String(SubCustomFavourite3.Label))</visible>
+							</control>
+							<control type="button" id="82665">
+								<description>SubFavourite 5</description>
+								<label> - $LOCALIZE[1034] 5</label>
+								<label2>[COLOR=gray]$INFO[Skin.String(SubCustomFavourite5.Label)][/COLOR]</label2>
+								<width>750</width>
+								<height>40</height>
+								<textcolor>grey2</textcolor>
+								<focusedcolor>white</focusedcolor>
+								<texturefocus>MenuItemFO.png</texturefocus>
+								<texturenofocus>MenuItemNF.png</texturenofocus>
+								<onclick>RunScript(script.favourites,changetitle=true&amp;property=SubCustomFavourite5)</onclick>
+								<visible>!IsEmpty(Skin.String(CustomFavourite1.Label))</visible>
+								<visible>!IsEmpty(Skin.String(SubCustomFavourite4.Label))</visible>
+							</control>
+								<control type="button" id="82666">
+								<description>SubFavourite 6</description>
+								<label> - $LOCALIZE[1034] 6</label>
+								<label2>[COLOR=gray]$INFO[Skin.String(SubCustomFavourite6.Label)][/COLOR]</label2>
+								<width>750</width>
+								<height>40</height>
+								<textcolor>grey2</textcolor>
+								<focusedcolor>white</focusedcolor>
+								<texturefocus>MenuItemFO.png</texturefocus>
+								<texturenofocus>MenuItemNF.png</texturenofocus>
+								<onclick>RunScript(script.favourites,changetitle=true&amp;property=SubCustomFavourite6)</onclick>
+								<visible>!IsEmpty(Skin.String(CustomFavourite1.Label))</visible>
+								<visible>!IsEmpty(Skin.String(SubCustomFavourite5.Label))</visible>
+							</control>
+						<control type="button" id="8267">
+							<description>Favourite 2</description>
+							<label>[COLOR=white]$LOCALIZE[1036] 2[/COLOR]</label>
+							<label2>[COLOR=selected]$INFO[Skin.String(CustomFavourite2.Label)][/COLOR]</label2>
+							<width>750</width>
+							<height>40</height>
+							<textcolor>grey2</textcolor>
+							<focusedcolor>white</focusedcolor>
+							<texturefocus>MenuItemFO.png</texturefocus>
+							<texturenofocus>MenuItemNF.png</texturenofocus>
+							<onclick>RunScript(script.favourites,changetitle=true&amp;property=CustomFavourite2)</onclick>
+						</control>
+							<control type="button" id="82671">
+								<description>SubFavourite 21</description>
+								<label> - $LOCALIZE[1034] 1</label>
+								<label2>[COLOR=gray]$INFO[Skin.String(SubCustomFavourite21.Label)][/COLOR]</label2>
+								<width>750</width>
+								<height>40</height>
+								<textcolor>grey2</textcolor>
+								<focusedcolor>white</focusedcolor>
+								<texturefocus>MenuItemFO.png</texturefocus>
+								<texturenofocus>MenuItemNF.png</texturenofocus>
+								<onclick>RunScript(script.favourites,changetitle=true&amp;property=SubCustomFavourite21)</onclick>
+								<visible>!IsEmpty(Skin.String(CustomFavourite2.Label))</visible>
+							</control>
+							<control type="button" id="82672">
+								<description>SubFavourite 22</description>
+								<label> - $LOCALIZE[1034] 2</label>
+								<label2>[COLOR=gray]$INFO[Skin.String(SubCustomFavourite22.Label)][/COLOR]</label2>
+								<width>750</width>
+								<height>40</height>
+								<textcolor>grey2</textcolor>
+								<focusedcolor>white</focusedcolor>
+								<texturefocus>MenuItemFO.png</texturefocus>
+								<texturenofocus>MenuItemNF.png</texturenofocus>
+								<onclick>RunScript(script.favourites,changetitle=true&amp;property=SubCustomFavourite22)</onclick>
+								<visible>!IsEmpty(Skin.String(CustomFavourite2.Label))</visible>
+								<visible>!IsEmpty(Skin.String(SubCustomFavourite21.Label))</visible>
+							</control>							
+							<control type="button" id="82673">
+								<description>SubFavourite 23</description>
+								<label> - $LOCALIZE[1034] 3</label>
+								<label2>[COLOR=gray]$INFO[Skin.String(SubCustomFavourite23.Label)][/COLOR]</label2>
+								<width>750</width>
+								<height>40</height>
+								<textcolor>grey2</textcolor>
+								<focusedcolor>white</focusedcolor>
+								<texturefocus>MenuItemFO.png</texturefocus>
+								<texturenofocus>MenuItemNF.png</texturenofocus>
+								<onclick>RunScript(script.favourites,changetitle=true&amp;property=SubCustomFavourite23)</onclick>
+								<visible>!IsEmpty(Skin.String(CustomFavourite2.Label))</visible>
+								<visible>!IsEmpty(Skin.String(SubCustomFavourite22.Label))</visible>
+							</control>							
+							<control type="button" id="82674">
+								<description>SubFavourite 24</description>
+								<label> - $LOCALIZE[1034] 4</label>
+								<label2>[COLOR=gray]$INFO[Skin.String(SubCustomFavourite24.Label)][/COLOR]</label2>
+								<width>750</width>
+								<height>40</height>
+								<textcolor>grey2</textcolor>
+								<focusedcolor>white</focusedcolor>
+								<texturefocus>MenuItemFO.png</texturefocus>
+								<texturenofocus>MenuItemNF.png</texturenofocus>
+								<onclick>RunScript(script.favourites,changetitle=true&amp;property=SubCustomFavourite24)</onclick>
+								<visible>!IsEmpty(Skin.String(CustomFavourite2.Label))</visible>
+								<visible>!IsEmpty(Skin.String(SubCustomFavourite23.Label))</visible>
+							</control>
+								<control type="button" id="82675">
+								<description>SubFavourite 25</description>
+								<label> - $LOCALIZE[1034] 5</label>
+								<label2>[COLOR=gray]$INFO[Skin.String(SubCustomFavourite25.Label)][/COLOR]</label2>
+								<width>750</width>
+								<height>40</height>
+								<textcolor>grey2</textcolor>
+								<focusedcolor>white</focusedcolor>
+								<texturefocus>MenuItemFO.png</texturefocus>
+								<texturenofocus>MenuItemNF.png</texturenofocus>
+								<onclick>RunScript(script.favourites,changetitle=true&amp;property=SubCustomFavourite25)</onclick>
+								<visible>!IsEmpty(Skin.String(CustomFavourite2.Label))</visible>
+								<visible>!IsEmpty(Skin.String(SubCustomFavourite24.Label))</visible>
+							</control>
+								<control type="button" id="82676">
+								<description>SubFavourite 26</description>
+								<label> - $LOCALIZE[1034] 6</label>
+								<label2>[COLOR=gray]$INFO[Skin.String(SubCustomFavourite26.Label)][/COLOR]</label2>
+								<width>750</width>
+								<height>40</height>
+								<textcolor>grey2</textcolor>
+								<focusedcolor>white</focusedcolor>
+								<texturefocus>MenuItemFO.png</texturefocus>
+								<texturenofocus>MenuItemNF.png</texturenofocus>
+								<onclick>RunScript(script.favourites,changetitle=true&amp;property=SubCustomFavourite26)</onclick>
+								<visible>!IsEmpty(Skin.String(CustomFavourite2.Label))</visible>
+								<visible>!IsEmpty(Skin.String(SubCustomFavourite25.Label))</visible>
+							</control>
+						<control type="button" id="8268">
+							<description>Favourite 3</description>
+							<label>[COLOR=white]$LOCALIZE[1036] 3[/COLOR]</label>
+							<label2>[COLOR=selected]$INFO[Skin.String(CustomFavourite3.Label)][/COLOR]</label2>
+							<width>750</width>
+							<height>40</height>
+							<textcolor>grey2</textcolor>
+							<focusedcolor>white</focusedcolor>
+							<texturefocus>MenuItemFO.png</texturefocus>
+							<texturenofocus>MenuItemNF.png</texturenofocus>
+							<onclick>RunScript(script.favourites,changetitle=true&amp;property=CustomFavourite3)</onclick>
+						</control>
+							<control type="button" id="82681">
+								<description>SubFavourite 31</description>
+								<label> - $LOCALIZE[1034] 1</label>
+								<label2>[COLOR=gray]$INFO[Skin.String(SubCustomFavourite31.Label)][/COLOR]</label2>
+								<width>750</width>
+								<height>40</height>
+								<textcolor>grey2</textcolor>
+								<focusedcolor>white</focusedcolor>
+								<texturefocus>MenuItemFO.png</texturefocus>
+								<texturenofocus>MenuItemNF.png</texturenofocus>
+								<onclick>RunScript(script.favourites,changetitle=true&amp;property=SubCustomFavourite31)</onclick>
+								<visible>!IsEmpty(Skin.String(CustomFavourite3.Label))</visible>
+							</control>
+							<control type="button" id="82682">
+								<description>SubFavourite 32</description>
+								<label> - $LOCALIZE[1034] 2</label>
+								<label2>[COLOR=gray]$INFO[Skin.String(SubCustomFavourite32.Label)][/COLOR]</label2>
+								<width>750</width>
+								<height>40</height>
+								<textcolor>grey2</textcolor>
+								<focusedcolor>white</focusedcolor>
+								<texturefocus>MenuItemFO.png</texturefocus>
+								<texturenofocus>MenuItemNF.png</texturenofocus>
+								<onclick>RunScript(script.favourites,changetitle=true&amp;property=SubCustomFavourite32)</onclick>
+								<visible>!IsEmpty(Skin.String(CustomFavourite3.Label))</visible>
+								<visible>!IsEmpty(Skin.String(SubCustomFavourite31.Label))</visible>
+							</control>							
+							<control type="button" id="82683">
+								<description>SubFavourite 33</description>
+								<label> - $LOCALIZE[1034] 3</label>
+								<label2>[COLOR=gray]$INFO[Skin.String(SubCustomFavourite33.Label)][/COLOR]</label2>
+								<width>750</width>
+								<height>40</height>
+								<textcolor>grey2</textcolor>
+								<focusedcolor>white</focusedcolor>
+								<texturefocus>MenuItemFO.png</texturefocus>
+								<texturenofocus>MenuItemNF.png</texturenofocus>
+								<onclick>RunScript(script.favourites,changetitle=true&amp;property=SubCustomFavourite33)</onclick>
+								<visible>!IsEmpty(Skin.String(CustomFavourite3.Label))</visible>
+								<visible>!IsEmpty(Skin.String(SubCustomFavourite32.Label))</visible>
+							</control>							
+							<control type="button" id="82684">
+								<description>SubFavourite 34</description>
+								<label> - $LOCALIZE[1034] 4</label>
+								<label2>[COLOR=gray]$INFO[Skin.String(SubCustomFavourite34.Label)][/COLOR]</label2>
+								<width>750</width>
+								<height>40</height>
+								<textcolor>grey2</textcolor>
+								<focusedcolor>white</focusedcolor>
+								<texturefocus>MenuItemFO.png</texturefocus>
+								<texturenofocus>MenuItemNF.png</texturenofocus>
+								<onclick>RunScript(script.favourites,changetitle=true&amp;property=SubCustomFavourite34)</onclick>
+								<visible>!IsEmpty(Skin.String(CustomFavourite3.Label))</visible>
+								<visible>!IsEmpty(Skin.String(SubCustomFavourite33.Label))</visible>
+							</control>							
+							<control type="button" id="82685">
+								<description>SubFavourite 35</description>
+								<label> - $LOCALIZE[1034] 5</label>
+								<label2>[COLOR=gray]$INFO[Skin.String(SubCustomFavourite35.Label)][/COLOR]</label2>
+								<width>750</width>
+								<height>40</height>
+								<textcolor>grey2</textcolor>
+								<focusedcolor>white</focusedcolor>
+								<texturefocus>MenuItemFO.png</texturefocus>
+								<texturenofocus>MenuItemNF.png</texturenofocus>
+								<onclick>RunScript(script.favourites,changetitle=true&amp;property=SubCustomFavourite35)</onclick>
+								<visible>!IsEmpty(Skin.String(CustomFavourite3.Label))</visible>
+								<visible>!IsEmpty(Skin.String(SubCustomFavourite34.Label))</visible>
+							</control>							
+							<control type="button" id="82686">
+								<description>SubFavourite 36</description>
+								<label> - $LOCALIZE[1034] 6</label>
+								<label2>[COLOR=gray]$INFO[Skin.String(SubCustomFavourite36.Label)][/COLOR]</label2>
+								<width>750</width>
+								<height>40</height>
+								<textcolor>grey2</textcolor>
+								<focusedcolor>white</focusedcolor>
+								<texturefocus>MenuItemFO.png</texturefocus>
+								<texturenofocus>MenuItemNF.png</texturenofocus>
+								<onclick>RunScript(script.favourites,changetitle=true&amp;property=SubCustomFavourite36)</onclick>
+								<visible>!IsEmpty(Skin.String(CustomFavourite3.Label))</visible>
+								<visible>!IsEmpty(Skin.String(SubCustomFavourite35.Label))</visible>
+							</control>
+						<control type="button" id="8269">
+							<description>Favourite 4</description>
+							<label>[COLOR=white]$LOCALIZE[1036] 4[/COLOR]</label>
+							<label2>[COLOR=selected]$INFO[Skin.String(CustomFavourite4.Label)][/COLOR]</label2>
+							<width>750</width>
+							<height>40</height>
+							<textcolor>grey2</textcolor>
+							<focusedcolor>white</focusedcolor>
+							<texturefocus>MenuItemFO.png</texturefocus>
+							<texturenofocus>MenuItemNF.png</texturenofocus>
+							<onclick>RunScript(script.favourites,changetitle=true&amp;property=CustomFavourite4)</onclick>
+						</control>
+							<control type="button" id="82691">
+								<description>SubFavourite 41</description>
+								<label> - $LOCALIZE[1034] 1</label>
+								<label2>[COLOR=gray]$INFO[Skin.String(SubCustomFavourite41.Label)][/COLOR]</label2>
+								<width>750</width>
+								<height>40</height>
+								<textcolor>grey2</textcolor>
+								<focusedcolor>white</focusedcolor>
+								<texturefocus>MenuItemFO.png</texturefocus>
+								<texturenofocus>MenuItemNF.png</texturenofocus>
+								<onclick>RunScript(script.favourites,changetitle=true&amp;property=SubCustomFavourite41)</onclick>
+								<visible>!IsEmpty(Skin.String(CustomFavourite4.Label))</visible>
+							</control>
+							<control type="button" id="82692">
+								<description>SubFavourite 42</description>
+								<label> - $LOCALIZE[1034] 2</label>
+								<label2>[COLOR=gray]$INFO[Skin.String(SubCustomFavourite42.Label)][/COLOR]</label2>
+								<width>750</width>
+								<height>40</height>
+								<textcolor>grey2</textcolor>
+								<focusedcolor>white</focusedcolor>
+								<texturefocus>MenuItemFO.png</texturefocus>
+								<texturenofocus>MenuItemNF.png</texturenofocus>
+								<onclick>RunScript(script.favourites,changetitle=true&amp;property=SubCustomFavourite42)</onclick>
+								<visible>!IsEmpty(Skin.String(CustomFavourite4.Label))</visible>
+								<visible>!IsEmpty(Skin.String(SubCustomFavourite41.Label))</visible>
+							</control>							
+							<control type="button" id="82693">
+								<description>SubFavourite 43</description>
+								<label> - $LOCALIZE[1034] 3</label>
+								<label2>[COLOR=gray]$INFO[Skin.String(SubCustomFavourite43.Label)][/COLOR]</label2>
+								<width>750</width>
+								<height>40</height>
+								<textcolor>grey2</textcolor>
+								<focusedcolor>white</focusedcolor>
+								<texturefocus>MenuItemFO.png</texturefocus>
+								<texturenofocus>MenuItemNF.png</texturenofocus>
+								<onclick>RunScript(script.favourites,changetitle=true&amp;property=SubCustomFavourite43)</onclick>
+								<visible>!IsEmpty(Skin.String(CustomFavourite4.Label))</visible>
+								<visible>!IsEmpty(Skin.String(SubCustomFavourite42.Label))</visible>
+							</control>							
+							<control type="button" id="82694">
+								<description>SubFavourite 44</description>
+								<label> - $LOCALIZE[1034] 4</label>
+								<label2>[COLOR=gray]$INFO[Skin.String(SubCustomFavourite44.Label)][/COLOR]</label2>
+								<width>750</width>
+								<height>40</height>
+								<textcolor>grey2</textcolor>
+								<focusedcolor>white</focusedcolor>
+								<texturefocus>MenuItemFO.png</texturefocus>
+								<texturenofocus>MenuItemNF.png</texturenofocus>
+								<onclick>RunScript(script.favourites,changetitle=true&amp;property=SubCustomFavourite44)</onclick>
+								<visible>!IsEmpty(Skin.String(CustomFavourite4.Label))</visible>
+								<visible>!IsEmpty(Skin.String(SubCustomFavourite43.Label))</visible>
+							</control>							
+							<control type="button" id="82695">
+								<description>SubFavourite 45</description>
+								<label> - $LOCALIZE[1034] 5</label>
+								<label2>[COLOR=gray]$INFO[Skin.String(SubCustomFavourite45.Label)][/COLOR]</label2>
+								<width>750</width>
+								<height>40</height>
+								<textcolor>grey2</textcolor>
+								<focusedcolor>white</focusedcolor>
+								<texturefocus>MenuItemFO.png</texturefocus>
+								<texturenofocus>MenuItemNF.png</texturenofocus>
+								<onclick>RunScript(script.favourites,changetitle=true&amp;property=SubCustomFavourite45)</onclick>
+								<visible>!IsEmpty(Skin.String(CustomFavourite4.Label))</visible>
+								<visible>!IsEmpty(Skin.String(SubCustomFavourite44.Label))</visible>
+							</control>							
+							<control type="button" id="82696">
+								<description>SubFavourite 46</description>
+								<label> - $LOCALIZE[1034] 6</label>
+								<label2>[COLOR=gray]$INFO[Skin.String(SubCustomFavourite46.Label)][/COLOR]</label2>
+								<width>750</width>
+								<height>40</height>
+								<textcolor>grey2</textcolor>
+								<focusedcolor>white</focusedcolor>
+								<texturefocus>MenuItemFO.png</texturefocus>
+								<texturenofocus>MenuItemNF.png</texturenofocus>
+								<onclick>RunScript(script.favourites,changetitle=true&amp;property=SubCustomFavourite46)</onclick>
+								<visible>!IsEmpty(Skin.String(CustomFavourite4.Label))</visible>
+								<visible>!IsEmpty(Skin.String(SubCustomFavourite45.Label))</visible>
+							</control>
+						<control type="button" id="8270">
+							<description>Favourite 5</description>
+							<label>[COLOR=white]$LOCALIZE[1036] 5[/COLOR]</label>
+							<label2>[COLOR=selected]$INFO[Skin.String(CustomFavourite5.Label)][/COLOR]</label2>
+							<width>750</width>
+							<height>40</height>
+							<textcolor>grey2</textcolor>
+							<focusedcolor>white</focusedcolor>
+							<texturefocus>MenuItemFO.png</texturefocus>
+							<texturenofocus>MenuItemNF.png</texturenofocus>
+							<onclick>RunScript(script.favourites,changetitle=true&amp;property=CustomFavourite5)</onclick>
+						</control>
+							<control type="button" id="82701">
+								<description>SubFavourite 51</description>
+								<label> - $LOCALIZE[1034] 1</label>
+								<label2>[COLOR=gray]$INFO[Skin.String(SubCustomFavourite51.Label)][/COLOR]</label2>
+								<width>750</width>
+								<height>40</height>
+								<textcolor>grey2</textcolor>
+								<focusedcolor>white</focusedcolor>
+								<texturefocus>MenuItemFO.png</texturefocus>
+								<texturenofocus>MenuItemNF.png</texturenofocus>
+								<onclick>RunScript(script.favourites,changetitle=true&amp;property=SubCustomFavourite51)</onclick>
+								<visible>!IsEmpty(Skin.String(CustomFavourite5.Label))</visible>
+							</control>
+							<control type="button" id="82702">
+								<description>SubFavourite 52</description>
+								<label> - $LOCALIZE[1034] 2</label>
+								<label2>[COLOR=gray]$INFO[Skin.String(SubCustomFavourite52.Label)][/COLOR]</label2>
+								<width>750</width>
+								<height>40</height>
+								<textcolor>grey2</textcolor>
+								<focusedcolor>white</focusedcolor>
+								<texturefocus>MenuItemFO.png</texturefocus>
+								<texturenofocus>MenuItemNF.png</texturenofocus>
+								<onclick>RunScript(script.favourites,changetitle=true&amp;property=SubCustomFavourite52)</onclick>
+								<visible>!IsEmpty(Skin.String(CustomFavourite5.Label))</visible>
+								<visible>!IsEmpty(Skin.String(SubCustomFavourite51.Label))</visible>
+							</control>							
+							<control type="button" id="82703">
+								<description>SubFavourite 53</description>
+								<label> - $LOCALIZE[1034] 3</label>
+								<label2>[COLOR=gray]$INFO[Skin.String(SubCustomFavourite53.Label)][/COLOR]</label2>
+								<width>750</width>
+								<height>40</height>
+								<textcolor>grey2</textcolor>
+								<focusedcolor>white</focusedcolor>
+								<texturefocus>MenuItemFO.png</texturefocus>
+								<texturenofocus>MenuItemNF.png</texturenofocus>
+								<onclick>RunScript(script.favourites,changetitle=true&amp;property=SubCustomFavourite53)</onclick>
+								<visible>!IsEmpty(Skin.String(CustomFavourite5.Label))</visible>
+								<visible>!IsEmpty(Skin.String(SubCustomFavourite52.Label))</visible>
+							</control>							
+							<control type="button" id="82704">
+								<description>SubFavourite 54</description>
+								<label> - $LOCALIZE[1034] 4</label>
+								<label2>[COLOR=gray]$INFO[Skin.String(SubCustomFavourite54.Label)][/COLOR]</label2>
+								<width>750</width>
+								<height>40</height>
+								<textcolor>grey2</textcolor>
+								<focusedcolor>white</focusedcolor>
+								<texturefocus>MenuItemFO.png</texturefocus>
+								<texturenofocus>MenuItemNF.png</texturenofocus>
+								<onclick>RunScript(script.favourites,changetitle=true&amp;property=SubCustomFavourite54)</onclick>
+								<visible>!IsEmpty(Skin.String(CustomFavourite5.Label))</visible>
+								<visible>!IsEmpty(Skin.String(SubCustomFavourite53.Label))</visible>
+							</control>							
+							<control type="button" id="82705">
+								<description>SubFavourite 55</description>
+								<label> - $LOCALIZE[1034] 5</label>
+								<label2>[COLOR=gray]$INFO[Skin.String(SubCustomFavourite55.Label)][/COLOR]</label2>
+								<width>750</width>
+								<height>40</height>
+								<textcolor>grey2</textcolor>
+								<focusedcolor>white</focusedcolor>
+								<texturefocus>MenuItemFO.png</texturefocus>
+								<texturenofocus>MenuItemNF.png</texturenofocus>
+								<onclick>RunScript(script.favourites,changetitle=true&amp;property=SubCustomFavourite55)</onclick>
+								<visible>!IsEmpty(Skin.String(CustomFavourite5.Label))</visible>
+								<visible>!IsEmpty(Skin.String(SubCustomFavourite54.Label))</visible>
+							</control>							
+							<control type="button" id="82706">
+								<description>SubFavourite 56</description>
+								<label> - $LOCALIZE[1034] 6</label>
+								<label2>[COLOR=gray]$INFO[Skin.String(SubCustomFavourite56.Label)][/COLOR]</label2>
+								<width>750</width>
+								<height>40</height>
+								<textcolor>grey2</textcolor>
+								<focusedcolor>white</focusedcolor>
+								<texturefocus>MenuItemFO.png</texturefocus>
+								<texturenofocus>MenuItemNF.png</texturenofocus>
+								<onclick>RunScript(script.favourites,changetitle=true&amp;property=SubCustomFavourite56)</onclick>
+								<visible>!IsEmpty(Skin.String(CustomFavourite5.Label))</visible>
+								<visible>!IsEmpty(Skin.String(SubCustomFavourite55.Label))</visible>
+							</control>
+						<control type="button" id="8271">
+							<description>Favourite 6</description>
+							<label>[COLOR=white]$LOCALIZE[1036] 6[/COLOR]</label>
+							<label2>[COLOR=selected]$INFO[Skin.String(CustomFavourite6.Label)][/COLOR]</label2>
+							<width>750</width>
+							<height>40</height>
+							<textcolor>grey2</textcolor>
+							<focusedcolor>white</focusedcolor>
+							<texturefocus>MenuItemFO.png</texturefocus>
+							<texturenofocus>MenuItemNF.png</texturenofocus>
+							<onclick>RunScript(script.favourites,changetitle=true&amp;property=CustomFavourite6)</onclick>
+						</control>
+							<control type="button" id="82711">
+								<description>SubFavourite 61</description>
+								<label> - $LOCALIZE[1034] 1</label>
+								<label2>[COLOR=gray]$INFO[Skin.String(SubCustomFavourite61.Label)][/COLOR]</label2>
+								<width>750</width>
+								<height>40</height>
+								<textcolor>grey2</textcolor>
+								<focusedcolor>white</focusedcolor>
+								<texturefocus>MenuItemFO.png</texturefocus>
+								<texturenofocus>MenuItemNF.png</texturenofocus>
+								<onclick>RunScript(script.favourites,changetitle=true&amp;property=SubCustomFavourite61)</onclick>
+								<visible>!IsEmpty(Skin.String(CustomFavourite6.Label))</visible>
+							</control>
+							<control type="button" id="82712">
+								<description>SubFavourite 62</description>
+								<label> - $LOCALIZE[1034] 2</label>
+								<label2>[COLOR=gray]$INFO[Skin.String(SubCustomFavourite62.Label)][/COLOR]</label2>
+								<width>750</width>
+								<height>40</height>
+								<textcolor>grey2</textcolor>
+								<focusedcolor>white</focusedcolor>
+								<texturefocus>MenuItemFO.png</texturefocus>
+								<texturenofocus>MenuItemNF.png</texturenofocus>
+								<onclick>RunScript(script.favourites,changetitle=true&amp;property=SubCustomFavourite62)</onclick>
+								<visible>!IsEmpty(Skin.String(CustomFavourite6.Label))</visible>
+								<visible>!IsEmpty(Skin.String(SubCustomFavourite61.Label))</visible>
+							</control>							
+							<control type="button" id="82713">
+								<description>SubFavourite 63</description>
+								<label> - $LOCALIZE[1034] 3</label>
+								<label2>[COLOR=gray]$INFO[Skin.String(SubCustomFavourite63.Label)][/COLOR]</label2>
+								<width>750</width>
+								<height>40</height>
+								<textcolor>grey2</textcolor>
+								<focusedcolor>white</focusedcolor>
+								<texturefocus>MenuItemFO.png</texturefocus>
+								<texturenofocus>MenuItemNF.png</texturenofocus>
+								<onclick>RunScript(script.favourites,changetitle=true&amp;property=SubCustomFavourite63)</onclick>
+								<visible>!IsEmpty(Skin.String(CustomFavourite6.Label))</visible>
+								<visible>!IsEmpty(Skin.String(SubCustomFavourite62.Label))</visible>
+							</control>							
+							<control type="button" id="82714">
+								<description>SubFavourite 64</description>
+								<label> - $LOCALIZE[1034] 4</label>
+								<label2>[COLOR=gray]$INFO[Skin.String(SubCustomFavourite64.Label)][/COLOR]</label2>
+								<width>750</width>
+								<height>40</height>
+								<textcolor>grey2</textcolor>
+								<focusedcolor>white</focusedcolor>
+								<texturefocus>MenuItemFO.png</texturefocus>
+								<texturenofocus>MenuItemNF.png</texturenofocus>
+								<onclick>RunScript(script.favourites,changetitle=true&amp;property=SubCustomFavourite64)</onclick>
+								<visible>!IsEmpty(Skin.String(CustomFavourite6.Label))</visible>
+								<visible>!IsEmpty(Skin.String(SubCustomFavourite63.Label))</visible>
+							</control>							
+							<control type="button" id="82715">
+								<description>SubFavourite 65</description>
+								<label> - $LOCALIZE[1034] 5</label>
+								<label2>[COLOR=gray]$INFO[Skin.String(SubCustomFavourite65.Label)][/COLOR]</label2>
+								<width>750</width>
+								<height>40</height>
+								<textcolor>grey2</textcolor>
+								<focusedcolor>white</focusedcolor>
+								<texturefocus>MenuItemFO.png</texturefocus>
+								<texturenofocus>MenuItemNF.png</texturenofocus>
+								<onclick>RunScript(script.favourites,changetitle=true&amp;property=SubCustomFavourite65)</onclick>
+								<visible>!IsEmpty(Skin.String(CustomFavourite6.Label))</visible>
+								<visible>!IsEmpty(Skin.String(SubCustomFavourite64.Label))</visible>
+							</control>							
+							<control type="button" id="82716">
+								<description>SubFavourite 66</description>
+								<label> - $LOCALIZE[1034] 6</label>
+								<label2>[COLOR=gray]$INFO[Skin.String(SubCustomFavourite66.Label)][/COLOR]</label2>
+								<width>750</width>
+								<height>40</height>
+								<textcolor>grey2</textcolor>
+								<focusedcolor>white</focusedcolor>
+								<texturefocus>MenuItemFO.png</texturefocus>
+								<texturenofocus>MenuItemNF.png</texturenofocus>
+								<onclick>RunScript(script.favourites,changetitle=true&amp;property=SubCustomFavourite66)</onclick>
+								<visible>!IsEmpty(Skin.String(CustomFavourite6.Label))</visible>
+								<visible>!IsEmpty(Skin.String(SubCustomFavourite65.Label))</visible>
+							</control>
+						<control type="button" id="8272">
+							<description>Favourite 7</description>
+							<label>[COLOR=white]$LOCALIZE[1036] 7[/COLOR]</label>
+							<label2>[COLOR=selected]$INFO[Skin.String(CustomFavourite7.Label)][/COLOR]</label2>
+							<width>750</width>
+							<height>40</height>
+							<textcolor>grey2</textcolor>
+							<focusedcolor>white</focusedcolor>
+							<texturefocus>MenuItemFO.png</texturefocus>
+							<texturenofocus>MenuItemNF.png</texturenofocus>
+							<onclick>RunScript(script.favourites,changetitle=true&amp;property=CustomFavourite7)</onclick>
+						</control>
+							<control type="button" id="82721">
+								<description>SubFavourite 71</description>
+								<label> - $LOCALIZE[1034] 1</label>
+								<label2>[COLOR=gray]$INFO[Skin.String(SubCustomFavourite71.Label)][/COLOR]</label2>
+								<width>750</width>
+								<height>40</height>
+								<textcolor>grey2</textcolor>
+								<focusedcolor>white</focusedcolor>
+								<texturefocus>MenuItemFO.png</texturefocus>
+								<texturenofocus>MenuItemNF.png</texturenofocus>
+								<onclick>RunScript(script.favourites,changetitle=true&amp;property=SubCustomFavourite71)</onclick>
+								<onclick>Skin.ToggleSetting(Subfavourite71)</onclick>
+								<visible>!IsEmpty(Skin.String(CustomFavourite7.Label))</visible>
+							</control>
+							<control type="button" id="82722">
+								<description>SubFavourite 72</description>
+								<label> - $LOCALIZE[1034] 2</label>
+								<label2>[COLOR=gray]$INFO[Skin.String(SubCustomFavourite72.Label)][/COLOR]</label2>
+								<width>750</width>
+								<height>40</height>
+								<textcolor>grey2</textcolor>
+								<focusedcolor>white</focusedcolor>
+								<texturefocus>MenuItemFO.png</texturefocus>
+								<texturenofocus>MenuItemNF.png</texturenofocus>
+								<onclick>RunScript(script.favourites,changetitle=true&amp;property=SubCustomFavourite72)</onclick>
+								<visible>!IsEmpty(Skin.String(CustomFavourite7.Label))</visible>
+								<visible>!IsEmpty(Skin.String(SubCustomFavourite71.Label))</visible>
+							</control>							
+							<control type="button" id="82723">
+								<description>SubFavourite 73</description>
+								<label> - $LOCALIZE[1034] 3</label>
+								<label2>[COLOR=gray]$INFO[Skin.String(SubCustomFavourite73.Label)][/COLOR]</label2>
+								<width>750</width>
+								<height>40</height>
+								<textcolor>grey2</textcolor>
+								<focusedcolor>white</focusedcolor>
+								<texturefocus>MenuItemFO.png</texturefocus>
+								<texturenofocus>MenuItemNF.png</texturenofocus>
+								<onclick>RunScript(script.favourites,changetitle=true&amp;property=SubCustomFavourite73)</onclick>
+								<visible>!IsEmpty(Skin.String(CustomFavourite7.Label))</visible>
+								<visible>!IsEmpty(Skin.String(SubCustomFavourite72.Label))</visible>
+							</control>							
+							<control type="button" id="82724">
+								<description>SubFavourite 74</description>
+								<label> - $LOCALIZE[1034] 4</label>
+								<label2>[COLOR=gray]$INFO[Skin.String(SubCustomFavourite74.Label)][/COLOR]</label2>
+								<width>750</width>
+								<height>40</height>
+								<textcolor>grey2</textcolor>
+								<focusedcolor>white</focusedcolor>
+								<texturefocus>MenuItemFO.png</texturefocus>
+								<texturenofocus>MenuItemNF.png</texturenofocus>
+								<onclick>RunScript(script.favourites,changetitle=true&amp;property=SubCustomFavourite74)</onclick>
+								<visible>!IsEmpty(Skin.String(CustomFavourite7.Label))</visible>
+								<visible>!IsEmpty(Skin.String(SubCustomFavourite73.Label))</visible>
+							</control>							
+							<control type="button" id="82725">
+								<description>SubFavourite 75</description>
+								<label> - $LOCALIZE[1034] 4</label>
+								<label2>[COLOR=gray]$INFO[Skin.String(SubCustomFavourite75.Label)][/COLOR]</label2>
+								<width>750</width>
+								<height>40</height>
+								<textcolor>grey2</textcolor>
+								<focusedcolor>white</focusedcolor>
+								<texturefocus>MenuItemFO.png</texturefocus>
+								<texturenofocus>MenuItemNF.png</texturenofocus>
+								<onclick>RunScript(script.favourites,changetitle=true&amp;property=SubCustomFavourite75)</onclick>
+								<visible>!IsEmpty(Skin.String(CustomFavourite7.Label))</visible>
+								<visible>!IsEmpty(Skin.String(SubCustomFavourite74.Label))</visible>
+							</control>							
+							<control type="button" id="82726">
+								<description>SubFavourite 76</description>
+								<label> - $LOCALIZE[1034] 6</label>
+								<label2>[COLOR=gray]$INFO[Skin.String(SubCustomFavourite76.Label)][/COLOR]</label2>
+								<width>750</width>
+								<height>40</height>
+								<textcolor>grey2</textcolor>
+								<focusedcolor>white</focusedcolor>
+								<texturefocus>MenuItemFO.png</texturefocus>
+								<texturenofocus>MenuItemNF.png</texturenofocus>
+								<onclick>RunScript(script.favourites,changetitle=true&amp;property=SubCustomFavourite76)</onclick>
+								<visible>!IsEmpty(Skin.String(CustomFavourite7.Label))</visible>
+								<visible>!IsEmpty(Skin.String(SubCustomFavourite75.Label))</visible>
+							</control>
+						<control type="button" id="8273">
+							<description>Favourite 8</description>
+							<label>[COLOR=white]$LOCALIZE[1036] 8[/COLOR]</label>
+							<label2>[COLOR=selected]$INFO[Skin.String(CustomFavourite8.Label)][/COLOR]</label2>
+							<width>750</width>
+							<height>40</height>
+							<textcolor>grey2</textcolor>
+							<focusedcolor>white</focusedcolor>
+							<texturefocus>MenuItemFO.png</texturefocus>
+							<texturenofocus>MenuItemNF.png</texturenofocus>
+							<onclick>RunScript(script.favourites,changetitle=true&amp;property=CustomFavourite8)</onclick>
+						</control>
+							<control type="button" id="82731">
+								<description>SubFavourite 81</description>
+								<label> - $LOCALIZE[1034] 1</label>
+								<label2>[COLOR=gray]$INFO[Skin.String(SubCustomFavourite81.Label)][/COLOR]</label2>
+								<width>750</width>
+								<height>40</height>
+								<textcolor>grey2</textcolor>
+								<focusedcolor>white</focusedcolor>
+								<texturefocus>MenuItemFO.png</texturefocus>
+								<texturenofocus>MenuItemNF.png</texturenofocus>
+								<onclick>RunScript(script.favourites,changetitle=true&amp;property=SubCustomFavourite81)</onclick>
+								<visible>!IsEmpty(Skin.String(CustomFavourite8.Label))</visible>
+							</control>
+							<control type="button" id="82732">
+								<description>SubFavourite 82</description>
+								<label> - $LOCALIZE[1034] 2</label>
+								<label2>[COLOR=gray]$INFO[Skin.String(SubCustomFavourite82.Label)][/COLOR]</label2>
+								<width>750</width>
+								<height>40</height>
+								<textcolor>grey2</textcolor>
+								<focusedcolor>white</focusedcolor>
+								<texturefocus>MenuItemFO.png</texturefocus>
+								<texturenofocus>MenuItemNF.png</texturenofocus>
+								<onclick>RunScript(script.favourites,changetitle=true&amp;property=SubCustomFavourite82)</onclick>
+								<visible>!IsEmpty(Skin.String(CustomFavourite8.Label))</visible>
+								<visible>!IsEmpty(Skin.String(SubCustomFavourite81.Label))</visible>
+							</control>							
+							<control type="button" id="82733">
+								<description>SubFavourite 83</description>
+								<label> - $LOCALIZE[1034] 3</label>
+								<label2>[COLOR=gray]$INFO[Skin.String(SubCustomFavourite83.Label)][/COLOR]</label2>
+								<width>750</width>
+								<height>40</height>
+								<textcolor>grey2</textcolor>
+								<focusedcolor>white</focusedcolor>
+								<texturefocus>MenuItemFO.png</texturefocus>
+								<texturenofocus>MenuItemNF.png</texturenofocus>
+								<onclick>RunScript(script.favourites,changetitle=true&amp;property=SubCustomFavourite83)</onclick>
+								<visible>!IsEmpty(Skin.String(CustomFavourite8.Label))</visible>
+								<visible>!IsEmpty(Skin.String(SubCustomFavourite82.Label))</visible>
+							</control>							
+							<control type="button" id="82734">
+								<description>SubFavourite 84</description>
+								<label> - $LOCALIZE[1034] 4</label>
+								<label2>[COLOR=gray]$INFO[Skin.String(SubCustomFavourite84.Label)][/COLOR]</label2>
+								<width>750</width>
+								<height>40</height>
+								<textcolor>grey2</textcolor>
+								<focusedcolor>white</focusedcolor>
+								<texturefocus>MenuItemFO.png</texturefocus>
+								<texturenofocus>MenuItemNF.png</texturenofocus>
+								<onclick>RunScript(script.favourites,changetitle=true&amp;property=SubCustomFavourite84)</onclick>
+								<visible>!IsEmpty(Skin.String(CustomFavourite8.Label))</visible>
+								<visible>!IsEmpty(Skin.String(SubCustomFavourite83.Label))</visible>
+							</control>							
+							<control type="button" id="82735">
+								<description>SubFavourite 85</description>
+								<label> - $LOCALIZE[1034] 5</label>
+								<label2>[COLOR=gray]$INFO[Skin.String(SubCustomFavourite85.Label)][/COLOR]</label2>
+								<width>750</width>
+								<height>40</height>
+								<textcolor>grey2</textcolor>
+								<focusedcolor>white</focusedcolor>
+								<texturefocus>MenuItemFO.png</texturefocus>
+								<texturenofocus>MenuItemNF.png</texturenofocus>
+								<onclick>RunScript(script.favourites,changetitle=true&amp;property=SubCustomFavourite85)</onclick>
+								<visible>!IsEmpty(Skin.String(CustomFavourite8.Label))</visible>
+								<visible>!IsEmpty(Skin.String(SubCustomFavourite84.Label))</visible>
+							</control>							
+							<control type="button" id="82736">
+								<description>SubFavourite 86</description>
+								<label> - $LOCALIZE[1034] 6</label>
+								<label2>[COLOR=gray]$INFO[Skin.String(SubCustomFavourite86.Label)][/COLOR]</label2>
+								<width>750</width>
+								<height>40</height>
+								<textcolor>grey2</textcolor>
+								<focusedcolor>white</focusedcolor>
+								<texturefocus>MenuItemFO.png</texturefocus>
+								<texturenofocus>MenuItemNF.png</texturenofocus>
+								<onclick>RunScript(script.favourites,changetitle=true&amp;property=SubCustomFavourite86)</onclick>
+								<visible>!IsEmpty(Skin.String(CustomFavourite8.Label))</visible>
+								<visible>!IsEmpty(Skin.String(SubCustomFavourite85.Label))</visible>
+							</control>
+						<control type="button" id="8274">
+							<description>Favourite 9</description>
+							<label>[COLOR=white]$LOCALIZE[1036] 9[/COLOR]</label>
+							<label2>[COLOR=selected]$INFO[Skin.String(CustomFavourite9.Label)][/COLOR]</label2>
+							<width>750</width>
+							<height>40</height>
+							<textcolor>grey2</textcolor>
+							<focusedcolor>white</focusedcolor>
+							<texturefocus>MenuItemFO.png</texturefocus>
+							<texturenofocus>MenuItemNF.png</texturenofocus>
+							<onclick>RunScript(script.favourites,changetitle=true&amp;property=CustomFavourite9)</onclick>
+						</control>
+							<control type="button" id="82741">
+								<description>SubFavourite 91</description>
+								<label> - $LOCALIZE[1034] 1</label>
+								<label2>[COLOR=gray]$INFO[Skin.String(SubCustomFavourite91.Label)][/COLOR]</label2>
+								<width>750</width>
+								<height>40</height>
+								<textcolor>grey2</textcolor>
+								<focusedcolor>white</focusedcolor>
+								<texturefocus>MenuItemFO.png</texturefocus>
+								<texturenofocus>MenuItemNF.png</texturenofocus>
+								<onclick>RunScript(script.favourites,changetitle=true&amp;property=SubCustomFavourite91)</onclick>
+								<visible>!IsEmpty(Skin.String(CustomFavourite9.Label))</visible>
+							</control>
+							<control type="button" id="82742">
+								<description>SubFavourite 92</description>
+								<label> - $LOCALIZE[1034] 2</label>
+								<label2>[COLOR=gray]$INFO[Skin.String(SubCustomFavourite92.Label)][/COLOR]</label2>
+								<width>750</width>
+								<height>40</height>
+								<textcolor>grey2</textcolor>
+								<focusedcolor>white</focusedcolor>
+								<texturefocus>MenuItemFO.png</texturefocus>
+								<texturenofocus>MenuItemNF.png</texturenofocus>
+								<onclick>RunScript(script.favourites,changetitle=true&amp;property=SubCustomFavourite92)</onclick>
+								<visible>!IsEmpty(Skin.String(CustomFavourite9.Label))</visible>
+								<visible>!IsEmpty(Skin.String(SubCustomFavourite91.Label))</visible>
+							</control>							
+							<control type="button" id="82743">
+								<description>SubFavourite 93</description>
+								<label> - $LOCALIZE[1034] 3</label>
+								<label2>[COLOR=gray]$INFO[Skin.String(SubCustomFavourite93.Label)][/COLOR]</label2>
+								<width>750</width>
+								<height>40</height>
+								<textcolor>grey2</textcolor>
+								<focusedcolor>white</focusedcolor>
+								<texturefocus>MenuItemFO.png</texturefocus>
+								<texturenofocus>MenuItemNF.png</texturenofocus>
+								<onclick>RunScript(script.favourites,changetitle=true&amp;property=SubCustomFavourite93)</onclick>
+								<visible>!IsEmpty(Skin.String(CustomFavourite9.Label))</visible>
+								<visible>!IsEmpty(Skin.String(SubCustomFavourite92.Label))</visible>
+							</control>							
+							<control type="button" id="82744">
+								<description>SubFavourite 94</description>
+								<label> - $LOCALIZE[1034] 4</label>
+								<label2>[COLOR=gray]$INFO[Skin.String(SubCustomFavourite94.Label)][/COLOR]</label2>
+								<width>750</width>
+								<height>40</height>
+								<textcolor>grey2</textcolor>
+								<focusedcolor>white</focusedcolor>
+								<texturefocus>MenuItemFO.png</texturefocus>
+								<texturenofocus>MenuItemNF.png</texturenofocus>
+								<onclick>RunScript(script.favourites,changetitle=true&amp;property=SubCustomFavourite94)</onclick>
+								<visible>!IsEmpty(Skin.String(CustomFavourite9.Label))</visible>
+								<visible>!IsEmpty(Skin.String(SubCustomFavourite93.Label))</visible>
+							</control>							
+							<control type="button" id="82745">
+								<description>SubFavourite 95</description>
+								<label> - $LOCALIZE[1034] 5</label>
+								<label2>[COLOR=gray]$INFO[Skin.String(SubCustomFavourite95.Label)][/COLOR]</label2>
+								<width>750</width>
+								<height>40</height>
+								<textcolor>grey2</textcolor>
+								<focusedcolor>white</focusedcolor>
+								<texturefocus>MenuItemFO.png</texturefocus>
+								<texturenofocus>MenuItemNF.png</texturenofocus>
+								<onclick>RunScript(script.favourites,changetitle=true&amp;property=SubCustomFavourite95)</onclick>
+								<visible>!IsEmpty(Skin.String(CustomFavourite9.Label))</visible>
+								<visible>!IsEmpty(Skin.String(SubCustomFavourite94.Label))</visible>
+							</control>							
+							<control type="button" id="82746">
+								<description>SubFavourite 96</description>
+								<label> - $LOCALIZE[1034] 6</label>
+								<label2>[COLOR=gray]$INFO[Skin.String(SubCustomFavourite96.Label)][/COLOR]</label2>
+								<width>750</width>
+								<height>40</height>
+								<textcolor>grey2</textcolor>
+								<focusedcolor>white</focusedcolor>
+								<texturefocus>MenuItemFO.png</texturefocus>
+								<texturenofocus>MenuItemNF.png</texturenofocus>
+								<onclick>RunScript(script.favourites,changetitle=true&amp;property=SubCustomFavourite96)</onclick>
+								<visible>!IsEmpty(Skin.String(CustomFavourite9.Label))</visible>
+								<visible>!IsEmpty(Skin.String(SubCustomFavourite95.Label))</visible>
+							</control>
+						<control type="button" id="8275">
+							<description>Favourite 10</description>
+							<label>[COLOR=white]$LOCALIZE[1036] 10[/COLOR]</label>
+							<label2>[COLOR=selected]$INFO[Skin.String(CustomFavourite10.Label)][/COLOR]</label2>
+							<width>750</width>
+							<height>40</height>
+							<textcolor>grey2</textcolor>
+							<focusedcolor>white</focusedcolor>
+							<texturefocus>MenuItemFO.png</texturefocus>
+							<texturenofocus>MenuItemNF.png</texturenofocus>
+							<onclick>RunScript(script.favourites,changetitle=true&amp;property=CustomFavourite10)</onclick>
+						</control>
+							<control type="button" id="82751">
+								<description>SubFavourite 11</description>
+								<label> - $LOCALIZE[1034] 1</label>
+								<label2>[COLOR=gray]$INFO[Skin.String(SubCustomFavourite11.Label)][/COLOR]</label2>
+								<width>750</width>
+								<height>40</height>
+								<textcolor>grey2</textcolor>
+								<focusedcolor>white</focusedcolor>
+								<texturefocus>MenuItemFO.png</texturefocus>
+								<texturenofocus>MenuItemNF.png</texturenofocus>
+								<onclick>RunScript(script.favourites,changetitle=true&amp;property=SubCustomFavourite11)</onclick>
+								<visible>!IsEmpty(Skin.String(CustomFavourite10.Label))</visible>
+							</control>
+							<control type="button" id="82752">
+								<description>SubFavourite 12</description>
+								<label> - $LOCALIZE[1034] 2</label>
+								<label2>[COLOR=gray]$INFO[Skin.String(SubCustomFavourite12.Label)][/COLOR]</label2>
+								<width>750</width>
+								<height>40</height>
+								<textcolor>grey2</textcolor>
+								<focusedcolor>white</focusedcolor>
+								<texturefocus>MenuItemFO.png</texturefocus>
+								<texturenofocus>MenuItemNF.png</texturenofocus>
+								<onclick>RunScript(script.favourites,changetitle=true&amp;property=SubCustomFavourite12)</onclick>
+								<visible>!IsEmpty(Skin.String(CustomFavourite10.Label))</visible>
+								<visible>!IsEmpty(Skin.String(SubCustomFavourite11.Label))</visible>
+							</control>							
+							<control type="button" id="82753">
+								<description>SubFavourite 13</description>
+								<label> - $LOCALIZE[1034] 3</label>
+								<label2>[COLOR=gray]$INFO[Skin.String(SubCustomFavourite13.Label)][/COLOR]</label2>
+								<width>750</width>
+								<height>40</height>
+								<textcolor>grey2</textcolor>
+								<focusedcolor>white</focusedcolor>
+								<texturefocus>MenuItemFO.png</texturefocus>
+								<texturenofocus>MenuItemNF.png</texturenofocus>
+								<onclick>RunScript(script.favourites,changetitle=true&amp;property=SubCustomFavourite13)</onclick>
+								<visible>!IsEmpty(Skin.String(CustomFavourite10.Label))</visible>
+								<visible>!IsEmpty(Skin.String(SubCustomFavourite12.Label))</visible>
+							</control>							
+							<control type="button" id="82754">
+								<description>SubFavourite 14</description>
+								<label> - $LOCALIZE[1034] 4</label>
+								<label2>[COLOR=gray]$INFO[Skin.String(SubCustomFavourite14.Label)][/COLOR]</label2>
+								<width>750</width>
+								<height>40</height>
+								<textcolor>grey2</textcolor>
+								<focusedcolor>white</focusedcolor>
+								<texturefocus>MenuItemFO.png</texturefocus>
+								<texturenofocus>MenuItemNF.png</texturenofocus>
+								<onclick>RunScript(script.favourites,changetitle=true&amp;property=SubCustomFavourite14)</onclick>
+								<visible>!IsEmpty(Skin.String(CustomFavourite10.Label))</visible>
+								<visible>!IsEmpty(Skin.String(SubCustomFavourite13.Label))</visible>
+							</control>							
+							<control type="button" id="82755">
+								<description>SubFavourite 15</description>
+								<label> - $LOCALIZE[1034] 5</label>
+								<label2>[COLOR=gray]$INFO[Skin.String(SubCustomFavourite15.Label)][/COLOR]</label2>
+								<width>750</width>
+								<height>40</height>
+								<textcolor>grey2</textcolor>
+								<focusedcolor>white</focusedcolor>
+								<texturefocus>MenuItemFO.png</texturefocus>
+								<texturenofocus>MenuItemNF.png</texturenofocus>
+								<onclick>RunScript(script.favourites,changetitle=true&amp;property=SubCustomFavourite15)</onclick>
+								<visible>!IsEmpty(Skin.String(CustomFavourite10.Label))</visible>
+								<visible>!IsEmpty(Skin.String(SubCustomFavourite14.Label))</visible>
+							</control>							
+							<control type="button" id="82756">
+								<description>SubFavourite 16</description>
+								<label> - $LOCALIZE[1034] 6</label>
+								<label2>[COLOR=gray]$INFO[Skin.String(SubCustomFavourite16.Label)][/COLOR]</label2>
+								<width>750</width>
+								<height>40</height>
+								<textcolor>grey2</textcolor>
+								<focusedcolor>white</focusedcolor>
+								<texturefocus>MenuItemFO.png</texturefocus>
+								<texturenofocus>MenuItemNF.png</texturenofocus>
+								<onclick>RunScript(script.favourites,changetitle=true&amp;property=SubCustomFavourite16)</onclick>
+								<visible>!IsEmpty(Skin.String(CustomFavourite10.Label))</visible>
+								<visible>!IsEmpty(Skin.String(SubCustomFavourite15.Label))</visible>
+							</control>
+						
+				</control>
+				<control type="scrollbar" id="61">
+					<posx>1060</posx>
+					<posy>60</posy>
+					<width>25</width>
+					<height>530</height>
+					<texturesliderbackground border="0,14,0,14">ScrollBarV.png</texturesliderbackground>
+					<texturesliderbar border="0,14,0,14">ScrollBarV_bar.png</texturesliderbar>
+					<texturesliderbarfocus border="0,14,0,14">ScrollBarV_bar_focus.png</texturesliderbarfocus>
+					<textureslidernib>ScrollBarNib.png</textureslidernib>
+					<textureslidernibfocus>ScrollBarNib.png</textureslidernibfocus>
+					<onleft>9006</onleft>
+					<onright>9000</onright>
+					<showonepage>false</showonepage>
+					<orientation>vertical</orientation>
+					<visible>Container(9000).Hasfocus(6)</visible>
+				</control>
+				<control type="group">
+					<posx>290</posx>
+					<posy>60</posy>
+					<visible>Container(9000).Hasfocus(5)</visible>
+					<control type="label">
+						<posx>0</posx>
+						<posy>0</posy>
+						<width>680</width>
+						<height>45</height>
+						<font>font13_title</font>
+						<label>31109</label>
+						<textcolor>blue</textcolor>
+						<shadowcolor>black</shadowcolor>
+						<align>left</align>
+						<aligny>center</aligny>
+					</control>
+					<control type="button" id="9004">
+						<description>Menu Item Next Button</description>
+						<posx>670</posx>
+						<posy>53</posy>
+						<width>33</width>
+						<height>22</height>
+						<label>-</label>
+						<font>-</font>
+						<texturenofocus>scroll-down-2.png</texturenofocus>
+						<texturefocus>scroll-down-focus-2.png</texturefocus>
+						<onclick>Control.Move(9005,1)</onclick>
+						<onleft>9000</onleft>
+						<onright>9055</onright>
+						<onup>300</onup>
+						<ondown>300</ondown>
+					</control>
+					<control type="button" id="9055">
+						<description>Menu Item Prev Button</description>
+						<posx>703</posx>
+						<posy>53</posy>
+						<width>33</width>
+						<height>22</height>
+						<label>-</label>
+						<font>-</font>
+						<texturenofocus>scroll-up-2.png</texturenofocus>
+						<texturefocus>scroll-up-focus-2.png</texturefocus>
+						<onclick>Control.Move(9005,-1)</onclick>
+						<onleft>9004</onleft>
+						<onright>9000</onright>
+						<onup>300</onup>
+						<ondown>300</ondown>
+					</control>
+					<control type="list" id="9005">
+						<hitrect x="0" y="0" w="0" h="0" />
+						<posx>0</posx>
+						<posy>45</posy>
+						<width>750</width>
+						<height>40</height>
+						<onleft>9000</onleft>
+						<onright>300</onright>
+						<onup>9005</onup>
+						<ondown>9005</ondown>
+						<pagecontrol>-</pagecontrol>
+						<scrolltime>0</scrolltime>
+						<itemlayout height="1" width="750">
+						</itemlayout>
+						<focusedlayout height="40" width="750">
+							<control type="image">
+								<posx>0</posx>
+								<posy>0</posy>
+								<width>750</width>
+								<height>40</height>
+								<texture>MenuItemNF.png</texture>
+								<visible>![Control.HasFocus(9004) | Control.HasFocus(9055)]</visible>
+							</control>
+							<control type="image">
+								<posx>0</posx>
+								<posy>0</posy>
+								<width>750</width>
+								<height>40</height>
+								<texture>MenuItemFO.png</texture>
+								<visible>[Control.HasFocus(9004) | Control.HasFocus(9055)]</visible>
+							</control>
+							<control type="label">
+								<posx>10</posx>
+								<posy>0</posy>
+								<width>600</width>
+								<height>40</height>
+								<font>font13</font>
+								<textcolor>grey2</textcolor>
+								<align>left</align>
+								<aligny>center</aligny>
+								<label>$LOCALIZE[31110]</label>
+								<visible>![Control.HasFocus(9004) | Control.HasFocus(9055)]</visible>
+							</control>
+							<control type="label">
+								<posx>10</posx>
+								<posy>0</posy>
+								<width>600</width>
+								<height>40</height>
+								<font>font13</font>
+								<textcolor>white</textcolor>
+								<align>left</align>
+								<aligny>center</aligny>
+								<label>$LOCALIZE[31110]</label>
+								<visible>[Control.HasFocus(9004) | Control.HasFocus(9055)]</visible>
+							</control>
+							<control type="label">
+								<posx>650</posx>
+								<posy>0</posy>
+								<width>640</width>
+								<height>40</height>
+								<font>font13</font>
+								<textcolor>grey2</textcolor>
+								<align>right</align>
+								<aligny>center</aligny>
+								<label>$INFO[ListItem.Label]</label>
+								<visible>![Control.HasFocus(9004) | Control.HasFocus(9055)]</visible>
+							</control>
+							<control type="label">
+								<posx>650</posx>
+								<posy>0</posy>
+								<width>640</width>
+								<height>40</height>
+								<font>font13</font>
+								<textcolor>white</textcolor>
+								<align>right</align>
+								<aligny>center</aligny>
+								<label>$INFO[ListItem.Label]</label>
+								<visible>[Control.HasFocus(9004) | Control.HasFocus(9055)]</visible>
+							</control>
+						</focusedlayout>
+						<content>
+							<item id="1">
+								<label>3</label>
+								<label2>Home_Custom_Back_Video_Folder</label2>
+								<onclick>-</onclick>
+								<icon>special://skin/backgrounds/videos.jpg</icon>
+								<thumb>$INFO[Skin.String(Home_Custom_Back_Video_Folder)]</thumb>
+							</item>
+							<item id="10">
+								<label>20342</label>
+								<label2>Home_Custom_Back_Movies_Folder</label2>
+								<onclick>-</onclick>
+								<icon>special://skin/backgrounds/videos.jpg</icon>
+								<thumb>$INFO[Skin.String(Home_Custom_Back_Movies_Folder)]</thumb>
+								<visible>!Skin.HasSetting(HomeMenuNoMoviesButton) + Library.HasContent(Movies)</visible>
+							</item>
+							<item id="11">
+								<label>20343</label>
+								<label2>Home_Custom_Back_TVShow_Folder</label2>
+								<onclick>-</onclick>
+								<icon>special://skin/backgrounds/videos.jpg</icon>
+								<thumb>$INFO[Skin.String(Home_Custom_Back_TVShow_Folder)]</thumb>
+								<visible>!Skin.HasSetting(HomeMenuNoTVShowsButton) + Library.HasContent(TVShows)</visible>
+							</item>
+							<item id="12">
+								<label>31502</label>
+								<label2>Home_Custom_Back_TV_Folder</label2>
+								<onclick>-</onclick>
+								<icon>special://skin/backgrounds/tv.jpg</icon>
+								<thumb>$INFO[Skin.String(Home_Custom_Back_TV_Folder)]</thumb>
+								<visible>System.GetBool(pvrmanager.enabled)</visible>
+							</item>
+							<item id="2">
+								<label>2</label>
+								<label2>Home_Custom_Back_Music_Folder</label2>
+								<onclick>-</onclick>
+								<icon>special://skin/backgrounds/music.jpg</icon>
+								<thumb>$INFO[Skin.String(Home_Custom_Back_Music_Folder)]</thumb>
+							</item>							
+							<item id="3">
+								<label>1</label>
+								<label2>Home_Custom_Back_Pictures_Folder</label2>
+								<onclick>-</onclick>
+								<icon>special://skin/backgrounds/pictures.jpg</icon>
+								<thumb>$INFO[Skin.String(Home_Custom_Back_Pictures_Folder)]</thumb>
+							</item>
+							<item id="4">
+								<label>0</label>
+								<label2>Home_Custom_Back_Programs_Folder</label2>
+								<onclick>-</onclick>
+								<icon>special://skin/backgrounds/programs.jpg</icon>
+								<thumb>$INFO[Skin.String(Home_Custom_Back_Programs_Folder)]</thumb>
+							</item>
+							<item id="5">
+								<label>8</label>
+								<label2>Home_Custom_Back_Weather_Folder</label2>
+								<onclick>-</onclick>
+								<icon>special://skin/backgrounds/weather.jpg</icon>
+								<thumb>$INFO[Skin.String(Home_Custom_Back_Weather_Folder)]</thumb>
+							</item>
+							<item id="7">
+								<label>13000</label>
+								<label2>Home_Custom_Back_Settings_Folder</label2>
+								<onclick>-</onclick>
+								<icon>special://skin/backgrounds/settings.jpg</icon>
+								<thumb>$INFO[Skin.String(Home_Custom_Back_Settings_Folder)]</thumb>
+							</item>
+							<item id="8">
+								<label>24001</label>
+								<label2>Home_Custom_Back_Addons_Folder</label2>
+								<onclick>-</onclick>
+								<icon>special://skin/backgrounds/addons.jpg</icon>
+								<thumb>$INFO[Skin.String(Home_Custom_Back_Addons_Folder)]</thumb>
+							</item>						
+							<item id="9">
+								<label>341</label>
+								<label2>Home_Custom_Back_PlayDisc_Folder</label2>
+								<onclick>-</onclick>
+								<icon>special://skin/backgrounds/playdisc.jpg</icon>
+								<thumb>$INFO[Skin.String(Home_Custom_Back_PlayDisc_Folder)]</thumb>
+							</item>
+							<item id="101">
+								<label>$INFO[Skin.String(CustomFavourite1.Label)]</label>
+								<label2>Home_Custom_Back_Favourite1_Folder</label2>
+								<onclick>-</onclick>
+								<icon>special://skin/backgrounds/skinsetting.jpg</icon>
+								<thumb>$INFO[Skin.String(Home_Custom_Back_Favourite1_Folder)]</thumb>
+								<visible>Skin.HasSetting(CustomFavorites)</visible>
+								<visible>!IsEmpty(Skin.String(CustomFavourite1.Label))</visible>
+							</item>
+							<item id="102">
+								<label>$INFO[Skin.String(CustomFavourite2.Label)]</label>
+								<label2>Home_Custom_Back_Favourite2_Folder</label2>
+								<onclick>-</onclick>
+								<icon>special://skin/backgrounds/skinsetting.jpg</icon>
+								<thumb>$INFO[Skin.String(Home_Custom_Back_Favourite2_Folder)]</thumb>
+								<visible>Skin.HasSetting(CustomFavorites)</visible>
+								<visible>!IsEmpty(Skin.String(CustomFavourite2.Label))</visible>
+							</item>
+							<item id="103">
+								<label>$INFO[Skin.String(CustomFavourite3.Label)]</label>
+								<label2>Home_Custom_Back_Favourite3_Folder</label2>
+								<onclick>-</onclick>
+								<icon>special://skin/backgrounds/skinsetting.jpg</icon>
+								<thumb>$INFO[Skin.String(Home_Custom_Back_Favourite3_Folder)]</thumb>
+								<visible>Skin.HasSetting(CustomFavorites)</visible>
+								<visible>!IsEmpty(Skin.String(CustomFavourite3.Label))</visible>
+							</item>	
+							<item id="104">
+								<label>$INFO[Skin.String(CustomFavourite4.Label)]</label>
+								<label2>Home_Custom_Back_Favourite4_Folder</label2>
+								<onclick>-</onclick>
+								<icon>special://skin/backgrounds/skinsetting.jpg</icon>
+								<thumb>$INFO[Skin.String(Home_Custom_Back_Favourite4_Folder)]</thumb>
+								<visible>Skin.HasSetting(CustomFavorites)</visible>
+								<visible>!IsEmpty(Skin.String(CustomFavourite4.Label))</visible>
+							</item>	
+							<item id="105">
+								<label>$INFO[Skin.String(CustomFavourite5.Label)]</label>
+								<label2>Home_Custom_Back_Favourite5_Folder</label2>
+								<onclick>-</onclick>
+								<icon>special://skin/backgrounds/skinsetting.jpg</icon>
+								<thumb>$INFO[Skin.String(Home_Custom_Back_Favourite5_Folder)]</thumb>
+								<visible>Skin.HasSetting(CustomFavorites)</visible>
+								<visible>!IsEmpty(Skin.String(CustomFavourite5.Label))</visible>
+							</item>	
+							<item id="106">
+								<label>$INFO[Skin.String(CustomFavourite6.Label)]</label>
+								<label2>Home_Custom_Back_Favourite6_Folder</label2>
+								<onclick>-</onclick>
+								<icon>special://skin/backgrounds/skinsetting.jpg</icon>
+								<thumb>$INFO[Skin.String(Home_Custom_Back_Favourite6_Folder)]</thumb>
+								<visible>Skin.HasSetting(CustomFavorites)</visible>
+								<visible>!IsEmpty(Skin.String(CustomFavourite6.Label))</visible>
+							</item>	
+							<item id="107">
+								<label>$INFO[Skin.String(CustomFavourite7.Label)]</label>
+								<label2>Home_Custom_Back_Favourite7_Folder</label2>
+								<onclick>-</onclick>
+								<icon>special://skin/backgrounds/skinsetting.jpg</icon>
+								<thumb>$INFO[Skin.String(Home_Custom_Back_Favourite7_Folder)]</thumb>
+								<visible>Skin.HasSetting(CustomFavorites)</visible>
+								<visible>!IsEmpty(Skin.String(CustomFavourite7.Label))</visible>
+							</item>	
+							<item id="108">
+								<label>$INFO[Skin.String(CustomFavourite8.Label)]</label>
+								<label2>Home_Custom_Back_Favourite8_Folder</label2>
+								<onclick>-</onclick>
+								<icon>special://skin/backgrounds/skinsetting.jpg</icon>
+								<thumb>$INFO[Skin.String(Home_Custom_Back_Favourite8_Folder)]</thumb>
+								<visible>Skin.HasSetting(CustomFavorites)</visible>
+								<visible>!IsEmpty(Skin.String(CustomFavourite8.Label))</visible>
+							</item>	
+							<item id="109">
+								<label>$INFO[Skin.String(CustomFavourite9.Label)]</label>
+								<label2>Home_Custom_Back_Favourite9_Folder</label2>
+								<onclick>-</onclick>
+								<icon>special://skin/backgrounds/skinsetting.jpg</icon>
+								<thumb>$INFO[Skin.String(Home_Custom_Back_Favourite9_Folder)]</thumb>
+								<visible>Skin.HasSetting(CustomFavorites)</visible>
+								<visible>!IsEmpty(Skin.String(CustomFavourite9.Label))</visible>
+							</item>	
+							<item id="110">
+								<label>$INFO[Skin.String(CustomFavourite10.Label)]</label>
+								<label2>Home_Custom_Back_Favourite10_Folder</label2>
+								<onclick>-</onclick>
+								<icon>special://skin/backgrounds/skinsetting.jpg</icon>
+								<thumb>$INFO[Skin.String(Home_Custom_Back_Favourite10_Folder)]</thumb>
+								<visible>Skin.HasSetting(CustomFavorites)</visible>
+								<visible>!IsEmpty(Skin.String(CustomFavourite10.Label))</visible>
+							</item>							
+						</content>
+					</control>
+					<control type="image">
+						<posx>85</posx>
+						<posy>100</posy>
+						<width>580</width>
+						<height>435</height>
+						<texture>black-back.png</texture>
+					</control>
+					<control type="group">
+						<posx>95</posx>
+						<posy>110</posy>
+						<control type="button" id="300">
+							<description>Single Image button</description>
+							<posx>5</posx>
+							<posy>0</posy>
+							<width>180</width>
+							<height>40</height>
+							<label>1033</label>
+							<font>font12_title</font>
+							<textcolor>grey2</textcolor>
+							<focusedcolor>white</focusedcolor>
+							<align>center</align>
+							<texturenofocus border="5">button-nofocus.png</texturenofocus>
+							<texturefocus border="5">button-focus.png</texturefocus>
+							<onclick>Skin.SetImage($INFO[Container(9005).ListItem.Label2])</onclick>
+							<onleft>302</onleft>
+							<onright>301</onright>
+							<onup>9004</onup>
+							<ondown>9004</ondown>
+						</control>
+						<control type="button" id="301">
+							<description>Multi Image button</description>
+							<posx>190</posx>
+							<posy>0</posy>
+							<width>180</width>
+							<height>40</height>
+							<label>657</label>
+							<font>font12_title</font>
+							<textcolor>grey2</textcolor>
+							<focusedcolor>white</focusedcolor>
+							<align>center</align>
+							<texturenofocus border="5">button-nofocus.png</texturenofocus>
+							<texturefocus border="5">button-focus.png</texturefocus>
+							<onclick>Skin.SetPath($INFO[Container(9005).ListItem.Label2])</onclick>
+							<onleft>300</onleft>
+							<onright>302</onright>
+							<onup>9004</onup>
+							<ondown>9004</ondown>
+						</control>
+						<control type="button" id="302">
+							<description>Default Image button</description>
+							<posx>375</posx>
+							<posy>0</posy>
+							<width>180</width>
+							<height>40</height>
+							<label>571</label>
+							<font>font12_title</font>
+							<textcolor>grey2</textcolor>
+							<focusedcolor>white</focusedcolor>
+							<align>center</align>
+							<texturenofocus border="5">button-nofocus.png</texturenofocus>
+							<texturefocus border="5">button-focus.png</texturefocus>
+							<onclick>Skin.Reset($INFO[Container(9005).ListItem.Label2])</onclick>
+							<onleft>301</onleft>
+							<onright>300</onright>
+							<onup>9004</onup>
+							<ondown>9004</ondown>
+						</control>
+						<control type="multiimage">
+							<posx>0</posx>
+							<posy>50</posy>
+							<width>560</width>
+							<height>335</height>
+							<imagepath background="true">$INFO[Container(9005).ListItem.Icon]</imagepath>
+							<timeperimage>6000</timeperimage>
+							<randomize>true</randomize>
+							<fadetime>500</fadetime>
+						</control>
+						<control type="label">
+							<posx>0</posx>
+							<posy>390</posy>
+							<width>560</width>
+							<height>20</height>
+							<align>center</align>
+							<aligny>center</aligny>
+							<font>font11</font>
+							<haspath>yes</haspath>
+							<label fallback="571">$INFO[Container(9005).ListItem.Thumb]</label>
+							<textcolor>white</textcolor>
+						</control>
+					</control>
+				</control>	
+			</control>	
+		</control>
+
+		
+		<include>CommonNowPlaying</include>
+		<include>MainWindowMouseButtons</include>
+		<include>BehindDialogFadeOut</include>
+		<include>Clock</include>
+	</controls>
+</window>
