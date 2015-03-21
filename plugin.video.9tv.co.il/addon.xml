@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="plugin.video.9tv.co.il"
+       name="[COLOR FF00FF00]Девятый канал - Израиль ([/COLOR][COLOR FFFFF000]9tv.co.il[/COLOR][COLOR FF00FF00])[/COLOR]"
+       version="1.0.1"
+       provider-name="Silen">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>9tv.co.il</summary>
+    <description>Девятый канал - Израиль.</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
