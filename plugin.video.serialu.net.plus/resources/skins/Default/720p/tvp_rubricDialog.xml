@@ -1,0 +1,105 @@
+<window id="14001" type="dialog" allowoverlay="yes">
+  <animation effect="fade" time="50">WindowOpen</animation>
+  <animation effect="fade" time="50">WindowClose</animation>
+  <defaultcontrol always="true">210</defaultcontrol>
+  <onload>SetFocus(210)</onload>
+  <controls>
+    <control type="image">
+      <posx>0</posx>
+      <posy>0</posy>
+      <width>1280</width>
+      <height>720</height>
+      <texture>backgrounds/universal-fader.png</texture>
+    </control>
+    <control type="image">
+      <description>
+        70px + 10px
+        ^      ^
+        тень   рамка
+
+        Размер элемента должен быть Xpx (нужное место под контент без учета маржина от рамки) + 80px.
+        Эт этой же цифры надо расчитывать центрирование.
+      </description>
+      <posx>170</posx>
+      <posy>205</posy>
+      <width>430</width>
+      <height>500</height>
+      <texture border="140,140,140,140">backgrounds/universal-popup-frame.png</texture>
+    </control>
+  <control type="group">
+      <width>220</width>
+      <height>320</height>
+      <posx>260</posx>
+      <posy>295</posy>
+      <control type="list" id="146">
+      <posx>0</posx>
+      <posy>0</posy>
+      <width>220</width>
+      <height>320</height>
+      <pagecontrol>202</pagecontrol>
+      <onleft/>
+      <onright>202</onright>
+      <onfocus/>
+      <scrolltime tween="sine" easing="out">200</scrolltime>
+      <visible>true</visible>
+      <orientation>vertical</orientation>
+      <itemlayout width="220" height="32">
+          <control type="image">
+          <posx>0</posx>
+          <posy>0</posy>
+          <width>220</width>
+          <height>29</height>
+          <texture border="5,5,5,5">list/item-common.png</texture>
+        </control>
+      <control type="label">
+            <posx>10</posx>
+            <posy>0</posy>
+            <width>200</width>
+            <height>29</height>
+            <font>font12</font>
+            <info>ListItem.Label</info>
+          </control>
+        </itemlayout>
+      <focusedlayout width="220" height="32">
+          <control type="image">
+          <posx>0</posx>
+          <posy>0</posy>
+          <width>220</width>
+          <height>29</height>
+          <visible/>
+          <texture border="5,5,5,5">list/item-focused.png</texture>
+        </control>
+        <control type="image">
+          <posx>0</posx>
+          <posy>0</posy>
+          <width>220</width>
+          <height>29</height>
+          <visible/>
+          <texture border="5,5,5,5">list/item-passive.png</texture>
+        </control>
+      <control type="label">
+            <posx>10</posx>
+            <posy>0</posy>
+            <width>200</width>
+            <height>29</height>
+            <font>font12</font>
+            <info>ListItem.Label</info>
+          </control>
+        </focusedlayout>
+    </control>
+    <control type="scrollbar" id="202">
+      <posx>234</posx>
+      <posy>0</posy>
+      <width>14</width>
+      <height>320</height>
+      <visible>true</visible>
+      <texturesliderbackground border="5,5,5,5">scrollbar/scroll-background.png</texturesliderbackground>
+      <texturesliderbar border="5,5,5,5">scrollbar/scrollbar-common.png</texturesliderbar>
+      <texturesliderbarfocus border="5,5,5,5">scrollbar/scrollbar-focused.png</texturesliderbarfocus>
+      <pulseonselect/>
+      <orientation>vertical</orientation>
+      <onleft>146</onleft>
+    </control>
+  </control>
+  </controls>
+</window>
