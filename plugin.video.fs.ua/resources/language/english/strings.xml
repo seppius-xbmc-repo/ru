@@ -1,0 +1,21 @@
+<strings>
+    <string id="Items per page">Items per page</string>
+    <string id="Download Path">Download Path</string>
+    <string id="30001">Sort by</string>
+    <string id="30002">Login</string>
+    <string id="30003">Password</string>
+    <string id="30004">Autoplay next</string>
+    <string id="30005">Use flv files for playback</string>
+
+    <string id="40001">Download file</string>
+    <string id="40002">Destination folder</string>
+    <string id="40003">Downloading the file</string>
+    <string id="40004">FS.UA — download completed</string>
+    <string id="40005">FS.UA — failed to download</string>
+    <string id="40006">Mb</string>
+
+    <string id="50001">Add to fs.ua favorites</string>
+    <string id="50002">Add to fs.ua watch list</string>
+    <string id="50003">Remove from fs.ua favorites</string>
+    <string id="50004">Remove from fs.ua watch list</string>
+</strings>

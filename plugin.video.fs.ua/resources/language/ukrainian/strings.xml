@@ -1,0 +1,14 @@
+<strings>
+    <string id="30001">Сортувати за</string>
+    <string id="30002">Користувач</string>
+    <string id="30003">Пароль</string>
+    <string id="30004">Програвати наступне</string>
+    <string id="30005">Відтворювати у форматі flv</string>
+
+    <string id="40001">Завантажити файл</string>
+    <string id="40002">Куди завантажувати?</string>
+    <string id="40003">Завантаження файлу</string>
+    <string id="40004">FS.UA — завантаження завершено</string>
+    <string id="40005">FS.UA — не вдалося завантажити</string>
+    <string id="40006">МБ</string>
+</strings>

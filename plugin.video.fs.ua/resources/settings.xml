@@ -1,0 +1,28 @@
+<settings>
+    <category label="General">
+        <setting id="Site URL" type="text" label="Site URL" default="fs.to"/>
+        <setting id="Proxy URL" type="text" label="Proxy URL"/>
+        <setting id="Download Path" type="folder" label="Download Path"/>
+        <setting id="Sort by" type="enum" label="30001" default="2" values="Latest activity|Rating|Year|Popularity|Trending"/>
+        <setting id="Show hidden materials" type="bool" label="Show hidden materials" default="false"/>
+        <setting id="Autoplay next" type="bool" label="30004" default="false"/>
+        <setting id="Load main page items" type="bool" label="Load main page items" default="true"/>
+        <setting id="Use flv files for playback" type="bool" label="30005" default="false"/>
+        <setting id="Show progress" type="bool" label="Show progress" default="false"/>
+        <setting type="sep"/>
+        <setting id="Login" type="text" label="30002"/>
+        <setting id="Password" type="text" label="30003" option="hidden"/>
+        <setting id="logout" type="action" label="Logout" action="RunPlugin(plugin://plugin.video.fs.ua/?mode=logout)"/>
+    </category>
+    <category label="Video filters">
+        <setting id="mood" type="labelenum" label="Mood" default="Any" values="Any|comedy|horror|action|soul"/>
+        <setting id="vproduction" type="labelenum" label="Production" default="Any" values="Any|our|foreign"/>
+        <setting id="quality" type="labelenum" label="Quality" default="Any" values="Any|hight|good|middle"/>
+        <setting id="translation" type="labelenum" label="Translation" default="Any"
+                 values="Any|proffesional|amateur|double"/>
+    </category>
+    <category label="Audio filters">
+        <setting id="genre" type="labelenum" label="Genre" default="Any" values="Any|pop|hard|dance|soul"/>
+        <setting id="aproduction" type="labelenum" label="Production" default="Any" values="Any|our|foreign"/>
+    </category>
+</settings>
