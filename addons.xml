@@ -317,6 +317,282 @@ Audio sources are
   </extension>
 </addon>
 
+<addon id="plugin.video.175h.net"
+       name="175h.net"
+       version="0.3"
+       provider-name="x86demon">
+    <requires>
+        <import addon="xbmc.python" version="2.1.0"/>
+        <import addon="script.module.beautifulsoup"/>
+        <import addon="script.module.simplejson"/>
+        <import addon="script.module.simple.downloader"/>
+    </requires>
+    <extension point="xbmc.python.pluginsource"
+               provides="video"
+               library="default.py">
+        <provides>video</provides>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <summary>Просмотр контента с 175h.net</summary>
+        <platform>all</platform>
+    </extension>
+</addon>
+
+<addon id="plugin.video.5-tv.ru"
+       name="Пятый канал"
+       version="1.0.2"
+       provider-name="Silen">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Сериалы (serialu.net)</summary>
+    <description>Пятый канал, Видеоархив программ (5-tv.ru).</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.720hd.ru"
+       name="[COLOR FF00FF00]Кино портал HD ([/COLOR][COLOR FFFFF000]720hd.ru[/COLOR][COLOR FF00FF00])[/COLOR]"
+       version="1.1.1"
+       provider-name="Silen">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>my-hit.ru</summary>
+    <description>HD (720p) фильмы онлайн (ВКонтакте + RuVideo).</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.9tv.co.il"
+       name="[COLOR FF00FF00]Девятый канал - Израиль ([/COLOR][COLOR FFFFF000]9tv.co.il[/COLOR][COLOR FF00FF00])[/COLOR]"
+       version="1.0.1"
+       provider-name="Silen">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>9tv.co.il</summary>
+    <description>Девятый канал - Израиль.</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.allserials.tv"
+       name="[COLOR FF00FF00]Сериалы ([/COLOR][COLOR FFFFF000]allserials.tv[/COLOR][COLOR FF00FF00])[/COLOR]"
+       version="1.0.10"
+       provider-name="Silen">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>allserials.tv</summary>
+    <description>ALLSERIALS.TV - Смотреть бесплатно сериалы онлайн!
+Только на нашем ресурсе Вы с легкостью сможете отыскать интересующий вас сериал онлайн, все материалы можно смотреть бесплатно. Многие сериалы, представленные на нашем сайте, являются признанными русскими и зарубежными хитами.
+</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.arjlover.net"
+       name="arjlover.net"
+       version="0.0.2"
+       provider-name="x86demon">
+    <requires>
+        <import addon="xbmc.python" version="2.1.0"/>
+        <import addon="script.module.beautifulsoup"/>
+    </requires>
+    <extension point="xbmc.python.pluginsource" provides="video" library="default.py">
+        <provides>video</provides>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <summary>На этом сервере собраны советские и пост-советские мультфильмы, аудио-сказки, фильмы и детские фильмы на которых выросли многие поколения моих соотечественников.</summary>
+        <description>На этом сервере собраны советские и пост-советские мультфильмы, аудио-сказки, фильмы и детские фильмы на которых выросли многие поколения моих соотечественников.</description>
+        <platform>all</platform>
+    </extension>
+</addon>
+
+<addon id="plugin.video.arrr.tv"
+       name="Arrr.tv"
+       version="1.0.4"
+       provider-name="x86demon">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+    <!--<import addon="script.module.simplejson"/>-->
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Смотрите сериалы и фильмы в высоком качестве на ARRR.tv</summary>
+    <description>Смотрите сериалы и фильмы в высоком качестве на ARRR.tv</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.cScVOD"
+       name="[COLOR FF00FF00]cScVOD[/COLOR]"
+       version="1.5.5"
+       provider-name="CSC">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource" provides="video" library="addon.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>cScVOD</summary>
+    <description>
+БОЛЕЕ 70 САЙТОВ В ОДНОМ ПЛАГИНЕ!Все стоящие русскоязычные сайты с фильмами/мультиками/сериалами и т.д. В ОДНОМ АДДОНЕ. ОФициальный форум - cscvod.ru
+    </description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.cccp.tv"
+       name="CCCP TV"
+       version="1.0.5"
+       provider-name="HD-Lab Team">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Советское ТВ</summary>
+    <description>Советское ТВ</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.cinema-hd.ru"
+       name="cinema-hd.ru"
+       version="0.0.15"
+       provider-name="NuisMons">
+  <requires>
+
+    <import addon="xbmc.python" version="2.1.0" />
+	<import addon="script.module.beautifulsoup"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>cinema-hd.ru</summary>
+    <description>cinema-hd.ru</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.cinema.mosfilm.ru"
+
+	name="[COLOR FF00FF00]Мосфильм ([/COLOR][COLOR FFFFF000]cinema.mosfilm.ru[/COLOR][COLOR FF00FF00])[/COLOR]"
+
+	version="1.1.2"
+
+	provider-name="Silen">
+  <requires>
+	<import addon="xbmc.python" version="2.1.0"/>
+    	<import addon="plugin.video.youtube"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Мосфильм (cinema.mosfilm.ru)</summary>
+    <description>Иинтернет-кинотеатр ФГУП «Киноконцерн «Мосфильм» (cinema.mosfilm.ru).</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.cn.ru.tv"
+       name="[COLOR FF00FF00]Электронный город: ТВ ([/COLOR][COLOR FFFFF000]cn.ru/tv[/COLOR][COLOR FF00FF00])[/COLOR]"
+       version="1.0.3"
+       provider-name="Silen">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>my-hit.ru</summary>
+    <description>Электронный город: ТВ.</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.cnews.tv"
+       name="CNEWS.TV"
+       version="1.0.5"
+       provider-name="HD-Lab Team">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Смотрите видео с CNEWS.TV</summary>
+    <description>Смотрите свежее видео с сайта http://tv.cnews.ru</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.const.kinozal.tv"
+       name="kinozal.tv by const"
+       version="1.1.2"
+       provider-name="nuismons">
+	<requires>
+        <import addon="xbmc.python" version="2.1.0"/>
+        <import addon="script.module.beautifulsoup"/>
+		<import addon="script.module.torrent.ts"/>
+	</requires>
+    <extension point="xbmc.python.pluginsource" provides="video" library="default.py">
+        <provides>video</provides>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <summary>const.kinozal.tv</summary>
+        <description>kinozal.tv by const</description>
+        <platform>all</platform>
+    </extension>
+</addon>
+
 <addon id="repository.bond" name="Eugene Bond XBMC Add-ons" version="1.0.1" provider-name="Eugene Bond">
 	<extension point="xbmc.addon.repository" name="Eugene Bond XBMC Add-ons">
 		<info compressed="false">https://github.com/Eugene-Bond/xmbc-plugins/raw/master/addons.xml</info>
