@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<strings>
+  <string id="30000">Русский</string>
+  <string id="30001">Прочее</string>
+  <string id="30002">Нет названия станции</string>
+  <string id="30003">Город не указан</string>
+  <string id="30004">Нет описания</string>
+  <string id="30005">Неизвестный жанр</string>
+</strings>
