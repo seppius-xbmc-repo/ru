@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="repository.hal9000" name="HAL9000 Add-on Repository" version="1.0.0" provider-name="HAL9000">
+    <extension point="xbmc.addon.repository" name="HAL9000 Add-on Repository">
+        <info compressed="false">https://github.com/xbmc-addon/repository.hal9000/raw/master/addons.xml</info>
+        <checksum>https://github.com/xbmc-addon/repository.hal9000/raw/master/addons.xml.md5</checksum>
+        <datadir zip="true">https://github.com/xbmc-addon/repository.hal9000/raw/master/repo</datadir>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <summary lang="en">Install HAL9000 Addons</summary>
+        <description lang="en">Download and install addons by HAL9000</description>
+        <summary lang="ru">Репозиторий HAL9000</summary>
+        <description lang="ru">Скачивание и установка плагинов от HAL9000</description>
+        <platform>all</platform>
+    </extension>
+</addon>
