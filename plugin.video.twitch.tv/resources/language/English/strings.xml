@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<strings>
+    <!-- Category strings -->
+	<string id="30000">Settings</string>
+    <string id="30001">Games sorting</string>
+	<string id="30002">By Name</string>
+	<string id="30003">By Rating</string>
+	<string id="30004">Channels sorting</string>
+	
+	<string id="30010">Favorites</string>
+	<string id="30011">Subscriptions</string>
+	<string id="30012">Featured</string>
+	<string id="30013">Games</string>
+</strings>

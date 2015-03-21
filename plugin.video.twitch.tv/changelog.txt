@@ -1,0 +1,9 @@
+[B]TODO:[/B]
+- Add archives
+
+[B]Version 0.0.7[/B]
+- Add icons for channels
+- New addon icon
+
+[B]Version 0.0.6[/B]
+- Add en language

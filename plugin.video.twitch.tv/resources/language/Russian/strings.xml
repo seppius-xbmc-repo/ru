@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<strings>
+    <!-- Category strings -->
+	<string id="30000">Настройки</string>
+    <string id="30001">Сортировка игр</string>
+	<string id="30002">по имени</string>
+	<string id="30003">по рейтингу</string>
+	<string id="30004">Сортировка каналов</string>
+	
+	<string id="30010">Избранное</string>
+	<string id="30012">В центре внимания</string>
+	<string id="30011">Подписки</string>
+	<string id="30013">Игры</string>
+</strings>
