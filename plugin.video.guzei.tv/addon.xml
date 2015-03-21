@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="plugin.video.guzei.tv"
+       name="GUZEI.TV"
+       version="1.0.8"
+       provider-name="HD-Lab Team">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Смотрите online-видео с сайта http://guzei.com/live/tv/</summary>
+    <description>Смотрите online-видео с сайта http://guzei.com/live/tv/</description>
+    <platform>all</platform>
+  </extension>
+</addon>
