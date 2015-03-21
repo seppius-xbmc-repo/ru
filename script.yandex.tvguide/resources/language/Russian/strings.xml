@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<strings>
+    <string id="30000">Нет описания</string>
+    <string id="30001">[B]Загрузка...[/B]</string>
+
+    <string id="30100">Главное</string>
+    <string id="30101">Источник</string>
+    <string id="30102">Показать каналы из категории</string>
+    <string id="30103">XMLTV file</string>
+</strings>
+
