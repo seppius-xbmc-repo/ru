@@ -470,6 +470,25 @@ Audio sources are
   </extension>
 </addon>
 
+<addon id="plugin.video.TorPoisk"
+       name="TorPoisk"
+       version="0.9.7"
+       provider-name="TDW">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+    <import addon="script.module.torrent.ts"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+            library="default.py">
+        <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>TorPoisk</summary>
+    <description>Poisk torrentov</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
 <addon id="plugin.video.allserials.tv"
        name="[COLOR FF00FF00]Сериалы ([/COLOR][COLOR FFFFF000]allserials.tv[/COLOR][COLOR FF00FF00])[/COLOR]"
        version="1.0.10"
@@ -1667,6 +1686,308 @@ RuTube - отличная стартовая площадка для незав�
         <description>Видеоархивы stepashka.com</description>
         <platform>all</platform>
     </extension>
+</addon>
+
+<addon id="plugin.video.teleplus.ru"
+       name="[COLOR FF00FF00]Фильмы ([/COLOR][COLOR FFFFF000]TelePlus.ru[/COLOR][COLOR FF00FF00])[/COLOR]"
+       version="1.0.4"
+       provider-name="TelePlus.ru">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>TelePlus.ru</summary>
+    <description>Онлайн-кинотеатр teleplus.ru – развлекательная концепция будущего. Он удачно соединяет в себе все достоинства обычного кинотеатра с экономией и домашним уютом. Более 5000 фильмов и полмиллиона аудиотрэков по символической цене - 199 руб в месяц.</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.telepoisk.com"
+       name="[COLOR FF00FF00]Онлайн ТВ + Архив ([/COLOR][COLOR FFFFF000]telepoisk.com[/COLOR][COLOR FF00FF00])[/COLOR]"
+       version="1.0.2"
+       provider-name="Silen">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Онлайн ТВ + Архив (telepoisk.com)</summary>
+    <description>Русское телевидение онлайн.</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.telik.in.ua"
+       name="[COLOR FF00FF00]ТВ Онлайн ([/COLOR][COLOR FFFFF000]telik.in.ua[/COLOR][COLOR FF00FF00])[/COLOR]"
+       version="1.0.4"
+       provider-name="Silen">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>nogomya.ch</summary>
+    <description>Медиа портал с онлайн телевидинием.</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.test"
+       name="[COLOR FF00FF00]*** TEST ***[/COLOR]"
+       version="1.0.0"
+       provider-name="Silen">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>TEST</summary>
+    <description>XBMC test plugin
+</description>
+    <platform>all</platform>
+    <broken>Test of disabling plugin</broken>
+  </extension>
+</addon>
+
+<addon id="plugin.video.torrent.gnu"
+       name=".torrent Player"
+       version="0.3.0"
+       provider-name="nuismons">
+    <requires>
+        <import addon="xbmc.python" version="2.1.0" />
+		<import addon="script.module.torrent.ts"/>
+		<import addon="script.module.beautifulsoup"/>
+    </requires>
+    <extension point="xbmc.python.pluginsource" provides="video" library="default.py">
+        <provides>video</provides>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <summary>Просмотр Торрент файлов</summary>
+        <description>Тестирование TorrentStream</description>
+        <platform>all</platform>
+    </extension>
+</addon>
+
+<addon id="plugin.video.torrent.tv"
+       name="Torrent-TV.RU"
+       version="2.1.2"
+       provider-name="Const86, -=St.Anger=-">
+    <requires>
+		<import addon="script.module.torrent.ts"/>
+		<import addon="script.module.beautifulsoup"/>
+		<import addon="xbmc.python" version="2.1.0" />
+    </requires>
+    <extension point="xbmc.python.pluginsource" provides="video" library="default.py">
+        <provides>video</provides>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <summary>Torrent-TV.RU</summary>
+        <description>Просмотр ТВ через Torrent Stream</description>
+        <platform>all</platform>
+    </extension>
+</addon>
+
+<addon id="plugin.video.torrenter" name="Torrenter" version="1.2.6" provider-name="vadim.skorba@gmail.com">
+    <requires>
+        <import addon="xbmc.python" version="2.1.0"/>
+    </requires>
+    <extension point="xbmc.python.pluginsource" provides="video" library="default.py">
+        <provides>video</provides>
+    </extension>
+    <extension point="xbmc.addon.repository" name="Torrenter Repository">
+        <info compressed="false">https://api.bitbucket.org/1.0/repositories/vadimskorba/torrenter/raw/default/addons.xml</info>
+        <checksum>https://api.bitbucket.org/1.0/repositories/vadimskorba/torrenter/raw/default/addons.xml.md5</checksum>
+        <datadir zip="true">https://api.bitbucket.org/1.0/repositories/vadimskorba/torrenter/raw/default/</datadir>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <platform>all</platform>
+        <summary lang='en'>Plugin helps you to watch videos from p2p torrent-networks, without full predownload.</summary>
+		<description lang='en'>Plugin helps you to watch videos from p2p torrent-networks, without full predownload. Requires installed 'python-libtorrent' library (read README.TXT)</description>
+        <disclaimer lang='en'>GNU GPLv3 http://www.gnu.org/licenses/</disclaimer>
+        <summary lang='ru'>Плагин позволяет просматривать видео из пиринговых торрент-сетей, не дожидаясь полного скачивания.</summary>
+		<description lang='ru'>Плагин позволяет просматривать видео из пиринговых торрент-сетей, не дожидаясь полного скачивания. Требует установленной библиотеки 'python-libtorrent' (см. README.TXT)</description>
+        <disclaimer lang='ru'>GNU GPLv3 http://www.gnu.org/licenses/</disclaimer>
+    </extension>
+</addon>
+
+<addon id="plugin.video.ts-tv.ru"
+       name="TS-TV.RU"
+       version="1.0.7"
+       provider-name="HD-Lab Team">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Телеканалы сайта http://ts-tv.ru/</summary>
+    <description>Первое Альтернативное Концептуальное Телевидение "ТВОЙ СТРОЙ ТВ", Многоканальное, Круглосуточное.</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.turbofilm.tv" name="Turbofilm.TV" version="1.0.7" provider-name="HD-Lab Team">
+	<requires>
+		<import addon="xbmc.python" version="2.1.0"/>
+	</requires>
+	<extension point="xbmc.python.pluginsource" provides="video" library="default.py">
+		<provides>video</provides>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary>Смотрите видео с сайта http://turbofilm.tv/</summary>
+		<description>Смотрите видео с сайта http://turbofilm.tv/</description>
+		<platform>all</platform>
+	</extension>
+</addon>
+
+<addon id="plugin.video.tushkan.net"
+       name="Tushkan.net"
+       version="0.0.4"
+       provider-name="NuisMons">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0" />
+	<import addon="script.module.beautifulsoup"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Просмотр вмдео онлайн truba.com</summary>
+    <description>Просмотр вмдео онлайн truba.com</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.tv-here.ru"
+       name="TV-HERE.RU"
+       version="1.0.5"
+       provider-name="HD-Lab Team">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Смотрите телеканалы с сайта http://tv-here.ru</summary>
+    <description>Смотрите телеканалы с сайта http://tv-here.ru</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.tvigle.ru"
+       name="Tvigle"
+       version="1.0.6"
+       provider-name="HD-Lab Team">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Клипы, музыка, комедии, фильмы, мультфильмы. Бесплатное развлекательное видео на tvigle.ru</summary>
+    <description>Tvigle.ru — это развлекательный портал с качественным видео. Социальная сеть Tvigle объединяет профессионалов и любителей короткометражного видео.
+На нашем сайте вы можете увидеть видео различных жанров: начиная от сериалов, серьезных форматов, заканчивая музыкальными клипами и арт-хаусом. Именно здесь всем творческим людям предоставляется возможность продемонстрировать свои таланты. Ведь неважно кто ты — важны твои идеи и работы.
+Сегодня Tvigle.ru — это десятки тысяч посетителей в день, сотни тысяч просмотров видео и множество талантливых авторских работ.</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.tvisio.tv"
+       name="[COLOR FF00FF00]Онлайн ТВ + Архив ([/COLOR][COLOR FFFFF000]tvisio.tv[/COLOR][COLOR FF00FF00])[/COLOR]"
+       version="1.0.3"
+       provider-name="Silen">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Онлайн ТВ + Архив (tvisio.tv)</summary>
+    <description>Русское телевидение онлайн.</description>
+    <platform>all</platform>
+    <broken>Сайт закрыт. Плагин не работает.</broken>
+  </extension>
+</addon>
+
+<addon id="plugin.video.tvjam.ru"
+       name="TVJAM.RU"
+       version="1.0.5"
+       provider-name="HD-Lab Team">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Смотрите видео с сайта http://tvjam.ru/</summary>
+    <description>Смотрите видео с сайта http://tvjam.ru/</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.tvrain.ru" name="Телеканал ДОЖДЬ" version="1.0.2" provider-name="HD-Lab Team">
+  <requires><import addon="xbmc.python" version="2.1.0"/></requires>
+  <extension point="xbmc.python.pluginsource" provides="video" library="default.py"><provides>video</provides></extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>ДОЖДЬ — настоящий живой телеканал</summary>
+    <description>Наш девиз «Дайте телевидению еще один шанс!».
+Мы — телеканал для неравнодушных людей с активной гражданской позицией и острым чувством сопричастности, не утративших вкус к жизни, успешных, добившихся многого и не очерствевших. Мы для профессионалов в разных областях.
+Вещание 24 часа в сутки, более 50% времени — прямой эфир.
+ДОЖДЬ это
+новости о том, что происходит на самом деле;
+аналитика живым человеческим языком;
+дискуссии и круглые столы с теми, кто нам интересен, о том, что нам важно;
+авторские программы, концерты, художественные чтения и эксперименты;
+документальные фильмы на остросоциальные темы;
+видео-арт;
+социальные проекты;
+истории о людях и событиях, изменивших мир и повлиявших на нас.</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.twitch.tv" name="Twitch.tv" version="0.1.9" provider-name="NuisMons">
+  <requires><import addon="xbmc.python" version="2.1.0"/></requires>
+  <extension point="xbmc.python.pluginsource" provides="video" library="default.py"><provides>video</provides></extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>TwitchTV - является крупнейшим в мире видео вещания игр сообществом.</summary>
+    <description>TwitchTV показывает видео от главных играющих лиц, игроков, турниров, лиг и комментария, в дополнение к самым активным и интересным обсуждениям вокруг видеоигр.</description>
+    <platform>all</platform>
+  </extension>
 </addon>
 
 <addon id="repository.bond" name="Eugene Bond XBMC Add-ons" version="1.0.1" provider-name="Eugene Bond">
