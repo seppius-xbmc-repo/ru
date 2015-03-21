@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<settings>
+ <category label="Настройки">
+	<setting id="download_path" type="folder" label="Папка для .torrent файлов" default="" />
+	<setting id="port_path" type="file" label="Местонахождение файла acestream.port" default="" />
+  </category>
+</settings>
