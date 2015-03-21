@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="plugin.video.nogomya.ch"
+       name="[COLOR FF00FF00]НОГОМЯЧ ([/COLOR][COLOR FFFFF000]nogomya.ch[/COLOR][COLOR FF00FF00])[/COLOR]"
+       version="1.0.5"
+       provider-name="Silen">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>nogomya.ch</summary>
+    <description>НОГОМЯЧ. Футбол без перерыва.</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
