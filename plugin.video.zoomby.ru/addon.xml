@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="plugin.video.zoomby.ru" name="ZOOMBY" version="2.0.2" provider-name="ОАО «ВебТВ»">
+  <requires><import addon="xbmc.python" version="2.1.0"/></requires>
+  <extension point="xbmc.python.pluginsource" provides="video" library="default.py"><provides>video</provides></extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Zoomby - пересмотри свой взгляд на телевидение</summary>
+    <description>Приветствуем вас на сайте Zoomby.ru - одном из крупнейших развлекательных порталов российского интернета. Здесь вы можете онлайн, легально и бесплатно смотреть любимые фильмы, сериалы, новости, музыкальные клипы, шоу и другие телевизионные передачи.</description>
+    <platform>all</platform>
+  </extension>
+</addon>
