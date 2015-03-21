@@ -1,0 +1,11 @@
+[B]Version 1.0.3[/B]
+- New icon
+
+[B]Version 1.0.2[/B]
+- Autoinstall
+
+[B]Version 1.0.1[/B]
+- Add encoding option
+
+[B]Version 1.0.0[/B]
+- Initial version
