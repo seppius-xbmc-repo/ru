@@ -1,0 +1,6 @@
+# Netscape HTTP Cookie File
+# http://www.netscape.com/newsref/std/cookie_spec.html
+# This is a generated file!  Do not edit.
+
+.www.cn.ru	TRUE	/tv/	FALSE	1377343570	channels	10338258%2C10338245%2C10338246%2C
+tvisio.tv	FALSE	/	FALSE	1345937684	remember_user_token	BAhbB1sGaQL1AkkiIiQyYSQxMCRCTmt1LlBiRlpCWklkOFhWSUhxQmNlBjoGRVQ%3D--8a202ebf7e4b4d27d6dfff6eacc621373de4a16f
