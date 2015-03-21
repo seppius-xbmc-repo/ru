@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings>
+	<!-- General -->
+	<category label="30100">
+		<setting label="30101" type="bool" id="search_originaltitle" default="true"/>
+		<setting label="30102" type="labelenum" values="IMDB|Kinopoisk" id="RatingSource" default="IMDB"/>
+		<setting label="30103" type="bool" id="posters_from_kinopoisk" default="true"/>
+		<setting label="30104" type="bool" id="rus_actor_names" default="false"/>
+		<setting type="sep" />
+		<setting label="30105" type="bool" id="search_imdb_ID" default="true"/>
+		<setting label="30106" type="bool" id="use_world_premier" default="true" enable="eq(-1,true)"/>
+		<setting label="30107" type="bool" id="google_search" default="false" enable="eq(-2,true)"/>
+		<setting label="30108" type="bool" id="fanart" default="true" enable="eq(-3,true)"/>
+		<setting label="30109" type="bool" id="tmdb_poster" default="true" enable="eq(-4,true)"/>
+		<setting label="30110" type="bool" id="tmdb_set" default="true" enable="eq(-5,true)"/>
+		<setting label="tmdblang" type="text" id="language" default="ru" visible="false"/>
+	</category>
+	<category label="30200" >
+		<setting label="30201" type="bool" id="download_trailer" default="true"/>
+		<setting type="sep"/>
+		<setting label="30202" type="bool" id="GetAnyVideo" default="true" visible="eq(-2,true)"/>
+		<setting label="30203" type="enum" lvalues="30250|30251|30252|30253" id="HdTrailerMaxQ" default="2" visible="eq(-3,true)"/>	
+		<setting label="30204" type="enum" lvalues="30250|30251|30252|30253" id="SdTrailerMaxQ" default="3" visible="eq(-4,true)"/>		
+		<setting label="30205" type="enum" lvalues="30260|30261" id="TrailerPriority" default="0" visible="eq(-5,true)"/>		
+	</category>
+</settings>
