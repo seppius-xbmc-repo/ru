@@ -1,0 +1,7 @@
+<?xml version="2.0" encoding="utf-8" standalone="yes"?>
+<settings>
+    <category label="32001">
+        <setting id="usr_log" type="text" label="User Login" default=""/>
+        <setting id="usr_pwd" type="text" label="Password" option="hidden" enable="!eq(-1,)" default=""/>
+    </category>
+</settings>
