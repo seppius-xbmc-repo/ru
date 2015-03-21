@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<settings>
+	<setting id="username" label="Логин" type="text" default="" />
+	<setting id="password" label="Пароль" type="text" option="hidden" default="" />
+	<setting id="limit" type="enum" label="Длинна списка фильмов и сериалов" values="10|20|30|40|50" default="2" />
+</settings>
