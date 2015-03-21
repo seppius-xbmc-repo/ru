@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="plugin.video.cinema.mosfilm.ru"
+       
+	name="[COLOR FF00FF00]Мосфильм ([/COLOR][COLOR FFFFF000]cinema.mosfilm.ru[/COLOR][COLOR FF00FF00])[/COLOR]"
+       
+	version="1.1.2"
+       
+	provider-name="Silen">
+  <requires>
+	<import addon="xbmc.python" version="2.1.0"/>
+    	<import addon="plugin.video.youtube"/>	
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Мосфильм (cinema.mosfilm.ru)</summary>
+    <description>Иинтернет-кинотеатр ФГУП «Киноконцерн «Мосфильм» (cinema.mosfilm.ru).</description>
+    <platform>all</platform>
+  </extension>
+</addon>
