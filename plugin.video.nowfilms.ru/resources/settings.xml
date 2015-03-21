@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>  
+<settings>        <!-- General -->    	
+	<setting label="30651" type="lsep"/> 
+	<setting id="Login" type="text" label="Login" default=""/>	
+	<setting label="30651" type="lsep"/> 
+	<setting id="Password" type="text" label="Password" option="hidden" default=""/>  
+	<setting label="30651" type="lsep"/>   
+	<setting label="Сортировка по: " type="enum" id="sortval" values="алфавиту|дате|рейтингу КиниПоиск-а"/>
+</settings> 
