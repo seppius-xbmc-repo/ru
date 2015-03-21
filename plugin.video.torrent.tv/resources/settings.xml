@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<settings>
+	<category label="Настройки">
+		<setting id="login" type="text" label="Логин" default="" />
+		<setting id="password" type="text" label="Пароль" option="hidden" default="" />
+		<setting id="logopack" type="bool" label="Использовать внешние лого" default="false"/>
+		<setting id="adult" type="bool" label="Скрывать каналы для взрослых" default="false"/>
+		<setting id="archive" type="number" label="Количество дней в архиве" default="30" />
+		<setting id="view" type="enum" label="Вид плейлиста для фильмов" values="Список|Широкий список|Эскизы|Карусель постеров|Фанарт|Информация|Информация 2|Информация 3" />
+	</category>
+	<category label="Настройки программы">
+		<setting id="fanart" type="bool" label="Скрыть фоновую картинку" default="false"/>
+		<setting id="disable" type="bool" label="Скрыть фанарт" default="false"/>
+		<setting id="description" type="bool" label="Скрыть описание программы" default="false"/>
+		<setting id="ch_color" type="text" label="Цвет канала" default="B77D00" />
+		<setting id="prog_color" type="text" label="Цвет передачи" default="FFFFFF" />
+		<setting id="time_color" type="text" label="Цвет времени" default="0084FF" />
+		<setting id="ch_b" type="bool" label="Выделить жирным канал" default="false"/>
+		<setting id="prog_b" type="bool" label="Выделить жирным программу" default="false"/>
+		<setting id="ch_i" type="bool" label="Выделить курсивом канал" default="false"/>
+		<setting id="prog_i" type="bool" label="Выделить курсивом программу" default="false"/>
+		<setting id="prog_str" type="bool" label="Канал и программа в одну строку" default="false"/>
+	</category>
+</settings>
