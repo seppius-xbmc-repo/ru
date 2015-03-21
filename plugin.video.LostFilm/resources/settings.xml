@@ -1,0 +1,7 @@
+<settings>
+    <setting id="login" type="text" label="30001" default="" />
+    <setting id="password" type="text" label="30002" option="hidden" default="" />
+    <setting id="Engine" type="enum" label="30005" default="0" values="TSengine API|Libtorrents"/>
+    <setting id="immunicity" type="bool" label="Auto-unblocking via Immunicity" default="false" />
+    <setting id="DownloadDirectory" type="folder" label="30008" default=""/>
+</settings>
