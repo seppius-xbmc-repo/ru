@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="repository.lambda" name="lambda's XBMC Addons" version="1.0.5" provider-name="lambda">
+	<extension point="xbmc.addon.repository" name="lambda's XBMC Addon Repository">
+		<info compressed="false">http://raw.github.com/lambda81/lambda-xbmc-addons/master/addons.xml</info>
+		<checksum>http://raw.github.com/lambda81/lambda-xbmc-addons/master/addons.xml.md5</checksum>
+		<datadir zip="true">http://raw.github.com/lambda81/lambda-xbmc-addons/master/repo</datadir>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary lang="en">Install lambda's Addons</summary>
+		<summary lang="el">Εγκαταστήστε τα πρόσθετα του lambda</summary>
+		<description lang="en">Download and install addons by lambda</description>
+		<description lang="el">Λήψη και εγκατάσταση προσθέτων από τον lambda</description>
+		<platform>all</platform>
+	</extension>
+</addon>
+
