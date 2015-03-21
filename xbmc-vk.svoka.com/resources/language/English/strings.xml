@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<strings>
+        <string id="30001">VKontakte email</string>
+        <string id="30002">Password</string>
+        <string id="30003">Search video</string>
+        <string id="30004">If browser didn't show up, open</string>
+        <string id="30005">-- New VKontakte video search --</string>
+        <string id="30006">Max history depth</string>
+        <string id="30007">Search history</string>
+        <string id="30008">-- New VKontakte audio search --</string>
+        <string id="30009">My music</string>
+        <string id="30010">Top grossing movies</string>
+        <string id="30011">TV Shows</string>
+        <string id="30012">My videos</string>
+        <string id="30013">All Hail Shchvova</string>
+        <string id="30014">Season %d, Episode %d</string>
+        <string id="30015">Episode %s</string>
+        <string id="30016">Hyped artists</string>
+        <string id="30017">Only HD videos</string>
+        <string id="30018">Sort videos by length</string>
+        <string id="30019">Show only 'HD' results</string>
+        <string id="30020">Log out from VK</string>
+        <string id="30021">-- Home --</string>
+
+        <string id="30023">Recomended music</string>
+        <string id="30024">Popular music</string>
+        
+        <string id="30033">Downloads path</string>
+        <string id="30034">Download/Open:</string>
+        <string id="30035">Download:</string>
+        <string id="30036">Select file name</string>
+        <string id="30037">Incorrect setup!</string>
+        <string id="30038">Setup "Download path" option to proceed</string>
+        <string id="30039">Play:</string>
+        <string id="30040">Download command</string>
+
+        <string id="30041">Show download opiton</string>
+        <string id="30042">Groups Video</string>
+        <string id="30043">Friends</string>
+        <string id="30044">-- Next Page (%d) --</string>
+
+        <string id="30045">Auth token</string>
+        <string id="30046">-- Previous Page (%d) --</string>
+
+
+</strings>

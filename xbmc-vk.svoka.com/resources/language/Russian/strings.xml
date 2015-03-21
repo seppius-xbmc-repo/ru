@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<strings>
+        <string id="30001">E-mail или Логин ВКонтакте</string>
+        <string id="30002">Пароль</string>
+        <string id="30003">Поиск видео</string>
+        <string id="30004">Если браузер не запустился, откройте</string>
+        <string id="30005">-- Новый поиск видео ВКонтакте --</string>
+        <string id="30006">Максимум запросов в истории</string>
+        <string id="30007">История поисков</string>
+        <string id="30008">-- Новый поиск музыки ВКонтакте --</string>
+        <string id="30009">Моя музыка</string>
+        <string id="30010">Кассовые фильмы</string>
+        <string id="30011">Сериалы</string>
+        <string id="30012">Мои видео</string>
+        <string id="30013">Слава Щвове! svoka.com</string>
+        <string id="30014">Сезон %s, серия %s</string>
+        <string id="30015">Серия %s</string>
+        <string id="30016">Популярные исполнители</string>
+        <string id="30017">Только HD видео</string>
+        <string id="30018">Сортировка видео по длинне</string>        
+        <string id="30019">То же, только в HD</string>
+        <string id="30020">Выйти из ВК</string>
+        <string id="30021">-- Главное меню --</string>
+
+        <string id="30023">Рекомендованная музыка</string>
+        <string id="30024">Популярная музыка</string>
+    
+        <string id="30033">Сохранять файлы в...</string>
+        <string id="30034">Скачать/Открыть:</string>
+        <string id="30035">Скачать:</string>
+        <string id="30036">Выберите имя файла</string>
+        <string id="30037">Настройте путь для закачек!</string>
+        <string id="30038">Выберите папку в настройке "Сохранять файлы в..."</string>
+        <string id="30039">Смотреть:</string>
+        <string id="30040">Команда скачивания</string>
+        <string id="30041">Показывать вариант "скачать"</string>
+        <string id="30042">Группы</string>
+        <string id="30043">Друзья</string>
+        <string id="30044">-- Следуящая Страница (%d) --</string>
+        <string id="30045">Ключ авторизации</string>
+        <string id="30046">-- Предадущая Страница (%d) --</string>
+</strings>

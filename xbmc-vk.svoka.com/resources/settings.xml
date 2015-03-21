@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<settings>
+	<setting id="auth_token" type="text" label="30045" default=""   option="hidden" />
+    <setting id="history"  type="enum" label="30006" default="3" values="5|10|15|20|25|30|40|50|75|100"/>
+    <setting id="hdOnly"   type="bool" label="30017" default="false"/>
+    <setting id="sortLen"  type="bool" label="30018" default="false"/>
+<!--     <setting id="downloads" type="folder"  label="30033" default="" />
+ -->
+     <setting id="downloadCmd" type="text"  label="30040" default="" />
+     <setting id="ShowDownload" type="bool" label="30041" default="true" />
+</settings>
