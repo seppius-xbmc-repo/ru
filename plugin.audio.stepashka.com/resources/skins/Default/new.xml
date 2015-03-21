@@ -1,0 +1,50 @@
+﻿<window>
+
+        <defaultcontrol>3001</defaultcontrol>
+
+        <coordinates>
+
+                <system>1</system>
+
+                <posx>0</posx>
+                <posy>0</posy>
+
+        </coordinates>
+
+        <animation effect="fade" time="250">WindowOpen</animation>
+
+        <animation effect="fade" time="250">WindowClose</animation>
+
+        <controls>
+
+                <control type="group">
+
+                        <posx>230</posx>
+                        <posy>230</posy>
+
+                        <control type="image">
+                                <posx>0</posx>
+                                <posy>0</posy>
+
+                                <width>850</width>
+
+                                <height>300</height>
+                                <texture border="40">OverlayDialogBackground.png</texture>
+
+                        </control>
+                        <control type="textbox" id="3000">
+                                <description>from</description>
+                                <posx>50</posx>
+                                <posy>30</posy>
+                                <width>750</width>
+                                <height>40</height>
+                                <font>font18</font>
+                                <textcolor>FF99D8FF</textcolor>
+                                <align>left</align>
+                                <label>Вводимый текст</label>
+                        </control>
+                        
+
+                </control>
+        </controls>
+</window>
