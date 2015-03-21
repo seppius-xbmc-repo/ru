@@ -395,6 +395,62 @@ Audio sources are
   </extension>
 </addon>
 
+<addon id="plugin.video.IPTV"
+       name="IPTV"
+       version="0.2.0"
+       provider-name="TDW">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+            library="default.py">
+        <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>IPTV</summary>
+    <description>Просмотр Internet TV из плейлиста без проверки на доступность. Плейлисты добавлять в подкаталог Playlists</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.KinoPoisk.ru"
+       name="KinoPoisk"
+       version="1.2.2"
+       provider-name="TDW">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+    <import addon="script.module.torrent.ts"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+            library="default.py">
+        <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>KinoPoisk.ru</summary>
+    <description>Poisk torrentov</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.LostFilm"
+       name="LostFilm"
+       version="0.4.6"
+       provider-name="TDW">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+    <import addon="script.module.torrent.ts"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+            library="default.py">
+        <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>LostFilm</summary>
+    <description>LostFilm for AceStreem and Libtorrent</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
 <addon id="plugin.video.allserials.tv"
        name="[COLOR FF00FF00]Сериалы ([/COLOR][COLOR FFFFF000]allserials.tv[/COLOR][COLOR FF00FF00])[/COLOR]"
        version="1.0.10"
@@ -591,6 +647,445 @@ Audio sources are
         <description>kinozal.tv by const</description>
         <platform>all</platform>
     </extension>
+</addon>
+
+<addon id="plugin.video.debilizator.tv" name="Debilizator.TV" version="1.1.1" provider-name="HD-Lab Team">
+  <requires><import addon="xbmc.python" version="2.1.0"/></requires>
+  <extension point="xbmc.python.pluginsource" library="default.py"><provides>video</provides></extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>http://debilizator.tv/</summary>
+    <description>http://debilizator.tv/</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.debilizator.tva" name="[COLOR FFC85F1C]Debilizator.TVA[/COLOR]" version="0.7.5" provider-name="Silhouette">
+  <requires><import addon="xbmc.python" version="2.1.0"/></requires>
+  <extension point="xbmc.python.pluginsource"  provides="video" library="default.py"><provides>video</provides></extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Live TV and Archives from http://debilizator.tv/</summary>
+    <description>Live TV and Archives from http://debilizator.tv/</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.diafilms"
+       name="[COLOR FF00FF00]Диафильмы ([/COLOR][COLOR FFFFF000]diafilmy.su[/COLOR][COLOR FF00FF00])[/COLOR]"
+       version="1.0.4"
+       provider-name="Silen">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Диафильмы</summary>
+    <description>Диафильмы – возвращение в детство
+Окунитесь в Мир Детства, вспомните магию темной комнаты, горячего диапроектора и скрипа прокручивания пленки на следующий кадр,
+ваш восторг в ту секунду, когда на стене появляется первый кадр, и начинается сказка…
+
+</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.docu.im"
+       name="[COLOR FF00FF00]Документальные фильмы ([/COLOR][COLOR FFFFF000]docu.im[/COLOR][COLOR FF00FF00])[/COLOR]"
+       version="1.0.5"
+       provider-name="Silen">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>my-hit.ru</summary>
+    <description>Документальные фильмы онлайн.</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.e1.ru" name="E1" version="0.0.1" provider-name="HD-Lab Team">
+  <requires><import addon="xbmc.python" version="2.1.0"/></requires>
+  <extension point="xbmc.python.pluginsource" provides="video" library="default.py"><provides>video</provides></extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Видеосюжеты: Новости Екатеринбурга: Екатеринбург Он-Лайн</summary>
+    <description>Видеосюжеты: Новости Екатеринбурга: Екатеринбург Он-Лайн</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.fasttorrent.org"
+       name="fast-torrent.org"
+       version="1.2.3"
+       provider-name="TDW">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+    <import addon="script.module.torrent.ts"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+            library="default.py">
+        <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>fast-torrent.org</summary>
+    <description>fast-torrent.org for TorrentStreem</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.fepcom.net"
+       name="[COLOR FF00FF00]Фильмы ([/COLOR][COLOR FFFFF000]fepcom.net[/COLOR]+[COLOR FF00FF00])[/COLOR]" version="2.0.3"
+       provider-name="Silen">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.script"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Фильмы (fepcom.net)</summary>
+    <description>Русские и зарубежные фильмы предоставляемые сайтом fepcom.net.</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.filmy.net.ua"
+       name="ua-ix"
+       version="0.0.2"
+       provider-name="HD-Lab Team">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Фильмы в UA-IX - это огромная коллекция фильмов</summary>
+    <description>Фильмы в UA-IX - это огромная коллекция фильмов в высоком качестве, бесплатное скачивание по прямым ссылкам, высокая скорость загрузки, скриншоты к фильмам, постоянные обновления, биографии актеров, фото.</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.fs.ua"
+       name="Fs.ua"
+       version="1.9.23"
+       provider-name="x86demon">
+    <requires>
+        <import addon="xbmc.python" version="2.1.0"/>
+        <import addon="script.module.beautifulsoup"/>
+        <import addon="script.module.simplejson"/>
+        <import addon="script.module.simple.downloader"/>
+    </requires>
+    <extension point="xbmc.python.pluginsource"
+               provides="audio, video"
+               library="default.py">
+        <provides>audio video</provides>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <summary>Просмотр контента с brb.to (fs.ua, fs.to)</summary>
+        <description>
+На этом портале вы можете найти и, что самое главное бесплатно скачать последний новинки кино, музыкальные
+файлы, любимые видеоклипы и сериалы.
+        </description>
+        <platform>all</platform>
+    </extension>
+</addon>
+
+<addon id="plugin.video.galileo-online.ru"
+       name="[COLOR FF00FF00]Галилео ([/COLOR][COLOR FFFFF000]galileo-online.ru[/COLOR][COLOR FF00FF00])[/COLOR]"
+       version="1.0.2"
+       provider-name="Silen">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>my-hit.ru</summary>
+    <description>Галилео - телевизионная развлекательно-познавательная программа канала СТС.
+Ведущий — Александр Пушной.
+</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.galileo-tv.ru"
+       name="[COLOR FF00FF00]Галилео ([/COLOR][COLOR FFFFF000]galileo-tv.ru[/COLOR][COLOR FF00FF00])[/COLOR]"
+       version="1.0.2"
+       provider-name="Silen">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>my-hit.ru</summary>
+    <description>Галилео - телевизионная развлекательно-познавательная программа канала СТС.
+Выходит с понедельника по пятницу в 17:30.
+Дайджест «Галилео» можно увидеть по воскресеньям в 11:00.
+Ведущий — Александр Пушной.
+Производит программу ООО «ГалилеоМедиа» по лицензии и при содействии «Victoria Production» и «SevenOne International».
+Наш проект является русским вариантом немецкой программы «Galileo» канала ProSieben.
+</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.guzei.tv"
+       name="GUZEI.TV"
+       version="1.0.8"
+       provider-name="HD-Lab Team">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Смотрите online-видео с сайта http://guzei.com/live/tv/</summary>
+    <description>Смотрите online-видео с сайта http://guzei.com/live/tv/</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.hdkinoklub.ru"
+       name="[COLOR FF00FF00]Кино портал HD ([/COLOR][COLOR FFFFF000]hdkinoklub.ru[/COLOR][COLOR FF00FF00])[/COLOR]"
+       version="1.0.7"
+       provider-name="Silen">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>my-hit.ru</summary>
+    <description>Приветствуем Вас на сайте HDkinoKlub.ru - здесь можно совершенно бесплатно и без регистрации смотреть фильмы, сериалы и мультфильмы онлайн в HD качестве..</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.igru.net.ua"
+       name="[COLOR FF00FF00]Фильмы ([/COLOR][COLOR FFFFF000]fepcom.net[/COLOR][COLOR FF00FF00])[/COLOR]"
+       version="1.1.5"
+       provider-name="Silen">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Фильмы (igru.net.ua)</summary>
+    <description>Русские и зарубежные фильмы предоставляемые сайтом fepcom.net.</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.inetcom.tv" name="[COLOR FF86BA0D]Inetcom.tv[/COLOR]" version="0.3.4" provider-name="Silhouette">
+  <requires><import addon="xbmc.python" version="2.1.0"/></requires>
+  <extension point="xbmc.python.pluginsource"  provides="video" library="default.py"><provides>video</provides></extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Online TV from inetcom.tv</summary>
+    <description>Online TV from inetcom.tv</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.ivi.ru" name="ivi.ru" version="2.5.2" provider-name="ivi.ru (NuisMons)">
+  <requires><import addon="xbmc.python" version="2.1.0"/></requires>
+  <extension point="xbmc.python.pluginsource" provides="video" library="default.py"><provides>video</provides></extension>
+  <extension point="xbmc.addon.metadata">
+	<language>ru</language>
+    <summary>ivi.ru - cмотри любимые фильмы, сериалы, программы, мультфильмы бесплатно и легально.</summary>
+    <description>Приложение интернет-кинотеатра ivi.ru предоставляет доступ к самой большой бесплатной коллекции лицензионного видео российского интернета.
+С помощью приложения ivi.ru вы можете смотреть фильмы, сериалы, ТВ-программы, мультфильмы в отличном качестве бесплатно и легально.
+Обращаем ваше внимание, что воспроизведение видео возможно только на территории Российской Федерации</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.kaban.tva" name="[COLOR FFE55BB0]Kaban.TVA[/COLOR]" version="0.6.4" provider-name="Silhouette">
+  <requires><import addon="xbmc.python" version="2.1.0"/></requires>
+  <extension point="xbmc.python.pluginsource"  provides="video" library="default.py"><provides>video</provides></extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Archives from http://kaban.tv/</summary>
+    <description>Archives from http://kaban.tv/</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.kartina.tv"
+       name="Kartina.TV"
+       version="1.2.5"
+       provider-name="Eugene Bond">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Онлайн-телевидение Kartina.TV</summary>
+    <description>Онлайн-телевидение Kartina.TV: более 110 русскоязычных каналов и видеотека от 15 евро в месяц</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.kino-live.org"
+       name="kino-live.org"
+       version="1.7.5"
+       provider-name="x86demon">
+    <requires>
+        <import addon="xbmc.python" version="2.1.0"/>
+        <import addon="script.module.beautifulsoup"/>
+    </requires>
+    <extension point="xbmc.python.pluginsource" provides="video" library="default.py">
+        <provides>video</provides>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <summary>Фильмы, сериалы с ресурса kino-live.org</summary>
+        <description>Фильмы, сериалы с ресурса kino-live.org</description>
+        <platform>all</platform>
+    </extension>
+</addon>
+
+<addon id="plugin.video.kino-ray.com"
+       name="kino-ray.com"
+       version="0.0.01"
+       provider-name="NuisMons">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0" />
+	<import addon="script.module.beautifulsoup"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>kino-ray.com</summary>
+    <description>kino-ray.com</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.kino.rf"
+       name="kino.rf"
+       version="0.1.5"
+       provider-name="NuisMons">
+  <requires>
+    <import addon="xbmc.python" version="1.0"/>
+	<import addon="script.module.beautifulsoup"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+
+    <summary>Просмотр аниме онлайн online.anidub.com</summary>
+    <description>Просмотр аниме онлайн online.anidub.com</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.kinobaza.tv" name="Кинобаза" version="1.0.6" provider-name="HD-Lab Team">
+  <requires><import addon="xbmc.python" version="2.1.0"/></requires>
+  <extension point="xbmc.python.pluginsource" provides="video" library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Кинобаза: Что смотреть? Где скачать?</summary>
+    <description>У нас на сайте вы можете найти новинки фильмов в хорошем качестве или HD быстро и без регистрации. Фильмы в HD качестве и DVDRip. Каждый день новые добавления. У нас можно найти что посмотреть сегодня вечером и получить уведомления о появлении новых серий и фильмов в Сети. больше не нужно ждать когда появится фильм онлайн, можно пордписаться на уведомление о выходе</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.kinogovno" name="KinoGovno" version="1.2.1" provider-name="x86demon">
+    <requires>
+        <import addon="xbmc.python" version="2.1.0"/>
+        <import addon="script.module.beautifulsoup" version="3.0.8"/>
+    </requires>
+    <extension point="xbmc.python.pluginsource" library="default.py">
+        <provides>video</provides>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <summary>Stream trailers from kinogovno.com</summary>
+        <description>Scrap trailers from http://kino-govno.com russian website</description>
+	<platform>all</platform>
+    </extension>
+</addon>
+
+<addon id="plugin.video.kinoxa-x.ru" name="[COLOR FFcFFF48]Kinoxa-X.ru[/COLOR]" version="0.5.2" provider-name="Silhouette">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+    <import addon="script.module.beautifulsoup" version="3.0.8"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"  provides="video" library="default.py"><provides>video</provides></extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>KINOXA-X.RU у нас Вы можите смотреть кино онлайн</summary>
+    <description>Добро пожаловать в лучший онлайн кинотеатр KINOXA-X.RU у нас Вы можите смотреть кино онлайн. Выберите фильм любого жанра и наслаждайтесь просмотром</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.kinoylei.ru"
+       name="Киноулей"
+       version="0.0.5"
+       provider-name="nuismons">
+    <requires>
+        <import addon="xbmc.python" version="2.1.0" />
+        <import addon="script.module.beautifulsoup"/>
+    </requires>
+    <extension point="xbmc.python.pluginsource" provides="video" library="default.py">
+        <provides>video</provides>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <summary>Материалы сайта Киноулей</summary>
+        <description>Самая большая коллекция лучших сериалов мира</description>
+        <platform>all</platform>
+    </extension>
+</addon>
+
+<addon id="plugin.video.kiwi.kz" name="Kiwi.kz" version="1.0.1" provider-name="HD-Lab Team">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+	<extension point="xbmc.python.pluginsource" provides="video, audio" library="default.py">
+		<provides>video audio</provides>
+	</extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Kiwi.kz - видео в Казахстане</summary>
+	<description>Kiwi.kz - видео-сервис в Казахстане. Видео-портал, позволяющий вам бесплатно просматривать самое новое, популярное и интересное видео в различных категориях. Загружайте свое видео, просматривайте видео, транслируйте и смотрите видео онлайн.</description>
+    <platform>all</platform>
+  </extension>
 </addon>
 
 <addon id="repository.bond" name="Eugene Bond XBMC Add-ons" version="1.0.1" provider-name="Eugene Bond">
