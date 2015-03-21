@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="plugin.video.test"
+       name="[COLOR FF00FF00]*** TEST ***[/COLOR]"
+       version="1.0.0"
+       provider-name="Silen">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>TEST</summary>
+    <description>XBMC test plugin
+</description>
+    <platform>all</platform>
+    <broken>Test of disabling plugin</broken>	
+  </extension>
+</addon>
