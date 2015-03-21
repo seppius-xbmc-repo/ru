@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<strings>
+	<string id="30000">English</string>
+	<string id="30001">User</string>
+	<string id="30002">Password</string>
+	<string id="30003">Not received data</string>
+	<string id="30004">Days left</string>
+	<string id="30005">Open settings?</string>
+	<string id="30006">Remove from Favorites</string>
+	<string id="30007">Bookmark on</string>
+	<string id="30008">Sorry</string>
+	<string id="30009">You do not have enough money</string>
+	<string id="30010">New</string>
+	<string id="30011">[ Latest ]</string>
+	<string id="30012">[ What's new? ]</string>
+	<string id="30013">[ Favorites on site ]</string>
+	<string id="30014">Error HTTP GET</string>
+	<string id="30015">Season</string>
+	<string id="30016">Episode</string>
+	<string id="30017">Not found</string>
+	<string id="30018">Nothing's New</string>
+	<string id="30019">region could not be found</string>
+	<string id="30020">Subtitles</string>
+	<string id="30021">no Russian subtitles</string>
+	<string id="30022">no English subtitles</string>
+	<string id="30023">There are no subtitles</string>
+	<string id="30024">Russian</string>
+	<string id="30025">English</string>
+	<string id="30100">Subtitles (if available)</string>
+	<string id="30101">not use</string>
+	<string id="30102">Russian</string>
+	<string id="30103">English</string>
+	<string id="30104">Any</string>
+	<string id="30105">Ask</string>
+	<string id="30110">Identification episodes</string>
+	<string id="30111">not use</string>
+	<string id="30112">[season].[episode].</string>
+	<string id="30113">Season:[season] Episode:[episode]</string>
+	<string id="30114">s[season]e[episode]</string>
+	<string id="30115">Season:%s Episode:%s </string>
+	<string id="30120">Show [#] for closed serials</string>
+	<string id="30121">[#]</string>
+	<string id="30122">series is closed. New episodes will not: (</string>
+</strings>
