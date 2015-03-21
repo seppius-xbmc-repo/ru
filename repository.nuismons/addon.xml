@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="repository.nuismons" name="NuisMons XBMC Add-ons" version="1.0.0" provider-name="NuisMons">
+	<extension point="xbmc.addon.repository" name="NuisMons Add-ons">
+		<info compressed="false">http://nuismons-xmbc.googlecode.com/svn/trunk/addons/addons.xml</info>
+		<checksum>http://nuismons-xmbc.googlecode.com/svn/trunk/addons/addons.xml.md5</checksum>
+		<datadir zip="false">http://nuismons-xmbc.googlecode.com/svn/trunk/addons/</datadir>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary>Install Add-ons from NuisMons Add-on Repository</summary>
+		<description>Plug-ins for XBMC</description>
+		<disclaimer>There are svn fot my add-ons for XBMC</disclaimer>
+		<platform>all</platform>
+	</extension>
+</addon>
