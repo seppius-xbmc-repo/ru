@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="ISO-8859-1" standalone="yes"?>
+<strings>
+  <!-- Misc labels -->
+  <string id="31000">Changer</string>
+  <string id="31001">Fermer</string>
+  <string id="31002">Configuration audio</string>
+  <string id="31003">IP</string>
+  <string id="31004">Caps · Lock</string>
+  <string id="31005">Options de visualisation</string>
+  <string id="31006">Préréglages de visualisation</string>
+  <string id="31007">Menu contextuel</string>
+  <string id="31008">Plein écran</string>
+  <string id="31009">En cours...</string>
+  <string id="31010">Currently logged in as</string>
+  <string id="31011">N/A</string> <!-- Used for subtitle button in the OSD -->
+  <string id="31012">Musique - Fichiers</string>
+
+  <string id="31024">Page</string>
+  <string id="31025">Objets</string>
+ 
+  <!-- ViewType labels -->
+  <string id="31030">Liste complète</string>
+  <string id="31031">Info Wide</string>
+
+  <!-- Extra labels -->
+  <string id="31040">En cours de lecture</string>
+
+  <string id="31042">LECTURE</string>
+  <string id="31043">PAUSE</string>
+  <string id="31044">AVANCE RAPIDE</string>
+  <string id="31045">RETOUR RAPIDE</string>
+  <string id="31046">Propriétés audio</string>
+  <string id="31047">Préréglage actuel</string>
+  <string id="31048">Préréglages de visualisation</string>
+  <string id="31049">Heure de fin</string>
+  <string id="31050">Tri: Ascendant</string>
+  <string id="31051">Tri: Descendant</string>
+
+
+  <!-- Playlist Editor labels -->
+  <string id="31055">Ouvrir la liste de lecture</string>
+  <string id="31056">Sauvegarder la liste de lecture</string>
+  <string id="31057">Fermer la liste de lecture</string>
+  <string id="31058">Système de fichiers musicaux</string>
+  <string id="31059">Liste de lecture en cours</string>
+  <string id="31060">Ce fichier est empilé, sélectionnez la partie que vous voulez jouer.</string>
+  
+  <!-- Submenu labels -->
+  <string id="31200">Retour</string>
+  <string id="31201">Emplacement</string>
+  <string id="31202">Vue</string>
+
+  <!-- Extra labels -->
+  <string id="31300">Current Temp</string>
+  <string id="31301">Dernière mise à jour</string>
+
+  <string id="31309">Mémoire utilisée:</string>
+  <string id="31312">Scraper Actuel</string>
+  <string id="31313">Choisissez un Scraper</string>
+  <string id="31314">Options d'analyse de contenu</string>
+
+  <string id="31319">Profil Sélectionné</string>
+  <string id="31320">Derniers connectés</string>
+  <string id="31321">Sélecteur de chanson du karaoké</string>
+  <string id="31322">Diffusé</string>
+
+  <string id="31325">Options liste de lecture</string>
+
+  <!-- Vidéo and Music OSD Labels -->
+  <string id="31351">Pause</string>
+  <string id="31352">Arrêter</string>
+  <string id="31353">Avance Rapide</string>
+  <string id="31354">Retour Rapide</string>
+  <string id="31355">Menu Films</string>
+  <string id="31356">Télécharger les Sous-titres</string>
+  <string id="31357">Infos image</string>
+ 
+  <!-- Skin Fontsets -->
+  <string id="31390">Thème par défaut</string>
+  <string id="31391">Arial base</string>
+
+  <!-- Description Labels -->
+  <string id="31400">Changer le thème · Réglage de la langue et de la région · Modifier les options de la liste de fichiers · Changer l'économiseur d'écran</string>
+  <string id="31401">Gérer votre médiathèque · Définir les options de lecture · Modifier les options vidéo · Régler la police des sous-titres</string>
+  <string id="31402">Gérer votre médiathèque · Définir les options de lecture · Modifier les options musicales · Soumettre des chansons · Changer les options du karaoké</string>
+  <string id="31403">Définir les options d'image · Configurer les diaporamas</string>
+  <string id="31404">Choisir les trois villes qui recueilleront les informations météorologiques<</string>
+  <string id="31405">Permettre le contrôle de XBMC via UPnP et HTTP · Configurer le partage des fichiers · Définir les options d'accès Internet</string>
+  <string id="31406">Configurer les sorties vidéo et audio · Configurer les périphériques de contrôle · Définir les options de gestion d'énergie · Activer le débogage · Configurer la sécurité</string>
+  <string id="31407">Setup the Confluence skin · Add and remove home menu items · Change skin backgrounds</string>
+  <string id="31408">Gérer les Add-ons installés · Recherche et installation d'Add-ons depuis xbmc.org · Modifier les paramètres Add-on</string>
+
+
+  <string id="31421">Sélectionnez votre profil d'utilisateur XBMC · pour vous connecter et continuer</string>
+
+  <!-- Skin Setting Headers -->
+  <string id="31500">Ecran d'accueil boutons catégorie</string>
+  <string id="31501">Home Page Add-on Quick Links</string>
+  <string id="31502">Options Divers</string>
+  <string id="31503">Media Window Add-ons</string>
+
+  <!-- Skin Setting Options -->
+  <string id="31550">Ecran d'accueil Météo et bouton</string>
+  <string id="31551">Raccourcis Add-on</string>
+  <string id="31552">Configurer Add-on à utiliser pour les sous-titres</string>
+  <string id="31553">"Vidéos" toujours aller à la racine</string>
+
+  </strings>

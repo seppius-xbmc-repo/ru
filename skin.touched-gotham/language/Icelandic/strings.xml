@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="yes"?>
+<strings>
+  <!-- Misc labels -->
+  <string id="31000">Breyta</string>
+  <string id="31001">Loka</string>
+  <string id="31002">Hljóðstillingar</string>
+  <string id="31003">IP</string>
+  <string id="31004">Caps[CR]Lock</string>
+  <string id="31005">Myndskreyting valmöguleikar</string>
+  <string id="31006">Myndskreyting forstillingar</string>
+  <string id="31007">Samhengisvalmynd</string>
+  <string id="31008">Allur skjárinn</string>
+  <string id="31009">Vinnur...</string>
+  <string id="31010">Skráður inn sem</string>
+  <string id="31011">N/A</string> <!-- Used for subtitle button in the OSD -->
+  <string id="31012">Tónlist - skrár</string>
+
+  <string id="31024">Síða</string>
+  <string id="31025">Hlutir</string>
+ 
+  <!-- ViewType labels -->
+  <string id="31030">Upplýsingalisti</string>
+  <string id="31031">Upplýsingar - vítt</string>
+
+  <!-- Extra labels -->
+  <string id="31040">Í spilun</string>
+
+  <string id="31042">SPILA</string>
+  <string id="31043">Í BIÐ</string>
+  <string id="31044">HRATT ÁFRAM</string>
+  <string id="31045">TIL BAKA</string>
+  <string id="31046">Hljóðeiginleikar</string>
+  <string id="31047">Gildandi forstilling</string>
+  <string id="31048">Forstillingar myndskreytinga</string>
+  <string id="31049">Lokatími</string>
+  <string id="31050">Raða: Hækkandi</string>
+  <string id="31051">Raða: Lækkandi</string>
+
+
+
+  <!-- Playlist Editor labels -->
+  <string id="31055">Opna spilunarlista</string>
+  <string id="31056">Vista spilunarlista</string>
+  <string id="31057">Loka spilunarlista</string>
+  <string id="31058">Kerfi tónlistarskrár</string>
+  <string id="31059">Núverandi spilunarlisti</string>
+  <string id="31060">Þessi skrá er hluti af stafla, veldu þann hluta sem þú vilt spila</string>
+  
+  <!-- Submenu labels -->
+  <string id="31200">Til baka</string>
+  <string id="31201">Staðsetning</string>
+  <string id="31202">Sýn</string>
+
+  <!-- Extra labels -->
+  <string id="31300">Hitastig</string>
+  <string id="31301">Síðast uppfært</string>
+
+
+  <string id="31303">Uppruni gagna</string>
+
+  <string id="31309">Minni í notkun:</string>
+  <string id="31312">Núverandi skrapari</string>
+  <string id="31313">Veldu skrapara</string>
+  <string id="31314">Valmöguleikar tengir innhaldsleit</string>
+
+  <string id="31319">Tiltækilegir XBMC notendur</string>
+  <string id="31320">Síðasta innskráning</string>
+  <string id="31321">Karaoke lagaval</string>
+  <string id="31322">Sýnt</string>
+
+  <string id="31325">Spilunarlista valmöguleikar</string>
+
+  <!-- Video and Music OSD Labels  -->
+  <string id="31351">Bið</string>
+  <string id="31352">Stöðva</string>
+  <string id="31353">Hratt áfram</string>
+  <string id="31354">Til baka</string>
+  <string id="31355">Myndefnis valmynd</string>
+  <string id="31356">Niðurhala þýðingartextum</string>
+  <string id="31357">Upplýsingar um mynd</string>
+
+  <!-- Skin Fontsets -->
+  <string id="31390">Sjálfgildi útlits</string>
+  <string id="31391">Byggt á Arial</string>
+
+  <!-- Description Labels  -->
+  <string id="31400">Breyta útlitinu · Breyta tungumáli og landssvæði · Breyta útliti skráarlista · Velja skjáhvílu</string>
+  <string id="31401">Vinna með myndefnissafn · Stillingar á myndefnisafspilun · Breyta útliti myndefnislista · Velja leturgerð þýðingartexta</string>
+  <string id="31402">Vinna með tónlistarsafn · Stillingar á tónlistarafspilun · Breyta útliti tónlistarlista · Stilla innsendingu laga · Stilla karaoke options</string>
+  <string id="31403">Breyta útliti myndalista · Stilla myndasýningar</string>
+  <string id="31404">Velja allt að þrjár borgin til að safna veðurupplýsingum um</string>
+  <string id="31405">Stýring á XBMC með UPnP og HTTP · Stilla skráardeilingu · Stilla tengingu við internetið</string>
+  <string id="31406">Setja upp og stilla skjái · Stilla hljóðúttak · Stilla fjarstýringar · Stilla orkusparnaðar möguleika · Virkja kembiúttak · Setja upp notendalæsingar</string>
+  <string id="31407">Stilla útlit· Bæta við og eyða hlutum á upphafssíðu · Breyta bakgrunnum</string>
+  <string id="31408">Vinna með uppsettar viðbætur · Skoða og setja inn viðbætur frá xbmc.org · Breyta stillingum á viðbótum</string>
+
+  <string id="31421">Veldu XBMC notanda[CR]til að skrá inn og hala áfram</string>
+
+  <!-- Skin Setting Headers  -->
+  <string id="31500">Flokkahnappar á upphafsmynd</string>
+  <string id="31501">Tenglar í viðbætur á upphafsmynd</string>
+  <string id="31502">Ýmsir valmöguleikar</string>
+  <string id="31503">Efnisglugga viðbætur</string>
+
+  <!-- Skin Setting Options  -->
+  <string id="31550">Veðurupplýsingar og hnappur á upphafsmynd</string>
+  <string id="31551">Tengill á viðbót</string>
+  <string id="31552">Velja viðbót fyrir þýðingartexta</string>
+  <string id="31553">"Myndefni" fer alltaf í myndefnisrót</string>
+
+  </strings>
