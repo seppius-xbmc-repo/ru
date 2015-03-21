@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<settings>
+	<setting id="tm" type="number" label="30700" values="3" default="3" />
+</settings>
