@@ -1,0 +1,9 @@
+<settings>
+    <setting id="Title Mode" type="enum" label="30001" default="1" values="Ru/En|Ru"/>
+    <setting id="Hide Scr" type="bool" label="30003" default="false"/>
+    <setting id="Hide TSound" type="bool" label="30004" default="false"/>
+    <setting id="Engine" type="enum" label="30005" default="0" values="TSengine API|XBMC-TS(path)"/>
+    <setting id="EnabledFiltr" type="bool" label="30006" default="false"/>
+    <setting id="Filtr" type="text" label="30007" default="эротика, этти"/>
+    <setting id="port_path" type="file" label="30008" default="" />
+</settings>
