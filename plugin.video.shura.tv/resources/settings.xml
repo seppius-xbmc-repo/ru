@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<settings>
+	<category label="31001">
+		<setting id="OTT" type="text" label="30001" default="" />
+	</category>
+	<category label="31002">
+		<setting id="autorefresh_rate" type="enum" values="0|1|2|3|5|10|20|30|60" label="30027" default="10" />
+		<setting id="always_refresh" type="bool" label="30028" default="true" />
+		<setting id="stream_type" type="enum" values="Standard|HLS" label="30029" default="Standard" />
+		<setting id="server" type="labelenum" values="UK|GER" label="30030" default="UK" />
+		<setting id="AddOnlyOneChannelToPlaylist" type="bool"  label="30031" default="false" />
+	</category>
+	<category label="31003">
+		<setting id="SmallStepForward" type="enum" values="0|1|2|3|5|10|20|30|60" label="30032" default="1" />
+		<setting id="SmallStepBackward" type="enum" values="0|1|2|3|5|10|20|30|60" label="30033" default="1" />
+		<setting id="BigStepForward" type="enum" values="0|1|2|3|5|10|20|30|60" label="30034" default="3" />
+		<setting id="BigStepBackward" type="enum" values="0|1|2|3|5|10|20|30|60" label="30035" default="3" />
+	</category>
+</settings>

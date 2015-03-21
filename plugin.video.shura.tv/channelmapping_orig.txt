@@ -1,0 +1,104 @@
+1: (0x0001)	Первый	72 hours
+48: (0x0030)	РТР	None
+16: (0x0010)	ТНТ	72 hours
+12: (0x000C)	СТС	72 hours
+39: (0x0027)	2x2   None
+45: (0x002D)	Дождь	72 hours
+19: (0x0013)	Домашний	None
+15: (0x000F)	Звезда	72 hours
+9: (0x0009)	Карусель	72 hours
+46: (0x002E)	МИР	None
+3: (0x0003)	НТВ	72 hours
+8: (0x0008)	Перец	72 hours
+7: (0x0007)	Пятый канал	72 hours
+14: (0x000E)	РЕН ТВ	72 hours
+2: (0x0002)	Россия 1	72 hours
+5: (0x0005)	Россия 2	72 hours
+6: (0x0006)	Россия 24	72 hours
+4: (0x0004)	Россия К	72 hours
+11: (0x000B)	ТВ-3	72 hours
+10: (0x000A)	ТВЦ	72 hours
+20: (0x0014)	AXN Sci-Fi	72 hours
+42: (0x002A)	Diva Universal	None
+41: (0x0029)	Fox	None
+40: (0x0028)	Fox Life	None
+13: (0x000D)	TV XXI	None
+65: (0x0041)	Дом кино	None
+72: (0x0048)	Иллюзион+	None
+84: (0x0054)	Индия	None
+17: (0x0011)	Кинолюкс	None
+49: (0x0031)	Кинохит	None
+64: (0x0040)	Наше кино	None
+63: (0x003F)	Наше новое кино	None
+69: (0x0045)	Премьера	None
+18: (0x0012)	Disney	None
+78: (0x004E)	Gulli	None
+79: (0x004F)	JimJam	None
+43: (0x002B)	Nick Jr.	None
+31: (0x001F)	Nickelodeon	None
+77: (0x004D)	TiJi	None
+30: (0x001E)	Детский	None
+53: (0x0035)	MTV Россия	None
+86: (0x0056)	Ru-TV	None
+56: (0x0038)	Авто плюс	None
+87: (0x0057)	Европа+	None
+52: (0x0034)	Еда	None
+83: (0x0053)	Кухня	None
+81: (0x0051)	Музыка первого	None
+54: (0x0036)	ОСТ ТВ	None
+80: (0x0050)	Шансон	None
+44: (0x002C)	Ю ТВ	None
+55: (0x0037)	24 Док	None
+82: (0x0052)	24 техно	None
+25: (0x0019)	Animal Planet	None
+85: (0x0055)	Da Vinci Learning	None
+26: (0x001A)	Discovery	None
+28: (0x001C)	Discovery Science	None
+27: (0x001B)	Discovery World	None
+29: (0x001D)	National Geographic	None
+37: (0x0025)	Загородная жизнь	None
+88: (0x0058)	Моя планета	None
+50: (0x0032)	Наука 2.0	None
+38: (0x0026)	РБК	None
+89: (0x0059)	Совершенно секретно	None
+22: (0x0016)	Eurosport	None
+58: (0x003A)	Eurosport 2	None
+70: (0x0046)	Viasat Sport Baltic	None
+33: (0x0021)	Баскетбол	None
+60: (0x003C)	Боец	None
+35: (0x0023)	Бойцовский клуб	None
+36: (0x0024)	КХЛ ТВ	None
+62: (0x003E)	НТВ+ наш футбол	None
+51: (0x0033)	НТВ+ Спорт	None
+59: (0x003B)	НТВ+ спорт союз	None
+66: (0x0042)	НТВ+ теннис	None
+57: (0x0039)	НТВ+ футбол	None
+61: (0x003D)	НТВ+ футбол 2	None
+34: (0x0022)	Охотник и рыболов	None
+47: (0x002F)	Спорт	None
+21: (0x0015)	Спорт 1	None
+32: (0x0020)	Спорт плюс	None
+76: (0x004C)	Baltijos TV BTV	None
+24: (0x0018)	Lietuvas Ritas	None
+75: (0x004B)	LNK	None
+23: (0x0017)	LNT	None
+73: (0x0049)	LTV1 Latvia	None
+67: (0x0043)	LTV7	None
+74: (0x004A)	TV 1: (Lithuania)	None
+71: (0x0047)	TV3 Latvia	None
+68: (0x0044)	Tv5 Riga	None
+502: (0x01F6)	1+1	None
+500: (0x01F4)	ICTV	None
+501: (0x01F5)	Интер	None
+504: (0x01F8)	Первый деловой	None
+503: (0x01F7)	СТБ	None
+100: (0x0064)	Киношка 1	None
+101: (0x0065)	Киношка 2	None
+102: (0x0066)	Киношка 3	None
+103: (0x0067)	Киношка 4	None
+104: (0x0068)	Киношка 5	None
+600: (0x0258)	HD Кино	None
+601: (0x0259)	HD Кино 2	None
+604: (0x025C)	HD Первый	None
+605: (0x025D)	HD Россия	None
+603: (0x025B)	HD Спорт 1	72 hours
