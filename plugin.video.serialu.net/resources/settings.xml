@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>  
+<settings>        <!-- General -->      
+	<setting label="Версия 1.2.4" type="text" enable="false"/>  	
+	<setting id="continue_play" type="bool"     label="Играть все серии"     default="true"/>   	
+	<setting id="history_len"  type="enum"  label="Длина истории"  values="1|5|10|20|30|50" default="2" />  
+	<setting label="30651" type="lsep"/>  
+	<setting id="Info" label="Информация по списку сериалов" type="action" action="RunScript($CWD/update.py, INFO)"/>      
+	<setting label="30651" type="lsep"/>  
+	<setting id="Update" label="Обновить список сериалов" type="action" action="RunScript($CWD/update.py, UPDATE)"/>  	
+	<setting id="update_len"  type="enum"  label="Кол-во страниц для обновления"  values="10|20|50|100|1000" default="1" />         
+	<setting label="[I][COLOR red]Внимание![/COLOR][/I]" type="lsep"/>          
+	<setting label="[I]    Пересоздание списка сериалов требует значительного времени.[/I]" type="lsep"/>  
+	<setting id="Update" label="Пересоздать список сериалов" type="action" action="RunScript($CWD/update.py, RELOAD)"/>  	
+</settings> 
