@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="plugin.video.sreda-obitaniya"
+       name="Передачи Российского ТВ"
+       version="0.1.0"
+       provider-name="NuisMons">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0" />
+	<import addon="script.module.beautifulsoup"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Передачи Российского ТВ</summary>
+    <description>Передачи Российского ТВ</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
