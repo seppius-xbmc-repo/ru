@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<strings>
+  <string id="30001">Качество</string>
+  <string id="30002">Низкое (SD)</string>
+  <string id="30003">Высокое (HD)</string>
+  <string id="30010">Длинна списка</string>
+  <string id="30020">Поиск</string>
+  <string id="30021">Что ищем?</string>
+  <string id="30030">Ошибка</string>
+  <string id="30031">Не получены HTTP-данные</string>
+  <string id="30032">Элементы не найдены</string>
+</strings>
+
+
+
+
+
+

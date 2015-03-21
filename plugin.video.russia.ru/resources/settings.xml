@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<settings>
+    <setting id="quality" type="enum" label="30001" lvalues="30002|30003" default="0" />
+    <setting id="size" type="enum" label="30010" values="10|20|30|40|50|60|70|80|90|100|110|120|130|140|150|160|170|180|190|200" default="4" />
+</settings>
