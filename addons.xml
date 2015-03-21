@@ -1484,6 +1484,191 @@ RuTube - отличная стартовая площадка для незав�
   </extension>
 </addon>
 
+<addon id="plugin.video.seasonvar.ru"
+       name="[COLOR FF00FF00]Сериалы ([/COLOR][COLOR FFFFF000]seasonvar.ru[/COLOR][COLOR FF00FF00])[/COLOR]"
+       version="2.2.5"
+       provider-name="Silen">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>my-hit.ru</summary>
+    <description>SEASONVAR.RU - Наш сайт создан для вас!
+Вы любите смотреть сериалы, но не можете себе этого позволить, так как их показывают по телевизору в неудобное для вас время? Вам нравится следить за судьбой героев, но вы часто пропускаете очередную серию? Теперь эти проблемы легко решить! На сайте Seasonvar.ru представлены отечественные и зарубежные сериалы, которые вы можете смотреть онлайн совершенно бесплатно.
+
+[COLOR FF00FF00]Contributors: [/COLOR][COLOR FFFFF000]DiMartino, [/COLOR]
+</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.serialonline.net"
+       name="SerialOnline.net"
+       version="0.1.0"
+       provider-name="nuismons">
+    <requires>
+        <import addon="xbmc.python" version="2.1.0"/>
+        <import addon="script.module.beautifulsoup"/>
+    </requires>
+    <extension point="xbmc.python.pluginsource" provides="video" library="default.py">
+        <provides>video</provides>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <summary>Материалы сайта serialonline.net</summary>
+        <description>Самая большая коллекция лучших сериалов мира</description>
+        <platform>all</platform>
+    </extension>
+</addon>
+
+<addon id="plugin.video.serialonline.netlite"
+       name="SerialOnline.net LITE"
+       version="0.1.0.1"
+       provider-name="nuismons">
+    <requires>
+        <import addon="xbmc.python" version="2.1.0"/>
+        <import addon="script.module.beautifulsoup"/>
+    </requires>
+    <extension point="xbmc.python.pluginsource" provides="video" library="default.py">
+        <provides>video</provides>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <summary>Материалы сайта serialonline.net</summary>
+        <description>Самая большая коллекция лучших сериалов мира</description>
+        <platform>all</platform>
+    </extension>
+</addon>
+
+<addon id="plugin.video.serialu.net"
+       name="[COLOR FF00FF00]Сериалы ([/COLOR][COLOR FFFFF000]serialu.net[/COLOR][COLOR FF00FF00])[/COLOR]"
+       version="1.2.6"
+       provider-name="Silen">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Сериалы (serialu.net)</summary>
+    <description>Русские и зарубежные сериалы предоставляемые сайтом serialu.net. </description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.serialu.net.plus"
+       name="[COLOR FF00FF00]Сериалы ([/COLOR][COLOR FFFFF000]serialu.net[/COLOR]+[COLOR FF00FF00])[/COLOR]"
+       version="2.0.2"
+       provider-name="Silen">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.script"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Сериалы (serialu.net)</summary>
+    <description>Русские и зарубежные сериалы предоставляемые сайтом serialu.net.</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.showday.tv"
+       name="[COLOR FF00FF00]Сериалы ([/COLOR][COLOR FFFFF000]showday.tv[/COLOR][COLOR FF00FF00])[/COLOR]"
+       version="1.0.2"
+       provider-name="Silen">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>showday.tv</summary>
+    <description>SHOWDAY.TV - сериал на каждый день!
+</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.shura.tv"
+       name="Shura.TV"
+       version="1.1.4"
+       provider-name="AKGDRG">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+	<platform>all</platform>
+    <license>GPL 2.0</license>
+    <summary>Онлайн-телевидение SHURA.TV</summary>
+    <description>Онлайн-телевидение SHURA.TV: 100 русскоязычных каналов от 0 евро в месяц. EPG + Aрхив</description>
+  </extension>
+</addon>
+
+<addon id="plugin.video.sovok.tv" name="Совок ТВ" version="0.0.2" provider-name="HD-Lab Team">
+  <requires><import addon="xbmc.python" version="2.1.0"/></requires>
+  <extension point="xbmc.python.pluginsource" provides="video" library="default.py"><provides>video</provides></extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Отечественный проект "Совок ТВ" представляет!</summary>
+    <description>Технология IPTV позволяет Вам, находясь в любой точке мира, смотреть любимое русское тв. При этом вам не нужно иметь спутниковых антенн. Телевизионный сигнал передается поверх IP сети оператора Интернет. На нашем сайте вы можете смотреть любимые русские тв каналы абсолютно бесплатно. Если у вас есть интернет со скоростью не менее 4 мбитс, то вы вы можете стать участником нашего клуба любителей русского тв прямо сейчас.</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.sreda-obitaniya"
+       name="Передачи Российского ТВ"
+       version="0.1.0"
+       provider-name="NuisMons">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0" />
+	<import addon="script.module.beautifulsoup"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Передачи Российского ТВ</summary>
+    <description>Передачи Российского ТВ</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.stepashka.com"
+       name="stepashka.com"
+       version="0.3.2"
+       provider-name="akgdrg,nuismons">
+    <requires>
+        <import addon="xbmc.python" version="2.1.0"/>
+    </requires>
+    <extension point="xbmc.python.pluginsource" provides="video" library="default.py">
+        <provides>video</provides>
+    </extension>
+
+    <extension point="xbmc.addon.metadata">
+        <summary>Видеоархивы stepashka.com</summary>
+        <description>Видеоархивы stepashka.com</description>
+        <platform>all</platform>
+    </extension>
+</addon>
+
 <addon id="repository.bond" name="Eugene Bond XBMC Add-ons" version="1.0.1" provider-name="Eugene Bond">
 	<extension point="xbmc.addon.repository" name="Eugene Bond XBMC Add-ons">
 		<info compressed="false">https://github.com/Eugene-Bond/xmbc-plugins/raw/master/addons.xml</info>
