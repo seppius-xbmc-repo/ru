@@ -1,0 +1,10 @@
+<strings>
+    <string id="30001">Название</string>
+    <string id="30002">ТОП за период</string>
+    <string id="30003">Фильтр по оценке</string>
+    <string id="30004">Стиль поиска</string>
+    <string id="30005">Имена</string>
+	<string id="30006">Вид списков</string>
+	<string id="30007">Поиск на KrasFS</string>
+    <string id="30008">Show preferred language only</string>
+</strings>
