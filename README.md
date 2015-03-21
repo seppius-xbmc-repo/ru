@@ -1,6 +1,8 @@
 # seppius-xbmc-repo
 Exported from code.google.com/p/seppius-xbmc-repo
 
+Скачать плагин seppius-xbmc-repo https://github.com/seppius-xbmc-repo/ru/raw/master/repository.seppius.zip
+
 # Для разработчиков :
 
 . Клонируем удалённый git на компьютер:
