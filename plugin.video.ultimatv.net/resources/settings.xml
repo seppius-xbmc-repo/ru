@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>  
+<settings>        <!-- General -->    
+	<setting label="30651" type="lsep"/> 
+	<setting id="HQ" type="bool"  label="Высокое качество (HQ)"    default="false"/>	   
+	<setting label="30651" type="lsep"/> 
+	<setting id="history_len"  type="enum"  label="Длина истории"  values="1|5|10|20|30|50" default="2" />    	 
+</settings> 

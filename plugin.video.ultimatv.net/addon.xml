@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="plugin.video.ultimatv.net"
+       name="[COLOR FF00FF00]Онлайн ТВ ([/COLOR][COLOR FFFFF000]ultimatv.net[/COLOR][COLOR FF00FF00])[/COLOR]"
+       version="1.0.3"
+       provider-name="Silen">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>allserials.tv</summary>
+    <description>ULTIMATV.NET - На нашем сайте вы можете смотреть ТВ в режиме онлайн.
+</description>
+    <platform>all</platform>
+    <broken>Сайт перешел на P2P вещание. Плагин не работает.</broken>
+  </extension>
+</addon>
+
