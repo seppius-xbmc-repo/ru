@@ -1,0 +1,180 @@
+﻿<window id="12346">
+  <visible>Player.HasMedia + Window.IsActive(PlayerControls) + !Window.IsActive(FullscreenVideo) + !Window.IsActive(Visualisation)</visible>
+    <controls>
+    <control type="group" id="201">
+      <control type="videowindow">
+        <posx>0</posx>
+        <posy>0</posy>
+        <width>1280</width>
+        <height>720</height>
+        <visible>Player.HasVideo + !Skin.HasSetting(ShowBackgroundVideo) + ![Window.IsVisible(PVR) + [Control.IsVisible(11) | Control.IsVisible(12)]]</visible>
+      </control>
+      <control type="group" id="203">
+        <animation effect="fade" start="100" end="0" delay="3000" time="4000" reversible="True">Visible</animation>
+        <animation effect="fade" start="0" end="100" delay="3000" time="4000" reversible="True">Hide</animation>
+        <posx>0</posx>
+        <posy>0</posy>
+        <width>1280</width>
+        <height>720</height>
+        
+        <control type="group">
+          <description>Window</description>
+          <control type="image">
+            <posx>5</posx>
+            <posy>600</posy>
+            <width>1270</width>
+            <height>210</height>
+            <texture border="40">window.png</texture>
+          </control>
+        </control>
+        <control type="label">
+          <description>Time</description>
+          <posx>1200</posx>
+          <posy>610</posy>
+          <font>font13</font>
+          <visible>true</visible>
+          <label>$INFO[System.Time]</label>
+        </control>
+        <control type="group">
+          
+          <posx>0</posx>
+          <posy>579</posy>
+          <control type="togglebutton" id="204">
+            <posx>135</posx>
+            <posy>100</posy>
+            <width>30</width>
+            <height>30</height>
+            <onleft>209</onleft>
+            <onright>200</onright>
+            <texturefocus>pausefocus.png</texturefocus>
+            <texturenofocus>pause.png</texturenofocus>
+            <usealttexture>Player.Paused | Player.Forwarding | Player.Rewinding</usealttexture>
+            <alttexturefocus>playfocus.png</alttexturefocus>
+            <alttexturenofocus>play.png</alttexturenofocus>
+            <onclick>XBMC.PlayerControl(Play)</onclick>
+          </control>
+          <control type="button" id="200">
+            <posx>170</posx>
+            <posy>100</posy>
+            <width>30</width>
+            <height>30</height>
+            <onleft>204</onleft>
+            <onright>205</onright>
+            <texturefocus>stopfocus.png</texturefocus>
+            <texturenofocus>stop.png</texturenofocus>
+            <onclick>XBMC.PlayerControl(Stop)</onclick>
+          </control>
+          
+          <control type="button" id="205">
+            <description>VIDEO SETTINGS</description>
+            <posx>235</posx>
+            <posy>100</posy>
+            <width>30</width>
+            <height>30</height>
+            <onleft>200</onleft>
+            <onright>206</onright>
+            <texturefocus>videosetfocus.png</texturefocus>
+            <texturenofocus>videoset.png</texturenofocus>
+            <onclick>ActivateWindow(OSDVideoSettings)</onclick>
+          </control>
+          <control type="button" id="206">
+            <description>AUDIO SETTINGS</description>
+            <posx>270</posx>
+            <posy>100</posy>
+            <width>30</width>
+            <height>30</height>
+            <onleft>205</onleft>
+            <onright>207</onright>
+            <texturefocus>audiosetfocus.png</texturefocus>
+            <texturenofocus>audioset.png</texturenofocus>
+            <onclick>ActivateWindow(OSDAudioSettings)</onclick>
+          </control>
+          <control type="button" id="207">
+            <description>CHANNEL LIST</description>
+            <posx>330</posx>
+            <posy>100</posy>
+            <width>30</width>
+            <height>30</height>
+            <onleft>206</onleft>
+            <onright>208</onright>
+            <texturefocus>channelsfocus.png</texturefocus>
+            <texturenofocus>channels.png</texturenofocus>
+            <onclick>Close</onclick>
+          </control>
+          <control type="button" id="208">
+            <description>STANDARDP LAYER</description>
+            <posx>375</posx>
+            <posy>100</posy>
+            <width>30</width>
+            <height>30</height>
+            <onleft>207</onleft>
+            <onright>209</onright>
+            <texturefocus>fullscreenfocus.png</texturefocus>
+            <texturenofocus>fullscreen.png</texturenofocus>
+            <onclick>Action(FullScreen)</onclick>
+          </control>
+
+          <control type="button" id="209">
+            <description>Show Window Information</description>
+            <posx>420</posx>
+            <posy>100</posy>
+            <width>30</width>
+            <height>30</height>
+            <onleft>208</onleft>
+            <onright>204</onright>
+            <visible>true</visible>
+            <texturefocus>infofocus.png</texturefocus>
+            <texturenofocus>infonofocus.png</texturenofocus>
+          </control>
+          
+          <control type="image" id="202">
+            <posx>20</posx>
+            <posy>30</posy>
+            <width>100</width>
+            <height>100</height>
+            <visible>true</visible>
+            <texture>unkchannel.jpg</texture>
+            <aspectratio>keep</aspectratio>
+          </control>
+          <control type="group">
+            <control type="label" id = "109">
+              <description>Current EPG</description>
+              <posx>135</posx>
+              <posy>30</posy>
+              <width>1000</width>
+              <label>Нет программы</label>
+              <font>font13</font>
+              <scroll>true</scroll>
+              <textcolor>FFFFFFFF</textcolor>
+              <shadowcolor>FF000000</shadowcolor>
+            </control>
+            <control type="progress" id ="110">
+              <description>Progress EGP</description>
+              <posx>130</posx>
+              <posy>60</posy>
+              <visible>true</visible>
+              <colordiffuse>88FFFFFF</colordiffuse>
+              <width>1100</width>
+              <height>9</height>
+              <info>ListItem.Progress</info>
+            </control>
+            <control type="label" id ="112">
+              <description>Next EPG</description>
+              <posx>135</posx>
+              <posy>75</posy>
+              <align>left</align>
+              <aligny>top</aligny>
+              <width>1000</width>
+              <height>30</height>
+              <font>font12</font>
+              <visible>true</visible>
+              <label></label>
+              <scroll>true</scroll>
+            </control>
+          </control>
+        </control>
+        
+      </control>
+    </control>
+  </controls>
+</window>
