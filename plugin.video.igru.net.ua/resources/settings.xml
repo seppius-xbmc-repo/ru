@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>  
+<settings>        <!-- General -->      
+	<setting label="Версия 1.1.3" type="text" enable="false"/>  
+	<setting id="Info" label="Дата последнего обновления" type="action" action="RunScript($CWD/update.py, INFO)"/>      
+	<setting label="30651" type="lsep"/>  
+	<setting id="Update" label="Обновить список фильмов" type="action" action="RunScript($CWD/update.py, UPDATE)"/>   
+</settings> 

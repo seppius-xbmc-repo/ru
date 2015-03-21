@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="plugin.video.igru.net.ua"
+       name="[COLOR FF00FF00]Фильмы ([/COLOR][COLOR FFFFF000]fepcom.net[/COLOR][COLOR FF00FF00])[/COLOR]"
+       version="1.1.5"
+       provider-name="Silen">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>  
+  <extension point="xbmc.python.pluginsource"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Фильмы (igru.net.ua)</summary>
+    <description>Русские и зарубежные фильмы предоставляемые сайтом fepcom.net.</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
