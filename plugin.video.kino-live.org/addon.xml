@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="plugin.video.kino-live.org"
+       name="kino-live.org"
+       version="1.7.5"
+       provider-name="x86demon">
+    <requires>
+        <import addon="xbmc.python" version="2.1.0"/>
+        <import addon="script.module.beautifulsoup"/>
+    </requires>
+    <extension point="xbmc.python.pluginsource" provides="video" library="default.py">
+        <provides>video</provides>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <summary>Фильмы, сериалы с ресурса kino-live.org</summary>
+        <description>Фильмы, сериалы с ресурса kino-live.org</description>
+        <platform>all</platform>
+    </extension>
+</addon>

@@ -1,0 +1,7 @@
+<settings>
+    <category label="General">
+	<setting id="Login" type="text" label="30002"/>
+	<setting id="Password" type="text" label="30003" option="hidden"/>
+	<setting id="logout" type="action" label="Logout" action="RunPlugin(plugin://plugin.video.kino-live.org/?mode=logout)"/>
+    </category>
+</settings>
