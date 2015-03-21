@@ -1,0 +1,29 @@
+http://online.stepashka.com/eng-serialy/,Сериалы - Зарубежные,x
+http://online.stepashka.com/rus-serialy/,Сериалы - Отечественные,x
+http://online.stepashka.com/anime/,Аниме,x
+http://online.stepashka.com/dramy/,Драмы,x
+http://online.stepashka.com/komedii/,Комедии,x
+http://online.stepashka.com/trillery/,Триллеры,x
+http://online.stepashka.com/sport/,Спорт,x
+http://online.stepashka.com/uzhasy/,Ужасы,x
+http://online.stepashka.com/kriminal/,Криминал,x
+http://online.stepashka.com/muzkl/,Мюзикл,x
+http://online.stepashka.com/semejnyj/,Семейный,x
+http://online.stepashka.com/multfilmy/,Мультфильмы,x
+http://online.stepashka.com/detskij/,Детский,x
+http://online.stepashka.com/fantastika/,Фантастика,x
+http://online.stepashka.com/fentezi/,Фэнтези,x
+http://online.stepashka.com/melodramy/,Мелодрамы,x
+http://online.stepashka.com/mistika/,Мистика,x
+http://online.stepashka.com/priklucheniya/,Приключения,x
+http://online.stepashka.com/boeviki/,Боевики,x
+http://online.stepashka.com/vestern/,Вестерн,x
+http://online.stepashka.com/istoricheskij/,Исторический,x
+http://online.stepashka.com/bez-perevoda/,Без Перевода,x
+http://online.stepashka.com/biografia/,Биография,x
+http://online.stepashka.com/korotkometragka/,Короткометражка,x
+http://online.stepashka.com/dokumentalenye/,Документальные,x
+http://online.stepashka.com/detektiv/,Детектив,x
+http://online.stepashka.com/otechestvennye/,Отечественные,x
+http://online.stepashka.com/voenniy/,Военный,x
+http://online.stepashka.com/tv/,Передачи с ТВ,x
