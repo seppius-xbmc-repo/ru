@@ -1,0 +1,17 @@
+<settings>
+	<setting id = "bitrate"
+		type    = "bool"
+		label   = "30001"
+		default = "false"
+	/>
+	<setting id = "firstrack"
+		type    = "bool"
+		label   = "30002"
+		default = "false"
+	/>
+	<setting id = "listonly"
+		type    = "bool"
+		label   = "30003"
+		default = "false"
+	/>
+</settings>
