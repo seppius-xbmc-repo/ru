@@ -1,0 +1,6 @@
+0.0.6 - Added udp-http proxy support.
+0.0.5 - Win-1251 encoding support for playlists, bugfixing.
+0.0.4 - Group import support, new successful import poup-up dialog.
+0.0.3 - Warning dialog, localization support, code cleanup.
+0.0.2 - Added online playlists support.
+0.0.1 - Initial version.

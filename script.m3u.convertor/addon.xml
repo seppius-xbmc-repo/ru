@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<addon 
+id="script.m3u.convertor" 
+version="0.0.6" 
+name="M3U Playlist Convertor" 
+provider-name="Roman_V_M">
+<requires>
+  <import addon="xbmc.python" version="2.1.0"/>
+</requires>
+<extension point="xbmc.python.script" library="default.py" >
+  <provides>executable</provides>
+</extension>
+<extension point="xbmc.addon.metadata"> 
+  <summary lang="en">M3U Playlist Convertor</summary>
+  <summary lang="ru">Конвертор плейлистов m3u</summary>
+  <description lang="en">IPTV M3U playlist convertor for XBMC pvr.demo add-on. Before launching the script open its settings and select the location or URL of a playlist to convert and a channel icons folder (optional).</description>
+  <description lang="ru">Конвертор плейлистов IPTV в формате m3u для дополнения XBMC pvr.demo. Перед запуском укажите в настройках дополнения путь к плейлисту, который нужно сконвертировать, или его URL, а также папку со значками каналов (необязательно).</description>
+<platform>all</platform> 
+</extension> 
+</addon>

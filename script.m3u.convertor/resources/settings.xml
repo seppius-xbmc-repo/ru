@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings>
+  <category label="128">
+    <setting id="local" type="bool" label="100600" default="true" />
+    <setting id="path" type="file" label="100601" visible="eq(-1,true)" default="" />
+    <setting id="url" type="text" label="100602" visible="eq(-2,false)" default="http://" />    
+    <setting id="icon_path" type="folder" label="100603" default="" />
+    <setting id="start_num" type="number" label="100604" default="1" />
+  </category>
+  <category label="100622">
+    <setting id="encoding" type="labelenum" label="100618" values="UTF-8|Windows Cyrillic" default="UTF-8" />
+    <setting id="groups" type="bool" label="100617" default="true" />
+    <setting id="useproxy" type="bool" label="100619" default="false" />
+    <setting id="proxyip" type="text" label="100620" visible="eq(-1,true)" default="http://" />
+    <setting id="proxyport" type="number" label="100621" visible="eq(-2,true)" default="80" />
+  </category>
+</settings>
