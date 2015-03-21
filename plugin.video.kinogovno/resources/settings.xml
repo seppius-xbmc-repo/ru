@@ -1,0 +1,6 @@
+<settings>
+    <setting id="dvdplayer" type="bool" label="30000" default="true"/>
+    <setting id="Download Flv" type="bool" label="30001" default="false"/>
+    <setting id="Quality select" type="bool" label="30002" default="true"/>
+    <setting id="Show fanart" type="bool" label="30003" default="true"/>
+</settings>
