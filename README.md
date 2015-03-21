@@ -59,7 +59,7 @@ Password for 'https://xbmcrepo@list.ru@github.com': ask me
 
 git log
 
-sudo git reset --hard HEAD~1
+sudo git reset --hard HEAD~1 или до 2, или до 3-его коммита
 
 git push -f origin master
 
