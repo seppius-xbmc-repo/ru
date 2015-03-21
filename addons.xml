@@ -1,5 +1,281 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <addons>
+<addon id="metadata.kinopoisk.ru"
+       name="KinoPoisk"
+       version="1.0.72">
+  <requires>
+    <import addon="xbmc.metadata" version="1.0"/>
+    <import addon="metadata.common.themoviedb.org" version="1.0.3"/>
+  </requires>
+  <extension point="xbmc.metadata.scraper.movies"
+             language="ru"
+             library="kinopoisk.xml"/>
+  <extension point="xbmc.addon.metadata">
+    <platform>all</platform>
+    <minversion>20000</minversion>
+    <summary lang="en">KinoPoisk Movie Scraper</summary>
+    <summary lang="hu">KinoPoisk Film scraper</summary>
+    <summary lang="kr">KinoPoisk 영화 스크래퍼</summary>
+    <summary lang="pl">Scraper filmów KinoPoisk</summary>
+    <summary lang="pt">Scraper de filmes KinoPoisk</summary>
+    <summary lang="ru">Инфо-ресурс для фильмов с КиноПоиска</summary>
+    <description lang="en">Download Movie information from www.kinopoisk.ru[CR][CR][B]ATTENTION:[/B][CR]For proper working you must set value of[CR]System->Appearance->International->Character set[CR]to Cyrillic (Windows)</description>
+    <description lang="hu">Film információk letöltése a www.kinopoisk.ru webhelyről</description>
+    <description lang="kr">www.kinopoisk.ru 에서 영화 정보 다운로드</description>
+    <description lang="pl">Pobieraj informacje o filmach z www.kinopoisk.ru</description>
+    <description lang="pt">Descarregar informação de filmes de www.kinopoisk.ru</description>
+    <description lang="ru">Скачивает информацию о фильмах с сайта www.kinopoisk.ru[CR][CR][B]ВНИМАНИЕ:[/B][CR]Для нормальной работы дополнения значение параметра[CR]Система->Внешний вид->Международные->Кодировка[CR]должно быть Cyrillic (Windows)</description>
+  </extension>
+</addon>
+
+<addon id="plugin.audio.101.ru"
+       name="101.RU"
+       version="1.0.9"
+       provider-name="HD-Lab Team">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+            library="default.py">
+        <provides>audio</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <platform>all</platform>
+    <summary lang="en">Internet radio station 101.RU</summary>
+    <summary lang="ru">Интернет-радиостанция 101.RU</summary>
+    <description lang="en">Listen to radio with only the best site http://www.101.ru</description>
+    <description lang="ru">Слушайте только лучшие радиоканалы с сайта http://www.101.ru</description>
+  </extension>
+</addon>
+
+<addon id="plugin.audio.akado.radio"
+       name="akado.radio"
+       version="1.0.5"
+       provider-name="HD-Lab Team">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+            library="default.py">
+        <provides>audio</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <platform>all</platform>
+    <summary>АКАДО.Радио</summary>
+    <description>АКАДО.Радио</description>
+  </extension>
+</addon>
+
+<addon id="plugin.audio.asbook.ru"
+       name="[COLOR FF00FF00]Аудиокниги ([/COLOR][COLOR FFFFF000]asbook.ru[/COLOR][COLOR FF00FF00])[/COLOR]"
+       version="1.0.10"
+       provider-name="Silen">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="audio"
+             library="default.py">
+    <provides>audio</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>my-hit.ru</summary>
+    <description>[COLOR FFFFF000]ASBOOK.RU[/COLOR] - слушайте аудиокниги онлайн совершенно бесплатно.
+</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.audio.guzei.radio"
+       name="GUZEI.RADIO"
+       version="1.0.6"
+       provider-name="HD-Lab Team">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+            library="default.py">
+        <provides>audio</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <platform>all</platform>
+    <summary lang="en">Listen to the site http://guzei.com/online_radio/</summary>
+    <summary lang="ru">Прослушивание сайта http://guzei.com/online_radio/</summary>
+    <description lang="en">Listen to the site http://guzei.com/online_radio/</description>
+    <description lang="ru">Прослушивание сайта http://guzei.com/online_radio/</description>
+  </extension>
+</addon>
+
+<addon id="plugin.audio.moskva.fm"
+       name="MOSKVA.FM"
+       version="1.0.2"
+       provider-name="TDW">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+            library="default.py">
+        <provides>audio</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <platform>all</platform>
+    <summary>MOSKVA.FM - песни на радио Москвы</summary>
+    <description>Слушайте радио Москвы. На сегодня в активе проекта MOSKVA.FM 53 радиостанций Москвы!</description>
+  </extension>
+</addon>
+
+<addon id="plugin.audio.mp3tales.ru" name="Аудиосказки" version="1.0.1" provider-name="HD-Lab Team">
+  <requires><import addon="xbmc.python" version="2.1.0"/></requires>
+  <extension point="xbmc.python.pluginsource" library="default.py">
+    <provides>audio</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <platform>all</platform>
+    <summary>Аудиосказки из вашего детства</summary>
+    <description>Многие помнят пластинки, вырезанные из журналов и купленные в магазине фирмы "Мелодия", проигрыватель с трескучей иголкой. И этот особенный звук. Звук детства. Каждая сказка - целое музыкальное театрализованное представление с актерам, но без кукол. Если пластинки и могли остаться в пыльном шкафу, то проигрыватель - уже редкость. Но теперь сказки доступны для всех. Для взрослых, чтобы вспомнить детство, и сказки для детей.
+На этом сайте вы можете бесплатно послушать аудиосказки онлайн. На сайте собрана коллекция аудиосказок советских времен и не только. Все они оцифрованы с советских детских грампластинок и кассет.
+Для вашего удобства коллекция детских сказок на сайте представлена в виде каталога с названием и описанием сказки, отсортированного в алфавитном порядке. Вы также можете использовать поиск по каталогу аудиосказок. Ко многим сказкам прилагаются обложки от пластинок.
+Для всех аудиосказок доступна возможность онлайн прослушивания прямо на сайте!
+Все размещенные на этом сайте аудиозаписи предназначены исключительно для ознакомительного прослушивания; после прослушивания рекомендуется купить лицензионный продукт во избежание нарушения авторских прав производителя и смежных прав.</description>
+  </extension>
+</addon>
+
+<addon id="plugin.audio.online.fm"
+       name="online.fm"
+       version="1.0.8"
+       provider-name="HD-Lab Team">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+            library="default.py">
+        <provides>audio</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <platform>all</platform>
+    <summary>Слушай радио Online.FM: rock, jazz, house music, rnb, relax music, шансон, trance. FM радио: ХитФМ, Kiss fm, Radio Rocks, NRJ радио - online.fm</summary>
+    <description>Online.FM - слушай радио онлайн. Русский рок, Украинский поп и рок, Trance, Party, Disco, RnB, Latino, Classic rock, House, Relax, Jazz, Шансон, музыка фестиваля Sziget и еще 40 радио каналов. Слушай FM радио: ХитФМ, Kiss fm, Radio Rocks, NRJ радио</description>
+  </extension>
+</addon>
+
+<addon id="plugin.audio.radiostyle.ru"
+       name="RadioStyle"
+       version="1.0.6"
+       provider-name="HD-Lab Team">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+            library="default.py">
+        <provides>audio</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <platform>all</platform>
+    <summary>Интернет-радиостанция http://www.radiostyle.ru/</summary>
+    <description>RadioStyle.ru предлагает Вам услуги по созданию собственной Интернет-радиостанции, либо ретрансляции FM станции в сети Интернет. Для использования нашего сервиса Вам не потребуются особые знания, поскольку мы имеем удобную панель управления, подробные инструкции, и мы предоставляем поддержку всем нашим клиентам.
+Пользователям уже надоел обычный статический контент сайтов, посетителя больше не удивишь хорошим текстом и красивыми картинками. Медиа-контент сайта - аудио и видеоинформация, в особенности живое вещание - вот что привлекает посетителя. Аудио и видео трансляция в сети Интернет - это будущее, которое уже сейчас доступно всем желающим благодаря нашему сервису!
+Музыканты при помощи нашего сервиса могут вещать в Интернет своё творчество. Возможны живые концерты в прямом эфире! Фан-клубы музыкальных групп просто обязаны иметь собственную радиостанцию, в эфире которой будет звучать их любимая группа.
+Мы можем часами объяснять все преимущества нашего сервиса - проще один раз попробовать. После регистрации Вы можете в течении 24 часов абсолютно БЕСПЛАТНО пользоваться нашим сервисом!</description>
+  </extension>
+</addon>
+
+<addon id="plugin.audio.sradio.ru"
+       name="SRADIO.RU"
+       version="0.0.2"
+       provider-name="HD-Lab Team">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+            library="default.py">
+        <provides>audio</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <platform>all</platform>
+    <summary>SRADIO.RU: слушайте FM и интернет радио со всего мира</summary>
+    <description>SRADIO.RU: слушайте FM и интернет радио со всего мира</description>
+  </extension>
+</addon>
+
+<addon id="plugin.audio.stepashka.com"
+       name="audio.stepashka.com"
+       version="0.0.3"
+       provider-name="akgdrg">
+    <requires>
+        <import addon="xbmc.python" version="2.1.0"/>
+        <import addon="script.module.beautifulsoup"/>
+
+    </requires>
+    <extension point="xbmc.python.pluginsource" provides="audio" library="default.py">
+        <provides>audio</provides>
+    </extension>
+
+    <extension point="xbmc.addon.metadata">
+        <summary>Аудиоархивы stepashka.com</summary>
+        <description>Аудиоархивы stepashka.com</description>
+        <platform>all</platform>
+    </extension>
+</addon>
+
+<addon id="plugin.audio.svobodanews.ru"
+       name="Svobodanews"
+       version="1.0.7"
+       provider-name="HD-Lab Team">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+            library="default.py">
+        <provides>audio</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary lang="ru">Радио Свободная Европа/Радио Свобода</summary>
+    <description lang="ru">Радио Свободная Европа/Радио Свобода - это частная некоммерческая информационная служба, финансируемая Конгрессом США, осуществляющая вещание на страны Восточной и Юго-Восточной Европы, Кавказа, Центральной Азии и Ближнего Востока и на Россию.
+Более 35 миллионов слушателей привыкли ежедневно полагаться на передаваемые РСЕ/РС сводки новостей, аналитические обзоры и тематические программы, посвященные последним событиям в их регионе и мире.</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.audio.teleplus.ru"
+       name="[COLOR FF00FF00]Музыка ([/COLOR][COLOR FFFFF000]TelePlus.ru[/COLOR][COLOR FF00FF00])[/COLOR]"
+       version="1.0.4"
+       provider-name="TelePlus.ru">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="audio"
+             library="default.py">
+    <provides>audio</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>TelePlus.ru</summary>
+    <description>Онлайн-кинотеатр teleplus.ru – развлекательная концепция будущего. Он удачно соединяет в себе все достоинства обычного кинотеатра с экономией и домашним уютом. Более 5000 фильмов и полмиллиона аудиотрэков по символической цене - 199 руб в месяц.</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.audio.tracksflow" name="TracksFlow" version="0.4" provider-name="Dmitry Khrysev">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+    <import addon="script.module.xbmcswift2" version="1.1.1"/>
+    <import addon="script.module.simple.downloader" version="0.9.1"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource" library="addon.py">
+    <provides>audio</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <platform>all</platform>
+    <summary>TracksFlow.com is a single spot connection to everything that relates to music.</summary>
+    <description>TracksFlow.com is a single spot connection to everything that relates to music.
+Audio sources are
+* Last.fm
+* Discogs
+* Deezer
+* Junodownload.com</description>
+  </extension>
+</addon>
+
 <addon id="repository.bond" name="Eugene Bond XBMC Add-ons" version="1.0.1" provider-name="Eugene Bond">
 	<extension point="xbmc.addon.repository" name="Eugene Bond XBMC Add-ons">
 		<info compressed="false">https://github.com/Eugene-Bond/xmbc-plugins/raw/master/addons.xml</info>
