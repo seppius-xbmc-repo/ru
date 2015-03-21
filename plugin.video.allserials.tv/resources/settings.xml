@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>  
+<settings>        <!-- General -->    
+	<setting label="30651" type="lsep"/> 
+	<setting id="continue_play" type="bool"  label="Играть все серии"    default="true"/>   	 
+	<setting label="30651" type="lsep"/> 
+	<setting id="translit" type="bool"  label="Поиск по транслитерации"    default="false"/>
+</settings> 

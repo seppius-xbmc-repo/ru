@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="plugin.video.allserials.tv"
+       name="[COLOR FF00FF00]Сериалы ([/COLOR][COLOR FFFFF000]allserials.tv[/COLOR][COLOR FF00FF00])[/COLOR]"
+       version="1.0.10"
+       provider-name="Silen">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>allserials.tv</summary>
+    <description>ALLSERIALS.TV - Смотреть бесплатно сериалы онлайн!
+Только на нашем ресурсе Вы с легкостью сможете отыскать интересующий вас сериал онлайн, все материалы можно смотреть бесплатно. Многие сериалы, представленные на нашем сайте, являются признанными русскими и зарубежными хитами.
+</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
