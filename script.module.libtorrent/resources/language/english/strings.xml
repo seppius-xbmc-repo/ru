@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<strings>
+    <string id="1000">Initialization</string>
+	<string id="1001">Connecting</string>
+	<string id="1002">Waiting</string>
+	<string id="1003">Sending Data</string>
+	<string id="1004">Receiving link</string>
+	<string id="1005">Playing</string>
+	<string id="1006">Cancel</string>
+	
+	<string id="1100">Pre-buffering</string>
+	<string id="1101">Buffering</string>
+	<string id="1102">Downloading</string>
+	<string id="1103">Verifying data</string>
+	<string id="1104">TS Engine Idling</string>
+	<string id="1105">TS Engine Waiting</string>
+	
+	<string id="1150">Seeds: %s Speed: %s</string>
+	<string id="1151">Seconds %s'</string>
+	
+	<string id="1010">TS Engine not running!</string>
+	<string id="1011">No answer</string>
+	<string id="1012">Error torrent loading</string>
+	<string id="1013">Timeout</string>
+    
+	<string id="2000">Server Address</string>
+	<string id="2001">AutoPausing</string>
+	<string id="2002">AutoClose tsengine</string>
+	<string id="2003">Show Buffering Status</string>
+	
+</strings>

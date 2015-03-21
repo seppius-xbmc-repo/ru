@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<strings>
+    <string id="1000">Инициализация</string>
+	<string id="1001">Соединение</string>
+	<string id="1002">Жду ответа</string>
+	<string id="1003">Передаю данные</string>
+	<string id="1004">Получаю ссылку</string>
+	<string id="1005">Начинаю воспроизведение</string>
+	<string id="1006">Отмена</string>
+	
+	<string id="1100">Предварительная буферизация</string>
+	<string id="1101">Буферизация</string>
+	<string id="1102">Скачивание</string>
+	<string id="1103">Проверка</string>
+	<string id="1104">TS Engine бездействует</string>
+	<string id="1105">TS Engine ожидает</string>
+	
+	<string id="1150">Пиры:%s Скорость:%s</string>
+	<string id="1151">Секунд %ы'</string>
+	
+	<string id="1010">TS Engine не запущен!</string>
+	<string id="1011">Нет ответа</string>
+	<string id="1012">Ошибка загрузки торрента</string>
+	<string id="1013">Не дождался ссылки для воспроизведения</string>
+    
+	<string id="2000">Адрес сервера</string>
+	<string id="2001">Использовать автопаузу</string>
+	<string id="2002">Автозакрытие tsengine</string>
+	<string id="2003">Показывать уведомления о буферизации</string>
+</strings>
