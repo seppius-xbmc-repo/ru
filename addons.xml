@@ -451,6 +451,25 @@ Audio sources are
   </extension>
 </addon>
 
+<addon id="plugin.video.RuTor"
+       name="RuTor"
+       version="2.4.0"
+       provider-name="TDW">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+    <import addon="script.module.torrent.ts"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+            library="default.py">
+        <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>RuTor</summary>
+    <description>RuTor for TorrentStreem</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
 <addon id="plugin.video.allserials.tv"
        name="[COLOR FF00FF00]Сериалы ([/COLOR][COLOR FFFFF000]allserials.tv[/COLOR][COLOR FF00FF00])[/COLOR]"
        version="1.0.10"
@@ -1000,7 +1019,7 @@ Audio sources are
        version="0.1.5"
        provider-name="NuisMons">
   <requires>
-    <import addon="xbmc.python" version="1.0"/>
+    <import addon="xbmc.python" version="2.1.0"/>
 	<import addon="script.module.beautifulsoup"/>
   </requires>
   <extension point="xbmc.python.pluginsource"
@@ -1084,6 +1103,383 @@ Audio sources are
   <extension point="xbmc.addon.metadata">
     <summary>Kiwi.kz - видео в Казахстане</summary>
 	<description>Kiwi.kz - видео-сервис в Казахстане. Видео-портал, позволяющий вам бесплатно просматривать самое новое, популярное и интересное видео в различных категориях. Загружайте свое видео, просматривайте видео, транслируйте и смотрите видео онлайн.</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.megogo.net" name="MEGOGO.NET" version="1.0.1" provider-name="MEGOGO.NET">
+  <requires><import addon="xbmc.python" version="2.1.0"/></requires>
+  <extension point="xbmc.python.pluginsource" provides="video" library="default.py"><provides>video</provides></extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>MEGOGO.NET - онлайн-кинотеатр с легальным контентом.</summary>
+    <description>MEGOGO.NET - это 20 тысяч часов легального видео-контента. Это более 3 500 полнометражных фильмов, 800 мультфильмов, 700 сериалов, 200 телевизионных шоу и концертов. Ежедневно библиотека онлайн-кинотеатра пополняется десятками часов качественного видео-контента.
+У нас много эксклюзивного материала - более 120 новинок кино и более двух десятков прямых эксклюзивных договоров со студиями и крупными правообладателями. Мы работаем над тем, чтобы наши зрители всегда имели доступ к самым лучшим и свежим фильмам.</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.mults.spb.ru"
+       name="Каталог мультфильмов"
+       version="1.0.3"
+       provider-name="HD-Lab Team">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Лучшие мультфильмы из вашего детства</summary>
+    <description>На сайте http://mults.spb.ru/ вы можете бесплатно посмотреть мультфильмы онлайн, а также скачать мультики для просмотра на компьютере или телевизоре. На сайте собрана коллекция мультфильмов советских времен и не только. Самые лучшие мультики из вашего детства! Коллекция мультфильмов постоянно пополняется новыми и старыми мультиками.</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.music.ivi.ru" name="music.ivi.ru" version="0.1.0" provider-name="ivi.ru">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0" />
+  </requires>
+  <extension point="xbmc.python.pluginsource" provides="video" library="default.py"><provides>video</provides></extension>
+  <extension point="xbmc.addon.metadata">
+	<language>ru</language>
+    <summary>Клипы: смотреть видео клипы онлайн, слушать музыку онлайн, видеоклипы бесплатно и без регистрации — music.ivi.ru</summary>
+    <description>Клипы: смотреть видео клипы онлайн, слушать музыку онлайн, видеоклипы бесплатно и без регистрации — music.ivi.ru</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.muzunga.tv" name="Muzunga.TV" version="1.0.3" provider-name="Muzunga.TV">
+  <requires><import addon="xbmc.python" version="2.1.0"/></requires>
+  <extension point="xbmc.python.pluginsource" provides="video" library="default.py"><provides>video</provides></extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Фильмы, сериалы и телевидение в HD качестве онлайн</summary>
+    <description>Ресурс Muzunga.TV является общедоступным для всех зарегистрированных пользователей и осуществляет свою деятельность с соблюдением действующего законодательства Украины и на основании договора и лицензии на право вещания ДП "УААСП" КТ-3554 от 01.02.2011, обеспечивающим выплаты вознаграждений по авторским и смежным правам.</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.my-hit.ru"
+       name="[COLOR FF00FF00]Кино портал ([/COLOR][COLOR FFFFF000]my-hit.org[/COLOR][COLOR FF00FF00])[/COLOR]"
+       version="1.2.3"
+       provider-name="Silen">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>my-hit.ru</summary>
+    <description>Фильмы онлайн, наш кино портал.</description>
+    <platform>all</platform>
+    <website>http://xbmc.ru/forum/showthread.php?t=1415</website>
+  </extension>
+</addon>
+
+<addon id="plugin.video.myvi.ru" name="МУВИ" version="1.0.1" provider-name="Myvi">
+  <requires><import addon="xbmc.python" version="2.1.0"/></requires>
+  <extension point="xbmc.python.pluginsource" provides="video" library="default.py"><provides>video</provides></extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Муви.ру - Только лучшие ролики сети!</summary>
+    <description>Это бесплатный сервис для размещения, хранения и просмотра видеофайлов.
+Активное пользовательское сообщество поддерживается социальной сетью сайта с такими функциями, как оценка видео других авторов, участие в обсуждениях, объединение в сообщества по интересам.
+Автоматическая система учета пользовательских интересов (мы называем ее ласково «Моя прелесть») учитывает интересы посетителей, позволяя таргетировать контент под каждого пользователя. Фильтрация контента «Муви» осуществляется самими пользователями, что позволяет в автоматическом режиме отображать на сайте только самые интересные для аудитории ролики.</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.new-kino.net" name="[COLOR FF37C6FD]New-Kino.net[/COLOR]" version="0.7.4" provider-name="Silhouette">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+    <import addon="script.module.beautifulsoup" version="3.0.8"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"  provides="video" library="default.py"><provides>video</provides></extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>new-kino.net - фильмы, мультфильмы, сериалы</summary>
+    <description>new-kino.net - фильмы, мультфильмы, сериалы - круглосуточно на нашем сайте, смотрите, наслаждайтесь и отдыхайте</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.nogomya.ch"
+       name="[COLOR FF00FF00]НОГОМЯЧ ([/COLOR][COLOR FFFFF000]nogomya.ch[/COLOR][COLOR FF00FF00])[/COLOR]"
+       version="1.0.5"
+       provider-name="Silen">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>nogomya.ch</summary>
+    <description>НОГОМЯЧ. Футбол без перерыва.</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.nowfilms.ru"
+       name="[COLOR FF00FF00]Кино портал ([/COLOR][COLOR FF00FFFF]Now[/COLOR][COLOR FFFF0040]Films.ru[/COLOR][COLOR FF00FF00])[/COLOR]"
+       version="1.0.19"
+       provider-name="Silen">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>NowFilms.ru</summary>
+    <description>Медиапортал [COLOR FF00FFFF]Now[/COLOR][COLOR FFFF0040]Films.ru[/COLOR] - фильмы, сериалы.</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.online.anidub.com"
+       name="[COLOR=FFFF0000]Ani[/COLOR][COLOR=FF00FF00]DUB[/COLOR]"
+       version="0.2.6"
+       provider-name="NuisMons">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+	<import addon="script.module.beautifulsoup"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Просмотр аниме онлайн online.anidub.com</summary>
+    <description>Просмотр аниме онлайн online.anidub.com</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.planeta-online.tv" name="Planeta-online.tv" version="1.0.8" provider-name="HD-Lab Team">
+	<requires><import addon="xbmc.python" version="2.1.0"/></requires>
+	<extension point="xbmc.python.pluginsource" library="default.py"><provides>video</provides></extension>
+	<extension point="xbmc.addon.metadata">
+		<summary>http://www.planeta-online.tv/</summary>
+		<description>http://www.planeta-online.tv/</description>
+		<platform>all</platform>
+	</extension>
+</addon>
+
+<addon id="plugin.video.pokerstars.tv" name="Pokerstars TV" provider-name="Sergey Pulyaev" version="0.0.12">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension library="addon.py" point="xbmc.python.pluginsource" provides="video">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>pokerstars.tv</summary>
+    <description>
+Plugin for watching video from site pokerstars.tv
+I hope you like this!
+    </description>
+    <platform>all</platform>
+    <license>GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007</license>
+    <email>serj1903@gmail.com</email>
+  </extension>
+</addon>
+
+<addon id="plugin.video.raketa.tv"
+       name="Raketa-TV"
+       version="2.0.6"
+       provider-name="Const86, -=St.Anger=-">
+    <requires>
+		<import addon="script.module.torrent.ts"/>
+		<import addon="script.module.beautifulsoup"/>
+    </requires>
+    <extension point="xbmc.python.pluginsource" provides="video" library="default.py">
+        <provides>video</provides>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <summary>Raketa TV</summary>
+        <description>Просмотр каналов Raketa-TV через Torrent Stream</description>
+        <platform>all</platform>
+    </extension>
+</addon>
+
+<addon id="plugin.video.rodina.tv" name="[COLOR FF23a0e3]Rodina.TV[/COLOR]" version="2.7.3" provider-name="Rodina TV">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+    <import addon="script.service.rodina.tv" version="1.0.1"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"  provides="video" library="default.py"><provides>video</provides></extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Rodina.TV – Новости, кино, музыка, спортивные трансляции, кинозал, архив программ за 2 недели.</summary>
+    <description>Rodina.TV – это качественное русскоязычное и интернациональное интернет телевидение в любой точке земного шара. Спортивные трансляции, кино, новости, музыка.
+Сервис ТВ онлайн позволяет смотреть эфирные русскоязычные и другие каналы, пользоваться онлайн кинозалом со множеством новинок и киноклассикой. В вашем распоряжении архив программ за  2 недели, а также функция тайм-шифт.</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.rodnoe.tv"
+       name="Rodnoe.TV"
+       version="1.2.0"
+       provider-name="Eugene Bond">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Онлайн-телевидение Rodnoe.TV</summary>
+    <description>Онлайн-телевидение Rodnoe.TV: более 100 русскоязычных каналов от 10 евро в месяц.</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.rpod.ru"
+       name="Russian Podcasting"
+       version="1.0.8"
+       provider-name="HD-Lab Team">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="audio, video"
+             library="default.py">
+    <provides>audio video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Russian Podcasting</summary>
+    <description>Russian Podcasting - первый и единственный свободный подкаст-терминал в Российском интернете. RPOD не делит подкасты на хорошие и плохие, не навязывает выбор странной группы лиц, не требует передавать исключительные права, а просто даёт возможность опубликовать свои подкасты любому, кто этого пожелает.</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.ruhd.ru"
+       name="RUHD.RU"
+       version="1.0.5"
+       provider-name="HD-Lab Team">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+            library="default.py">
+        <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>RUHD.ru - Видео Высокого качества №1 в России!</summary>
+    <description>Цель нашего сайта, создать сообщество, которое позволит людям загружать или посматривать видео высокого качества, например, fullHD, прямо с нашего сайта - онлайн</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.ruhd.tv"
+       name="RuHD.TV"
+       version="1.2.2"
+       provider-name="HD-Lab Team">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Смотрите видео с сайта RuHD.TV</summary>
+    <description>Смотрите видео с сайта RuHD.TV</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.rurem"
+       version="1.2.5"
+       name="RuremTV"
+       provider-name="Rurem.TV">
+    <requires>
+        <import addon="xbmc.python" version="2.1.0"/>
+
+    </requires>
+    <extension point="xbmc.python.pluginsource" library="brtv.py">
+        <provides>video</provides>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <summary lang="en">Rurem.TV plugin</summary>
+		<summary lang="ru">Rurem.TV плагин для XBMC</summary>
+        <description lang="en">Over 100 TV channels from Russia, Ukraine and other CIS countries, 40,000+ movies, huge selection of archived programs.</description>
+		<description lang="ru">Более 100 каналов ТВ из России, Украины и стран СНГ, архив, огромная видеотека.</description>
+        <platform>all</platform>
+    </extension>
+</addon>
+
+<addon id="plugin.video.rusd.tv"
+       name="RuSD.TV"
+       version="1.2.1"
+       provider-name="HD-Lab Team">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Смотрите видео с сайта RuSD.TV</summary>
+    <description>Смотрите видео с сайта RuSD.TV</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.russia.ru" name="RUSSIA.RU" version="1.0.8" provider-name="HD-Lab Team">
+  <requires><import addon="xbmc.python" version="2.1.0"/></requires>
+  <extension point="xbmc.python.pluginsource" provides="video" library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Смотрите видео с сайта http://russia.ru/</summary>
+    <description>Russia.ru - первый российский телеканал, созданный для пользователей интернета. Открывшись в октябре 2007 года как арт-проект, он стал лидером российского интернет-телевидения и твердо занял первое место среди сетевых телепроектов. Ежемесячный охват аудитории Russia.ru - более 2 400 000 зрителей (исследования Gallup). Подавляющее их большинство – люди с быстрым подключением к сети и мощными компьютерами.
+Russia.ru делает передачи для самой разной аудитории, освещает темы, которые игнорирует традиционное телевидение. Нелинейный формат вещания позволяет зрителю самому выбирать интересные для себя сюжеты. Контент Russia.ru не устаревает и доступен в любое время в любом месте.
+Особое значение мы придаем сюжетам, посвященным жизни современной России. Во время войны в Южной Осетии телеканал каждый день размещал информацию о ходе военных действий, прогнозы специалистов и репортажи, которые делала съемочная группа в зоне конфликта. Фильм «Война 08.08.08» имел широкий общественный резонанс - его посмотрело более 1.8 млн. человек. В 2009 году на экраны Russia.ru вышел уникальный фильм, посвященный Калмыкии, фильм «Путешествие по Дону», ряд сюжетов из Нижнего Новгорода.</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.russia.tv" name="Russia.tv" version="0.2.0" provider-name="achasik">
+  <requires><import addon="xbmc.python" version="2.1.0"/></requires>
+  <extension point="xbmc.python.pluginsource" provides="video" library="default.py"><provides>video</provides></extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Фильмы и передачи телеканалов Россия-1, Россия-2,ТВ Культура</summary>
+    <description>Фильмы и передачи телеканалов Россия-1, Россия-2,ТВ Культура</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.rutube.ru"
+       name="RuTube"
+       version="1.0.6"
+       provider-name="HD-Lab Team">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Лучшие онлайн видео ролики, приколы, аниме и клипы.</summary>
+    <description>На RuTube Вы всегда сможете найти интересные ролики, новые клипы, anime и другое интересное видео. Каждый день наши пользователи загружают на сайт более 3500 новых роликов, лучшие из которых редакция сайта отбирает на главную страницу.
+Особой популярностью пользуются авторские видеоприколы. Если Вы снимаете действительно смешное видео и не боитесь выставить себя или друзей в нелепом свете - то быстро станете звездой RuTube. При загрузке видео желательно указать категорию, к которой он относится (например, "Юмор, развлечения"), чтобы пользователи, интересующиеся этой темой, могли быстро найти ваш видеоролик.
+RuTube - отличная стартовая площадка для независимых студий, начинающих кинорежиссеров и музыкальных групп. Концертное видео всегда привлекает внимание меломанов, которые любят слушать музыку онлайн и смотреть на выступление своей любимой команды. Помимо видео с концертов на RuTube есть музыкальные клипы, а также видео блоги популярных исполнителей, которые всегда рады непосредственному общению со своими фанатами. Один из самых популярных разделов RuTube - раздел кинотрейлеров. Раздел обновляется каждую неделю, в нем вы всегда можете посмотреть свежие трейлеры самых актуальных фильмов. Не обделены вниманием и мультики. Есть все: anime, современные интернет мульты, а также классические советские мультфильмы
+Видео хостинг RuTube занимает лидирующие позиции среди российских видео сайтов и входит в десятку самых посещаемых сайтов рунета. Здесь можно посмотреть видео ролики на любой вкус: от интервью с деятелями культуры и серьезных политических передач до видео приколов, записей автокатастроф и аварий. Смотрите в онлайн аниме, передачу "Наша Раша" и самое смешное видео из репертуара Comedy Club.</description>
     <platform>all</platform>
   </extension>
 </addon>
