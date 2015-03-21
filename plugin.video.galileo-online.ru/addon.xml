@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="plugin.video.galileo-online.ru"
+       name="[COLOR FF00FF00]Галилео ([/COLOR][COLOR FFFFF000]galileo-online.ru[/COLOR][COLOR FF00FF00])[/COLOR]"
+       version="1.0.2"
+       provider-name="Silen">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>my-hit.ru</summary>
+    <description>Галилео - телевизионная развлекательно-познавательная программа канала СТС.
+Ведущий — Александр Пушной. 
+</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
