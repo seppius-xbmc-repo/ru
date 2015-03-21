@@ -1,0 +1,4 @@
+<settings>
+    <setting id="translit" type="bool" label="Translit" default="true" />
+    <setting id="unified_search" type="bool" label="Unified search" default="true" />
+</settings>
