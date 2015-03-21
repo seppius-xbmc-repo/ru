@@ -1,0 +1,9 @@
+<settings>
+    <setting id="Show title" type="enum" label="30001" default="2" values="ru|en|both_ru_first|both_en_first"/>
+    <setting id="Prefer HD" type="bool" label="30003" default="false"/>
+    <setting id="Preferred language" type="enum" label="30004" default="0" values="ru|en"/>
+    <setting id="Show preferred language only" type="bool" label="30008" default="false"/>
+    <setting id="Show available languages" type="bool" label="30005" default="true"/>
+	<setting id="Login" type="text" label="30006"/>
+	<setting id="Password" type="text" label="30007" option="hidden"/>
+</settings>
