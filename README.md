@@ -1,0 +1,2 @@
+# ru
+seppius-xbmc-repo
