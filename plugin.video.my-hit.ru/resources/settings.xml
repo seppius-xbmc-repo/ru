@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>  
+<settings>        <!-- General -->    
+	<setting label="30651" type="lsep"/> 
+	<setting id="Proxy_IP" type="ipaddress" label="IP адрес для AdobeHDS proxy" default="127.0.0.1"/>
+	<setting id="Proxy_Port" type="number" label="Порт  для AdobeHDS proxy" default="88"/>
+	<setting label="30651" type="lsep"/> 
+	<setting id="Proxy_Thread" type="number" label="Кол-во потоков загрузки AdobeHDS proxy" default="4"/>  	  
+</settings> 
