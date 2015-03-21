@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="plugin.image.manga24.ru" name="manga24.ru" version="0.0.4"
+       provider-name="NuisMons">
+  <requires>
+    <import addon="script.module.simplejson" version="2.0.10"/>
+    <import addon="script.module.beautifulsoup"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource" library="default.py">
+    <provides>image</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <platform>all</platform>
+    <summary lang="en">View manga</summary>
+    <description>
+		Добро пожаловать на Manga24! 
+		На нашем сайте вы сможете читать мангу онлайн!
+		Манга - это японские комиксы, чрезвычайно модные, красивые и интересные.
+		На нашем сайте вы сможете читать мангу на русском, которая выходила или выходит в настоящее время. Мы часто обновляемся, поэтому заходите к нам почаще, у нас всегда есть, что почитать! :)
+    </description> 
+    <license>GPL 2.0</license>
+  </extension>
+</addon>
