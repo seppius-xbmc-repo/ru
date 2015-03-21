@@ -1,0 +1,481 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+		<include name="MediaListView33">
+		<control type="group">
+			<visible>Control.IsVisible(5033)</visible>
+			<include>VisibleFadeEffect</include>
+			<control type="list" id="5033">
+				<left>645</left>
+				<top>247</top>
+				<width>585</width>
+				<height>401</height>
+				<onleft>2</onleft>
+				<onright>60</onright>
+				<onup>5033</onup>
+				<ondown>5033</ondown>
+				<viewtype label="Dharma style">list</viewtype>
+				<pagecontrol>60</pagecontrol>
+				<scrolltime>200</scrolltime>
+				<visible>Container.Content(TVShows) | Container.Content(Seasons) | Container.Content(Episodes) | Container.Content(Movies)</visible>
+				<itemlayout height="40" width="580">
+					<control type="image">
+						<left>0</left>
+						<top>0</top>
+						<width>590</width>
+						<height>41</height>
+						<texture border="0,2,0,2">MenuItemNF.png</texture>
+					</control>
+					<control type="label">
+						<left>10</left>
+						<top>0</top>
+						<width>520</width>
+						<height>40</height>
+						<font>font13</font>
+						<textcolor>grey2</textcolor>
+						<selectedcolor>selected</selectedcolor>
+						<align>left</align>
+						<aligny>center</aligny>
+						<label>$INFO[ListItem.Label]</label>
+					</control>
+					<control type="label">
+						<left>505</left>
+						<top>0</top>
+						<width>500</width>
+						<height>40</height>
+						<font>font12</font>
+						<textcolor>grey2</textcolor>
+						<selectedcolor>selected</selectedcolor>
+						<align>right</align>
+						<aligny>center</aligny>
+						<label>$INFO[ListItem.Label2]</label>
+					</control>
+					<control type="image">
+						<left>515</left>
+						<top>8</top>
+						<width>40</width>
+						<height>26</height>
+						<texture>$INFO[ListItem.VideoResolution,flagging/lists/,.png]</texture>
+						<visible>Window.IsVisible(Videos) + [Container.Content(Movies) | Container.Content(Episodes) | Container.Content(MusicVideos)]</visible>
+					</control>
+					<control type="image">
+						<left>555</left>
+						<top>14</top>
+						<width>20</width>
+						<height>16</height>
+						<texture>$INFO[ListItem.Overlay]</texture>
+						<visible>!ListItem.IsResumable</visible>
+					</control>
+					<control type="image">
+						<left>555</left>
+						<top>14</top>
+						<width>16</width>
+						<height>16</height>
+						<texture>OverlayWatching.png</texture>
+						<visible>ListItem.IsResumable</visible>
+					</control>
+				</itemlayout>
+				<focusedlayout height="40" width="580">
+					<control type="image">
+						<left>0</left>
+						<top>0</top>
+						<width>580</width>
+						<height>41</height>
+						<texture border="0,2,0,2">MenuItemNF.png</texture>
+						<visible>!Control.HasFocus(5033)</visible>
+						<include>VisibleFadeEffect</include>
+					</control>
+					<control type="image">
+						<left>0</left>
+						<top>0</top>
+						<width>580</width>
+						<height>41</height>
+						<texture border="0,2,0,2">MenuItemFO.png</texture>
+						<visible>Control.HasFocus(5033)</visible>
+						<include>VisibleFadeEffect</include>
+					</control>
+					<control type="image">
+						<left>380</left>
+						<top>4</top>
+						<width>200</width>
+						<height>33</height>
+						<texture border="0,0,14,0">MediaItemDetailBG.png</texture>
+						<visible>Control.HasFocus(5033) + !IsEmpty(ListItem.Label2)</visible>
+					</control>
+					<control type="label">
+						<left>10</left>
+						<top>0</top>
+						<width>520</width>
+						<height>40</height>
+						<font>font13</font>
+						<textcolor>white</textcolor>
+						<selectedcolor>selected</selectedcolor>
+						<align>left</align>
+						<aligny>center</aligny>
+						<label>$INFO[ListItem.Label]</label>
+					</control>
+					<control type="label">
+						<left>505</left>
+						<top>0</top>
+						<width>500</width>
+						<height>40</height>
+						<font>font12</font>
+						<textcolor>grey2</textcolor>
+						<selectedcolor>selected</selectedcolor>
+						<align>right</align>
+						<aligny>center</aligny>
+						<label>$INFO[ListItem.Label2]</label>
+					</control>
+					<control type="image">
+						<left>515</left>
+						<top>8</top>
+						<width>40</width>
+						<height>26</height>
+						<texture>$INFO[ListItem.VideoResolution,flagging/lists/,.png]</texture>
+						<visible>Window.IsVisible(Videos) + [Container.Content(Movies) | Container.Content(Episodes) | Container.Content(MusicVideos)]</visible>
+					</control>
+					<control type="image">
+						<left>555</left>
+						<top>14</top>
+						<width>20</width>
+						<height>16</height>
+						<texture>$INFO[ListItem.Overlay]</texture>
+						<visible>!ListItem.IsResumable</visible>
+					</control>
+					<control type="image">
+						<left>555</left>
+						<top>14</top>
+						<width>16</width>
+						<height>16</height>
+						<texture>OverlayWatching.png</texture>
+						<visible>ListItem.IsResumable</visible>
+					</control>
+				</focusedlayout>
+			</control>
+			<control type="scrollbar" id="60">
+				<left>1225</left>
+				<top>247</top>
+				<width>25</width>
+				<height>401</height>
+				<texturesliderbackground border="0,14,0,14">ScrollBarV.png</texturesliderbackground>
+				<texturesliderbar border="0,14,0,14">ScrollBarV_bar.png</texturesliderbar>
+				<texturesliderbarfocus border="0,14,0,14">ScrollBarV_bar_focus.png</texturesliderbarfocus>
+				<textureslidernib>ScrollBarNib.png</textureslidernib>
+				<textureslidernibfocus>ScrollBarNib.png</textureslidernibfocus>
+				<onleft>5033</onleft>
+				<onright>2</onright>
+				<showonepage>false</showonepage>
+				<orientation>vertical</orientation>
+				<visible>Control.IsVisible(5033)</visible>
+			</control>
+			<control type="group">
+				<left>80</left>
+				<top>170</top>
+				<visible>Container.Content(TVShows)</visible>
+				<control type="group">
+					<left>10</left>
+					<camera x="640" y="200" />
+					<animation effect="rotatey" center="90" start="-30" end="-30" time="0" condition="true">Conditional</animation>
+					<control type="image">
+						<left>0</left>
+						<top>47</top>
+						<width>260</width>
+						<height>480</height>
+						<aspectratio aligny="bottom">stretch</aspectratio>
+						<fadetime>IconCrossfadeTime</fadetime>
+						<texture background="true">$INFO[ListItem.Icon]</texture>
+						<bordertexture border="8">ThumbBorder.png</bordertexture>
+						<bordersize>8</bordersize>
+					</control>
+					<control type="image">
+						<left>8</left>
+						<top>55</top>
+						<width>180</width>
+						<height>350</height>
+						<aspectratio>stretch</aspectratio>
+						<texture>GlassOverlay.png</texture>
+						<colordiffuse>AAFFFFFF</colordiffuse>
+					</control>
+					<control type="image">
+						<left>0</left>
+						<top>522</top>
+						<width>260</width>
+						<height>300</height>
+						<aspectratio>stretch</aspectratio>
+						<bordertexture border="8">ThumbBorder.png</bordertexture>
+						<bordersize>8</bordersize>
+						<fadetime>200</fadetime>
+						<texture background="true" flipy="true" >$INFO[ListItem.Icon]</texture>
+						<colordiffuse>33FFFFFF</colordiffuse>
+						<visible>!Skin.HasSetting(NoFloorAll)</visible>
+					</control>
+				</control>
+				<control type="label">
+					<description>Episodes Count</description>
+					<left>320</left>
+					<top>320</top>
+					<width>250</width>
+					<height>25</height>
+					<label>$INFO[ListItem.Episode,, $LOCALIZE[20453]]</label>
+					<align>left</align>
+					<aligny>center</aligny>
+					<font>font13_title</font>
+					<textcolor>white</textcolor>
+					<shadowcolor>black</shadowcolor>
+				</control>
+				<control type="label">
+					<description>Watched Count</description>
+					<left>320</left>
+					<top>380</top>
+					<width>250</width>
+					<height>25</height>
+					<label>$INFO[ListItem.Property(WatchedEpisodes),, $LOCALIZE[16102]]</label>
+					<align>left</align>
+					<aligny>center</aligny>
+					<font>font13_title</font>
+					<textcolor>grey2</textcolor>
+					<shadowcolor>black</shadowcolor>
+				</control>
+				<control type="label">
+					<description>UnWatched Count</description>
+					<left>320</left>
+					<top>400</top>
+					<width>250</width>
+					<height>25</height>
+					<label>$INFO[ListItem.Property(UnWatchedEpisodes),, $LOCALIZE[16101]]</label>
+					<align>left</align>
+					<aligny>center</aligny>
+					<font>font13_title</font>
+					<textcolor>grey2</textcolor>
+					<shadowcolor>black</shadowcolor>
+				</control>
+			</control>
+			<control type="group">
+				<left>80</left>
+				<top>170</top>
+				<visible>Container.Content(Seasons)</visible>
+				<control type="group">
+					<left>10</left>
+					<camera x="640" y="200" />
+					<animation effect="rotatey" center="90" start="-30" end="-30" time="0" condition="true">Conditional</animation>
+					<control type="image">
+						<left>0</left>
+						<top>47</top>
+						<width>260</width>
+						<height>480</height>
+						<aspectratio aligny="bottom">stretch</aspectratio>
+						<fadetime>IconCrossfadeTime</fadetime>
+						<texture background="true">$INFO[ListItem.Icon]</texture>
+						<bordertexture border="8">ThumbBorder.png</bordertexture>
+						<bordersize>8</bordersize>
+					</control>
+					<control type="image">
+						<left>8</left>
+						<top>55</top>
+						<width>180</width>
+						<height>350</height>
+						<aspectratio>stretch</aspectratio>
+						<texture>GlassOverlay.png</texture>
+						<colordiffuse>AAFFFFFF</colordiffuse>
+					</control>
+					<control type="image">
+						<left>0</left>
+						<top>522</top>
+						<width>260</width>
+						<height>300</height>
+						<aspectratio>stretch</aspectratio>
+						<bordertexture border="8">ThumbBorder.png</bordertexture>
+						<bordersize>8</bordersize>
+						<fadetime>200</fadetime>
+						<texture background="true" flipy="true" >$INFO[ListItem.Icon]</texture>
+						<colordiffuse>33FFFFFF</colordiffuse>
+						<visible>!Skin.HasSetting(NoFloorAll)</visible>
+					</control>
+				</control>
+				<control type="label">
+					<description>Main Label txt</description>
+					<left>320</left>
+					<top>260</top>
+					<width>250</width>
+					<height>25</height>
+					<label>$INFO[ListItem.Label]</label>
+					<align>left</align>
+					<aligny>center</aligny>
+					<font>font30</font>
+					<textcolor>white</textcolor>
+					<shadowcolor>black</shadowcolor>
+				</control>
+				<control type="label">
+					<description>Episodes Count</description>
+					<left>320</left>
+					<top>320</top>
+					<width>250</width>
+					<height>25</height>
+					<label>$INFO[ListItem.Episode,, $LOCALIZE[20453]]</label>
+					<align>left</align>
+					<aligny>center</aligny>
+					<font>font13_title</font>
+					<textcolor>white</textcolor>
+					<shadowcolor>black</shadowcolor>
+				</control>
+				<control type="label">
+					<description>Watched Count</description>
+					<left>320</left>
+					<top>380</top>
+					<width>250</width>
+					<height>25</height>
+					<label>$INFO[ListItem.Property(WatchedEpisodes),, $LOCALIZE[16102]]</label>
+					<align>left</align>
+					<aligny>center</aligny>
+					<font>font13_title</font>
+					<textcolor>grey2</textcolor>
+					<shadowcolor>black</shadowcolor>
+				</control>
+				<control type="label">
+					<description>UnWatched Count</description>
+					<left>320</left>
+					<top>400</top>
+					<width>250</width>
+					<height>25</height>
+					<label>$INFO[ListItem.Property(UnWatchedEpisodes),, $LOCALIZE[16101]]</label>
+					<align>left</align>
+					<aligny>center</aligny>
+					<font>font13_title</font>
+					<textcolor>grey2</textcolor>
+					<shadowcolor>black</shadowcolor>
+				</control>
+			</control>
+			<control type="group">
+				<left>50</left>
+				<top>250</top>
+				<visible>Container.Content(Episodes)</visible>
+				<control type="image">
+					<left>0</left>
+					<top>0</top>
+					<width>600</width>
+					<height>210</height>
+					<aspectratio aligny="bottom">keep</aspectratio>
+					<fadetime>IconCrossfadeTime</fadetime>
+					<texture background="true">$INFO[ListItem.Icon]</texture>
+					<bordertexture border="8">ThumbBorder.png</bordertexture>
+					<bordersize>8</bordersize>
+				</control>
+				<control type="grouplist">
+					<description>Media Codec Flagging Images</description>
+					<left>100</left>
+					<top>390</top>
+					<width>590</width>
+					<align>center</align>
+					<itemgap>0</itemgap>
+					<orientation>horizontal</orientation>
+					<include>VideoCodecFlaggingConditions</include>
+					<include>AudioCodecFlaggingConditions</include>
+					<include>AudioChannelsFlaggingConditions</include>
+					<include>AspectCodecFlaggingConditions</include>
+					<include>VideoTypeHackFlaggingConditions</include>
+				</control>
+				<control type="label">
+					<description>INFO txt</description>
+					<left>0</left>
+					<top>220</top>
+					<width>600</width>
+					<height>25</height>
+					<label>$INFO[ListItem.Season,[COLOR=blue] $LOCALIZE[20373] :[/COLOR] ] $INFO[ListItem.episode,[COLOR=blue] $LOCALIZE[20359] :[/COLOR] ] $INFO[ListItem.premiered,[COLOR=blue] $LOCALIZE[31322] :[/COLOR] ]</label>
+					<align>center</align>
+					<aligny>top</aligny>
+					<font>font13_title</font>
+					<textcolor>white</textcolor>
+					<shadowcolor>black</shadowcolor>
+					<wrapmultiline>true</wrapmultiline>
+				</control>
+				<control type="image">
+					<left>0</left>
+					<top>255</top>
+					<width>600</width>
+					<height>4</height>
+					<texture>separator.png</texture>
+				</control>
+				<control type="textbox">
+					<description>Description Value for TVShows</description>
+					<left>0</left>
+					<top>260</top>
+					<width>600</width>
+					<height>120</height>
+					<font>font12</font>
+					<align>justify</align>
+					<textcolor>white</textcolor>
+					<label>$INFO[ListItem.Plot]</label>
+					<autoscroll time="2000" delay="3000" repeat="5000">Skin.HasSetting(AutoScroll)</autoscroll>
+				</control>
+			</control>
+			<control type="group">
+				<left>40</left>
+				<top>170</top>
+				<visible>Container.Content(Movies)</visible>
+				<control type="group">
+					<left>10</left>
+					<camera x="640" y="200" />
+					<animation effect="rotatey" center="50" start="-30" end="-30" time="0" condition="true">Conditional</animation>
+					<control type="image">
+						<left>5</left>
+						<top>55</top>
+						<width>260</width>
+						<height>480</height>
+						<aspectratio aligny="bottom">stretch</aspectratio>
+						<fadetime>IconCrossfadeTime</fadetime>
+						<texture background="true">$INFO[ListItem.Icon]</texture>
+						<bordertexture border="8">ThumbBorder.png</bordertexture>
+						<bordersize>8</bordersize>
+					</control>
+					<control type="image">
+						<left>13</left>
+						<top>63</top>
+						<width>180</width>
+						<height>350</height>
+						<aspectratio>stretch</aspectratio>
+						<texture>GlassOverlay.png</texture>
+						<colordiffuse>AAFFFFFF</colordiffuse>
+					</control>
+					<control type="image">
+						<left>5</left>
+						<top>530</top>
+						<width>260</width>
+						<height>300</height>
+						<aspectratio>stretch</aspectratio>
+						<bordertexture border="8">ThumbBorder.png</bordertexture>
+						<bordersize>8</bordersize>
+						<fadetime>200</fadetime>
+						<texture background="true" flipy="true" >$INFO[ListItem.Icon]</texture>
+						<colordiffuse>33FFFFFF</colordiffuse>
+						<visible>!Skin.HasSetting(NoFloorAll)</visible>
+					</control>
+				</control>
+				<control type="grouplist">
+					<description>Media Codec Flagging Images</description>
+					<left>300</left>
+					<top>480</top>
+					<width>590</width>
+					<align>center</align>
+					<itemgap>1</itemgap>
+					<orientation>horizontal</orientation>
+					<include>VideoCodecFlaggingConditions</include>
+					<include>AudioCodecFlaggingConditions</include>
+					<include>AudioChannelsFlaggingConditions</include>
+					<include>AspectCodecFlaggingConditions</include>
+					<include>VideoTypeHackFlaggingConditions</include>
+				</control> 
+				<control type="textbox">
+					<description>Description Value for Movie</description>
+					<left>320</left>
+					<top>80</top>
+					<width>270</width>
+					<height>390</height>
+					<font>font12</font>
+					<align>justify</align>
+					<textcolor>white</textcolor>
+					<label>$INFO[ListItem.Plot]</label>
+					<autoscroll time="2000" delay="3000" repeat="5000">Skin.HasSetting(AutoScroll)</autoscroll>
+				</control>
+			</control>
+		</control>
+	</include>
+</includes>

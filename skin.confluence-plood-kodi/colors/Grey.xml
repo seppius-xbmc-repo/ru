@@ -1,0 +1,16 @@
+<colors>
+    <!-- CONFLUENCE LITE COLORS -->
+	<color name="white">FFFFFFFF</color>
+	<color name="grey">FFb4b4b4</color>
+	<color name="grey2">FF999999</color>
+	<color name="grey3">FF505050</color>
+	<color name="black">FF000000</color>
+	<color name="blue">FF999999</color>
+	<color name="selected">FFFFFFFF</color>
+    <color name="orange">FFAAAAAA</color>
+	<color name="RSSText">FF000000</color><!--blue-->
+	<color name="RSSTitle">FF999999</color><!--blue-->
+	<color name="RSSHiLite">FFFFFFFF</color><!--white-->
+    <color name="StatsName">FFFFFFFF</color><!--white-->
+    <color name="StatsAmnt">FFb4b4b4</color><!--white-->	
+</colors>
