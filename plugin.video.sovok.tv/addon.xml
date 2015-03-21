@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="plugin.video.sovok.tv" name="Совок ТВ" version="0.0.2" provider-name="HD-Lab Team">
+  <requires><import addon="xbmc.python" version="2.1.0"/></requires>
+  <extension point="xbmc.python.pluginsource" provides="video" library="default.py"><provides>video</provides></extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Отечественный проект "Совок ТВ" представляет!</summary>
+    <description>Технология IPTV позволяет Вам, находясь в любой точке мира, смотреть любимое русское тв. При этом вам не нужно иметь спутниковых антенн. Телевизионный сигнал передается поверх IP сети оператора Интернет. На нашем сайте вы можете смотреть любимые русские тв каналы абсолютно бесплатно. Если у вас есть интернет со скоростью не менее 4 мбитс, то вы вы можете стать участником нашего клуба любителей русского тв прямо сейчас.</description>
+    <platform>all</platform>
+  </extension>
+</addon>
