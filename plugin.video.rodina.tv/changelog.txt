@@ -1,0 +1,115 @@
+[B]2.7.3[/B]
+indentation fix
+[B]2.7.2[/B]
+MOvie's quality/part sequence fix
+[B]2.7.1[/B]
+update fix
+[B]2.7.0[/B]
+New stream servers
+[B]2.6.1[/B]
+Bug fix
+[B]2.6.0[/B]
+Shortcuts to live and archive
+[B]2.5.4[/B]
+Plot got extra info
+[B]2.5.3[/B]
+Better iconf for favorites
+[B]2.5.2[/B]
+New TV channel icons
+[B]2.5.1[/B]
+Fixed DE stream server code
+[B]2.5.0[/B]
+Added hls video stream
+[B]2.4.1[/B]
+Language bug fix
+[B]2.4.0[/B]
+added us streaming server
+[B]2.3.7[/B]
+bug fix
+[B]2.3.6[/B]
+added next/prev for archives
+[B]2.3.5[/B]
+bug fix
+[B]2.3.4[/B]
+date is top archive level
+[B]2.3.3[/B]
+high res icons for archives
+[B]2.3.2[/B]
+high res icons
+[B]2.3.1[/B]
+new way of favorites handling
+[B]2.3.0[/B]
+favorites handling
+[B]2.2.0[/B]
+rating sort for channels
+[B]2.1.0[/B]
+new level for favorites
+[B]2.0.3[/B]
+Some clean up
+[B]2.0.2[/B]
+Corrected tag info after seek
+[B]2.0.1[/B]
+Bug fix
+[B]2.0.0[/B]
+Added service script and seek functions
+[B]1.7.1[/B]
+Bug fix
+[B]1.7.0[/B]
+Added support for Favorites
+[B]1.6.0[/B]
+COntrol of parental code
+[B]1.5.3[/B]
+Bug fix
+[B]1.5.2[/B]
+gzip is on
+[B]1.5.1[/B]
+Bug fix
+[B]1.5.0[/B]
+New fanart, new authorization logic
+[B]1.4.1[/B]
+Extra icons for movie genres
+[B]1.4.0[/B]
+New icons
+[B]1.3.1[/B]
+Added settings switch to 2nd line EPG
+[B]1.3.0[/B]
+uuid as a serial insted of MAC
+[B]1.2.0[/B]
+Added TV Guide to Live TV
+[B]1.1.1[/B]
+Removed external dependencies
+[B]1.1.0[/B]
+Added sort and search in cyrillic
+[B]1.0.0[/B]
+Initial revision
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
