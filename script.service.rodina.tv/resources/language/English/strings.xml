@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<strings>
+    <string id="30900">Video Stream Adjustment</string>
+    <string id="30901">Move slider and hit Ok or Enter</string>
+    <string id="30902">min</string>
+    <string id="30903">Cancel</string>
+    <string id="30904">Ok</string>    
+    <string id="30905">sec</string>
+    <string id="30906">hour</string>    
+</strings>

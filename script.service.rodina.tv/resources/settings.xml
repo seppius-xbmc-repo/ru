@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<settings>
+	<category label="General">
+		<setting id="separator" type="lsep" label=""/>
+		<setting id="arch_on" type="bool" label="arch_on" default="false" visible="false" />
+	</category>
+</settings>
