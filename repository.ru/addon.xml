@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="xbmcrepo.ru" 
+<addon id="repository.ru" 
        name="XBMC.ru forum Add-ons" 
-	   version="1.0.4" 
+	   version="1.0.1" 
 	   provider-name="bigbax">
 <requires>
   <import addon="xbmc.addon" version="12.0.0"/>
 </requires>	
 	<extension point="xbmc.addon.repository" name="XBMC.ru forum Add-ons">
-		<info compressed="false">https://github.com/xbmcrepo/ru/raw/master/addons.xml</info>
-		<checksum>https://github.com/xbmcrepo/ru/raw/master/addons.xml.md5</checksum>
-		<datadir zip="true">https://github.com/xbmcrepo/ru/raw/master/</datadir>
+		<info compressed="false">https://github.com/xbmcrus/XBMC.ru-forum-Add-ons/raw/master/addons.xml</info>
+		<checksum>https://github.com/xbmcrus/XBMC.ru-forum-Add-ons/raw/master/addons.xml.md5</checksum>
+		<datadir zip="true">https://github.com/xbmcrus/XBMC.ru-forum-Add-ons/raw/master/</datadir>
 	</extension>
 	<extension point="xbmc.addon.metadata">
 		<summary>Install Add-ons from RUS Add-on Repository</summary>
