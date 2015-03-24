@@ -548,22 +548,21 @@ Audio sources are
   </extension>
 </addon>
 
-<addon id="plugin.video.cScVOD"
-       name="[COLOR FF00FF00]cScVOD[/COLOR]"
-       version="1.5.5"
-       provider-name="CSC">
+<addon id="plugin.video.baskino.com" name="Baskino.com" version="1.1.4" provider-name="Wispik and gerikss">
   <requires>
-    <import addon="xbmc.python" version="2.1.0"/>
+    <import addon="xbmc.python" version="2.1.0" />
+    <import addon="script.module.beautifulsoup4" version="4.3.2"/>
+    <import addon="script.module.html5lib" version="0.999.0"/>
+    <import addon="script.module.six" version="1.5.2"/>
   </requires>
-  <extension point="xbmc.python.pluginsource" provides="video" library="addon.py">
+  <extension point="xbmc.python.pluginsource" provides="video" library="default.py">
     <provides>video</provides>
   </extension>
   <extension point="xbmc.addon.metadata">
-    <summary>cScVOD</summary>
-    <description>
-БОЛЕЕ 70 САЙТОВ В ОДНОМ ПЛАГИНЕ!Все стоящие русскоязычные сайты с фильмами/мультиками/сериалами и т.д. В ОДНОМ АДДОНЕ. ОФициальный форум - cscvod.ru
-    </description>
+    <summary>Онлайн фильмы в хорошем HD качестве бесплатно и без регистрации</summary>
+    <description>Большущая коллекция фильмов в хорошем HD качестве, которые можно смотреть онлайн бесплатно. В настройках плагина заполните регистрационную форму для полноценного пользования</description>
     <platform>all</platform>
+    <language>ru</language>
   </extension>
 </addon>
 
@@ -583,6 +582,32 @@ Audio sources are
     <summary>Советское ТВ</summary>
     <description>Советское ТВ</description>
     <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id = "plugin.video.cinema-hd.ru.a" name = "Cinema-hd.ru.a" version = "0.5.0" provider-name = "kit500">
+  <requires>
+    <import addon = "xbmc.python" version = "2.1.0" />
+    <import addon = "script.module.beautifulsoup4" version = "4.3.2"/>
+    <import addon = "script.module.html5lib" version = "0.999.0"/>
+    <import addon = "script.module.six" version = "1.5.2"/>
+    <import addon = "script.module.translit" version = "2.0.0"/>
+    <import addon = "script.video.F4mProxy" version = "2.1.7"/>
+  </requires>
+  <extension point = "xbmc.python.pluginsource" provides = "video" library = "default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point = "xbmc.addon.metadata">
+    <summary>Cinema-hd.ru - Мир HD фильмов онлайн</summary>
+    <description>Cinema-hd.ru - Мир HD фильмов онлайн</description>
+    <platform>all</platform>
+    <language>ru</language>
+    <forum>http://xbmc.ru/forum/showthread.php?t=4432</forum>
+    <email>kit500.development at gmail dot com</email>
+    <disclaimer>Вы можете поддержать развитие плагина:
+WM: R566286875734, Z121552440022
+Paypal: (напишите на kit500.development at gmail dot com)
+</disclaimer>
   </extension>
 </addon>
 
@@ -932,7 +957,7 @@ Audio sources are
   </extension>
 </addon>
 
-<addon id="plugin.video.ivi.ru" name="ivi.ru" version="2.5.2" provider-name="ivi.ru (NuisMons)">
+<addon id="plugin.video.ivi.ru" name="ivi.ru" version="2.5.2a" provider-name="ivi.ru (NuisMons)">
   <requires><import addon="xbmc.python" version="2.1.0"/></requires>
   <extension point="xbmc.python.pluginsource" provides="video" library="default.py"><provides>video</provides></extension>
   <extension point="xbmc.addon.metadata">
@@ -1054,7 +1079,7 @@ Audio sources are
 
 <addon id="plugin.video.kinoylei.ru"
        name="Киноулей"
-       version="0.0.5"
+       version="0.0.9"
        provider-name="nuismons">
     <requires>
         <import addon="xbmc.python" version="2.1.0" />
@@ -1222,7 +1247,7 @@ Audio sources are
 
 <addon id="plugin.video.online.anidub.com"
        name="[COLOR=FFFF0000]Ani[/COLOR][COLOR=FF00FF00]DUB[/COLOR]"
-       version="0.2.6"
+       version="0.2.8"
        provider-name="NuisMons">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
@@ -2736,6 +2761,25 @@ provider-name="Roman_V_M">
         <description>Торрент ТВ теперь можно смотреть на медиаплатформе XBMC.</description>
         <platform>all</platform>
     </extension>
+</addon>
+
+<addon id="script.video.F4mProxy"
+	     name="F4mProxy"
+	     version="2.1.7"
+	     provider-name="Shani">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0" />
+  </requires>
+  <extension point="xbmc.python.module" library="lib" />
+    <extension point="xbmc.python.pluginsource" library="addon.py">
+		<provides>executable</provides>
+  </extension>
+
+  <extension point="xbmc.addon.metadata">
+    <platform>all</platform>
+    <summary lang="en">Proxy for f4m</summary>
+    <description lang="en">Use this addon to play F4m v1 and v2 streams</description>
+  </extension>
 </addon>
 
 <addon id="script.yandex.tvguide" name="Яндекс телепрограмма" version="0.0.3" provider-name="HD-Lab Team">
