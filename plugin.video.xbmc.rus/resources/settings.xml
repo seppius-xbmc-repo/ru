@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<settings>
-	<setting id="username" type="text" label="Ваше имя в сервисе XBMC-Russia" default="" />
-	<setting id="password" type="text" label="Ваш пароль в сервисе XBMC-Russia" option="hidden" default="" />
-	<setting id="quality"  type="enum" label="Предпочитаемое качество видео" values="По-умолчанию|Низкое|Среднее|Высокое|HD 720|HD 1080" default="0" />
-	<setting id="size"     type="enum" label="Предпочитаемый размер списков" values="10|25|50|100|150|200|250|300" default="3" />
-	<setting id="timeout"  type="enum" label="Время ожидания ответа сервера (сек.)" values="5|10|15|20|30|45|60|100" default="2" />
-</settings>
