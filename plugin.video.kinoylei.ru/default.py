@@ -33,7 +33,7 @@ show_len=50
 
 
 try:
-    import json
+    import simplejson as json
 except ImportError:
     try:
         import simplejson as json
@@ -63,15 +63,16 @@ def showMessage(heading, message, times = 3000, pics = addon_icon):
 
 def GET(target, post=None):
     #print target
+    #print post
     try:
         req = urllib2.Request(url = target, data = post)
-        req.add_header('User-Agent', 'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0; Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1) ; .NET CLR 1.1.4322; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729; .NET4.0C)')
-        req.add_header('Accept', '*/*')
-        req.add_header('Accept-Language', 'ru-RU')
+        req.add_header('User-Agent', '	Mozilla/5.0 (Windows NT 6.1; rv:32.0) Gecko/20100101 Firefox/32.0')
+        req.add_header('Accept', 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8')
+        req.add_header('Accept-Language', 'ru-RU,ru;q=0.8,en-US;q=0.5,en;q=0.3')
         req.add_header('Accept-Charset', 'utf-8')
-        #req.add_header('Referer',	'http://serialonline.net/')
+        req.add_header('Referer',	'http://kinoylei.org/load/')
         resp = urllib2.urlopen(req)
-        #req.add_header('Content-Type','application/x-www-form-urlencoded')
+        req.add_header('Content-Type','application/x-www-form-urlencoded')
         http = resp.read()
 
         return http
@@ -84,14 +85,13 @@ def mainScreen(params):
     addFolder('Премьеры',addon_icon,{'func': 'premiers'})
     addFolder('Поиск',addon_icon,{'func': 'doSearch'})
 
-    http = GET('http://kinoylei.ru')
+    http = GET('http://kinoylei.org')
 
     if http == None: return False
     
     beautifulSoup = BeautifulSoup(http)
-
     #genres=beautifulSoup.find('ul', attrs={'class':'clearfix'}).findAll('a')
-    genres=beautifulSoup.find('div', attrs={'class':'genres'}).findAll('a')
+    genres=beautifulSoup.find('div', attrs={'class':'bigblock filmcategory'}).findAll('a')
     for n in genres: 
         try: 
             title= n.string
@@ -103,7 +103,7 @@ def mainScreen(params):
 
 def premiers(params):
 
-    http = GET('http://kinoylei.ru')
+    http = GET('http://kinoylei.org')
     if http == None: return False
     beautifulSoup = BeautifulSoup(http)
     premiers=beautifulSoup.find('ul', attrs={'class':'clearfix'}).findAll('a')
@@ -113,11 +113,12 @@ def premiers(params):
         title=ou[0][2]
         href=ou[0][0]
         img=ou[0][1]
-        addFolder(title,img,{'href': 'http://kinoylei.ru%s'%href,'func': 'readmedia','img':img})
+        addFolder(title,img,{'href': 'http://kinoylei.org%s'%href,'func': 'readmedia','img':img})
     xbmcplugin.endOfDirectory(hos)
     
 def readgenre(params):
-    host='http://kinoylei.ru/'+params['url']
+    host='http://kinoylei.org/'+params['url']
+    #print host
     try:
         page=(params['page'])
     except:
@@ -132,21 +133,21 @@ def readgenre(params):
 
         http = GET(nhost)
     
-
+    
     if http == None: return False
     
     beautifulSoup = BeautifulSoup(http)
     content = beautifulSoup.findAll('div', attrs={'id': re.compile('entryID[0-9]+')})
     for n in content: 
-        try:
-            txt=str(n)
-            out=re.findall('<a rel="lytebox" href="(.+?)" title="(.+?)">',txt)
-            href=out[0][0]
-            title=out[0][1]
-            out=re.findall('<img alt=".+" src="(.+)" align="center" border="0" />',txt)
-            img= out[0]
-            addFolder(title, img,{'href': href,'img':img,'func': 'readmedia'})
-        except: pass
+        #try:
+        txt=str(n)
+        out=re.findall('<a class="film_link" href="(.+?)" title="(.+?)">',txt)
+        href=out[0][0]
+        title=out[0][1]
+        out=re.findall('src="(.+?)"',txt)
+        img= out[0]
+        addFolder(title.replace('смотреть онлайн',''), img,{'href': href,'img':img,'func': 'readmedia'})
+        #except: pass
     addFolder('Next',addon_icon,{'func': 'readgenre', 'page':int(int(page)+1),'url':params['url']})
     xbmcplugin.setContent(hos, 'movies')
     xbmcplugin.endOfDirectory(hos)
@@ -157,19 +158,24 @@ def addFolder(title,img,params):
     xbmcplugin.addDirectoryItem(hos, uri, listitem, True)
     
 def readmedia(params):
-
+    print params['href']
     http=GET(params['href'])
     if http == None: return False
-
-    out=re.findall('<iframe class="myvideo" src="(.+?)"></iframe>',http)
+    #print http
+    out=re.findall('<iframe class="myvideo" src="(.+?)">',http)
+    #print out[0]
     http=GET(out[0])
-    beautifulSoup = BeautifulSoup(http)
+    #print http
+    #beautifulSoup = BeautifulSoup(str(http))
+    #print beautifulSoup.prettify
     txt=http
     img=params['img']
     title=re.findall("comment: '(.+?)'",txt)
     ou1=re.findall('file:"(.+?)"}',txt)
-    ou2=re.findall('pl:"(.+?)"}',txt)
+    ou2=re.findall('pl."(.+?)",',txt)
+    #print ou2
     if ou1:
+        #print 'ou1'
         li = xbmcgui.ListItem(title[0], img, img)
         uri = construct_request({
             'href': ou1[0],
@@ -178,7 +184,10 @@ def readmedia(params):
         li.setProperty('IsPlayable', 'true')
         xbmcplugin.addDirectoryItem(hos, uri, li)
     if ou2:
-        http=GET(ou2[0])
+        #print 'ou2;'
+        http=GET(ou2[0])[3::]
+        #print http
+        
         flist=json.loads(http)
         for file in flist['playlist']:
             try:
@@ -201,6 +210,7 @@ def readmedia(params):
     
     
 def play(params):
+    params['href']=params['href'].split('",')[0]
     q=__addon__.getSetting('qual')
     if q=='0': 
         i = xbmcgui.ListItem(path = params['href'])
@@ -209,7 +219,7 @@ def play(params):
     xbmcplugin.setResolvedUrl(hos, True, i)
     
 def doSearch(params):
-
+    
     kbd = xbmc.Keyboard()
     kbd.setDefault('')
     kbd.setHeading('Поиск')
@@ -218,20 +228,25 @@ def doSearch(params):
         sts=kbd.getText();
 
 	post={}
-    post['a']='2'
-    post['query']=sts
-    post['x']='0'
-    post['y']='3'
     
-    http=GET('http://kinoylei.ru/load/',urllib.urlencode(post))
+    
+    
+    
+    
+    post['sfSbm']="Искать фильм"
+    post['query']=sts
+    post['a']='2'
+    http=GET('http://kinoylei.org/load/',urllib.urlencode(post))
     beautifulSoup = BeautifulSoup(http)
+    #print beautifulSoup.prettify()
     content = beautifulSoup.findAll('div', attrs={'id': re.compile('entryID[0-9]+')})
     for n in content: 
         txt=str(n)
-        out=re.findall('<a rel="lytebox" href="(.+?)" title="(.+?)">',txt)
+        out=re.findall('<a href="(.+?)" title="(.+?)">',txt)
         href=out[0][0]
         title=out[0][1]
-        out=re.findall('<img alt=".+" src="(.+)" align="center" border="0" />',txt)
+        #<img class="material_img" alt="" src="(.+)" align="center" border="0" />
+        out=re.findall('<img class="material_img" alt="" src="(.+)" align="center" border="0" />',txt)
         img= out[0]
         li = xbmcgui.ListItem(title, img, img)
             #li.setInfo(type='video', infoLabels = {'plot':desk,'plotoutline':desk})
