@@ -1,0 +1,10 @@
+<?xml version = "1.0" encoding = "utf-8" standalone = "yes"?>
+<settings>
+  <category label = "Основные">
+    <setting id = "ipp" type = "enum" label = "Элементов на странице" values = "10|20|30" default = "1"/>
+    <setting id = "use_translit" type = "bool" label = "Использовать translit при поиске" default = "false"/>
+    <setting id = "unified_search" type = "bool" label = "Включить поиск из Unified search" default = "true"/>
+    <setting id = "use_ahds" type = "bool" label = "Использовать Adobe HDS видео формат" default = "false"/>
+    <setting id = "debug_mode" type = "bool" label = "Выводить отладочную информацию" default = "false"/>
+  </category>
+</settings>
