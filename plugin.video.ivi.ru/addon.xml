@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="plugin.video.ivi.ru" name="ivi.ru" version="2.5.2a" provider-name="ivi.ru (NuisMons)">
+  <requires><import addon="xbmc.python" version="2.1.0"/></requires>
+  <extension point="xbmc.python.pluginsource" provides="video" library="default.py"><provides>video</provides></extension>
+  <extension point="xbmc.addon.metadata">
+	<language>ru</language>
+    <summary>ivi.ru - cмотри любимые фильмы, сериалы, программы, мультфильмы бесплатно и легально.</summary>
+    <description>Приложение интернет-кинотеатра ivi.ru предоставляет доступ к самой большой бесплатной коллекции лицензионного видео российского интернета.
+С помощью приложения ivi.ru вы можете смотреть фильмы, сериалы, ТВ-программы, мультфильмы в отличном качестве бесплатно и легально.
+Обращаем ваше внимание, что воспроизведение видео возможно только на территории Российской Федерации</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+

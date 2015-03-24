@@ -1,0 +1,20 @@
+[B]Version 2.4.9[/B]
+- Release
+
+[B]Version 2.4.5[/B]
+- New posters API fix
+
+
+[B]Version 2.3.4[/B]
+- Posters Fix
+
+[B]Version 2.3.3[/B]
+- adv fix
+
+[B]Version 2.2.2[/B]
+- New fanart, icon
+- Firm Style
+
+[B]Version 2.2.1[/B]
+- Fixed ads
+- Fixed some serials

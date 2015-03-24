@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<strings>
+    <!-- Category strings -->
+    <string id="30001">Сортировка</string>
+	<string id="30002">Результатов на страницу</string>
+	
+	<string id="30010">Инициализация</string>
+	<string id="30011">Реклама</string>
+	<string id="30012">Пауза</string>
+	<string id="30014">Рекомендованное</string>
+	<string id="30015">Поиск</string>
+	<string id="30016">Поиск в этом разделе</string>
+	<string id="30017">Новое</string>
+	<string id="30018">Популярное</string>
+	<string id="30019">Еще >>></string>
+	<string id="30020">Сезон %s</string>
+	
+	<string id="30021">Поиск по ivi.ru</string>
+	
+	<string id="30030">Настройки</string>
+	
+	<string id="30000">Настройки</string>
+	<string id="30003">Новое</string>
+	<string id="30004">Популярное</string>
+	
+	<string id="30050">Показывать контент 18+</string>
+</strings>
