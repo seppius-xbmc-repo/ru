@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<settings>
+  <category label="Настройки">
+    <setting id="login" type="text" label="Логин" default="" />
+    <setting id="password" type="text" option="hidden" label="Пароль" enable="!eq(-1,)" default="" />
+	<setting id="qual" type="enum" label="Макс. качество" values="240|360|480|720" default="3" />
+  </category>
+</settings>
