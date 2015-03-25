@@ -60,7 +60,7 @@ git push -u https://github.com/seppius-xbmc-repo/ru.git
 
 * Username for 'https://github.com':                        введите e-mail, Вашей авторизации в системе Git
 
-* Password for 'https://github.com/seppius-xbmc-repo:       для получения админ пароля этого Git пишите в личку форума
+* Password for 'https://github.com/seppius-xbmc-repo:       для получения доступа к коммитам в этом Git, сообщите адрес вашего Git в личку форума для внесения в список сотрудников этого Git. После добавления в список, вводите пароль для своего Git.
 
 * Для удаления некорректного коммита на один шаг назад 
 
