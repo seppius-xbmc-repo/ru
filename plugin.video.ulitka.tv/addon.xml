@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="plugin.video.ulitka.tv" name="Сериалы онлайн на Улитке" version="2.0.2" provider-name="Admin Ulitka.TV [admin@ulitka.tv]">
+<addon id="plugin.video.ulitka.tv" name="Сериалы онлайн на Улитке" version="2.0.3" provider-name="Admin Ulitka.TV [admin@ulitka.tv]">
   <requires><import addon="xbmc.python" version="2.1.0"/></requires>
   <extension point="xbmc.python.pluginsource" provides="video" library="default.py"><provides>video</provides></extension>
   <extension point="xbmc.addon.metadata">
