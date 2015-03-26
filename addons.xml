@@ -956,6 +956,26 @@ Paypal: напишите на kit500.development at gmail dot com
   </extension>
 </addon>
 
+<addon id="plugin.video.hdkinoteatr.ru"
+       name="hdkinoteatr.ru"
+       version="0.0.2"
+       provider-name="Girman Evgeniy writed bb">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+	<import addon="script.module.beautifulsoup"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>hdkinoteatr.ru</summary>
+    <description>hdkinoteatr.ru - Фильмы онлайн в хорошем качестве</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
 <addon id="plugin.video.igru.net.ua"
        name="[COLOR FF00FF00]Фильмы ([/COLOR][COLOR FFFFF000]fepcom.net[/COLOR][COLOR FF00FF00])[/COLOR]"
        version="1.1.5"
