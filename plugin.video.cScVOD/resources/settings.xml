@@ -1,0 +1,4 @@
+<settings>
+	<setting id="mac" label="MAC адресс "type="text" default="" />
+	<setting id="vk" label="Выбор качества ВКонтакте" type="enum" values="On|Off" default="1" /> 
+</settings>
