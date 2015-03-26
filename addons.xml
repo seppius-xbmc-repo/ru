@@ -2324,7 +2324,7 @@ Raadpleeg de lokale wetgeving voordat u deze plugin installeert.</disclaimer>
 
 <addon id="repository.search.db"
 		name="XBMC.ru search db"
-		version="1.0.1"
+		version="1.0.2"
 		provider-name="bigbax">
   <requires>
     <import addon="xbmc.addon" version="12.0.0"/>
@@ -2390,7 +2390,7 @@ Raadpleeg de lokale wetgeving voordat u deze plugin installeert.</disclaimer>
 		<summary lang="en">Install Add-ons from XBMC.ru</summary>
 		<summary lang="ru">Установить дополнения с сайта XBMC.ru</summary>
 		<description lang="en">Download and install add-ons from the UnOfficial XBMC.ru forum add-on repository.[CR]  If you find a broken or not working add-on please report it to Team XBMC so we can take any action needed.</description>
-		<description lang="ru">Загружайте и устанавливайте плагины разработчиков форума XBMC.ru[CR] Если вы обнаружили нерабочее дополнение, сообщите об этом разработчикам XBMC.</description>
+		<description lang="ru">Загружайте и устанавливайте плагины разработчиков форума XBMC.ru[CR] Если вы обнаружили нерабочий плагин, сообщите об этом в теме разработчика плагина в разделе форума "Помощь по плагинам".</description>
 		<disclaimer lang="en">Team XBMC.ru did not make all the add-ons on this repository and are not responsible for their content</disclaimer>
 		<disclaimer lang="ru">Разработчики XBMC.ru являются авторами всех дополнений в данном репозитории, но не несут ответственность за их содержимое.</disclaimer>
 		<platform>all</platform>
