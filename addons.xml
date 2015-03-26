@@ -1109,6 +1109,25 @@ Paypal: напишите на kit500.development at gmail dot com
   </extension>
 </addon>
 
+<addon id="plugin.video.linecinema"
+       name="LineCinema"
+       version="0.0.1"
+       provider-name="Nezhinskikh Sergei">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource" provides="video" library="addon.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>LineCinema.org</summary>
+    <description>
+Плагин для просмотра видео сайта LineCinema.org
+    </description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
 <addon id="plugin.video.megogo.net" name="MEGOGO.NET" version="1.0.1" provider-name="MEGOGO.NET">
   <requires><import addon="xbmc.python" version="2.1.0"/></requires>
   <extension point="xbmc.python.pluginsource" provides="video" library="default.py"><provides>video</provides></extension>
@@ -1962,35 +1981,6 @@ RuTube - отличная стартовая площадка для незав�
   </extension>
 </addon>
 
-<addon id="plugin.video.xbmctorrent" name="XBMCtorrent" version="0.6.10.ru" provider-name="steeve, nightik">
-    <requires>
-        <import addon="xbmc.python" version="2.1.0"/>
-    </requires>
-    <extension point="xbmc.python.pluginsource" library="addon.py">
-        <provides>video</provides>
-    </extension>
-    <extension point="xbmc.addon.repository" name="XBMCtorrent (RU) Autoupdate Repository">
-        <info compressed="false">http://afedchin.github.io/repository/addons.xml</info>
-        <checksum>http://afedchin.github.io/repository/addons.xml.md5</checksum>
-        <datadir zip="true">http://afedchin.github.io/repository/</datadir>
-    </extension>
-    <extension point="xbmc.addon.metadata">
-        <platform>all</platform>
-        <website><![CDATA[http://j.mp/xbmctorrent]]></website>
-        <forum><![CDATA[http://j.mp/xbmctorrent]]></forum>
-        <source><![CDATA[https://github.com/steeve/xbmctorrent]]></source>
-        <language></language>
-        <license><![CDATA[GNU GENERAL PUBLIC LICENSE. Version 3, 29 June 2007]]></license>
-        <summary><![CDATA[XBMCtorrent: Torrent streaming for XBMC.]]></summary>
-        <description><![CDATA[Watch torrents directly from XBMC, without waiting.
-
-To get the latest updates:
-Twitter: twitter.com/xbmctorrent
-Facebook: facebook.com/xbmctorrent
-XBMC HUB: j.mp/xbmctorrent]]></description>
-    </extension>
-</addon>
-
 <addon id="plugin.video.youtube" name="YouTube" provider-name="TheCollective" version="4.4.6nu5">
   <requires>
     <import addon="xbmc.python" version="2.1.0" />
@@ -2277,7 +2267,7 @@ Raadpleeg de lokale wetgeving voordat u deze plugin installeert.</disclaimer>
 
 <addon id="repository.search.db"
 		name="XBMC.ru search db"
-		version="1.0.0"
+		version="1.0.1"
 		provider-name="bigbax">
   <requires>
     <import addon="xbmc.addon" version="12.0.0"/>
@@ -2324,6 +2314,18 @@ Raadpleeg de lokale wetgeving voordat u deze plugin installeert.</disclaimer>
 			<info compressed="false">https://github.com/seppius-xbmc-repo/ru/raw/master/addons.xml</info>
 			<checksum>https://github.com/seppius-xbmc-repo/ru/raw/master/addons.xml.md5</checksum>
 			<datadir zip="true">https://github.com/seppius-xbmc-repo/ru/raw/master/</datadir>
+			<hashes>true</hashes>
+		</dir>
+		<dir minversion="12.9.0">
+			<info compressed="false">http://xbmc-vk-repo.googlecode.com/svn/trunk/addons/addons.xml</info>
+			<checksum>http://xbmc-vk-repo.googlecode.com/svn/trunk/addons/addons.xml.md5</checksum>
+			<datadir zip="false">http://xbmc-vk-repo.googlecode.com/svn/trunk/addons/</datadir>
+			<hashes>true</hashes>
+		</dir>
+		<dir minversion="12.9.0">
+			<info compressed="false">http://afedchin.github.io/repository/addons.xml</info>
+			<checksum>http://afedchin.github.io/repository/addons.xml.md5</checksum>
+			<datadir zip="true">http://afedchin.github.io/repository/</datadir>
 			<hashes>true</hashes>
 		</dir>
 	</extension>
@@ -3092,32 +3094,5 @@ provider-name="Roman_V_M">
     <disclaimer lang="zh">在非触屏且没有鼠标控制的情况下使用此皮肤会造成无法控制设备</disclaimer>
     <platform>all</platform>
   </extension>
-</addon>
-
-<addon id="xbmc-vk.svoka.com" name="VK-xbmc" version="1.1.0" provider-name="shchvova">
-	<requires>
-		<import addon="xbmc.python" version="2.1.0"/>
-    </requires>
-	<extension point="xbmc.python.pluginsource" provides="image, audio, video" library="default.py">
-		<provides>image video audio</provides>
-	</extension>
-
-	<extension point="xbmc.addon.repository" name="VK XBMC Add-ons">
-		<info compressed="false">http://xbmc-vk-repo.googlecode.com/svn/trunk/addons/addons.xml</info>
-		<checksum>http://xbmc-vk-repo.googlecode.com/svn/trunk/addons/addons.xml.md5</checksum>
-		<datadir zip="false">http://xbmc-vk-repo.googlecode.com/svn/trunk/addons/</datadir>
-	</extension>
-
-	<extension point="xbmc.addon.metadata">
-		<summary lang="en">Video, audio and photos from VKontakte social network http://vkontakte.ru/</summary>
-		<description lang="en">Video from VKontakte social network http://vkontakte.ru/
-homepage - http://code.svoka.com/vk-xbmc-plugin
-Author - Vlad Svoka aka Shchvova</description>
-		<summary lang="ru">Видео с сайта http://vkontakte.ru/</summary>
-		<description lang="ru">Видео, аудио и фотографии с сайта http://vkontakte.ru/
-Домашняя страница проекта - http://code.svoka.com/vk-xbmc-plugin
-Автор - Влад Свока aka Shchvova</description>
-		<platform>all</platform>
-	</extension>
 </addon>
 </addons>
