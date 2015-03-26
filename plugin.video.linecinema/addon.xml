@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<addon id="plugin.video.linecinema"
+       name="LineCinema"
+       version="0.0.1"
+       provider-name="Nezhinskikh Sergei">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource" provides="video" library="addon.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>LineCinema.org</summary>
+    <description>
+Плагин для просмотра видео сайта LineCinema.org
+    </description>
+    <platform>all</platform>
+  </extension>
+</addon>
