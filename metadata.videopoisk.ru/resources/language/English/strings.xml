@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<strings>
+	<string id="30100">General</string> 
+	<string id="30101">Show also [ORIGINAL TITLE] in search results</string>
+	<string id="30102">Get rating from</string>	
+	<string id="30103">Get posters from KinoPoisk.ru</string> 	
+	<string id="30104">Get only actors with names translated to russian</string>	
+	<string id="30105">Search IMDB ID</string>
+	<string id="30106">    – Search IMDB ID with world premier year</string>
+	<string id="30107">    – Force searching IMDB ID with google</string>
+	<string id="30108">    – Enable TMDb fanart</string>
+	<string id="30109">    – Add TMDB poster</string>
+	<string id="30110">    – Add TMDB set name</string>
+	
+	<string id="30200">Trailer</string>
+	<string id="30201">Get trailer from KinoPoisk.ru</string>
+	<string id="30202">If trailer and teaser are missing, get any video</string>
+	<string id="30203">Max HD trailer quality</string>
+	<string id="30204">Max SD trailer quality</string>
+	<string id="30205">Get non-Russian trailer</string>
+	<string id="30250">Don't get</string>
+	<string id="30251">Low</string>
+	<string id="30252">Medium</string>
+	<string id="30253">High</string>
+	<string id="30260">If Russian is missing</string>
+	<string id="30261">If it has better quality</string>
+</strings>
