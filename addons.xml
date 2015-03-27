@@ -1047,25 +1047,6 @@ Paypal: напишите на kit500.development at gmail dot com
   </extension>
 </addon>
 
-<addon id="plugin.video.kartina.tv"
-       name="Kartina.TV"
-       version="1.2.5"
-       provider-name="Eugene Bond">
-  <requires>
-    <import addon="xbmc.python" version="2.1.0"/>
-  </requires>
-  <extension point="xbmc.python.pluginsource"
-             provides="video"
-             library="default.py">
-    <provides>video</provides>
-  </extension>
-  <extension point="xbmc.addon.metadata">
-    <summary>Онлайн-телевидение Kartina.TV</summary>
-    <description>Онлайн-телевидение Kartina.TV: более 110 русскоязычных каналов и видеотека от 15 евро в месяц</description>
-    <platform>all</platform>
-  </extension>
-</addon>
-
 <addon id="plugin.video.kino-live.org"
        name="kino-live.org"
        version="1.7.5"
@@ -1408,25 +1389,6 @@ I hope you like this!
     <summary>Rodina.TV – Новости, кино, музыка, спортивные трансляции, кинозал, архив программ за 2 недели.</summary>
     <description>Rodina.TV – это качественное русскоязычное и интернациональное интернет телевидение в любой точке земного шара. Спортивные трансляции, кино, новости, музыка.
 Сервис ТВ онлайн позволяет смотреть эфирные русскоязычные и другие каналы, пользоваться онлайн кинозалом со множеством новинок и киноклассикой. В вашем распоряжении архив программ за  2 недели, а также функция тайм-шифт.</description>
-    <platform>all</platform>
-  </extension>
-</addon>
-
-<addon id="plugin.video.rodnoe.tv"
-       name="Rodnoe.TV"
-       version="1.2.0"
-       provider-name="Eugene Bond">
-  <requires>
-    <import addon="xbmc.python" version="2.1.0"/>
-  </requires>
-  <extension point="xbmc.python.pluginsource"
-             provides="video"
-             library="default.py">
-    <provides>video</provides>
-  </extension>
-  <extension point="xbmc.addon.metadata">
-    <summary>Онлайн-телевидение Rodnoe.TV</summary>
-    <description>Онлайн-телевидение Rodnoe.TV: более 100 русскоязычных каналов от 10 евро в месяц.</description>
     <platform>all</platform>
   </extension>
 </addon>
@@ -2324,13 +2286,25 @@ Raadpleeg de lokale wetgeving voordat u deze plugin installeert.</disclaimer>
 
 <addon id="repository.search.db"
 		name="XBMC.ru search db"
-		version="1.0.3"
+		version="1.0.4"
 		provider-name="bigbax">
   <requires>
     <import addon="xbmc.addon" version="12.0.0"/>
   </requires>
 	<extension point="xbmc.addon.repository"
 		name="XBMC.ru search db">
+	        <dir minversion="12.9.0">
+			<info compressed="false">https://github.com/Eugene-Bond/xmbc-plugins/raw/master/addons.xml</info>
+			<checksum>https://github.com/Eugene-Bond/xmbc-plugins/raw/master/addons.xml.md5</checksum>
+			<datadir zip="true">https://github.com/Eugene-Bond/xmbc-plugins/raw/master/</datadir>
+			<hashes>true</hashes>
+		</dir>
+		<dir minversion="12.9.0">
+			<info compressed="false">https://raw.github.com/evgen-dev/repository.evgen_dev.xbmc-addons/master/addons.xml</info>
+			<checksum>https://raw.github.com/evgen-dev/repository.evgen_dev.xbmc-addons/master/addons.xml.md5</checksum>
+			<datadir zip="true">https://raw.github.com/evgen-dev/repository.evgen_dev.xbmc-addons/master/repo</datadir>
+			<hashes>true</hashes>
+		</dir>
 	        <dir minversion="12.9.0">
 			<info compressed="false">https://github.com/xbmc-addon/repository.hal9000/raw/master/addons.xml</info>
 			<checksum>https://github.com/xbmc-addon/repository.hal9000/raw/master/addons.xml.md5</checksum>
