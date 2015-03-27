@@ -1,4 +1,8 @@
-﻿#!/usr/bin/python
+# -*- coding: utf-8 -*-
+#!/usr/bin/python
+# Version 0.3
+
+
 import sys,urllib2,urllib,re,xbmcplugin,xbmcgui
 def get_params(paramstring):
     param=[]
@@ -62,8 +66,7 @@ def ListChannels():
 def ListSub(site):
     i=int(site)
     for sub in kanals[i][3]:
-        name=sub.split(':')[0]
-        menu_id=sub.split(':')[1]
+        (name, menu_id)=sub.split(':')
         url = myname + '?mode=page&site='+site+'&page='+menu_id+'&sort=0'
         listItem = xbmcgui.ListItem(name)
         xbmcplugin.addDirectoryItem(thisPlugin,url,listItem,True)
@@ -94,39 +97,75 @@ def ListPage(site,page,sort):
     xbmcplugin.endOfDirectory(thisPlugin)
 #------------------------------------------------------------------------------------------
 def ListItem(site,item):
-    prog=unescape(Search('<span class="overlay"><span>(.+?)</span>',item))
-    title=unescape(Search('<a class="title".+?>(.+?)</a>',item))
+    title1=unescape(Search('<h3><div class="play-icon"></div>\n\s{0,50}(.+?)</h3>',item))
+    title2=unescape(Search('<a class="title".+?>(.+?)</a>',item))
+    #name="%s (%s)" % (title1, title2) if len(title2) else title1
+    name=title1+' '+title2
     duration=Search('<span class="duration">(.+?)</span>',item)
-    if prog=='':
-        name=title
-    else:
-        name=prog+'. '+title
+    if len(duration)>0:
+        name=name+' ('+duration+')'
+
     thumb=Search('<img src="(.+?)"',item)
     link=Search('<a class="title" href="(.+?)"',item)+'/'
     brand=Search('/brand_id/(.*?)/',link)
+    episode=Search('/episode_id/(.*?)/',link)
     cid=Search('/video_cid/(.*?)/',link)
-    if not cid=='':
+    if cid != '':
         return
     iD=Search('/video_id/(.*?)/',link)
     #if iD=='':
     #    return
-    url=myname+'?mode=serial&site='+site+'&page='+ brand+'&sort='+iD
+    url=myname+'?mode=play&site='+site+'&page='+ brand+'&episode='+episode+'&sort='+iD
     listItem = xbmcgui.ListItem(name,thumbnailImage=thumb)
-    xbmcplugin.addDirectoryItem(thisPlugin,url,listItem,True)
+    listItem.setInfo( type="Video", infoLabels={ "Title": name} )
+    listItem.setProperty('IsPlayable', 'true')
+    listItem.select(True)
+    
+    commands = []
+    commands.append(('Смотрите также', 'XBMC.Container.Update('+sys.argv[0]+'?mode=more&site='+site+'&page='+ brand+'&episode='+episode+'&sort='+iD+')',))
+    commands.append(('Другие выпуски', 'XBMC.Container.Update('+sys.argv[0]+'?mode=serial&site='+site+'&page='+ brand+'&episode='+episode+'&sort='+iD+')',))
+    listItem.addContextMenuItems(commands)
+    
+    xbmcplugin.addDirectoryItem(thisPlugin,url,listItem, isFolder=False)
 #------------------------------------------------------------------------------------------
-def ListSerial(site,brand,iD):
+def ListSerial(site,brand,episode,iD):
+    url=kanals[int(site)][1]+'show/brand_id/'+brand+'/episode_id/'+episode+'/video_id/'+iD
+    html=getPage(url)
+    match=re.compile('<li class="item ">([.\s\S]*?)</li>').findall(html)
+    if len(match)==0:
+        return
+    for item in match:
+        name=unescape(Search('alt="(.+?)"',item))
+        thumb=Search('data-original="(.+?)"',item)
+        
+        brand=Search('/brand_id/(.*?)/',item)
+        episode=Search('/episode_id/(.*?)/',item)
+        iD=Search('/video_id/(.*?)/',item)
+        url=myname+'?mode=play&site='+site+'&page='+ brand+'&episode='+episode+'&sort='+iD
+        listItem = xbmcgui.ListItem(name,thumbnailImage=thumb)
+        listItem.setInfo( type="Video", infoLabels={ "Title": name} )
+        listItem.setProperty('IsPlayable', 'true')
+        listItem.select(True)
+        xbmcplugin.addDirectoryItem(thisPlugin,url,listItem, isFolder=False)
+    xbmcplugin.endOfDirectory(thisPlugin)
+#------------------------------------------------------------------------------------------
+def ListSerialOld(site,brand,episode,iD):
     url=kanals[int(site)][1]+'show/brand_id/'+brand
-    if not iD=='':
+    print "ListSerial", "url:", url, "brand", brand, "v_id", iD
+    if episode !='':
+        url=url+'/episode_id/'+episode
+    if iD !='':
         url=url+'/video_id/'+iD
+    ##print "ListSerial", "url:", url, "brand", brand, "v_id", iD
     html=getPage(url)
     if not html.find('Смотрите также')==-1:
         listItem = xbmcgui.ListItem('СМОТРИТЕ ТАКЖЕ')
-        link=myname+'?mode=more&site='+site+'&page='+ brand+'&sort='+iD
+        link=myname+'?mode=more&site='+site+'&page='+ brand+'&episode='+episode+'&sort='+iD
         xbmcplugin.addDirectoryItem(thisPlugin,link,listItem,True) 
         
     name=unescape(Search('<meta property="og:title" content="(.+?)"',html))
     img=Search('<meta property="og:image" content="(.+?)"',html)
-    url=myname+'?mode=play&site='+site+'&page='+ brand+'&sort='+iD
+    url=myname+'?mode=play&site='+site+'&page='+ brand+'&episode='+episode+'&sort='+iD
     listItem = xbmcgui.ListItem(name,thumbnailImage=img)
     listItem.setInfo( type="Video", infoLabels={ "Title": name} )
     listItem.setProperty('IsPlayable', 'true')
@@ -155,8 +194,8 @@ def ListSerial(site,brand,iD):
         xbmcplugin.addDirectoryItem(thisPlugin,url,listItem) 
     xbmcplugin.endOfDirectory(thisPlugin)    
 #------------------------------------------------------------------------------------------
-def Play(site,brand,iD):
-    url=kanals[int(site)][1]+'show/brand_id/'+brand+'/video_id/'+iD
+def Play(site,brand,episode,iD):
+    url=kanals[int(site)][1]+'show/brand_id/'+brand+'/episode_id/'+episode+'/video_id/'+iD
     #print url
     html=getPage(url)
     #desc=unescape(Search('<meta property="og:description" content="(.+?)"',html))
@@ -207,10 +246,13 @@ def touch(url):
     except:
         return False
 #------------------------------------------------------------------------------------------
-def ListMore(site,brand,iD):
+def ListMore(site,brand,episode,iD):
     url=kanals[int(site)][1]+'show/brand_id/'+brand
+    if episode !='':
+        url=url+'/episode_id/'+episode
     if not iD=='':
         url=url+'/video_id/'+iD
+    print url
     html=getPage(url)
     match=re.compile('<li class="item">([.\s\S]*?)</li>').findall(html)
     print len(match)
@@ -219,23 +261,30 @@ def ListMore(site,brand,iD):
         thumb=Search('<img src="(.+?)"',item)
         link=Search('<a href="(.+?)"',item)+'/'
         brand=Search('/brand_id/(.*?)/',link)
+        episode=Search('/episode_id/(.*?)/',link)
         iD=Search('/video_id/(.*?)/',link)
-        url=myname+'?mode=serial&site='+site+'&page='+ brand+'&sort='+iD
+        url=myname+'?mode=play&site='+site+'&page='+ brand+'&episode='+episode+'&sort='+iD
         listItem = xbmcgui.ListItem(name,thumbnailImage=thumb)
-        xbmcplugin.addDirectoryItem(thisPlugin,url,listItem,True)
+        listItem.setProperty('IsPlayable', 'true')
+        listItem.select(True)
+        commands = []
+        commands.append(('Смотрите также', 'XBMC.Container.Update('+sys.argv[0]+'?mode=more&site='+site+'&page='+ brand+'&episode='+episode+'&sort='+iD+')',))
+        listItem.addContextMenuItems(commands)
+        xbmcplugin.addDirectoryItem(thisPlugin,url,listItem,isFolder=False)
     xbmcplugin.endOfDirectory(thisPlugin)
     
 #------------------------------------------------------------------------------------------    
 kanals=[
     ['Россия 1','http://russia.tv/video/','http://russia.tv/i/logo/standart-russia1.png',['Все:0','Сериалы:265','Документалистика:266','Художественные:267','Передачи:268','Музыка и юмор:269','Новости:282']],
     ['Россия 2','http://russia2.tv/video/','http://russia2.tv/i/logo/standart-russia2.png',['Все:0','Кино:462','Наука:302','Путешествия:303','Спорт:304','Документалистика:306','Вести-Спорт:422','Передачи:305']],
-    ['Культура','http://tvkultura.ru/video/','http://tvkultura.ru/i/logo/standart-russiak.png',['Все:0','Документалистика:522','Портреты:523','Передачи:524','Новости:525','Интервью:526','Образование:527']]
+    ['Культура','http://tvkultura.ru/video/','http://tvkultura.ru/i/logo/standart-russiak.png',['Все:0','Художественные:824','Документалистика:522','Портреты:523','Передачи:524','Новости:525','Интервью:526','Образование:527']]
     ]
 
 mode=''
 site=''
 page=''
 sort=''
+episode=''
 
 myname=sys.argv[0]
 thisPlugin = int(sys.argv[1])
@@ -243,10 +292,11 @@ params = get_params(sys.argv[2])
 
 
 try:
-    mode  = urllib.unquote_plus(params["mode"])
-    site  = urllib.unquote_plus(params["site"])
-    page  = urllib.unquote_plus(params["page"])
-    sort = urllib.unquote_plus(params["sort"])
+    mode     = urllib.unquote_plus(params["mode"])
+    site     = urllib.unquote_plus(params["site"])
+    page     = urllib.unquote_plus(params["page"])
+    sort     = urllib.unquote_plus(params["sort"])
+    episode  = urllib.unquote_plus(params["episode"])
 except:
     pass
 
@@ -259,11 +309,11 @@ elif mode == 'sub':
 elif mode == 'page':
     ListPage(site,page,sort)
 elif mode == 'serial':
-    ListSerial(site,page,sort)
+    ListSerial(site,page,episode,sort)
 elif mode == 'more':
-    ListMore(site,page,sort)    
+    ListMore(site,page,episode,sort)    
 elif mode == 'play':
-    Play(site,page,sort)
+    Play(site,page,episode,sort)
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
         
 
