@@ -1814,29 +1814,6 @@ RuTube - отличная стартовая площадка для незав�
     </extension>
 </addon>
 
-<addon id="plugin.video.torrenter" name="Torrenter" version="1.2.6" provider-name="vadim.skorba@gmail.com">
-    <requires>
-        <import addon="xbmc.python" version="2.1.0"/>
-    </requires>
-    <extension point="xbmc.python.pluginsource" provides="video" library="default.py">
-        <provides>video</provides>
-    </extension>
-    <extension point="xbmc.addon.repository" name="Torrenter Repository">
-        <info compressed="false">https://api.bitbucket.org/1.0/repositories/vadimskorba/torrenter/raw/default/addons.xml</info>
-        <checksum>https://api.bitbucket.org/1.0/repositories/vadimskorba/torrenter/raw/default/addons.xml.md5</checksum>
-        <datadir zip="true">https://api.bitbucket.org/1.0/repositories/vadimskorba/torrenter/raw/default/</datadir>
-    </extension>
-    <extension point="xbmc.addon.metadata">
-        <platform>all</platform>
-        <summary lang='en'>Plugin helps you to watch videos from p2p torrent-networks, without full predownload.</summary>
-		<description lang='en'>Plugin helps you to watch videos from p2p torrent-networks, without full predownload. Requires installed 'python-libtorrent' library (read README.TXT)</description>
-        <disclaimer lang='en'>GNU GPLv3 http://www.gnu.org/licenses/</disclaimer>
-        <summary lang='ru'>Плагин позволяет просматривать видео из пиринговых торрент-сетей, не дожидаясь полного скачивания.</summary>
-		<description lang='ru'>Плагин позволяет просматривать видео из пиринговых торрент-сетей, не дожидаясь полного скачивания. Требует установленной библиотеки 'python-libtorrent' (см. README.TXT)</description>
-        <disclaimer lang='ru'>GNU GPLv3 http://www.gnu.org/licenses/</disclaimer>
-    </extension>
-</addon>
-
 <addon id="plugin.video.ts-tv.ru"
        name="TS-TV.RU"
        version="1.0.7"
@@ -2286,13 +2263,31 @@ Raadpleeg de lokale wetgeving voordat u deze plugin installeert.</disclaimer>
 
 <addon id="repository.search.db"
 		name="XBMC.ru search db"
-		version="1.0.4"
+		version="1.0.5"
 		provider-name="bigbax">
   <requires>
     <import addon="xbmc.addon" version="12.0.0"/>
   </requires>
 	<extension point="xbmc.addon.repository"
 		name="XBMC.ru search db">
+	        <dir minversion="12.9.0">
+			<info compressed="false">http://xbmc-vk-repo.googlecode.com/svn/trunk/addons/addons.xml</info>
+			<checksum>http://xbmc-vk-repo.googlecode.com/svn/trunk/addons/addons.xml.md5</checksum>
+			<datadir zip="false">http://xbmc-vk-repo.googlecode.com/svn/trunk/addons/</datadir>
+			<hashes>true</hashes>
+		</dir>
+	        <dir minversion="12.9.0">
+			<info compressed="false">http://ex-ua-viewer.googlecode.com/hg/addons.xml</info>
+			<checksum>http://ex-ua-viewer.googlecode.com/hg/addons.xml.md5</checksum>
+			<datadir zip="true">http://ex-ua-viewer.googlecode.com/hg/</datadir>
+			<hashes>true</hashes>
+		</dir>
+	        <dir minversion="12.9.0">
+			<info compressed="false">https://api.bitbucket.org/1.0/repositories/vadimskorba/torrenter/raw/default/addons.xml</info>
+			<checksum>https://api.bitbucket.org/1.0/repositories/vadimskorba/torrenter/raw/default/addons.xml.md5</checksum>
+			<datadir zip="true">https://api.bitbucket.org/1.0/repositories/vadimskorba/torrenter/raw/default/</datadir>
+			<hashes>true</hashes>
+		</dir>
 	        <dir minversion="12.9.0">
 			<info compressed="false">https://github.com/Eugene-Bond/xmbc-plugins/raw/master/addons.xml</info>
 			<checksum>https://github.com/Eugene-Bond/xmbc-plugins/raw/master/addons.xml.md5</checksum>
