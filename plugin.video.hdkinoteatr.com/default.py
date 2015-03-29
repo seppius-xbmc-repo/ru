@@ -14,7 +14,7 @@ import array
 
 from BeautifulSoup import BeautifulSoup, BeautifulStoneSoup
 from urllib import unquote, quote, quote_plus
-Addon = xbmcaddon.Addon( id = 'plugin.video.hdkinoteatr.ru' )
+Addon = xbmcaddon.Addon( id = 'plugin.video.hdkinoteatr.com' )
 __language__ = Addon.getLocalizedString
 
 addon_icon    = Addon.getAddonInfo('icon')
