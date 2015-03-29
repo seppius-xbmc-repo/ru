@@ -975,10 +975,10 @@ Paypal: напишите на kit500.development at gmail dot com
   </extension>
 </addon>
 
-<addon id="plugin.video.hdkinoteatr.ru"
-       name="hdkinoteatr.ru"
+<addon id="plugin.video.hdkinoteatr.com"
+       name="[COLOR FFFFFF00]HDkinoteatr.com[/COLOR]"
        version="0.0.2"
-       provider-name="Girman Evgeniy writed bb">
+       provider-name="Girman Evgeniy">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
 	<import addon="script.module.beautifulsoup"/>
@@ -989,8 +989,8 @@ Paypal: напишите на kit500.development at gmail dot com
     <provides>video</provides>
   </extension>
   <extension point="xbmc.addon.metadata">
-    <summary>hdkinoteatr.ru</summary>
-    <description>hdkinoteatr.ru - Фильмы онлайн в хорошем качестве</description>
+    <summary>HDkinoTeatr.com</summary>
+    <description>HDkinoTeatr.com - Фильмы онлайн в хорошем качестве</description>
     <platform>all</platform>
   </extension>
 </addon>
