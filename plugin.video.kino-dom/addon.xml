@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<addon id="plugin.video.kino-dom"
+       name="Kino-Dom.tv"
+       version="0.0.2"
+       provider-name="Nesterov Alexandr">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource" provides="video" library="addon.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Kino-Dom.tv</summary>
+    <description>
+    Сериалы с сайта Kino-Dom.tv
+    </description>
+    <source>https://github.com/alex19pov31/plugin.video.kino-dom.git</source>
+    <email>alex19pov31@gmail.com</email>
+    <platform>all</platform>
+  </extension>
+</addon>
