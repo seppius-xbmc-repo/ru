@@ -153,8 +153,11 @@ def play_url(params):
 	#showMessage('heading', torr_link, 10000)
 	TSplayer=tsengine()
 	out=TSplayer.load_torrent(torr_link,'TORRENT')
+	
 	if out=='Ok':
+		j=0
 		for k,v in TSplayer.files.iteritems():
+			j+=1
 			li = xbmcgui.ListItem(urllib.unquote(k))
 			uri = construct_request({
 				'torr_url': torr_link,
@@ -171,6 +174,12 @@ def play_url(params):
 			#crt=construct_request({'mode': 'KFS','text': k})
 			#li.addContextMenuItems([('Hайти на KrasFS', 'XBMC.RunPlugin("plugin://plugin.video.LostFilm/?mode=KFS&text='+k+'")')])
 			xbmcplugin.addDirectoryItem(handle, uri, li, False)
+
+	if j<2:
+		#play_url2({'torr_url': torr_link,'title': k,'ind':v,'img':img,'mode': 'play_url2'})
+		TSplayer.play_url_ind(1,k, icon, img)
+		TSplayer.end()
+		return j
 
 	xbmcplugin.addSortMethod(handle, xbmcplugin.SORT_METHOD_LABEL)
 	xbmcplugin.endOfDirectory(handle)
@@ -296,7 +305,8 @@ def debug(s):
 def GETimg(target, referer=None, post=None):
 	lfimg=os.listdir(ru(LstDir))
 	nmi =os.path.basename(target)
-	if nmi in lfimg:
+
+	if nmi in lfimg and os.path.getsize(os.path.join(ru(LstDir),nmi))>0:
 		return os.path.join( ru(LstDir),nmi)
 	else:
 		try:
@@ -715,7 +725,7 @@ def GET_R(cse):
 		__settings__.setSetting("History", repr(HL))
 		LL=Allre(http)
 		#debug(http)
-		Allrelis(LL)
+		return Allrelis(LL)
 
 def AllList(L):
 		for i in L:
@@ -806,6 +816,25 @@ def AllListS(L):
 
 
 def Allrelis(L):
+	if len (L)<2:
+		i=L[0]
+		Title = format_s(i[0])
+		cover=i[2]
+		row_url = i[1]
+		play_url({'file':row_url,'img':cover})
+		return False
+
+	else:
+		q=int(__settings__.getSetting("Quality"))
+		LQ=["9#$%^^&8","720","1080",": WEB"]
+		for i in L:
+			Title = format_s(i[0])
+			cover=i[2]
+			row_url = i[1]
+			if Title.find(LQ[q])>0:
+				play_url({'file':row_url,'img':cover})
+				return False
+
 		for i in L:
 			#print i
 			Title = format_s(i[0])#+" "+i[1]+" "+i[2]+" "+i[3]
@@ -818,6 +847,7 @@ def Allrelis(L):
 				+ '&title=' + urllib.quote_plus('Title')\
 				+ '&text=' + urllib.quote_plus('0')
 			xbmcplugin.addDirectoryItem(handle, purl, listitem, True)
+		return True 
 
 
 p = re.compile(r'<.*?>')
@@ -1173,7 +1203,6 @@ if  mode == "OpenRel":#mode == None or
 
 
 
-
 if mode == None or mode == "None":
 	#LF()
 	GET_N()
@@ -1213,10 +1242,10 @@ elif mode == 'OpenPage':
 	xbmcplugin.endOfDirectory(handle)
 
 elif mode == 'OpenRel':
-	GET_R(url)
+	r=GET_R(url)
 	xbmcplugin.setPluginCategory(handle, PLUGIN_NAME)
 	xbmcplugin.addSortMethod(handle, xbmcplugin.SORT_METHOD_LABEL)
-	xbmcplugin.endOfDirectory(handle)
+	xbmcplugin.endOfDirectory(handle,r,False)
 	
 elif mode == 'play_url2':
 		play_url2(params)
