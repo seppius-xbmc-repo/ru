@@ -462,7 +462,7 @@ Audio sources are
 
 <addon id="plugin.video.LostFilm"
        name="LostFilm"
-       version="0.4.6"
+       version="0.4.7"
        provider-name="TDW">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
