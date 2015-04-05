@@ -742,18 +742,14 @@ class cSc_parsers:
                     print ex
 
             if url.find('.datalock.ru/') > -1:
-                url1 = 'http://newseriya.ru/serial-3151-Kak_ya_vstretil_vashu_mamu-7-season.html'
+                url1 = 'http://seasonvar.ru/serial-11182-Legko_li_byt__molodym.html'
                 request = urllib2.Request(url1, None, {'User-agent': 'Mozilla/5.0 nStreamVOD 0.1',
                  'Connection': 'Close'})
                 try:
                     page = urllib2.urlopen(request).read()
-                    code_list = re.findall('"pl":"(.*?)"', page)
+                    code_list = re.findall('"secure": "(.*?)"', page)
                     if len(code_list) > 0:
-                        code = code_list[0]
-                        code_url = 'http://gegen-abzocke.com/xml/nstrim/seasonvar/code.php?code_url=' + code
-                        request2 = urllib2.Request(code_url, None, {'User-agent': 'Mozilla/5.0 nStreamVOD 0.1',
-                         'Connection': 'Close'})
-                        hash = urllib2.urlopen(request2).read()
+                        hash = code_list[0]
                         url = url.replace('md5hash', hash)
                         print 'seasonvar'
                         print url
