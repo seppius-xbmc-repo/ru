@@ -208,7 +208,7 @@ class shura:
 			#response = JSONDECODE(response)
 		#except:
 			#xbmc.log('[SHURA.TV] Error.. :(')
-		self.last_list = {'channels': res, 'ttl': now.strftime('%Y-%m-%d'), 'ott':self.OTT, 'server':self.ServerName, 'StreamType':self.StreamType}
+		self.last_list = {'channels': res, 'ttl': now.strftime('%Y-%m-%d'), 'ott':self.OTT, 'server':self.ServerName, 'streamType':self.StreamType}
 		f = open(LASTLISTFILE, 'wb')
 		try:
 			jsave = JSONENCODE(self.last_list, encoding='utf8')
@@ -236,9 +236,12 @@ class shura:
 		#mindex = resp.index('},{')
 		#epg1 = resp[1:mindex+1]
 		try:
-			resp2 = JSONDECODE(resp)
+			if resp <> None and len(resp)>0:
+				resp2 = JSONDECODE(resp)
+			else:
+				resp2=None
 		except Exception, e:
-			xbmc.log('[SHURA.TV] Error in decoding json currentEPG' + str(e))
+			xbmc.log('[SHURA.TV] Error in decoding json currentEPG' + str(e) +'for'+str(resp) +'len='+ str(len(resp)))
 			resp2=None
 		else:
 			resstream.close();

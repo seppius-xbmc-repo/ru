@@ -453,36 +453,39 @@ def ShowChannelsList(plugin, mode = 'TV'):
 						played = 0
 						Description =''
 						#xbmc.log('[SHURA.TV] 1')
-						try:
-							epg = epg[0]
-							if float(epg['start_time']) + float(epg['duration']) < float(time.time()) :
-								#xbmc.log('[SHURA.TV] current epg of channel ' + channel['id']+ ' must be refreshed')
-								epg = PLUGIN_CORE.getCurrentEPG(channel['url'], channel['id'])
+						if epg <> None and len(epg) <> 0:
+							try:
 								epg = epg[0]
+								if float(epg['start_time']) + float(epg['duration']) < float(time.time()) :
+									#xbmc.log('[SHURA.TV] current epg of channel ' + channel['id']+ ' must be refreshed')
+									epg = PLUGIN_CORE.getCurrentEPG(channel['url'], channel['id'])
+									epg = epg[0]
 
-							CurrentEPG = epg['name'].encode('utf-8')
-							Description = epg['text'].encode('utf-8')
-							if "start_time" in epg:
-								epg_start = datetime.datetime.fromtimestamp(epg['start_time']).strftime('%H:%M')
-								if "duration" in epg:
-									epg_end = datetime.datetime.fromtimestamp(epg['start_time'] + epg['duration']).strftime('%H:%M')
-								timerange = '%s - %s ' % (epg_start , epg_end)
-							try:
-								epg_start = float(epg_start)
-							except ValueError:
-								epg_start = epg_start
+								CurrentEPG = epg['name'].encode('utf-8')
+								Description = epg['text'].encode('utf-8')
+								if "start_time" in epg:
+									epg_start = datetime.datetime.fromtimestamp(epg['start_time']).strftime('%H:%M')
+									if "duration" in epg:
+										epg_end = datetime.datetime.fromtimestamp(epg['start_time'] + epg['duration']).strftime('%H:%M')
+									timerange = '%s - %s ' % (epg_start , epg_end)
+								try:
+									epg_start = float(epg_start)
+								except ValueError:
+									epg_start = epg_start
+									
+								try:
+									duration = float(epg['duration'])
+								except ValueError:
+									duration = epg['duration']
 								
-							try:
-								duration = float(epg['duration'])
-							except ValueError:
-								duration = epg['duration']
-							
-							played = ((float(time.time())- float(epg['start_time'])) / duration)*100
-						except Exception, e:
-							xbmc.log('[SHURA.TV] exception i prepare EPG' + str(e))
-						archive_days=' Архив='.decode('utf-8')
-						archive_days= archive_days + str(int(channel['archive'])/24) +' дней'.decode('utf-8')
-						label = '%s[B] %s[/B] %s %s' % ('', channel['name']+':', timerange + '-'+CurrentEPG.decode('utf-8') + ', '+str(int(played)), '%,'+ archive_days)
+								played = ((float(time.time())- float(epg['start_time'])) / duration)*100
+							except Exception, e:
+								xbmc.log('[SHURA.TV] exception in prepare EPG' + str(e))
+							archive_days=' Архив='.decode('utf-8')
+							archive_days= archive_days + str(int(channel['archive'])/24) +' дней'.decode('utf-8')
+							label = '%s[B] %s[/B] %s %s' % ('', channel['name']+':', timerange + '-'+CurrentEPG.decode('utf-8') + ', '+str(int(played)), '%,'+ archive_days)
+						else:
+							label = '%s[B] %s[/B]' % ('', channel['name'])
 						iconimage=gettbn(formating(channel['name']))
 						item=xbmcgui.ListItem(channel['name'], iconImage = iconimage, thumbnailImage = iconimage)
 						item.setLabel(label)
