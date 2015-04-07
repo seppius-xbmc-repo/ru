@@ -803,7 +803,7 @@ Paypal: напишите на kit500.development at gmail dot com
 <addon id="plugin.video.dream-film"
        name="[COLOR FF00FF00]Dream[/COLOR][COLOR FFFFF000]-film[/COLOR][COLOR FF00FF00][/COLOR]"
        version="0.0.2"
-       provider-name="Denis Fomin">
+       provider-name="XZ">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
   </requires>
