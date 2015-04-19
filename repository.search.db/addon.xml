@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addon id="repository.search.db"
 		name="XBMC.ru search db"
-		version="1.0.5"
+		version="1.0.6"
 		provider-name="bigbax">
   <requires>
     <import addon="xbmc.addon" version="12.0.0"/>
@@ -72,6 +72,12 @@
 			<info compressed="false">http://silhouette-xbmc-repo.googlecode.com/svn/trunk/addons/addons.xml</info>
 			<checksum>http://silhouette-xbmc-repo.googlecode.com/svn/trunk/addons/addons.xml.md5</checksum>
 			<datadir zip="false">http://silhouette-xbmc-repo.googlecode.com/svn/trunk/addons/</datadir>
+			<hashes>true</hashes>
+		</dir>
+		<dir minversion="12.9.0">
+			<info compressed="false">https://github.com/Silhouette2022/kodi/raw/master/addons.xml</info>
+			<checksum>https://github.com/Silhouette2022/kodi/raw/master/addons.xml.md5</checksum>
+			<datadir zip="true">https://github.com/Silhouette2022/kodi/raw/master/repo</datadir>
 			<hashes>true</hashes>
 		</dir>
 		<dir minversion="12.9.0">
