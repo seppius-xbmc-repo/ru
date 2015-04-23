@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addon id="repository.search.db"
 		name="XBMC.ru search db"
-		version="1.0.6"
+		version="1.0.7"
 		provider-name="bigbax">
   <requires>
     <import addon="xbmc.addon" version="12.0.0"/>
@@ -66,6 +66,12 @@
 			<info compressed="false">http://nuismons-xmbc.googlecode.com/svn/trunk/addons/addons.xml</info>
 			<checksum>http://nuismons-xmbc.googlecode.com/svn/trunk/addons/addons.xml.md5</checksum>
 			<datadir zip="false">http://nuismons-xmbc.googlecode.com/svn/trunk/addons/</datadir>
+			<hashes>true</hashes>
+		</dir>
+		<dir minversion="12.9.0">
+			<info compressed="false">https://raw.githubusercontent.com/NuisMons/nuXBMCRepo/master/addons/addons.xml</info>
+			<checksum>https://raw.githubusercontent.com/NuisMons/nuXBMCRepo/master/addons/addons.xml.md5</checksum>
+			<datadir zip="true">https://raw.githubusercontent.com/NuisMons/nuXBMCRepo/master/zip</datadir>
 			<hashes>true</hashes>
 		</dir>
 		<dir minversion="12.9.0">
