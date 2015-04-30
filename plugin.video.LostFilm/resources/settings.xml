@@ -1,8 +1,11 @@
 <settings>
-    <setting id="login" type="text" label="30001" default="" />
-    <setting id="password" type="text" label="30002" option="hidden" default="" />
+    <setting id="login" type="text" label="Логин" default="" />
+    <setting id="password" type="text" label="Пароль" option="hidden" default="" />
+    <setting id="ConType" type="enum" label="Тип соединения" default="0" values="HTTP|HTTPS"/>
     <setting id="Engine" type="enum" label="30005" default="0" values="TSengine API|Libtorrents"/>
-    <setting id="Quality" type="enum" label="30006" default="0" values="Select|720p|1080p|SD"/>
-    <setting id="immunicity" type="bool" label="Auto-unblocking via Immunicity" default="false" />
-    <setting id="DownloadDirectory" type="folder" label="30008" default=""/>
+    <setting id="DownloadDirectory" type="folder" label="Путь для кэша" default=""/>
+    <setting id="Picture" type="bool" label="Сохранять картинки" default="false" />
+    <setting id="Quality" type="enum" label="Качество" default="0" values="Выбор|720p|1080p|SD"/>
+    <setting id="immunicity" type="enum" label="Разблокировка" default="0" values="Нет|Immunicity|Proxy"/>
+    <setting id="Proxy" type="text" label="Прокси (адрес:порт)" default="127.0.0.1:8090" />
 </settings>

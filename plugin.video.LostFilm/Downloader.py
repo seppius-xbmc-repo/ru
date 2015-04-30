@@ -20,22 +20,27 @@
 
 #http://www.rasterbar.com/products/libtorrent/manual.html
 #import libtorrent
-try:
-	from python_libtorrent.linux_x86_64 import libtorrent
-except ImportError, v:
-	pass
-try:
-	from python_libtorrent.linux_x86 import libtorrent
-except ImportError, v:
-	pass
-try:
-	from python_libtorrent.windows import libtorrent
-except ImportError, v:
-	pass
-try:
-	import libtorrent
-except ImportError, v:
-	pass
+if 1==1:
+        try:
+            from python_libtorrent.linux_x86_64 import libtorrent
+        except:
+            pass
+        try:
+            from python_libtorrent.linux_x86 import libtorrent
+        except:
+            pass
+        try:
+            from python_libtorrent.windows import libtorrent
+        except:
+            pass
+        try:
+            from python_libtorrent.windows_27 import libtorrent
+        except:
+            pass
+        try:
+            import libtorrent
+        except:
+            pass
 
 import time
 import thread
@@ -58,6 +63,8 @@ class Torrent:
 	canPlay = False
 	def __init__(self, torrentUrl, storageDirectory = '', isMagnet=False):
 		self.torrentFile = storageDirectory + os.sep + 'torrents' + os.sep + self.md5(torrentUrl) + '.torrent'
+		self.torrentFile = storageDirectory + 'torrents' + os.sep + self.md5(torrentUrl) + '.torrent'
+
 		print self.torrentFile
 		if not os.path.exists(storageDirectory + os.sep + 'torrents'):
 			os.makedirs(storageDirectory + os.sep + 'torrents')

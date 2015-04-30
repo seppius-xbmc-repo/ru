@@ -71,8 +71,6 @@ def stft(text):
 				xbmcplugin.addDirectoryItem(handle, purl, listitem, True)
 
 siteUrl = 'www.lostfilm.tv'
-httpSiteUrl = 'http://' + siteUrl
-httpSiteUrl = 'https://' + siteUrl
 sid_file = os.path.join(xbmc.translatePath('special://temp/'), 'plugin.video.LostFilm.cookies.sid')
 
 h = int(sys.argv[1])
@@ -82,6 +80,9 @@ PLUGIN_NAME   = 'LostFilm'
 
 addon = xbmcaddon.Addon(id='plugin.video.LostFilm')
 __settings__ = xbmcaddon.Addon(id='plugin.video.LostFilm')
+CT = __settings__.getSetting("ConType")
+if CT=="0": httpSiteUrl = 'http://' + siteUrl
+else:httpSiteUrl = 'https://' + siteUrl
 xbmcplugin.setContent(int(sys.argv[1]), 'movies')
 
 icon = os.path.join(addon.getAddonInfo('path'), 'icon.png')
@@ -96,8 +97,9 @@ playlist = xbmc.PlayList(xbmc.PLAYLIST_VIDEO)
 import Downloader
 try:import Downloader
 except: pass
-def playTorrent(url, StorageDirectory):
-		torrentUrl = url#__settings__.getSetting("lastTorrent")
+def playTorrent(torrentUrl, StorageDirectory):
+		
+		
 		if 0 != len(torrentUrl):
 			contentId = 0#int(urllib.unquote_plus(url))
 			torrent = Downloader.Torrent(torrentUrl, StorageDirectory)
@@ -122,16 +124,16 @@ def playTorrent(url, StorageDirectory):
 					progressBar.close()
 					torrent.threadComplete = True
 					return
-			progressBar.update(0)
-			progressBar.close()
+			#progressBar.update(0)
+			#progressBar.close()
 			playlist = xbmc.PlayList(xbmc.PLAYLIST_VIDEO)
 			playlist.clear()
 			listitem = xbmcgui.ListItem(torrent.getContentList()[contentId].path)
 			playlist.add('file:///' + torrent.getFilePath(contentId), listitem)
-			progressBar.close()
+			#progressBar.close()
 			xbmc.Player().play(playlist)
 			progressBar.close()
-			time.sleep(15)
+			#time.sleep(15)
 			while 1 == xbmc.Player().isPlayingVideo():
 				torrent.fetchParts()
 				torrent.checkThread()
@@ -150,6 +152,13 @@ from TSCore import TSengine as tsengine
 def play_url(params):
 	torr_link=params['file']
 	img=urllib.unquote_plus(params["img"])
+	Engine = __settings__.getSetting("Engine")
+	if Engine=="1":
+		DownloadDirectory = __settings__.getSetting("DownloadDirectory")
+		if DownloadDirectory=="":DownloadDirectory=LstDir
+		playTorrent(torr_link, DownloadDirectory)
+		return
+
 	#showMessage('heading', torr_link, 10000)
 	TSplayer=tsengine()
 	out=TSplayer.load_torrent(torr_link,'TORRENT')
@@ -320,11 +329,9 @@ def GETimg(target, referer=None, post=None):
 			return os.path.join( ru(LstDir),nmi)
 		except Exception, e:
 			#xbmc.log( '[%s]: GET EXCEPT [%s]' % (addon_id, e), 4 )
-			return ''
-			showMessage('HTTP ERROR', e, 5000)
-	
-	
-	
+			return target
+			print 'HTTP ERROR ' + str(e)
+
 
 
 import re, os, urllib, urllib2, cookielib, time, sys
@@ -341,7 +348,9 @@ hpar = HTMLParser.HTMLParser()
 
 #---------- get web page -------------------------------------------------------
 def get_HTML(url, post = None, ref = None, get_redirect = False):
-    if url.find('http')<0 :url='https:'+url
+    if url.find('http')<0 :
+        if CT=="0": url='http:'+url
+        else: url='https:'+url
     #url=url.replace('www.lostfilm.tv','www.lostfilm.tv.3s3s.org')
     request = urllib2.Request(url, post)
 
@@ -380,10 +389,16 @@ def get_HTML(url, post = None, ref = None, get_redirect = False):
 import antizapret
 cj = cookielib.FileCookieJar(fcookies)
 hr  = urllib2.HTTPCookieProcessor(cj)
-if __settings__.getSetting("immunicity") == "true": 
+if __settings__.getSetting("immunicity") == "1": 
 	opener = urllib2.build_opener(antizapret.AntizapretProxyHandler(), hr)
+	print "Immunicity"
+elif __settings__.getSetting("immunicity") == "2": 
+	proxy_support = urllib2.ProxyHandler({"http" : "http://"+__settings__.getSetting("Proxy")})
+	opener = urllib2.build_opener(proxy_support, hr)
+	print "Proxy "+__settings__.getSetting("Proxy")
 else: 
 	opener = urllib2.build_opener(hr)
+	print "NONE Proxy"
 urllib2.install_opener(opener)
 
 #----------- LOGIN to lostfilm.tv ----------------------------------------------
@@ -734,8 +749,10 @@ def AllList(L):
 			row_url = i[0]
 			dict=get_minfo(row_url)
 			try:
-				cover=dict["cover"].replace('http:','https:')
-				if __settings__.getSetting("immunicity") == "true": cover=GETimg(cover)
+				cover=dict["cover"]#.replace('http:','https:')
+				if CT=="1": cover.replace('http:','https:')
+				#cover=GETimg(cover)
+				if __settings__.getSetting("Picture") == "true": cover=GETimg(cover)
 			except:cover=""
 			listitem = xbmcgui.ListItem(Title, thumbnailImage=cover, iconImage=cover)
 			listitem.setInfo(type = "Video", infoLabels = {"Title": Title} )
@@ -746,7 +763,7 @@ def AllList(L):
 				+ '&url=' + urllib.quote_plus(row_url)\
 				+ '&title=' + urllib.quote_plus(Title)\
 				+ '&text=' + urllib.quote_plus('0')
-			xbmcplugin.addDirectoryItem(handle, purl, listitem, True)
+			xbmcplugin.addDirectoryItem(handle, purl, listitem, True, len(L))
 
 def AllListN(L):
 		if 1==1:
@@ -767,8 +784,10 @@ def AllListN(L):
 			sn = i[5]
 			dict=get_minfo(row_url)
 			try:
-				cover=dict["cover"].replace('http:','https:')#"http://www.lostfilm.tv/Static/icons/"+i[3]
-				if __settings__.getSetting("immunicity") == "true": cover=GETimg(cover)
+				cover=dict["cover"]
+				if CT=="1": cover.replace('http:','https:')#"http://www.lostfilm.tv/Static/icons/"+i[3]
+				#cover=GETimg(cover)
+				if __settings__.getSetting("Picture") == "true": cover=GETimg(cover)
 				#catcover=cover.replace('/posters/poster_','/icons/cat_')
 			except:cover=""
 			
@@ -886,6 +905,7 @@ def clearinfo(str):
 	str=str.replace("'",'"')
 	str=str.replace('" alt="" title',chr(10))
 	str=str.replace('Год выходa:',chr(10)+"Год выхода:")
+	str=str.replace('О сериале ( About',"")
 	str=str.replace('О сериaле',chr(10)+"Описание:")
 	str=str.replace('</h1><br /><img src="',chr(10)+"Обложка:")
 	str=str.replace('<span>',"")
@@ -952,21 +972,29 @@ def get_minfo(ntor):
 			
 			try: dict=eval(xt(get_inf_db(ntor)[0][0]))#dbi = move_info_db[ntor]
 			except: #dbi = None
+				#print get_inf_db(ntor)
 				#debug (eval(get_inf_db(ntor)[0][0]))
 			#if dbi == None:
 				hp =  get_HTML(httpSiteUrl + '/browse.php?cat='+ntor)
+				
 				hp=clearinfo(hp)
+				#if ntor=="119":print hp
 				LI=hp.splitlines()
+				
+				
 				dict={}
 				cover=''
+				jjk=""
 				for itm in LI:
 					#print itm
 					nc=itm.find(':')
 					flag=itm[:nc]
 					if flag=='Обложка': 
 						cvr=itm.strip()
-						dict['cover']=httpSiteUrl + itm[nc+1:].strip()
-					elif flag=='Название': dict['title']=itm[nc+1:].strip().replace("&#960;",'п')
+						cover=httpSiteUrl + itm[nc+1:].strip()
+						dict['cover']=cover
+						#print cover
+					elif flag=='Название': dict['title']=itm[nc+1:].strip().replace("&#960;",'п').replace('\\"','`').replace("'",'`').replace('"',"``").replace('\\x96',"-").replace('\\x85',"...")
 					elif flag=='Оценка': 
 						nr=itm.find('из')
 						try:
@@ -983,13 +1011,17 @@ def get_minfo(ntor):
 					#elif flag=='В ролях': 
 					#	dict['cast']=itm[nc+1:].split(",")[:6]
 					elif flag=='О фильме' or flag=='Описание':
-						jjk=itm.replace("'",'`').replace('"',"``")[nc+1:].strip()
+						if jjk=="": jjk=itm[nc+1:].strip().replace('\\"','`').replace("'",'`').replace('"',"``").replace('\\x96',"-").replace("&#960;",'п').replace('\\x85',"...")
 						#debug (jjk)#[:10]
 						
 						dict['plot']=jjk#[1:-1]
 						
 				#move_info_db[ntor]=dict
-				try:add_to_db(ntor, repr(dict))
+				#add_to_db(ntor, repr(dict))
+				try: 
+					if cover <> "": #
+						add_to_db(ntor, repr(dict))
+						#print dict
 				except: pass
 					#try:add_to_db(ntor, repr(dict).replace('"',"'"))
 					#except: pass
