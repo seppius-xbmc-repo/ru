@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<!--Translator: NEOhidra-->
+<!--Email: neohidra@gmail.com-->
+<!--Date of translation: 13/02/2012-->
+<strings>
+	<!--Labels-->
+	<string id="1000">Избрани от мен</string>
+	<string id="1001">Наскоро слушани</string>
+	<string id="1002">Преглед</string>
+	<string id="1003">Търсене</string>
+	<string id="1004">Добавяне на станция</string>
+	<string id="1005">Премахни станцията</string>
+	<string id="1006">Персонален URL адрес</string>
+	<string id="1009">Добавяне на шоу</string>
+	<string id="1010">Премахни шоуто</string>
+	<string id="1011">Обновяване</string>
+	<string id="1012">Премести нагоре</string>
+	<string id="1013">Премести надолу</string>
+	<string id="1014">Свали шоуто</string>
+	<string id="1015">Свалени</string>
+	<string id="1016">Премахни свалянето</string>
+	<string id="1017">Премахни персоналния URL адрес</string>
+	<string id="1018">Add to XBMC favourites</string>
+
+	<!--Settings-->
+	<string id="2000">Потребителско име</string>
+	<string id="2001">Парола</string>
+	<string id="2003">Debug Level</string>
+	<string id="2004">None</string>
+	<string id="2005">Low</string>
+	<string id="2006">Medium</string>
+	<string id="2007">High</string>
+	<string id="2008">Цвят на иконата</string>
+	<string id="2009">White</string>
+	<string id="2010">черен</string>
+	<string id="2011">Брой "Наскоро слушани"</string>
+	<string id="2012">Запитване преди смяна на текущата станция</string>
+	<string id="2013">HTTPS</string>
+	<string id="2014">Сваляй в</string>
+	<string id="2015">Display TuneIn Featured Station</string>
+	<string id="2016">Показвай местните станции от TuneIn</string>
+	<string id="2017">Показвай Fanart</string>
+	<string id="2018">Сваляй във фонов режим</string>
+	<string id="2019">AAC/AAC+</string>
+	<string id="2024">AM (Излъчване)</string>
+	<string id="2025">DAB (Излъчване)</string>
+	<string id="2026">FM (Излъчване)</string>
+	<string id="2027">HD (Излъчване)</string>
+	<string id="2028">HTML уебстраница</string>
+	<string id="2020">MP3</string>
+	<string id="2021">OGG</string>
+	<string id="2029">QuickTime</string>
+	<string id="2022">RealMedia</string>
+	<string id="2030">RTMP Flash</string>
+	<string id="2031">Satellite (Излъчване)</string>
+	<string id="2023">Windows Media</string>
+	<string id="2032">Windows Media Professional</string>
+	<string id="2033">Windows Media Video</string>
+	<string id="2034">Windows Media Voice</string>
+	<string id="2035">Разреши свалянията</string>
+	<string id="2036">Актуализиране на кеша (часове)</string>
+	<string id="2037">Географска ширина/дължина</string>
+	<string id="2038">Language</string>
+	<string id="2039">червен</string>
+	<string id="2040">Only show TuneIn favourites</string>
+	
+	<!-- Settings Titles -->
+	<string id="2050">TuneIn</string>
+	<string id="2051">Appearance</string>
+	<string id="2052">Downloads</string>
+	<string id="2053">Formats</string>
+	<string id="2054">Advanced</string>
+
+	<!--Dialogs-->
+	<string id="3000">Въведете име на станцията/шоуто/артиста</string>
+	<string id="3001">Необходим е профил в TuneIn (уебсайта),
+за да се извърши действието</string>
+	<string id="3002">Посетете www.tunein.com, за да се регистрирате</string>
+	<string id="3003">Профилът не може да бъде удостоверен</string>
+	<string id="3004">Правилно ли сте въвели потребителското име и парола</string>
+	<string id="3005">Да започне ли възпроизвеждане на потока?</string>
+	<string id="3006">Въведете персонален URL адрес</string>
+	<string id="3007">"%s" съществува в TuneIn.</string>
+	<string id="3008">Да бъде добавен в списъка "Избрани от мен"?</string>
+	<string id="3009">Мрежова грешка.</string>
+	<string id="3010">Вижте файлът "xbmc.log" за повече информация.</string>
+	<string id="3011">Радио TuneIn грешка.</string>
+	<string id="3012">Потокът не съществува в TuneIn.</string>
+	<string id="3013">Да бъде ли добавен в списъка "Избрани от мен"
+като персонален URL адрес?</string>
+	<string id="3014">Въведете име за персоналния URL адрес</string>
+	<string id="3015">Свалянето на шоуто се провали.</string>
+	<string id="3016">URL адресът на шоуто за сваляне е празен.
+Пробвайте първо с възпроизвеждане.</string>
+	<string id="3017">Unable to add station to XBMC favourites.</string>
+
+	<!--Download Dialogs-->
+	<string id="4000">Радио TuneIn</string>
+	<string id="4001">Започва сваляне на файл.</string>
+	<string id="4002">Свалени са %d от %d байта.</string>
+	<string id="4003">Файлът "%s" вече съществува.</string>
+	<string id="4004">Свалянето на "%s" завърши успешно.</string>
+	<string id="4005">Свалянето на "%s" се провали.</string>
+	<string id="4006">Презаписване?</string>
+</strings>

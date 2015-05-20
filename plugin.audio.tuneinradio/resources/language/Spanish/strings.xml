@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<strings>	
+	<!--Labels-->
+	<string id="1000">Mis presintonias</string>
+	<string id="1001">Recientes</string>
+	<string id="1002">Navegar</string>
+	<string id="1003">Buscar</string>
+	<string id="1004">Agregar estación</string>
+	<string id="1005">Eliminar estación</string>
+	<string id="1006">URL Personalizada</string>
+	<string id="1009">Agregar show</string>
+	<string id="1010">Eliminar show</string>
+	<string id="1011">Refrescar</string>
+	<string id="1012">Mover arriba</string>
+	<string id="1013">Mover abajo</string>
+	<string id="1014">Descargar Show</string>
+	<string id="1015">Descargas</string>
+	<string id="1016">Eliminar descarga</string>
+	<string id="1017">Eliminar URL personalizada</string>
+	<string id="1018">Add to XBMC favourites</string>
+
+	<!--Settings-->
+	<string id="2000">Usuario</string>
+	<string id="2001">Contraseña</string>
+	<string id="2003">Nivel de depuración</string>
+	<string id="2004">Ninguno</string>
+	<string id="2005">Bajo</string>
+	<string id="2006">Medio</string>
+	<string id="2007">Alto</string>
+	<string id="2008">Color de íconos</string>
+	<string id="2009">White</string>
+	<string id="2010">Negro</string>
+	<string id="2011">Número de recientes</string>
+	<string id="2012">Mensaje cuando cambia estación</string>
+	<string id="2013">HTTPS</string>
+	<string id="2014">Path de descarga</string>
+	<string id="2015">Mostrar estaciones destacadas de TuneIn</string>
+	<string id="2016">Mostrar estaciones locales de TuneIn</string>
+	<string id="2017">Mostrar Fanart</string>
+	<string id="2018">Descarga en background</string>
+	<string id="2019">AAC/AAC+</string>
+	<string id="2024">AM (Broadcast)</string>
+	<string id="2025">DAB (Broadcast)</string>
+	<string id="2026">FM (Broadcast)</string>
+	<string id="2027">HD (Broadcast)</string>
+	<string id="2028">HTML Web Page</string>
+	<string id="2020">MP3</string>
+	<string id="2021">OGG</string>
+	<string id="2029">QuickTime</string>
+	<string id="2022">RealMedia</string>
+	<string id="2030">RTMP Flash</string>
+	<string id="2031">Satelite (Broadcast)</string>
+	<string id="2023">Windows Media</string>
+	<string id="2032">Windows Media Professional</string>
+	<string id="2033">Windows Media Video</string>
+	<string id="2034">Windows Media Voice</string>
+	<string id="2035">Habilitar descargas</string>
+	<string id="2036">Actualizar cache (hrs)</string>
+	<string id="2037">Latitud/Longitud</string>
+	<string id="2038">Language</string>
+	<string id="2039">Rojo</string>
+	<string id="2040">Only show TuneIn favourites</string>
+	
+	<!-- Settings Titles -->
+	<string id="2050">TuneIn</string>
+	<string id="2051">Appearance</string>
+	<string id="2052">Downloads</string>
+	<string id="2053">Formats</string>
+	<string id="2054">Advanced</string>
+	
+	<!--Dialogs-->
+	<string id="3000">Escriba el nombre de estación/show/artista</string>
+	<string id="3001">Una cuenta TuneIn es requerida para esta acción</string>
+	<string id="3002">Visite tunein.com - para registrarse gratuitamente</string>
+	<string id="3003">No puede autenticar la cuenta</string>
+	<string id="3004">Verifique que el usuario y la contraseña sean correctas</string>
+	<string id="3005">Desea reproducir el stream</string>
+	<string id="3006">Escriba el URL personalizado</string>
+	<string id="3007">'%s' existe en TuneIn.</string>
+	<string id="3008">Desea agregar a sus presintonías?</string>
+	<string id="3009">Error de red.</string>
+	<string id="3010">Vea xbmc.log para más información.</string>
+	<string id="3011">Error de TuneIn Radio.</string>
+	<string id="3012">Este stream no existe en TuneIn.</string>
+	<string id="3013">Desea agregar esta URL personalizada a sus presintonías?</string>
+	<string id="3014">Escriba un nombre para la URL personalizada</string>
+	<string id="3015">Fallo en descarga del show.</string>
+	<string id="3016">El URL de descarga del show esta vacio, intente reproducirlo.</string>
+	<string id="3017">Unable to add station to XBMC favourites.</string>
+	
+	<!--Download Dialogs-->
+	<string id="4000">TuneIn Radio</string>
+	<string id="4001">Iniciando la descarga del archivo.</string>
+	<string id="4002">Descargados %d de %d bytes.</string>
+	<string id="4003">El archivo %s ya existe.</string>
+	<string id="4004">%s ha sido descargado satisfactoriamente.</string>
+	<string id="4005">Falla en descarga del archivo: %s</string>
+	<string id="4006">Sobreescribir?</string>
+</strings>

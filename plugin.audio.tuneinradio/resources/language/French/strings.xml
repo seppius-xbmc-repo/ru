@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<strings>	
+	<!--Labels-->
+	<string id="1000">Mes choix</string>
+	<string id="1001">Récents</string>
+	<string id="1002">Parcourir</string>
+	<string id="1003">Rechercher</string>
+	<string id="1004">Ajouter une station</string>
+	<string id="1005">Supprimer une station</string>
+	<string id="1006">URL Personnalisée</string>
+	<string id="1009">Ajouter une émission</string>
+	<string id="1010">Supprimer une émission</string>
+	<string id="1011">Actualiser</string>
+	<string id="1012">Remonter</string>
+	<string id="1013">Abaisser</string>
+	<string id="1014">Télécharger l'émission</string>
+	<string id="1015">Téléchargement</string>
+	<string id="1016">Supprimer le téléchargement</string>
+	<string id="1017">Supprimer l'URL</string>
+	<string id="1018">Add to XBMC favourites</string>
+
+	<!--Settings-->
+	<string id="2000">Nom d'utilisateur</string>
+	<string id="2001">Mot de passe</string>
+	<string id="2003">Niveau de débug</string>
+	<string id="2004">Aucun</string>
+	<string id="2005">Bas</string>
+	<string id="2006">Moyen</string>
+	<string id="2007">Haut</string>
+	<string id="2008">Couleur des icônes</string>
+	<string id="2009">White</string>
+	<string id="2010">Noir</string>
+	<string id="2011">Nombre de 'Récents'</string>
+	<string id="2012">Afficher les changements de station</string>
+	<string id="2013">HTTPS</string>
+	<string id="2014">Dossier de téléchargement</string>
+	<string id="2015">Afficher les stations "vedettes"</string>
+	<string id="2016">Afficher les stations "locales"</string>
+	<string id="2017">Afficher les fanarts</string>
+	<string id="2018">Téléchargement en arrière plan</string>
+	<string id="2019">AAC/AAC+</string>
+	<string id="2024">AM (Broadcast)</string>
+	<string id="2025">DAB (Broadcast)</string>
+	<string id="2026">FM (Broadcast)</string>
+	<string id="2027">HD (Broadcast)</string>
+	<string id="2028">HTML Web Page</string>
+	<string id="2020">MP3</string>
+	<string id="2021">OGG</string>
+	<string id="2029">QuickTime</string>
+	<string id="2022">RealMedia</string>
+	<string id="2030">RTMP Flash</string>
+	<string id="2031">Satellite (Broadcast)</string>
+	<string id="2023">Windows Media</string>
+	<string id="2032">Windows Media Professional</string>
+	<string id="2033">Windows Media Vidéo</string>
+	<string id="2034">Windows Media Voice</string>
+	<string id="2035">Activer le téléchargement</string>
+	<string id="2036">Mettre à jour le cache (heures)</string>
+	<string id="2037">Latitude/Longitude</string>
+	<string id="2038">Langue</string>
+	<string id="2039">Rouge</string>
+	<string id="2040">Only show TuneIn favourites</string>
+
+	<!-- Settings Titles -->
+	<string id="2050">TuneIn</string>
+	<string id="2051">Apparence</string>
+	<string id="2052">Téléchargements</string>
+	<string id="2053">Formats</string>
+	<string id="2054">Avancé</string>
+	
+	<!--Dialogs-->
+	<string id="3000">Entrez le nom de la station/l'émission/l'artiste</string>
+	<string id="3001">Un compte TuneIn est recquis pour continuer</string>
+	<string id="3002">Visitez tunein.com - Créez un compte gratuitement</string>
+	<string id="3003">Impossible de connecter le compte</string>
+	<string id="3004">Verifiez le nom d'utilisateur et le mot de passe</string>
+	<string id="3005">Voulez-vous jouer un flux ?</string>
+	<string id="3006">Entrez une URL personnalisée.</string>
+	<string id="3007">'%s' existe sur TuneIn.</string>
+	<string id="3008">Voulez-vous l'ajouter à vos choix?</string>
+	<string id="3009">Erreur réseau.</string>
+	<string id="3010">Voir xbmc.log pour plus d'informations.</string>
+	<string id="3011">Erreur de TuneIn Radio.</string>
+	<string id="3012">Ce flux n'existe pas sur TuneIn.</string>
+	<string id="3013">Voulez-vous l'ajouter à vos choix comme URL perso ?</string>
+	<string id="3014">Entrez un nom pour l'URL personnalisée</string>
+	<string id="3015">Echec du téléchargement de l'émission.</string>
+	<string id="3016">Adresse de téléchargement vide, essayer de le lire à la place.</string>
+	<string id="3017">Unable to add station to XBMC favourites.</string>
+	
+	<!--Download Dialogs-->
+	<string id="4000">TuneIn Radio</string>
+	<string id="4001">Début du téléchargement.</string>
+	<string id="4002">%d / %d octets téléchargés.</string>
+	<string id="4003">Le fichier %s existe déjà.</string>
+	<string id="4004">%s a été téléchargé avec succès.</string>
+	<string id="4005">Echec du téléchargment du fichier : %s</string>
+	<string id="4006">Remplacer ?</string>
+</strings>

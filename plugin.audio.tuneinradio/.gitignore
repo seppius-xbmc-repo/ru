@@ -1,0 +1,10 @@
+
+resources/*.pyo
+
+resources/lib/*.pyo
+
+resources/*.pyc
+
+resources/lib/*.pyc
+
+.DS_Store
