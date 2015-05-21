@@ -22,7 +22,7 @@
 
 import urllib2
 import urllib
-import simplejson as json
+import json
 import xbmcgui
 import xbmcplugin
 import xbmcaddon
@@ -53,12 +53,22 @@ except:
     UA = 'XBMC/Unknown %s/%s/%s' % (urllib.quote_plus(addon_author), addon_version, urllib.quote_plus(addon_name))
 hos = int(sys.argv[1])
 headers  = {
-    'User-Agent' : 'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0; Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1) ; .NET CLR 1.1.4322; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729; .NET4.0C)',
-    'Accept'     :' text/html, application/xml, application/xhtml+xml, image/png, image/jpeg, image/gif, image/x-xbitmap, */*',
-    'Accept-Language':'ru-RU,ru;q=0.9,en;q=0.8',
+    'User-Agent' : 'Mozilla/5.0 (Windows NT 6.1; rv:36.0) Gecko/20100101 Firefox/36.0',
+    'Accept'     :'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+    'Accept-Language':'	ru-RU,ru;q=0.8,en-US;q=0.5,en;q=0.3',
     'Accept-Charset' :'utf-8, utf-16, *;q=0.1',
-    'Accept-Encoding':'identity, *;q=0'
+
+    'Referer':'http://online.anidub.com/'
 }
+headers2  = [
+    ('User-Agent' , 'Mozilla/5.0 (Windows NT 6.1; rv:36.0) Gecko/20100101 Firefox/36.0'),
+    ('Accept'     ,'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'),
+    ('Accept-Language','	ru-RU,ru;q=0.8,en-US;q=0.5,en;q=0.3'),
+    ('Accept-Charset' ,'utf-8, utf-16, *;q=0.1'),
+
+    ('Referer','http://online.anidub.com/')
+
+]
 try:
     from hashlib import md5
 except:
@@ -122,73 +132,73 @@ else:
 
 def GET(target, post=None):
     target=target.replace('//page','/page')
-    print target
-    try:
-            cookiejar = cookielib.MozillaCookieJar()
-            urlOpener = urllib2.build_opener(urllib2.HTTPCookieProcessor(cookiejar))
-            auth=False
-            if Addon.getSetting('auth')=='1':
-                try:
-                        #print 'get from file'
-                        cookiejar.load(cook_file)
-                        for cook in cookiejar:
-                            if cook.name=='dle_user_id': auth=True
-                            #print "%s=%s"%(cook.name,cook.value)
-                        #print 'get from file'
-                except:
-                       
-                        req = urllib2.Request(url = target, data = post, headers = headers)
-                        resp = urllib2.urlopen(req)
-                        values = {'login': 'submit', 'login_name':Addon.getSetting('login'),'login_password':Addon.getSetting('password')}
-                        data = urllib.urlencode(values)
-                        request = urllib2.Request("http://online.anidub.com", data)
-                        url = urlOpener.open(request)
-                        http=url.read()
-                        #print http
-                        #print 'get new'
-                        for cook in cookiejar:
-                            if cook.name=='dle_user_id': auth=True
-                            Addon.setSetting('auth','1')
-                            print "%s=%s"%(cook.name,cook.value)
-                        cookiejar.save(cook_file)
-                        #print 'get new saved'
-                        resp.close()
-            if Addon.getSetting('auth')!='1' and Addon.getSetting('login'):
-                    print 'trying getting new cookies'
-                    req = urllib2.Request(url = target, data = post, headers = headers)
-                    resp = urllib2.urlopen(req)
-                    values = {'login': 'submit', 'login_name':Addon.getSetting('login'),'login_password':Addon.getSetting('password')}
-                    data = urllib.urlencode(values)
-                    #print data
-                    request = urllib2.Request("http://online.anidub.com", data)
-                    url = urlOpener.open(request)
-                    http=url.read()
-                    #print http
-                    print 'get new'
-                    for cook in cookiejar:
-                        if cook.name=='dle_user_id': auth=True
-                        #print "%s=%s"%(cook.name,cook.value)
-                    
-                    cookiejar.save(cook_file)
-                    print 'get new saved'
-                    resp.close()
-            if not auth: Addon.setSetting('auth','0')
-            else: Addon.setSetting('auth','1')
-            #cookiejar['dle_user_id']='188275'
-            #cookiejar['dle_password']='91f13e2a4445cb2eae290b7339537e87'
-            #cookiejar['dle_newpm']='0'
-            request = urllib2.Request(url = target, data = post, headers = headers)
+    #print target
+    #try:
+    cookiejar = cookielib.MozillaCookieJar()
+    urlOpener = urllib2.build_opener(urllib2.HTTPCookieProcessor(cookiejar))
+    urlOpener.addheaders=headers2
+    auth=False
+    if Addon.getSetting('auth')=='1':
+        try:
+                #print 'get from file'
+                cookiejar.load(cook_file)
+                for cook in cookiejar:
+                    if cook.name=='dle_user_id': auth=True
+                    #print "%s=%s"%(cook.name,cook.value)
+                #print 'get from file'
+        except:
+               
+
+                values = {'login': 'submit', 'login_name':Addon.getSetting('login'),'login_password':Addon.getSetting('password')}
+                data = urllib.urlencode(values)
+                request = urllib2.Request("http://online.anidub.com", data)
+                url = urlOpener.open(request)
+                http=url.read()
+                #print http
+                #print 'get new'
+                for cook in cookiejar:
+                    if cook.name=='dle_user_id': auth=True
+                    Addon.setSetting('auth','1')
+                    print "%s=%s"%(cook.name,cook.value)
+                cookiejar.save(cook_file)
+                #print 'get new saved'
+                resp.close()
+    if Addon.getSetting('auth')!='1' and Addon.getSetting('login'):
+            print 'trying getting new cookies'
+            req = urllib2.Request(url = target, data = post, headers = headers)
+            resp = urllib2.urlopen(req)
+            values = {'login': 'submit', 'login_name':Addon.getSetting('login'),'login_password':Addon.getSetting('password')}
+            data = urllib.urlencode(values)
+            print data
+            request = urllib2.Request("http://online.anidub.com", data)
             url = urlOpener.open(request)
-            #print url.read()
             http=url.read()
-            #resp.headers['Set-Cookie']='dle_user_id=188275&dle_password=91f13e2a4445cb2eae290b7339537e87&dle_newpm=0'
-            #CE = resp.headers.get('content-encoding')
-            #http = resp.read()
-            #resp.close()
-            return http
-    except Exception, e:
-            xbmc.log( '[%s]: GET EXCEPT [%s]' % (addon_id, e), 4 )
-            showMessage('HTTP ERROR', e, 5000)
+            #print http
+            #print 'get new'
+            for cook in cookiejar:
+                if cook.name=='dle_user_id': auth=True
+                #print "%s=%s"%(cook.name,cook.value)
+            
+            cookiejar.save(cook_file)
+            #print 'get new saved'
+            resp.close()
+    if not auth: Addon.setSetting('auth','0')
+    else: Addon.setSetting('auth','1')
+    #cookiejar['dle_user_id']='188275'
+    #cookiejar['dle_password']='91f13e2a4445cb2eae290b7339537e87'
+    #cookiejar['dle_newpm']='0'
+    request = urllib2.Request(url = target, data = post, headers = headers)
+    url = urlOpener.open(request)
+    #print url.read()
+    http=url.read()
+    #resp.headers['Set-Cookie']='dle_user_id=188275&dle_password=91f13e2a4445cb2eae290b7339537e87&dle_newpm=0'
+    #CE = resp.headers.get('content-encoding')
+    #http = resp.read()
+    #resp.close()
+    return http
+    #except Exception, e:
+    #        xbmc.log( '[%s]: GET EXCEPT [%s]' % (addon_id, e), 4 )
+    #        showMessage('HTTP ERROR', e, 5000)
 
 def construct_request(params):
     return '%s?%s' % (sys.argv[0], urllib.urlencode(params))
@@ -355,68 +365,70 @@ def mainScreen(params):
     if http == None: return False
     
     beautifulSoup = BeautifulSoup(http)
+    #print beautifulSoup
     content = beautifulSoup.find('div', attrs={'id': 'dle-content'})
-    cats=content.findAll('div', attrs={'class': 'maincont'})
-    if not cats:
-        cats=content.findAll('div', attrs={'class': 'news_short'})
-        ttls=content.findAll('div', attrs={'class': 'newstitle'})
-    for manga in cats:
-        info={}
-        
-        others=manga.findAll('li')
-        info= getinfo(others)
-        links= manga.find('div', attrs={'class': 'poster_img'})
-        title=None
-        if links:
-            try: url= links.find('a')['href']
-            except: 
-                try:
-                    #<span class="newsmore">
-                    url=manga.find('span', attrs={'class': 'newsmore'}).find('a')['href']
-                    
-                    if ttls[cats.index(manga)-1]:
-                        m=re.search('[^<>]+</a>',str(ttls[cats.index(manga)-1]))
-                        title = str( m.group(0)[:-4])
-                        #print ttls[cats.index(manga)]
-                        #print title
-                        #print 
-                    else:
-                        m=re.search('[^<>]+</a>',str(ttls[len(ttls)-1]))
-                        title = str( m.group(0)[:-4])
-                        #print '/alst'
-                except: url=''
-            #print links
-            try:
-                img= links.find('img')['data-original']
-            except:
-                img= ""
-            #print img
+    if content:
+        cats=content.findAll('div', attrs={'class': 'maincont'})
+        if not cats:
+            cats=content.findAll('div', attrs={'class': 'news_short'})
+            ttls=content.findAll('div', attrs={'class': 'newstitle'})
+        for manga in cats:
+            info={}
             
-            if not title: title=links.find('img')['alt']
-            #print 'url %s'%url
-            listitem=xbmcgui.ListItem(title,img,img)
-            try:
-                uri = construct_request({
-                'func': 'get_anime',
-                'img':img,
-                'm_path':url
-                })
-            except:
-                uri = construct_request({
-                'func': 'get_anime',
-                'img':img,
-                })
-            try:
-                m=re.search('[^<>]+<',str(manga.findAll('div')[2]))
-                desc = str( m.group(0)[:-1])
+            others=manga.findAll('li')
+            info= getinfo(others)
+            links= manga.find('div', attrs={'class': 'poster_img'})
+            title=None
+            if links:
+                try: url= links.find('a')['href']
+                except: 
+                    try:
+                        #<span class="newsmore">
+                        url=manga.find('span', attrs={'class': 'newsmore'}).find('a')['href']
+                        
+                        if ttls[cats.index(manga)-1]:
+                            m=re.search('[^<>]+</a>',str(ttls[cats.index(manga)-1]))
+                            title = str( m.group(0)[:-4])
+                            #print ttls[cats.index(manga)]
+                            #print title
+                            #print 
+                        else:
+                            m=re.search('[^<>]+</a>',str(ttls[len(ttls)-1]))
+                            title = str( m.group(0)[:-4])
+                            #print '/alst'
+                    except: url=''
+                #print links
+                try:
+                    img= links.find('img')['data-original']
+                except:
+                    img= ""
+                #print img
+                
+                if not title: title=links.find('img')['alt']
+                #print 'url %s'%url
+                listitem=xbmcgui.ListItem(title,img,img)
+                try:
+                    uri = construct_request({
+                    'func': 'get_anime',
+                    'img':img,
+                    'm_path':url
+                    })
+                except:
+                    uri = construct_request({
+                    'func': 'get_anime',
+                    'img':img,
+                    })
+                try:
+                    m=re.search('[^<>]+<',str(manga.findAll('div')[2]))
+                    desc = str( m.group(0)[:-1])
+                    #print desc
+                    info['plot'] = str(desc)
+                    info['plotoutline'] = str(desc)
+                except: pass
+                if info: listitem.setInfo(type='video', infoLabels = info)
+                xbmcplugin.addDirectoryItem(hos, uri, listitem, True)
                 #print desc
-                info['plot'] = str(desc)
-                info['plotoutline'] = str(desc)
-            except: pass
-            if info: listitem.setInfo(type='video', infoLabels = info)
-            xbmcplugin.addDirectoryItem(hos, uri, listitem, True)
-            #print desc
-        #except: pass
+            #except: pass
     try:
         currpage=int(params['page'])
         lastpage=int(params['last'])
@@ -520,7 +532,7 @@ def get_anime(params):
     if options:
         
         for list in options:
-            print list
+            #print list
             lnk=''
             try:
                 lnk=list['value'].split('|')[0]
@@ -595,8 +607,8 @@ def play_anime(params):
                 hd = s.split('=',1)[1]
         video = host+'u'+uid+'/videos/'+vtag+'.240.mp4'
         qual=Addon.getSetting('qual')
-        print qual
-        print hd
+        #print qual
+        #print hd
         if int(hd)>=3 and int(qual)==3:
             #print 'aaa'
             video = host+'u'+uid+'/videos/'+vtag+'.720.mp4'

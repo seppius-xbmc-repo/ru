@@ -1378,7 +1378,7 @@ Paypal: напишите на kit500.development at gmail dot com
 
 <addon id="plugin.video.online.anidub.com"
        name="[COLOR=FFFF0000]Ani[/COLOR][COLOR=FF00FF00]DUB[/COLOR]"
-       version="0.2.8"
+       version="0.3.0"
        provider-name="NuisMons">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
@@ -1911,6 +1911,26 @@ RuTube - отличная стартовая площадка для незав�
 	</extension>
 </addon>
 
+<addon id="plugin.video.tushkan.net"
+       name="Tushkan.net"
+       version="0.0.15"
+       provider-name="NuisMons">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0" />
+	<import addon="script.module.beautifulsoup"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Просмотр вмдео онлайн truba.com</summary>
+    <description>Просмотр вмдео онлайн truba.com</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
 <addon id="plugin.video.tv-here.ru"
        name="TV-HERE.RU"
        version="1.0.5"
@@ -2288,11 +2308,11 @@ Raadpleeg de lokale wetgeving voordat u deze plugin installeert.</disclaimer>
 	</extension>
 </addon>
 
-<addon id="repository.nuismons" name="NuisMons XBMC Add-ons" version="1.0.0" provider-name="NuisMons">
+<addon id="repository.nuismons" name="NuisMons XBMC Add-ons" version="1.0.2" provider-name="NuisMons">
 	<extension point="xbmc.addon.repository" name="NuisMons Add-ons">
-		<info compressed="false">http://nuismons-xmbc.googlecode.com/svn/trunk/addons/addons.xml</info>
-		<checksum>http://nuismons-xmbc.googlecode.com/svn/trunk/addons/addons.xml.md5</checksum>
-		<datadir zip="false">http://nuismons-xmbc.googlecode.com/svn/trunk/addons/</datadir>
+		<info compressed="false">https://raw.githubusercontent.com/NuisMons/nuXBMCRepo/master/addons/addons.xml</info>
+		<checksum>https://raw.githubusercontent.com/NuisMons/nuXBMCRepo/master/addons/addons.xml.md5</checksum>
+		<datadir zip="true">https://raw.githubusercontent.com/NuisMons/nuXBMCRepo/master/zip</datadir>
 	</extension>
 	<extension point="xbmc.addon.metadata">
 		<summary>Install Add-ons from NuisMons Add-on Repository</summary>
