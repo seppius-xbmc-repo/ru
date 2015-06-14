@@ -11,5 +11,5 @@ if (sys.platform == 'win32'):
 sys.path.append( os.path.join( _ADDON_PATH, 'resources', 'lib') )
 
 if (__name__ == '__main__' ):
-    import torr2xbmc
-    torr2xbmc.addon_main()
+	import torr2xbmc
+	torr2xbmc.addon_main()

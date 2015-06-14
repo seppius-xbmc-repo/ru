@@ -19,6 +19,13 @@ language = settings.getLocalizedString
 version = "0.0.1"
 plugin = "YaTv" + version
 
+import os
+_ADDON_PATH_ =   xbmc.translatePath(settings.getAddonInfo('path'))
+if (sys.platform == 'win32'):
+	_ADDON_PATH_ = _ADDON_PATH_.decode('utf-8')
+
+sys.path.append( os.path.join( _ADDON_PATH_, 'lib') )
+
 import YaTv
 
 br = 0

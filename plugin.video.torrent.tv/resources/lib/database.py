@@ -9,9 +9,19 @@ import xbmcaddon
 import time
 import os
 import sys
+import urllib
 __addon__ = xbmcaddon.Addon( id = 'plugin.video.torrent.tv' )
 addon_icon     = __addon__.getAddonInfo('icon')
 addon_id        = __addon__.getAddonInfo('id')
+login = __addon__.getSetting("login")
+passw = __addon__.getSetting("password")
+
+data = urllib.urlencode({
+    'email' : login,
+    'password' : passw,
+    'remember' : 1,
+    'enter' : 'enter'
+})
 
 def showMessage(message = '', heading='TorrentTV', times = 3000, pics = addon_icon):
     try: xbmc.executebuiltin('XBMC.Notification("%s", "%s", %s, "%s")' % (heading.encode('utf-8'), message.encode('utf-8'), times, pics.encode('utf-8')))
@@ -84,8 +94,7 @@ def GET(target, post=None, cookie = None):
         if cookie:
             req.add_header('Cookie', cookie)
             
-        resp = urllib2.urlopen(req, timeout=10000)
-            
+        resp = urllib2.urlopen(req)
         http = resp.read()
         resp.close()
         return http
@@ -272,11 +281,11 @@ class DataBase:
         for ch in res:
             torr_link = ''
             try:
-                page = GET('http://torrent-tv.ru/' + ch[1], cookie=self.cookie)
+                #page = GET('http://torrent-tv.ru/' + ch[1], cookie=self.cookie)
+                #if page == None:
+                page = GET('http://1ttv.org/' + ch[1], cookie=self.cookie)
                 if page == None:
-                    page = GET('http://1ttv.org/' + ch[1], cookie=self.cookie)
-                    if page == None:
-                        showMessage('Torrent TV', 'Сайты не отвечают')
+                    showMessage('Torrent TV', 'Сайты не отвечают')
                 try:
                     torr_link = AddURL[str(ch[0])]
                 except:
@@ -315,11 +324,11 @@ class DataBase:
             return torr_link[0]
         else:
             try:
-                page = GET('http://torrent-tv.ru/torrent-online.php?translation=' + id, cookie=self.cookie)
+                #page = GET('http://torrent-tv.ru/torrent-online.php?translation=' + id, cookie=self.cookie)
+                #if page == None:
+                page = GET('http://1ttv.org/torrent-online.php?translation=' + id, cookie=self.cookie)
                 if page == None:
-                    page = GET('http://1ttv.org/torrent-online.php?translation=' + id, cookie=self.cookie)
-                    if page == None:
-                        showMessage('Torrent TV', 'Сайты не отвечают')
+                    showMessage('Torrent TV', 'Сайты не отвечают')
                 try: torr_link = AddURL[id]
                 except:
                     beautifulSoup = BeautifulSoup(page)
@@ -446,11 +455,12 @@ class DataBase:
         try:
             self.Connect()
             import time
-            page = GET('http://torrent-tv.ru/channels.php', cookie = self.cookie)
+            #page = GET('http://torrent-tv.ru/channels.php', cookie = self.cookie)
+            #if page == None:
+            page = GET('http://1ttv.org/channels.php', cookie = self.cookie)
             if page == None:
-                page = GET('http://1ttv.org/channels.php', cookie = self.cookie)
-                if page == None:
-                    showMessage('Torrent TV', 'Сайты не отвечают')
+                showMessage('Torrent TV', 'Сайты не отвечают')
+                return
             
             beautifulSoup = BeautifulSoup(page)
             el = beautifulSoup.findAll('a', attrs={'class': 'simple-link'})
@@ -462,35 +472,32 @@ class DataBase:
             ch_fav = []
             ch_fav1 = ''
             for gr in el:
-                link = gr['href'].find('category')
-                access = 0
-                fav = 0
-                
-                if link > -1:
-                    if gr.string.encode('utf-8').find('Для взрослых') > -1:
-                        access = 1
-                    if not gr['href'].find('fav') > -1:
-                        grdict.append({'id': gr['href'][18:], 'name': gr.string, 'url': gr['href'], 'adult': access})
-                        grstr = grstr + gr['href'][18:] + ","
-                    
+                if gr['href'].find('category') > -1 or gr['href'].find('hd') > -1 :
+                    link = gr['href'].find('category')
+                    access = 0
+                    fav = 0
+                    if link > -1:
+                        if gr.string.encode('utf-8').find('Для взрослых') > -1:
+                            access = 1
+                        if not gr['href'].find('fav') > -1:
+                            grdict.append({'id': gr['href'][18:], 'name': gr.string, 'url': gr['href'], 'adult': access})
+                            grstr = grstr + gr['href'][18:] + ","
                 chs = gr.parent.findAll('a')
                 for ch in chs:
                     if gr['href'].find('fav') > -1 and len(ch['href'][32:])>0:
+                        hd = 0
                         ch_fav.append({'id': ch['href'][32:], 'name': ch.string, 'url': ch['href'], 'adult': access, 'group_id': '', 'sheduleurl': '', 'imgurl': '', 'hd': hd, 'fav': 2})
                         ch_fav1 = ch_fav1 + ch['href'][32:]
                     else:
-                        hd = 0
-                        if ch.string.encode('utf-8') == gr.string.encode('utf-8'):
-                            continue
-                        
-                        if gr['href'][17:].encode('utf-8') == '':
-                            continue
-                        
-                        if (ch.string.encode('utf-8').find(' HD') > -1) or (ch.string.encode('utf-8').find('HD ') > -1):
-                            hd = 1
-
-                        chdict.append({'id': ch['href'][32:], 'name': ch.string, 'url': ch['href'], 'adult': access, 'group_id': gr['href'][18:], 'sheduleurl': '', 'imgurl': '', 'hd': hd, 'fav': 0})
-                        chstr = chstr + ch['href'][32:] + ","
+                        if ch['href'].find('translation') > -1:
+                            hd = 0
+                            if gr['href'][17:].encode('utf-8') == '':
+                                continue
+                            if (ch.string.encode('utf-8').find(' HD') > -1) or (ch.string.encode('utf-8').find('HD ') > -1):
+                                hd = 1
+                            #print ch.string.encode('utf-8')
+                            chdict.append({'id': ch['href'][32:], 'name': ch.string, 'url': ch['href'], 'adult': access, 'group_id': gr['href'][18:], 'sheduleurl': '', 'imgurl': '', 'hd': hd, 'fav': 0})
+                            chstr = chstr + ch['href'][32:] + ","
             chs = beautifulSoup.findAll('div', attrs={'class': 'best-channels-content'})
             #for ch in chs:
                 #try:
@@ -544,25 +551,26 @@ class DataBase:
                     self.cursor.execute('INSERT INTO groups (id, name, url, adult) VALUES ("%s", "%s", "%s", "%d");' % (gr['id'], gr['name'], gr['url'], gr['adult']))
             
                 for ch in newch:
+                    chen = ch['name'].encode('utf-8').replace('"','').replace("'",'').decode('utf-8')
                     try:
                         td = datetime.date.today()
                         if ch['id'] in ch_fav:
                             self.cursor.execute('INSERT INTO channels (id, name, url, adult, sheduleurl, addsdate, imgurl, hd, favourite) VALUES ("%s", "%s", "%d", "%s", "%s", "%s", "%s", "%s", "%s");\r' % (
-                                ch['id'], ch['name'], ch['url'], ch['adult'], ch['sheduleurl'], td, ch['imgurl'], ch['hd'], 2)
+                                ch['id'], chen, ch['url'], ch['adult'], ch['sheduleurl'], td, ch['imgurl'], ch['hd'], 2)
                             )
                         else:
                             self.cursor.execute('INSERT INTO channels (id, name, url, adult, group_id,sheduleurl, addsdate, imgurl, hd) VALUES ("%s", "%s", "%s", "%d", "%s", "%s", "%s", "%s", "%s");\r' % (
-                                ch['id'], ch['name'], ch['url'], ch['adult'], ch['group_id'], ch['sheduleurl'], td, ch['imgurl'], ch['hd'])
+                                ch['id'], chen, ch['url'], ch['adult'], ch['group_id'], ch['sheduleurl'], td, ch['imgurl'], ch['hd'])
                             )
                         self.connection.commit()
                     except Exception, e:
                         td = datetime.date.today()
                         if ch['id'] in ch_fav1:
-                            self.cursor.execute('UPDATE channels SET name = "%s", url = "%s", adult = "%s",  sheduleurl = "%s", addsdate = "%s", imgurl = "%s", hd = "%s", favourite = "%s" WHERE id = "%s"' % (ch['name'], ch['url'], ch['adult'], ch['sheduleurl'], td, ch['imgurl'], ch['hd'], 2, ch['id']))
+                            self.cursor.execute('UPDATE channels SET name = "%s", url = "%s", adult = "%s",  sheduleurl = "%s", addsdate = "%s", imgurl = "%s", hd = "%s", favourite = "%s" WHERE id = "%s"' % (chen, ch['url'], ch['adult'], ch['sheduleurl'], td, ch['imgurl'], ch['hd'], 2, ch['id']))
                         elif ch['id'] in bdfav:
-                            self.cursor.execute('UPDATE channels SET name = "%s", url = "%s", adult = "%s", sheduleurl = "%s", addsdate = "%s", imgurl = "%s", hd = "%s" WHERE id = "%s"' % (ch['name'], ch['url'], ch['adult'], ch['sheduleurl'], td, ch['imgurl'], ch['hd'], ch['id']))
+                            self.cursor.execute('UPDATE channels SET name = "%s", url = "%s", adult = "%s", sheduleurl = "%s", addsdate = "%s", imgurl = "%s", hd = "%s" WHERE id = "%s"' % (chen, ch['url'], ch['adult'], ch['sheduleurl'], td, ch['imgurl'], ch['hd'], ch['id']))
                         else:
-                            self.cursor.execute('UPDATE channels SET name = "%s", url = "%s", adult = "%s", group_id = "%s", sheduleurl = "%s", addsdate = "%s", imgurl = "%s", hd = "%s", favourite = "%s" WHERE id = "%s"' % (ch['name'], ch['url'], ch['adult'], ch['group_id'], ch['sheduleurl'], td, ch['imgurl'], ch['hd'], 0, ch['id']))
+                            self.cursor.execute('UPDATE channels SET name = "%s", url = "%s", adult = "%s", group_id = "%s", sheduleurl = "%s", addsdate = "%s", imgurl = "%s", hd = "%s", favourite = "%s" WHERE id = "%s"' % (chen, ch['url'], ch['adult'], ch['group_id'], ch['sheduleurl'], td, ch['imgurl'], ch['hd'], 0, ch['id']))
                         self.connection.commit()
                 self.cursor.execute('UPDATE settings SET lastupdate = "%s"' % datetime.datetime.now())
                 self.connection.commit()

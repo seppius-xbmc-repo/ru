@@ -5,6 +5,7 @@ import string, xbmc, xbmcgui, xbmcplugin, xbmcaddon, os, sys, urllib, urllib2, c
 import socket
 import sqlite3 as db
 from BeautifulSoup import BeautifulSoup, BeautifulStoneSoup
+import calendar
 
 socket.setdefaulttimeout(35000)
 
@@ -51,6 +52,7 @@ def GetCookie(target, post=None):
         req = urllib2.Request(url = target, data = post)
         req.add_header('User-Agent', 'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0; Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1) ; .NET CLR 1.1.4322; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729; .NET4.0C)')
         resp = urllib2.urlopen(req)
+        #print resp.read()
         cookie = resp.headers['Set-Cookie'].split(";")[0]
         return cookie
     except Exception, e:
@@ -62,11 +64,15 @@ def GetCh():
     zone = str(time.timezone / 3600)
     try:
         tz = tzd[zone]
-        tdelta == 0
+        tdelta = 0
+        #print "YATV timezone="+str(time.timezone)
+        #print "YATV tz="+str(tz)
     except:
         tz = "9"
-        tdelta = (time.timezone / 3600+4)*3600
-    channels = ["542","946","645","317","781","924","556","863","538","625","74","809","789","84","240","901","905","549","965","529","967","653","702","935","531","693","962","942","943","751","952","838","90","938","98","917","672","788","339","884","598","392","670","920","904","763","782","887","842","536","796","921","910","481","797","877","911","417","889","845","572","402","871","695","895","748","777","145","694","879","902","880","896","727","814","816","818","606","761","24","772","388","513","445","808","790","270","309","479","20","149","285","689","740","88","690","832","861","685","298","386","47","759","823","481","810","448","773","139","348","843","696","666","663","143","664","754","455","296","294","382","272","457","532","111","75","127","726","874","737","557","504","505","692","799","353","716"]
+        tdelta = (4*3600 + time.altzone)
+        #print "YATV Except: timezone="+str(time.timezone)
+        #print "YATV Except: tz="+str(tz)
+    channels = ["997","998","994","996","993","734","758","328","853","314","21","916","1016","688","328","1013","140","1016","949","950","951","947","899","934","991","767","557","558","539","906","752","863","1003","900","1000","1005","970","550","548","571","926","543","547","546","509","405","564","862","730","909","542","645","924","556","863","538","625","74","809","240","901","549","965","529","967","702","942","943","751","98","917","788","339","598","392","670","904","763","887","842","536","796","910","797","911","889","845","572","402","695","748","777","145","727","761","513","790","759","481","448","773","139","348","843","696","666","663","143","664","754","455","296","382","272","457","532","111","726","737","557","504","505","692","799","353","716"]
     data = urllib.urlencode({'timezone' : tz})
     cookie = GetCookie('http://www.vsetv.com/rewrite_url.php', data)
     for ch in channels:
@@ -220,9 +226,6 @@ def GetCh():
                             f_time = g.string.encode('utf-8')
                             try:
                                 if not s_time == "" and not title_pr == "":
-                                    #print s_time
-                                    #print f_time
-                                    #print title_pr
                                     if datetime.datetime(*(time.strptime(s_time, "%H:%M")[0:6])).timetuple().tm_hour < datetime.datetime(*(time.strptime(k, "%H:%M")[0:6])).timetuple().tm_hour and i!=1:
                                         start_t_d = datetime.datetime.date(datetime.datetime.today())+ datetime.timedelta(days=2)
                                     elif datetime.datetime(*(time.strptime(s_time, "%H:%M")[0:6])).timetuple().tm_hour >= datetime.datetime(*(time.strptime(k, "%H:%M")[0:6])).timetuple().tm_hour and datetime.datetime(*(time.strptime(k, "%H:%M")[0:6])).timetuple().tm_hour<5 and i!=1:
@@ -265,11 +268,15 @@ def GetChCache():
     zone = str(time.timezone / 3600)
     try:
         tz = tzd[zone]
-        tdelta == 0
+        tdelta = 0
+        #print "YATV timezone="+str(time.timezone)
+        #print "YATV tz="+str(tz)
     except:
         tz = "9"
-        tdelta = (time.timezone / 3600+4)*3600
-    channels = ["542","946","645","317","781","924","556","863","538","625","74","809","789","84","240","901","905","549","965","529","967","653","702","935","531","693","962","942","943","751","952","838","90","938","98","917","672","788","339","884","598","392","670","920","904","763","782","887","842","536","796","921","910","481","797","877","911","417","889","845","572","402","871","695","895","748","777","145","694","879","902","880","896","727","814","816","818","606","761","24","772","388","513","445","808","790","270","309","479","20","149","285","689","740","88","690","832","861","685","298","386","47","759","823","481","810","448","773","139","348","843","696","666","663","143","664","754","455","296","294","382","272","457","532","111","75","127","726","874","737","557","504","505","692","799","353","716"]
+        tdelta = (4*3600 + time.altzone)
+        #print "YATV Except: timezone="+str(time.timezone)
+        #print "YATV Except: tz="+str(tz)
+    channels = ["997","998","994","996","993","734","758","328","853","314","21","916","1016","688","328","1013","140","1016","949","950","951","947","899","934","991","767","557","558","539","906","752","863","1003","900","1000","1005","970","550","548","571","926","543","547","546","509","405","564","862","730","909","542","645","924","556","863","538","625","74","809","240","901","549","965","529","967","702","942","943","751","98","917","788","339","598","392","670","904","763","887","842","536","796","910","797","911","889","845","572","402","695","748","777","145","727","761","513","790","759","481","448","773","139","348","843","696","666","663","143","664","754","455","296","382","272","457","532","111","726","737","557","504","505","692","799","353","716"]
     data = urllib.urlencode({'timezone' : tz})
     cookie = GetCookie('http://www.vsetv.com/rewrite_url.php', data)
     for ch in channels:
@@ -286,8 +293,13 @@ def GetChCache():
         })
         Url = 'http://www.vsetv.com/rewrite_url.php'
         http = GET(Url, Url, timezone, cookie)
+        #if ch == "1016":
+            #print http
         beautifulSoup = BeautifulSoup(http)
         el = beautifulSoup.findAll('div', attrs={'id': 'schedule_container'})
+        #beautifulSoup = BeautifulSoup(http)
+        tzsite = beautifulSoup.findAll('select', attrs={'name': 'timezone'})
+        print "tzsite= "+str(tzsite)
         d=[]
         prog=[]
         i=0
@@ -301,9 +313,10 @@ def GetChCache():
                             f_time = g.string.encode('utf-8')
                             try:
                                 if not s_time == "" and not title_pr == "":
-                                    #print s_time
-                                    #print f_time
-                                    #print title_pr
+                                    #if ch == "818": 
+                                        #print s_time 
+                                        #print f_time
+                                        #print title_pr
                                     if datetime.datetime(*(time.strptime(s_time, "%H:%M")[0:6])).timetuple().tm_hour < datetime.datetime(*(time.strptime(k, "%H:%M")[0:6])).timetuple().tm_hour:
                                         start_t_d = datetime.datetime.date(datetime.datetime.today())+ datetime.timedelta(days=1)
                                     elif datetime.datetime(*(time.strptime(s_time, "%H:%M")[0:6])).timetuple().tm_hour >= datetime.datetime(*(time.strptime(k, "%H:%M")[0:6])).timetuple().tm_hour and datetime.datetime(*(time.strptime(k, "%H:%M")[0:6])).timetuple().tm_hour<5:
@@ -367,6 +380,12 @@ def GetChCache():
                                     finish_t_t = datetime.datetime.time((datetime.datetime(*(time.strptime(f_time, "%H:%M")[0:6]))))
                                     finish_t1 = datetime.datetime.combine(finish_t_d, finish_t_t)
                                     finish_t = time.mktime(finish_t1.timetuple())-tdelta
+                                    #if ch == "1016":
+                                        #print "title= "+str(title_pr)
+                                        #print "f_time= "+str(f_time)
+                                        #print "finish_t= "+str(finish_t)
+                                        #print "timetuple= "+str(finish_t1.timetuple())
+                                        #print "time.mktime= "+str(time.mktime(finish_t1.timetuple()))
                                     prog.append({"start":start_t, "finish":finish_t, "program":{"title":title_pr.replace("\\/","//")}})
                             except Exception, e:
                                 print e
@@ -483,17 +502,97 @@ def GetChannels(Url):
 				save_cache(channel, channel["channel"]["id"])
 
 def UpdCache():
-    Url = 'http://tv.yandex.ru/ajax/i-tv-region/get?params={"channelIds":[146,711,649,162,187,515,353,304,18,79,427,405,511,698,291,740,323,557,898,150,421,655,335,161,334,916,917,918,919,921,922,924,925,926,927,928,929,932,933,934,935,710,579,658,365,516,463,601,495,325],"duration":43200}&userRegion=213&resource=schedule'
+    Url = 'http://tv.yandex.ru/ajax/i-tv-region/get?params={"channelIds":[146,711,649,162,187,515,353,304,18,79],"duration":43200,"lang":"ru"}&userRegion=213&resource=schedule'
     GetChannels(Url)
-    Url = 'http://tv.yandex.ru/ajax/i-tv-region/get?params={"channelIds":[409,437,60,23,850,288,661,429,575,608,102,567,55,127,267,309,589,213,521,277,346,454,669,66,923,834,273,123,798,462,22,71,542,618,675,518,12,485,783,617,566,638,743,53,406,663,447,181,173,163],"duration":43200}&userRegion=213&resource=schedule'
+    Url = 'http://tv.yandex.ru/ajax/i-tv-region/get?params={"channelIds":[427,405,511,698,291,740,323,557,898,150],"duration":43200,"lang":"ru"}&userRegion=213&resource=schedule'
     GetChannels(Url)
-    Url = 'http://tv.yandex.ru/ajax/i-tv-region/get?params={"channelIds":[794,716,180,779,686,61,16,502,410,659,615,810,520,352,19,494,598,646,51,138,741,15,801,145,82,765,223,328,31,644,37,434,384,648,313,119,125,789,547,156,455,333,604,376,769,705,21,626,637,477,1008,918,852],"duration":43200}&userRegion=213&resource=schedule'
+    Url = 'http://tv.yandex.ru/ajax/i-tv-region/get?params={"channelIds":[421,655,335,161,334,916,917,918,919,921],"duration":43200,"lang":"ru"}&userRegion=213&resource=schedule'
     GetChannels(Url)
-    Url = 'http://tv.yandex.ru/ajax/i-tv-region/get?params={"channelIds":[275,776,555,308,332,849,388,897,425,774,258,389,680,723,154,367,505,595,6,737,481,726,423,113,713,111,662,201,681,322,377,499,134,664,183,697,358,563,311,217,24,799,821,614,153,415,250,8,401,306,557,1003,1021,747,987,988,1035,1032,1329],"duration":43200}&userRegion=213&resource=schedule'
+    Url = 'http://tv.yandex.ru/ajax/i-tv-region/get?params={"channelIds":[922,924,925,926,927,928,929,932,933,934],"duration":43200,"lang":"ru"}&userRegion=213&resource=schedule'
     GetChannels(Url)
-    Url = 'http://tv.yandex.ru/ajax/i-tv-region/get?params={"channelIds":[214,851,923,920,931,930,911,912,983,984,990,989,986,987,988,756,828,355,312,715,777,284,278,797,319,831,757,393,461,631,59,315,442,804,533,25,642,141,552,247,132,39,591,331,731,491,91,554,531,473,412,430,431,11,121,807,363,685,509,464,151,730,560,178,35,382,576,349,270,237,852,165,257,249,777,984,412,382,178,655,119,994],"duration":43200}&userRegion=213&resource=schedule'
+    Url = 'http://tv.yandex.ru/ajax/i-tv-region/get?params={"channelIds":[935,710,579,658,365,516,463,601,495,325],"duration":43200,"lang":"ru"}&userRegion=213&resource=schedule'
     GetChannels(Url)
-    Url = 'http://tv.yandex.ru/ajax/i-tv-region/get?params={"channelIds":[620,583,586,680,937,281,709,228,430,167,280,76,627,939,677,808,453,632,788,128,422,140,507,85,773,940,143,181,670,650,479,326,90,666,753,702,315,435,689,391,1009,458],"duration":43200}&userRegion=187&resource=schedule'
+    Url = 'http://tv.yandex.ru/ajax/i-tv-region/get?params={"channelIds":[409,437,60,23,850,288,661,429,575,608],"duration":43200,"lang":"ru"}&userRegion=213&resource=schedule'
+    GetChannels(Url)
+    Url = 'http://tv.yandex.ru/ajax/i-tv-region/get?params={"channelIds":[102,567,55,127,267,309,589,213,521,277],"duration":43200,"lang":"ru"}&userRegion=213&resource=schedule'
+    GetChannels(Url)
+    Url = 'http://tv.yandex.ru/ajax/i-tv-region/get?params={"channelIds":[346,454,669,66,923,834,273,123,798,462],"duration":43200,"lang":"ru"}&userRegion=213&resource=schedule'
+    GetChannels(Url)
+    Url = 'http://tv.yandex.ru/ajax/i-tv-region/get?params={"channelIds":[22,71,542,618,675,518,12,485,783,617],"duration":43200,"lang":"ru"}&userRegion=213&resource=schedule'
+    GetChannels(Url)
+    Url = 'http://tv.yandex.ru/ajax/i-tv-region/get?params={"channelIds":[566,638,743,53,406,663,447,181,173,163],"duration":43200,"lang":"ru"}&userRegion=213&resource=schedule'
+    GetChannels(Url)
+    Url = 'http://tv.yandex.ru/ajax/i-tv-region/get?params={"channelIds":[794,716,180,779,686,61,16,502,410,659],"duration":43200,"lang":"ru"}&userRegion=213&resource=schedule'
+    GetChannels(Url)
+    Url = 'http://tv.yandex.ru/ajax/i-tv-region/get?params={"channelIds":[615,810,520,352,19,494,598,646,51,138],"duration":43200,"lang":"ru"}&userRegion=213&resource=schedule'
+    GetChannels(Url)
+    Url = 'http://tv.yandex.ru/ajax/i-tv-region/get?params={"channelIds":[741,15,801,145,82,765,223,328,31,644],"duration":43200,"lang":"ru"}&userRegion=213&resource=schedule'
+    GetChannels(Url)
+    Url = 'http://tv.yandex.ru/ajax/i-tv-region/get?params={"channelIds":[37,434,384,648,313,119,125,789,547,156],"duration":43200,"lang":"ru"}&userRegion=213&resource=schedule'
+    GetChannels(Url)
+    Url = 'http://tv.yandex.ru/ajax/i-tv-region/get?params={"channelIds":[455,333,604,376,769,705,21,626,637,477],"duration":43200,"lang":"ru"}&userRegion=213&resource=schedule'
+    GetChannels(Url)
+    Url = 'http://tv.yandex.ru/ajax/i-tv-region/get?params={"channelIds":[1008,918,852,1039,1033,1436],"duration":43200,"lang":"ru"}&userRegion=213&resource=schedule'
+    GetChannels(Url)
+    Url = 'http://tv.yandex.ru/ajax/i-tv-region/get?params={"channelIds":[275,776,555,308,332,849,388,897,425,774],"duration":43200,"lang":"ru"}&userRegion=213&resource=schedule'
+    GetChannels(Url)
+    Url = 'http://tv.yandex.ru/ajax/i-tv-region/get?params={"channelIds":[258,389,680,723,154,367,505,595,6,737],"duration":43200,"lang":"ru"}&userRegion=213&resource=schedule'
+    GetChannels(Url)
+    Url = 'http://tv.yandex.ru/ajax/i-tv-region/get?params={"channelIds":[481,726,423,113,713,111,662,201,681,322],"duration":43200,"lang":"ru"}&userRegion=213&resource=schedule'
+    GetChannels(Url)
+    Url = 'http://tv.yandex.ru/ajax/i-tv-region/get?params={"channelIds":[377,499,134,664,183,697,358,563,311,217],"duration":43200,"lang":"ru"}&userRegion=213&resource=schedule'
+    GetChannels(Url)
+    Url = 'http://tv.yandex.ru/ajax/i-tv-region/get?params={"channelIds":[24,799,821,614,153,415,250,8,401,306],"duration":43200,"lang":"ru"}&userRegion=213&resource=schedule'
+    GetChannels(Url)
+    Url = 'http://tv.yandex.ru/ajax/i-tv-region/get?params={"channelIds":[557,1003,1021,747,987,988,1035,1032,1329],"duration":43200,"lang":"ru"}&userRegion=213&resource=schedule'
+    GetChannels(Url)
+    Url = 'http://tv.yandex.ru/ajax/i-tv-region/get?params={"channelIds":[214,851,923,920,931,930,911,912,983,984],"duration":43200,"lang":"ru"}&userRegion=213&resource=schedule'
+    GetChannels(Url)
+    Url = 'http://tv.yandex.ru/ajax/i-tv-region/get?params={"channelIds":[990,989,986,987,988,756,828,355,312,715],"duration":43200,"lang":"ru"}&userRegion=213&resource=schedule'
+    GetChannels(Url)
+    Url = 'http://tv.yandex.ru/ajax/i-tv-region/get?params={"channelIds":[777,284,278,797,319,831,757,393,461,631],"duration":43200,"lang":"ru"}&userRegion=213&resource=schedule'
+    GetChannels(Url)
+    Url = 'http://tv.yandex.ru/ajax/i-tv-region/get?params={"channelIds":[59,315,442,804,533,25,642,141,552,247],"duration":43200,"lang":"ru"}&userRegion=213&resource=schedule'
+    GetChannels(Url)
+    Url = 'http://tv.yandex.ru/ajax/i-tv-region/get?params={"channelIds":[132,39,591,331,731,491,91,554,531,473],"duration":43200,"lang":"ru"}&userRegion=213&resource=schedule'
+    GetChannels(Url)
+    Url = 'http://tv.yandex.ru/ajax/i-tv-region/get?params={"channelIds":[412,430,431,11,121,807,363,685,509,464],"duration":43200,"lang":"ru"}&userRegion=213&resource=schedule'
+    GetChannels(Url)
+    Url = 'http://tv.yandex.ru/ajax/i-tv-region/get?params={"channelIds":[151,730,560,178,35,382,576,349,270,237],"duration":43200,"lang":"ru"}&userRegion=213&resource=schedule'
+    GetChannels(Url)
+    Url = 'http://tv.yandex.ru/ajax/i-tv-region/get?params={"channelIds":[852,165,257,249,777,984,412,382,178,655],"duration":43200,"lang":"ru"}&userRegion=213&resource=schedule'
+    GetChannels(Url)
+    Url = 'http://tv.yandex.ru/ajax/i-tv-region/get?params={"channelIds":[119,994,1037,1377,916,161,579,1371,1372,463],"duration":43200,"lang":"ru"}&userRegion=213&resource=schedule'
+    GetChannels(Url)
+    Url = 'http://tv.yandex.ru/ajax/i-tv-region/get?params={"channelIds":[929,495,355,1330,393,1394,1026,801,921,1359],"duration":43200,"lang":"ru"}&userRegion=213&resource=schedule'
+    GetChannels(Url)
+    Url = 'http://tv.yandex.ru/ajax/i-tv-region/get?params={"channelIds":[716,589,1012,1013,1011,613,124,996,1036,1392],"duration":43200,"lang":"ru"}&userRegion=213&resource=schedule'
+    GetChannels(Url)
+    Url = 'http://tv.yandex.ru/ajax/i-tv-region/get?params={"channelIds":[1331,897,1332,1000,638,1322,933,789,922],"duration":43200,"lang":"ru"}&userRegion=213&resource=schedule'
+    GetChannels(Url)
+    Url = 'http://tv.yandex.ru/ajax/i-tv-region/get?params={"channelIds":[1396,1562,59,925],"duration":43200,"lang":"ru"}&userRegion=213&resource=schedule'
+    GetChannels(Url)
+    Url = 'http://tv.yandex.ru/ajax/i-tv-region/get?params={"channelIds":[620,583,586,680,937,281,709,228,430,167],"duration":43200,"lang":"ru"}&userRegion=187&resource=schedule'
+    GetChannels(Url)
+    Url = 'http://tv.yandex.ru/ajax/i-tv-region/get?params={"channelIds":[280,76,627,939,677,808,453,632,788,128],"duration":43200,"lang":"ru"}&userRegion=187&resource=schedule'
+    GetChannels(Url)
+    Url = 'http://tv.yandex.ru/ajax/i-tv-region/get?params={"channelIds":[422,140,507,85,773,940,143,181,670,650],"duration":43200,"lang":"ru"}&userRegion=187&resource=schedule'
+    GetChannels(Url)
+    Url = 'http://tv.yandex.ru/ajax/i-tv-region/get?params={"channelIds":[479,326,90,666,753,702,315,649,18,391],"duration":43200,"lang":"ru"}&userRegion=187&resource=schedule'
+    GetChannels(Url)
+    Url = 'http://tv.yandex.ru/ajax/i-tv-region/get?params={"channelIds":[458,1009,1555,1478,1525,1487,1492,1557,1488,1528],"duration":43200,"lang":"ru"}&userRegion=187&resource=schedule'
+    GetChannels(Url)
+    Url = 'http://tv.yandex.ru/ajax/i-tv-region/get?params={"channelIds":[1511,1500,1537,1499,1477,1508,1552,1466,1464,1476],"duration":43200,"lang":"ru"}&userRegion=187&resource=schedule'
+    GetChannels(Url)
+    Url = 'http://tv.yandex.ru/ajax/i-tv-region/get?params={"channelIds":[1548,1495,1550,1507,1534,1538,1470,1533,1530,1535],"duration":43200,"lang":"ru"}&userRegion=187&resource=schedule'
+    GetChannels(Url)
+    Url = 'http://tv.yandex.ru/ajax/i-tv-region/get?params={"channelIds":[1473,1481,1522,1521,1513,1483,1512,1510,1553,1547],"duration":43200,"lang":"ru"}&userRegion=187&resource=schedule'
+    GetChannels(Url)
+    Url = 'http://tv.yandex.ru/ajax/i-tv-region/get?params={"channelIds":[1503,1516,1480,1468,1502,1489,1514,1465,1515,1505],"duration":43200,"lang":"ru"}&userRegion=187&resource=schedule'
+    GetChannels(Url)
+    Url = 'http://tv.yandex.ru/ajax/i-tv-region/get?params={"channelIds":[1506,1469,1462,1485,1498,1484,1559,1493,1467,1471],"duration":43200,"lang":"ru"}&userRegion=187&resource=schedule'
+    GetChannels(Url)
+    Url = 'http://tv.yandex.ru/ajax/i-tv-region/get?params={"channelIds":[1526,1456,1505,1463,1472,1531],"duration":43200,"lang":"ru"}&userRegion=187&resource=schedule'
     GetChannels(Url)
     GetChCache()
 
@@ -535,17 +634,97 @@ def GetChannelsFull(Url):
 				xbmc.sleep(250)
 			
 def UpdFull():
-    Url = 'http://tv.yandex.ru/ajax/i-tv-region/get?params={"channelIds":[146,711,649,162,187,515,353,304,18,79,427,405,511,698,291,740,323,557,898,150,421,655,335,161,334,916,917,918,919,921,922,924,925,926,927,928,929,932,933,934,935,710,579,658,365,516,463,601,495,325],"duration":86400}&userRegion=213&resource=schedule'
+    Url = 'http://tv.yandex.ru/ajax/i-tv-region/get?params={"channelIds":[146,711,649,162,187,515,353,304,18,79],"duration":43200,"lang":"ru"}&userRegion=213&resource=schedule'
     GetChannelsFull(Url)
-    Url = 'http://tv.yandex.ru/ajax/i-tv-region/get?params={"channelIds":[409,437,60,23,850,288,661,429,575,608,102,567,55,127,267,309,589,213,521,277,346,454,669,66,923,834,273,123,798,462,22,71,542,618,675,518,12,485,783,617,566,638,743,53,406,663,447,181,173,163],"duration":86400}&userRegion=213&resource=schedule'
+    Url = 'http://tv.yandex.ru/ajax/i-tv-region/get?params={"channelIds":[427,405,511,698,291,740,323,557,898,150],"duration":43200,"lang":"ru"}&userRegion=213&resource=schedule'
     GetChannelsFull(Url)
-    Url = 'http://tv.yandex.ru/ajax/i-tv-region/get?params={"channelIds":[794,716,180,779,686,61,16,502,410,659,615,810,520,352,19,494,598,646,51,138,741,15,801,145,82,765,223,328,31,644,37,434,384,648,313,119,125,789,547,156,455,333,604,376,769,705,21,626,637,477,1008,918,852],"duration":86400}&userRegion=213&resource=schedule'
+    Url = 'http://tv.yandex.ru/ajax/i-tv-region/get?params={"channelIds":[421,655,335,161,334,916,917,918,919,921],"duration":43200,"lang":"ru"}&userRegion=213&resource=schedule'
     GetChannelsFull(Url)
-    Url = 'http://tv.yandex.ru/ajax/i-tv-region/get?params={"channelIds":[275,776,555,308,332,849,388,897,425,774,258,389,680,723,154,367,505,595,6,737,481,726,423,113,713,111,662,201,681,322,377,499,134,664,183,697,358,563,311,217,24,799,821,614,153,415,250,8,401,306,1003,1021,747,987,988,1035,1032,1329],"duration":86400}&userRegion=213&resource=schedule'
+    Url = 'http://tv.yandex.ru/ajax/i-tv-region/get?params={"channelIds":[922,924,925,926,927,928,929,932,933,934],"duration":43200,"lang":"ru"}&userRegion=213&resource=schedule'
     GetChannelsFull(Url)
-    Url = 'http://tv.yandex.ru/ajax/i-tv-region/get?params={"channelIds":[214,851,923,920,931,930,911,912,983,984,990,989,986,987,988,756,828,355,312,715,777,284,278,797,319,831,757,393,461,631,59,315,442,804,533,25,642,141,552,247,132,39,591,331,731,491,91,554,531,473,412,430,431,11,121,807,363,685,509,464,151,730,560,178,35,382,576,349,270,237,852,165,257,249,777,984,412,382,178,655,119,994],"duration":86400}&userRegion=213&resource=schedule'
+    Url = 'http://tv.yandex.ru/ajax/i-tv-region/get?params={"channelIds":[935,710,579,658,365,516,463,601,495,325],"duration":43200,"lang":"ru"}&userRegion=213&resource=schedule'
     GetChannelsFull(Url)
-    Url = 'http://tv.yandex.ru/ajax/i-tv-region/get?params={"channelIds":[620,583,586,680,937,281,709,228,430,167,280,76,627,939,677,808,453,632,788,128,422,140,507,85,773,940,143,181,670,650,479,326,90,666,753,702,315,435,689,391,1009,458],"duration":86400}&userRegion=187&resource=schedule'
+    Url = 'http://tv.yandex.ru/ajax/i-tv-region/get?params={"channelIds":[409,437,60,23,850,288,661,429,575,608],"duration":43200,"lang":"ru"}&userRegion=213&resource=schedule'
+    GetChannelsFull(Url)
+    Url = 'http://tv.yandex.ru/ajax/i-tv-region/get?params={"channelIds":[102,567,55,127,267,309,589,213,521,277],"duration":43200,"lang":"ru"}&userRegion=213&resource=schedule'
+    GetChannelsFull(Url)
+    Url = 'http://tv.yandex.ru/ajax/i-tv-region/get?params={"channelIds":[346,454,669,66,923,834,273,123,798,462],"duration":43200,"lang":"ru"}&userRegion=213&resource=schedule'
+    GetChannelsFull(Url)
+    Url = 'http://tv.yandex.ru/ajax/i-tv-region/get?params={"channelIds":[22,71,542,618,675,518,12,485,783,617],"duration":43200,"lang":"ru"}&userRegion=213&resource=schedule'
+    GetChannelsFull(Url)
+    Url = 'http://tv.yandex.ru/ajax/i-tv-region/get?params={"channelIds":[566,638,743,53,406,663,447,181,173,163],"duration":43200,"lang":"ru"}&userRegion=213&resource=schedule'
+    GetChannelsFull(Url)
+    Url = 'http://tv.yandex.ru/ajax/i-tv-region/get?params={"channelIds":[794,716,180,779,686,61,16,502,410,659],"duration":43200,"lang":"ru"}&userRegion=213&resource=schedule'
+    GetChannelsFull(Url)
+    Url = 'http://tv.yandex.ru/ajax/i-tv-region/get?params={"channelIds":[615,810,520,352,19,494,598,646,51,138],"duration":43200,"lang":"ru"}&userRegion=213&resource=schedule'
+    GetChannelsFull(Url)
+    Url = 'http://tv.yandex.ru/ajax/i-tv-region/get?params={"channelIds":[741,15,801,145,82,765,223,328,31,644],"duration":43200,"lang":"ru"}&userRegion=213&resource=schedule'
+    GetChannelsFull(Url)
+    Url = 'http://tv.yandex.ru/ajax/i-tv-region/get?params={"channelIds":[37,434,384,648,313,119,125,789,547,156],"duration":43200,"lang":"ru"}&userRegion=213&resource=schedule'
+    GetChannelsFull(Url)
+    Url = 'http://tv.yandex.ru/ajax/i-tv-region/get?params={"channelIds":[455,333,604,376,769,705,21,626,637,477],"duration":43200,"lang":"ru"}&userRegion=213&resource=schedule'
+    GetChannelsFull(Url)
+    Url = 'http://tv.yandex.ru/ajax/i-tv-region/get?params={"channelIds":[1008,918,852,1039,1033,1436],"duration":43200,"lang":"ru"}&userRegion=213&resource=schedule'
+    GetChannelsFull(Url)
+    Url = 'http://tv.yandex.ru/ajax/i-tv-region/get?params={"channelIds":[275,776,555,308,332,849,388,897,425,774],"duration":43200,"lang":"ru"}&userRegion=213&resource=schedule'
+    GetChannelsFull(Url)
+    Url = 'http://tv.yandex.ru/ajax/i-tv-region/get?params={"channelIds":[258,389,680,723,154,367,505,595,6,737],"duration":43200,"lang":"ru"}&userRegion=213&resource=schedule'
+    GetChannelsFull(Url)
+    Url = 'http://tv.yandex.ru/ajax/i-tv-region/get?params={"channelIds":[481,726,423,113,713,111,662,201,681,322],"duration":43200,"lang":"ru"}&userRegion=213&resource=schedule'
+    GetChannelsFull(Url)
+    Url = 'http://tv.yandex.ru/ajax/i-tv-region/get?params={"channelIds":[377,499,134,664,183,697,358,563,311,217],"duration":43200,"lang":"ru"}&userRegion=213&resource=schedule'
+    GetChannelsFull(Url)
+    Url = 'http://tv.yandex.ru/ajax/i-tv-region/get?params={"channelIds":[24,799,821,614,153,415,250,8,401,306],"duration":43200,"lang":"ru"}&userRegion=213&resource=schedule'
+    GetChannelsFull(Url)
+    Url = 'http://tv.yandex.ru/ajax/i-tv-region/get?params={"channelIds":[557,1003,1021,747,987,988,1035,1032,1329],"duration":43200,"lang":"ru"}&userRegion=213&resource=schedule'
+    GetChannelsFull(Url)
+    Url = 'http://tv.yandex.ru/ajax/i-tv-region/get?params={"channelIds":[214,851,923,920,931,930,911,912,983,984],"duration":43200,"lang":"ru"}&userRegion=213&resource=schedule'
+    GetChannelsFull(Url)
+    Url = 'http://tv.yandex.ru/ajax/i-tv-region/get?params={"channelIds":[990,989,986,987,988,756,828,355,312,715],"duration":43200,"lang":"ru"}&userRegion=213&resource=schedule'
+    GetChannelsFull(Url)
+    Url = 'http://tv.yandex.ru/ajax/i-tv-region/get?params={"channelIds":[777,284,278,797,319,831,757,393,461,631],"duration":43200,"lang":"ru"}&userRegion=213&resource=schedule'
+    GetChannelsFull(Url)
+    Url = 'http://tv.yandex.ru/ajax/i-tv-region/get?params={"channelIds":[59,315,442,804,533,25,642,141,552,247],"duration":43200,"lang":"ru"}&userRegion=213&resource=schedule'
+    GetChannelsFull(Url)
+    Url = 'http://tv.yandex.ru/ajax/i-tv-region/get?params={"channelIds":[132,39,591,331,731,491,91,554,531,473],"duration":43200,"lang":"ru"}&userRegion=213&resource=schedule'
+    GetChannelsFull(Url)
+    Url = 'http://tv.yandex.ru/ajax/i-tv-region/get?params={"channelIds":[412,430,431,11,121,807,363,685,509,464],"duration":43200,"lang":"ru"}&userRegion=213&resource=schedule'
+    GetChannelsFull(Url)
+    Url = 'http://tv.yandex.ru/ajax/i-tv-region/get?params={"channelIds":[151,730,560,178,35,382,576,349,270,237],"duration":43200,"lang":"ru"}&userRegion=213&resource=schedule'
+    GetChannelsFull(Url)
+    Url = 'http://tv.yandex.ru/ajax/i-tv-region/get?params={"channelIds":[852,165,257,249,777,984,412,382,178,655],"duration":43200,"lang":"ru"}&userRegion=213&resource=schedule'
+    GetChannelsFull(Url)
+    Url = 'http://tv.yandex.ru/ajax/i-tv-region/get?params={"channelIds":[119,994,1037,1377,916,161,579,1371,1372,463],"duration":43200,"lang":"ru"}&userRegion=213&resource=schedule'
+    GetChannelsFull(Url)
+    Url = 'http://tv.yandex.ru/ajax/i-tv-region/get?params={"channelIds":[929,495,355,1330,393,1394,1026,801,921,1359],"duration":43200,"lang":"ru"}&userRegion=213&resource=schedule'
+    GetChannelsFull(Url)
+    Url = 'http://tv.yandex.ru/ajax/i-tv-region/get?params={"channelIds":[716,589,1012,1013,1011,613,124,996,1036,1392],"duration":43200,"lang":"ru"}&userRegion=213&resource=schedule'
+    GetChannelsFull(Url)
+    Url = 'http://tv.yandex.ru/ajax/i-tv-region/get?params={"channelIds":[1331,897,1332,1000,638,1322,933,789,922],"duration":43200,"lang":"ru"}&userRegion=213&resource=schedule'
+    GetChannelsFull(Url)
+    Url = 'http://tv.yandex.ru/ajax/i-tv-region/get?params={"channelIds":[1396,1562,59,925],"duration":43200,"lang":"ru"}&userRegion=213&resource=schedule'
+    GetChannelsFull(Url)
+    Url = 'http://tv.yandex.ru/ajax/i-tv-region/get?params={"channelIds":[620,583,586,680,937,281,709,228,430,167],"duration":43200,"lang":"ru"}&userRegion=187&resource=schedule'
+    GetChannelsFull(Url)
+    Url = 'http://tv.yandex.ru/ajax/i-tv-region/get?params={"channelIds":[280,76,627,939,677,808,453,632,788,128],"duration":43200,"lang":"ru"}&userRegion=187&resource=schedule'
+    GetChannelsFull(Url)
+    Url = 'http://tv.yandex.ru/ajax/i-tv-region/get?params={"channelIds":[422,140,507,85,773,940,143,181,670,650],"duration":43200,"lang":"ru"}&userRegion=187&resource=schedule'
+    GetChannelsFull(Url)
+    Url = 'http://tv.yandex.ru/ajax/i-tv-region/get?params={"channelIds":[479,326,90,666,753,702,315,649,18,391],"duration":43200,"lang":"ru"}&userRegion=187&resource=schedule'
+    GetChannelsFull(Url)
+    Url = 'http://tv.yandex.ru/ajax/i-tv-region/get?params={"channelIds":[458,1009,1555,1478,1525,1487,1492,1557,1488,1528],"duration":43200,"lang":"ru"}&userRegion=187&resource=schedule'
+    GetChannelsFull(Url)
+    Url = 'http://tv.yandex.ru/ajax/i-tv-region/get?params={"channelIds":[1511,1500,1537,1499,1477,1508,1552,1466,1464,1476],"duration":43200,"lang":"ru"}&userRegion=187&resource=schedule'
+    GetChannelsFull(Url)
+    Url = 'http://tv.yandex.ru/ajax/i-tv-region/get?params={"channelIds":[1548,1495,1550,1507,1534,1538,1470,1533,1530,1535],"duration":43200,"lang":"ru"}&userRegion=187&resource=schedule'
+    GetChannelsFull(Url)
+    Url = 'http://tv.yandex.ru/ajax/i-tv-region/get?params={"channelIds":[1473,1481,1522,1521,1513,1483,1512,1510,1553,1547],"duration":43200,"lang":"ru"}&userRegion=187&resource=schedule'
+    GetChannelsFull(Url)
+    Url = 'http://tv.yandex.ru/ajax/i-tv-region/get?params={"channelIds":[1503,1516,1480,1468,1502,1489,1514,1465,1515,1505],"duration":43200,"lang":"ru"}&userRegion=187&resource=schedule'
+    GetChannelsFull(Url)
+    Url = 'http://tv.yandex.ru/ajax/i-tv-region/get?params={"channelIds":[1506,1469,1462,1485,1498,1484,1559,1493,1467,1471],"duration":43200,"lang":"ru"}&userRegion=187&resource=schedule'
+    GetChannelsFull(Url)
+    Url = 'http://tv.yandex.ru/ajax/i-tv-region/get?params={"channelIds":[1526,1456,1505,1463,1472,1531],"duration":43200,"lang":"ru"}&userRegion=187&resource=schedule'
     GetChannelsFull(Url)
     GetCh()
 
@@ -586,17 +765,18 @@ def GetPr(id2,format=None):
         age=""
         plt_time=""
         plt_prog=""
+        tdlocal = (datetime.datetime.now().timetuple().tm_hour - datetime.datetime.utcnow().timetuple().tm_hour)*3600
         for j in prlist:
             #print j["program"]["title"]
             try:
                 td=datetime.timedelta(hours=int(j["finish"][-4]))
-                start_t = time.mktime((datetime.datetime(*(time.strptime(j["start"][:j["start"].count(j["start"])-7], "%Y-%m-%dT%H:%M:%S")[0:6]))-td).timetuple())-time.timezone + time.localtime().tm_isdst*3600
-                finish_t = time.mktime((datetime.datetime(*(time.strptime(j["finish"][:j["finish"].count(j["finish"])-7], "%Y-%m-%dT%H:%M:%S")[0:6]))-td).timetuple())-time.timezone + time.localtime().tm_isdst*3600
+                start_t = time.mktime((datetime.datetime(*(time.strptime(j["start"][:j["start"].count(j["start"])-7], "%Y-%m-%dT%H:%M:%S")[0:6]))-td).timetuple())+tdlocal#-time.timezone + time.localtime().tm_isdst*3600
+                finish_t = time.mktime((datetime.datetime(*(time.strptime(j["finish"][:j["finish"].count(j["finish"])-7], "%Y-%m-%dT%H:%M:%S")[0:6]))-td).timetuple())+tdlocal#-time.timezone + time.localtime().tm_isdst*3600
             except Exception, e:
                 #print e
                 try:
-                    start_t = j["start"]-time.timezone
-                    finish_t = j["finish"]-time.timezone
+                    start_t = j["start"]
+                    finish_t = j["finish"]
                 except Exception, e:
                     print e
             #print 'finish_t'+str(finish_t)
@@ -633,7 +813,7 @@ def GetPr(id2,format=None):
                     try:type1=j["program"]["type"]["name"]
                     except: type1=""
                     try:
-                        img=j["program"]["images"][0]["sizes"]["200"]["src"].replace("normal","orig")
+                        img=j["program"]["images"][0]["sizes"]["200"]["src"].replace("normal","orig").replace("//","http://")
                     except:img=""
                     try:
                         if torr2xbmc.__addon__.getSetting('description') == 'false':
