@@ -42,18 +42,21 @@ def showMessage(message = '', heading='Torrent-TV.RU', times = 6789):
         except Exception, e:
             xbmc.log( 'showMessage: exec failed [%s]' % 3 )
 
-def GET(target, post=None, cookie = None):
+def GET(target, post=None, cookie = None, tryies = 0):
     try:
         print target
         req = urllib2.Request(url = target, data = post)
         req.add_header('User-Agent', 'XBMC (script.torrent-tv.ru)')
         if cookie:
             req.add_header('Cookie', 'PHPSESSID=%s' % cookie)
-        resp = urllib2.urlopen(req)
+        resp = urllib2.urlopen(req, timeout=10)
         http = resp.read()
         resp.close()
         return http
     except Exception, e:
+        if tryies == 0:
+            tryies = tryies + 1
+            return GET(target, post, cookie, tryies)
         xbmc.log( 'GET EXCEPT [%s]' % (e), 4 )
 
 def checkPort(params):

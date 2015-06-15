@@ -113,7 +113,7 @@ class MyPlayer(xbmcgui.WindowXML):
             self.parent.showStatus("Неизвестный тип контента")
             return
         if not data:
-            self.parent.showStatus("Неизвестный тип контента")
+            self.parent.showStatus("Ошибка Torrent-TV.RU")
             return
         jdata = json.loads(data);
         print jdata
