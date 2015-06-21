@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<settings>
-  <category label="Настройки">
-    <setting id="login" type="text" label="Логин" default="" />
-    <setting id="password" type="text" option="hidden" label="Пароль" enable="!eq(-1,)" default="" />
-  </category>
-</settings>
