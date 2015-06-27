@@ -1225,8 +1225,8 @@ Paypal: напишите на kit500.development at gmail dot com
 
 <addon id="plugin.video.linecinema"
        name="LineCinema"
-       version="0.0.1"
-       provider-name="Nezhinskikh Sergei">
+       version="0.0.2"
+       provider-name="Nesterov Alexandr">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
   </requires>
@@ -1236,8 +1236,10 @@ Paypal: напишите на kit500.development at gmail dot com
   <extension point="xbmc.addon.metadata">
     <summary>LineCinema.org</summary>
     <description>
-Плагин для просмотра видео сайта LineCinema.org
+        Плагин для просмотра фильмов с сайта LineCinema.org
     </description>
+    <source>https://github.com/alex19pov31/plugin.video.linecinema.git</source>
+    <email>alex19pov31@gmail.com</email>
     <platform>all</platform>
   </extension>
 </addon>
