@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="script.epg.iptv" name="EPG для pvr.IPTV" version="1.1.2" provider-name="Alex S.Galickij">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.script" library="addon.py"/>
+  <extension point="xbmc.addon.metadata">
+    <summary lang="ru">Вся информация о возможностях скрипта и его настройках на http://tvbox.link</summary>
+    <description lang="ru">Скрипт предназначен для формирования EPG, в формате xmltv и совместной работы с pvr.IPTVSimple. EPG формируется для заданного города России, Казахстана, Украины и Беларуси, включает в себя региональные каналы и не требует корректировки времени как в PVR addons, так и в плейлисте. В скрипте предусмотрена возможность формирования плейлиста по шаблону, автоматическая настройка pvr.IPTVSimple. Скрипт использует ТВ программу с сайта tv.Yandex.ru.Приятного, Вам, просмотра!</description>
+	<disclaimer lang="ru">Это тестовая, бесплатная версия! Возможны незначительные ошибки, которые могут быть устранены с Вашей помощью. Об ошибках сообщите, пожалуйста, на support@tvbox.link</disclaimer>
+	<platform>all</platform>
+  </extension>
+</addon>
