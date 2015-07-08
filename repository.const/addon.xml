@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="repository.const" 
+       name="Const Kodi Add-ons" 
+	   version="1.0.1" 
+	   provider-name="const">
+<requires>
+  <import addon="xbmc.addon" version="12.0.0"/>
+</requires>	
+	<extension point="xbmc.addon.repository" name="Const Kodi Add-ons">
+		<info compressed="false">https://github.com/const586/const-kodi-repo/raw/master/addons/addons.xml</info>
+		<checksum>https://github.com/const586/const-kodi-repo/raw/master/addons/addons.xml.md5</checksum>
+		<datadir zip="true">https://github.com/const586/const-kodi-repo/raw/master/addons</datadir>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary>Install Add-ons from const Add-on Repository</summary>
+		<summary lang="ru">Дополнения и репозитории Const</summary>
+		<description>Const plug-ins and repository installer for Kodi</description>
+		<description lang="ru">Загружайте и устанавливайте плагины и репозитории от Const.[CR]Если вы обнаружили нерабочее дополнение, сообщите об этом разработчику плагина в на форуме XBMC.RU.</description>
+		<disclaimer lang="en">Team Kodi did not make all the add-ons on this repository and are not responsible for their content</disclaimer>
+		<disclaimer lang="ru">Разработчики Лщвш не являются авторами этих дополнений и не несут ответственность за их содержимое.</disclaimer>
+		<platform>all</platform>
+	</extension>
+</addon>
