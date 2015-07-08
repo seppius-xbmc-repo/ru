@@ -2372,7 +2372,7 @@ Raadpleeg de lokale wetgeving voordat u deze plugin installeert.</disclaimer>
 
 <addon id="repository.search.db"
 		name="XBMC.ru search db"
-		version="1.0.9"
+		version="1.1.0"
 		provider-name="bigbax">
   <requires>
     <import addon="xbmc.addon" version="12.0.0"/>
@@ -2389,6 +2389,12 @@ Raadpleeg de lokale wetgeving voordat u deze plugin installeert.</disclaimer>
 			<info compressed="false">http://ex-ua-viewer.googlecode.com/hg/addons.xml</info>
 			<checksum>http://ex-ua-viewer.googlecode.com/hg/addons.xml.md5</checksum>
 			<datadir zip="true">http://ex-ua-viewer.googlecode.com/hg/</datadir>
+			<hashes>true</hashes>
+		</dir>
+		<dir minversion="12.9.0">
+			<info compressed="false">https://github.com/const586/const-kodi-repo/raw/master/addons/addons.xml</info>
+			<checksum>https://github.com/const586/const-kodi-repo/raw/master/addons/addons.xml.md5</checksum>
+			<datadir zip="true">https://github.com/const586/const-kodi-repo/raw/master/addons</datadir>
 			<hashes>true</hashes>
 		</dir>
 	        <dir minversion="12.9.0">
