@@ -1,0 +1,450 @@
+<?xml version="1.0" encoding="utf-8"?>
+<window>
+	<controls>
+		<control type="group">
+            <control type="image">
+				<description> BACKGROUND </description>
+				<posx>0</posx>
+				<posy>0</posy>
+				<width>1920</width>
+				<height>1080</height>
+				<aspectratio align="center">scale</aspectratio>
+				<texture>background.png</texture>
+			</control>
+
+            <control type="textbox">
+				<description> MOVIE TITLE </description>
+				<posx>0</posx>
+				<posy>0</posy>
+				<width>1920</width>
+                <height>60</height>
+				<textcolor>FFFAFAFA</textcolor>
+				<align>center</align>
+				<label>$INFO[Window.Property(Title)]</label>
+				<font>font30_title</font>
+				<shadowcolor>black</shadowcolor>
+                 <autoscroll delay="5000" time="4000" repeat="2000">true</autoscroll>
+			</control>
+
+			<control type="image">
+				<description> CARD </description>
+				<posx>160</posx>
+				<posy>179</posy>
+				<width>1600</width>
+				<height>722</height>
+				<aspectratio align="center">scale</aspectratio>
+				<texture>dialogs/Card.png</texture>
+			</control>
+
+            <control type="image">
+				<description> VISA AND MASTER CARD </description>
+				<posx>1480</posx>
+				<posy>40</posy>
+				<width>450</width>
+				<height>100</height>
+				<aspectratio align="center">scale</aspectratio>
+				<texture>icons/creditcards.png</texture>
+			</control>
+
+            <control type="button" id="601">
+				<description> FIRST 4 DIGIT </description>
+                <onright>602</onright>
+                <ondown>605</ondown>
+				<posx>250</posx>
+				<posy>470</posy>
+				<width>190</width>
+				<height>110</height>
+				<textoffsetx>0</textoffsetx>
+				<textoffsety>0</textoffsety>
+				<textwidth>190</textwidth>
+				<align>center</align>
+				<aligny>center</aligny>
+				<font>font30_title</font>
+				<textcolor>FFFAFAFA</textcolor>
+				<texturefocus>dialogs/Button1_Active.png</texturefocus>
+				<texturenofocus>dialogs/Button1_Nonactive.png</texturenofocus>
+				<label>$INFO[Window.Property(601)]</label>
+			</control>
+
+            <control type="button" id="602">
+				<description> SECOND 4 DIGIT </description>
+                <onleft>601</onleft>
+                <onright>603</onright>
+                <ondown>605</ondown>
+				<posx>485</posx>
+				<posy>470</posy>
+				<width>190</width>
+				<height>110</height>
+				<textoffsetx>0</textoffsetx>
+				<textoffsety>0</textoffsety>
+				<textwidth>190</textwidth>
+				<align>center</align>
+				<aligny>center</aligny>
+				<font>font30_title</font>
+				<textcolor>FFFAFAFA</textcolor>
+				<texturefocus>dialogs/Button1_Active.png</texturefocus>
+				<texturenofocus>dialogs/Button1_Nonactive.png</texturenofocus>
+				<label>$INFO[Window.Property(602)]</label>
+			</control>
+
+            <control type="button" id="603">
+				<description> THIRD 4 DIGIT </description>
+                <onleft>602</onleft>
+                <onright>604</onright>
+                <ondown>605</ondown>
+				<posx>724</posx>
+				<posy>470</posy>
+				<width>190</width>
+				<height>110</height>
+				<textoffsetx>0</textoffsetx>
+				<textoffsety>0</textoffsety>
+				<textwidth>190</textwidth>
+				<align>center</align>
+				<aligny>center</aligny>
+				<font>font30_title</font>
+				<textcolor>FFFAFAFA</textcolor>
+				<texturefocus>dialogs/Button1Shadow_Active.png</texturefocus>
+				<texturenofocus>dialogs/Button1Shadow_Nonactive.png</texturenofocus>
+				<label>$INFO[Window.Property(603)]</label>
+			</control>
+
+            <control type="button" id="604">
+				<description> LAST 4 DIGIT </description>
+                <onleft>603</onleft>
+                <onright>607</onright>
+                <ondown>605</ondown>
+				<posx>960</posx>
+				<posy>470</posy>
+				<width>190</width>
+				<height>110</height>
+				<textoffsetx>0</textoffsetx>
+				<textoffsety>0</textoffsety>
+				<textwidth>190</textwidth>
+				<align>center</align>
+				<aligny>center</aligny>
+				<font>font30_title</font>
+				<textcolor>FFFAFAFA</textcolor>
+				<texturefocus>dialogs/Button1_Active.png</texturefocus>
+				<texturenofocus>dialogs/Button1_Nonactive.png</texturenofocus>
+				<label>$INFO[Window.Property(604)]</label>
+			</control>
+
+            <control type="button" id="605">
+				<description> MONTH </description>
+                <onright>606</onright>
+                <onup>601</onup>
+                <ondown>608</ondown>
+				<posx>350</posx>
+				<posy>668</posy>
+				<width>190</width>
+				<height>120</height>
+				<textoffsetx>70</textoffsetx>
+				<textoffsety>0</textoffsety>
+				<textwidth>190</textwidth>
+				<align>left</align>
+				<aligny>center</aligny>
+				<font>font30_title</font>
+				<textcolor>FFFAFAFA</textcolor>
+				<texturefocus>dialogs/Button2_Active.png</texturefocus>
+				<texturenofocus>dialogs/Button2_Nonactive.png</texturenofocus>
+				<label>$INFO[Window.Property(605)]</label>
+			</control>
+
+            <control type="button" id="606">
+				<description> YEAR </description>
+                <onleft>605</onleft>
+                <onup>601</onup>
+                <ondown>608</ondown>
+				<posx>600</posx>
+				<posy>668</posy>
+				<width>190</width>
+				<height>120</height>
+				<textoffsetx>60</textoffsetx>
+				<textoffsety>0</textoffsety>
+				<textwidth>190</textwidth>
+				<align>left</align>
+				<aligny>center</aligny>
+				<font>font30_title</font>
+				<textcolor>FFFAFAFA</textcolor>
+				<texturefocus>dialogs/Button2_Active.png</texturefocus>
+				<texturenofocus>dialogs/Button2_Nonactive.png</texturenofocus>
+				<label>$INFO[Window.Property(606)]</label>
+			</control>
+
+            <control type="button" id="607">
+				<description> CVV </description>
+                <onleft>604</onleft>
+                <ondown>605</ondown>
+				<posx>1485</posx>
+				<posy>492</posy>
+				<width>190</width>
+				<height>110</height>
+				<textoffsetx>0</textoffsetx>
+				<textoffsety>0</textoffsety>
+				<textwidth>190</textwidth>
+				<align>center</align>
+				<aligny>center</aligny>
+				<font>font30_title</font>
+				<textcolor>FFFAFAFA</textcolor>
+				<texturefocus>dialogs/Button1_Active.png</texturefocus>
+				<texturenofocus>dialogs/Button1_Nonactive.png</texturenofocus>
+				<label>$INFO[Window.Property(607)]</label>
+			</control>
+
+            <control type="textbox">
+				<description> PAYMENT AMOUNT </description>
+				<posx>40</posx>
+				<posy>1000</posy>
+				<width>600</width>
+                <height>60</height>
+				<textcolor>FFFAFAFA</textcolor>
+				<align>left</align>
+				<label>$INFO[Window.Property(Price)]</label>
+				<font>font13_title</font>
+				<shadowcolor>black</shadowcolor>
+                <autoscroll delay="5000" time="4000" repeat="2000">true</autoscroll>
+			</control>
+
+            <control type="image">
+				<description> UNCHECK FOCUS SAVECARD </description>
+                <visible>Control.HasFocus(608) + !IsEmpty(Window.Property(UNCHECKED_savecard)) + IsEmpty(Window.Property(Prolongation))</visible>
+				<posx>800</posx>
+				<posy>912</posy>
+                <width>60</width>
+                <height>60</height>
+				<aspectratio align="center">scale</aspectratio>
+				<texture>dialogs/unchecked-black.png</texture>
+			</control>
+
+            <control type="image">
+				<description> UNCHECK NOFOCUS SAVECARD </description>
+                <visible>!Control.HasFocus(608) + !IsEmpty(Window.Property(UNCHECKED_savecard)) + IsEmpty(Window.Property(Prolongation))</visible>
+				<posx>800</posx>
+				<posy>912</posy>
+                <width>60</width>
+                <height>60</height>
+				<aspectratio align="center">scale</aspectratio>
+				<texture>dialogs/unchecked-gray.png</texture>
+			</control>
+
+            <control type="image">
+				<description> CHECK FOCUS SAVECARD </description>
+                <visible>Control.HasFocus(608) + !IsEmpty(Window.Property(CHECKED_savecard)) + IsEmpty(Window.Property(Prolongation))</visible>
+				<posx>800</posx>
+				<posy>912</posy>
+                <width>60</width>
+                <height>60</height>
+				<aspectratio align="center">scale</aspectratio>
+				<texture>dialogs/checked-black.png</texture>
+			</control>
+
+            <control type="image">
+				<description> CHECK NOFOCUS SAVECARD </description>
+                <visible>!Control.HasFocus(608) + !IsEmpty(Window.Property(CHECKED_savecard)) + IsEmpty(Window.Property(Prolongation))</visible>
+				<posx>800</posx>
+				<posy>912</posy>
+                <width>60</width>
+                <height>60</height>
+				<aspectratio align="center">scale</aspectratio>
+				<texture>dialogs/checked-gray.png</texture>
+			</control>
+
+            <control type="button" id="608">
+                <visible>IsEmpty(Window.Property(Prolongation))</visible>
+                <description> CARD REMEMBER CHECKBOX </description>
+                <posx>855</posx>
+                <posy>890</posy>
+                <width>300</width>
+                <height>100</height>
+                <colordiffuse>FFFFFFFF</colordiffuse>
+                <texturefocus></texturefocus>
+                <texturenofocus></texturenofocus>
+                <label>$ADDON[plugin.video.megogo 1063]</label>
+                <font>font13</font>
+                <textcolor>FFFFFFFF</textcolor>
+                <focusedcolor>FFFFFFFF</focusedcolor>
+                <disabledcolor>80FFFFFF</disabledcolor>
+                <align>center</align>
+                <aligny>center</aligny>
+                <textoffsetx>0</textoffsetx>
+                <textoffsety>0</textoffsety>
+                <pulseonselect>false</pulseonselect>
+                <onup>605</onup>
+                <ondown>609</ondown>
+            </control>
+
+            <control type="image">
+				<description> UNCHECK FOCUS SAVECARD </description>
+                <visible>Control.HasFocus(608) + !IsEmpty(Window.Property(UNCHECKED_savecard)) + !IsEmpty(Window.Property(Prolongation))</visible>
+				<posx>500</posx>
+				<posy>912</posy>
+                <width>60</width>
+                <height>60</height>
+				<aspectratio align="center">scale</aspectratio>
+				<texture>dialogs/unchecked-black.png</texture>
+			</control>
+
+            <control type="image">
+				<description> UNCHECK NOFOCUS SAVECARD </description>
+                <visible>!Control.HasFocus(608) + !IsEmpty(Window.Property(UNCHECKED_savecard)) + !IsEmpty(Window.Property(Prolongation))</visible>
+				<posx>500</posx>
+				<posy>912</posy>
+                <width>60</width>
+                <height>60</height>
+				<aspectratio align="center">scale</aspectratio>
+				<texture>dialogs/unchecked-gray.png</texture>
+			</control>
+
+            <control type="image">
+				<description> CHECK FOCUS SAVECARD </description>
+                <visible>Control.HasFocus(608) + !IsEmpty(Window.Property(CHECKED_savecard)) + !IsEmpty(Window.Property(Prolongation))</visible>
+				<posx>500</posx>
+				<posy>912</posy>
+                <width>60</width>
+                <height>60</height>
+				<aspectratio align="center">scale</aspectratio>
+				<texture>dialogs/checked-black.png</texture>
+			</control>
+
+            <control type="image">
+				<description> CHECK NOFOCUS SAVECARD </description>
+                <visible>!Control.HasFocus(608) + !IsEmpty(Window.Property(CHECKED_savecard)) + !IsEmpty(Window.Property(Prolongation))</visible>
+				<posx>500</posx>
+				<posy>912</posy>
+                <width>60</width>
+                <height>60</height>
+				<aspectratio align="center">scale</aspectratio>
+				<texture>dialogs/checked-gray.png</texture>
+			</control>
+
+            <control type="button" id="608">
+                <visible>!IsEmpty(Window.Property(Prolongation))</visible>
+                <description> CARD REMEMBER CHECKBOX </description>
+                <posx>555</posx>
+                <posy>890</posy>
+                <width>300</width>
+                <height>100</height>
+                <colordiffuse>FFFFFFFF</colordiffuse>
+                <texturefocus></texturefocus>
+                <texturenofocus></texturenofocus>
+                <label>$ADDON[plugin.video.megogo 1063]</label>
+                <font>font13</font>
+                <textcolor>FFFFFFFF</textcolor>
+                <focusedcolor>FFFFFFFF</focusedcolor>
+                <disabledcolor>80FFFFFF</disabledcolor>
+                <align>center</align>
+                <aligny>center</aligny>
+                <textoffsetx>0</textoffsetx>
+                <textoffsety>0</textoffsety>
+                <pulseonselect>false</pulseonselect>
+                <onup>605</onup>
+                <onright>611</onright>
+                <ondown>609</ondown>
+            </control>
+
+            <control type="image">
+				<description> UNCHECK FOCUS PROLOGATION </description>
+                <visible>Control.HasFocus(611) + !IsEmpty(Window.Property(UNCHECKED_Prolongation)) + !IsEmpty(Window.Property(Prolongation))</visible>
+				<posx>1030</posx>
+				<posy>912</posy>
+                <width>60</width>
+                <height>60</height>
+				<aspectratio align="center">scale</aspectratio>
+				<texture>dialogs/unchecked-black.png</texture>
+			</control>
+
+            <control type="image">
+				<description> UNCHECK NOFOCUS PROLOGATION </description>
+                <visible>!Control.HasFocus(611) + !IsEmpty(Window.Property(UNCHECKED_Prolongation)) + !IsEmpty(Window.Property(Prolongation))</visible>
+				<posx>1030</posx>
+				<posy>912</posy>
+                <width>60</width>
+                <height>60</height>
+				<aspectratio align="center">scale</aspectratio>
+				<texture>dialogs/unchecked-gray.png</texture>
+			</control>
+
+            <control type="image">
+				<description> CHECK FOCUS PROLOGATION </description>
+                <visible>Control.HasFocus(611) + !IsEmpty(Window.Property(CHECKED_Prolongation)) + !IsEmpty(Window.Property(Prolongation))</visible>
+				<posx>1030</posx>
+				<posy>912</posy>
+                <width>60</width>
+                <height>60</height>
+				<aspectratio align="center">scale</aspectratio>
+				<texture>dialogs/checked-black.png</texture>
+			</control>
+
+            <control type="image">
+				<description> CHECK NOFOCUS PROLOGATION </description>
+                <visible>!Control.HasFocus(611) + !IsEmpty(Window.Property(CHECKED_Prolongation)) + !IsEmpty(Window.Property(Prolongation))</visible>
+				<posx>1030</posx>
+				<posy>912</posy>
+                <width>60</width>
+                <height>60</height>
+				<aspectratio align="center">scale</aspectratio>
+				<texture>dialogs/checked-gray.png</texture>
+			</control>
+
+            <control type="button" id="611">
+                <visible>!IsEmpty(Window.Property(Prolongation))</visible>
+                <description> PROLONGATION CHECKBOX </description>
+                <posx>1100</posx>
+                <posy>890</posy>
+                <width>405</width>
+                <height>100</height>
+                <colordiffuse>FFFFFFFF</colordiffuse>
+                <texturefocus></texturefocus>
+                <texturenofocus></texturenofocus>
+                <label>$ADDON[plugin.video.megogo 1095]</label>
+                <font>font13</font>
+                <textcolor>FFFFFFFF</textcolor>
+                <focusedcolor>FFFFFFFF</focusedcolor>
+                <disabledcolor>80FFFFFF</disabledcolor>
+                <align>center</align>
+                <aligny>center</aligny>
+                <textoffsetx>0</textoffsetx>
+                <textoffsety>0</textoffsety>
+                <pulseonselect>false</pulseonselect>
+                <onup>605</onup>
+                <onleft>608</onleft>
+                <ondown>609</ondown>
+            </control>
+
+            <control type="button" id="609">
+				<description> PAY </description>
+                <onleft>608</onleft>
+                <onup>608</onup>
+				<posx>810</posx>
+				<posy>980</posy>
+				<width>300</width>
+				<height>90</height>
+				<textoffsetx>0</textoffsetx>
+				<textoffsety>0</textoffsety>
+				<textwidth>190</textwidth>
+				<align>center</align>
+				<aligny>center</aligny>
+				<font>font13_title</font>
+				<textcolor>FFFAFAFA</textcolor>
+				<texturefocus>buttons/On.png</texturefocus>
+				<texturenofocus>buttons/Off.png</texturenofocus>
+				<label>$ADDON[plugin.video.megogo 1065]</label>
+			</control>
+
+            <control type="textbox">
+				<description> SUPPORT INFO </description>
+				<posx>1400</posx>
+				<posy>950</posy>
+				<width>500</width>
+                <height>160</height>
+				<textcolor>FFFAFAFA</textcolor>
+				<align>right</align>
+				<label>$ADDON[plugin.video.megogo 1070][CR]$INFO[Window.Property(Phone)][CR]$INFO[Window.Property(UID)]</label>
+				<font>font13</font>
+				<shadowcolor>black</shadowcolor>
+                <autoscroll delay="5000" time="4000" repeat="2000">true</autoscroll>
+			</control>
+
+        </control>
+    </controls>
+</window>

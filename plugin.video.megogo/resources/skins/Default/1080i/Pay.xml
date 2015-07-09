@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<window>
+	<controls>
+		<control type="group">
+			<control type="image">
+				<description> BACKGROUND </description>
+				<posx>0</posx>
+				<posy>0</posy>
+				<width>1920</width>
+				<height>1080</height>
+				<aspectratio align="center">scale</aspectratio>
+				<texture>background.png</texture>
+			</control>
+
+            <control type="textbox" id="33000">
+				<description> MOVIE TITLE </description>
+				<posx>0</posx>
+				<posy>0</posy>
+				<width>1920</width>
+                <height>60</height>
+				<textcolor>FFFAFAFA</textcolor>
+				<align>center</align>
+				<label>$INFO[Window.Property(Title)]</label>
+				<font>font30_title</font>
+				<shadowcolor>black</shadowcolor>
+                 <autoscroll delay="5000" time="4000" repeat="2000">true</autoscroll>
+			</control>
+
+            <control type="image">
+				<description> TVOD OR SVOD ICON </description>
+				<posx>882</posx>
+				<posy>202</posy>
+				<width>156</width>
+				<height>156</height>
+				<texture>$INFO[Window.Property(ICON)]</texture>
+			</control>
+
+            <control type="textbox">
+				<description> TVOD OR SVOD TITLE </description>
+				<posx>0</posx>
+				<posy>380</posy>
+				<width>1920</width>
+				<textcolor>FFFAFAFA</textcolor>
+				<align>center</align>
+				<label>$INFO[Window.Property(Inf)][CR]$INFO[Window.Property(Price)]</label>
+				<font>font30</font>
+			</control>
+
+            <control type="button" id="500">
+				<description> CLOSE </description>
+				<posx>740</posx>
+				<posy>560</posy>
+				<width>440</width>
+				<height>91</height>
+				<textoffsetx>0</textoffsetx>
+				<textoffsety>0</textoffsety>
+				<textwidth>440</textwidth>
+				<align>center</align>
+				<aligny>center</aligny>
+				<font>font13</font>
+				<textcolor>FFFAFAFA</textcolor>
+                <ondown>501</ondown>
+				<texturefocus>buttons/On.png</texturefocus>
+				<texturenofocus>buttons/Off.png</texturenofocus>
+				<label>$ADDON[plugin.video.megogo 1052]</label>
+			</control>
+
+            <control type="button" id="501">
+				<description> BUTTON 1 </description>
+				<posx>740</posx>
+				<posy>660</posy>
+				<width>440</width>
+				<height>95</height>
+				<textoffsetx>0</textoffsetx>
+				<textoffsety>0</textoffsety>
+				<textwidth>440</textwidth>
+				<align>center</align>
+				<aligny>center</aligny>
+				<font>font13</font>
+				<textcolor>FFFAFAFA</textcolor>
+                <onup>500</onup>
+				<ondown>502</ondown>
+				<texturefocus>buttons/On.png</texturefocus>
+				<texturenofocus>buttons/Off.png</texturenofocus>
+				<label>$INFO[Window.Property(Button1)]</label>
+			</control>
+
+            <control type="button" id="502">
+				<description> BUTTON 2 </description>
+                <visible>!IsEmpty(Window.Property(Button2))</visible>
+				<posx>740</posx>
+				<posy>765</posy>
+				<width>440</width>
+				<height>95</height>
+				<textoffsetx>0</textoffsetx>
+				<textoffsety>0</textoffsety>
+				<textwidth>440</textwidth>
+				<align>center</align>
+				<aligny>center</aligny>
+				<font>font13</font>
+				<textcolor>FFFAFAFA</textcolor>
+                <onup>501</onup>
+                <ondown>503</ondown>
+				<texturefocus>buttons/On.png</texturefocus>
+				<texturenofocus>buttons/Off.png</texturenofocus>
+				<label>$INFO[Window.Property(Button2)]</label>
+			</control>
+
+            <control type="button" id="503">
+				<description> BUTTON 3 </description>
+                <visible>!IsEmpty(Window.Property(Button3))</visible>
+				<posx>740</posx>
+				<posy>865</posy>
+				<width>440</width>
+				<height>95</height>
+				<textoffsetx>0</textoffsetx>
+				<textoffsety>0</textoffsety>
+				<textwidth>430</textwidth>
+				<align>center</align>
+				<aligny>center</aligny>
+				<font>font13</font>
+				<textcolor>FFFAFAFA</textcolor>
+                <onup>502</onup>
+				<texturefocus>buttons/On.png</texturefocus>
+				<texturenofocus>buttons/Off.png</texturenofocus>
+				<label>$INFO[Window.Property(Button3)]</label>
+			</control>
+
+        </control>
+    </controls>
+</window>

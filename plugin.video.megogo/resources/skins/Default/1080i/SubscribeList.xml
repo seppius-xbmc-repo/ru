@@ -1,0 +1,548 @@
+<?xml version="1.0" encoding="utf-8"?>
+<window>
+	<!--defaultcontrol always="true">500</defaultcontrol-->
+	<controls>
+		<animation type="WindowOpen" reversible="false">
+			<effect type="zoom" start="80" end="100" center="960,540" delay="500" tween="back" time="240" />
+			<effect type="fade" delay="500" end="100" time="240" />
+		</animation>
+		<animation type="WindowClose" reversible="false">
+			<effect type="zoom" start="100" end="80" center="960,540" easing="in" tween="back" time="240" />
+			<effect type="fade" start="100" end="0" time="240" />
+		</animation>
+
+		<control type="image">
+			<texture>background.png</texture>
+			<animation effect="fade" start="100" end="80" time="0" condition="true">Focus</animation>
+			<width>1920</width>
+			<height>1080</height>
+			<animation effect="fade" end="100" time="360">WindowOpen</animation>
+			<animation effect="fade" start="100" end="0" time="750">WindowClose</animation>
+		</control>
+
+        <control type="textbox">
+            <description> WINDOW NAME </description>
+            <posx>0</posx>
+            <posy>0</posy>
+            <width>1920</width>
+            <height>60</height>
+            <textcolor>FFFAFAFA</textcolor>
+            <align>center</align>
+            <label>$INFO[Window.Property(NAME)]</label>
+            <font>font30_title</font>
+            <shadowcolor>black</shadowcolor>
+        </control>
+
+        <control type="group">
+            <animation type="WindowOpen" reversible="false">
+                <effect type="zoom" start="80" end="100" center="960,540" delay="500" tween="back" time="240" />
+                <effect type="fade" delay="500" end="100" time="240" />
+            </animation>
+            <animation type="WindowClose" reversible="false">
+                <effect type="zoom" start="100" end="80" center="960,540" easing="in" tween="back" time="240" />
+                <effect type="fade" start="100" end="0" time="240" />
+            </animation>
+
+            <control type="button" id="6000">
+                <label>$ADDON[plugin.video.megogo 1008]</label>
+                <posx>0</posx>
+                <posy>10</posy>
+                <width>250</width>
+                <height>90</height>
+                <textoffsetx>95</textoffsetx>
+                <textoffsety>22</textoffsety>
+                <textwidth>315</textwidth>
+                <align>left</align>
+                <aligny>top</aligny>
+                <texturefocus>buttons/Menu_On.png</texturefocus>
+                <texturenofocus>buttons/Menu_Off.png</texturenofocus>
+                <font>font13</font>
+                <textcolor>FF999999</textcolor>
+                <ondown>SetFocus(500)</ondown>
+                <onright>SetFocus(8000)</onright>
+                <onleft>SetFocus(7000)</onleft>
+            </control>
+            <control type="button" id="8000">
+                <label>$ADDON[plugin.video.megogo 1020]</label>
+                <posx>1680</posx>
+                <posy>10</posy>
+                <width>250</width>
+                <height>90</height>
+                <textoffsetx>95</textoffsetx>
+                <textoffsety>22</textoffsety>
+                <textwidth>315</textwidth>
+                <align>left</align>
+                <aligny>top</aligny>
+                <texturefocus>buttons/Search_On.png</texturefocus>
+                <texturenofocus>buttons/Search_Off.png</texturenofocus>
+                <font>font13</font>
+                <textcolor>FF999999</textcolor>
+                <ondown>SetFocus(500)</ondown>
+                <onleft>SetFocus(6000)</onleft>
+            </control>
+
+            <control type="image">
+                <posx>950</posx>
+                <posy>65</posy>
+                <width>28</width>
+                <height>28</height>
+                <texture flipy="true">icons/arrowdown.png</texture>
+                <visible>Container(500).HasPrevious</visible>
+            </control>
+
+            <control type="image">
+                <posx>950</posx>
+                <posy>1040</posy>
+                <width>28</width>
+                <height>28</height>
+                <texture>icons/arrowdown.png</texture>
+                <visible>Container(500).HasNext</visible>
+            </control>
+
+            <control type="panel" id="500">
+                <posy>100</posy>
+                <posx>226</posx>
+                <width>1720</width>
+                <height>921</height>
+                <onright>6002</onright>
+                <onleft>6001</onleft>
+                <scrolltime>200</scrolltime>
+                <orientation>vertical</orientation>
+                <animation type="WindowOpen" reversible="false">
+                    <effect type="slide" start="0,1080" end="0,0" delay="0" tween="sine" time="1300" />
+                </animation>
+
+                <itemlayout width="390" height="460">
+                    <control type="image">
+                        <posx>-2</posx>
+                        <posy>-2</posy>
+                        <width>312</width>
+                        <height>460</height>
+                        <texture border="40">buttons/Off.png</texture>
+                    </control>
+                    <control type="group">
+                        <control type="image">
+                            <posx>30</posx>
+                            <posy>10</posy>
+                            <width>250</width>
+                            <height>380</height>
+                            <aspectratio scalediffuse="false">scale</aspectratio>
+                            <texture diffuse="thumbs/movieposter_mask.png">$INFO[ListItem.Thumb]</texture>
+                        </control>
+                        <control type="button">
+                            <visible>IsEmpty(ListItem.Property(exclusive))</visible>
+                            <posx>60</posx>
+                            <posy>346</posy>
+                            <width>200</width>
+                            <height>44</height>
+                            <textoffsetx>0</textoffsetx>
+                            <textoffsety>0</textoffsety>
+                            <textwidth>200</textwidth>
+                            <align>center</align>
+                            <aligny>center</aligny>
+                            <font>font12</font>
+                            <textcolor>FFFAFAFA</textcolor>
+                            <texturefocus>dialogs/ic_exclusive.png</texturefocus>
+                            <texturenofocus>dialogs/ic_exclusive.png</texturenofocus>
+                            <label>$ADDON[plugin.video.megogo 1037]</label>
+                        </control>
+                        <control type="image">
+                            <posx>35</posx>
+                            <posy>330</posy>
+                            <width>50</width>
+                            <height>50</height>
+                            <aspectratio scalediffuse="false">scale</aspectratio>
+                            <texture>icons/pay.png</texture>
+                            <visible>!IsEmpty(ListItem.Property(Buy))</visible>
+                        </control>
+                        <control type="image">
+                            <posx>35</posx>
+                            <posy>330</posy>
+                            <width>50</width>
+                            <height>50</height>
+                            <aspectratio scalediffuse="false">scale</aspectratio>
+                            <texture>icons/m+.png</texture>
+                            <visible>!IsEmpty(ListItem.Property(Subscribe))</visible>
+                        </control>
+                        <control type="label">
+                            <posx>10</posx>
+                            <posy>388</posy>
+                            <align>left</align>
+                            <width>290</width>
+                            <font>font12</font>
+                            <textcolor>FFFAFAFA</textcolor>
+                            <shadowcolor>black</shadowcolor>
+                            <label>$INFO[ListItem.Label] ($INFO[ListItem.Property(Year)])</label>
+                            <visible>!IsEmpty(ListItem.Property(Year))</visible>
+                        </control>
+                        <control type="label">
+                            <posx>10</posx>
+                            <posy>388</posy>
+                            <align>left</align>
+                            <width>290</width>
+                            <font>font12</font>
+                            <textcolor>FFFAFAFA</textcolor>
+                            <shadowcolor>black</shadowcolor>
+                            <label>$INFO[ListItem.Label]</label>
+                            <visible>IsEmpty(ListItem.Property(Year))</visible>
+                        </control>
+                        <control type="label">
+                            <posx>10</posx>
+                            <posy>414</posy>
+                            <align>left</align>
+                            <width>290</width>
+                            <font>font12</font>
+                            <textcolor>FFFAFAFA</textcolor>
+                            <shadowcolor>black</shadowcolor>
+                            <label>$INFO[ListItem.Property(Country)]</label>
+                        </control>
+                    </control>
+                </itemlayout>
+                <focusedlayout width="390" height="460" >
+                    <control type="image">
+                        <posx>-2</posx>
+                        <posy>-2</posy>
+                        <width>312</width>
+                        <height>460</height>
+                        <texture border="40">buttons/Off.png</texture>
+                    </control>
+                    <control type="image">
+                        <posx>-2</posx>
+                        <posy>-2</posy>
+                        <width>312</width>
+                        <height>460</height>
+                        <texture border="40">buttons/On.png</texture>
+                        <animation effect="fade" start="0" end="100" time="160">Focus</animation>
+                        <animation effect="fade" start="0" end="100" time="0">UnFocus</animation>
+                    </control>
+                    <control type="group">
+                        <control type="image">
+                            <posx>30</posx>
+                            <posy>10</posy>
+                            <width>250</width>
+                            <height>380</height>
+                            <aspectratio scalediffuse="false">scale</aspectratio>
+                            <texture diffuse="thumbs/movieposter_mask.png">$INFO[ListItem.Thumb]</texture>
+                        </control>
+                        <control type="button">
+                            <visible>IsEmpty(ListItem.Property(exclusive))</visible>
+                            <posx>60</posx>
+                            <posy>346</posy>
+                            <width>200</width>
+                            <height>44</height>
+                            <textoffsetx>0</textoffsetx>
+                            <textoffsety>0</textoffsety>
+                            <textwidth>200</textwidth>
+                            <align>center</align>
+                            <aligny>center</aligny>
+                            <font>font12</font>
+                            <textcolor>FFFAFAFA</textcolor>
+                            <texturefocus>dialogs/ic_exclusive.png</texturefocus>
+                            <texturenofocus>dialogs/ic_exclusive.png</texturenofocus>
+                            <label>$ADDON[plugin.video.megogo 1037]</label>
+                        </control>
+                        <control type="image">
+                            <posx>35</posx>
+                            <posy>330</posy>
+                            <width>50</width>
+                            <height>50</height>
+                            <aspectratio scalediffuse="false">scale</aspectratio>
+                            <texture>icons/pay.png</texture>
+                            <visible>!IsEmpty(ListItem.Property(Buy))</visible>
+                        </control>
+                        <control type="image">
+                            <posx>35</posx>
+                            <posy>330</posy>
+                            <width>50</width>
+                            <height>50</height>
+                            <aspectratio scalediffuse="false">scale</aspectratio>
+                            <texture>icons/m+.png</texture>
+                            <visible>!IsEmpty(ListItem.Property(Subscribe))</visible>
+                        </control>
+                        <control type="label">
+                            <posx>10</posx>
+                            <posy>388</posy>
+                            <align>left</align>
+                            <width>290</width>
+                            <font>font12</font>
+                            <textcolor>FFFAFAFA</textcolor>
+                            <shadowcolor>black</shadowcolor>
+                            <label>$INFO[ListItem.Label] ($INFO[ListItem.Property(Year)])</label>
+                            <visible>!IsEmpty(ListItem.Property(Year))</visible>
+                        </control>
+                        <control type="label">
+                            <posx>10</posx>
+                            <posy>388</posy>
+                            <align>left</align>
+                            <width>290</width>
+                            <font>font12</font>
+                            <textcolor>FFFAFAFA</textcolor>
+                            <shadowcolor>black</shadowcolor>
+                            <label>$INFO[ListItem.Label]</label>
+                            <visible>IsEmpty(ListItem.Property(Year))</visible>
+                        </control>
+                         <control type="label">
+                            <posx>10</posx>
+                            <posy>414</posy>
+                            <align>left</align>
+                            <width>290</width>
+                            <font>font12</font>
+                            <textcolor>FFFAFAFA</textcolor>
+                            <shadowcolor>black</shadowcolor>
+                            <label>$INFO[ListItem.Property(Country)]</label>
+                        </control>
+                    </control>
+                </focusedlayout>
+            </control>
+
+            <control type="button" id="6001">
+                <description> PREVIOUS PAGE BUTTON </description>
+                <visible>!IsEmpty(Window.Property(PAGE)) | !IsEmpty(Window.Property(LAST_PAGE))</visible>
+                <label>$ADDON[plugin.video.megogo 1041]</label>
+                <posx>50</posx>
+                <posy>1021</posy>
+                <width>340</width>
+                <height>56</height>
+                <textoffsetx>0</textoffsetx>
+                <textoffsety>0</textoffsety>
+                <textwidth>330</textwidth>
+                <align>center</align>
+                <aligny>center</aligny>
+                <texturefocus>buttons/On.png</texturefocus>
+                <texturenofocus>buttons/Off.png</texturenofocus>
+                <font>font13</font>
+                <textcolor>FF999999</textcolor>
+                <onup>500</onup>
+                <onright>6002</onright>
+            </control>
+            <control type="button" id="6002">
+                <description> NEXT PAGE BUTTON </description>
+                <visible>!IsEmpty(Window.Property(FIRST_PAGE)) | !IsEmpty(Window.Property(PAGE))</visible>
+                <label>$ADDON[plugin.video.megogo 1040]</label>
+                <posx>1530</posx>
+                <posy>1021</posy>
+                <width>340</width>
+                <height>56</height>
+                <textoffsetx>0</textoffsetx>
+                <textoffsety>0</textoffsety>
+                <textwidth>330</textwidth>
+                <align>center</align>
+                <aligny>center</aligny>
+                <texturefocus>buttons/On.png</texturefocus>
+                <texturenofocus>buttons/Off.png</texturenofocus>
+                <font>font13</font>
+                <textcolor>FF999999</textcolor>
+                <onup>500</onup>
+                <onleft>6001</onleft>
+            </control>
+
+            <control type="textbox">
+                <description> NO DATA LABEL </description>
+                <visible>!IsEmpty(Window.Property(EMPTY))</visible>
+                <posx>0</posx>
+                <posy>550</posy>
+                <width>1920</width>
+                <height>60</height>
+                <textcolor>FFFAFAFA</textcolor>
+                <align>center</align>
+                <label>$ADDON[plugin.video.megogo 1043]</label>
+                <font>font30_title</font>
+                <shadowcolor>black</shadowcolor>
+            </control>
+        </control>
+
+        <control type="group">
+            <animation type="Conditional" condition="!ControlGroup(7000).HasFocus">
+                <effect type="slide" end="-420" time="320" easing="in" tween="cubic" />
+            </animation>
+            <control type="image">
+                <posx>-73</posx>
+                <width>512</width>
+                <height>1080</height>
+                <texture>dialogs\BackgroundBlue.png</texture>
+            </control>
+            <control type="grouplist" id="7000">
+                <posx>10</posx>
+                <posy>20</posy>
+                <width>400</width>
+                <height>1040</height>
+                <orientation>vertical</orientation>
+                <scroll>true</scroll>
+                <itemgap>-9</itemgap>
+                <onback>6000</onback>
+                <onright>6000</onright>
+                <control type="button" id="7001">
+                    <label>$ADDON[plugin.video.megogo 1009]</label>
+                    <width>400</width>
+                    <height>110</height>
+                    <textoffsetx>85</textoffsetx>
+                    <textoffsety>35</textoffsety>
+                    <textwidth>315</textwidth>
+                    <align>left</align>
+                    <aligny>top</aligny>
+                    <texturefocus border="40">buttons/Account_On.png</texturefocus>
+                    <texturenofocus border="40">buttons/Account_Off.png</texturenofocus>
+                    <font>font13</font>
+                    <textcolor>FF999999</textcolor>
+                    <ondown>SetFocus(7002)</ondown>
+                    <onup>6000</onup>
+                    <focusedcolor>FFFAFAFA</focusedcolor>
+                </control>
+                <control type="button" id="7002">
+                    <label>$ADDON[plugin.video.megogo 1010]</label>
+                    <width>400</width>
+                    <height>110</height>
+                    <textoffsetx>85</textoffsetx>
+                    <textoffsety>35</textoffsety>
+                    <textwidth>315</textwidth>
+                    <align>left</align>
+                    <aligny>top</aligny>
+                    <texturefocus border="40">buttons/MegogoPlus_On.png</texturefocus>
+                    <texturenofocus border="40">buttons/MegogoPlus_Off.png</texturenofocus>
+                    <font>font13</font>
+                    <textcolor>FF999999</textcolor>
+                    <ondown>7003</ondown>
+                    <onup>7001</onup>
+                    <focusedcolor>FFFAFAFA</focusedcolor>
+                </control>
+                <control type="button" id="7003">
+                    <label>$ADDON[plugin.video.megogo 1011]</label>
+                    <width>400</width>
+                    <height>110</height>
+                    <textoffsetx>85</textoffsetx>
+                    <textoffsety>35</textoffsety>
+                    <textwidth>315</textwidth>
+                    <align>left</align>
+                    <aligny>top</aligny>
+                    <texturefocus border="40">buttons/Premieres_On.png</texturefocus>
+                    <texturenofocus border="40">buttons/Premieres_Off.png</texturenofocus>
+                    <font>font13</font>
+                    <textcolor>FF999999</textcolor>
+                    <ondown>7004</ondown>
+                    <onup>7002</onup>
+                    <focusedcolor>FFFAFAFA</focusedcolor>
+                </control>
+                <control type="button" id="7004">
+                    <label>$ADDON[plugin.video.megogo 1012]</label>
+                    <width>400</width>
+                    <height>110</height>
+                    <textoffsetx>85</textoffsetx>
+                    <textoffsety>35</textoffsety>
+                    <textwidth>315</textwidth>
+                    <align>left</align>
+                    <aligny>top</aligny>
+                    <texturefocus border="40">buttons/Movies_On.png</texturefocus>
+                    <texturenofocus border="40">buttons/Movies_Off.png</texturenofocus>
+                    <font>font13</font>
+                    <textcolor>FF999999</textcolor>
+                    <ondown>7005</ondown>
+                    <onup>7003</onup>
+                    <focusedcolor>FFFAFAFA</focusedcolor>
+                </control>
+                <control type="button" id="7005">
+                    <label>$ADDON[plugin.video.megogo 1013]</label>
+                    <width>400</width>
+                    <height>110</height>
+                    <textoffsetx>85</textoffsetx>
+                    <textoffsety>35</textoffsety>
+                    <textwidth>315</textwidth>
+                    <align>left</align>
+                    <aligny>top</aligny>
+                    <texturefocus border="40">buttons/Serials_On.png</texturefocus>
+                    <texturenofocus border="40">buttons/Serials_Off.png</texturenofocus>
+                    <font>font13</font>
+                    <textcolor>FF999999</textcolor>
+                    <ondown>7006</ondown>
+                    <onup>7004</onup>
+                    <focusedcolor>FFFAFAFA</focusedcolor>
+                </control>
+                <control type="button" id="7006">
+                    <label>$ADDON[plugin.video.megogo 1014]</label>
+                    <width>400</width>
+                    <height>110</height>
+                    <textoffsetx>85</textoffsetx>
+                    <textoffsety>35</textoffsety>
+                    <textwidth>315</textwidth>
+                    <align>left</align>
+                    <aligny>top</aligny>
+                    <texturefocus border="40">buttons/TV_On.png</texturefocus>
+                    <texturenofocus border="40">buttons/TV_Off.png</texturenofocus>
+                    <font>font13</font>
+                    <textcolor>FF999999</textcolor>
+                    <ondown>7007</ondown>
+                    <onup>7005</onup>
+                    <focusedcolor>FFFAFAFA</focusedcolor>
+                </control>
+                <control type="button" id="7007">
+                    <label>$ADDON[plugin.video.megogo 1015]</label>
+                    <width>400</width>
+                    <height>110</height>
+                    <textoffsetx>85</textoffsetx>
+                    <textoffsety>35</textoffsety>
+                    <textwidth>315</textwidth>
+                    <align>left</align>
+                    <aligny>top</aligny>
+                    <texturefocus border="40">buttons/Collections_On.png</texturefocus>
+                    <texturenofocus border="40">buttons/Collections_Off.png</texturenofocus>
+                    <font>font13</font>
+                    <textcolor>FF999999</textcolor>
+                    <ondown>7008</ondown>
+                    <onup>7006</onup>
+                    <focusedcolor>FFFAFAFA</focusedcolor>
+                </control>
+                <control type="button" id="7008">
+                    <label>$ADDON[plugin.video.megogo 1016]</label>
+                    <width>400</width>
+                    <height>110</height>
+                    <textoffsetx>85</textoffsetx>
+                    <textoffsety>35</textoffsety>
+                    <textwidth>315</textwidth>
+                    <align>left</align>
+                    <aligny>top</aligny>
+                    <texturefocus border="40">buttons/Cartoons_On.png</texturefocus>
+                    <texturenofocus border="40">buttons/Cartoons_Off.png</texturenofocus>
+                    <font>font13</font>
+                    <textcolor>FF999999</textcolor>
+                    <ondown>7009</ondown>
+                    <onup>7007</onup>
+                    <focusedcolor>FFFAFAFA</focusedcolor>
+                </control>
+                <control type="button" id="7009">
+                    <label>$ADDON[plugin.video.megogo 1017]</label>
+                    <width>400</width>
+                    <height>110</height>
+                    <textoffsetx>85</textoffsetx>
+                    <textoffsety>35</textoffsety>
+                    <textwidth>315</textwidth>
+                    <align>left</align>
+                    <aligny>top</aligny>
+                    <texturefocus border="40">buttons/Programs_On.png</texturefocus>
+                    <texturenofocus border="40">buttons/Programs_Off.png</texturenofocus>
+                    <font>font13</font>
+                    <textcolor>FF999999</textcolor>
+                    <ondown>7010</ondown>
+                    <onup>7008</onup>
+                    <focusedcolor>FFFAFAFA</focusedcolor>
+                </control>
+                <control type="button" id="7010">
+                    <label>$ADDON[plugin.video.megogo 1018]</label>
+                    <width>400</width>
+                    <height>110</height>
+                    <textoffsetx>85</textoffsetx>
+                    <textoffsety>35</textoffsety>
+                    <textwidth>315</textwidth>
+                    <align>left</align>
+                    <aligny>top</aligny>
+                    <texturefocus border="40">buttons/Favorites_On.png</texturefocus>
+                    <texturenofocus border="40">buttons/Favorites_Off.png</texturenofocus>
+                    <font>font13</font>
+                    <textcolor>FF999999</textcolor>
+                    <ondown>SetFocus(7001)</ondown>
+                    <onup>7009</onup>
+                    <focusedcolor>FFFAFAFA</focusedcolor>
+                </control>
+
+            </control>
+        </control>
+    </controls>
+</window>

@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="plugin.video.megogo"
+	   name="MEGOGO.NET"
+	   version="1.1.8"
+	   provider-name="Studio-Evolution">
+	<requires>
+		<import addon="xbmc.python" version="2.1.0" />
+		<import addon="script.module.simplejson" version="3.3.0"/>
+		<import addon="script.module.requests" version="1.1.0"/>
+	</requires>
+	<extension point="xbmc.python.script" library="start.py" >
+		<provides>video executable</provides>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary lang="en">Plugin to watch videos from MEGOGO.NET</summary>
+		<summary lang="ru">Дополнение для просмотра видео-ресурсов с MEGOGO.NET</summary>
+        <summary lang="ua">Додаток для перегляду відео-ресурсів із MEGOGO.MET</summary>
+		<description lang="en">The library MEGOGO.NET has more than 22 thousands of hours of video. This is more than 3500 full-length movies, 1800 cartoons, 850 TV series, 200 TV shows and concerts. In addition, the daily online catalog updated theater quality video material, including novelties.</description>
+		<description lang="ru">Библиотека MEGOGO.NET насчитывает более 22 тысяч часов видео. Это более 3500 полнометражных фильмов, 1800 мультфильмов, 850 сериалов, 200 телевизионных шоу и концертов. Кроме того, ежедневно каталог онлайн-кинотеатра пополняется качественным видео-материалом, в том числе новинками.</description>
+        <description lang="ua">Бібліотека MEGOGO.NET нараховує більше 22 тисяч годин відео. Це більше 3500 повнометражних фільмів, 1800 мультфільмів, 850 серіалов, 200 телевізійних шоу і концертів. Кроме того, каталог онлайн-кінотеатру кожен день поповнюється якісними відео-матеріалами, в тому числі новинками.</description>
+		<platform>all</platform>
+	</extension>
+</addon>
+

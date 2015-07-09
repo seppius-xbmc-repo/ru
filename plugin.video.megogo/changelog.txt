@@ -1,0 +1,113 @@
+v1.1.8
+- Fixed minimize bug, when video is playing
+- Fixed bug with VideoList screens, when connection lost and found
+
+TODO:
+- Closing addon on XBMC 11
+- TV view!
+
+
+v1.1.7
+- Fixed bug with buy by certificate
+- All configuration is on DB
+- Changed login functions
+- Add support cards, what expired +10 years from now
+- Added real version and name of platform in requests headers
+- Fixed some bug when connection to internet is lost
+- Little bug fixes
+
+v1.1.6
+- Fixed bug with Autoprolongation
+- Added Ukrainian localization
+- Fixed bug with changing quality, audio language or subtitle
+
+v1.1.5
+- Fixed bug with TV-payment
+- Small addon fixes with log in screen
+- Add Autoprologation in CREDIT CARD screen
+
+v1.1.4
+- Fixed bug with log in account in XBMC 11
+- Fixed keyboard bug with CREDIT CARD in XBMC 11
+- Fixed bug with input symbols on CREDIT CARD screen from remote devices
+- Removed question form "Error with log in"
+- Fix bug with "Bought films" in Account Menu
+- Fix "Comments" visible bug in information about video
+- Change available tv offset
+
+v1.1.3
+- Changed requests to ssl-encrypted
+- Fix bug with opening addon, when video in playlist is still playing
+- Added video type "DTO" - buy movie for forever use
+- Added "Bought films" in Account Menu
+- Added "Play full season" button
+
+v1.1.2
+- Added sort methods in TV-Programs
+- Fixed play full season
+
+v1.1.1
+- Fixed bug with missing icons on Linux
+- Added buying TV-programs from plugin
+- Added TV-program on slider
+- New TV program in menu
+
+v1.1.0
+- Fixed crash on Windows, when user name is with spaces and cyrillic symbols
+- Changed vendor and header in requests
+- Fixed search on russian language
+- Add registration on MEGOGO from addon
+
+v1.0.11
+- Bug fixes
+- Fully working payments methods
+
+v1.0.10
+- Little bug fixes
+- Added "Add to favorite" and "Remove from favorite" buttons.
+- Added purchase
+- Little functional changes in addon
+
+v1.0.9
+- Added next and previous pages in categories
+- Fixed "STOP" button
+- Added EVOLUTION background
+- Added sort button
+
+v1.0.8
+- Added "exclusive" label
+- Fix bug with text scrolling
+- Fixed bug with focus on exit dialog
+- Added series button and all-season playlist on "Play" button.
+
+v1.0.7
+- Fixed bug with login
+- Added account page
+
+v1.0.6
+- Added subtitle support. Work only in helix!
+- Added new language support in application
+
+v1.0.5
+- Fixed bug with images
+- Collections now work
+- Small fixes
+
+v1.0.4
+- Added check for a new version of addon
+
+v1.0.3
+- Small bug fixes
+
+v1.0.2
+- Added information window, when no internet connection.
+
+v1.0.1
+Now work:
+- Main menu;
+- Information about video;
+- Save last focus position;
+- Free video play.
+
+v1.0.0
+- Initial version

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<window>
+	<controls>
+		<control type="group">
+            <control type="image">
+				<description> BACKGROUND </description>
+				<posx>0</posx>
+				<posy>0</posy>
+				<width>1920</width>
+				<height>1080</height>
+				<aspectratio align="center">scale</aspectratio>
+				<texture>background.png</texture>
+			</control>
+
+            <control type="textbox">
+				<description> MOVIE TITLE </description>
+				<posx>0</posx>
+				<posy>0</posy>
+				<width>1920</width>
+                <height>60</height>
+				<textcolor>FFFAFAFA</textcolor>
+				<align>center</align>
+				<label>$INFO[Window.Property(Title)]</label>
+				<font>font30_title</font>
+				<shadowcolor>black</shadowcolor>
+                 <autoscroll delay="5000" time="4000" repeat="2000">true</autoscroll>
+			</control>
+
+            <control type="image">
+				<description> TVOD OR SVOD ICON </description>
+				<posx>882</posx>
+				<posy>202</posy>
+				<width>156</width>
+				<height>156</height>
+				<texture>$INFO[Window.Property(ICON)]</texture>
+			</control>
+
+            <control type="textbox">
+				<description> TVOD OR SVOD TITLE </description>
+				<posx>0</posx>
+				<posy>380</posy>
+				<width>1920</width>
+				<textcolor>FFFAFAFA</textcolor>
+				<align>center</align>
+				<label>$ADDON[plugin.video.megogo 1068]</label>
+				<font>font30</font>
+			</control>
+
+            <control type="textbox">
+				<description> CARD DATA </description>
+				<posx>0</posx>
+				<posy>480</posy>
+				<width>1920</width>
+				<textcolor>FFFAFAFA</textcolor>
+				<align>center</align>
+				<label>$INFO[Window.Property(CARD_DATA)]</label>
+				<font>font35_title</font>
+			</control>
+
+            <control type="button" id="609">
+				<description> PAY </description>
+                <ondown>610</ondown>
+				<posx>810</posx>
+				<posy>700</posy>
+				<width>300</width>
+				<height>90</height>
+				<textoffsetx>0</textoffsetx>
+				<textoffsety>0</textoffsety>
+				<textwidth>190</textwidth>
+				<align>center</align>
+				<aligny>center</aligny>
+				<font>font13_title</font>
+				<textcolor>FFFAFAFA</textcolor>
+				<texturefocus>buttons/On.png</texturefocus>
+				<texturenofocus>buttons/Off.png</texturenofocus>
+				<label>$ADDON[plugin.video.megogo 1065]</label>
+			</control>
+
+            <control type="button" id="610">
+				<description> CHANGE CARD </description>
+                <onup>609</onup>
+				<posx>810</posx>
+				<posy>800</posy>
+				<width>300</width>
+				<height>90</height>
+				<textoffsetx>0</textoffsetx>
+				<textoffsety>0</textoffsety>
+				<textwidth>300</textwidth>
+				<align>center</align>
+				<aligny>center</aligny>
+				<font>font13_title</font>
+				<textcolor>FFFAFAFA</textcolor>
+				<texturefocus>buttons/On.png</texturefocus>
+				<texturenofocus>buttons/Off.png</texturenofocus>
+				<label>$ADDON[plugin.video.megogo 1069]</label>
+			</control>
+
+            <control type="textbox">
+				<description> PAYMENT AMOUNT </description>
+				<posx>40</posx>
+				<posy>1000</posy>
+				<width>600</width>
+                <height>60</height>
+				<textcolor>FFFAFAFA</textcolor>
+				<align>left</align>
+				<label>$INFO[Window.Property(Price)]</label>
+				<font>font13_title</font>
+				<shadowcolor>black</shadowcolor>
+                <autoscroll delay="5000" time="4000" repeat="2000">true</autoscroll>
+			</control>
+
+            <control type="textbox">
+				<description> SUPPORT INFO </description>
+				<posx>1400</posx>
+				<posy>950</posy>
+				<width>500</width>
+                <height>160</height>
+				<textcolor>FFFAFAFA</textcolor>
+				<align>right</align>
+				<label>$ADDON[plugin.video.megogo 1070][CR]$INFO[Window.Property(Phone)][CR]$INFO[Window.Property(UID)]</label>
+				<font>font13</font>
+				<shadowcolor>black</shadowcolor>
+                <autoscroll delay="5000" time="4000" repeat="2000">true</autoscroll>
+			</control>
+
+        </control>
+    </controls>
+</window>

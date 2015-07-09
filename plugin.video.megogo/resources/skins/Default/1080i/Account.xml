@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<window>
+    <defaultcontrol always="true">33005</defaultcontrol>
+    <controls>
+        <control type="group">
+            <!--animation effect="rotate" start="90" end="0" center="0,1080" time="200">WindowOpen</animation>
+            <animation effect="rotate" start="0" end="90" center="0,1080" time="200">WindowClose</animation-->
+            <control type="image">
+                <description> BACKGROUND </description>
+                <posx>0</posx>
+                <posy>0</posy>
+                <width>1920</width>
+                <height>1080</height>
+                <aspectratio align="center">scale</aspectratio>
+                <texture>background.png</texture>
+            </control>
+
+            <control type="textbox" id="33000">
+                <description> WINDOW TITLE </description>
+                <posx>0</posx>
+                <posy>0</posy>
+                <width>1920</width>
+                <height>60</height>
+                <textcolor>FFFAFAFA</textcolor>
+                <align>center</align>
+                <label>$INFO[Text]</label>
+                <font>font30_title</font>
+                <shadowcolor>black</shadowcolor>
+            </control>
+
+            <control type="image" id="33001">
+                <description> AVATAR </description>
+                <posy>160</posy>
+                <posx>50</posx>
+                <width>200</width>
+                <height>200</height>
+                <aspectratio scalediffuse="false">scale</aspectratio>
+                <texture>$INFO[Image]</texture>
+            </control>
+
+            <control type="textbox" id="33002">
+                <description> NICKNAME </description>
+                <posx>300</posx>
+                <posy>130</posy>
+                <width>1000</width>
+                <textcolor>FFFAFAFA</textcolor>
+                <align>left</align>
+                <label>$INFO[Text]</label>
+                <font>font24_title</font>
+            </control>
+
+            <control type="textbox" id="33003">
+                <description> E-MAIL </description>
+                <posx>300</posx>
+                <posy>190</posy>
+                <width>1000</width>
+                <textcolor>FFFAFAFA</textcolor>
+                <align>left</align>
+                <label>$INFO[Text]</label>
+                <font>font24</font>
+            </control>
+
+            <control type="textbox" id="33004">
+                <description> E-MAIL </description>
+                <posx>300</posx>
+                <posy>250</posy>
+                <width>1000</width>
+                <textcolor>FFFAFAFA</textcolor>
+                <align>left</align>
+                <label>$INFO[Text]</label>
+                <font>font24</font>
+            </control>
+
+            <control type="button" id="33005">
+                <description> EXIT BUTTON </description>
+                <posx>300</posx>
+                <posy>310</posy>
+                <width>200</width>
+                <height>70</height>
+                <textoffsetx>0</textoffsetx>
+                <textoffsety>0</textoffsety>
+                <textwidth>200</textwidth>
+                <align>center</align>
+                <aligny>center</aligny>
+                <font>font13</font>
+                <onright>33006</onright>
+                <ondown>33009</ondown>
+                <textcolor>FF999999</textcolor>
+                <texturefocus>buttons/On.png</texturefocus>
+                <texturenofocus>buttons/Off.png</texturenofocus>
+                <label>$ADDON[plugin.video.megogo 1035]</label>
+            </control>
+
+            <control type="radiobutton" id="33006">
+                <posx>1000</posx>
+                <posy>200</posy>
+                <width>650</width>
+                <height>100</height>
+                <align>center</align>
+                <aligny>center</aligny>
+                <onleft>33005</onleft>
+                <ondown>33007</ondown>
+                <textoffsetx>0</textoffsetx>
+                <textoffsety>0</textoffsety>
+                <font>font13</font>
+                <textwidth>650</textwidth>
+                <label>$ADDON[plugin.video.megogo 24]</label>
+                <textcolor>FF999999</textcolor>
+                <focusedcolor>FFFAFAFA</focusedcolor>
+                <texturefocus border="40">buttons/On.png</texturefocus>
+                <texturenofocus border="40">buttons/Off.png</texturenofocus>
+                <aspectratio>keep</aspectratio>
+                <textureradioonfocus></textureradioonfocus>
+                <textureradioofffocus></textureradioofffocus>
+                <textureradioonnofocus></textureradioonnofocus>
+                <textureradiooffnofocus></textureradiooffnofocus>
+            </control>
+
+            <control type="radiobutton" id="33007">
+                <posx>1000</posx>
+                <posy>350</posy>
+                <width>650</width>
+                <height>100</height>
+                <align>center</align>
+                <aligny>center</aligny>
+                <onup>33006</onup>
+                <ondown>33008</ondown>
+                <onleft>33005</onleft>
+                <textoffsetx>0</textoffsetx>
+                <textoffsety>0</textoffsety>
+                <font>font13</font>
+                <textwidth>650</textwidth>
+                <label>$ADDON[plugin.video.megogo 25]</label>
+                <textcolor>FF999999</textcolor>
+                <focusedcolor>FFFAFAFA</focusedcolor>
+                <texturefocus border="40">buttons/On.png</texturefocus>
+                <texturenofocus border="40">buttons/Off.png</texturenofocus>
+                <aspectratio>keep</aspectratio>
+                <textureradioonfocus></textureradioonfocus>
+                <textureradioofffocus></textureradioofffocus>
+                <textureradioonnofocus></textureradioonnofocus>
+                <textureradiooffnofocus></textureradiooffnofocus>
+            </control>
+
+            <control type="radiobutton" id="33008">
+                <posx>1000</posx>
+                <posy>500</posy>
+                <width>650</width>
+                <height>100</height>
+                <align>center</align>
+                <aligny>center</aligny>
+                <onup>33007</onup>
+                <onleft>33005</onleft>
+                <textoffsetx>0</textoffsetx>
+                <textoffsety>0</textoffsety>
+                <font>font13</font>
+                <textwidth>650</textwidth>
+                <label>$ADDON[plugin.video.megogo 26]</label>
+                <textcolor>FF999999</textcolor>
+                <focusedcolor>FFFAFAFA</focusedcolor>
+                <texturefocus border="40">buttons/On.png</texturefocus>
+                <texturenofocus border="40">buttons/Off.png</texturenofocus>
+                <aspectratio>keep</aspectratio>
+                <textureradioonfocus></textureradioonfocus>
+                <textureradioofffocus></textureradioofffocus>
+                <textureradioonnofocus></textureradioonnofocus>
+                <textureradiooffnofocus></textureradiooffnofocus>
+            </control>
+
+            <control type="button" id="33009">
+                <description> BUYED BUTTON </description>
+                <posx>200</posx>
+                <posy>500</posy>
+                <width>400</width>
+                <height>80</height>
+                <textoffsetx>0</textoffsetx>
+                <textoffsety>0</textoffsety>
+                <textwidth>400</textwidth>
+                <align>center</align>
+                <aligny>center</aligny>
+                <font>font13</font>
+                <onright>33006</onright>
+                <onup>33005</onup>
+                <textcolor>FF999999</textcolor>
+                <texturefocus>buttons/On.png</texturefocus>
+                <texturenofocus>buttons/Off.png</texturenofocus>
+                <label>$ADDON[plugin.video.megogo 1093]</label>
+                <aspectratio>keep</aspectratio>
+            </control>
+
+            <control type="textbox">
+				<description> SUPPORT INFO </description>
+				<posx>1400</posx>
+				<posy>950</posy>
+				<width>500</width>
+                <height>160</height>
+				<textcolor>FFFAFAFA</textcolor>
+				<align>right</align>
+				<label>$ADDON[plugin.video.megogo 1070][CR]$INFO[Window.Property(Phone)][CR]$INFO[Window.Property(UID)]</label>
+				<font>font13</font>
+				<shadowcolor>black</shadowcolor>
+                <autoscroll delay="5000" time="4000" repeat="2000">true</autoscroll>
+			</control>
+
+        </control>
+    </controls>
+</window>

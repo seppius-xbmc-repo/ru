@@ -1,0 +1,21 @@
+<window>
+    <animation effect="fade" time="200">WindowOpen</animation>
+    <coordinates>
+        <system>1</system>
+        <width>auto</width>
+        <height>auto</height>
+    </coordinates>
+    <controls>
+        <control type="group">
+            <width>auto</width>
+            <height>auto</height>
+            <control type="image">
+                <description>splashscreen</description>
+                <width>auto</width>
+                <height>auto</height>
+                <texture border="0">splash.jpg</texture>
+                <animation effect="fade" time="300">WindowOpen</animation>
+            </control>
+        </control>
+    </controls>
+</window>
