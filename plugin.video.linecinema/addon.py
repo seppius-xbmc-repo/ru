@@ -52,7 +52,7 @@ def Categories():
 
 def Movies(url, page=1):
     html = getHTML(url + 'page/' + str(page) + '/')
-    movie_links = re.compile('<h1> <a href="(.+?)">(.+?)</a>   </h1>').findall(html.decode('windows-1251').encode('utf-8'))
+    movie_links = re.compile('<h1>[\s\t\n]*<a href="(.+?)">(.+?)</a>[\s\t\n]*</h1>').findall(html.decode('windows-1251').encode('utf-8'))
     pictures_link = re.compile('<img src="(.+?)" width="180"></a>').findall(html.decode('windows-1251').encode('utf-8'))
     #next_link = re.compile('<a href="(.+?)">.+?</a></div></div>').findall(html.decode('windows-1251').encode('utf-8'))
 
@@ -66,7 +66,7 @@ def Movies(url, page=1):
 
 def Videos(url, title, picture):
     html = getHTML(url)
-    link = re.compile('file:   "(.+?)"').findall(html.decode('windows-1251').encode('utf-8'))[0]
+    link = re.compile('file:[\s\t]*"(.+?)"').findall(html.decode('windows-1251').encode('utf-8'))[0]
 
     addLink(title, link, picture)
 
