@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<settings>
+	<setting id="username" type="text" label="Ваш логин (e-mail)" default="" />
+	<setting id="password" type="text" label="Ваш пароль" option="hidden" default="" />
+	<setting type="sep" />
+	<setting id="logout" type="action" label="Очистить данные и выйти" action="RunPlugin(plugin://plugin.video.megogo.net/?func=logout)" />
+	<setting type="sep" />
+	<setting id="sort_v" type="enum" label="Сортировка" values="Последние поступления|Новинки|По рейтингу|Популярные" default="1"/>
+	<setting type="sep" />
+	<setting id="qual_v" type="enum" label="Качество видео" values="Автоматическое|Низкое 240p-448x252|Среднее 320-576x324|Обычное 360-640x360|Хорошее 480-832x468|Четкое 576-1024x576|Высокое 720-1280x720|Наилучшее 1080-1920x1080" default="0"/>
+	<setting id="list" type="enum" label="Отображение списка" values="Простой список|Постеры|По умолчанию" default="1"/>
+</settings>
