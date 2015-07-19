@@ -526,7 +526,7 @@ def get_anime(params):
     beautifulSoup = BeautifulSoup(http)
     #print beautifulSoup
     content = beautifulSoup.find('div', attrs={'class': 'player'})
-    print str(content)
+    #print str(content)
     options = content.findAll('option')
     one=False
     if options:
@@ -573,9 +573,9 @@ def get_anime(params):
         uri = construct_request({
                 'func': 'play_anime',
                 'img':img,
-                'm_path':beautifulSoup.find('iframe', attrs={'name': 'film_main'})['src']
+                'm_path':beautifulSoup.find('iframe', attrs={'id': 'film_main'})['src']
                 })
-        if 'vk.com' in beautifulSoup.find('iframe', attrs={'name': 'film_main'})['src']:
+        if 'anidub-online.ru' in beautifulSoup.find('iframe', attrs={'id': 'film_main'})['src']:
             xbmcplugin.addDirectoryItem(hos, uri, listitem)
     xbmcplugin.endOfDirectory(handle=hos, succeeded=True, updateListing=False, cacheToDisc=True)
     #m=re.search('http://vk.com/video_ext.php?oid=[^/]+',str(content))
@@ -593,29 +593,26 @@ def play_anime(params):
     for rec in soup.findAll('param', {'name':'flashvars'}):
         #print rec
         for s in rec['value'].split('&'):
-            if s.split('=',1)[0] == 'uid':
-                uid = s.split('=',1)[1]
-            if s.split('=',1)[0] == 'vtag':
-                vtag = s.split('=',1)[1]
-            if s.split('=',1)[0] == 'host':
-                host = s.split('=',1)[1]
-            if s.split('=',1)[0] == 'vid':
-                vid = s.split('=',1)[1]
-            if s.split('=',1)[0] == 'oid':
-                oid = s.split('=',1)[1]
-            if s.split('=',1)[0] == 'hd':
-                hd = s.split('=',1)[1]
-        video = host+'u'+uid+'/videos/'+vtag+'.240.mp4'
+            if s.split('=', 1)[0] == 'url240':
+               url240 = s.split('=', 1)[1]
+            if s.split('=', 1)[0] == 'url360':
+               url360 = s.split('=', 1)[1]
+            if s.split('=', 1)[0] == 'url480':
+               url480 = s.split('=', 1)[1]
+            if s.split('=', 1)[0] == 'url720':
+               url720 = s.split('=', 1)[1]
+            if s.split('=', 1)[0] == 'hd':
+               hd = s.split('=', 1)[1]
+        video = url240
         qual=Addon.getSetting('qual')
         #print qual
         #print hd
         if int(hd)>=3 and int(qual)==3:
-            #print 'aaa'
-            video = host+'u'+uid+'/videos/'+vtag+'.720.mp4'
-        if int(hd)>=2 and int(qual)==2:
-            video = host+'u'+uid+'/videos/'+vtag+'.480.mp4'
-        if int(hd)>=1 and int(qual)==1:
-            video = host+'u'+uid+'/videos/'+vtag+'.360.mp4'
+            video = url720
+        elif int(hd)>=2 and (int(qual)==2 or int(qual)==3):
+            video = url480
+        elif int(hd)>=1 and (int(qual)==1 or int(qual)==2):
+            video = url360
         #print video
         item = xbmcgui.ListItem(path=video)
         xbmcplugin.setResolvedUrl(int(sys.argv[1]), True, item)
