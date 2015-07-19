@@ -2365,15 +2365,15 @@ Raadpleeg de lokale wetgeving voordat u deze plugin installeert.</disclaimer>
 
 <addon id="repository.search.db"
 		name="XBMC.ru search db"
-		version="1.1.1"
+		version="1.1.2"
 		provider-name="bigbax">
   <requires>
     <import addon="xbmc.addon" version="12.0.0"/>
   </requires>
 	<extension point="xbmc.addon.repository"
 		name="XBMC.ru search db">
-	        <dir minversion="12.9.0">
-			<info compressed="false">https://github.com/seppius-xbmc-repo/ru/raw/master/addons.xml</info>
+	        <dir minversion="13.0.0">
+			<info compressed="true">https://github.com/seppius-xbmc-repo/ru/raw/master/addons.xml</info>
 			<checksum>https://github.com/seppius-xbmc-repo/ru/raw/master/addons.xml.md5</checksum>
 			<datadir zip="true">https://github.com/seppius-xbmc-repo/ru/raw/master/</datadir>
 			<hashes>true</hashes>
@@ -2432,7 +2432,7 @@ Raadpleeg de lokale wetgeving voordat u deze plugin installeert.</disclaimer>
 			<datadir zip="false">http://mnn-xbmc-repo.googlecode.com/svn/trunk/addons/</datadir>
 			<hashes>true</hashes>
 		</dir>
-		<dir minversion="14.0.0">
+		<dir minversion="13.0.0">
 			<info compressed="false">https://raw.github.com/mrstealth/xbmc-gotham/master/addons.xml</info>
 			<checksum>https://raw.github.com/mrstealth/xbmc-gotham/master/addons.xml.md5</checksum>
 			<datadir zip="true">https://raw.github.com/mrstealth/xbmc-gotham/master/zip/</datadir>
