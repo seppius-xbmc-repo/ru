@@ -1424,7 +1424,7 @@ Paypal: напишите на kit500.development at gmail dot com
 
 <addon id="plugin.video.online.anidub.com"
        name="[COLOR=FFFF0000]Ani[/COLOR][COLOR=FF00FF00]DUB[/COLOR]"
-       version="0.3.0"
+       version="0.3.1"
        provider-name="NuisMons">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
