@@ -1,0 +1,58 @@
+<window id="12347">7
+  <allowoverlay>no</allowoverlay>
+  <coordinates>
+
+    <system>1</system>
+
+    <posx>0</posx>
+    <posy>0</posy>
+  </coordinates>
+  <animation effect="fade" time="250">WindowOpen</animation>
+  <animation effect="fade" time="250">WindowClose</animation>
+  <controls>
+    <control type="group" id = "100">
+      <description>Window</description>
+      <control type="image">
+        <posx>350</posx>
+        <posy>200</posy>
+        <width>520</width>
+        <height>283</height>
+        <texture border="40">window.png</texture>
+      </control>
+      <control type="image">
+        <posx>350</posx>
+        <posy>200</posy>
+        <width>520</width>
+        <height>283</height>
+        <texture border="40">window.png</texture>
+      </control>
+      <control type="image">
+        <posx>350</posx>
+        <posy>200</posy>
+        <width>520</width>
+        <height>283</height>
+        <texture border="40">window.png</texture>
+      </control>
+      <control type="image">
+        <posx>350</posx>
+        <posy>200</posy>
+        <width>520</width>
+        <height>283</height>
+        <texture border="40">window.png</texture>
+      </control>
+      <control type="group">
+        <posx>350</posx>
+        <posy>200</posy>
+        <control type="textbox" id="1">
+          <description>text</description>
+          <posx>15</posx>
+          <posy>15</posy>
+          
+          <label>-</label>
+          <font>font13</font>
+          
+        </control>
+      </control>
+    </control>
+  </controls>
+</window>
