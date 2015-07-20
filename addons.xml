@@ -3007,6 +3007,25 @@ provider-name="Roman_V_M">
     </extension>
 </addon>
 
+<addon id="script.torrent-tv.ru.pp"
+       name="Torrent-TV XBMC PLUS PLUS"
+       version="1.0.5"
+       provider-name="dvor85">
+    <requires>
+		<import addon="xbmc.python" version="2.1.0" />
+        <import addon="script.module.beautifulsoup"/>
+    </requires>
+    <extension point="xbmc.python.script" library="default.py">
+        <provides>video</provides>
+    </extension>
+    <extension library="autostart.py" point="xbmc.service" />
+    <extension point="xbmc.addon.metadata">
+        <summary>Torrent-TV XBMC PLUS PLUS</summary>
+        <description>Доработанная версия Торрент ТВ.</description>
+        <platform>all</platform>
+    </extension>
+</addon>
+
 <addon id="script.video.F4mProxy"
 	     name="F4mProxy"
 	     version="2.1.7"
