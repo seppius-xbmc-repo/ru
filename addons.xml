@@ -1,0 +1,3313 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<addons>
+<addon id="metadata.kinopoisk.ru"
+       name="KinoPoisk"
+       version="1.0.72">
+  <requires>
+    <import addon="xbmc.metadata" version="1.0"/>
+    <import addon="metadata.common.themoviedb.org" version="1.0.3"/>
+  </requires>
+  <extension point="xbmc.metadata.scraper.movies"
+             language="ru"
+             library="kinopoisk.xml"/>
+  <extension point="xbmc.addon.metadata">
+    <platform>all</platform>
+    <minversion>20000</minversion>
+    <summary lang="en">KinoPoisk Movie Scraper</summary>
+    <summary lang="hu">KinoPoisk Film scraper</summary>
+    <summary lang="kr">KinoPoisk 영화 스크래퍼</summary>
+    <summary lang="pl">Scraper filmów KinoPoisk</summary>
+    <summary lang="pt">Scraper de filmes KinoPoisk</summary>
+    <summary lang="ru">Инфо-ресурс для фильмов с КиноПоиска</summary>
+    <description lang="en">Download Movie information from www.kinopoisk.ru[CR][CR][B]ATTENTION:[/B][CR]For proper working you must set value of[CR]System->Appearance->International->Character set[CR]to Cyrillic (Windows)</description>
+    <description lang="hu">Film információk letöltése a www.kinopoisk.ru webhelyről</description>
+    <description lang="kr">www.kinopoisk.ru 에서 영화 정보 다운로드</description>
+    <description lang="pl">Pobieraj informacje o filmach z www.kinopoisk.ru</description>
+    <description lang="pt">Descarregar informação de filmes de www.kinopoisk.ru</description>
+    <description lang="ru">Скачивает информацию о фильмах с сайта www.kinopoisk.ru[CR][CR][B]ВНИМАНИЕ:[/B][CR]Для нормальной работы дополнения значение параметра[CR]Система->Внешний вид->Международные->Кодировка[CR]должно быть Cyrillic (Windows)</description>
+  </extension>
+</addon>
+
+<addon id="metadata.videopoisk.ru"
+       name="KinoPoisk"
+       version="1.0.71">
+  <requires>
+    <import addon="xbmc.metadata" version="1.0"/>
+    <import addon="metadata.common.themoviedb.org" version="1.0.3"/>
+  </requires>
+  <extension point="xbmc.metadata.scraper.movies"
+             language="ru"
+             library="kinopoisk.xml"/>
+  <extension point="xbmc.addon.metadata">
+    <platform>all</platform>
+    <minversion>20000</minversion>
+    <summary lang="en">KinoPoisk Movie Scraper</summary>
+    <summary lang="hu">KinoPoisk Film scraper</summary>
+    <summary lang="kr">KinoPoisk 영화 스크래퍼</summary>
+    <summary lang="pl">Scraper filmów KinoPoisk</summary>
+    <summary lang="pt">Scraper de filmes KinoPoisk</summary>
+    <summary lang="ru">Инфо-ресурс для фильмов с КиноПоиска</summary>
+    <description lang="en">Download Movie information from www.kinopoisk.ru[CR][CR][B]ATTENTION:[/B][CR]For proper working [CR]Karlson2k[CR] add UTF-8 support in XBMC 13 and higer</description>
+    <description lang="hu">Film információk letöltése a www.kinopoisk.ru webhelyről</description>
+    <description lang="kr">www.kinopoisk.ru 에서 영화 정보 다운로드</description>
+    <description lang="pl">Pobieraj informacje o filmach z www.kinopoisk.ru</description>
+    <description lang="pt">Descarregar informação de filmes de www.kinopoisk.ru</description>
+    <description lang="ru">Скачивает информацию о фильмах с сайта www.kinopoisk.ru[CR][CR][B]ВНИМАНИЕ:[/B][CR]Для нормальной работы дополнения в XBMC 13 и выше[CR]Karlson2k добавил поддержку UTF-8</description>
+  </extension>
+</addon>
+
+<addon id="plugin.audio.101.ru"
+       name="101.RU"
+       version="1.0.9"
+       provider-name="HD-Lab Team">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+            library="default.py">
+        <provides>audio</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <platform>all</platform>
+    <summary lang="en">Internet radio station 101.RU</summary>
+    <summary lang="ru">Интернет-радиостанция 101.RU</summary>
+    <description lang="en">Listen to radio with only the best site http://www.101.ru</description>
+    <description lang="ru">Слушайте только лучшие радиоканалы с сайта http://www.101.ru</description>
+  </extension>
+</addon>
+
+<addon id="plugin.audio.akado.radio"
+       name="akado.radio"
+       version="1.0.5"
+       provider-name="HD-Lab Team">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+            library="default.py">
+        <provides>audio</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <platform>all</platform>
+    <summary>АКАДО.Радио</summary>
+    <description>АКАДО.Радио</description>
+  </extension>
+</addon>
+
+<addon id="plugin.audio.asbook.ru"
+       name="[COLOR FF00FF00]Аудиокниги ([/COLOR][COLOR FFFFF000]asbook.ru[/COLOR][COLOR FF00FF00])[/COLOR]"
+       version="1.0.10"
+       provider-name="Silen">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="audio"
+             library="default.py">
+    <provides>audio</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>my-hit.ru</summary>
+    <description>[COLOR FFFFF000]ASBOOK.RU[/COLOR] - слушайте аудиокниги онлайн совершенно бесплатно.
+</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.audio.guzei.radio"
+       name="GUZEI.RADIO"
+       version="1.0.6"
+       provider-name="HD-Lab Team">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+            library="default.py">
+        <provides>audio</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <platform>all</platform>
+    <summary lang="en">Listen to the site http://guzei.com/online_radio/</summary>
+    <summary lang="ru">Прослушивание сайта http://guzei.com/online_radio/</summary>
+    <description lang="en">Listen to the site http://guzei.com/online_radio/</description>
+    <description lang="ru">Прослушивание сайта http://guzei.com/online_radio/</description>
+  </extension>
+</addon>
+
+<addon id="plugin.audio.moskva.fm"
+       name="MOSKVA.FM"
+       version="1.0.2"
+       provider-name="TDW">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+            library="default.py">
+        <provides>audio</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <platform>all</platform>
+    <summary>MOSKVA.FM - песни на радио Москвы</summary>
+    <description>Слушайте радио Москвы. На сегодня в активе проекта MOSKVA.FM 53 радиостанций Москвы!</description>
+  </extension>
+</addon>
+
+<addon id="plugin.audio.mp3tales.ru" name="Аудиосказки" version="1.0.1" provider-name="HD-Lab Team">
+  <requires><import addon="xbmc.python" version="2.1.0"/></requires>
+  <extension point="xbmc.python.pluginsource" library="default.py">
+    <provides>audio</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <platform>all</platform>
+    <summary>Аудиосказки из вашего детства</summary>
+    <description>Многие помнят пластинки, вырезанные из журналов и купленные в магазине фирмы "Мелодия", проигрыватель с трескучей иголкой. И этот особенный звук. Звук детства. Каждая сказка - целое музыкальное театрализованное представление с актерам, но без кукол. Если пластинки и могли остаться в пыльном шкафу, то проигрыватель - уже редкость. Но теперь сказки доступны для всех. Для взрослых, чтобы вспомнить детство, и сказки для детей.
+На этом сайте вы можете бесплатно послушать аудиосказки онлайн. На сайте собрана коллекция аудиосказок советских времен и не только. Все они оцифрованы с советских детских грампластинок и кассет.
+Для вашего удобства коллекция детских сказок на сайте представлена в виде каталога с названием и описанием сказки, отсортированного в алфавитном порядке. Вы также можете использовать поиск по каталогу аудиосказок. Ко многим сказкам прилагаются обложки от пластинок.
+Для всех аудиосказок доступна возможность онлайн прослушивания прямо на сайте!
+Все размещенные на этом сайте аудиозаписи предназначены исключительно для ознакомительного прослушивания; после прослушивания рекомендуется купить лицензионный продукт во избежание нарушения авторских прав производителя и смежных прав.</description>
+  </extension>
+</addon>
+
+<addon id="plugin.audio.online.fm"
+       name="online.fm"
+       version="1.0.8"
+       provider-name="HD-Lab Team">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+            library="default.py">
+        <provides>audio</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <platform>all</platform>
+    <summary>Слушай радио Online.FM: rock, jazz, house music, rnb, relax music, шансон, trance. FM радио: ХитФМ, Kiss fm, Radio Rocks, NRJ радио - online.fm</summary>
+    <description>Online.FM - слушай радио онлайн. Русский рок, Украинский поп и рок, Trance, Party, Disco, RnB, Latino, Classic rock, House, Relax, Jazz, Шансон, музыка фестиваля Sziget и еще 40 радио каналов. Слушай FM радио: ХитФМ, Kiss fm, Radio Rocks, NRJ радио</description>
+  </extension>
+</addon>
+
+<addon id="plugin.audio.radiostyle.ru"
+       name="RadioStyle"
+       version="1.0.6"
+       provider-name="HD-Lab Team">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+            library="default.py">
+        <provides>audio</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <platform>all</platform>
+    <summary>Интернет-радиостанция http://www.radiostyle.ru/</summary>
+    <description>RadioStyle.ru предлагает Вам услуги по созданию собственной Интернет-радиостанции, либо ретрансляции FM станции в сети Интернет. Для использования нашего сервиса Вам не потребуются особые знания, поскольку мы имеем удобную панель управления, подробные инструкции, и мы предоставляем поддержку всем нашим клиентам.
+Пользователям уже надоел обычный статический контент сайтов, посетителя больше не удивишь хорошим текстом и красивыми картинками. Медиа-контент сайта - аудио и видеоинформация, в особенности живое вещание - вот что привлекает посетителя. Аудио и видео трансляция в сети Интернет - это будущее, которое уже сейчас доступно всем желающим благодаря нашему сервису!
+Музыканты при помощи нашего сервиса могут вещать в Интернет своё творчество. Возможны живые концерты в прямом эфире! Фан-клубы музыкальных групп просто обязаны иметь собственную радиостанцию, в эфире которой будет звучать их любимая группа.
+Мы можем часами объяснять все преимущества нашего сервиса - проще один раз попробовать. После регистрации Вы можете в течении 24 часов абсолютно БЕСПЛАТНО пользоваться нашим сервисом!</description>
+  </extension>
+</addon>
+
+<addon id="plugin.audio.sradio.ru"
+       name="SRADIO.RU"
+       version="0.0.2"
+       provider-name="HD-Lab Team">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+            library="default.py">
+        <provides>audio</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <platform>all</platform>
+    <summary>SRADIO.RU: слушайте FM и интернет радио со всего мира</summary>
+    <description>SRADIO.RU: слушайте FM и интернет радио со всего мира</description>
+  </extension>
+</addon>
+
+<addon id="plugin.audio.stepashka.com"
+       name="audio.stepashka.com"
+       version="0.0.3"
+       provider-name="akgdrg">
+    <requires>
+        <import addon="xbmc.python" version="2.1.0"/>
+        <import addon="script.module.beautifulsoup"/>
+
+    </requires>
+    <extension point="xbmc.python.pluginsource" provides="audio" library="default.py">
+        <provides>audio</provides>
+    </extension>
+
+    <extension point="xbmc.addon.metadata">
+        <summary>Аудиоархивы stepashka.com</summary>
+        <description>Аудиоархивы stepashka.com</description>
+        <platform>all</platform>
+    </extension>
+</addon>
+
+<addon id="plugin.audio.svobodanews.ru"
+       name="Svobodanews"
+       version="1.0.7"
+       provider-name="HD-Lab Team">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+            library="default.py">
+        <provides>audio</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary lang="ru">Радио Свободная Европа/Радио Свобода</summary>
+    <description lang="ru">Радио Свободная Европа/Радио Свобода - это частная некоммерческая информационная служба, финансируемая Конгрессом США, осуществляющая вещание на страны Восточной и Юго-Восточной Европы, Кавказа, Центральной Азии и Ближнего Востока и на Россию.
+Более 35 миллионов слушателей привыкли ежедневно полагаться на передаваемые РСЕ/РС сводки новостей, аналитические обзоры и тематические программы, посвященные последним событиям в их регионе и мире.</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.audio.teleplus.ru"
+       name="[COLOR FF00FF00]Музыка ([/COLOR][COLOR FFFFF000]TelePlus.ru[/COLOR][COLOR FF00FF00])[/COLOR]"
+       version="1.0.4"
+       provider-name="TelePlus.ru">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="audio"
+             library="default.py">
+    <provides>audio</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>TelePlus.ru</summary>
+    <description>Онлайн-кинотеатр teleplus.ru – развлекательная концепция будущего. Он удачно соединяет в себе все достоинства обычного кинотеатра с экономией и домашним уютом. Более 5000 фильмов и полмиллиона аудиотрэков по символической цене - 199 руб в месяц.</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.audio.tracksflow" name="TracksFlow" version="0.4" provider-name="Dmitry Khrysev">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+    <import addon="script.module.xbmcswift2" version="1.1.1"/>
+    <import addon="script.module.simple.downloader" version="0.9.1"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource" library="addon.py">
+    <provides>audio</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <platform>all</platform>
+    <summary>TracksFlow.com is a single spot connection to everything that relates to music.</summary>
+    <description>TracksFlow.com is a single spot connection to everything that relates to music.
+Audio sources are
+* Last.fm
+* Discogs
+* Deezer
+* Junodownload.com</description>
+  </extension>
+</addon>
+
+<addon id="plugin.audio.tuneinradio" name="TuneIn Radio" version="2.1.1" provider-name="brianhornsby">
+	<requires>
+		<import addon="xbmc.python" version="2.1.0"/>
+		<import addon="script.module.simplejson" version="2.0.10"/>
+	</requires>
+	<extension point="xbmc.python.pluginsource" library="default.py">
+		<provides>audio</provides>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<platform>all</platform>
+		<summary lang="bg">Радио TuneIn</summary>
+		<summary lang="en">TuneIn Radio</summary>
+		<summary lang="es">TuneIn Radio</summary>
+		<description lang="bg">Радио TuneIn е безплатна услуга, която ви позволява да слушате всичко, независимо къде се намирате. Каквото желаете - музика, спорт или новини. Радио TuneIn предлага над 50 000 станции от които да избирате. Можете да намерите местните станции или да откриете нови станции от целия свят. Радио TuneIn ви отвежда точно където желаете да сте.</description>
+		<description lang="en">TuneIn Radio is a free service that lets you listen to anything in the world from wherever you are. Whether you want to hear music, sports, news or current events. TuneIn Radio offers over 50,000 stations for you to choose from. From finding local stations to discovering new stations from around the world, TuneIn Radio brings you to where you want to be.</description>
+		<description lang="es">TuneIn Radio es un servicio gratuito que te permite escuchar cualquier cosa del mundo desde donde te encuentres. Si deseas escuchar música, deportes, noticias o eventos actuales. TuneIn Radio ofrece más de 50,000 estaciones radiales para escoger, desde estaciones locales hasta descubrir nuevas estaciones alrededor del mundo, TuneIn Radio te lleva a donde tu quieras estar.</description>
+		<language></language>
+		<license>GNU GENERAL PUBLIC LICENSE. Version 3, 29 June 2007</license>
+		<forum>http://forum.xbmc.org/showthread.php?tid=119315</forum>
+		<website>http://brianhornsby.com/xbmc_addons/tuneinradio</website>
+		<source>https://github.com/brianhornsby/plugin.audio.tuneinradio</source>
+	</extension>
+</addon>
+
+<addon id="plugin.image.demotivators.to" name="demotivators.to" version="0.0.7"
+       provider-name="NuisMons">
+  <requires>
+    <import addon="script.module.simplejson" version="2.0.10"/>
+	<import addon="script.module.beautifulsoup"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource" library="default.py">
+    <provides>image</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <platform>all</platform>
+    <summary lang="en">View demotivators</summary>
+    <description>
+      View demotivators
+    </description>
+    <license>GPL 2.0</license>
+  </extension>
+</addon>
+
+<addon id="plugin.image.manga24.ru" name="manga24.ru" version="0.0.4"
+       provider-name="NuisMons">
+  <requires>
+    <import addon="script.module.simplejson" version="2.0.10"/>
+    <import addon="script.module.beautifulsoup"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource" library="default.py">
+    <provides>image</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <platform>all</platform>
+    <summary lang="en">View manga</summary>
+    <description>
+		Добро пожаловать на Manga24!
+		На нашем сайте вы сможете читать мангу онлайн!
+		Манга - это японские комиксы, чрезвычайно модные, красивые и интересные.
+		На нашем сайте вы сможете читать мангу на русском, которая выходила или выходит в настоящее время. Мы часто обновляемся, поэтому заходите к нам почаще, у нас всегда есть, что почитать! :)
+    </description>
+    <license>GPL 2.0</license>
+  </extension>
+</addon>
+
+<addon id="plugin.video.175h.net"
+       name="175h.net"
+       version="0.3"
+       provider-name="x86demon">
+    <requires>
+        <import addon="xbmc.python" version="2.1.0"/>
+        <import addon="script.module.beautifulsoup"/>
+        <import addon="script.module.simplejson"/>
+        <import addon="script.module.simple.downloader"/>
+    </requires>
+    <extension point="xbmc.python.pluginsource"
+               provides="video"
+               library="default.py">
+        <provides>video</provides>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <summary>Просмотр контента с 175h.net</summary>
+        <platform>all</platform>
+    </extension>
+</addon>
+
+<addon id="plugin.video.5-tv.ru"
+       name="Пятый канал"
+       version="1.0.2"
+       provider-name="Silen">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Сериалы (serialu.net)</summary>
+    <description>Пятый канал, Видеоархив программ (5-tv.ru).</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.720hd.ru"
+       name="[COLOR FF00FF00]Кино портал HD ([/COLOR][COLOR FFFFF000]720hd.ru[/COLOR][COLOR FF00FF00])[/COLOR]"
+       version="1.1.1"
+       provider-name="Silen">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>my-hit.ru</summary>
+    <description>HD (720p) фильмы онлайн (ВКонтакте + RuVideo).</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.9tv.co.il"
+       name="[COLOR FF00FF00]Девятый канал - Израиль ([/COLOR][COLOR FFFFF000]9tv.co.il[/COLOR][COLOR FF00FF00])[/COLOR]"
+       version="1.0.1"
+       provider-name="Silen">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>9tv.co.il</summary>
+    <description>Девятый канал - Израиль.</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.IPTV"
+       name="IPTV"
+       version="0.2.0"
+       provider-name="TDW">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+            library="default.py">
+        <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>IPTV</summary>
+    <description>Просмотр Internet TV из плейлиста без проверки на доступность. Плейлисты добавлять в подкаталог Playlists</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.KinoPoisk.ru"
+       name="KinoPoisk"
+       version="1.2.2"
+       provider-name="TDW">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+    <import addon="script.module.torrent.ts"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+            library="default.py">
+        <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>KinoPoisk.ru</summary>
+    <description>Poisk torrentov</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.LostFilm"
+       name="LostFilm"
+       version="0.5.1"
+       provider-name="TDW">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+    <import addon="script.module.torrent.ts"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+            library="default.py">
+        <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>LostFilm</summary>
+    <description>LostFilm for AceStreem and Libtorrent</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.RuTor"
+       name="RuTor"
+       version="2.4.0"
+       provider-name="TDW">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+    <import addon="script.module.torrent.ts"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+            library="default.py">
+        <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>RuTor</summary>
+    <description>RuTor for TorrentStreem</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.TorPoisk"
+       name="TorPoisk"
+       version="0.9.7"
+       provider-name="TDW">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+    <import addon="script.module.torrent.ts"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+            library="default.py">
+        <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>TorPoisk</summary>
+    <description>Poisk torrentov</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.allserials.tv"
+       name="[COLOR FF00FF00]Сериалы ([/COLOR][COLOR FFFFF000]allserials.tv[/COLOR][COLOR FF00FF00])[/COLOR]"
+       version="1.0.10"
+       provider-name="Silen">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>allserials.tv</summary>
+    <description>ALLSERIALS.TV - Смотреть бесплатно сериалы онлайн!
+Только на нашем ресурсе Вы с легкостью сможете отыскать интересующий вас сериал онлайн, все материалы можно смотреть бесплатно. Многие сериалы, представленные на нашем сайте, являются признанными русскими и зарубежными хитами.
+</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.arjlover.net"
+       name="arjlover.net"
+       version="0.0.2"
+       provider-name="x86demon">
+    <requires>
+        <import addon="xbmc.python" version="2.1.0"/>
+        <import addon="script.module.beautifulsoup"/>
+    </requires>
+    <extension point="xbmc.python.pluginsource" provides="video" library="default.py">
+        <provides>video</provides>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <summary>На этом сервере собраны советские и пост-советские мультфильмы, аудио-сказки, фильмы и детские фильмы на которых выросли многие поколения моих соотечественников.</summary>
+        <description>На этом сервере собраны советские и пост-советские мультфильмы, аудио-сказки, фильмы и детские фильмы на которых выросли многие поколения моих соотечественников.</description>
+        <platform>all</platform>
+    </extension>
+</addon>
+
+<addon id="plugin.video.arrr.tv"
+       name="Arrr.tv"
+       version="1.0.4"
+       provider-name="x86demon">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+    <!--<import addon="script.module.simplejson"/>-->
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Смотрите сериалы и фильмы в высоком качестве на ARRR.tv</summary>
+    <description>Смотрите сериалы и фильмы в высоком качестве на ARRR.tv</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.baskino.com" name="Baskino.com" version="1.1.4" provider-name="Wispik and gerikss">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0" />
+    <import addon="script.module.beautifulsoup4" version="4.3.2"/>
+    <import addon="script.module.html5lib" version="0.999.0"/>
+    <import addon="script.module.six" version="1.5.2"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource" provides="video" library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Онлайн фильмы в хорошем HD качестве бесплатно и без регистрации</summary>
+    <description>Большущая коллекция фильмов в хорошем HD качестве, которые можно смотреть онлайн бесплатно. В настройках плагина заполните регистрационную форму для полноценного пользования</description>
+    <platform>all</platform>
+    <language>ru</language>
+  </extension>
+</addon>
+
+<addon id="plugin.video.cScVOD"
+       name="[COLOR FF00FF00]cScVOD[/COLOR]"
+       version="1.5.7"
+       provider-name="CSC">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource" provides="video" library="addon.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>cScVOD</summary>
+    <description>
+БОЛЕЕ 70 САЙТОВ В ОДНОМ ПЛАГИНЕ!Все стоящие русскоязычные сайты с фильмами/мультиками/сериалами и т.д. В ОДНОМ АДДОНЕ. ОФициальный форум - cscvod.ru
+    </description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.cccp.tv"
+       name="CCCP TV"
+       version="1.0.5"
+       provider-name="HD-Lab Team">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Советское ТВ</summary>
+    <description>Советское ТВ</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id = "plugin.video.cinema-hd.ru.a" name = "Cinema-hd.ru.a" version = "0.6.0" provider-name = "kit500">
+  <requires>
+    <import addon = "xbmc.python" version = "2.1.0" />
+    <import addon = "script.module.beautifulsoup4" version = "4.3.2"/>
+    <import addon = "script.module.html5lib" version = "0.999.0"/>
+    <import addon = "script.module.six" version = "1.5.2"/>
+    <import addon = "script.module.translit" version = "1.0.3"/>
+    <import addon = "script.video.F4mProxy" version = "2.1.7"/>
+  </requires>
+  <extension point = "xbmc.python.pluginsource" provides = "video" library = "default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point = "xbmc.addon.metadata">
+    <summary>Cinema-hd.ru - Мир HD фильмов онлайн</summary>
+    <description>Cinema-hd.ru - Мир HD фильмов онлайн</description>
+    <platform>all</platform>
+    <language>ru</language>
+    <forum>http://xbmc.ru/forum/showthread.php?t=4432</forum>
+    <email>kit500.development at gmail dot com</email>
+    <disclaimer>Вы можете поддержать развитие плагина:
+WM: R566286875734, Z121552440022
+Paypal: напишите на kit500.development at gmail dot com
+</disclaimer>
+  </extension>
+</addon>
+
+<addon id="plugin.video.cinema.mosfilm.ru"
+
+	name="[COLOR FF00FF00]Мосфильм ([/COLOR][COLOR FFFFF000]cinema.mosfilm.ru[/COLOR][COLOR FF00FF00])[/COLOR]"
+
+	version="1.1.2"
+
+	provider-name="Silen">
+  <requires>
+	<import addon="xbmc.python" version="2.1.0"/>
+    	<import addon="plugin.video.youtube"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Мосфильм (cinema.mosfilm.ru)</summary>
+    <description>Иинтернет-кинотеатр ФГУП «Киноконцерн «Мосфильм» (cinema.mosfilm.ru).</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.cn.ru.tv"
+       name="[COLOR FF00FF00]Электронный город: ТВ ([/COLOR][COLOR FFFFF000]cn.ru/tv[/COLOR][COLOR FF00FF00])[/COLOR]"
+       version="1.0.3"
+       provider-name="Silen">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>my-hit.ru</summary>
+    <description>Электронный город: ТВ.</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.cnews.tv"
+       name="CNEWS.TV"
+       version="1.0.5"
+       provider-name="HD-Lab Team">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Смотрите видео с CNEWS.TV</summary>
+    <description>Смотрите свежее видео с сайта http://tv.cnews.ru</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.debilizator.tv" name="Debilizator.TV" version="1.1.1" provider-name="HD-Lab Team">
+  <requires><import addon="xbmc.python" version="2.1.0"/></requires>
+  <extension point="xbmc.python.pluginsource" library="default.py"><provides>video</provides></extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>http://debilizator.tv/</summary>
+    <description>http://debilizator.tv/</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.debilizator.tva" name="[COLOR FFC85F1C]Debilizator.TVA[/COLOR]" version="0.7.5" provider-name="Silhouette">
+  <requires><import addon="xbmc.python" version="2.1.0"/></requires>
+  <extension point="xbmc.python.pluginsource"  provides="video" library="default.py"><provides>video</provides></extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Live TV and Archives from http://debilizator.tv/</summary>
+    <description>Live TV and Archives from http://debilizator.tv/</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.diafilms"
+       name="[COLOR FF00FF00]Диафильмы ([/COLOR][COLOR FFFFF000]diafilmy.su[/COLOR][COLOR FF00FF00])[/COLOR]"
+       version="1.0.4"
+       provider-name="Silen">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Диафильмы</summary>
+    <description>Диафильмы – возвращение в детство
+Окунитесь в Мир Детства, вспомните магию темной комнаты, горячего диапроектора и скрипа прокручивания пленки на следующий кадр,
+ваш восторг в ту секунду, когда на стене появляется первый кадр, и начинается сказка…
+
+</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.docu.im"
+       name="[COLOR FF00FF00]Документальные фильмы ([/COLOR][COLOR FFFFF000]docu.im[/COLOR][COLOR FF00FF00])[/COLOR]"
+       version="1.0.5"
+       provider-name="Silen">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>my-hit.ru</summary>
+    <description>Документальные фильмы онлайн.</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.dream-film"
+       name="[COLOR FFFFF000]Dream[/COLOR][COLOR FF00FF00]-film[/COLOR]"
+       version="0.0.4"
+       provider-name="[COLOR FFFFF000]Denis [/COLOR][COLOR FF00FF00]Fomin[/COLOR]">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource" provides="video" library="addon.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Dream-film.net</summary>
+    <description>Cмотреть фильмы, сериалы онлайн, в онлайн кинотеатре Dream-film.net</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.e1.ru" name="E1" version="0.0.1" provider-name="HD-Lab Team">
+  <requires><import addon="xbmc.python" version="2.1.0"/></requires>
+  <extension point="xbmc.python.pluginsource" provides="video" library="default.py"><provides>video</provides></extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Видеосюжеты: Новости Екатеринбурга: Екатеринбург Он-Лайн</summary>
+    <description>Видеосюжеты: Новости Екатеринбурга: Екатеринбург Он-Лайн</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.fasttorrent.org"
+       name="fast-torrent.org"
+       version="1.2.3"
+       provider-name="TDW">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+    <import addon="script.module.torrent.ts"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+            library="default.py">
+        <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>fast-torrent.org</summary>
+    <description>fast-torrent.org for TorrentStreem</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.fepcom.net"
+       name="[COLOR FF00FF00]Фильмы ([/COLOR][COLOR FFFFF000]fepcom.net[/COLOR]+[COLOR FF00FF00])[/COLOR]" version="2.0.3"
+       provider-name="Silen">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.script"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Фильмы (fepcom.net)</summary>
+    <description>Русские и зарубежные фильмы предоставляемые сайтом fepcom.net.</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.filmodrom.net"
+       name="Filmodrom.net"
+       version="0.0.1"
+       provider-name="Nesterov Alexandr">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource" provides="video" library="addon.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Filmodrom.net</summary>
+    <description>
+        Плагин для просомтра фильмов с filmodrom.net
+    </description>
+    <source>https://github.com/alex19pov31/plugin.video.filmodrom.net.git</source>
+    <email>alex19pov31@gmail.com</email>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.filmy.net.ua"
+       name="ua-ix"
+       version="0.0.2"
+       provider-name="HD-Lab Team">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Фильмы в UA-IX - это огромная коллекция фильмов</summary>
+    <description>Фильмы в UA-IX - это огромная коллекция фильмов в высоком качестве, бесплатное скачивание по прямым ссылкам, высокая скорость загрузки, скриншоты к фильмам, постоянные обновления, биографии актеров, фото.</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.fs.ua"
+       name="Fs.ua"
+       version="1.9.23"
+       provider-name="x86demon">
+    <requires>
+        <import addon="xbmc.python" version="2.1.0"/>
+        <import addon="script.module.beautifulsoup"/>
+        <import addon="script.module.simplejson"/>
+        <import addon="script.module.simple.downloader"/>
+    </requires>
+    <extension point="xbmc.python.pluginsource"
+               provides="audio, video"
+               library="default.py">
+        <provides>audio video</provides>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <summary>Просмотр контента с brb.to (fs.ua, fs.to)</summary>
+        <description>
+На этом портале вы можете найти и, что самое главное бесплатно скачать последний новинки кино, музыкальные
+файлы, любимые видеоклипы и сериалы.
+        </description>
+        <platform>all</platform>
+    </extension>
+</addon>
+
+<addon id="plugin.video.galileo-online.ru"
+       name="[COLOR FF00FF00]Галилео ([/COLOR][COLOR FFFFF000]galileo-online.ru[/COLOR][COLOR FF00FF00])[/COLOR]"
+       version="1.0.2"
+       provider-name="Silen">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>my-hit.ru</summary>
+    <description>Галилео - телевизионная развлекательно-познавательная программа канала СТС.
+Ведущий — Александр Пушной.
+</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.galileo-tv.ru"
+       name="[COLOR FF00FF00]Галилео ([/COLOR][COLOR FFFFF000]galileo-tv.ru[/COLOR][COLOR FF00FF00])[/COLOR]"
+       version="1.0.2"
+       provider-name="Silen">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>my-hit.ru</summary>
+    <description>Галилео - телевизионная развлекательно-познавательная программа канала СТС.
+Выходит с понедельника по пятницу в 17:30.
+Дайджест «Галилео» можно увидеть по воскресеньям в 11:00.
+Ведущий — Александр Пушной.
+Производит программу ООО «ГалилеоМедиа» по лицензии и при содействии «Victoria Production» и «SevenOne International».
+Наш проект является русским вариантом немецкой программы «Galileo» канала ProSieben.
+</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.guzei.tv"
+       name="GUZEI.TV"
+       version="1.0.8"
+       provider-name="HD-Lab Team">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Смотрите online-видео с сайта http://guzei.com/live/tv/</summary>
+    <description>Смотрите online-видео с сайта http://guzei.com/live/tv/</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.hdkinoklub.ru"
+       name="[COLOR FF00FF00]Кино портал HD ([/COLOR][COLOR FFFFF000]hdkinoklub.ru[/COLOR][COLOR FF00FF00])[/COLOR]"
+       version="1.0.7"
+       provider-name="Silen">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>my-hit.ru</summary>
+    <description>Приветствуем Вас на сайте HDkinoKlub.ru - здесь можно совершенно бесплатно и без регистрации смотреть фильмы, сериалы и мультфильмы онлайн в HD качестве..</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.igru.net.ua"
+       name="[COLOR FF00FF00]Фильмы ([/COLOR][COLOR FFFFF000]fepcom.net[/COLOR][COLOR FF00FF00])[/COLOR]"
+       version="1.1.5"
+       provider-name="Silen">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Фильмы (igru.net.ua)</summary>
+    <description>Русские и зарубежные фильмы предоставляемые сайтом fepcom.net.</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.inetcom.tv" name="[COLOR FF86BA0D]Inetcom.tv[/COLOR]" version="0.3.4" provider-name="Silhouette">
+  <requires><import addon="xbmc.python" version="2.1.0"/></requires>
+  <extension point="xbmc.python.pluginsource"  provides="video" library="default.py"><provides>video</provides></extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Online TV from inetcom.tv</summary>
+    <description>Online TV from inetcom.tv</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.ivi.ru" name="ivi.ru" version="2.5.2a" provider-name="ivi.ru (NuisMons)">
+  <requires><import addon="xbmc.python" version="2.1.0"/></requires>
+  <extension point="xbmc.python.pluginsource" provides="video" library="default.py"><provides>video</provides></extension>
+  <extension point="xbmc.addon.metadata">
+	<language>ru</language>
+    <summary>ivi.ru - cмотри любимые фильмы, сериалы, программы, мультфильмы бесплатно и легально.</summary>
+    <description>Приложение интернет-кинотеатра ivi.ru предоставляет доступ к самой большой бесплатной коллекции лицензионного видео российского интернета.
+С помощью приложения ivi.ru вы можете смотреть фильмы, сериалы, ТВ-программы, мультфильмы в отличном качестве бесплатно и легально.
+Обращаем ваше внимание, что воспроизведение видео возможно только на территории Российской Федерации</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.kaban.tva" name="[COLOR FFE55BB0]Kaban.TVA[/COLOR]" version="0.6.4" provider-name="Silhouette">
+  <requires><import addon="xbmc.python" version="2.1.0"/></requires>
+  <extension point="xbmc.python.pluginsource"  provides="video" library="default.py"><provides>video</provides></extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Archives from http://kaban.tv/</summary>
+    <description>Archives from http://kaban.tv/</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.kino-dom"
+       name="Kino-Dom.tv"
+       version="0.0.2"
+       provider-name="Nesterov Alexandr">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource" provides="video" library="addon.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Kino-Dom.tv</summary>
+    <description>
+    Сериалы с сайта Kino-Dom.tv
+    </description>
+    <source>https://github.com/alex19pov31/plugin.video.kino-dom.git</source>
+    <email>alex19pov31@gmail.com</email>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.kino-live.org"
+       name="kino-live.org"
+       version="1.7.5"
+       provider-name="x86demon">
+    <requires>
+        <import addon="xbmc.python" version="2.1.0"/>
+        <import addon="script.module.beautifulsoup"/>
+    </requires>
+    <extension point="xbmc.python.pluginsource" provides="video" library="default.py">
+        <provides>video</provides>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <summary>Фильмы, сериалы с ресурса kino-live.org</summary>
+        <description>Фильмы, сериалы с ресурса kino-live.org</description>
+        <platform>all</platform>
+    </extension>
+</addon>
+
+<addon id="plugin.video.kino-ray.com"
+       name="kino-ray.com"
+       version="0.0.01"
+       provider-name="NuisMons">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0" />
+	<import addon="script.module.beautifulsoup"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>kino-ray.com</summary>
+    <description>kino-ray.com</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.kino-v-online.tv"
+       name="kino-v-online.tv"
+       version="0.0.2"
+       provider-name="Nesterov Alexandr">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource" provides="video" library="addon.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>kino-v-online.tv</summary>
+    <description>
+        Плагин для просомтра фильмов с kino-v-online.tv
+    </description>
+    <source>https://github.com/alex19pov31/plugin.video.kino-v-online.tv.git</source>
+    <email>alex19pov31@gmail.com</email>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.kinobaza.tv" name="Кинобаза" version="1.0.6" provider-name="HD-Lab Team">
+  <requires><import addon="xbmc.python" version="2.1.0"/></requires>
+  <extension point="xbmc.python.pluginsource" provides="video" library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Кинобаза: Что смотреть? Где скачать?</summary>
+    <description>У нас на сайте вы можете найти новинки фильмов в хорошем качестве или HD быстро и без регистрации. Фильмы в HD качестве и DVDRip. Каждый день новые добавления. У нас можно найти что посмотреть сегодня вечером и получить уведомления о появлении новых серий и фильмов в Сети. больше не нужно ждать когда появится фильм онлайн, можно пордписаться на уведомление о выходе</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.kinoem.by"
+       name="[COLOR FFFFF000]Kinoem[/COLOR][COLOR FF00FF00].by[/COLOR]"
+       version="0.0.3"
+       provider-name="[COLOR FFFFF000]Denis [/COLOR][COLOR FF00FF00]Fomin[/COLOR]">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource" provides="video" library="addon.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>kinoem.by</summary>
+    <description>Просмотр кино и сериалов онлайн бесплатно, без регистрации и смс на сайте kinoem.by</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.kinogovno" name="KinoGovno" version="1.2.1" provider-name="x86demon">
+    <requires>
+        <import addon="xbmc.python" version="2.1.0"/>
+        <import addon="script.module.beautifulsoup" version="3.0.8"/>
+    </requires>
+    <extension point="xbmc.python.pluginsource" library="default.py">
+        <provides>video</provides>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <summary>Stream trailers from kinogovno.com</summary>
+        <description>Scrap trailers from http://kino-govno.com russian website</description>
+	<platform>all</platform>
+    </extension>
+</addon>
+
+<addon id="plugin.video.kinolist.net"
+       name="[COLOR FFFFFFFF]Kinolist.net[/COLOR]"
+       version="0.0.2"
+       provider-name="XZ">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+    <import addon="script.module.beautifulsoup"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource" provides="video" library="addon.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Kinolist.net</summary>
+    <description>
+Плагин для просмотра видео сайта Kinolist.net
+    </description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.kinoxa-x.ru" name="[COLOR FFcFFF48]Kinoxa-X.ru[/COLOR]" version="0.5.2" provider-name="Silhouette">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+    <import addon="script.module.beautifulsoup" version="3.0.8"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"  provides="video" library="default.py"><provides>video</provides></extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>KINOXA-X.RU у нас Вы можите смотреть кино онлайн</summary>
+    <description>Добро пожаловать в лучший онлайн кинотеатр KINOXA-X.RU у нас Вы можите смотреть кино онлайн. Выберите фильм любого жанра и наслаждайтесь просмотром</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.kinoylei.ru"
+       name="Киноулей"
+       version="0.0.9"
+       provider-name="nuismons">
+    <requires>
+        <import addon="xbmc.python" version="2.1.0" />
+        <import addon="script.module.beautifulsoup"/>
+    </requires>
+    <extension point="xbmc.python.pluginsource" provides="video" library="default.py">
+        <provides>video</provides>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <summary>Материалы сайта Киноулей</summary>
+        <description>Самая большая коллекция лучших сериалов мира</description>
+        <platform>all</platform>
+    </extension>
+</addon>
+
+<addon id="plugin.video.kiwi.kz" name="Kiwi.kz" version="1.0.1" provider-name="HD-Lab Team">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+	<extension point="xbmc.python.pluginsource" provides="video, audio" library="default.py">
+		<provides>video audio</provides>
+	</extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Kiwi.kz - видео в Казахстане</summary>
+	<description>Kiwi.kz - видео-сервис в Казахстане. Видео-портал, позволяющий вам бесплатно просматривать самое новое, популярное и интересное видео в различных категориях. Загружайте свое видео, просматривайте видео, транслируйте и смотрите видео онлайн.</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.linecinema"
+       name="LineCinema"
+       version="0.0.3"
+       provider-name="Nesterov Alexandr">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource" provides="video" library="addon.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>LineCinema.org</summary>
+    <description>
+        Плагин для просмотра фильмов с сайта LineCinema.org
+    </description>
+    <source>https://github.com/alex19pov31/plugin.video.linecinema.git</source>
+    <email>alex19pov31@gmail.com</email>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.megogo"
+	   name="MEGOGO.NET"
+	   version="1.1.8"
+	   provider-name="Studio-Evolution">
+	<requires>
+		<import addon="xbmc.python" version="2.1.0" />
+		<import addon="script.module.simplejson" version="3.3.0"/>
+		<import addon="script.module.requests" version="1.1.0"/>
+	</requires>
+	<extension point="xbmc.python.script" library="start.py" >
+		<provides>video executable</provides>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary lang="en">Plugin to watch videos from MEGOGO.NET</summary>
+		<summary lang="ru">Дополнение для просмотра видео-ресурсов с MEGOGO.NET</summary>
+        <summary lang="ua">Додаток для перегляду відео-ресурсів із MEGOGO.MET</summary>
+		<description lang="en">The library MEGOGO.NET has more than 22 thousands of hours of video. This is more than 3500 full-length movies, 1800 cartoons, 850 TV series, 200 TV shows and concerts. In addition, the daily online catalog updated theater quality video material, including novelties.</description>
+		<description lang="ru">Библиотека MEGOGO.NET насчитывает более 22 тысяч часов видео. Это более 3500 полнометражных фильмов, 1800 мультфильмов, 850 сериалов, 200 телевизионных шоу и концертов. Кроме того, ежедневно каталог онлайн-кинотеатра пополняется качественным видео-материалом, в том числе новинками.</description>
+        <description lang="ua">Бібліотека MEGOGO.NET нараховує більше 22 тисяч годин відео. Це більше 3500 повнометражних фільмів, 1800 мультфільмів, 850 серіалов, 200 телевізійних шоу і концертів. Кроме того, каталог онлайн-кінотеатру кожен день поповнюється якісними відео-матеріалами, в тому числі новинками.</description>
+		<platform>all</platform>
+	</extension>
+</addon>
+
+<addon id="plugin.video.megogo.net" name="MEGOGO.NET" version="1.0.1" provider-name="MEGOGO.NET">
+  <requires><import addon="xbmc.python" version="2.1.0"/></requires>
+  <extension point="xbmc.python.pluginsource" provides="video" library="default.py"><provides>video</provides></extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>MEGOGO.NET - онлайн-кинотеатр с легальным контентом.</summary>
+    <description>MEGOGO.NET - это 20 тысяч часов легального видео-контента. Это более 3 500 полнометражных фильмов, 800 мультфильмов, 700 сериалов, 200 телевизионных шоу и концертов. Ежедневно библиотека онлайн-кинотеатра пополняется десятками часов качественного видео-контента.
+У нас много эксклюзивного материала - более 120 новинок кино и более двух десятков прямых эксклюзивных договоров со студиями и крупными правообладателями. Мы работаем над тем, чтобы наши зрители всегда имели доступ к самым лучшим и свежим фильмам.</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.mults.spb.ru"
+       name="Каталог мультфильмов"
+       version="1.0.3"
+       provider-name="HD-Lab Team">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Лучшие мультфильмы из вашего детства</summary>
+    <description>На сайте http://mults.spb.ru/ вы можете бесплатно посмотреть мультфильмы онлайн, а также скачать мультики для просмотра на компьютере или телевизоре. На сайте собрана коллекция мультфильмов советских времен и не только. Самые лучшие мультики из вашего детства! Коллекция мультфильмов постоянно пополняется новыми и старыми мультиками.</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.music.ivi.ru" name="music.ivi.ru" version="0.1.0" provider-name="ivi.ru">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0" />
+  </requires>
+  <extension point="xbmc.python.pluginsource" provides="video" library="default.py"><provides>video</provides></extension>
+  <extension point="xbmc.addon.metadata">
+	<language>ru</language>
+    <summary>Клипы: смотреть видео клипы онлайн, слушать музыку онлайн, видеоклипы бесплатно и без регистрации — music.ivi.ru</summary>
+    <description>Клипы: смотреть видео клипы онлайн, слушать музыку онлайн, видеоклипы бесплатно и без регистрации — music.ivi.ru</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.muzunga.tv" name="Muzunga.TV" version="1.0.3" provider-name="Muzunga.TV">
+  <requires><import addon="xbmc.python" version="2.1.0"/></requires>
+  <extension point="xbmc.python.pluginsource" provides="video" library="default.py"><provides>video</provides></extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Фильмы, сериалы и телевидение в HD качестве онлайн</summary>
+    <description>Ресурс Muzunga.TV является общедоступным для всех зарегистрированных пользователей и осуществляет свою деятельность с соблюдением действующего законодательства Украины и на основании договора и лицензии на право вещания ДП "УААСП" КТ-3554 от 01.02.2011, обеспечивающим выплаты вознаграждений по авторским и смежным правам.</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.my-hit.ru"
+       name="[COLOR FF00FF00]Кино портал ([/COLOR][COLOR FFFFF000]my-hit.org[/COLOR][COLOR FF00FF00])[/COLOR]"
+       version="1.2.3"
+       provider-name="Silen">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>my-hit.ru</summary>
+    <description>Фильмы онлайн, наш кино портал.</description>
+    <platform>all</platform>
+    <website>http://xbmc.ru/forum/showthread.php?t=1415</website>
+  </extension>
+</addon>
+
+<addon id="plugin.video.myvi.ru" name="МУВИ" version="1.0.2" provider-name="Myvi">
+  <requires><import addon="xbmc.python" version="2.1.0"/></requires>
+  <extension point="xbmc.python.pluginsource" provides="video" library="default.py"><provides>video</provides></extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Муви.ру - Только лучшие ролики сети!</summary>
+    <description>Это бесплатный сервис для размещения, хранения и просмотра видеофайлов.
+Активное пользовательское сообщество поддерживается социальной сетью сайта с такими функциями, как оценка видео других авторов, участие в обсуждениях, объединение в сообщества по интересам.
+Автоматическая система учета пользовательских интересов (мы называем ее ласково «Моя прелесть») учитывает интересы посетителей, позволяя таргетировать контент под каждого пользователя. Фильтрация контента «Муви» осуществляется самими пользователями, что позволяет в автоматическом режиме отображать на сайте только самые интересные для аудитории ролики.</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.new-kino.net" name="[COLOR FF37C6FD]New-Kino.net[/COLOR]" version="0.7.4" provider-name="Silhouette">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+    <import addon="script.module.beautifulsoup" version="3.0.8"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"  provides="video" library="default.py"><provides>video</provides></extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>new-kino.net - фильмы, мультфильмы, сериалы</summary>
+    <description>new-kino.net - фильмы, мультфильмы, сериалы - круглосуточно на нашем сайте, смотрите, наслаждайтесь и отдыхайте</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.nogomya.ch"
+       name="[COLOR FF00FF00]НОГОМЯЧ ([/COLOR][COLOR FFFFF000]nogomya.ch[/COLOR][COLOR FF00FF00])[/COLOR]"
+       version="1.0.5"
+       provider-name="Silen">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>nogomya.ch</summary>
+    <description>НОГОМЯЧ. Футбол без перерыва.</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.nowfilms.ru"
+       name="[COLOR FF00FF00]Кино портал ([/COLOR][COLOR FF00FFFF]Now[/COLOR][COLOR FFFF0040]Films.ru[/COLOR][COLOR FF00FF00])[/COLOR]"
+       version="1.0.19"
+       provider-name="Silen">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>NowFilms.ru</summary>
+    <description>Медиапортал [COLOR FF00FFFF]Now[/COLOR][COLOR FFFF0040]Films.ru[/COLOR] - фильмы, сериалы.</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.online.anidub.com"
+       name="[COLOR=FFFF0000]Ani[/COLOR][COLOR=FF00FF00]DUB[/COLOR]"
+       version="0.3.2"
+       provider-name="NuisMons">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+	<import addon="script.module.beautifulsoup"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Просмотр аниме онлайн online.anidub.com</summary>
+    <description>Просмотр аниме онлайн online.anidub.com</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.planeta-online.tv" name="Planeta-online.tv" version="1.0.8" provider-name="HD-Lab Team">
+	<requires><import addon="xbmc.python" version="2.1.0"/></requires>
+	<extension point="xbmc.python.pluginsource" library="default.py"><provides>video</provides></extension>
+	<extension point="xbmc.addon.metadata">
+		<summary>http://www.planeta-online.tv/</summary>
+		<description>http://www.planeta-online.tv/</description>
+		<platform>all</platform>
+	</extension>
+</addon>
+
+<addon id="plugin.video.pokerstars.tv" name="Pokerstars TV" provider-name="Sergey Pulyaev" version="0.0.12">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension library="addon.py" point="xbmc.python.pluginsource" provides="video">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>pokerstars.tv</summary>
+    <description>
+Plugin for watching video from site pokerstars.tv
+I hope you like this!
+    </description>
+    <platform>all</platform>
+    <license>GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007</license>
+    <email>serj1903@gmail.com</email>
+  </extension>
+</addon>
+
+<addon id="plugin.video.rodina.tv" name="[COLOR FF23a0e3]Rodina.TV[/COLOR]" version="2.7.3" provider-name="Rodina TV">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+    <import addon="script.service.rodina.tv" version="1.0.1"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"  provides="video" library="default.py"><provides>video</provides></extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Rodina.TV – Новости, кино, музыка, спортивные трансляции, кинозал, архив программ за 2 недели.</summary>
+    <description>Rodina.TV – это качественное русскоязычное и интернациональное интернет телевидение в любой точке земного шара. Спортивные трансляции, кино, новости, музыка.
+Сервис ТВ онлайн позволяет смотреть эфирные русскоязычные и другие каналы, пользоваться онлайн кинозалом со множеством новинок и киноклассикой. В вашем распоряжении архив программ за  2 недели, а также функция тайм-шифт.</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.rpod.ru"
+       name="Russian Podcasting"
+       version="1.0.8"
+       provider-name="HD-Lab Team">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="audio, video"
+             library="default.py">
+    <provides>audio video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Russian Podcasting</summary>
+    <description>Russian Podcasting - первый и единственный свободный подкаст-терминал в Российском интернете. RPOD не делит подкасты на хорошие и плохие, не навязывает выбор странной группы лиц, не требует передавать исключительные права, а просто даёт возможность опубликовать свои подкасты любому, кто этого пожелает.</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.ruhd.ru"
+       name="RUHD.RU"
+       version="1.0.5"
+       provider-name="HD-Lab Team">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+            library="default.py">
+        <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>RUHD.ru - Видео Высокого качества №1 в России!</summary>
+    <description>Цель нашего сайта, создать сообщество, которое позволит людям загружать или посматривать видео высокого качества, например, fullHD, прямо с нашего сайта - онлайн</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.ruhd.tv"
+       name="RuHD.TV"
+       version="1.2.2"
+       provider-name="HD-Lab Team">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Смотрите видео с сайта RuHD.TV</summary>
+    <description>Смотрите видео с сайта RuHD.TV</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.rurem"
+       version="1.2.5"
+       name="RuremTV"
+       provider-name="Rurem.TV">
+    <requires>
+        <import addon="xbmc.python" version="2.1.0"/>
+
+    </requires>
+    <extension point="xbmc.python.pluginsource" library="brtv.py">
+        <provides>video</provides>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <summary lang="en">Rurem.TV plugin</summary>
+		<summary lang="ru">Rurem.TV плагин для XBMC</summary>
+        <description lang="en">Over 100 TV channels from Russia, Ukraine and other CIS countries, 40,000+ movies, huge selection of archived programs.</description>
+		<description lang="ru">Более 100 каналов ТВ из России, Украины и стран СНГ, архив, огромная видеотека.</description>
+        <platform>all</platform>
+    </extension>
+</addon>
+
+<addon id="plugin.video.rusd.tv"
+       name="RuSD.TV"
+       version="1.2.1"
+       provider-name="HD-Lab Team">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Смотрите видео с сайта RuSD.TV</summary>
+    <description>Смотрите видео с сайта RuSD.TV</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.russia.ru" name="RUSSIA.RU" version="1.0.8" provider-name="HD-Lab Team">
+  <requires><import addon="xbmc.python" version="2.1.0"/></requires>
+  <extension point="xbmc.python.pluginsource" provides="video" library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Смотрите видео с сайта http://russia.ru/</summary>
+    <description>Russia.ru - первый российский телеканал, созданный для пользователей интернета. Открывшись в октябре 2007 года как арт-проект, он стал лидером российского интернет-телевидения и твердо занял первое место среди сетевых телепроектов. Ежемесячный охват аудитории Russia.ru - более 2 400 000 зрителей (исследования Gallup). Подавляющее их большинство – люди с быстрым подключением к сети и мощными компьютерами.
+Russia.ru делает передачи для самой разной аудитории, освещает темы, которые игнорирует традиционное телевидение. Нелинейный формат вещания позволяет зрителю самому выбирать интересные для себя сюжеты. Контент Russia.ru не устаревает и доступен в любое время в любом месте.
+Особое значение мы придаем сюжетам, посвященным жизни современной России. Во время войны в Южной Осетии телеканал каждый день размещал информацию о ходе военных действий, прогнозы специалистов и репортажи, которые делала съемочная группа в зоне конфликта. Фильм «Война 08.08.08» имел широкий общественный резонанс - его посмотрело более 1.8 млн. человек. В 2009 году на экраны Russia.ru вышел уникальный фильм, посвященный Калмыкии, фильм «Путешествие по Дону», ряд сюжетов из Нижнего Новгорода.</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.russia.tv" name="Russia.tv" version="0.3.0" provider-name="achasik">
+  <requires><import addon="xbmc.python" version="2.1.0"/></requires>
+  <extension point="xbmc.python.pluginsource" provides="video" library="default.py"><provides>video</provides></extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Фильмы и передачи телеканалов Россия-1, Россия-2,ТВ Культура</summary>
+    <description>Фильмы и передачи телеканалов Россия-1, Россия-2,ТВ Культура</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.rutube.ru"
+       name="RuTube"
+       version="1.0.6"
+       provider-name="HD-Lab Team">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Лучшие онлайн видео ролики, приколы, аниме и клипы.</summary>
+    <description>На RuTube Вы всегда сможете найти интересные ролики, новые клипы, anime и другое интересное видео. Каждый день наши пользователи загружают на сайт более 3500 новых роликов, лучшие из которых редакция сайта отбирает на главную страницу.
+Особой популярностью пользуются авторские видеоприколы. Если Вы снимаете действительно смешное видео и не боитесь выставить себя или друзей в нелепом свете - то быстро станете звездой RuTube. При загрузке видео желательно указать категорию, к которой он относится (например, "Юмор, развлечения"), чтобы пользователи, интересующиеся этой темой, могли быстро найти ваш видеоролик.
+RuTube - отличная стартовая площадка для независимых студий, начинающих кинорежиссеров и музыкальных групп. Концертное видео всегда привлекает внимание меломанов, которые любят слушать музыку онлайн и смотреть на выступление своей любимой команды. Помимо видео с концертов на RuTube есть музыкальные клипы, а также видео блоги популярных исполнителей, которые всегда рады непосредственному общению со своими фанатами. Один из самых популярных разделов RuTube - раздел кинотрейлеров. Раздел обновляется каждую неделю, в нем вы всегда можете посмотреть свежие трейлеры самых актуальных фильмов. Не обделены вниманием и мультики. Есть все: anime, современные интернет мульты, а также классические советские мультфильмы
+Видео хостинг RuTube занимает лидирующие позиции среди российских видео сайтов и входит в десятку самых посещаемых сайтов рунета. Здесь можно посмотреть видео ролики на любой вкус: от интервью с деятелями культуры и серьезных политических передач до видео приколов, записей автокатастроф и аварий. Смотрите в онлайн аниме, передачу "Наша Раша" и самое смешное видео из репертуара Comedy Club.</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.seasonvar.ru"
+       name="[COLOR FF00FF00]Сериалы ([/COLOR][COLOR FFFFF000]seasonvar.ru[/COLOR][COLOR FF00FF00])[/COLOR]"
+       version="2.2.5"
+       provider-name="Silen">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>my-hit.ru</summary>
+    <description>SEASONVAR.RU - Наш сайт создан для вас!
+Вы любите смотреть сериалы, но не можете себе этого позволить, так как их показывают по телевизору в неудобное для вас время? Вам нравится следить за судьбой героев, но вы часто пропускаете очередную серию? Теперь эти проблемы легко решить! На сайте Seasonvar.ru представлены отечественные и зарубежные сериалы, которые вы можете смотреть онлайн совершенно бесплатно.
+
+[COLOR FF00FF00]Contributors: [/COLOR][COLOR FFFFF000]DiMartino, [/COLOR]
+</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.serialonline.net"
+       name="SerialOnline.net"
+       version="0.1.0"
+       provider-name="nuismons">
+    <requires>
+        <import addon="xbmc.python" version="2.1.0"/>
+        <import addon="script.module.beautifulsoup"/>
+    </requires>
+    <extension point="xbmc.python.pluginsource" provides="video" library="default.py">
+        <provides>video</provides>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <summary>Материалы сайта serialonline.net</summary>
+        <description>Самая большая коллекция лучших сериалов мира</description>
+        <platform>all</platform>
+    </extension>
+</addon>
+
+<addon id="plugin.video.serialonline.netlite"
+       name="SerialOnline.net LITE"
+       version="0.1.0.1"
+       provider-name="nuismons">
+    <requires>
+        <import addon="xbmc.python" version="2.1.0"/>
+        <import addon="script.module.beautifulsoup"/>
+    </requires>
+    <extension point="xbmc.python.pluginsource" provides="video" library="default.py">
+        <provides>video</provides>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <summary>Материалы сайта serialonline.net</summary>
+        <description>Самая большая коллекция лучших сериалов мира</description>
+        <platform>all</platform>
+    </extension>
+</addon>
+
+<addon id="plugin.video.serialu.net"
+       name="[COLOR FF00FF00]Сериалы ([/COLOR][COLOR FFFFF000]serialu.net[/COLOR][COLOR FF00FF00])[/COLOR]"
+       version="1.2.6"
+       provider-name="Silen">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Сериалы (serialu.net)</summary>
+    <description>Русские и зарубежные сериалы предоставляемые сайтом serialu.net. </description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.serialu.net.plus"
+       name="[COLOR FF00FF00]Сериалы ([/COLOR][COLOR FFFFF000]serialu.net[/COLOR]+[COLOR FF00FF00])[/COLOR]"
+       version="2.0.2"
+       provider-name="Silen">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.script"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Сериалы (serialu.net)</summary>
+    <description>Русские и зарубежные сериалы предоставляемые сайтом serialu.net.</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.showday.tv"
+       name="[COLOR FF00FF00]Сериалы ([/COLOR][COLOR FFFFF000]showday.tv[/COLOR][COLOR FF00FF00])[/COLOR]"
+       version="1.0.2"
+       provider-name="Silen">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>showday.tv</summary>
+    <description>SHOWDAY.TV - сериал на каждый день!
+</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.shura.tv"
+       name="Shura.TV"
+       version="1.1.7"
+       provider-name="AKGDRG">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+	<platform>all</platform>
+    <license>GPL 2.0</license>
+    <summary>Онлайн-телевидение SHURA.TV</summary>
+    <description>Онлайн-телевидение SHURA.TV: 100 русскоязычных каналов от 0 евро в месяц. EPG + Aрхив</description>
+  </extension>
+</addon>
+
+<addon id="plugin.video.sovok.tv" name="Совок ТВ" version="0.0.2" provider-name="HD-Lab Team">
+  <requires><import addon="xbmc.python" version="2.1.0"/></requires>
+  <extension point="xbmc.python.pluginsource" provides="video" library="default.py"><provides>video</provides></extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Отечественный проект "Совок ТВ" представляет!</summary>
+    <description>Технология IPTV позволяет Вам, находясь в любой точке мира, смотреть любимое русское тв. При этом вам не нужно иметь спутниковых антенн. Телевизионный сигнал передается поверх IP сети оператора Интернет. На нашем сайте вы можете смотреть любимые русские тв каналы абсолютно бесплатно. Если у вас есть интернет со скоростью не менее 4 мбитс, то вы вы можете стать участником нашего клуба любителей русского тв прямо сейчас.</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.sreda-obitaniya"
+       name="Передачи Российского ТВ"
+       version="0.1.0"
+       provider-name="NuisMons">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0" />
+	<import addon="script.module.beautifulsoup"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Передачи Российского ТВ</summary>
+    <description>Передачи Российского ТВ</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.stepashka.com"
+       name="stepashka.com"
+       version="0.3.2"
+       provider-name="akgdrg,nuismons">
+    <requires>
+        <import addon="xbmc.python" version="2.1.0"/>
+    </requires>
+    <extension point="xbmc.python.pluginsource" provides="video" library="default.py">
+        <provides>video</provides>
+    </extension>
+
+    <extension point="xbmc.addon.metadata">
+        <summary>Видеоархивы stepashka.com</summary>
+        <description>Видеоархивы stepashka.com</description>
+        <platform>all</platform>
+    </extension>
+</addon>
+
+<addon id="plugin.video.teleplus.ru"
+       name="[COLOR FF00FF00]Фильмы ([/COLOR][COLOR FFFFF000]TelePlus.ru[/COLOR][COLOR FF00FF00])[/COLOR]"
+       version="1.0.4"
+       provider-name="TelePlus.ru">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>TelePlus.ru</summary>
+    <description>Онлайн-кинотеатр teleplus.ru – развлекательная концепция будущего. Он удачно соединяет в себе все достоинства обычного кинотеатра с экономией и домашним уютом. Более 5000 фильмов и полмиллиона аудиотрэков по символической цене - 199 руб в месяц.</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.telepoisk.com"
+       name="[COLOR FF00FF00]Онлайн ТВ + Архив ([/COLOR][COLOR FFFFF000]telepoisk.com[/COLOR][COLOR FF00FF00])[/COLOR]"
+       version="1.0.2"
+       provider-name="Silen">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Онлайн ТВ + Архив (telepoisk.com)</summary>
+    <description>Русское телевидение онлайн.</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.telik.in.ua"
+       name="[COLOR FF00FF00]ТВ Онлайн ([/COLOR][COLOR FFFFF000]telik.in.ua[/COLOR][COLOR FF00FF00])[/COLOR]"
+       version="1.0.4"
+       provider-name="Silen">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>nogomya.ch</summary>
+    <description>Медиа портал с онлайн телевидинием.</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.torrent.gnu"
+       name=".torrent Player"
+       version="0.3.0"
+       provider-name="nuismons">
+    <requires>
+        <import addon="xbmc.python" version="2.1.0" />
+		<import addon="script.module.torrent.ts"/>
+		<import addon="script.module.beautifulsoup"/>
+    </requires>
+    <extension point="xbmc.python.pluginsource" provides="video" library="default.py">
+        <provides>video</provides>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <summary>Просмотр Торрент файлов</summary>
+        <description>Тестирование TorrentStream</description>
+        <platform>all</platform>
+    </extension>
+</addon>
+
+<addon id="plugin.video.ts-tv.ru"
+       name="TS-TV.RU"
+       version="1.0.7"
+       provider-name="HD-Lab Team">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Телеканалы сайта http://ts-tv.ru/</summary>
+    <description>Первое Альтернативное Концептуальное Телевидение "ТВОЙ СТРОЙ ТВ", Многоканальное, Круглосуточное.</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.turbofilm.tv" name="Turbofilm.TV" version="1.0.7" provider-name="HD-Lab Team">
+	<requires>
+		<import addon="xbmc.python" version="2.1.0"/>
+	</requires>
+	<extension point="xbmc.python.pluginsource" provides="video" library="default.py">
+		<provides>video</provides>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary>Смотрите видео с сайта http://turbofilm.tv/</summary>
+		<description>Смотрите видео с сайта http://turbofilm.tv/</description>
+		<platform>all</platform>
+	</extension>
+</addon>
+
+<addon id="plugin.video.tushkan.net"
+       name="Tushkan.net"
+       version="0.0.15"
+       provider-name="NuisMons">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0" />
+	<import addon="script.module.beautifulsoup"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Просмотр вмдео онлайн truba.com</summary>
+    <description>Просмотр вмдео онлайн truba.com</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.tv-here.ru"
+       name="TV-HERE.RU"
+       version="1.0.5"
+       provider-name="HD-Lab Team">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Смотрите телеканалы с сайта http://tv-here.ru</summary>
+    <description>Смотрите телеканалы с сайта http://tv-here.ru</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.tvigle.ru"
+       name="Tvigle"
+       version="1.0.6"
+       provider-name="HD-Lab Team">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Клипы, музыка, комедии, фильмы, мультфильмы. Бесплатное развлекательное видео на tvigle.ru</summary>
+    <description>Tvigle.ru — это развлекательный портал с качественным видео. Социальная сеть Tvigle объединяет профессионалов и любителей короткометражного видео.
+На нашем сайте вы можете увидеть видео различных жанров: начиная от сериалов, серьезных форматов, заканчивая музыкальными клипами и арт-хаусом. Именно здесь всем творческим людям предоставляется возможность продемонстрировать свои таланты. Ведь неважно кто ты — важны твои идеи и работы.
+Сегодня Tvigle.ru — это десятки тысяч посетителей в день, сотни тысяч просмотров видео и множество талантливых авторских работ.</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.tvjam.ru"
+       name="TVJAM.RU"
+       version="1.0.5"
+       provider-name="HD-Lab Team">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Смотрите видео с сайта http://tvjam.ru/</summary>
+    <description>Смотрите видео с сайта http://tvjam.ru/</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.tvrain.ru" name="Телеканал ДОЖДЬ" version="1.0.2" provider-name="HD-Lab Team">
+  <requires><import addon="xbmc.python" version="2.1.0"/></requires>
+  <extension point="xbmc.python.pluginsource" provides="video" library="default.py"><provides>video</provides></extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>ДОЖДЬ — настоящий живой телеканал</summary>
+    <description>Наш девиз «Дайте телевидению еще один шанс!».
+Мы — телеканал для неравнодушных людей с активной гражданской позицией и острым чувством сопричастности, не утративших вкус к жизни, успешных, добившихся многого и не очерствевших. Мы для профессионалов в разных областях.
+Вещание 24 часа в сутки, более 50% времени — прямой эфир.
+ДОЖДЬ это
+новости о том, что происходит на самом деле;
+аналитика живым человеческим языком;
+дискуссии и круглые столы с теми, кто нам интересен, о том, что нам важно;
+авторские программы, концерты, художественные чтения и эксперименты;
+документальные фильмы на остросоциальные темы;
+видео-арт;
+социальные проекты;
+истории о людях и событиях, изменивших мир и повлиявших на нас.</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.twitch.tv" name="Twitch.tv" version="0.1.9" provider-name="NuisMons">
+  <requires><import addon="xbmc.python" version="2.1.0"/></requires>
+  <extension point="xbmc.python.pluginsource" provides="video" library="default.py"><provides>video</provides></extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>TwitchTV - является крупнейшим в мире видео вещания игр сообществом.</summary>
+    <description>TwitchTV показывает видео от главных играющих лиц, игроков, турниров, лиг и комментария, в дополнение к самым активным и интересным обсуждениям вокруг видеоигр.</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.ulitka.tv" name="Сериалы онлайн на Улитке" version="2.0.3" provider-name="Admin Ulitka.TV [admin@ulitka.tv]">
+  <requires><import addon="xbmc.python" version="2.1.0"/></requires>
+  <extension point="xbmc.python.pluginsource" provides="video" library="default.py"><provides>video</provides></extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Мы наполнили сайт Ulitka.TV самыми популярными сериалами.</summary>
+    <description>Смотреть сериалы по телевизору неудобно, время показа не подстроить под каждого, а тут еще эта реклама каждые пять минут... Тогда многие стали скачивать сериалы. Это избавило от некоторых минусов, но принесло свои неудобства. А почему бы не объединить все плюсы этих способов, отбросив минусы?
+Представляем вам сайт Ulitka.TV! Здесь вы можете смотреть сериалы онлайн в любое для вас удобное время!
+Ни у всех и ни везде быстрый интернет, поэтому мы долго подбирали качество кодирования видео. И теперь вам не нужна очень большая скорость интернета для онлайн просмотра сериалов. Трафик расходуется очень рационально. При этом качество изображения и звука остается отличным!</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.vesti.ru"
+       name="VESTI.RU"
+       version="1.0.6nu"
+       provider-name="HD-Lab Team">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Смотрите видео с сайта http://www.vesti.ru</summary>
+    <description>Видеосюжеты с актуальными новостями из RSS-ленты http://www.vesti.ru/vesti.rss</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.weewza.com"
+       name="Weewza.com"
+       version="1.0.4"
+       provider-name="Silen">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Weewza.com</summary>
+    <description>Русское телевидение онлайн.</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.youtube" name="YouTube" provider-name="TheCollective" version="4.4.6nu5">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0" />
+    <import addon="script.module.simplejson" version="2.0.10" />
+    <import addon="script.common.plugin.cache" version="2.5.1" />
+    <import addon="script.module.parsedom" version="2.5.1" />
+    <import addon="script.module.simple.downloader" version="1.9.4" />
+  </requires>
+  <extension library="default.py" point="xbmc.python.pluginsource">
+        <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary lang="af">YouTube video byvoegsel</summary>
+    <summary lang="be">YouTube video plugin</summary>
+    <summary lang="bg">Видео добавка за YouTube</summary>
+    <summary lang="cs">Modul videa YouTube</summary>
+    <summary lang="da">YouTube videoplugin</summary>
+    <summary lang="de">YouTube Video Plugin</summary>
+    <summary lang="el">Plugin για το YouTube</summary>
+    <summary lang="en">YouTube video plugin</summary>
+    <summary lang="es">Plugin de video de YouTube</summary>
+    <summary lang="es_AR">Plugin de video de YouTube</summary>
+    <summary lang="es_MX">Plugin de vídeo de Youtube</summary>
+    <summary lang="eu">YouTube bideo gehigarria</summary>
+    <summary lang="fa">پلاگین You Tube</summary>
+    <summary lang="fi">YouTube-videoliitännäinen</summary>
+    <summary lang="fr">Extension vidéo YouTube</summary>
+    <summary lang="gl">Extensión de vídeo de YouTube</summary>
+    <summary lang="he">תוסף וידאו YouTube </summary>
+    <summary lang="hu">YouTube video kiegészítő</summary>
+    <summary lang="it">Plugin video YouTube</summary>
+    <summary lang="ja">YouTube ビデオプラグイン</summary>
+    <summary lang="ko">YouTube 비디오 플러그인</summary>
+    <summary lang="lt">YouTube vaizdo įskiepis</summary>
+    <summary lang="mk">YouTube видео додаток</summary>
+    <summary lang="nl">YoutTube video plugin</summary>
+    <summary lang="no">YouTube video tillegg</summary>
+    <summary lang="pl">Wtyczka YouTube</summary>
+    <summary lang="pt">Plugin de vídeo YouTube</summary>
+    <summary lang="pt_BR">Plugin de vídeo YouTube</summary>
+    <summary lang="ro">Plugin video YouTube</summary>
+    <summary lang="ru">Дополнение видео YouTube</summary>
+    <summary lang="sk">Zásuvný modul pre video z YouTube</summary>
+    <summary lang="sl">Video vtičnik YouTube</summary>
+    <summary lang="sv">YouTube videotillägg</summary>
+    <summary lang="th">ส่วนเสริมวิดีโอ YouTube</summary>
+    <summary lang="uk">Відео додаток YouTube</summary>
+    <summary lang="zh">YouTube视频插件</summary>
+    <summary lang="zh_TW">YouTube 影片外掛</summary>
+    <description lang="af">Byvoegsel wat jou toelaat om videos te blaai en speel vanaf almal se gunsteling video werf!</description>
+    <description lang="be">Plugin that lets you browse and play videos from everybody's favorite video site!</description>
+    <description lang="bg">Добавката Ви позволява да разглеждате и гледате видео клипове от любимия на на всички видео сайт!</description>
+    <description lang="cs">Modul, který vám umožní procházet a přehrávat videa z nejoblíbenější stránky s videi.</description>
+    <description lang="da">Plugin som lader dig browse og afspille videoer fra alles yndlings videoside!</description>
+    <description lang="de">Ein Plugin, welches Ihnen erlaubt Videos von Youtube abzuspielen.</description>
+    <description lang="el">Plugin το οποίο σας επιτρέπει να περιηγηθείτε και να δείτε βίντεο από την πιο αγαπητή ιστοσελίδα βίντεο!</description>
+    <description lang="en">Plugin that lets you browse and play videos from everybody's favorite video site!</description>
+    <description lang="es">Este plugin te permite buscar y reproducir vídeos desde el sitio de vídeos favorito de todos!</description>
+    <description lang="es_AR">¡Este plugin te permite buscar y reproducir videos desde el sitio de videos favorito de todos!</description>
+    <description lang="es_MX">¡El Plugin que te permite explorar y reproducir vídeos del sitio favorito de todos!</description>
+    <description lang="fa">این پلاگین امکان مرور و پخش ویدئو از سایت های ورد علاقه تان را به شما میدهد.</description>
+    <description lang="fi">Plugin jolla voi selata ja katsoa videoita kaikkien suosikkivideosivustolta!</description>
+    <description lang="fr">Programme permettant parcours et visualisation des chaînes du meilleur site vidéo !</description>
+    <description lang="gl">Extensión que permite explorar e reproducir vídeos do sitio favorito de todos!</description>
+    <description lang="he">תוסף שמאפשר לך לדפדף ולנגן מתוך אתר הוידאו האהוב על כולם!</description>
+    <description lang="hu">A kiegészítő lehetővé teszi mindenkinek, hogy böngésszen, és lejátsszon videókat, mindenki kedvenc videómegosztójáról!</description>
+    <description lang="it">Plugin the ti permette di cercare e riprodurre video dal sito di video preferito da tutti!</description>
+    <description lang="ja">みんなが大好き、あの有名なサイト上の動画をブラウズ・再生するプラグイン！</description>
+    <description lang="ko">YouTube 동영상을 탐색하고 재생할 수 있는 플러그인</description>
+    <description lang="lt">Įskiepis, kuris leidžia jums naršyti ir leisti vaizdo įrašus YouTube svetainėje!</description>
+    <description lang="mk">Дополнување кое ви овозможува пребарување и пуштање на видеа од омилени видео страни!</description>
+    <description lang="nl">Plugin waarmee u kunt bladeren en video's af te spelen vanaf een ieders favoriete video site!</description>
+    <description lang="no">Et tillegg som lar deg bla gjennom og spille av videoer fra alles favoritt video nettsted!</description>
+    <description lang="pl">Ten plugin pozwala na przeszukiwanie i odtwarzanie wideo z powszechnie lubianej strony!</description>
+    <description lang="pt">Plugin que permite procurar e reproduzir vídeos do site favorito de todos!</description>
+    <description lang="pt_BR">Plugin que permite navegar e reproduzir vídeos do site favorito de vídeos de todo mundo!</description>
+    <description lang="ro">Plugin ce va permita sa gasiti şi să vizualizaţi videoclipuri de pe site-ul favorit al tuturora.</description>
+    <description lang="ru">Данное дополнение позволяет находить и смотреть видео на всеми любимом сайте.</description>
+    <description lang="sk">Tento zásuvný modul umožňuje prehliadať a prehrávať videá z najobľúbenejšej videostránky na svete!</description>
+    <description lang="sl">Vtičnik, ki omogoča predvajanje posnetkov z vaše najljubše video strani!</description>
+    <description lang="sv">Tillägget låter dig bläddra och spela videor från allas favoritvideosajt!</description>
+    <description lang="th">ส่วนเสริมที่ช่วยให้คุณสามารถเรียกดูและเล่นวิดีโอจากเว็บไซต์วิดีโอที่ทุกคนชื่นชอบ!</description>
+    <description lang="zh">让你能浏览和播放最受欢迎的视频网站内容的插件！</description>
+    <disclaimer lang="af">Sommige dele van hierdie byvoegsel mag dalk nie wettig wees in jou land van verblyf nie - gaan die plaaslike wette na voor installering.</disclaimer>
+    <disclaimer lang="be">Some parts of this addon may not be legal in your country of residence - please check with your local laws before installing.</disclaimer>
+    <disclaimer lang="bg">Някои части от добавката може да са незаконни в държавата, в която се намирате - моля, проверете местните закони, преди да я инсталирате.</disclaimer>
+    <disclaimer lang="ca">Algunes parts d'aquest complement poden no ser legals al vostre país de residència - si us plau verificau les lleis locals abans d'instal·lar-lo.</disclaimer>
+    <disclaimer lang="cs">Některé části tohoto doplňku nemusí být legální ve vašem státě - prosím ověřte vaše zákony před instalací.</disclaimer>
+    <disclaimer lang="da">Nogle dele af dette add-on er muligvis ikke lovlige i dit hjemland - Kontroller venligst dette ved de lokale myndigheder inden du installerer.</disclaimer>
+    <disclaimer lang="de">Einige Teile dieses Addons könnten in deinem Land verboten sein - bitte stelle vor der installation sicher, dass du keine Gesetze verletzt.</disclaimer>
+    <disclaimer lang="el">Κάποια τμήματα αυτού του πρόσθετου ενδέχεται να μην είναι νόμιμα στη χώρα σας - ελέγξετε τη νομοθεσία πριν την εγκατάσταση.</disclaimer>
+    <disclaimer lang="en">Some parts of this addon may not be legal in your country of residence - please check with your local laws before installing.</disclaimer>
+    <disclaimer lang="es">Algunas partes de este addon pueden no ser legales en tu país de residencia - verifica tus leyes locales antes de instalar.</disclaimer>
+    <disclaimer lang="es_AR">Algunas partes de este add-on pueden no ser legales en tu país de residencia - verifica tus leyes locales antes de instalar.</disclaimer>
+    <disclaimer lang="es_MX">Algunas partes de este addon pueden no ser legales en tu país de residencia - por favor consulta tus leyes locales antes de instalar</disclaimer>
+    <disclaimer lang="fi">Jotkin tämän lisäosan osat eivät ehkä ole laillisia maassasi - tarkista paikalliset lait ennen asentamista.</disclaimer>
+    <disclaimer lang="fr">Certaines options de cette extension ne sont peut-être pas autorisées dans votre pays - Merci de le vérifier avant son installation.</disclaimer>
+    <disclaimer lang="gl">Algunhas partes deste engadido poden non ser legais no teu país - por favor verifica as leis locais antes de instalalo.</disclaimer>
+    <disclaimer lang="he">חלקים מתוסף זה עלולים להיות לא חוקיים במקום מגורייך-אנא בדוק את החוקים החלים עלייך לפני התקנת התוסף.</disclaimer>
+    <disclaimer lang="hu">A kiegészítő egyes részei lehet, hogy nem legálisak az Ön hazájában - kérjük ellenőrizze a helyi törvényeket a telepítés elött. </disclaimer>
+    <disclaimer lang="it">Alcune parti di questo addon potrebbero non essere legali nel tuo paese di residenza - Ti preghiamo di controllare la tua normativa locale prima di installarlo.</disclaimer>
+    <disclaimer lang="ja">本アドオンの一部は、お住まいの国によっては違法となる可能性があります。インストール前にお住まいの国の法律をご確認ください。</disclaimer>
+    <disclaimer lang="ko">이 추가기능의 일부분은 사용자의 국가나 거주지역에 따라 합법적이지 않을 수도 있습니다 - 설치하기 전에 관련 법률을 확인하세요.</disclaimer>
+    <disclaimer lang="lt">Kai kurios šio priedo dalys gali būti Nerodomos/Nepaleidžiamos jūsų Šalyje - prašome patikrinti savo vietinius įstatymus prieš įdiegiant priedą.</disclaimer>
+    <disclaimer lang="mk">Некои делови од дополнувањето може да не се легални во вашата држава - провери пред да инсталираш.</disclaimer>
+    <disclaimer lang="nl">Sommige onderdelen van deze plugin kunnen illegaal zijn in uw land.
+Raadpleeg de lokale wetgeving voordat u deze plugin installeert.</disclaimer>
+    <disclaimer lang="no">Noen deler av dette tillegget kan hende ikke er lovlig i landet du bor i - vennligst sjekk med dine lokale lover før du installerer.</disclaimer>
+    <disclaimer lang="pl">Niektóre części tego dodatku mogą być nielegalne w twoim kraju - przed instalacją sprawdź zgodność ze swoim lokalnym prawem.</disclaimer>
+    <disclaimer lang="pt">Algumas partes deste addon podem não ser legais no seu país de residência - por favor confira as leis regionais antes de instalar.</disclaimer>
+    <disclaimer lang="pt_BR">Algumas partes deste addon podem não ser legais em seu país de residência - por favor, verifique as leis locais antes de instalar.</disclaimer>
+    <disclaimer lang="ro">Unele părți ale acestui addon ar putea fi ilegale în țara ta - verifică legislația locală înainte de a-l instala.</disclaimer>
+    <disclaimer lang="ru">Некоторые элементы этого дополнения могут являться незаконными в вашей стране проживания. Перед установкой ознакомьтесь с местным законодательством.</disclaimer>
+    <disclaimer lang="sk">Niektoré časti tohto doplnku nemusia byť vo vašej krajine legálne - pred inštaláciou si prosím overte, či je to v súlade s vašim lokálnym právom.</disclaimer>
+    <disclaimer lang="sl">Deli tega dodatka mogoče niso legalni v kraju vašega bivanja - preverite pred namestitvijo.</disclaimer>
+    <disclaimer lang="sv">Någon del av detta tillägg kanske är olagligt i ditt land - kontrollera dina lokala lagar innan installation.</disclaimer>
+    <disclaimer lang="th">บางส่วนจากส่วนขยายนี้อาจไม่ถูกต้องตามกฏหมายในประเทศของคุณ กรุณาตรวจสอบกฏหมายในประเทศของคุณก่อนทำการติดตั้ง</disclaimer>
+    <disclaimer lang="zh">这个插件的某些内容可能不符合你所在国家的法律规定 - 请在在安装前确认符合当地法律。</disclaimer>
+    <platform>all</platform>
+    <language />
+  </extension>
+</addon>
+
+<addon id="repository.bond" name="Eugene Bond XBMC Add-ons" version="1.0.1" provider-name="Eugene Bond">
+	<extension point="xbmc.addon.repository" name="Eugene Bond XBMC Add-ons">
+		<info compressed="false">https://github.com/Eugene-Bond/xmbc-plugins/raw/master/addons.xml</info>
+		<checksum>https://github.com/Eugene-Bond/xmbc-plugins/raw/master/addons.xml.md5</checksum>
+		<datadir zip="true">https://github.com/Eugene-Bond/xmbc-plugins/raw/master/</datadir>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary>Install Add-ons from Bond's Add-on Repository</summary>
+		<description>Plug-ins for XBMC</description>
+		<disclaimer>There are add-ons that allow viewing popular Russian IPTV providers in the program XBMC</disclaimer>
+		<platform>all</platform>
+	</extension>
+</addon>
+
+<addon id="repository.const"
+       name="Const Kodi Add-ons"
+	   version="1.0.1"
+	   provider-name="const">
+<requires>
+  <import addon="xbmc.addon" version="12.0.0"/>
+</requires>
+	<extension point="xbmc.addon.repository" name="Const Kodi Add-ons">
+		<info compressed="false">https://github.com/const586/const-kodi-repo/raw/master/addons/addons.xml</info>
+		<checksum>https://github.com/const586/const-kodi-repo/raw/master/addons/addons.xml.md5</checksum>
+		<datadir zip="true">https://github.com/const586/const-kodi-repo/raw/master/addons</datadir>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary>Install Add-ons from const Add-on Repository</summary>
+		<summary lang="ru">Дополнения и репозитории Const</summary>
+		<description>Const plug-ins and repository installer for Kodi</description>
+		<description lang="ru">Загружайте и устанавливайте плагины и репозитории от Const.[CR]Если вы обнаружили нерабочее дополнение, сообщите об этом разработчику плагина в на форуме XBMC.RU.</description>
+		<disclaimer lang="en">Team Kodi did not make all the add-ons on this repository and are not responsible for their content</disclaimer>
+		<disclaimer lang="ru">Разработчики Лщвш не являются авторами этих дополнений и не несут ответственность за их содержимое.</disclaimer>
+		<platform>all</platform>
+	</extension>
+</addon>
+
+<addon id="repository.evgen_dev" name="Evgen_dev XBMC Add-ons" version="1.0.0" provider-name="evgen_dev">
+	<extension point="xbmc.addon.repository" name="Evgen_dev XBMC Add-ons">
+		<info compressed="false">https://raw.githubusercontent.com/evgen-dev/repository.evgen_dev.xbmc-addons/master/addons.xml</info>
+		<checksum>https://raw.githubusercontent.com/evgen-dev/repository.evgen_dev.xbmc-addons/master/addons.xml.md5</checksum>
+		<datadir zip="true">https://raw.githubusercontent.com/evgen-dev/repository.evgen_dev.xbmc-addons/master/repo</datadir>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary>Дополнения из репозитория evgen_dev</summary>
+		<description>Дополнения для XBMC</description>
+		<disclaimer>XBMC add-on that allow viewing popular russian resources</disclaimer>
+		<platform>all</platform>
+	</extension>
+</addon>
+
+<addon id="repository.hal9000" name="HAL9000 Add-on Repository" version="1.0.0" provider-name="HAL9000">
+    <extension point="xbmc.addon.repository" name="HAL9000 Add-on Repository">
+        <info compressed="false">https://github.com/xbmc-addon/repository.hal9000/raw/master/addons.xml</info>
+        <checksum>https://github.com/xbmc-addon/repository.hal9000/raw/master/addons.xml.md5</checksum>
+        <datadir zip="true">https://github.com/xbmc-addon/repository.hal9000/raw/master/repo</datadir>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <summary lang="en">Install HAL9000 Addons</summary>
+        <description lang="en">Download and install addons by HAL9000</description>
+        <summary lang="ru">Репозиторий HAL9000</summary>
+        <description lang="ru">Скачивание и установка плагинов от HAL9000</description>
+        <platform>all</platform>
+    </extension>
+</addon>
+
+<addon id="repository.lambda" name="lambda's XBMC Addons" version="1.0.5" provider-name="lambda">
+	<extension point="xbmc.addon.repository" name="lambda's XBMC Addon Repository">
+		<info compressed="false">http://raw.github.com/lambda81/lambda-xbmc-addons/master/addons.xml</info>
+		<checksum>http://raw.github.com/lambda81/lambda-xbmc-addons/master/addons.xml.md5</checksum>
+		<datadir zip="true">http://raw.github.com/lambda81/lambda-xbmc-addons/master/repo</datadir>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary lang="en">Install lambda's Addons</summary>
+		<summary lang="el">Εγκαταστήστε τα πρόσθετα του lambda</summary>
+		<description lang="en">Download and install addons by lambda</description>
+		<description lang="el">Λήψη και εγκατάσταση προσθέτων από τον lambda</description>
+		<platform>all</platform>
+	</extension>
+</addon>
+
+<addon id="repository.mnn" name="MNN Xbmc Add-ons" version="1.0.0" provider-name="MazurokNN">
+	<extension point="xbmc.addon.repository" name="MNN Xbmc Add-ons">
+		<info compressed="false">http://mnn-xbmc-repo.googlecode.com/svn/trunk/addons/addons.xml</info>
+		<checksum>http://mnn-xbmc-repo.googlecode.com/svn/trunk/addons/addons.xml.md5</checksum>
+		<datadir zip="false">http://mnn-xbmc-repo.googlecode.com/svn/trunk/addons/</datadir>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary>Install Add-ons from MNN Add-on Repository</summary>
+		<description>Plug-ins for XBMC</description>
+		<disclaimer>Team XBMC did not make all the add-ons on this repository and are not responsible for their content</disclaimer>
+		<platform>all</platform>
+	</extension>
+</addon>
+
+<addon id="repository.mrstealth" name="Mrstealth XBMC Add-ons" version="1.0.4" provider-name="MrStealth">
+	<extension point="xbmc.addon.repository" name="MrStealth XBMC Add-ons Repository">
+		<info compressed="false">https://raw.github.com/mrstealth/xbmc-plugins/master/addons.xml</info>
+		<checksum>https://raw.github.com/mrstealth/xbmc-plugins/master/addons.xml.md5</checksum>
+		<datadir zip="true">https://raw.github.com/mrstealth/xbmc-plugins/master/repo/</datadir>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary>Install Add-ons from MrStealth add-on repository</summary>
+		<description>Download and install add-ons by mrstealth</description>
+		<disclaimer>Add-ons for home usage in XBMC</disclaimer>
+		<platform>all</platform>
+	</extension>
+</addon>
+
+<addon id="repository.mrstealth.gotham" name="Mrstealth XBMC Gotham" version="1.0.0" provider-name="MrStealth">
+	<extension point="xbmc.addon.repository" name="MrStealth XBMC Add-ons Repository">
+		<info compressed="false">https://raw.github.com/mrstealth/xbmc-gotham/master/addons.xml</info>
+		<checksum>https://raw.github.com/mrstealth/xbmc-gotham/master/addons.xml.md5</checksum>
+		<datadir zip="true">https://raw.github.com/mrstealth/xbmc-gotham/master/zip/</datadir>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary>Install Add-ons from MrStealth add-on repository</summary>
+		<description>Download and install add-ons by mrstealth</description>
+		<disclaimer>Add-ons for home usage in XBMC</disclaimer>
+		<platform>all</platform>
+	</extension>
+</addon>
+
+<addon id="repository.myshows.me" name="MyShows.me Kodi Repo" version="1.0.5" provider-name="DiMartino">
+	<extension point="xbmc.addon.repository" name="MyShows.me Kodi Repo">
+		<info compressed="false">http://api.bitbucket.org/1.0/repositories/DiMartino/myshows.me-kodi-repo/raw/default/addons.xml</info>
+		<checksum>http://api.bitbucket.org/1.0/repositories/DiMartino/myshows.me-kodi-repo/raw/default/addons.xml.md5</checksum>
+		<datadir zip="true">http://api.bitbucket.org/1.0/repositories/DiMartino/myshows.me-kodi-repo/raw/default/repo/</datadir>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary>Устанавливайте дополнения из репозитория MyShows.me</summary>
+		<description>Дополнения для Kodi</description>
+		<disclaimer>DiMartino</disclaimer>
+		<platform>all</platform>
+	</extension>
+</addon>
+
+<addon id="repository.ru"
+       name="XBMC.ru forum Add-ons"
+	   version="1.0.1"
+	   provider-name="bigbax">
+<requires>
+  <import addon="xbmc.addon" version="12.0.0"/>
+</requires>
+	<extension point="xbmc.addon.repository" name="XBMC.ru forum Add-ons">
+		<info compressed="false">https://github.com/xbmcrus/XBMC.ru-forum-Add-ons/raw/master/addons.xml</info>
+		<checksum>https://github.com/xbmcrus/XBMC.ru-forum-Add-ons/raw/master/addons.xml.md5</checksum>
+		<datadir zip="true">https://github.com/xbmcrus/XBMC.ru-forum-Add-ons/raw/master/</datadir>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary>Install Add-ons from RUS Add-on Repository</summary>
+		<summary lang="ru">Установить дополнения и репозитории пользователей форума XBMC.ru</summary>
+		<description>Russian plug-ins and repository installer for XBMC</description>
+		<description lang="ru">Загружайте и устанавливайте плагины и репозитории разработчиков форума XBMC.ru.[CR]Если вы обнаружили нерабочее дополнение, сообщите об этом разработчикам плагина в разделе форума "Помощь по плагинам".</description>
+		<disclaimer lang="en">Team XBMC did not make all the add-ons on this repository and are not responsible for their content</disclaimer>
+		<disclaimer lang="ru">Разработчики XBMC не являются авторами этих дополнений и не несут ответственность за их содержимое.</disclaimer>
+		<platform>all</platform>
+	</extension>
+</addon>
+
+<addon id="repository.search.db"
+		name="XBMC.ru search db"
+		version="1.1.2"
+		provider-name="bigbax">
+  <requires>
+    <import addon="xbmc.addon" version="12.0.0"/>
+  </requires>
+	<extension point="xbmc.addon.repository"
+		name="XBMC.ru search db">
+	        <dir minversion="13.0.0">
+			<info compressed="true">https://github.com/seppius-xbmc-repo/ru/raw/master/addons.xml</info>
+			<checksum>https://github.com/seppius-xbmc-repo/ru/raw/master/addons.xml.md5</checksum>
+			<datadir zip="true">https://github.com/seppius-xbmc-repo/ru/raw/master/</datadir>
+			<hashes>true</hashes>
+		</dir>
+		<dir minversion="13.0.0">
+			<info compressed="false">http://xbmc-vk-repo.googlecode.com/svn/trunk/addons/addons.xml</info>
+			<checksum>http://xbmc-vk-repo.googlecode.com/svn/trunk/addons/addons.xml.md5</checksum>
+			<datadir zip="false">http://xbmc-vk-repo.googlecode.com/svn/trunk/addons/</datadir>
+			<hashes>true</hashes>
+		</dir>
+	        <dir minversion="14.0.0">
+			<info compressed="false">http://ex-ua-viewer.googlecode.com/hg/addons.xml</info>
+			<checksum>http://ex-ua-viewer.googlecode.com/hg/addons.xml.md5</checksum>
+			<datadir zip="true">http://ex-ua-viewer.googlecode.com/hg/</datadir>
+			<hashes>true</hashes>
+		</dir>
+		<dir minversion="14.0.0">
+			<info compressed="false">https://github.com/const586/const-kodi-repo/raw/master/addons/addons.xml</info>
+			<checksum>https://github.com/const586/const-kodi-repo/raw/master/addons/addons.xml.md5</checksum>
+			<datadir zip="true">https://github.com/const586/const-kodi-repo/raw/master/addons</datadir>
+			<hashes>true</hashes>
+		</dir>
+	        <dir minversion="14.0.0">
+			<info compressed="false">https://api.bitbucket.org/1.0/repositories/vadimskorba/torrenter/raw/default/addons.xml</info>
+			<checksum>https://api.bitbucket.org/1.0/repositories/vadimskorba/torrenter/raw/default/addons.xml.md5</checksum>
+			<datadir zip="true">https://api.bitbucket.org/1.0/repositories/vadimskorba/torrenter/raw/default/</datadir>
+			<hashes>true</hashes>
+		</dir>
+	        <dir minversion="14.0.0">
+			<info compressed="false">https://github.com/Eugene-Bond/xmbc-plugins/raw/master/addons.xml</info>
+			<checksum>https://github.com/Eugene-Bond/xmbc-plugins/raw/master/addons.xml.md5</checksum>
+			<datadir zip="true">https://github.com/Eugene-Bond/xmbc-plugins/raw/master/</datadir>
+			<hashes>true</hashes>
+		</dir>
+		<dir minversion="14.0.0">
+			<info compressed="false">https://raw.github.com/evgen-dev/repository.evgen_dev.xbmc-addons/master/addons.xml</info>
+			<checksum>https://raw.github.com/evgen-dev/repository.evgen_dev.xbmc-addons/master/addons.xml.md5</checksum>
+			<datadir zip="true">https://raw.github.com/evgen-dev/repository.evgen_dev.xbmc-addons/master/repo</datadir>
+			<hashes>true</hashes>
+		</dir>
+	        <dir minversion="14.0.0">
+			<info compressed="false">https://github.com/xbmc-addon/repository.hal9000/raw/master/addons.xml</info>
+			<checksum>https://github.com/xbmc-addon/repository.hal9000/raw/master/addons.xml.md5</checksum>
+			<datadir zip="true">https://github.com/xbmc-addon/repository.hal9000/raw/master/repo</datadir>
+			<hashes>true</hashes>
+		</dir>
+		<dir minversion="14.0.0">
+			<info compressed="false">https://github.com/tdw1980/tdw/raw/master/addons.xml</info>
+			<checksum>https://github.com/tdw1980/tdw/raw/master/addons.xml.md5</checksum>
+			<datadir zip="true">https://github.com/tdw1980/tdw/raw/master/</datadir>
+			<hashes>true</hashes>
+		</dir>
+		<dir minversion="14.0.0">
+			<info compressed="false">http://mnn-xbmc-repo.googlecode.com/svn/trunk/addons/addons.xml</info>
+			<checksum>http://mnn-xbmc-repo.googlecode.com/svn/trunk/addons/addons.xml.md5</checksum>
+			<datadir zip="false">http://mnn-xbmc-repo.googlecode.com/svn/trunk/addons/</datadir>
+			<hashes>true</hashes>
+		</dir>
+		<dir minversion="13.0.0">
+			<info compressed="false">https://raw.github.com/mrstealth/xbmc-gotham/master/addons.xml</info>
+			<checksum>https://raw.github.com/mrstealth/xbmc-gotham/master/addons.xml.md5</checksum>
+			<datadir zip="true">https://raw.github.com/mrstealth/xbmc-gotham/master/zip/</datadir>
+			<hashes>true</hashes>
+		</dir>
+		<dir minversion="14.0.0">
+			<info compressed="false">http://api.bitbucket.org/1.0/repositories/DiMartino/myshows.me-kodi-repo/raw/default/addons.xml</info>
+			<checksum>http://api.bitbucket.org/1.0/repositories/DiMartino/myshows.me-kodi-repo/raw/default/addons.xml.md5</checksum>
+			<datadir zip="true">http://api.bitbucket.org/1.0/repositories/DiMartino/myshows.me-kodi-repo/raw/default/repo/</datadir>
+			<hashes>true</hashes>
+		</dir>
+		<dir minversion="14.0.0">
+			<info compressed="false">http://silhouette-xbmc-repo.googlecode.com/svn/trunk/addons/addons.xml</info>
+			<checksum>http://silhouette-xbmc-repo.googlecode.com/svn/trunk/addons/addons.xml.md5</checksum>
+			<datadir zip="false">http://silhouette-xbmc-repo.googlecode.com/svn/trunk/addons/</datadir>
+			<hashes>true</hashes>
+		</dir>
+		<dir minversion="14.0.0">
+			<info compressed="false">https://github.com/Silhouette2022/kodi/raw/master/addons.xml</info>
+			<checksum>https://github.com/Silhouette2022/kodi/raw/master/addons.xml.md5</checksum>
+			<datadir zip="true">https://github.com/Silhouette2022/kodi/raw/master/repo</datadir>
+			<hashes>true</hashes>
+		</dir>
+		<dir minversion="14.0.0">
+			<info compressed="false">http://tolin-xbmc-repo.googlecode.com/svn/trunk/addons/addons.xml</info>
+			<checksum>http://tolin-xbmc-repo.googlecode.com/svn/trunk/addons/addons.xml.md5</checksum>
+			<datadir zip="false">http://tolin-xbmc-repo.googlecode.com/svn/trunk/addons/</datadir>
+			<hashes>true</hashes>
+		</dir>
+		<dir minversion="14.0.0">
+			<info compressed="false">http://xbmc-vk-repo.googlecode.com/svn/trunk/addons/addons.xml</info>
+			<checksum>http://xbmc-vk-repo.googlecode.com/svn/trunk/addons/addons.xml.md5</checksum>
+			<datadir zip="false">http://xbmc-vk-repo.googlecode.com/svn/trunk/addons/</datadir>
+			<hashes>true</hashes>
+		</dir>
+		<dir minversion="14.0.0">
+			<info compressed="false">http://afedchin.github.io/repository/addons.xml</info>
+			<checksum>http://afedchin.github.io/repository/addons.xml.md5</checksum>
+			<datadir zip="true">http://afedchin.github.io/repository/</datadir>
+			<hashes>true</hashes>
+		</dir>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary lang="en_US">Install Add-ons for XBMC, Kodi.tv</summary>
+		<summary lang="ru">Установить дополнения для XBMC, Kodi.tv</summary>
+		<description lang="ru">Загружайте и устанавливайте плагины авторов русского форума XBMC[CR]Если вы обнаружили нерабочее дополнение, сообщите об этом разработчику плагина в разделе "Помощь по плагинам" русского форума.</description>
+		<disclaimer lang="en_US">Team-Kodi did not make the add-ons on this repository and are not responsible for their content</disclaimer>
+		<disclaimer lang="ru">Разработчики Kodi не являются авторами дополнений в данном репозитории и не несут ответственность за их содержимое.</disclaimer>
+		<platform>all</platform>
+	</extension>
+</addon>
+
+<addon id="repository.seppius"
+       name="Seppius XBMC Add-ons"
+	   version="1.0.1"
+	   provider-name="seppius">
+<requires>
+  <import addon="xbmc.addon" version="12.0.0"/>
+</requires>
+	<extension point="xbmc.addon.repository" name="Seppius XBMC Add-ons">
+		<info compressed="false">https://github.com/seppius-xbmc-repo/ru/raw/master/addons.xml</info>
+		<checksum>https://github.com/seppius-xbmc-repo/ru/raw/master/addons.xml.md5</checksum>
+		<datadir zip="true">https://github.com/seppius-xbmc-repo/ru/raw/master/</datadir>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary>Install Add-ons from RUS Add-on Repository</summary>
+		<summary lang="ru">Дополнения и репозитории пользователей форума XBMC.ru</summary>
+		<description>Russian plug-ins and repository installer for XBMC</description>
+		<description lang="ru">Загружайте и устанавливайте плагины и репозитории разработчиков форума XBMC.ru.[CR]Если вы обнаружили нерабочее дополнение, сообщите об этом разработчикам плагина в разделе форума "Помощь по плагинам".</description>
+		<disclaimer lang="en">Team XBMC did not make all the add-ons on this repository and are not responsible for their content</disclaimer>
+		<disclaimer lang="ru">Разработчики XBMC не являются авторами этих дополнений и не несут ответственность за их содержимое.</disclaimer>
+		<platform>all</platform>
+	</extension>
+</addon>
+
+<addon id="repository.silhouette" name="Silhouette XBMC Add-ons" version="1.0.2" provider-name="Silhouette">
+	<extension point="xbmc.addon.repository" name="Silhouette XBMC Add-ons">
+		<info compressed="false">http://silhouette-xbmc-repo.googlecode.com/svn/trunk/addons/addons.xml</info>
+		<checksum>http://silhouette-xbmc-repo.googlecode.com/svn/trunk/addons/addons.xml.md5</checksum>
+		<datadir zip="false">http://silhouette-xbmc-repo.googlecode.com/svn/trunk/addons/</datadir>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary>Install Add-ons from Silhouette Add-on Repository</summary>
+		<description>Plug-ins for XBMC</description>
+		<disclaimer>add-ons for home usage in XBMC</disclaimer>
+		<platform>all</platform>
+	</extension>
+</addon>
+
+<addon id="repository.superrepo.org.frodo.all" name="SuperRepo Frodo All" version="0.5.1" provider-name="Bart Otten">
+	<extension point="xbmc.addon.repository" name="SuperRepo.org Frodo Repository - All">
+		<info compressed="false">http://mirrors.superrepo.org/addons/frodo/.xml/all/addons.xml</info>
+		<checksum>http://mirrors.superrepo.org/addons/frodo/.xml/all/addons.xml.md5</checksum>
+		<datadir zip="true">http://mirrors.superrepo.org/addons/frodo/</datadir>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary>Install add-ons Frodo from the SuperRepo.org All Repository</summary>
+		<summary lang="en">Installer add-ons Frodo from SuperRepo.org All Repository</summary>
+		<summary lang="nl">Installeer add-ons uit de SuperRepo.org All Repository</summary>
+		<summary lang="cz">Inštalácia add-ons zo SuperRepo.org All Repozitár</summary>
+		<summary lang="de">Installation von Addons aus dem SuperRepo.org All Repository</summary>
+		<summary lang="pt"> Instale add-ons do SuperRepo.org All  Repositório </summary>
+		<summary lang="br"> Instale add-ons do SuperRepo.org All  Repositório </summary>
+		<description>Download and install add-ons in the category "All" from the SuperRepo.org addon repository.[CR][CR]If you find a broken or not working addon or you would like to include another one, please have a look at http://superrepo.org/[CR][CR]The repository is maintained by the XBMC community using the SuperRepo Wiki and our generator fetches addons from multiple sources. Therefore SuperRepo accepts no responsibility for this service.[CR][CR]The eXtended Reposity Generator is developed by Bart Otten[CR][CR]</description>
+		<description lang="nl">Download and installeer add-ons in de categorie "All" uit de SuperRepo.org addon repository.[CR][CR]Als u een niet werkende addon vindt of u wilt een extra addon toevoegen, kijk dan op http://superrepo.org/[CR][CR]De repository wordt via de SuperRepo Wiki onderhouden door de XBMC gemeenschap en de generator verzamelt addons van verschillende bronnen. Daarom accepteert SuperRepo geen enkele verantwoordelijkheid voor de ingevoegde addons.[CR][CR]De eXtended Reposity Generator is ontwikkeld door Bart Otten[CR][CR]</description>
+		<description lang="cz">Preber a inštaluj add-ons do kategórie "All" z SuperRepo.org addon repozitár.[CR][CR]Ak si našiel add-on ktorý je poškodený alebo nefunkčný, alebo chceš pridať nový addon, potom prosím pozri na http://superrepo.org/[CR][CR]Repozitár je udržiavaný komunitou XBMC a za pomoci SuperRepo Wiki, a tento preberá addons z rôznych zdrojov. Vzhľadom na to, SuperRepo nenesie žiadnu zodpovednosť za služby poskytované týmito addons.[CR][CR]Rozšírený repozitár vyvinul Bart Otten[CR][CR]</description>
+		<description lang="de">Lade und installiere Addons der Kategorie "All" aus dem SuperRepo.org Addon Repository.[CR][CR]Möchtest du ein fehlerhaftes Addon melden oder ein neues Addon vorschlagen, kannst du dies über unsere Webseite http://superrepo.org tun.[CR][CR]Das Repository wird mit Hilfe des SuperRepo Wiki durch die XBMC Community gepflegt und durch unseren Generator aus mehreren Quellen zusammengestellt. Daher übernimmt SuperRepo keinerlei Verantwortung für diesen Service.[CR][CR]Der "eXtended Reposity Generator" wird durch Bart Otten entwickelt.[CR][CR]</description>
+		<description lang="pt"> Baixe e instale o add-ons na categoria "All" do Repositório SuperRepo.org. [CR] [CR] Se você encontrar um addon quebrado ou não funcionando, ou você gostaria de incluir um outro, por favor visite http://superrepo.org/ [CR] [CR]O repositório é mantida pela comunidade do XBMC usando o Wiki do SuperRepo e o nosso gerador de busca de addons múltiplas fontes. Portanto SuperRepo não aceita qualquer responsabilidade por esse serviço.[CR][CR]O Gerador Reposity eXtended é desenvolvido por Bart Otten[CR][CR] </description>
+		<description lang="br"> Baixe e instale o add-ons na categoria "All" do Repositório SuperRepo.org. [CR] [CR] Se você encontrar um addon quebrado ou não funcionando, ou você gostaria de incluir um outro, por favor visite http://superrepo.org/ [CR][CR]O repositório é mantida pela comunidade do XBMC usando o Wiki do SuperRepo e o nosso gerador de busca de addons múltiplas fontes. Portanto SuperRepo não aceita qualquer responsabilidade por esse serviço.[CR][CR]O Gerador Reposity eXtended é desenvolvido por Bart Otten[CR][CR]</description>
+		<disclaimer>The repository is maintained by the XBMC community and our generator fetches addons from multiple sources. Therefore SuperRepo accepts no responsibility for included addons.[CR]</disclaimer>
+		<disclaimer lang="nl">De repository wordt onderhouden door de XBMC gemeenschap en de generator verzamelt addons van verschillende bronnen. Daarom accepteert SuperRepo geen enkele verantwoordelijkheid voor de ingevoegde addons.[CR]</disclaimer>
+		<disclaimer lang="cz">Repozitár je udržiavaný komunitou XBMC a za pomoci SuperRepo Wiki, a tento preberá addons z rôznych zdrojov. Vzhľadom na to, SuperRepo nenesie žiadnu zodpovednosť za služby poskytované týmito addons.[CR]</disclaimer>
+		<disclaimer lang="de">Das Repository wird durch die XBMC Community gepflegt und durch unseren Generator aus mehreren Quellen zusammengestellt. Daher übernimmt SuperRepo keinerlei Verantwortung für die enthaltenen Addons.[CR]</disclaimer>
+		<disclaimer lang="pt"> O repositório é mantido pela comunidade comunidade do XBMC e o nosso gerador de busca de addons de múltiplas fontes. Portanto SuperRepo aceita não se responsabiliza por addons incluídos.[CR]</disclaimer>
+		<disclaimer lang="br"> O repositório é mantido pela comunidade comunidade do XBMC e o nosso gerador de busca de addons de múltiplas fontes. Portanto SuperRepo aceita não se responsabiliza por addons incluídos.[CR]</disclaimer>
+		<platform>all</platform>
+		<website>http://superrepo.org/</website>
+	</extension>
+</addon>
+
+<addon id="repository.superrepo.org.gotham.all" name="SuperRepo Gotham All" version="0.5.1" provider-name="Bart Otten">
+	<extension point="xbmc.addon.repository" name="SuperRepo.org Gotham Repository - All">
+		<info compressed="false">http://mirrors.superrepo.org/addons/gotham/.xml/all/addons.xml</info>
+		<checksum>http://mirrors.superrepo.org/addons/gotham/.xml/all/addons.xml.md5</checksum>
+		<datadir zip="true">http://mirrors.superrepo.org/addons/gotham/</datadir>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary>Install add-ons Gotham from the SuperRepo.org All Repository</summary>
+		<summary lang="nl">Installeer add-ons uit de SuperRepo.org All Repository</summary>
+		<summary lang="cz">Inštalácia add-ons zo SuperRepo.org All Repozitár</summary>
+		<summary lang="de">Installation von Addons aus dem SuperRepo.org All Repository</summary>
+		<summary lang="pt"> Instale add-ons do SuperRepo.org All  Repositório </summary>
+		<summary lang="br"> Instale add-ons do SuperRepo.org All  Repositório </summary>
+		<description>Download and install add-ons in the category "All" from the SuperRepo.org addon repository.[CR][CR]If you find a broken or not working addon or you would like to include another one, please have a look at http://superrepo.org/[CR][CR]The repository is maintained by the XBMC community using the SuperRepo Wiki and our generator fetches addons from multiple sources. Therefore SuperRepo accepts no responsibility for this service.[CR][CR]The eXtended Reposity Generator is developed by Bart Otten[CR][CR]</description>
+		<description lang="nl">Download and installeer add-ons in de categorie "All" uit de SuperRepo.org addon repository.[CR][CR]Als u een niet werkende addon vindt of u wilt een extra addon toevoegen, kijk dan op http://superrepo.org/[CR][CR]De repository wordt via de SuperRepo Wiki onderhouden door de XBMC gemeenschap en de generator verzamelt addons van verschillende bronnen. Daarom accepteert SuperRepo geen enkele verantwoordelijkheid voor de ingevoegde addons.[CR][CR]De eXtended Reposity Generator is ontwikkeld door Bart Otten[CR][CR]</description>
+		<description lang="cz">Preber a inštaluj add-ons do kategórie "All" z SuperRepo.org addon repozitár.[CR][CR]Ak si našiel add-on ktorý je poškodený alebo nefunkčný, alebo chceš pridať nový addon, potom prosím pozri na http://superrepo.org/[CR][CR]Repozitár je udržiavaný komunitou XBMC a za pomoci SuperRepo Wiki, a tento preberá addons z rôznych zdrojov. Vzhľadom na to, SuperRepo nenesie žiadnu zodpovednosť za služby poskytované týmito addons.[CR][CR]Rozšírený repozitár vyvinul Bart Otten[CR][CR]</description>
+		<description lang="de">Lade und installiere Addons der Kategorie "All" aus dem SuperRepo.org Addon Repository.[CR][CR]Möchtest du ein fehlerhaftes Addon melden oder ein neues Addon vorschlagen, kannst du dies über unsere Webseite http://superrepo.org tun.[CR][CR]Das Repository wird mit Hilfe des SuperRepo Wiki durch die XBMC Community gepflegt und durch unseren Generator aus mehreren Quellen zusammengestellt. Daher übernimmt SuperRepo keinerlei Verantwortung für diesen Service.[CR][CR]Der "eXtended Reposity Generator" wird durch Bart Otten entwickelt.[CR][CR]</description>
+		<description lang="pt"> Baixe e instale o add-ons na categoria "All" do Repositório SuperRepo.org. [CR] [CR] Se você encontrar um addon quebrado ou não funcionando, ou você gostaria de incluir um outro, por favor visite http://superrepo.org/ [CR] [CR]O repositório é mantida pela comunidade do XBMC usando o Wiki do SuperRepo e o nosso gerador de busca de addons múltiplas fontes. Portanto SuperRepo não aceita qualquer responsabilidade por esse serviço.[CR][CR]O Gerador Reposity eXtended é desenvolvido por Bart Otten[CR][CR] </description>
+		<description lang="br"> Baixe e instale o add-ons na categoria "All" do Repositório SuperRepo.org. [CR] [CR] Se você encontrar um addon quebrado ou não funcionando, ou você gostaria de incluir um outro, por favor visite http://superrepo.org/ [CR][CR]O repositório é mantida pela comunidade do XBMC usando o Wiki do SuperRepo e o nosso gerador de busca de addons múltiplas fontes. Portanto SuperRepo não aceita qualquer responsabilidade por esse serviço.[CR][CR]O Gerador Reposity eXtended é desenvolvido por Bart Otten[CR][CR]</description>
+		<disclaimer>The repository is maintained by the XBMC community and our generator fetches addons from multiple sources. Therefore SuperRepo accepts no responsibility for included addons.[CR]</disclaimer>
+		<disclaimer lang="nl">De repository wordt onderhouden door de XBMC gemeenschap en de generator verzamelt addons van verschillende bronnen. Daarom accepteert SuperRepo geen enkele verantwoordelijkheid voor de ingevoegde addons.[CR]</disclaimer>
+		<disclaimer lang="cz">Repozitár je udržiavaný komunitou XBMC a za pomoci SuperRepo Wiki, a tento preberá addons z rôznych zdrojov. Vzhľadom na to, SuperRepo nenesie žiadnu zodpovednosť za služby poskytované týmito addons.[CR]</disclaimer>
+		<disclaimer lang="de">Das Repository wird durch die XBMC Community gepflegt und durch unseren Generator aus mehreren Quellen zusammengestellt. Daher übernimmt SuperRepo keinerlei Verantwortung für die enthaltenen Addons.[CR]</disclaimer>
+		<disclaimer lang="pt"> O repositório é mantido pela comunidade comunidade do XBMC e o nosso gerador de busca de addons de múltiplas fontes. Portanto SuperRepo aceita não se responsabiliza por addons incluídos.[CR]</disclaimer>
+		<disclaimer lang="br"> O repositório é mantido pela comunidade comunidade do XBMC e o nosso gerador de busca de addons de múltiplas fontes. Portanto SuperRepo aceita não se responsabiliza por addons incluídos.[CR]</disclaimer>
+		<platform>all</platform>
+		<website>http://superrepo.org/</website>
+	</extension>
+</addon>
+
+<addon id="repository.superrepo.org.helix.all" name="SuperRepo  All [v5/m3]" version="0.5.205" provider-name="Bart Otten">
+<requires>
+    <import addon="xbmc.addon" version="12.0.0" />
+</requires>
+        <extension point="xbmc.addon.repository" name="SuperRepo  All [v5/m3]">
+                <info compressed="false">http://xml.superrepo.org/v5/.xml/helix/all/addons.xml</info>
+                <checksum>http://md5.superrepo.org/v5/.md5/helix/all/addons.xml.md5</checksum>
+                <datadir zip="true">http://redirect.superrepo.org/v5/addons/</datadir>
+                <hashes>true</hashes>
+        </extension>
+        <extension point="xbmc.addon.metadata">
+                <summary>Install add-ons from the SuperRepo.org  All Repository</summary>
+                <summary lang="nl">Installeer add-ons uit de SuperRepo.org  All Repository</summary>
+                <summary lang="cz">Inštalácia add-ons zo SuperRepo.org  All Repozitár</summary>
+                <summary lang="de">Installation von Addons aus dem SuperRepo.org  All Repository</summary>
+                <summary lang="pt"> Instale add-ons do SuperRepo.org  All  Repositório </summary>
+                <summary lang="br"> Instale add-ons do SuperRepo.org  All  Repositório </summary>
+                <description>Download and install add-ons in the category " All" from the SuperRepo.org addon repository.[CR][CR]If you find a broken or not working addon or you would like to include another one, please have a look at http://superrepo.org/[CR][CR]The repository is maintained by the XBMC community using the SuperRepo Wiki and our generator fetches addons from multiple sources. Therefore SuperRepo accepts no responsibility for this service.[CR][CR]The eXtended Reposity Generator is developed by Bart Otten[CR][CR]</description>
+                <description lang="nl">Download and installeer add-ons in de categorie " All" uit de SuperRepo.org addon repository.[CR][CR]Als u een niet werkende addon vindt of u wilt een extra addon toevoegen, kijk dan op http://superrepo.org/[CR][CR]De repository wordt via de SuperRepo Wiki onderhouden door de XBMC gemeenschap en de generator verzamelt addons van verschillende bronnen. Daarom accepteert SuperRepo geen enkele verantwoordelijkheid voor de ingevoegde addons.[CR][CR]De eXtended Reposity Generator is ontwikkeld door Bart Otten[CR][CR]</description>
+                <description lang="cz">Preber a inštaluj add-ons do kategórie " All" z SuperRepo.org addon repozitár.[CR][CR]Ak si našiel add-on ktorý je poškodený alebo nefunkčný, alebo chceš pridať nový addon, potom prosím pozri na http://superrepo.org/[CR][CR]Repozitár je udržiavaný komunitou XBMC a za pomoci SuperRepo Wiki, a tento preberá addons z rôznych zdrojov. Vzhľadom na to, SuperRepo nenesie žiadnu zodpovednosť za služby poskytované týmito addons.[CR][CR]Rozšírený repozitár vyvinul Bart Otten[CR][CR]</description>
+                <description lang="de">Lade und installiere Addons der Kategorie " All" aus dem SuperRepo.org Addon Repository.[CR][CR]Möchtest du ein fehlerhaftes Addon melden oder ein neues Addon vorschlagen, kannst du dies über unsere Webseite http://superrepo.org tun.[CR][CR]Das Repository wird mit Hilfe des SuperRepo Wiki durch die XBMC Community gepflegt und durch unseren Generator aus mehreren Quellen zusammengestellt. Daher übernimmt SuperRepo keinerlei Verantwortung für diesen Service.[CR][CR]Der "eXtended Reposity Generator" wird durch Bart Otten entwickelt.[CR][CR]</description>
+                <description lang="pt"> Baixe e instale o add-ons na categoria " All" do Repositório SuperRepo.org. [CR] [CR] Se você encontrar um addon quebrado ou não funcionando, ou você gostaria de incluir um outro, por favor visite http://superrepo.org/ [CR] [CR]O repositório é mantida pela comunidade do XBMC usando o Wiki do SuperRepo e o nosso gerador de busca de addons múltiplas fontes. Portanto SuperRepo não aceita qualquer responsabilidade por esse serviço.[CR][CR]O Gerador Reposity eXtended é desenvolvido por Bart Otten[CR][CR] </description>
+                <description lang="br"> Baixe e instale o add-ons na categoria " All" do Repositório SuperRepo.org. [CR] [CR] Se você encontrar um addon quebrado ou não funcionando, ou você gostaria de incluir um outro, por favor visite http://superrepo.org/ [CR][CR]O repositório é mantida pela comunidade do XBMC usando o Wiki do SuperRepo e o nosso gerador de busca de addons múltiplas fontes. Portanto SuperRepo não aceita qualquer responsabilidade por esse serviço.[CR][CR]O Gerador Reposity eXtended é desenvolvido por Bart Otten[CR][CR]</description>
+                <disclaimer>The repository is maintained by the XBMC community and our generator fetches addons from multiple sources. Therefore SuperRepo accepts no responsibility for included addons.[CR]</disclaimer>
+                <disclaimer lang="nl">De repository wordt onderhouden door de XBMC gemeenschap en de generator verzamelt addons van verschillende bronnen. Daarom accepteert SuperRepo geen enkele verantwoordelijkheid voor de ingevoegde addons.[CR]</disclaimer>
+                <disclaimer lang="cz">Repozitár je udržiavaný komunitou XBMC a za pomoci SuperRepo Wiki, a tento preberá addons z rôznych zdrojov. Vzhľadom na to, SuperRepo nenesie žiadnu zodpovednosť za služby poskytované týmito addons.[CR]</disclaimer>
+                <disclaimer lang="de">Das Repository wird durch die XBMC Community gepflegt und durch unseren Generator aus mehreren Quellen zusammengestellt. Daher übernimmt SuperRepo keinerlei Verantwortung für die enthaltenen Addons.[CR]</disclaimer>
+                <disclaimer lang="pt"> O repositório é mantido pela comunidade comunidade do XBMC e o nosso gerador de busca de addons de múltiplas fontes. Portanto SuperRepo aceita não se responsabiliza por addons incluídos.[CR]</disclaimer>
+                <disclaimer lang="br"> O repositório é mantido pela comunidade comunidade do XBMC e o nosso gerador de busca de addons de múltiplas fontes. Portanto SuperRepo aceita não se responsabiliza por addons incluídos.[CR]</disclaimer>
+                <platform>all</platform>
+                <website>http://superrepo.org/</website>
+        </extension>
+</addon>
+
+<addon id="repository.tdw1980"
+       name="TDW1980 Add-ons"
+	   version="1.0.2"
+	   provider-name="TDW1980">
+<requires>
+  <import addon="xbmc.addon" version="12.0.0"/>
+</requires>
+	<extension point="xbmc.addon.repository" name="TDW1980 XBMC Add-ons">
+		<info compressed="false">https://github.com/tdw1980/tdw/raw/master/addons.xml</info>
+		<checksum>https://github.com/tdw1980/tdw/raw/master/addons.xml.md5</checksum>
+		<datadir zip="true">https://github.com/tdw1980/tdw/raw/master/</datadir>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary>Install Add-ons from TDW1980 Add-on Repository</summary>
+		<description>Plug-ins for XBMC</description>
+		<disclaimer>There are git my add-ons for XBMC</disclaimer>
+		<platform>all</platform>
+	</extension>
+</addon>
+
+<addon id="repository.tolin" name="TOLIN XBMC Add-on's" version="1.0.0" provider-name="tolin">
+	<extension point="xbmc.addon.repository" name="TOLIN XBMC Add-on's">
+		<info compressed="false">http://tolin-xbmc-repo.googlecode.com/svn/trunk/addons/addons.xml</info>
+		<checksum>http://tolin-xbmc-repo.googlecode.com/svn/trunk/addons/addons.xml.md5</checksum>
+		<datadir zip="false">http://tolin-xbmc-repo.googlecode.com/svn/trunk/addons/</datadir>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary>Install Add-on's from Tolin Repository</summary>
+		<description>It' a popular Russian and International media resources for XBMC</description>
+		<description>Это популярные Российские и Международные медиа ресурсы для XBMC</description>
+		<disclaimer>All rights reserved</disclaimer>
+		<platform>all</platform>
+	</extension>
+</addon>
+
+<addon id="script.common.plugin.cache" name="Common plugin cache" provider-name="TheCollective" version="2.5.5">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0" />
+  </requires>
+  <extension library="default.py" point="xbmc.service" start="startup">
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <platform>all</platform>
+    <summary lang="en">Common caching api for xbmc plugins.</summary>
+  </extension>
+  <extension library="lib" point="xbmc.python.module" />
+</addon>
+
+<addon id="script.epg.iptv" name="EPG для pvr.IPTV" version="1.1.2" provider-name="Alex S.Galickij">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.script" library="addon.py"/>
+  <extension point="xbmc.addon.metadata">
+    <summary lang="ru">Вся информация о возможностях скрипта и его настройках на http://tvbox.link</summary>
+    <description lang="ru">Скрипт предназначен для формирования EPG, в формате xmltv и совместной работы с pvr.IPTVSimple. EPG формируется для заданного города России, Казахстана, Украины и Беларуси, включает в себя региональные каналы и не требует корректировки времени как в PVR addons, так и в плейлисте. В скрипте предусмотрена возможность формирования плейлиста по шаблону, автоматическая настройка pvr.IPTVSimple. Скрипт использует ТВ программу с сайта tv.Yandex.ru.Приятного, Вам, просмотра!</description>
+	<disclaimer lang="ru">Это тестовая, бесплатная версия! Возможны незначительные ошибки, которые могут быть устранены с Вашей помощью. Об ошибках сообщите, пожалуйста, на support@tvbox.link</disclaimer>
+	<platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="script.favourites" name="Favourites script" version="8.0.8" provider-name="ronie|`Black">
+	<requires>
+		<import addon="xbmc.python" version="2.1.0"/>
+	</requires>
+	<extension point="xbmc.python.library" library="default.py"/>
+	<extension point="xbmc.addon.metadata">
+		<language/>
+		<summary>Favourites script</summary>
+		<description>Fetches item from your xbmc favourites to populate Home menu/submenu with custom buttons.</description>
+		<disclaimer>Needs skin support for it to be used properly</disclaimer>
+		<platform>all</platform>
+		<forum>http://forum.xbmc.org/showthread.php?tid=114671</forum>
+		<source>https://code.google.com/p/ronie/source/</source>
+	</extension>
+</addon>
+
+<addon
+id="script.m3u.convertor"
+version="0.0.6"
+name="M3U Playlist Convertor"
+provider-name="Roman_V_M">
+<requires>
+  <import addon="xbmc.python" version="2.1.0"/>
+</requires>
+<extension point="xbmc.python.script" library="default.py" >
+  <provides>executable</provides>
+</extension>
+<extension point="xbmc.addon.metadata">
+  <summary lang="en">M3U Playlist Convertor</summary>
+  <summary lang="ru">Конвертор плейлистов m3u</summary>
+  <description lang="en">IPTV M3U playlist convertor for XBMC pvr.demo add-on. Before launching the script open its settings and select the location or URL of a playlist to convert and a channel icons folder (optional).</description>
+  <description lang="ru">Конвертор плейлистов IPTV в формате m3u для дополнения XBMC pvr.demo. Перед запуском укажите в настройках дополнения путь к плейлисту, который нужно сконвертировать, или его URL, а также папку со значками каналов (необязательно).</description>
+<platform>all</platform>
+</extension>
+</addon>
+
+<addon id="script.module.YaTv"
+       name="YaTv"
+       version="2.1.7"
+       provider-name="TDW, -=St.Anger=-">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+	<import addon="script.module.beautifulsoup"/>
+  </requires>
+  <extension point="xbmc.addon.metadata">
+    <summary>YaTv</summary>
+    <description>Ya TV Guid</description>
+    <platform>all</platform>
+  </extension>
+  <extension library="default.py" point="xbmc.service" />
+  <extension point='xbmc.python.module' library='lib' />
+</addon>
+
+<addon id="script.module.beautifulsoup"
+       name="BeautifulSoup"
+       version="3.2.1"
+       provider-name="Leonard Richardson (leonardr@segfault.org)">
+  <requires>
+    <import addon="xbmc.python"
+    		version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.module"
+             library="lib" />
+  <extension point="xbmc.addon.metadata">
+    <summary>HTML/XML parser for quick-turnaround applications like screen-scraping</summary>
+    <description>Beautiful Soup parses arbitrarily invalid SGML and provides a variety of methods and Pythonic idioms for iterating and searching the parse tree.</description>
+    <license>BSD</license>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="script.module.beautifulsoup4"
+       name="BeautifulSoup4"
+       version="4.3.2"
+       provider-name="Leonard Richardson (leonardr@segfault.org)">
+  <requires>
+    <import addon="xbmc.python"
+    		version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.module"
+             library="lib" />
+  <extension point="xbmc.addon.metadata">
+    <summary>HTML/XML parser for quick-turnaround applications like screen-scraping</summary>
+    <description>Beautiful Soup parses arbitrarily invalid SGML and provides a variety of methods and Pythonic idioms for iterating and searching the parse tree.</description>
+    <license>BSD</license>
+    <platform>all</platform>
+    <website>http://www.crummy.com/software/BeautifulSoup/</website>
+  </extension>
+</addon>
+
+<addon id="script.module.brightcove" name="Brightcove" provider-name="Jonathan Beluch (jbel)" version="1.1.1">
+  <requires>
+    <import addon="xbmc.python" version="2.0" />
+  </requires>
+  <extension library="lib" point="xbmc.python.module" />
+  <extension point="xbmc.addon.metadata">
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="script.module.elementtree"
+       name="Elementtree XML parser"
+       version="1.2.7"
+       provider-name="http://effbot.org/zone/element-index.htm">
+  <requires>
+    <import addon="xbmc.python" version="1.0"/>
+  </requires>
+  <extension point="xbmc.python.module"
+             library="lib" />
+  <extension point="xbmc.addon.metadata">
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="script.module.html5lib"
+       name="html5lib-python"
+       version="0.999.0"
+       provider-name="html5lib">
+  <requires>
+    <import addon="xbmc.python"
+    		version="2.1.0"/>
+    <import addon="script.module.six"
+                      version="1.4.1"
+                     optional="false"/>
+  </requires>
+  <extension point="xbmc.python.module"
+             library="lib" />
+  <extension point="xbmc.addon.metadata">
+    <summary>Standards-compliant library for parsing and serializing HTML documents and fragments in Python.</summary>
+    <description>html5lib is a pure-python library for parsing HTML. It is designed to conform to the WHATWG HTML specification, as is implemented by all major web browsers.</description>
+    <platform>all</platform>
+    <license>MIT</license>
+    <source>https://github.com/html5lib/html5lib-python.git</source>
+    <website>https://github.com/html5lib/html5lib-python</website>
+  </extension>
+</addon>
+
+<addon id='script.module.libtorrent' version='0.6.10' name='LibTorrent' provider-name='DiMartino'>
+  <requires>
+    <import addon='xbmc.python' version='2.1.0'/>
+  </requires>
+  <extension point="xbmc.python.script" library="__init__.py">
+    <provides>executable</provides>
+  </extension>
+  <extension point='xbmc.addon.metadata'>
+    <platform>all</platform>
+    <summary>LibTorrent</summary>
+  </extension>
+  <extension library="default.py" point="xbmc.service" />
+  <extension point='xbmc.python.module'/>
+</addon>
+
+<addon id="script.module.parsedom" name="Parsedom for xbmc plugins" provider-name="TheCollective" version="2.5.2">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0" />
+  </requires>
+  <extension point="xbmc.addon.metadata">
+    <platform>all</platform>
+    <summary lang="en">Parsedom for xbmc plugins.</summary>
+  </extension>
+  <extension library="lib" point="xbmc.python.module" />
+  <extension point="xbmc.addon.metadata">
+        <license>GPLv3</license>
+        <platform>all</platform>
+        <email></email>
+        <website></website>
+        <forum>http://forum.xbmc.org/showthread.php?tid=116498</forum>
+        <source>https://github.com/HenrikDK/xbmc-common-plugin-functions</source>
+        <language></language>
+   </extension>
+</addon>
+
+<addon id="script.module.requests"
+       name="requests"
+       version="1.1.0"
+       provider-name="kennethreitz">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.module"
+             library="lib" />
+  <extension point="xbmc.addon.metadata">
+    <summary>Python HTTP for Humans</summary>
+    <description>Packed for XBMC from https://github.com/kennethreitz/requests</description>
+    <license>Apache</license>
+    <platform>all</platform>
+    <source>https://github.com/beenje/script.module.requests</source>
+  </extension>
+</addon>
+
+<addon id="script.module.simple.downloader" name="Simple Downloader for xbmc plugins" provider-name="TheCollective" version="1.9.4">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0" />
+    <import addon="script.common.plugin.cache" version="2.5.0" />
+    <import addon="script.module.parsedom" version="2.5.1" />
+  </requires>
+  <extension library="default.py" point="xbmc.service" />
+  <extension point="xbmc.addon.metadata">
+    <platform>all</platform>
+    <summary lang="en">Simple downloader for xbmc plugins.</summary>
+  </extension>
+  <extension library="lib" point="xbmc.python.module" />
+</addon>
+
+<addon id="script.module.simplejson"
+       name="simplejson"
+       version="3.3.0"
+       provider-name="Martijn">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.module"
+             library="lib" />
+  <extension point="xbmc.addon.metadata">
+    <platform>all</platform>
+    <language></language>
+    <summary lang="en">Simple, fast, extensible JSON encoder/decoder for Python</summary>
+    <description lang="en">Simple, fast, extensible JSON encoder/decoder for Python</description>
+    <disclaimer lang="en">Code taken from https://pypi.python.org/pypi/simplejson/</disclaimer>
+    <license>MIT License, Academic Free License v. 2.1</license>
+    <website>https://pypi.python.org/pypi/simplejson/</website>
+    <source>https://pypi.python.org/pypi/simplejson/</source>
+  </extension>
+</addon>
+
+<addon id="script.module.six"
+       name="six"
+       version="1.7.3"
+       provider-name="gutworth">
+  <requires>
+    <import addon="xbmc.python"
+    		version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.module"
+             library="lib" />
+  <extension point="xbmc.addon.metadata">
+    <summary>Python 2 and 3 compatibility utilities.</summary>
+    <description>Six is a Python 2 and 3 compatibility library. It provides utility functions for smoothing over the differences between the Python versions with the goal of writing Python code that is compatible on both Python versions. See the documentation for more information on what is provided.</description>
+    <platform>all</platform>
+    <license>MIT</license>
+    <source>https://pypi.python.org/pypi/six</source>
+    <website>https://pypi.python.org/pypi/six</website>
+  </extension>
+</addon>
+
+<addon id='script.module.torrent.ts' version='0.6.0.28' name='AceStream Client' provider-name='NuisMons'>
+  <requires>
+    <import addon='xbmc.python' version='2.1.0'/>
+  </requires>
+  <extension point="xbmc.python.script" library="tsserv.py">
+    <provides>executable</provides>
+  </extension>
+  <extension point='xbmc.addon.metadata'>
+    <platform>all</platform>
+    <summary>AceStream Engine support</summary>
+  </extension>
+  <extension library="default.py" point="xbmc.service" />
+  <extension point='xbmc.python.module'/>
+</addon>
+
+<addon id='script.module.translit' version='2.0.0' name='Translit for xbmc plugins' provider-name='mrstealth'>
+  <requires>
+    <import addon="xbmc.python" version="2.1.0" />
+  </requires>
+  <extension point='xbmc.service' library="default.py" />
+  <extension point='xbmc.addon.metadata'>
+    <platform>all</platform>
+    <summary lang='en'>Translit for xbmc plugins.</summary>
+  </extension>
+  <extension point='xbmc.python.module' library='lib' />
+</addon>
+
+<addon id='script.module.xbmc.helpers' version='2.0.0' name='Xbmc helpers module based on Parsedom module' provider-name='mrstealth'>
+  <requires>
+    <import addon="xbmc.python" version="2.1.0" />
+  </requires>
+  <extension point='xbmc.addon.metadata'>
+    <platform>all</platform>
+    <summary lang='en'>XbmcHelpers based on Parsedom module.</summary>
+  </extension>
+  <extension point='xbmc.python.module' library='lib' />
+</addon>
+
+<addon id="script.module.xbmcswift2" name="xbmcswift2" provider-name="Jonathan Beluch (jbel)" version="2.4.0">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0" />
+  </requires>
+  <extension library="lib" point="xbmc.python.module" />
+  <extension point="xbmc.addon.metadata">
+    <language />
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="script.service.rodina.tv"
+       name="RodinaTV Service Script"
+       version="1.2.3"
+       provider-name="Rodina TV">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.addon.metadata">
+    <summary>RodinaTV Service Script</summary>
+    <description>RodinaTV Service Script</description>
+    <platform>all</platform>
+  </extension>
+  <extension point='xbmc.service' library='rodina.py'>
+  </extension>
+</addon>
+
+<addon id="script.torrent-tv.ru"
+       name="Torrent-TV XBMC"
+       version="1.5.4"
+       provider-name="Torrent-TV">
+    <requires>
+      <import addon="xbmc.python" version="2.1.0" />
+      <import addon="script.module.beautifulsoup"/>
+    </requires>
+    <extension point="xbmc.python.script" library="default.py">
+        <provides>video</provides>
+    </extension>
+    <extension library="autostart.py" point="xbmc.service" />
+    <extension point="xbmc.addon.metadata">
+        <summary>Torrent-TV XBMC</summary>
+        <description>Торрент ТВ теперь можно смотреть на медиаплатформе XBMC.</description>
+        <platform>all</platform>
+    </extension>
+</addon>
+
+<addon id="script.torrent-tv.ru.pp"
+       name="Torrent-TV XBMC PLUS PLUS"
+       version="1.0.5"
+       provider-name="dvor85">
+    <requires>
+		<import addon="xbmc.python" version="2.1.0" />
+        <import addon="script.module.beautifulsoup"/>
+    </requires>
+    <extension point="xbmc.python.script" library="default.py">
+        <provides>video</provides>
+    </extension>
+    <extension library="autostart.py" point="xbmc.service" />
+    <extension point="xbmc.addon.metadata">
+        <summary>Torrent-TV XBMC PLUS PLUS</summary>
+        <description>Доработанная версия Торрент ТВ.</description>
+        <platform>all</platform>
+    </extension>
+</addon>
+
+<addon id="script.video.F4mProxy"
+	     name="F4mProxy"
+	     version="2.1.7"
+	     provider-name="Shani">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0" />
+  </requires>
+  <extension point="xbmc.python.module" library="lib" />
+    <extension point="xbmc.python.pluginsource" library="addon.py">
+		<provides>executable</provides>
+  </extension>
+
+  <extension point="xbmc.addon.metadata">
+    <platform>all</platform>
+    <summary lang="en">Proxy for f4m</summary>
+    <description lang="en">Use this addon to play F4m v1 and v2 streams</description>
+  </extension>
+</addon>
+
+<addon id="script.yandex.tvguide" name="Яндекс телепрограмма" version="0.0.3" provider-name="HD-Lab Team">
+	<requires>
+		<import addon="xbmc.python" version="2.1.0"/>
+		<!--<import addon="script.module.simplejson" version="2.0.10"/>
+		<import addon="script.module.elementtree" version="1.2.7"/>-->
+	</requires>
+	<extension point="xbmc.python.script" library="addon.py"/>
+	<extension point="xbmc.addon.metadata">
+		<summary>Программа передач</summary>
+		<description>Программа передач от Yandex</description>
+		<platform>all</platform>
+	</extension>
+</addon>
+
+<addon id="service.RussianKeyboard"
+       name="Russian Keyboard"
+       version="1.1.6"
+       provider-name="Lamkin666">
+    <requires>
+        <import addon="xbmc.python" version="2.1.0"/>
+    </requires>
+    <extension point="xbmc.service"
+            library="default.py"
+            start="[login|startup]">
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <language>en</language>
+        <platform>all</platform>
+        <summary>Push Strings</summary>
+        <description>Русская клавиатура. Русская клавиатура открывается поверх обычной</description>
+        <license>GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007</license>
+    </extension>
+</addon>
+
+<addon
+  id="skin.confluence-plood-frodo"
+  version="1.0.4"
+  name="Confluence-plood-frodo"
+  provider-name="Jezz_X, Team XBMC, plood">
+  <requires>
+    <import addon="xbmc.gui" version="4.0.0"/>
+	<import addon="script.favourites" version="8.0.8"/>
+  </requires>
+  <extension
+    point="xbmc.gui.skin"
+    defaultthemename="textures.xbt"
+    debugging="false"
+    effectslowdown="0.75">
+    <res width="1280" height="720" aspect="16:9" default="true" folder="720p" />
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary lang="af">Confluence oortreksel deur Jezz_X, plood. (XBMC se bestek oortreksel)</summary>
+    <summary lang="ar">غلاف حشد من Jezz_X, plood. (هو الغلاف الافتراضي لـXBMC)</summary>
+    <summary lang="be">Confluence skin by Jezz_X, plood. (XBMC's default skin)</summary>
+    <summary lang="bg">Облик от Jezz_X, plood. (стандартния за XBMC)</summary>
+    <summary lang="ca">Aparença Confluence, per Jezz_X, plood. (Aparença per defecte de l'XBMC)</summary>
+    <summary lang="cs">Vzhled Confluence od Jezz_X, plood. (XBMC výchozí vzhled)</summary>
+    <summary lang="da">Confluence skin af Jezz_X, plood. (XBMC's standardskin)</summary>
+    <summary lang="de">Confluence, ein Skin von Jezz_X, plood. (XBMC standard Skin)</summary>
+    <summary lang="el">Το κέλυφος Confluence από τον Jezz_X (προεπιλεγμένο κέλυφος του XBMC).</summary>
+    <summary lang="en">Confluence skin by Jezz_X, plood. (XBMC's default skin)</summary>
+    <summary lang="es">Confluence skin por Jezz_X, plood. (skin por defecto)</summary>
+    <summary lang="es_AR">Confluence skin por Jezz_X, plood. (skin por defecto de XBMC)</summary>
+    <summary lang="es_MX">Skin confluende por Jezz_X, plood. (skin por defecto de XMC)</summary>
+    <summary lang="et">Confluence rüü autorilt Jezz_X, plood. (XBMC vaikerüü)</summary>
+    <summary lang="fi">Confluence-ulkoasu Jezz_X:ltä. (XBMC:n oletus ulkoasu)</summary>
+    <summary lang="fr">Thème Confluence par Jezz_X, plood. (thème par défaut)</summary>
+    <summary lang="gl">Pel Confluence por Jezz_Z. (Pel predeterminada de XBMC)</summary>
+    <summary lang="he">Confluence skin by Jezz_X, plood. (XBMC's default skin)</summary>
+    <summary lang="hr">Confluence izgled autora Jezz_X, plood. (XBMC podrazumijevani izgled)</summary>
+    <summary lang="hu">Confluence felszín. Készítő: Jezz_X (XBMC alapértelmezett felszín)</summary>
+    <summary lang="is">Confluence eftir Jezz_X, plood. (Sjálfgefið útlit XBMC)</summary>
+    <summary lang="it">Skin Confluence da Jezz_X, plood. (skin predefinita di XBMC)</summary>
+    <summary lang="ja">Confluence スキン by Jezz_X, plood. (XBMC デフォルトスキン)</summary>
+    <summary lang="km">Confluence skin by Jezz_X, plood. (XBMC's default skin)</summary>
+    <summary lang="ko">Confluence 스킨 Jezz_X 만듦 (XBMC 기본 스킨)</summary>
+    <summary lang="lt">Teminė išvaizda Confluence sukurta Jezz_X, plood.(XBMC numatytoji teminė išvaizda)</summary>
+    <summary lang="mk">Confluence skin by Jezz_X, plood. (XBMC's default skin)</summary>
+    <summary lang="nl">Confluence skin door Jezz_X</summary>
+    <summary lang="no">Confluence tema av Jezz_X, plood. (XBMC standardtema)</summary>
+    <summary lang="pl">Confluence autorstwa Jezz_X</summary>
+    <summary lang="pt">Tema Confluence desenvolvido por Jezz_X, plood. (Tema padrão do XBMC)</summary>
+    <summary lang="pt_BR">Skin Confluence por Jezz_X, plood. (Skin padrão do XBMC)</summary>
+    <summary lang="ro">Costum Confluence de Jezz_X, plood. (costum implicit)</summary>
+    <summary lang="ru">Обложка Confluence (стандартная обложка XBMC). Автор: Jezz_X, plood.</summary>
+    <summary lang="sk">Confluence skin od Jezz_X, plood. (predvolený skin XBMC)</summary>
+    <summary lang="sl">Preobleka Confluence avtorja Jezz_X, plood. (Privzeta preobleka za XBMC)</summary>
+    <summary lang="sv">Confluence, ett skal av Jezz_X, plood. (XBMC standardskal)</summary>
+    <summary lang="th">ชุดตกแต่ง Confluence โดย  Jezz_X (สกินเริ่มต้นของ XBMC)</summary>
+    <summary lang="tr">Jezz_X tarafından Confluence dış görünümü. (XBMC varsayılan dış görünüm)</summary>
+    <summary lang="uk">Обкладинка Confluence (стандартна обкладинка XBMC). Автор: Jezz_X, plood.</summary>
+    <summary lang="vi">Confluence skin by Jezz_X, plood. (XBMC's default skin)</summary>
+    <summary lang="zh">Jezz_X开发的Confluence皮肤</summary>
+    <summary lang="zh_TW">Jezz_X 製作的佈景主題（XBMC的預設佈景主題）</summary>
+    <description lang="af">Confluence is die bestek oortreksel vir XBMC 9.11 en op. Dit is 'n kombinasie van konsepte van 'n klomp gewilde oortreksels, en 'n poging om hulle goeie idees te omvat en te integreer in 'n oortreksel wat maklik behoort te wees vir eerste keer XBMC gebruikers om te verstaan en te gebruik.</description>
+    <description lang="ar">حشد هو الغلاف الافتراضي لـXBMC 9.11 و ما فوق. إنه مزيج من مفاهيم من أغلفة شعبية, و يحاول ضم و مزج إفكارهم الجيدة في غلاف يسهل فهمه و استخدامه لمستخدم XBMC الجديد.</description>
+    <description lang="be">Confluence is the default skin for XBMC 9.11 and above. It is a combination of concepts from many popular skins, and attempts to embrace and integrate their good ideas into a skin that should be easy for first time XBMC users to understand and use.</description>
+    <description lang="bg">Confluence е стандартният облик на XBMC 9.11 и по-новите версии. Представлява смесица от концепциите на много от популярните облици. Целта е да се интегрират тези добри идеи в подходящ и удобен вид за хора, които се сблъскват за първи път с XBMC.</description>
+    <description lang="ca">Confluence és l'aparença per defecte de l'XBMC 9.11 i superior. És una combinació de conceptes de moltes aparences populars, i intenta adoptar i integrar les seves bones idees en una aparença que sigui senzilla d'entendre i utilitzar per els nous usuaris d'XBMC.</description>
+    <description lang="cs">Confluence je výchozí vzhled pro XBMC 9.11 a novější. Jedná se o kombinaci konceptů z mnoha jiných populárních vzhledů, která se pokouší uchopit a integrovat jejich dobré nápady do vzhledu, který by měl být pro nového uživatele XBMC jednoduchý na pochopení a používání.</description>
+    <description lang="da">Confluence er standardskin'et til XBMC 9.11 og senere versioner. Det er en kombination af koncepter fra mange populære skins, og det forsøger at omfavne og integrere de gode ideer i et skin, der er let for førstegangsbrugere af XBMC at forstå og bruge.</description>
+    <description lang="de">Confluence ist der standard Skin für XBMC 9.11 und später. Er ist eine Kombination mehrer unterschiedlicher Skin-Konzepte und versucht dabei die besten Ideen zu kombinieren, um einen einfachen Einstieg für neue XBMC-Nutzer zu ermöglichen.</description>
+    <description lang="el">Το Confluence είναι το προεπιλεγμένο κέλυφος για τις εκδόσεις XBMC 9.11 και άνω. Είναι ένας συνδυασμός από πολλά δημοφιλή κελύφη, και επιχειρεί να συμπεριλάβει τις καλύτερες ιδέες τους σε ένα κέλυφος το οποίο είναι εύκολο σε αρχάριους χρήστες του XBMC να κατανοήσουν και χρησιμοποιήσουν.</description>
+    <description lang="en">Confluence is the default skin for XBMC 9.11 and above. It is a combination of concepts from many popular skins, and attempts to embrace and integrate their good ideas into a skin that should be easy for first time XBMC users to understand and use.</description>
+    <description lang="es">Confluence es la skin por defecto de XBMC 9.11 y posteriores. Es una combinación de conceptos de muchas skins populares, e intenta abarcar e integrar lo mejor de ellas en una skin que sea sencilla de entender y utilizar para los nuevos usuarios de XBMC.</description>
+    <description lang="es_AR">Confluence es el skin por defecto de XBMC 9.11 y posteriores. Es una combinación de conceptos de muchos skins populares, e intenta abarcar e integrar lo mejor de ellos en un skin que sea sencillo de entender y utilizar para los nuevos usuarios de XBMC.</description>
+    <description lang="es_MX">Confluence es el skin por defecto para XBMC 9.11 en adelante. Es una combinación de conceptos de varias skins populares, e intenta adoptar e integrar sus buenas ideas en un skin que debería ser fá de entender y usar para quienes usen XBMC por primera vez.</description>
+    <description lang="et">Confluence on vaikerüü XBMC-le alates versioonist 9.11. Confluence on paljude populaarsete rüüde kombineerimise tulemus, mis üritab omavahel tööle panna teiste rüüde parimaid lahendusi, et saavutada rüü, mis oleks esmakasutajale ühtmoodi selge ja kerge kasutada.</description>
+    <description lang="fi">Confluence on oletus ulkoasu XBMC:n versiosta 9.11 lähtien. Se on yhdistelmä useiden suosittujen ulkoasujen konsepteista, ja yritys omaksua ja integroida heidän hyvät ideat ulkoasuun, jonka pitäisi olla helppokäyttöinen ja -tajuinen kaikille XBMC:n käyttäjille.</description>
+    <description lang="fr">Confluence est le thème par défaut à partir d'XBMC 9.11. Reprenant les concepts issus de plusieurs thèmes populaires, il est une tentative d'inclusion et d'intégration des meilleures idées afin d'en rendre la compréhension et l'utilisation faciles y compris par des débutants.</description>
+    <description lang="gl">Confluence é a pel predeterminada para XBMC 9.11 e posteriores. É unha combinación de conceptos de algunhas peles populares, e tenta abranguer e integrar  as súas mellores ideas nunha pel que sexa fácil de entender e utilizar para as usuarias que utilizan por primeira vez XBMC.</description>
+    <description lang="he">Confluence הוא סקין ברירת המחדל של XBMC 9.11 ומעלה. זהו צירוף של קונספטים מסקינים פופולריים רבים, וניסיונות לאמץ ולסכם את הרעיונות הטובים שלהם לתוך סקין שיהיה פשוט להבנה ולשימוש עבור משתמשי XBMC חדשים.</description>
+    <description lang="hr">Confluence je podrazumijevani izgled od verzije XBMC 9.11 naviše. To je mješavina ideja i zamisli iz drugih popularnih izgleda, pokušaj da se objedine njihove dobre osobine u izgledu lak za uporabu i razumijevanje od novih XMBC korisnika.</description>
+    <description lang="hu">A Confluence az alapértelmezett felszín az XBMC-hez a 9.11-es verziótól kezdődően. Merít sok sok népszerű felszín elképzeléséből, megpróbálva vegyíteni a jó ötleteket úgy, hogy az könnyen kezelhető legyen az XBMC-vel először találkozóknak is.</description>
+    <description lang="is">Confluence er sjálfgefið útlit XBMC 9.11 og nýrra. Það er samsetning hugmynda frá mörgum vinsælum útlitum og er tilraun til að fanga og innlima þær góðu hugmyndir í útlit þar sem hugmyndin er að skuli vera einfalt fyrir fyrir nýja XBMC notendur að skilja og nota</description>
+    <description lang="it">Confluence è la skin predefinita di XBMC dalla versione 9.11 in poi. E' una combinazione di elementi provenienti da altre skin popolari e cerca di integrare e coinvolgere tutte le loro grandi idee in una skin facile da usare e comprendere per l'utente inesperto di XBMC.</description>
+    <description lang="ja">Confluence は XBMC 9.11 およびそれ以上のバージョンで標準のスキンです。さまざまな人気のスキンのコンセプトを組み合わせ、ユーザが初めて XBMC に触れる際に便利に使えるようにしてあります。</description>
+    <description lang="km">Confluence គឺ ជាស្គីនចំបងរបស់ XBMC 9.11 and about. It is a combination of concepts from many popular skins, and attempts to embrace and integrate their good ideas into a skin that should be easy for first time XBMC users to understand and use.</description>
+    <description lang="ko">Confluence 는 XBMC 9.11 이상의 기본 스킨입니다. 많은 인기 스킨의 컨셉과 좋은 아이디어를 모아서 하나의 스킨으로 만들었으며 초보자도 사용하기 쉽습니다.</description>
+    <description lang="lt">Confluence yra numatytoji teminė išvaizda pradedant XBMC 9.11. Tai daugelio populiarių teminų išvaizdų derinys. Bandymas priimti ir integruoti vartotojų idėjas į teminę išvaizdą katra turėtų būti lengvai suprantama  pirmą kartą naudojantiems XBMC</description>
+    <description lang="mk">Confluence е подразбирачки изглед за XBMC 9.11 па нагоре. Тој е комбинација на концепти од повеќе популарни изгледи, и настојува да ги обедини и истакне нивните добри идеи во еден изглед разбирлив за корисници почетници</description>
+    <description lang="nl">Confluence is de standaard skin voor XBMC 9.11 en hoger. Het combineert de concepten van andere populaire skins, waarbij het tracht hun goede ideëen te integreren in een skin die gemakkelijk in gebruik is.</description>
+    <description lang="no">Confluence er standard tema for XBMC 9.11 og oppover. Det er en kombinasjon av konseptene fra mange populære tema, og prøver å omfavne og integrere de gode idéene i et tema som bør være lett å forstå og benytte for nye XBMC-brukere.</description>
+    <description lang="pl">Confluence jest domyślną skórą dla XBMC 9.11 i nowszych. To kombinacja wielu popularnych pomysłów i próba zawarcia tego co w nich najlepsze w skórze, która będzie łatwa do opanowania dla początkującego użytkownika.</description>
+    <description lang="pt">O tema Confluence é o tema padrão do XBMC 9.11 e superior. É uma mistura de conceitos de muitos temas populares e tenta integrar as boas ideias destes num tema que deve ser fácil de entender e manusear para novos utilizadores do XBMC.</description>
+    <description lang="pt_BR">Confluence é a skin padrão do XBMC 9.11 e acima. É uma combinação de conceitos das mais populares skins, visando abraçar e integrar as boas ideias em uma skin  que seja fácil de entender e usar, destinada  aos usuários iniciantes do XBMC. </description>
+    <description lang="ro">Confluence este costumul implicit pentru XBMC 9.11 și versiunile ulterioare. Este o combinație de concepte împrumutate de la mai multe costume populare, care încearcă să îmbrățișeze și să integreze ideile lor bune într-un costum care să fie ușor de înțeles și folosit de către utilizatorii XBMC începători.</description>
+    <description lang="ru">Confluence — это стандартная обложка XBMC, начиная с версии 9.11. Она представляет собой сочетание концепций, взятых из многих популярных обложек, в попытке интегрировать их удачные идеи в обложке, которая была простой для использования и понимания новыми пользователями XBMC.</description>
+    <description lang="sk">Confluence je predvolený pre XBMC 9.11 a vyššie. Je kombináciou konceptov z mnoho populárnych skinov a pokusom integrovať ich dobré nápady do skinu, ktorý by bol ľahko zrozumiteľný a použiteľný pre nových používateľov XBMC.</description>
+    <description lang="sl">Confluence je privzeta preobleka za XBMC 9.11 in novejše. Je kombinacija konceptov mnogih priljubljenih preoblek in poskuša zaobjeti in integrirati njihove dobre ideje v preobleko, ki bi bila preprosta za uporabo in razumevanje tudi novim uporabnikom XBMC.</description>
+    <description lang="sv">Confluence är standardskal för XBMC 9.11 och senare. Det är en kombination av koncept från många populära skal i ett försök att använda och integrera flera goda idéer till ett skal som är enkelt för användare som precis har börjat använda XBMC att förstå och använda.</description>
+    <description lang="th">Confluenceเป็นสกินเริ่มต้นสำหรับ XBMC 9.11 หรือสูงกว่า มันเป็นส่วนผสมของแนวคิดจากสกินที่ได้รับความนิยมและพยายามที่จะยอมรับและบูรณาการส่วนที่ดีของมันเข้าไปในสกิน ซึ่งน่าจะง่ายสำหรับผู้ใช้ XBMCใหม่ ที่จะเข้าใจและใช้งานได้ดี</description>
+    <description lang="tr">Confluence XBMC 9.11 ve yukarısı için varsayılan dış görünümdür. Birçok popüler dış görünümün kavramlarını bir araya getirip ilk kez XBMC kullananlar için anlaşılması ve kullanımı kolaydır.</description>
+    <description lang="uk">Confluence — це стандартна обкладинка XBMC, починаючи з версії 9.11. Концепції багатьох популярних обкладинок поєднано у спробі використати та інтегрувати їхні вдалі ідеї в обкладинці, що стала б зрозумілою та простою в застосуванні для нових користувачів XBMC.</description>
+    <description lang="vi">Confluence is the default skin for XBMC 9.11 and above. It is a combination of concepts from many popular skins, and attempts to embrace and integrate their good ideas into a skin that should be easy for first time XBMC users to understand and use.</description>
+    <description lang="zh">在XBMC 9.11之后的版本中Confluence是默认皮肤。它集合了许多流行皮肤的创意，力求把这些优点融合到一个皮肤中，使得首次使用XBMC的用户能更容易上手。</description>
+    <description lang="zh_TW">Confluence 是從 XBMC 9.11 開始預設的佈景主題。它結合了許多受歡迎的佈景主題的概念，且試圖包含並整合它們的優點，使第一次使用 XBMC 的使用者可以簡單地上手。</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon
+  id="skin.confluence-plood-gotham"
+  version="2.2.20"
+  name="Confluence-plood-gotham"
+  provider-name="Jezz_X, Team XBMC, YLLOW_DRAGON, plood">
+  <requires>
+    <import addon="xbmc.gui" version="5.0.0"/>
+	<import addon="script.favourites" version="8.0.8"/>
+  </requires>
+  <extension
+    point="xbmc.gui.skin"
+    defaultthemename="textures.xbt"
+    debugging="false"
+    effectslowdown="0.75">
+    <res width="1280" height="720" aspect="16:9" default="true" folder="720p" />
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en">Confluence plood skin by Jezz_X, YLLOW_DRAGON, plood. (XBMC's default skin)</summary>
+    <summary lang="ru">Обложка Confluence plood. Автор: Jezz_X, YLLOW_DRAGON, plood.</summary>
+    <description lang="en">Confluence is the default skin for XBMC 9.11 and above. It is a combination of concepts from many popular skins, and attempts to embrace and integrate their good ideas into a skin that should be easy for first time XBMC users to understand and use.</description>
+    <description lang="ru">Confluence — это стандартная обложка XBMC, начиная с версии 9.11. Она представляет собой сочетание концепций, взятых из многих популярных обложек, в попытке интегрировать их удачные идеи в обложке, которая была простой для использования и понимания новыми пользователями XBMC.</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon
+  id="skin.confluence-plood-kodi"
+  version="2.5.92"
+  name="Confluence-plood-kodi"
+  provider-name="Jezz_X, Team XBMC, YLLOW_DRAGON, plood">
+  <requires>
+    <import addon="xbmc.gui" version="5.3.0"/>
+	<import addon="script.favourites" version="8.0.8"/>
+  </requires>
+  <extension
+    point="xbmc.gui.skin"
+    defaultthemename="textures.xbt"
+    debugging="false"
+    effectslowdown="0.75">
+    <res width="1280" height="720" aspect="16:9" default="true" folder="720p" />
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en">Confluence plood skin by Jezz_X, plood. (XBMC's default skin)</summary>
+    <summary lang="ru">Обложка Confluence plood. Автор: Jezz_X, plood.</summary>
+    <description lang="en">Confluence is the default skin for XBMC 9.11 and above. It is a combination of concepts from many popular skins, and attempts to embrace and integrate their good ideas into a skin that should be easy for first time XBMC users to understand and use.</description>
+    <description lang="ru">Confluence — это стандартная обложка XBMC, начиная с версии 9.11. Она представляет собой сочетание концепций, взятых из многих популярных обложек, в попытке интегрировать их удачные идеи в обложке, которая была простой для использования и понимания новыми пользователями XBMC.</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon
+  id="skin.touched-frodo"
+  version="0.8.5"
+  name="Touched-frodo"
+  provider-name="Jezz_X">
+  <requires>
+    <import addon="xbmc.gui" version="4.0.0"/>
+  </requires>
+  <extension
+    point="xbmc.gui.skin"
+    defaultthemename="textures.xbt"
+    debugging="false">
+    <res width="1280" height="960" aspect="4:3" default="true" folder="4x3Hirez" />
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en">Touched skin by Jezz_X designed,and rus.keyboard kostya4000</summary>
+    <summary lang="se">Touched skin av Jezz_X utformat för att användas på pekskärmsenheter</summary>
+    <summary lang="zh">由Jezz_X设计用于触屏设备的Touched皮肤</summary>
+    <description lang="en">Skin designed from the ground up to be used on touch screen devices like the iPad</description>
+	<summary lang="ru">Скин Touched дезайн Jezz_X и дизайн рус.клавиатуры kostya4000</summary>
+    <description lang="se">Skal utformat från grunden för att användas på pekskärmsenheter som till exempel iPad</description>
+    <description lang="zh">完全为用于类似iPad的触屏设备而设计的皮肤</description>
+    <disclaimer lang="en">Do not use this skin unless you have either touch screen or a mouse connected or you may lose navigation</disclaimer>
+    <disclaimer lang="se">Använd inte detta skal om du inte har endera en pekskärmsenhet eller om mus, annars kan navigeringen sluta fungera</disclaimer>
+    <disclaimer lang="zh">在非触屏且没有鼠标控制的情况下使用此皮肤会造成无法控制设备</disclaimer>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon
+  id="skin.touched-gotham"
+  version="1.1.2"
+  name="Touched-gotham"
+  provider-name="Jezz_X">
+  <requires>
+    <import addon="xbmc.gui" version="5.0.0"/>
+  </requires>
+  <extension
+    point="xbmc.gui.skin"
+    defaultthemename="textures.xbt"
+    debugging="false">
+    <res width="1280" height="960" aspect="4:3" default="true" folder="4x3Hirez" />
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en">Touched skin by Jezz_X designed to be used on touch screen devices</summary>
+    <summary lang="se">Touched skin av Jezz_X utformat för att användas på pekskärmsenheter</summary>
+    <summary lang="zh">由Jezz_X设计用于触屏设备的Touched皮肤</summary>
+    <description lang="en">Skin designed from the ground up to be used on touch screen devices like the iPad</description>
+    <description lang="se">Skal utformat från grunden för att användas på pekskärmsenheter som till exempel iPad</description>
+    <description lang="zh">完全为用于类似iPad的触屏设备而设计的皮肤</description>
+    <disclaimer lang="en">Do not use this skin unless you have either touch screen or a mouse connected or you may lose navigation</disclaimer>
+	<summary lang="ru">Обложка Touched. Автор: Jezz_X. Русская вирт.клавиатура - дизайн kostya4000.</summary>
+    <disclaimer lang="se">Använd inte detta skal om du inte har endera en pekskärmsenhet eller om mus, annars kan navigeringen sluta fungera</disclaimer>
+    <disclaimer lang="zh">在非触屏且没有鼠标控制的情况下使用此皮肤会造成无法控制设备</disclaimer>
+    <platform>all</platform>
+  </extension>
+</addon>
+</addons>
