@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<addon id="plugin.video.kinoem.by"
+       name="[COLOR=FFFF0000]Kinoem[/COLOR][COLOR=FF00FF00].by[/COLOR]"
+       version="0.0.2"
+       provider-name="[COLOR=FF00FF00]Denis Fomin[/COLOR]">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource" provides="video" library="addon.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>kinoem.by</summary>
+    <description>Сайт Kinoem
+
+    </description>
+    <platform>all</platform>
+  </extension>
+</addon>
