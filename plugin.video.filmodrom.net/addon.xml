@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <addon id="plugin.video.filmodrom.net"
-       name="Filmodrom.net"
-       version="0.0.1"
+       name="[COLOR=FFCB00FF]Filmodrom[/COLOR][COLOR=FFFFF000].net[/COLOR]"
+       version="0.0.2"
        provider-name="Nesterov Alexandr">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
