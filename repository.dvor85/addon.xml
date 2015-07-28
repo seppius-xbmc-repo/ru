@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="repository.dvor85" 
+       name="dvor85 XBMC Add-ons" 
+	   version="1.0.0" 
+	   provider-name="dvor85">
+	<extension point="xbmc.addon.repository" name="dvor85 XBMC Add-ons">
+		<info compressed="false">https://github.com/dvor85/kodi.repo/raw/master/addons.xml</info>
+		<checksum>https://github.com/dvor85/kodi.repo/raw/master/addons.xml.md5</checksum>
+		<datadir zip="true">https://github.com/dvor85/kodi.repo/raw/master/</datadir>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary>Install Add-ons from RUS Add-on Repository</summary>
+		<summary lang="ru">Репозиторий Torrent-TV XBMC PLUS PLUS</summary>
+		<description>Russian plug-ins and repository installer for XBMC</description>
+		<description lang="ru">Загружайте и устанавливайте плагин Torrent-TV XBMC PLUS PLUS.[CR]Если скрипт не работает, сообщите об этом разработчику плагина в разделе форума "Помощь по плагинам".</description>
+		<disclaimer lang="en">Team XBMC did not make all the add-ons on this repository and are not responsible for their content</disclaimer>
+		<disclaimer lang="ru">Разработчики XBMC не являются авторами этих дополнений и не несут ответственность за их содержимое.</disclaimer>
+		<platform>all</platform>
+	</extension>
+</addon>
