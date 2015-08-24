@@ -17,7 +17,7 @@ import xbmcaddon
 import time
 import random
 from urllib import unquote, quote
-import simplejson as json
+import json
 
 __addon__ = xbmcaddon.Addon( id = 'plugin.video.twitch.tv' )
 __language__ = __addon__.getLocalizedString
@@ -33,81 +33,18 @@ hos = int(sys.argv[1])
 lang = __addon__.getLocalizedString
 UA = '%s/%s %s/%s/%s' % (addon_type, addon_id, urllib.quote_plus(addon_author), addon_version, urllib.quote_plus(addon_name))
 
-VERSION = '4.3as'
-DOMAIN = '131896016'
-UATRACK = 'UA-31027962-3'
+
+
+
 conf_file = os.path.join(xbmc.translatePath('special://temp/'), 'settings.twitchtv.dat')
 xbmcplugin.setContent(int(sys.argv[1]), 'movies')
 csort = __addon__.getSetting('csort')
 gsort = __addon__.getSetting('gsort')
-if os.path.isfile(conf_file):
-    try:
-        f = open(conf_file, 'r')
-        GAcookie=f.readline()
-        uniq_id=f.readline()
-    except:
-        f = open(conf_file, 'w')
-        GAcookie ="__utma%3D"+DOMAIN+"."+str(random.randint(0, 0x7fffffff))+"."+str(random.randint(0, 0x7fffffff))+"."+str(int(time.time()))+"."+str(int(time.time()))+".1%3B"
-        uniq_id=random.random()*time.time()
-        f.write(GAcookie)
-        f.write('\n')
-        f.write(str(uniq_id))
-        f.close()
-else: 
-    f = open(conf_file, 'w')
-    GAcookie ="__utma%3D"+DOMAIN+"."+str(random.randint(0, 0x7fffffff))+"."+str(random.randint(0, 0x7fffffff))+"."+str(int(time.time()))+"."+str(int(time.time()))+".1%3B"
-    uniq_id=random.random()*time.time()
-    f.write(GAcookie)
-    f.write('\n')
-    f.write(str(uniq_id))
-    f.close()
-#print GAcookie
-#print uniq_id
+pcook= __addon__.getSetting('pcook')
+if not pcook: 
+    pcook=str(random.randint(0, 0x7fffffff))
+    __addon__.setSetting('pcook',pcook)
 
-def get_random_number():
-    return str(random.randint(0, 0x7fffffff))
-
-#COOKIEJAR = None
-#COOKIEFILE = os.path.join(xbmc.translatePath('special://temp/'), 'cookie.%s.txt' % DOMAIN)
-
-
-def send_request_to_google_analytics(utm_url, ua):
-
-    try:
-        req = urllib2.Request(utm_url, None, {'User-Agent':UA} )
-        response = urllib2.urlopen(req).read()
-        #print utm_url
-        
-    except:
-        #print ("GA fail: %s" % utm_url)     
-        showMessage('Player', "GA fail: %s" % utm_url, 2000)
-    #print str(response)
-    return response
-           
-def track_page_view(path,nevent='', tevent=''):
-    try:
-        domain = DOMAIN
-        document_path = (path)
-        utm_gif_location = "http://www.google-analytics.com/__utm.gif"
-        extra = {}
-        extra['screen'] = xbmc.getInfoLabel('System.ScreenMode')
-
-            # // Construct the gif hit url.
-        utm_url = utm_gif_location + "?" + \
-            "utmwv=" + VERSION + \
-            "&utmn=" + get_random_number() + \
-            "&utmsr=" + quote(extra.get("screen", "")) + \
-            "&utmt=" + nevent + \
-            "&utme=" + tevent +\
-            "&utmhn=localhost" + \
-            "&utmr=" + quote('-') + \
-            "&utmp=" + quote(document_path) + \
-            "&utmac=" + UATRACK + \
-            "&utmcc="+ GAcookie
-            # dbgMsg("utm_url: " + utm_url) 
-        #print "Analitycs: %s" % utm_url
-        return send_request_to_google_analytics(utm_url, UA)
-    except: return None
 def showMessage(heading, message, times = 3000, pics = addon_icon):
     try: xbmc.executebuiltin('XBMC.Notification("%s", "%s", %s, "%s")' % (heading.encode('utf-8'), message.encode('utf-8'), times, pics.encode('utf-8')))
     except Exception, e:
@@ -146,7 +83,7 @@ except:
     gbl=[]
 
 def main_menu(params):
-    
+    toParse('AppOpened',{})
     li = xbmcgui.ListItem((lang(30010)), addon_fanart, addon_icon)
     li.setProperty('IsPlayable', 'false')
     uri = construct_request({
@@ -177,6 +114,39 @@ def main_menu(params):
         xbmcplugin.addDirectoryItem(hos, uri, li, True)
     
     xbmcplugin.endOfDirectory(hos)
+
+
+  
+def toParse(what,params):
+    #try:
+
+        #poid=__addon__.getSetting('poid')
+        
+        cc=httplib.HTTPSConnection('api.parse.com',443)
+        cc.connect()
+        params['user']=pcook
+        print json.dumps({"dimensions": params})
+        print '/1/events/%s'%what
+        cc.request('POST', '/1/events/%s'%what,
+        json.dumps({"dimensions": params}),
+        {
+        "X-Parse-Application-Id":"UFH35vkZwVtgheIFTegWhPgHQqgdIARN5xCUkkrW",
+        "X-Parse-REST-API-Key":"FOb2PCacJb4nu34RLp6qH4yvotMZrxM123lo8fjc",
+        "Content-Type":"application/json"
+        })
+        txt=cc.getresponse().read()
+        cc.close()
+        #poid= json.loads(txt)['objectId']
+        #__addon__.setSetting('poid',poid)
+
+        
+            
+        print txt
+        
+    #except: pass
+
+ 
+    
 def get_black(params):	#print games
     for n in bl[1::]:
         li = xbmcgui.ListItem('Показывать пользователя [COLOR=FF00FF00]%s[/COLOR]'%n, addon_fanart, addon_icon)
@@ -199,11 +169,14 @@ def get_black(params):	#print games
     xbmcplugin.endOfDirectory(hos)
     
 def remove_black(params):
+    
     if params['mode']=='g': 
+        toParse('remove_BLG',{"nm":params['name']})
         gbl.remove(params['name'])
         print gbl
         __addon__.setSetting('Gblack',','.join(gbl))
     if params['mode']=='n': 
+        toParse('remove_BLU',{"ch":params['name']})
         bl.remove(params['name'])
         print bl
         __addon__.setSetting('black',','.join(bl))
@@ -233,7 +206,10 @@ def get_featured(params):
 #	print json1
     for entries in json1['featured']:
         #print entries
-        title=entries['stream']['channel']['status']
+        try:
+            title=entries['stream']['channel']['status']
+        except:
+            title='untitled'
         name=entries['stream']['channel']['name']
         game=entries['stream']['channel']['game']
         
@@ -247,16 +223,18 @@ def get_featured(params):
         else: li.addContextMenuItems([('%s в черный список'%name.encode('utf-8'), 'XBMC.RunPlugin(%s?func=addBlack&id=%s&pl=fea)' % (sys.argv[0],  name)),])
         uri = construct_request({
             'name': name,
+            'game': game,
             'func': 'get_stream'
         })
         if name not in bl and game not in gbl: xbmcplugin.addDirectoryItem(hos, uri, li)
 
     if csort=='0': xbmcplugin.addSortMethod(hos,xbmcplugin.SORT_METHOD_LABEL)
     xbmc.executebuiltin('Container.SetViewMode(500)')
+    toParse('GetFeatured',{})
     xbmcplugin.endOfDirectory(hos)
     
 def addBlack(params):
-    
+    toParse('add_BLG',{"nm":params['id']})
     try: list=__addon__.getSetting('black')
     except: list=''
     list="%s,%s"%(list,params['id'])
@@ -264,7 +242,7 @@ def addBlack(params):
     if params['pl']=='str': xbmc.executebuiltin('Container.Refresh(%s?func=get_stream_list&game=%s)' % (sys.argv[0],params['game'].replace(' ','%2b')))
     if params['pl']=='fea': xbmc.executebuiltin('Container.Refresh(%s?func=get_featured)' % sys.argv[0])
 def addGBlack(params):
-    
+    toParse('add_BLU',{"ch":params['id']})
     try: list=__addon__.getSetting('Gblack')
     except: list=''
     list="%s,%s"%(list,params['id'])
@@ -279,40 +257,54 @@ def get_favorites(params):
     link='https://api.twitch.tv/kraken/users/%s/follows/channels'%subs
     http = GET(link)
     json1=json.loads(http)
-    try:
-        cnt= len(json1['follows'])
-        for entries in json1['follows']:
-            name=entries['channel']['name']
-            url1 = 'http://usher.justin.tv/find/'+name+'.json?type=live'
-            data = json.loads(GET(url1))
-            if data != []:
-                
-                url='https://api.twitch.tv/kraken/channels/%s'%name
-                data = json.loads(GET(url))
-                title=data['status']
-                pic=data['logo']
-                if not pic: pic=addon_icon
-                
-                li = xbmcgui.ListItem('[COLOR=FFFF0000](%s)[/COLOR]\r\n%s ]'%(name.encode('utf-8'),title), addon_fanart, pic)
-                li.setProperty('IsPlayable', 'true')
-                uri = construct_request({
-                    'name': name,
-                    'func': 'get_stream'
-                })
-                xbmcplugin.addDirectoryItem(hos, uri, li)
-            else: cnt=cnt-1
-        if csort=='0': xbmcplugin.addSortMethod(hos,xbmcplugin.SORT_METHOD_LABEL)
-        xbmc.executebuiltin('Container.SetViewMode(500)')
-    except: pass
+    #try:
+    cnt= len(json1['follows'])
+    ggg=""
+    for entries in json1['follows']:
+        name=entries['channel']['name']
+        #https://api.twitch.tv/kraken/streams?channel=zisss,voyboy
+        ggg=ggg+name+","
+        
+        #    xbmcplugin.addDirectoryItem(hos, uri, li)
+        #else: cnt=cnt-1
+    strm= GET("https://api.twitch.tv/kraken/streams?channel="+ ggg)
+    json1=json.loads(strm)
+    
+    for entries in json1['streams']:
+        print entries
+        try:
+            title=entries['channel']['status']
+        except:
+            title='untitled'
+        name=entries['channel']['name']
+        pic=entries['preview']['large']
+        ico=entries['channel']['logo']
+        if not ico: ico=pic
+        viewers=entries['viewers']
+        li = xbmcgui.ListItem('[COLOR=FFFF0000](%s)[/COLOR] %s [COLOR=FF00FF00](%s)[/COLOR]'%(name.encode('utf-8'),title,viewers), pic, ico)
+        #li.addContextMenuItems([('%s в черный список'%name.encode('utf-8'), 'XBMC.RunPlugin(%s?func=addBlack&id=%s&pl=str&game=%s)' % (sys.argv[0],  name, params['game'])),])
+        li.setProperty('IsPlayable', 'true')
+        uri = construct_request({
+            'name': name,
+            'func': 'get_stream'
+        })
+        xbmcplugin.addDirectoryItem(hos, uri, li)
+    if csort=='0': xbmcplugin.addSortMethod(hos,xbmcplugin.SORT_METHOD_LABEL)
+    xbmc.executebuiltin('Container.SetViewMode(500)')
+    #except: pass
     xbmcplugin.endOfDirectory(hos)
     
 def get_stream_list(params):
-    track_page_view(params['game'])
+    toParse('ShowStreams',{"Game":params['game']})
     http = GET('https://api.twitch.tv/kraken/streams?game=%s&limit=50'%params['game'])
     json1=json.loads(http)
     #print http
     for entries in json1['streams']:
-        title=entries['channel']['status']
+        #print entries['channel']
+        try:
+            title=entries['channel']['status']
+        except:
+            title='untitled'
         name=entries['channel']['name']
         pic=entries['preview']['large']
         ico=entries['channel']['logo']
@@ -323,6 +315,7 @@ def get_stream_list(params):
         li.setProperty('IsPlayable', 'true')
         uri = construct_request({
             'name': name,
+            'game': params['game'],
             'func': 'get_stream'
         })
         if name not in bl: xbmcplugin.addDirectoryItem(hos, uri, li)
@@ -332,7 +325,9 @@ def get_stream_list(params):
     xbmcplugin.endOfDirectory(hos)
     
 def get_stream(params):	
-    track_page_view('','event','5(Video*Videostart)')
+    try: game=params['game'].replace('+',' ')
+    except: game=''
+    toParse('Play',{"game":game,"channel":params['name']})
     playLive(params['name'],True)
     
     
@@ -361,75 +356,27 @@ def playLive(name, play=False):
 
         token= data['token']
         sig=data['sig']
-        url2='http://usher.twitch.tv/select/%s.m3u8?nauthsig=%s&nauth=%s&allow_source=true'%(name,sig,token)
+
+        url2='http://usher.twitch.tv/api/channel/hls/%s.m3u8?sig=%s&token=%s&allow_source=true'%(name,sig,token)
+
         data=GET(url2)
-        #print data
-        qual='source,high,medium,low,mobile'
+
+        qual='226,360,480,720,1080'
         quals=qual.split(',')
         qua = int(__addon__.getSetting('video'))
-        #print qua
+
         modev=quals[qua]
-        #print modev
+
         streamurls = data.split('\n')
         pllst=None
         zz=None
-        for line in streamurls:
+        for line in reversed(streamurls):
+            print line
             if "http" in line: zz=line
             if modev in line:
-                pllst= line
+                pllst= zz
         if not pllst: pllst=zz
-        
-        '''res='360p'
-        qua = __addon__.getSetting('video')
-        res = 'any'
-        if qua == '0':
-            res = 'any'
-        elif qua == '1':
-            res = '720'
-        elif qua == '2':
-            res = '480'
-        elif qua == '3':
-            res = '360'
-        linka='http://usher.justin.tv/find/%s.json?type=any&group=&channel_subscription='%name
-        g=json.loads(GET(linka))
-        print g
-        url = 'http://usher.justin.tv/find/' + name + '.json?type=any&private_code=null&group='
-        data = json.loads(GET(url))
-        #print data1
-        #data = json.loads(GET(url1))
-        #print url1
-        #print data
-        if data == []:
-            data = json.loads(GET(url1))
-            if data == []:
-                showMessage('Twitch.TV','Стрим не найден')
-                return
-        
-        try:
-            token = ' jtv='+data[0]['token'].replace('\\','\\5c').replace(' ','\\20').replace('"','\\22')
-        except:
-            data = json.loads(GET(url1))
-            if data == []:
-                showMessage('Twitch.TV','Стрим не найден')
-                return
-            try: token = ' jtv='+data[0]['token'].replace('\\','\\5c').replace(' ','\\20').replace('"','\\22')
-            except:
-                showMessage('Twitch.TV','Стрим не найден')
-                return
-        url1=None
-        for n in data:
-            if int(n['video_height'])==int(res):
-                rtmp = n['connect']+'/'+n['play']
-                swf = ' swfUrl=%s swfVfy=1' % getSwfUrl(name)
-                Pageurl = ' Pageurl=http://www.justin.tv/'+name
-                token='jtv='+n['token'].replace('\\','\\5c').replace(' ','\\20').replace('"','\\22')
-                url1 = rtmp+swf+' '+token+' '+Pageurl
-        if not url1:
-            rtmp = data[0]['connect']+'/'+data[0]['play']
-            swf = ' swfUrl=%s swfVfy=1' % getSwfUrl(name)
-            token='jtv='+n['token'].replace('\\','\\5c').replace(' ','\\20').replace('"','\\22')
-            Pageurl = ' Pageurl=http://www.justin.tv/'+name
-            url1 = rtmp+swf+' '+token+' '+Pageurl'''
+   
         if pllst:
             li = xbmcgui.ListItem(path=pllst)
             xbmcplugin.setResolvedUrl(int(sys.argv[1]), True,li)	
