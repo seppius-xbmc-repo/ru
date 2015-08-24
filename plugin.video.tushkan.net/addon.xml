@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addon id="plugin.video.tushkan.net"
        name="Tushkan.net"
-       version="0.0.15"
+       version="0.0.16"
        provider-name="NuisMons">
   <requires>
     <import addon="xbmc.python" version="2.1.0" />
@@ -13,8 +13,8 @@
     <provides>video</provides>
   </extension>
   <extension point="xbmc.addon.metadata">
-    <summary>Просмотр вмдео онлайн truba.com</summary>
-    <description>Просмотр вмдео онлайн truba.com</description>
+    <summary>Просмотр видео онлайн tushkan.net</summary>
+    <description>Просмотр видео онлайн tushkan.net</description>
     <platform>all</platform>
   </extension>
 </addon>

@@ -161,7 +161,9 @@ def openitem(params):
         tttl= (re.findall(hh,str(http)))
         link=tttl[0]
         http = GET(link)
-        link=re.findall("pl:(.+), ",str(http))[0].replace("'",'"').replace(', st:"uppodvideo"})','').replace(', androidplayer:"1"','')
+
+        link=re.findall('pl :"(.+)"',str(http))[0].replace("'",'"')
+
         if link:
             #print link
             json1=json.loads(link)
