@@ -1313,7 +1313,7 @@ Paypal: напишите на kit500.development at gmail dot com
   </extension>
 </addon>
 
-<addon id="plugin.video.music.ivi.ru" name="music.ivi.ru" version="0.1.0" provider-name="ivi.ru">
+<addon id="plugin.video.music.ivi.ru" name="music.ivi.ru" version="0.1.1" provider-name="ivi.ru">
   <requires>
     <import addon="xbmc.python" version="2.1.0" />
   </requires>

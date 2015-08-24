@@ -131,7 +131,7 @@ def track_page_view2(path,nevent='', tevent='',UATRACK='UA-30985824-7'):
 	return send_request_to_google_analytics(utm_url, UA)
 
 
-import simplejson as json
+import  json
 
 def get_random_number():
 	return str(random.randint(0, 0x7fffffff))
