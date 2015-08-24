@@ -1229,7 +1229,7 @@ Paypal: напишите на kit500.development at gmail dot com
 
 <addon id="plugin.video.kinoylei.ru"
        name="Киноулей"
-       version="0.0.9"
+       version="0.0.10"
        provider-name="nuismons">
     <requires>
         <import addon="xbmc.python" version="2.1.0" />

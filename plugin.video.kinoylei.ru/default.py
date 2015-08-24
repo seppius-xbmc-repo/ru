@@ -33,7 +33,7 @@ show_len=50
 
 
 try:
-    import simplejson as json
+    import json
 except ImportError:
     try:
         import simplejson as json
@@ -66,13 +66,13 @@ def GET(target, post=None):
     #print post
     try:
         req = urllib2.Request(url = target, data = post)
-        req.add_header('User-Agent', '	Mozilla/5.0 (Windows NT 6.1; rv:32.0) Gecko/20100101 Firefox/32.0')
+        req.add_header('User-Agent', 'Mozilla/5.0 (Windows NT 6.1; rv:40.0) Gecko/20100101 Firefox/40.0')
         req.add_header('Accept', 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8')
         req.add_header('Accept-Language', 'ru-RU,ru;q=0.8,en-US;q=0.5,en;q=0.3')
         req.add_header('Accept-Charset', 'utf-8')
-        req.add_header('Referer',	'http://kinoylei.org/load/')
+        #req.add_header('Host','s1.fulvideo.com')
         resp = urllib2.urlopen(req)
-        req.add_header('Content-Type','application/x-www-form-urlencoded')
+        #req.add_header('Content-Type','application/x-www-form-urlencoded')
         http = resp.read()
 
         return http
@@ -82,7 +82,7 @@ def GET(target, post=None):
 
 def mainScreen(params):
 
-    addFolder('Премьеры',addon_icon,{'func': 'premiers'})
+    #addFolder('Премьеры',addon_icon,{'func': 'premiers'})
     addFolder('Поиск',addon_icon,{'func': 'doSearch'})
 
     http = GET('http://kinoylei.org')
@@ -94,9 +94,10 @@ def mainScreen(params):
     genres=beautifulSoup.find('div', attrs={'class':'bigblock filmcategory'}).findAll('a')
     for n in genres: 
         try: 
+            
             title= n.string
             img=addon_icon
-            addFolder(title,img,{'url': n['href'],'func': 'readgenre'})
+            if title: addFolder(title,img,{'url': n['href'],'func': 'readgenre'})
         except: pass
     
     xbmcplugin.endOfDirectory(hos)
@@ -164,48 +165,55 @@ def readmedia(params):
     #print http
     out=re.findall('<iframe class="myvideo" src="(.+?)">',http)
     #print out[0]
-    http=GET(out[0])
-    #print http
-    #beautifulSoup = BeautifulSoup(str(http))
-    #print beautifulSoup.prettify
-    txt=http
-    img=params['img']
-    title=re.findall("comment: '(.+?)'",txt)
-    ou1=re.findall('file:"(.+?)"}',txt)
-    ou2=re.findall('pl."(.+?)",',txt)
-    #print ou2
-    if ou1:
-        #print 'ou1'
-        li = xbmcgui.ListItem(title[0], img, img)
-        uri = construct_request({
-            'href': ou1[0],
-            'func': 'play'
-        })
-        li.setProperty('IsPlayable', 'true')
-        xbmcplugin.addDirectoryItem(hos, uri, li)
-    if ou2:
-        #print 'ou2;'
-        http=GET(ou2[0])[3::]
+    try: 
+        http=GET(out[0])
+    
         #print http
-        
-        flist=json.loads(http)
-        for file in flist['playlist']:
-            try:
-                li = xbmcgui.ListItem(file['comment'], img, img)
-                uri = construct_request({'href': file['file'],'func': 'play'})
-                li.setProperty('IsPlayable', 'true')
-                xbmcplugin.addDirectoryItem(hos, uri, li)
-            except: 
+        #beautifulSoup = BeautifulSoup(str(http))
+        #print beautifulSoup.prettify
+        txt=http
+        img=params['img']
+        title=re.findall("<title>(.+?)</title>",txt)
+        ou1=re.findall('"file":"(.+?)","',txt)
+
+        ou2=re.findall('"pl":"(.+?)"}',txt)
+        #print ou2
+        if ou1:
+            #print 'ou1'
+            li = xbmcgui.ListItem(title[0], img, img)
+            uri = construct_request({
+                'href': ou1[0].replace('\/','/'),
+                'func': 'play'
+            })
+            li.setProperty('IsPlayable', 'true')
+            xbmcplugin.addDirectoryItem(hos, uri, li)
+        if ou2:
+            ll= ou2[0].replace('\/','/')
+
+            
+
+            http=GET(ll)[3::]
+
+            
+            flist=json.loads(http)
+            for file in flist['playlist']:
                 try:
                     li = xbmcgui.ListItem(file['comment'], img, img)
-                    uri = construct_request({})
+                    uri = construct_request({'href': file['file'],'func': 'play'})
+                    li.setProperty('IsPlayable', 'true')
                     xbmcplugin.addDirectoryItem(hos, uri, li)
-                    for file2 in file['playlist']:
-                        li = xbmcgui.ListItem(file2['comment'], img, img)
-                        uri = construct_request({'href': file2['file'],'func': 'play'})
-                        li.setProperty('IsPlayable', 'true')
+                except: 
+                    try:
+                        li = xbmcgui.ListItem(file['comment'], img, img)
+                        uri = construct_request({})
                         xbmcplugin.addDirectoryItem(hos, uri, li)
-                except: pass
+                        for file2 in file['playlist']:
+                            li = xbmcgui.ListItem(file2['comment'], img, img)
+                            uri = construct_request({'href': file2['file'],'func': 'play'})
+                            li.setProperty('IsPlayable', 'true')
+                            xbmcplugin.addDirectoryItem(hos, uri, li)
+                    except: pass
+    except: pass
     xbmcplugin.endOfDirectory(hos)
     
     
