@@ -1109,26 +1109,6 @@ Paypal: напишите на kit500.development at gmail dot com
     </extension>
 </addon>
 
-<addon id="plugin.video.kino-ray.com"
-       name="kino-ray.com"
-       version="0.0.01"
-       provider-name="NuisMons">
-  <requires>
-    <import addon="xbmc.python" version="2.1.0" />
-	<import addon="script.module.beautifulsoup"/>
-  </requires>
-  <extension point="xbmc.python.pluginsource"
-             provides="video"
-             library="default.py">
-    <provides>video</provides>
-  </extension>
-  <extension point="xbmc.addon.metadata">
-    <summary>kino-ray.com</summary>
-    <description>kino-ray.com</description>
-    <platform>all</platform>
-  </extension>
-</addon>
-
 <addon id="plugin.video.kino-v-online.tv"
        name="[COLOR=FFCB00FF]kino-v[/COLOR][COLOR=FFFFF000]-online.tv[/COLOR]"
        version="0.0.3"
