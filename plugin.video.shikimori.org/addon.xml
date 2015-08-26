@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="plugin.video.shikimori.org" name="Shikimori.org" version="0.1" provider-name="undeman">
+	<requires>
+		<import addon="xbmc.python" version="2.1.0" />
+		<import addon="script.module.beautifulsoup4" version="4.3.2"/>
+		<import addon="script.module.requests" version="2.7.0"/>
+	</requires>
+	<extension point="xbmc.python.pluginsource" provides="video" library="default.py">
+		<provides>video</provides>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary>Аниме онлайн</summary>
+		<description>Русскоязычная энциклопедия аниме и манги, с возможностью онлайн просмотра. Здесь вы сможете вести список просмотренных аниме, оставлять отзывы, следить за анонсами, релизами и за выходом серий онгоингов.</description>
+		<platform>all</platform>
+		<language>ru</language>
+	</extension>
+</addon>
