@@ -289,8 +289,8 @@ def ListCat(params):
 			data = item.find('a')
 			#print data
 			link = data['href']
-			#title = data.find('h2').string.encode('utf-8')
-			title = data.string.encode('utf-8')
+			title = item.find('div', attrs = {'class': 'item-info'}).span.string.encode('utf-8')
+			#title = data.string.encode('utf-8')
 			#print title
 			#img = item.find('img', width='250')['src']
 			img = item.find('img')['src']
