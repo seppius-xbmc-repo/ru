@@ -66,7 +66,7 @@ def Main(main_url):
             addDir(el['title'], el['href'], iconImg=plugin_icon)
 
     for num in content:
-        title = num.find('a').contents[0]
+        title = num.find('a').string.encode('utf-8')
         if main_url == site_url or '/page/' in main_url :
             url = num.find('a')['href']
         else :
