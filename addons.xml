@@ -134,24 +134,6 @@
   </extension>
 </addon>
 
-<addon id="plugin.audio.moskva.fm"
-       name="MOSKVA.FM"
-       version="1.0.2"
-       provider-name="TDW">
-  <requires>
-    <import addon="xbmc.python" version="2.1.0"/>
-  </requires>
-  <extension point="xbmc.python.pluginsource"
-            library="default.py">
-        <provides>audio</provides>
-  </extension>
-  <extension point="xbmc.addon.metadata">
-    <platform>all</platform>
-    <summary>MOSKVA.FM - песни на радио Москвы</summary>
-    <description>Слушайте радио Москвы. На сегодня в активе проекта MOSKVA.FM 53 радиостанций Москвы!</description>
-  </extension>
-</addon>
-
 <addon id="plugin.audio.mp3tales.ru" name="Аудиосказки" version="1.0.1" provider-name="HD-Lab Team">
   <requires><import addon="xbmc.python" version="2.1.0"/></requires>
   <extension point="xbmc.python.pluginsource" library="default.py">
@@ -484,44 +466,6 @@ Audio sources are
   </extension>
 </addon>
 
-<addon id="plugin.video.LostFilm"
-       name="LostFilm"
-       version="0.5.1"
-       provider-name="TDW">
-  <requires>
-    <import addon="xbmc.python" version="2.1.0"/>
-    <import addon="script.module.torrent.ts"/>
-  </requires>
-  <extension point="xbmc.python.pluginsource"
-            library="default.py">
-        <provides>video</provides>
-  </extension>
-  <extension point="xbmc.addon.metadata">
-    <summary>LostFilm</summary>
-    <description>LostFilm for AceStreem and Libtorrent</description>
-    <platform>all</platform>
-  </extension>
-</addon>
-
-<addon id="plugin.video.RuTor"
-       name="RuTor"
-       version="2.4.0"
-       provider-name="TDW">
-  <requires>
-    <import addon="xbmc.python" version="2.1.0"/>
-    <import addon="script.module.torrent.ts"/>
-  </requires>
-  <extension point="xbmc.python.pluginsource"
-            library="default.py">
-        <provides>video</provides>
-  </extension>
-  <extension point="xbmc.addon.metadata">
-    <summary>RuTor</summary>
-    <description>RuTor for TorrentStreem</description>
-    <platform>all</platform>
-  </extension>
-</addon>
-
 <addon id="plugin.video.TorPoisk"
        name="TorPoisk"
        version="0.9.7"
@@ -828,25 +772,6 @@ Paypal: напишите на kit500.development at gmail dot com
   <extension point="xbmc.addon.metadata">
     <summary>Видеосюжеты: Новости Екатеринбурга: Екатеринбург Он-Лайн</summary>
     <description>Видеосюжеты: Новости Екатеринбурга: Екатеринбург Он-Лайн</description>
-    <platform>all</platform>
-  </extension>
-</addon>
-
-<addon id="plugin.video.fasttorrent.org"
-       name="fast-torrent.org"
-       version="1.2.3"
-       provider-name="TDW">
-  <requires>
-    <import addon="xbmc.python" version="2.1.0"/>
-    <import addon="script.module.torrent.ts"/>
-  </requires>
-  <extension point="xbmc.python.pluginsource"
-            library="default.py">
-        <provides>video</provides>
-  </extension>
-  <extension point="xbmc.addon.metadata">
-    <summary>fast-torrent.org</summary>
-    <description>fast-torrent.org for TorrentStreem</description>
     <platform>all</platform>
   </extension>
 </addon>
