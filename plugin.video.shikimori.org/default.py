@@ -1,5 +1,6 @@
+# coding: utf8
 #!/usr/bin/python
-# -*- coding: utf-8 -*-
+
 from __future__ import unicode_literals
 
 import urllib, urllib2, os, re, sys, json, cookielib
@@ -37,8 +38,8 @@ context_path = xbmc.translatePath(os.path.join(plugin_path, 'default.py'))
 def Alert(title, message):
     xbmcgui.Dialog().ok(title, message)
 
-def Notificator(title, message, timeout=500):
-	xbmc.executebuiltin('XBMC.Notification("%s", "%s", %s, "%s")' % (title, message, timeout, plugin_icon))
+def Notificator(title, message, timeout=1000):
+    xbmc.executebuiltin('XBMC.Notification("%s", "%s", %s, "%s")' % (title, message, timeout, plugin_icon))
 
 def GetHTML(url):
     cookieJar = cookielib.CookieJar()
@@ -155,7 +156,12 @@ def GetSibnetUrl(url):
     http = GetHTML(url)
     soup = bs(http)
     # print soup
-    video_id = soup.find('div', {'class':'b-video_player'}).find('param', {'name': 'movie'})['value']
+    player = soup.find('div', {'class':'b-video_player'})
+    param = player.find('param', {'name': 'movie'})
+    if param :
+        video_id = param['value']
+    else :
+        video_id = player.find('iframe')['src']
     print video_id
     http = GetHTML('http://video.sibnet.ru/shell_config_xml.php?videoid=' + video_id.split('=', 1)[1])
     soup = bs(http)
@@ -218,6 +224,9 @@ def PlayUrl(url):
         url = GetRutubeUrl(url)
     elif 'sibnet.ru' in player:
         url = GetSibnetUrl(url)
+    else :
+        Notificator('Ошибка!', 'Данный плеер не поддерживается')
+        return None  
     i = xbmcgui.ListItem(path=url)
     xbmcplugin.setResolvedUrl(h, True, i)
 
