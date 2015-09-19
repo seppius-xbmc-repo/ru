@@ -106,7 +106,7 @@ def GetFilmsList(url_main):
 
 def GetFilmLink(url):
     html = GetHTML(url)
-    print html
+    #print html
     soup = bs(html, 'html5lib', from_encoding="utf_8")
     content = soup.find('div', attrs={'class': 'info'})
     content = content.find_all('tr')
@@ -175,7 +175,7 @@ def GetFilmLink(url):
                 #elif 'gidtv.cc' in url:
                 #    url = GetGIDTVUrl(url)
                 #    addLink(title + ' [GIDTV]', infoLabel, url, iconImg=img)
-                elif 'moonwalk.cc' in url:
+                elif ('staticdn.nl' or 'moonwalk.cc') in url:
                     '''url = GetMoonwalkUrl(url)'''
                     print url
                     url = getRealURL(url)
