@@ -3,7 +3,7 @@
 # Writer (c) 2013, Silhouette, E-mail: 
 # Rev. 0.5.2
 
-
+import os
 import urllib,urllib2,re,sys
 import xbmcplugin,xbmcgui,xbmcaddon
 from BeautifulSoup import BeautifulSoup
@@ -244,7 +244,7 @@ def KNX_play(url):
     
     http = get_url(url)
 #    print http
-    iframes = re.compile('<iframe itemprop="video" src="(.*?)"').findall(http)
+    iframes = re.compile('<iframe .*itemprop="video".*src="(.*?)"').findall(http)
     
 #    print iframes
     
