@@ -98,8 +98,8 @@ def Search():
     kbd.doModal()
     if kbd.isConfirmed():
         SearchStr = kbd.getText()
-        url = 'http://play.shikimori.org/animes/search/' + SearchStr
-        html = GetHTML(url)
+        url = 'http://play.shikimori.org/animes/search/' + SearchStr.decode('utf-8')
+        html = GetHTML(url.encode('utf-8'))
         soup = bs(html)
         content = soup.find_all('article', attrs={'class': 'c-anime'})
         for num in content:
@@ -210,7 +210,6 @@ def GetRutubeUrl(url):
     except:
         return None
     return url
-    # http://rutube.ru/api/play/options/4e333d07e099f5d2b7d3a32bea1453db/?format=xml
     
 def PlayUrl(url):
     html = GetHTML(url);
@@ -225,7 +224,7 @@ def PlayUrl(url):
     elif 'sibnet.ru' in player:
         url = GetSibnetUrl(url)
     else :
-        Notificator('Ошибка!', 'Данный плеер не поддерживается')
+        Notificator('ERROR', 'Not supported player', 3600)
         return None  
     i = xbmcgui.ListItem(path=url)
     xbmcplugin.setResolvedUrl(h, True, i)
