@@ -968,7 +968,7 @@ Paypal: напишите на kit500.development at gmail dot com
 
 <addon id="plugin.video.kino-live.org"
        name="kino-live.org"
-       version="1.7.5"
+       version="1.7.6"
        provider-name="x86demon">
     <requires>
         <import addon="xbmc.python" version="2.1.0"/>

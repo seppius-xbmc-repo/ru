@@ -36,7 +36,7 @@ import socket
 socket.setdefaulttimeout(50)
 
 icon = xbmc.translatePath(os.path.join(os.getcwd().replace(';', ''), 'icon.png'))
-siteUrl = 'kino-live.org'
+siteUrl = 'kino-live2.org'
 httpSiteUrl = 'http://' + siteUrl
 
 __settings__ = xbmcaddon.Addon(id='plugin.video.kino-live.org')
