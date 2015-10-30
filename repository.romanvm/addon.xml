@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<addon id="repository.romanvm" version="2.0.0" name="Roman V.M. Repository" provider-name="Roman V.M.">
+<extension point="xbmc.addon.metadata">
+  <summary lang="en">Roman V.M. Repository</summary>
+  <summary lang="ru">Репозиторий Roman V.M.</summary>
+  <summary lang="uk">Репозиторій Roman V.M.</summary>
+  <description lang="en">Addon repository by Roman V.M.</description>
+  <description lang="ru">Репозиторий дополнений Roman V.M.</description>
+  <description lang="uk">Репозиторій надбудов Roman V.M.</description>
+  <platform>all</platform>
+</extension>
+<extension point="xbmc.addon.repository" name="romanvm repository">
+  <info compressed="false">http://romanvm.github.io/kodi_repo/repo/addons.xml</info>
+  <checksum>http://romanvm.github.io/kodi_repo/repo/addons.xml.md5</checksum>
+  <datadir zip="true">http://romanvm.github.io/kodi_repo/repo</datadir>
+</extension>
+</addon>
