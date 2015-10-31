@@ -26,10 +26,10 @@ def showkeyboard(txtMessage="",txtHeader="",passwordField=False):
 
 def Search():
     text = showkeyboard('', 'Поиск по названию')
-    url = 'http://kino-dom.tv/engine/ajax/search.php'
+    url = 'http://kino-dom.org/engine/ajax/search.php'
     data =  {'query' : text}
     html = getHTML(url, data)
-    genre_links = re.compile('href="(http\:\/\/kino-dom\.tv\/[^\/]+\/[^\.]+\.html)"><span\sclass="searchheading">[<b>]*([^<]+)<').findall(html.decode('windows-1251').encode('utf-8'))
+    genre_links = re.compile('href="(http\:\/\/kino-dom\.org\/[^\/]+\/[^\.]+\.html)"><span\sclass="searchheading">[<b>]*([^<]+)<').findall(html.decode('windows-1251').encode('utf-8'))
     for link, title in genre_links:
         addDir(title, link, 25, None)
 
@@ -41,7 +41,7 @@ def isLinkUseful(needle):
     return needle not in haystack
 
 def Categories():
-    url = 'http://kino-dom.tv'
+    url = 'http://kino-dom.org'
     html = getHTML(url)
     links_place = re.compile('<div class="list-wrapper">([\s\S]+?)</div>').findall(html.decode('windows-1251').encode('utf-8'))[0]
     genre_links = re.compile('<li><a href="' + url + '(.+?)">(.+?)</a></li>').findall(links_place)
