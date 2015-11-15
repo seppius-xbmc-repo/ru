@@ -40,6 +40,11 @@ import re
 import cookielib
 import socket
 import simplejson as json
+try:
+    import sqlite3
+    from sqlite3 import dbapi2 as sqlite
+except:
+    pass
 
 import SimpleDownloader as downloader
 from BeautifulSoup import BeautifulSoup, BeautifulStoneSoup
@@ -379,8 +384,9 @@ def readfavorites(params):
     else:
         coverRegexp = re.compile("url\s*\('([^']+)")
         for item in items:
+            print item
             cover = coverRegexp.findall(str(item['style']))[0]
-            title = str(item.find('span').string)
+            title = str(item.find('b', 'subject-link').find('span').string)
             href = httpSiteUrl + item['href']
 
             isMusic = "no"
@@ -847,19 +853,21 @@ def read_directory_unuthorized(params):
                 materialData = linkItem['rel']
                 if materialData is not None:
                     qualities = materialQualityRegexp.findall(linkItem['rel'])
+                    itemsCount = item.find('span', 'material-series-count')
+                    print itemsCount
                     if qualities is not None and len(qualities) > 0:
                         qualities = str(qualities[0]).split(',')
                         for quality in qualities:
-                            add_directory_item(linkItem, isFolder, playLink, playLinkClass, cover, folderUrl, folder, params['isMusic'], quality)
+                            add_directory_item(linkItem, isFolder, playLink, playLinkClass, cover, folderUrl, folder, params['isMusic'], quality, itemsCount)
                     else:
-                        add_directory_item(linkItem, isFolder, playLink, playLinkClass, cover, folderUrl, folder, params['isMusic'], None)
+                        add_directory_item(linkItem, isFolder, playLink, playLinkClass, cover, folderUrl, folder, params['isMusic'], None, itemsCount)
                 else:
-                    add_directory_item(linkItem, isFolder, playLink, playLinkClass, cover, folderUrl, folder, params['isMusic'], None)
+                    add_directory_item(linkItem, isFolder, playLink, playLinkClass, cover, folderUrl, folder, params['isMusic'], None, None)
 
     xbmcplugin.endOfDirectory(h)
 
 
-def add_directory_item(linkItem, isFolder, playLink, playLinkClass, cover, folderUrl, folder, isMusic, quality = None):
+def add_directory_item(linkItem, isFolder, playLink, playLinkClass, cover, folderUrl, folder, isMusic, quality = None, itemsCount = None):
     folderRegexp = re.compile('(\d+)')
     lang = None
     langRegexp = re.compile('\s*m\-(\w+)\s*')
@@ -869,6 +877,10 @@ def add_directory_item(linkItem, isFolder, playLink, playLinkClass, cover, folde
     title = ""
     if isFolder:
         title = fix_string(linkItem.text)
+
+        if (itemsCount):
+                title = "%s (%s)" % (title, fix_string(itemsCount.text))
+
         lang_quality_el = linkItem.find('font')
         if lang_quality_el:
             lang_quality = fix_string(lang_quality_el.text)
@@ -944,6 +956,9 @@ def add_folder_file(item):
     li.setProperty('IsPlayable', 'true')
 
     li.setInfo(type=item_type, infoLabels={'title': title})
+    playCount = get_playCount(htmlEntitiesDecode(title))
+    if playCount:
+        li.setInfo(type=item_type, infoLabels={'title': title, 'playcount': 1})
     if not useFlv:
         li.addContextMenuItems([
             (
@@ -1184,6 +1199,31 @@ def get_params(paramstring):
                 param[splitparams[0]] = splitparams[1]
     return param
 
+# Originally posted by dimnik @ xbmc.ru
+def get_playCount(filename):
+    # Obtaining playback counter
+    playCount = False
+    if not filename or sqlite is None:
+        return playCount
+
+    # get path to database and determine videobase filename
+    basepath = xbmc.translatePath("special://database")
+    for basefile in xbmcvfs.listdir(basepath)[1]:
+        if 'MyVideos' in basefile:
+            videobase = basefile
+            # connect to database
+            db = sqlite.connect(os.path.join(basepath, videobase))
+            try:
+                sqlcur = db.execute('SELECT playCount FROM files WHERE strFilename like ?', ('%'+filename+'%',))
+                res_playCount = sqlcur.fetchall()
+                if res_playCount:
+                    # check in the result data for at the least one played current file
+                    if any(plcount > 0 for plcount in res_playCount):
+                        playCount = True
+            except:
+                print 'Error connection to table file. Database is may be busy'
+            db.close()
+    return playCount
 
 params = get_params(sys.argv[2])
 
