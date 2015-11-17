@@ -1,10 +1,8 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-# 
 # Copyright (C) 2014-2015 kit500
 #
-# 
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation, either version 3 of the License, or
@@ -26,14 +24,11 @@ import xbmc, xbmcgui, xbmcplugin, xbmcaddon
 from bs4 import BeautifulSoup as bs
 #from bs4.diagnose import diagnose
 
-
 Addon = xbmcaddon.Addon(id = 'plugin.video.cinema-hd.ru.a')
-
 addon_icon    = Addon.getAddonInfo('icon')
 addon_fanart  = Addon.getAddonInfo('fanart')
 addon_path    = Addon.getAddonInfo('path')
 addon_id      = Addon.getAddonInfo('id')
-addon_author  = Addon.getAddonInfo('author')
 addon_name    = Addon.getAddonInfo('name')
 addon_version = Addon.getAddonInfo('version')
 
@@ -60,14 +55,14 @@ if use_translit:
 		translit = translit.Translit()  
 	except:
 		use_translit = False
-		print 'Поиск в транслит выключен: не установлен script.module.translit' 
+		print 'Поиск в транслит не доступен: не установлен script.module.translit' 
 		#ShowMessage(addon_name, 'Поиск в translit не доступен: не установлен script.module.translit')
 
 if use_ahds:
 	if xbmc.getCondVisibility('System.HasAddon(script.video.F4mProxy)') == 0:
 		use_ahds = False
-		print 'Воспроизведение Adobe HDS видео формата выключено: не установлен script.video.F4mProxy' 
-		#ShowMessage(addon_name, 'Воспроизведение Adobe HDS видео формата выключено: не установлен script.video.F4mProxy')
+		print 'Воспроизведение Adobe HDS видео формата не доступно: не установлен script.video.F4mProxy' 
+		#ShowMessage(addon_name, 'Воспроизведение Adobe HDS видео формата не доступно: не установлен script.video.F4mProxy')
 
 try:
 	sys.path.append(os.path.join(os.path.dirname(__file__), "../plugin.video.unified.search"))
@@ -75,22 +70,13 @@ try:
 except: pass
 
 
-def get_params(paramstring):
-	params = []
-	if len(paramstring) >= 2:
-		params = {}
-		if '?' in paramstring: qindex = paramstring.index('?')
-		else: qindex = -1 
-		cleanedparams = paramstring[qindex + 1:]
-		pairsofparams = cleanedparams.split('&')
-		for i in range(len(pairsofparams)):
-			splitparams = {}
-			splitparams = pairsofparams[i].split('=')
-			if (len(splitparams)) == 2:
-				params[splitparams[0]] = splitparams[1]
-	if len(params) > 0:
-		for p in params:
-			params[p] = urllib.unquote_plus(params[p])
+def GetParams(sparams):
+	#print sparams
+	sppc = sparams.partition('?')
+	if sppc[2]: sparams = sppc[2]
+	params = urlparse.parse_qs(sparams)
+	params = {key: params[key][0] for key in params}
+	#print params
 	return params
 
 def GET(url, ref = None, opts = '', post = None, headers = None):
@@ -98,7 +84,7 @@ def GET(url, ref = None, opts = '', post = None, headers = None):
 	req.add_header('User-Agent', UA)
 	req.add_header('Accept-Language', 'ru-RU,ru;q=0.9,en;q=0.8')
 	if headers: [req.add_header(k, v) for k, v in headers.items()]
-	print "GET: " + url
+	if debug_mode: print "GET: " + url
 	if ref: req.add_header('Referer', ref)
 	if 'xmlhttp' in opts:
 		req.add_header('X-Requested-With', 'XMLHttpRequest')
@@ -161,25 +147,9 @@ def video_conditions(tag):
 				return True
 		except: return False
 	elif tag.name == 'iframe':
-		if re.search('(megogo.net|g-tv.ru|madbanner.com)', tag['src']): return False
+		if re.search('megogo.net|g-tv.ru|madbanner.com|videoroll.net|winvideo.org', tag['src']): return False
 		return True
 	else: return False
-
-def ocb_seasons_conditions(tag):
-	try:
-		if tag.name == 'select':
-			#print tag
-			#print tag.previous_sibling.string.encode('utf-8')
-			if u'Сезон' in tag.previous_sibling.string: return True
-	except Exception, e:
-		pass
-	return False
-
-def ocb_episodes_conditions(tag):
-	try:
-		if tag.name == 'select' and u'Серия' in tag.previous_sibling.string: return True
-	except: pass
-	return False
 
 def Search(params):
 	mode = params['mode'] if 'mode' in params else None
@@ -193,7 +163,8 @@ def Search(params):
 		if use_translit:
 			try:
 				query = translit.rus(query)
-				print 'detransified search query: ' + query
+				print 'detransified query: ' + query
+				if debug_mode: ShowMessage(addon_name, 'Detransified search query: ' + query)
 			except: pass
 		query = urllib.quote_plus(query)
 	else: return True
@@ -203,49 +174,44 @@ def Search(params):
 	uri['mode'] = 'search'
 	ListCat(uri)
 
-
 def Main(params):
 	listitem = xbmcgui.ListItem('<ПОИСК>', thumbnailImage = addon_icon)
 	uri = construct_request({
 		'func': 'Search'
 		})
 	xbmcplugin.addDirectoryItem(hos, uri, listitem, True)
-
 	listitem=xbmcgui.ListItem('Новое', iconImage = addon_icon)
 	uri = construct_request({
 		'func': 'ListCat',
 		'url': '/board/0-1'
 		})
 	xbmcplugin.addDirectoryItem(hos, uri, listitem, True)
-
+	
 	http = GET('http://cinema-hd.ru/')
 	if http == None: return False
 	soup = bs(http, 'html.parser', from_encoding = "utf-8")
 	http = clean_html(http)
-	#content = soup.find('ul',attrs={'class':'subs'})
-	#content = soup.find('li', attrs = {'class':'cat-menu sub'})
 	content = soup.find('nav', class_ = "navigation clearfix")
 	content = content.div.find_all('li')
-	for num in content:
-		title = num.find('a').string #.encode('utf-8')
-		url = num.find('a')['href']
+	for cat in content:
+		title = cat.find('a').string #.encode('utf-8')
+		url = cat.find('a')['href']
 		#print url
 		#title = title.replace(u'Все ', '').replace(u'Вся ', '').replace(u' фильмы', '').strip().capitalize()
-		
-		listitem = xbmcgui.ListItem(title, iconImage = addon_icon, thumbnailImage = addon_icon)
+		li = xbmcgui.ListItem(title, iconImage = addon_icon, thumbnailImage = addon_icon)
 		uri = construct_request({
 			'func': 'ListCat',
 			'url': url
 			})
-		if 'board' in url: xbmcplugin.addDirectoryItem(hos, uri, listitem, True)
-
+		if 'board' in url: xbmcplugin.addDirectoryItem(hos, uri, li, True)
+	
 	li = xbmcgui.ListItem("Клипы", iconImage = addon_icon, thumbnailImage = addon_icon)
 	uri = construct_request({
 		'func': 'ListCat',
 		'url': "/load/"
 		})
 	xbmcplugin.addDirectoryItem(hos, uri, li, True)
-
+	
 	xbmcplugin.endOfDirectory(hos)
 
 
@@ -289,6 +255,7 @@ def ListCat(params):
 			data = item.find('a')
 			#print data
 			link = data['href']
+			#title = data.find('h2').string.encode('utf-8')
 			title = item.find('div', attrs = {'class': 'item-info'}).span.string.encode('utf-8')
 			#title = data.string.encode('utf-8')
 			#print title
@@ -312,7 +279,7 @@ def ListCat(params):
 				})
 			if unified:
 				print addon_id, uri
-				usurl = re.compile(addon_id + '(.+)$').findall(uri)[0]
+				usurl = re.compile('\?(.+)$').findall(uri)[0]
 				uspath = {
 					'title': title,
 					'url': urllib.quote_plus(usurl),
@@ -420,7 +387,6 @@ def ListSeries(params):
 	else: fanartlist = None
 	#print fanartlist
 
-
 	for iframe in videos:
 		#Layout 1
 		title = iframe.find_previous_sibling('span', style = re.compile("color\:.?(#ff9900|orange|yellow)"))
@@ -517,10 +483,6 @@ def ListSeries(params):
 			ListMWSeasons(url, params['url'])
 			continue'''
 		
-		'''if 'online-cinema.biz' in url:
-			ListOCBSeries(url)
-			continue'''
-
 		li = xbmcgui.ListItem(title, iconImage = addon_icon, thumbnailImage = img)
 		li.setInfo(type = "video", infoLabels = infoSet)
 		if fanartlist:
@@ -530,12 +492,15 @@ def ListSeries(params):
 			else: li.setProperty('fanart_image', fanart)
 		IF = False; IP = True
 		uri = {'url': url};
-		if 'moonwalk.cc/serial' in url:
+		if re.search('moonwalk\.cc\/serial|serpens\.nl\/serial', url):
 			uri['func'] = 'ListMWSeasons'
 			uri['ref'] = params['url']
+			uri['tvshowtitle'] = title
+			uri['img'] = img
 			IF = True; IP = False
 		else:
 			uri['func'] = 'Play'
+			uri['title'] = title
 		if 'moonwalk.cc/video' in url and use_ahds:
 			#IP = False
 			IP = True
@@ -557,20 +522,22 @@ def ListSeries(params):
 def ListMWSeasons(params):
 	url = params['url']
 	ref = params['ref']
+	img = params['img']
 	http = GET(url)
 	soup = bs(http)
 	seasonsdata = soup.find('select', id = 'season')
-	seasonsdata1 = seasonsdata.find_all('option')
-	seasonslist = [int(i["value"]) for i in seasonsdata1]
-	#seasonslist = [int(i["value"]) for i in seasonsdata.contents]
-	seasonscount = max(seasonslist)
-	for season in seasonslist:
-		li = xbmcgui.ListItem("Сезон " + str(season))
+	seasonsdata = seasonsdata.find_all('option')
+	seasonlist = [int(i["value"]) for i in seasonsdata]
+	seasoncount = max(seasonlist)
+	for season in seasonlist:
+		li = xbmcgui.ListItem("Сезон " + str(season), thumbnailImage = img)
 		uri = construct_request({
 			'func': 'ListMWEpisodes',
-			'url': url[0:url.index('?')],
+			'url': url.partition('?')[0],
 			'season': season,
-			'ref': ref
+			'ref': ref,
+			'tvshowtitle': params['tvshowtitle'],
+			'img': img
 			})
 		xbmcplugin.addDirectoryItem(hos, uri, li, True)
 	
@@ -580,6 +547,7 @@ def ListMWEpisodes(params):
 	url = params['url']
 	season = params['season']
 	ref = params['ref']
+	img = params['img']
 	http = GET(url + '?season=' + season + '&referer=' + ref)
 	soup = bs(http)
 	episodesdata = soup.find('select', id = 'episode')
@@ -587,10 +555,18 @@ def ListMWEpisodes(params):
 	#print episodesdata1
 	episodeslist = [int(i["value"]) for i in episodesdata1]
 	for episode in episodeslist:
-		li = xbmcgui.ListItem("Серия " + str(episode))
+		li = xbmcgui.ListItem("Серия " + str(episode), thumbnailImage = img)
+		li.setInfo(type = 'video', infoLabels = {
+			'tvshowtitle': params['tvshowtitle'],
+			'season': int(season),
+			'episode': episode
+			})
 		uri = construct_request({
 			'func': 'Play',
-			'url': url + '?season=' + season + '&episode=' + str(episode)
+			'url': url + '?season=' + season + '&episode=' + str(episode),
+			'tvshowtitle': params['tvshowtitle'],
+			'season': int(season),
+			'episode': episode
 			})
 		#if not use_ahds: 
 		li.setProperty('IsPlayable', 'true')
@@ -598,45 +574,6 @@ def ListMWEpisodes(params):
 	
 	xbmcplugin.endOfDirectory(hos)
 
-'''def ListOCBSeries(url):
-	http = GET(url)
-	soup = bs(http)
-	seasonsdata = soup.find(ocb_seasons_conditions)
-	seasonsdata1 = seasonsdata.find_all('option')
-	seasonslist = [int(i.string) for i in seasonsdata1]
-	print seasonslist
-	seasonscount = max(seasonslist)
-	for season in seasonslist:
-		li = xbmcgui.ListItem("Сезон " + str(season))
-		uri = construct_request({
-			'func': 'ListOCBEpisodes',
-			'url': url[0:url.index('?')],
-			'season': season
-			#'ref': ref
-			})
-		xbmcplugin.addDirectoryItem(hos, uri, li, True)
-	
-	xbmcplugin.endOfDirectory(hos)
-
-def ListOCBEpisodes(url):
-	http = GET(url)
-	soup = bs(http)
-	episodesdata = soup.find(ocb_episodes_conditions)
-	episodesdata1 = seasonsdata.find_all('option')
-	episodeslist = [int(i.string) for i in episodesdata1]
-	print episodeslist
-	#seasonscount = max(seasonslist)
-	for episodr in episodeslist:
-		li = xbmcgui.ListItem("Сезон " + str(season))
-		uri = construct_request({
-			'func': 'ListOCBEpisodes',
-			'url': url[0:url.index('?')],
-			'season': season
-			#'ref': ref
-			})
-		xbmcplugin.addDirectoryItem(hos, uri, li, True)
-	
-	xbmcplugin.endOfDirectory(hos)'''
 
 def PlayHDS(link, name = "f4mstream"):
 	from F4mProxy import f4mProxyHelper
@@ -692,7 +629,7 @@ def Play(params):
 
 
 def GetVideo(url):
-	if re.search('(vk\.com|vkontakte\.ru)', url):
+	if re.search('vk\.com|vkontakte\.ru', url):
 		http = GET(url)
 		soup = bs(http, from_encoding = "windows-1251")
 		#sdata1 = soup.find('div', class_ = "scroll_fix_wrap", id = "page_wrap")
@@ -714,17 +651,24 @@ def GetVideo(url):
 			vks = vk(vk_email, vk_pass)
 			crid = vks.get_remixsid_cookie()
 			if crid:
-				if debug_mode: ShowMessage("ВКонтакте", "применена авторизация")
+				if debug_mode: ShowMessage("ВКонтакте", "Применена авторизация")
 			else:
-				ShowMessage("ВКонтакте", "ошибка при авторизации")
+				ShowMessage("ВКонтакте", "Ошибка при авторизации")
 				print "ошибка при авторизации вконтакте"
 				return False
 			#print crid
 			html = GET(url, headers = {"Cookie": crid})
+			#print html
 			rec = re.findall('var vars = ({.+?});', html)
-			if rec: rec = rec[0]
-			rec = rec.replace('\\', '')
-			#print rec
+			if rec:
+				rec = rec[0]
+				rec = rec.replace('\\', '')
+			else:
+				ShowMessage("ВКонтакте", "Видео недоступно")
+				#print "видео недоступно"
+				#if gebug_mode: print html
+				return False
+			#print 'rec: ' + str(rec)
 			fvs = json.loads(rec, encoding = "windows-1251")
 			#print json.dumps(fvs, indent = 1).encode('utf-8')
 		else:
@@ -756,15 +700,16 @@ def GetVideo(url):
 		#print url
 		return url
 	
-	elif 'moonwalk.cc' in url:
+	elif re.search('moonwalk\.cc|37\.220\.36\.\d{1,3}|serpens\.nl', url):
 		page = GET(url)
 		token = re.findall("video_token: '(.*?)'", page)[0]
 		access_key = re.findall("access_key: '(.*?)'", page)[0]
-		referer = re.findall(r'player_url = "(.+?\.swf)";', page)[0]
-		#print referer
+		#referer = re.findall(r'player_url = "(.+?\.swf)";', page)[0]
+		referer = url
 		post = urllib.urlencode({"video_token": token, "access_key": access_key})
 		#print post
-		page = GET('http://moonwalk.cc/sessions/create_session', post = post, opts = 'xmlhttp', ref = url)
+		page = GET('http://moonwalk.cc/sessions/create_session', post = post, opts = 'xmlhttp', ref = url, headers = None)
+		#print page
 		page = json.loads(page)
 		if use_ahds:
 			url = page["manifest_f4m"]
@@ -788,7 +733,7 @@ def GetVideo(url):
 			url = match[0]
 			return url
 	
-	elif re.search('(api\.video\.mail\.ru|videoapi\.my\.mail\.ru)', url):
+	elif re.search('api\.video\.mail\.ru|videoapi\.my\.mail\.ru', url):
 		data = GET(url)
 		#match = re.compile('videoSrc = "(.+?)",').findall(data)
 		match = re.compile('"metadataUrl":"(.+?)"').findall(data)
@@ -827,28 +772,15 @@ def GetVideo(url):
 		print url
 		return url
 	
-	elif 'online-cinema.biz' in url:
-		ShowMessage(addon_name, "Неизвестный видеохостинг: " + url)
-		html = GET(url)
-		url = re.findall('&file=(.+?)"', html)
-		if len(url) > 0: url = url[0]
-		else:
-			print "Parsing is failed: online-cinema.biz"
-			ShowMessage(addon_name, "Parsing is failed: online-cinema.biz")
-			return False
-		return url
-	
-	elif re.search('(moevideo\.net|playreplay\.net|videochart\.net)', url):
+	elif re.search('moevideo\.net|playreplay\.net|videochart\.net', url):
 		o = urlparse.urlparse(url)
 		#print o
-		#uid = re.findall('http://moevideo.net/framevideo/(.+?)\?', url)
 		uid = re.findall('http://(?:.+?)/framevideo/(.+?)\?', url)
 		if uid: uid = uid[0]
 		post = urllib.urlencode({"r": '[["file/flv_link",{"uid":"%s"}]]' % (uid)})
 		purl = urlparse.urlunsplit((o.scheme, o.netloc, '/data', '' , ''))
 		#print purl
-		#page = GET("https://moevideo.net/data", post = post)
-		page = GET(purl , post = post)
+		page = GET(purl, post = post)
 		#print page
 		page = json.loads(page)
 		#print json.dumps(page, indent = 1).encode('utf-8')
@@ -862,8 +794,8 @@ def GetVideo(url):
 
 
 hos = int(sys.argv[1])
-#print sys.argv
-params = get_params(sys.argv[2])
+if debug_mode: print sys.argv
+params = GetParams(sys.argv[2])
 #print params
 
 # -- Unified search API handling --
@@ -874,22 +806,14 @@ if unified:
 mode = params["mode"] if 'mode' in params else None
 if mode == 'show':
 	print urllib.unquote_plus(params["url"])
-	params = get_params(urllib.unquote_plus(params["url"]))
+	params = GetParams(urllib.unquote_plus(params["url"]))
 	print params
 # ---------------------------------
 
-try:
+if 'func' in params: 
 	func = params['func']
 	del params['func']
-except:
-	func = None
-	xbmc.log( '[%s]: Primary input' % addon_id, 1 )
-	Main(params)
-if func != None:
-	try: pfunc = globals()[func]
-	except:
-		pfunc = None
-		xbmc.log( '[%s]: Function "%s" not found' % (addon_id, func), 4 )
-		ShowMessage('Internal addon error', 'Function "%s" not found' % func, 2000)
-	if pfunc: pfunc(params)
+else: func = 'Main'
+pfunc = globals()[func]
+pfunc(params)
 
