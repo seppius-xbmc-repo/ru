@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<settings>
+
+	<category label="MySQL Setup">
+		<setting default="false" id="vd_toggle" label="Include Videos" type="bool"/>
+		<setting label="Name (optional)" type="text" id="vd_name" default="MyVideos" visible="eq(-1,true)"/>
+
+		<setting label="Type" type="text" id="vd_type" default="mysql" visible="eq(-2,true)"/>
+		<setting label="Host IP" type="ipaddress" id="vd_host" visible="eq(-3,true)"/>
+		<setting label="Port" type="number" id="vd_port" visible="eq(-4,true)"/>
+		<setting label="Username" type="text" id="vd_user" default="osmc" visible="eq(-5,true)"/>
+		<setting label="Password" type="text" id="vd_pass" default="mysql" visible="eq(-6,true)"/>
+
+		<setting default="false" id="vd_importwatched" label="Import Watched Status" type="bool" visible="eq(-7,true)"/>
+		<setting default="false" id="vd_importresume" label="Import Resume Point" type="bool" visible="eq(-8,true)"/>
+
+		<setting default="false" id="mu_toggle" label="Include Music" type="bool"/>
+		<setting label="Name (optional)" type="text" id="mu_name" default="MyMusic" visible="eq(-1,true)"/>
+
+		<setting default="false" id="mu_usevd" label="Use Video Details" type="bool" visible="eq(-2,true)+eq(-11,true)"/>
+
+		<setting label="Type" type="text" id="mu_type" default="mysql" visible="eq(-3,true)+eq(-1,false)"/>
+		<setting label="Host IP" type="ipaddress" id="mu_host" visible="eq(-4,true)+eq(-2,false)"/>
+		<setting label="Port" type="number" id="mu_port" visible="eq(-5,true)+eq(-3,false)"/>
+		<setting label="Username" type="text" id="mu_user" default="osmc" visible="eq(-6,true)+eq(-4,false)"/>
+		<setting label="Password" type="text" id="mu_pass" default="osmc" visible="eq(-7,true)+eq(-5,false)"/>
+		
+	</category>
+</settings>
+

@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<settings>
+    <!--advancedsettings_HEADING-->
+    <category label="MySQL Setup">
+        <setting default="false" id="vd_toggle" label="Include Videos" type="bool"/>
+        <setting default="MyVideos" id="vd_name" label="Name (optional)" subsetting="true" type="text" visible="eq(-1,true)"/>
+        <setting default="mysql" id="vd_type" label="Type" subsetting="true" type="text" visible="eq(-2,true)"/>
+        <setting id="vd_host" label="Host IP" subsetting="true" type="ipaddress" visible="eq(-3,true)"/>
+        <setting id="vd_port" label="Port" subsetting="true" type="number" visible="eq(-4,true)"/>
+        <setting default="osmc" id="vd_user" label="Username" subsetting="true" type="text" visible="eq(-5,true)"/>
+        <setting default="osmc" id="vd_pass" label="Password" subsetting="true" type="text" visible="eq(-6,true)"/>
+        <setting type="sep"/>
+        <setting default="false" id="mu_toggle" label="Include Music" type="bool"/>
+        <setting default="MyMusic" id="mu_name" label="Name (optional)" subsetting="true" type="text" visible="eq(-1,true)"/>
+        <setting default="mysql" id="mu_type" label="Type" subsetting="true" type="text" visible="eq(-2,true)"/>
+        <setting id="mu_host" label="Host IP" subsetting="true" type="ipaddress" visible="eq(-3,true)"/>
+        <setting id="mu_port" label="Port" subsetting="true" type="number" visible="eq(-4,true)"/>
+        <setting default="osmc" id="mu_user" label="Username" subsetting="true" type="text" visible="eq(-5,true)"/>
+        <setting default="osmc" id="mu_pass" label="Password" subsetting="true" type="text" visible="eq(-6,true)"/>
+    </category>
+    <category label="videolibrary">
+        <!--videolibrary_HEADING-->
+        <!--importwatchedstate>false</importwatchedstate-->
+        <setting default="false" id="importwatchedstatebool" label="Activate importwatchedstate" type="bool"/>
+        <setting default="false" enable="eq(-1,true)" id="importwatchedstate" label="importwatchedstate" lvalues="32001|32002" subsetting="true" type="labelenum"/>
+        <!--importresumepoint>false</importresumepoint-->
+        <setting default="false" id="importresumepointbool" label="Activate importresumepoint" type="bool"/>
+        <setting default="false" enable="eq(-1,true)" id="importresumepoint" label="importresumepoint" lvalues="32001|32002" subsetting="true" type="labelenum"/>
+        <!--allitemsonbottom>false</allitemsonbottom-->
+        <setting default="false" id="allitemsonbottombool" label="Activate allitemsonbottom" type="bool"/>
+        <setting default="false" enable="eq(-1,true)" id="allitemsonbottom" label="allitemsonbottom" lvalues="32001|32002" subsetting="true" type="labelenum"/>
+        <!--backgroundupdate>false</backgroundupdate-->
+        <setting default="false" id="backgroundupdatebool" label="Activate backgroundupdate" type="bool"/>
+        <setting default="false" enable="eq(-1,true)" id="backgroundupdate" label="backgroundupdate" lvalues="32001|32002" subsetting="true" type="labelenum"/>
+        <!--cleanonupdate>false</cleanonupdate-->
+        <setting default="false" id="cleanonupdatebool" label="Activate cleanonupdate" type="bool"/>
+        <setting default="false" enable="eq(-1,true)" id="cleanonupdate" label="cleanonupdate" lvalues="32001|32002" subsetting="true" type="labelenum"/>
+        <!--hideallitems>false</hideallitems-->
+        <setting default="false" id="hideallitemsbool" label="Activate hideallitems" type="bool"/>
+        <setting default="false" enable="eq(-1,true)" id="hideallitems" label="hideallitems" lvalues="32001|32002" subsetting="true" type="labelenum"/>
+        <!--hideemptyseries>false</hideemptyseries-->
+        <setting default="false" id="hideemptyseriesbool" label="Activate hideemptyseries" type="bool"/>
+        <setting default="false" enable="eq(-1,true)" id="hideemptyseries" label="hideemptyseries" lvalues="32001|32002" subsetting="true" type="labelenum"/>
+        <!--hiderecentlyaddeditems>false</hiderecentlyaddeditems-->
+        <setting default="false" id="hiderecentlyaddeditemsbool" label="Activate hiderecentlyaddeditems" type="bool"/>
+        <setting default="false" enable="eq(-1,true)" id="hiderecentlyaddeditems" label="hiderecentlyaddeditems" lvalues="32001|32002" subsetting="true" type="labelenum"/>
+        <!--recentlyaddeditems>25</recentlyaddeditems-->
+        <setting default="false" id="recentlyaddeditemsbool" label="Activate recentlyaddeditems" type="bool"/>
+        <setting default="25" enable="eq(-1,true)" id="recentlyaddeditems" label="recentlyaddeditems" subsetting="true" type="number"/>
+        <!--itemseparator>/ </itemseparator-->
+        <setting default="false" id="itemseparatorbool" label="Activate itemseparator" type="bool"/>
+        <setting default=" / " enable="eq(-1,true)" id="itemseparator" label="itemseparator" subsetting="true" type="text"/>
+        <!--exportautothumbs>false</exportautothumbs-->
+        <setting default="false" id="exportautothumbsbool" label="Activate exportautothumbs" type="bool"/>
+        <setting default="false" enable="eq(-1,true)" id="exportautothumbs" label="exportautothumbs" lvalues="32001|32002" subsetting="true" type="labelenum"/>
+        <!--dateadded>1</dateadded-->
+        <setting default="false" id="dateaddedbool" label="Activate dateadded" type="bool"/>
+        <setting default="1" enable="eq(-1,true)" id="dateadded" label="dateadded" option="int" range="0,1,2" subsetting="true" type="slider"/>
+        <!--mymovies_HEADING-->
+        <!--categoriestogenres>false</categoriestogenres-->
+        <setting default="false" id="categoriestogenresbool" label="Activate categoriestogenres" type="bool"/>
+        <setting default="false" enable="eq(-1,true)" id="categoriestogenres" label="categoriestogenres" lvalues="32001|32002" subsetting="true" type="labelenum"/>
+        <!--/mymovies_HEADING-->
+        <!--/videolibrary_HEADING-->
+    </category>
+    <category label="network">
+        <!--network_HEADING-->
+        <!--cachemembuffersize></cachemembuffersize-->
+        <setting default="false" id="cachemembuffersizebool" label="Activate cachemembuffersize" type="bool"/>
+        <setting default="0" enable="eq(-1,true)" id="cachemembuffersize" label="cachemembuffersize" subsetting="true" type="number"/>
+        <!--curlclienttimeout></curlclienttimeout-->
+        <setting default="false" id="curlclienttimeoutbool" label="Activate curlclienttimeout" type="bool"/>
+        <setting default="" enable="eq(-1,true)" id="curlclienttimeout" label="curlclienttimeout" subsetting="true" type="number"/>
+        <!--curllowspeedtime></curllowspeedtime-->
+        <setting default="false" id="curllowspeedtimebool" label="Activate curllowspeedtime" type="bool"/>
+        <setting default="" enable="eq(-1,true)" id="curllowspeedtime" label="curllowspeedtime" subsetting="true" type="number"/>
+        <!--readbufferfactor></readbufferfactor-->
+        <setting default="false" id="readbufferfactorbool" label="Activate readbufferfactor" type="bool"/>
+        <setting default="" enable="eq(-1,true)" id="readbufferfactor" label="readbufferfactor" subsetting="true" type="number"/>
+        <!--buffermode>0</buffermode-->
+        <setting default="false" id="buffermodebool" label="Activate buffermode" type="bool"/>
+        <setting default="0" enable="eq(-1,true)" id="buffermode" label="buffermode" option="int" range="0,1,3" subsetting="true" type="slider"/>
+        <!--httpproxyusername>0</httpproxyusername-->
+        <setting default="false" id="httpproxyusernamebool" label="Activate httpproxyusername" type="bool"/>
+        <setting default="" enable="eq(-1,true)" id="httpproxyusername" label="httpproxyusername" subsetting="true" type="text"/>
+        <!--httpproxypassword>0</httpproxypassword-->
+        <setting default="false" id="httpproxypasswordbool" label="Activate httpproxypassword" type="bool"/>
+        <setting default="" enable="eq(-1,true)" id="httpproxypassword" label="httpproxypassword" subsetting="true" type="text"/>
+        <!--/network_HEADING-->
+    </category>
+    <category label="video">
+        <!--video_HEADING-->
+        <!--subsdelayrange>10</subsdelayrange-->
+        <setting default="false" id="subsdelayrangebool" label="Activate subsdelayrange" type="bool"/>
+        <setting default="10" enable="eq(-1,true)" id="subsdelayrange" label="subsdelayrange" subsetting="true" type="number"/>
+        <!--audiodelayrange>10</audiodelayrange-->
+        <setting default="false" id="audiodelayrangebool" label="Activate audiodelayrange" type="bool"/>
+        <setting default="10" enable="eq(-1,true)" id="audiodelayrange" label="audiodelayrange" subsetting="true" type="number"/>
+        <!--smallstepbackseconds>7</smallstepbackseconds-->
+        <setting default="false" id="smallstepbacksecondsbool" label="Activate smallstepbackseconds" type="bool"/>
+        <setting default="7" enable="eq(-1,true)" id="smallstepbackseconds" label="smallstepbackseconds" subsetting="true" type="number"/>
+        <!--usetimeseeking>true</usetimeseeking-->
+        <setting default="false" id="usetimeseekingbool" label="Activate usetimeseeking" type="bool"/>
+        <setting default="true" enable="eq(-1,true)" id="usetimeseeking" label="usetimeseeking" lvalues="32001|32002" subsetting="true" type="labelenum"/>
+        <!--timeseekforward>30</timeseekforward-->
+        <setting default="false" id="timeseekforwardbool" label="Activate timeseekforward" type="bool"/>
+        <setting default="30" enable="eq(-1,true)" id="timeseekforward" label="timeseekforward" subsetting="true" type="number"/>
+        <!--timeseekbackward>-30</timeseekbackward-->
+        <setting default="false" id="timeseekbackwardbool" label="Activate timeseekbackward" type="bool"/>
+        <setting default="-30" enable="eq(-1,true)" id="timeseekbackward" label="timeseekbackward" subsetting="true" type="number"/>
+        <!--timeseekforwardbig>600</timeseekforwardbig-->
+        <setting default="false" id="timeseekforwardbigbool" label="Activate timeseekforwardbig" type="bool"/>
+        <setting default="600" enable="eq(-1,true)" id="timeseekforwardbig" label="timeseekforwardbig" subsetting="true" type="number"/>
+        <!--timeseekbackwardbig>-600</timeseekbackwardbig-->
+        <setting default="false" id="timeseekbackwardbigbool" label="Activate timeseekbackwardbig" type="bool"/>
+        <setting default="-600" enable="eq(-1,true)" id="timeseekbackwardbig" label="timeseekbackwardbig" subsetting="true" type="number"/>
+        <!--percentseekforward>2</percentseekforward-->
+        <setting default="false" id="percentseekforwardbool" label="Activate percentseekforward" type="bool"/>
+        <setting default="2" enable="eq(-1,true)" id="percentseekforward" label="percentseekforward" subsetting="true" type="number"/>
+        <!--percentseekbackward>-2</percentseekbackward-->
+        <setting default="false" id="percentseekbackwardbool" label="Activate percentseekbackward" type="bool"/>
+        <setting default="-2" enable="eq(-1,true)" id="percentseekbackward" label="percentseekbackward" subsetting="true" type="number"/>
+        <!--percentseekforwardbig>10</percentseekforwardbig-->
+        <setting default="false" id="percentseekforwardbigbool" label="Activate percentseekforwardbig" type="bool"/>
+        <setting default="10" enable="eq(-1,true)" id="percentseekforwardbig" label="percentseekforwardbig" subsetting="true" type="number"/>
+        <!--percentseekbackwardbig>-10</percentseekbackwardbig-->
+        <setting default="false" id="percentseekbackwardbigbool" label="Activate percentseekbackwardbig" type="bool"/>
+        <setting default="-10" enable="eq(-1,true)" id="percentseekbackwardbig" label="percentseekbackwardbig" subsetting="true" type="number"/>
+        <!--blackbarcolour>1</blackbarcolour-->
+        <setting default="false" id="blackbarcolourbool" label="Activate blackbarcolour" type="bool"/>
+        <setting default="1" enable="eq(-1,true)" id="blackbarcolour" label="blackbarcolour" subsetting="true" type="number"/>
+        <!--fullscreenonmoviestart>true</fullscreenonmoviestart-->
+        <setting default="false" id="fullscreenonmoviestartbool" label="Activate fullscreenonmoviestart" type="bool"/>
+        <setting default="true" enable="eq(-1,true)" id="fullscreenonmoviestart" label="fullscreenonmoviestart" lvalues="32001|32002" subsetting="true" type="labelenum"/>
+        <!--defaultplayer>dvdplayer</defaultplayer-->
+        <setting default="false" id="defaultplayerbool" label="Activate defaultplayer" type="bool"/>
+        <setting default="dvdplayer" enable="eq(-1,true)" id="defaultplayer" label="defaultplayer" lvalues="dvdplayer|extplayer" subsetting="true" type="labelenum"/>
+        <!--playcountminimumpercent>90</playcountminimumpercent-->
+        <setting default="false" id="playcountminimumpercentbool" label="Activate playcountminimumpercent" type="bool"/>
+        <setting default="90" enable="eq(-1,true)" id="playcountminimumpercent" label="playcountminimumpercent" subsetting="true" type="number"/>
+        <!--ignoresecondsatstart>180</ignoresecondsatstart-->
+        <setting default="false" id="ignoresecondsatstartbool" label="Activate ignoresecondsatstart" type="bool"/>
+        <setting default="180" enable="eq(-1,true)" id="ignoresecondsatstart" label="ignoresecondsatstart" subsetting="true" type="number"/>
+        <!--ignorepercentatend>8</ignorepercentatend-->
+        <setting default="false" id="ignorepercentatendbool" label="Activate ignorepercentatend" type="bool"/>
+        <setting default="8" enable="eq(-1,true)" id="ignorepercentatend" label="ignorepercentatend" subsetting="true" type="number"/>
+        <!--/video_HEADING-->
+    </category>
+    <category label="pvr">
+        <!--pvr_HEADING-->
+        <!--timecorrection>0</timecorrection-->
+        <setting default="false" id="timecorrectionbool" label="Activate timecorrection" type="bool"/>
+        <setting default="0" enable="eq(-1,true)" id="timecorrection" label="timecorrection" subsetting="true" type="number"/>
+        <!--infotoggleinterval>3000</infotoggleinterval-->
+        <setting default="false" id="infotoggleintervalbool" label="Activate infotoggleinterval" type="bool"/>
+        <setting default="3000" enable="eq(-1,true)" id="infotoggleinterval" label="infotoggleinterval" subsetting="true" type="number"/>
+        <!--minvideocachelevel>5</minvideocachelevel-->
+        <setting default="false" id="minvideocachelevelbool" label="Activate minvideocachelevel" type="bool"/>
+        <setting default="5" enable="eq(-1,true)" id="minvideocachelevel" label="minvideocachelevel" subsetting="true" type="number"/>
+        <!--maxvideocachelevel>10</maxvideocachelevel-->
+        <setting default="false" id="maxvideocachelevelbool" label="Activate maxvideocachelevel" type="bool"/>
+        <setting default="10" enable="eq(-1,true)" id="maxvideocachelevel" label="maxvideocachelevel" subsetting="true" type="number"/>
+        <!--cacheindvdplayer>true</cacheindvdplayer-->
+        <setting default="false" id="cacheindvdplayerbool" label="Activate cacheindvdplayer" type="bool"/>
+        <setting default="true" enable="eq(-1,true)" id="cacheindvdplayer" label="cacheindvdplayer" lvalues="32001|32002" subsetting="true" type="labelenum"/>
+        <!--channeliconsautoscan>true</channeliconsautoscan-->
+        <setting default="false" id="channeliconsautoscanbool" label="Activate channeliconsautoscan" type="bool"/>
+        <setting default="true" enable="eq(-1,true)" id="channeliconsautoscan" label="channeliconsautoscan" lvalues="32001|32002" subsetting="true" type="labelenum"/>
+        <!--autoscaniconsuserset>false</autoscaniconsuserset-->
+        <setting default="false" id="autoscaniconsusersetbool" label="Activate autoscaniconsuserset" type="bool"/>
+        <setting default="false" enable="eq(-1,true)" id="autoscaniconsuserset" label="autoscaniconsuserset" lvalues="32001|32002" subsetting="true" type="labelenum"/>
+        <!--numericchannelswitchtimeout>1000</numericchannelswitchtimeout-->
+        <setting default="false" id="numericchannelswitchtimeoutbool" label="Activate numericchannelswitchtimeout" type="bool"/>
+        <setting default="1000" enable="eq(-1,true)" id="numericchannelswitchtimeout" label="numericchannelswitchtimeout" subsetting="true" type="number"/>
+        <!--/pvr_HEADING-->
+    </category>
+    <category label="epg">
+        <!--epg_HEADING-->
+        <!--lingertime>1440</lingertime-->
+        <setting default="false" id="lingertimebool" label="Activate lingertime" type="bool"/>
+        <setting default="1440" enable="eq(-1,true)" id="lingertime" label="lingertime" subsetting="true" type="number"/>
+        <!--updatecheckinterval>300</updatecheckinterval-->
+        <setting default="false" id="updatecheckintervalbool" label="Activate updatecheckinterval" type="bool"/>
+        <setting default="300" enable="eq(-1,true)" id="updatecheckinterval" label="updatecheckinterval" subsetting="true" type="number"/>
+        <!--lingercleanupintervaltime>900</lingercleanupintervaltime-->
+        <setting default="false" id="lingercleanupintervaltimebool" label="Activate lingercleanupintervaltime" type="bool"/>
+        <setting default="900" enable="eq(-1,true)" id="lingercleanupintervaltime" label="lingercleanupintervaltime" subsetting="true" type="number"/>
+        <!--activetagcheckinterval>60</activetagcheckinterval-->
+        <setting default="false" id="activetagcheckintervalbool" label="Activate activetagcheckinterval" type="bool"/>
+        <setting default="60" enable="eq(-1,true)" id="activetagcheckinterval" label="activetagcheckinterval" subsetting="true" type="number"/>
+        <!--retryinterruptedupdateinterval>30</retryinterruptedupdateinterval-->
+        <setting default="false" id="retryinterruptedupdateintervalbool" label="Activate retryinterruptedupdateinterval" type="bool"/>
+        <setting default="30" enable="eq(-1,true)" id="retryinterruptedupdateinterval" label="retryinterruptedupdateinterval" subsetting="true" type="number"/>
+        <!--updateemptytagsinterval>60</updateemptytagsinterval-->
+        <setting default="false" id="updateemptytagsintervalbool" label="Activate updateemptytagsinterval" type="bool"/>
+        <setting default="60" enable="eq(-1,true)" id="updateemptytagsinterval" label="updateemptytagsinterval" subsetting="true" type="number"/>
+        <!--displayupdatepopup>true</displayupdatepopup-->
+        <setting default="false" id="displayupdatepopupbool" label="Activate displayupdatepopup" type="bool"/>
+        <setting default="true" enable="eq(-1,true)" id="displayupdatepopup" label="displayupdatepopup" lvalues="32001|32002" subsetting="true" type="labelenum"/>
+        <!--displayincrementalupdatepopup>false</displayincrementalupdatepopup-->
+        <setting default="false" id="displayincrementalupdatepopupbool" label="Activate displayincrementalupdatepopup" type="bool"/>
+        <setting default="false" enable="eq(-1,true)" id="displayincrementalupdatepopup" label="displayincrementalupdatepopup" lvalues="32001|32002" subsetting="true" type="labelenum"/>
+        <!--/epg_HEADING-->
+    </category>
+    <category label="edl">
+        <!--edl_HEADING-->
+        <!--mergeshortcommbreaks>false</mergeshortcommbreaks-->
+        <setting default="false" id="mergeshortcommbreaksbool" label="Activate mergeshortcommbreaks" type="bool"/>
+        <setting default="false" enable="eq(-1,true)" id="mergeshortcommbreaks" label="mergeshortcommbreaks" lvalues="32001|32002" subsetting="true" type="labelenum"/>
+        <!--maxcommbreaklength>250</maxcommbreaklength-->
+        <setting default="false" id="maxcommbreaklengthbool" label="Activate maxcommbreaklength" type="bool"/>
+        <setting default="250" enable="eq(-1,true)" id="maxcommbreaklength" label="maxcommbreaklength" subsetting="true" type="number"/>
+        <!--mincommbreaklength>90</mincommbreaklength-->
+        <setting default="false" id="mincommbreaklengthbool" label="Activate mincommbreaklength" type="bool"/>
+        <setting default="90" enable="eq(-1,true)" id="mincommbreaklength" label="mincommbreaklength" subsetting="true" type="number"/>
+        <!--maxcommbreakgap>120</maxcommbreakgap-->
+        <setting default="false" id="maxcommbreakgapbool" label="Activate maxcommbreakgap" type="bool"/>
+        <setting default="120" enable="eq(-1,true)" id="maxcommbreakgap" label="maxcommbreakgap" subsetting="true" type="number"/>
+        <!--commbreakautowait>0</commbreakautowait-->
+        <setting default="false" id="commbreakautowaitbool" label="Activate commbreakautowait" type="bool"/>
+        <setting default="0" enable="eq(-1,true)" id="commbreakautowait" label="commbreakautowait" subsetting="true" type="number"/>
+        <!--commbreakautowind>0</commbreakautowind-->
+        <setting default="false" id="commbreakautowindbool" label="Activate commbreakautowind" type="bool"/>
+        <setting default="0" enable="eq(-1,true)" id="commbreakautowind" label="commbreakautowind" subsetting="true" type="number"/>
+        <!--/edl_HEADING-->
+    </category>
+    <category label="videoscanner">
+        <!--videoscanner_HEADING-->
+        <!--ignoreerrors>true</ignoreerrors-->
+        <setting default="false" id="ignoreerrorsbool" label="Activate ignoreerrors" type="bool"/>
+        <setting default="true" enable="eq(-1,true)" id="ignoreerrors" label="ignoreerrors" lvalues="32001|32002" subsetting="true" type="labelenum"/>
+        <!--/videoscanner_HEADING-->
+    </category>
+    <category label="karaoke">
+        <!--karaoke_HEADING-->
+        <!--syncdelaycdg>0.0</syncdelaycdg-->
+        <setting default="false" id="syncdelaycdgbool" label="Activate syncdelaycdg" type="bool"/>
+        <setting default="0.0" enable="eq(-1,true)" id="syncdelaycdg" label="syncdelaycdg" subsetting="true" type="number"/>
+        <!--syncdelaylrc>0.0</syncdelaylrc-->
+        <setting default="false" id="syncdelaylrcbool" label="Activate syncdelaylrc" type="bool"/>
+        <setting default="0.0" enable="eq(-1,true)" id="syncdelaylrc" label="syncdelaylrc" subsetting="true" type="number"/>
+        <!--alwaysreplacegenre>false</alwaysreplacegenre-->
+        <setting default="false" id="alwaysreplacegenrebool" label="Activate alwaysreplacegenre" type="bool"/>
+        <setting default="false" enable="eq(-1,true)" id="alwaysreplacegenre" label="alwaysreplacegenre" lvalues="32001|32002" subsetting="true" type="labelenum"/>
+        <!--storedelay>true</storedelay-->
+        <setting default="false" id="storedelaybool" label="Activate storedelay" type="bool"/>
+        <setting default="true" enable="eq(-1,true)" id="storedelay" label="storedelay" lvalues="32001|32002" subsetting="true" type="labelenum"/>
+        <!--autoassignstartfrom>1</autoassignstartfrom-->
+        <setting default="false" id="autoassignstartfrombool" label="Activate autoassignstartfrom" type="bool"/>
+        <setting default="1" enable="eq(-1,true)" id="autoassignstartfrom" label="autoassignstartfrom" subsetting="true" type="number"/>
+        <!--nocdgbackground>true</nocdgbackground-->
+        <setting default="false" id="nocdgbackgroundbool" label="Activate nocdgbackground" type="bool"/>
+        <setting default="true" enable="eq(-1,true)" id="nocdgbackground" label="nocdgbackground" lvalues="32001|32002" subsetting="true" type="labelenum"/>
+        <!--nextsongpopuptime>0.0</nextsongpopuptime-->
+        <setting default="false" id="nextsongpopuptimebool" label="Activate nextsongpopuptime" type="bool"/>
+        <setting default="0.0" enable="eq(-1,true)" id="nextsongpopuptime" label="nextsongpopuptime" subsetting="true" type="number"/>
+        <!--/karaoke_HEADING-->
+    </category>
+    <category label="slideshow">
+        <!--slideshow_HEADING-->
+        <!--panamount>2.5</panamount-->
+        <setting default="false" id="panamountbool" label="Activate panamount" type="bool"/>
+        <setting default="2.5" enable="eq(-1,true)" id="panamount" label="panamount" subsetting="true" type="number"/>
+        <!--zoomamount>5.0</zoomamount-->
+        <setting default="false" id="zoomamountbool" label="Activate zoomamount" type="bool"/>
+        <setting default="5.0" enable="eq(-1,true)" id="zoomamount" label="zoomamount" subsetting="true" type="number"/>
+        <!--blackbarcompensation>20</blackbarcompensation-->
+        <setting default="false" id="blackbarcompensationbool" label="Activate blackbarcompensation" type="bool"/>
+        <setting default="20" enable="eq(-1,true)" id="blackbarcompensation" label="blackbarcompensation" subsetting="true" type="number"/>
+        <!--/slideshow_HEADING-->
+    </category>
+    <category label="tuxbox">
+        <!--tuxbox_HEADING-->
+        <!--audiochannelselection>false</audiochannelselection-->
+        <setting default="false" id="audiochannelselectionbool" label="Activate audiochannelselection" type="bool"/>
+        <setting default="true" enable="eq(-1,true)" id="audiochannelselection" label="audiochannelselection" lvalues="32001|32002" subsetting="true" type="labelenum"/>
+        <!--submenuselection>false</submenuselection-->
+        <setting default="false" id="submenuselectionbool" label="Activate submenuselection" type="bool"/>
+        <setting default="true" enable="eq(-1,true)" id="submenuselection" label="submenuselection" lvalues="32001|32002" subsetting="true" type="labelenum"/>
+        <!--defaultrootmenu>0</defaultrootmenu-->
+        <setting default="false" id="defaultrootmenubool" label="Activate defaultrootmenu" type="bool"/>
+        <setting default="1" enable="eq(-1,true)" id="defaultrootmenu" label="defaultrootmenu" option="int" range="1,1,4" subsetting="true" type="slider"/>
+        <!--defaultsubmenu>4</defaultsubmenu-->
+        <setting default="false" id="defaultsubmenubool" label="Activate defaultsubmenu" type="bool"/>
+        <setting default="1" enable="eq(-1,true)" id="defaultsubmenu" label="defaultsubmenu" option="int" range="1,1,4" subsetting="true" type="slider"/>
+        <!--pictureicon>true</pictureicon-->
+        <setting default="false" id="pictureiconbool" label="Activate pictureicon" type="bool"/>
+        <setting default="true" enable="eq(-1,true)" id="pictureicon" label="pictureicon" lvalues="32001|32002" subsetting="true" type="labelenum"/>
+        <!--epgrequesttime>10</epgrequesttime-->
+        <setting default="false" id="epgrequesttimebool" label="Activate epgrequesttime" type="bool"/>
+        <setting default="10" enable="eq(-1,true)" id="epgrequesttime" label="epgrequesttime" subsetting="true" type="number"/>
+        <!--zapwaittime>0</zapwaittime-->
+        <setting default="false" id="zapwaittimebool" label="Activate zapwaittime" type="bool"/>
+        <setting default="0" enable="eq(-1,true)" id="zapwaittime" label="zapwaittime" subsetting="true" type="number"/>
+        <!--/tuxbox_HEADING-->
+    </category>
+    <category label="window">
+        <!--window_HEADING-->
+        <!--width>1280</width-->
+        <setting default="false" id="widthbool" label="Activate width" type="bool"/>
+        <setting default="1280" enable="eq(-1,true)" id="width" label="width" subsetting="true" type="number"/>
+        <!--height>720</height-->
+        <setting default="false" id="heightbool" label="Activate height" type="bool"/>
+        <setting default="720" enable="eq(-1,true)" id="height" label="height" subsetting="true" type="number"/>
+        <!--/window_HEADING-->
+    </category>
+    <category label="masterlock">
+        <!--masterlock_HEADING-->
+        <!--startuplock>false</startuplock-->
+        <setting default="false" id="startuplockbool" label="Activate startuplock" type="bool"/>
+        <setting default="false" enable="eq(-1,true)" id="startuplock" label="startuplock" lvalues="32001|32002" subsetting="true" type="labelenum"/>
+        <!--automastermode>false</automastermode-->
+        <setting default="false" id="automastermodebool" label="Activate automastermode" type="bool"/>
+        <setting default="false" enable="eq(-1,true)" id="automastermode" label="automastermode" lvalues="32001|32002" subsetting="true" type="labelenum"/>
+        <!--loginlock>true</loginlock-->
+        <setting default="false" id="loginlockbool" label="Activate loginlock" type="bool"/>
+        <setting default="true" enable="eq(-1,true)" id="loginlock" label="loginlock" lvalues="32001|32002" subsetting="true" type="labelenum"/>
+        <!--maxretries>3</maxretries-->
+        <setting default="false" id="maxretriesbool" label="Activate maxretries" type="bool"/>
+        <setting default="3" enable="eq(-1,true)" id="maxretries" label="maxretries" subsetting="true" type="number"/>
+        <!--/masterlock_HEADING-->
+    </category>
+    <category label="JSON-RPC (For Devs)">
+        <!--jsonrpc_HEADING-->
+        <!--compactoutput>false</compactoutput-->
+        <setting default="false" id="compactoutputbool" label="Activate compactoutput" type="bool"/>
+        <setting default="true" enable="eq(-1,true)" id="compactoutput" label="compactoutput" lvalues="32001|32002" subsetting="true" type="labelenum"/>
+        <!--tcpport>9999</tcpport-->
+        <setting default="false" id="tcpportbool" label="Activate compactoutput" type="bool"/>
+        <setting id="tcpport" label="tcpport" subsetting="true" type="number" visible="eq(-1,true)"/>
+        <!--/jsonrpc_HEADING-->
+    </category>
+    <category label="Myth">
+        <!--myth_HEADING-->
+        <!--movielength>0</movielength-->
+        <setting default="false" id="movielengthbool" label="Activate movielength" type="bool"/>
+        <setting id="movielength" label="movielength" subsetting="true" type="number" visible="eq(-1,true)"/>
+        <!--/myth_HEADING-->
+    </category>
+    <category label="Input Settings">
+        <!--remotedelay>10</remotedelay-->
+        <setting default="false" id="remotedelaybool" label="Activate remotedelay" type="bool"/>
+        <setting default="10" enable="eq(-1,true)" id="remotedelay" label="remotedelay" subsetting="true" type="number"/>
+        <!--remoterepeat>800</remoterepeat-->
+        <setting default="false" id="remoterepeatbool" label="Activate remoterepeat" type="bool"/>
+        <setting default="800" enable="eq(-1,true)" id="remoterepeat" label="remoterepeat" subsetting="true" type="number"/>
+        <!--controllerdeadzone>0.2</controllerdeadzone-->
+        <setting default="false" id="controllerdeadzonebool" label="Activate controllerdeadzone" type="bool"/>
+        <setting default="0.2" enable="eq(-1,true)" id="controllerdeadzone" label="controllerdeadzone" subsetting="true" type="number"/>
+        <!--enablemultimediakeys>true</enablemultimediakeys-->
+        <setting default="false" id="enablemultimediakeysbool" label="Activate enablemultimediakeys" type="bool"/>
+        <setting default="true" enable="eq(-1,true)" id="enablemultimediakeys" label="enablemultimediakeys" lvalues="32001|32002" subsetting="true" type="labelenum"/>
+    </category>
+    <category label="Seek Steps">
+        <!--seeksteps>7, 15, 30, 60, 180, 300, 600, 900, 1800</seeksteps-->
+        <setting default="false" id="seekstepsbool" label="Activate seeksteps" type="bool"/>
+        <setting default="7, 15, 30, 60, 180, 300, 600, 900, 1800" id="seeksteps" label="seeksteps" subsetting="true" type="text" visible="eq(-1,true)"/>
+    </category>
+    <category label="Other Settings">
+        <!--skiploopfilter>8</skiploopfilter-->
+        <setting default="false" id="skiploopfilterbool" label="Activate skiploopfilter" type="bool"/>
+        <setting default="true" enable="eq(-1,true)" id="skiploopfilter" label="skiploopfilter" lvalues="-16|0|8|16|32|48" subsetting="true" type="labelenum"/>
+        <!--imageres>720</imageres-->
+        <setting default="false" id="imageresbool" label="Activate imageres" type="bool"/>
+        <setting default="720" enable="eq(-1,true)" id="imageres" label="imageres" subsetting="true" type="number"/>
+        <!--fanartres>1080</fanartres-->
+        <setting default="false" id="fanartresbool" label="Activate fanartres" type="bool"/>
+        <setting default="1080" enable="eq(-1,true)" id="fanartres" label="fanartres" subsetting="true" type="number"/>
+        <!--useddsfanart>true</useddsfanart-->
+        <setting default="false" id="useddsfanartbool" label="Activate useddsfanart" type="bool"/>
+        <setting default="true" enable="eq(-1,true)" id="useddsfanart" label="useddsfanart" lvalues="32001|32002" subsetting="true" type="labelenum"/>
+        <!--playlistretries>100</playlistretries-->
+        <setting default="false" id="playlistretriesbool" label="Activate playlistretries" type="bool"/>
+        <setting default="100" enable="eq(-1,true)" id="playlistretries" label="playlistretries" subsetting="true" type="number"/>
+        <!--playlisttimeout>20</playlisttimeout-->
+        <setting default="false" id="playlisttimeoutbool" label="Activate playlisttimeout" type="bool"/>
+        <setting default="20" enable="eq(-1,true)" id="playlisttimeout" label="playlisttimeout" subsetting="true" type="number"/>
+        <!--packagefoldersize>200</packagefoldersize-->
+        <setting default="false" id="packagefoldersizebool" label="Activate packagefoldersize" type="bool"/>
+        <setting default="200" enable="eq(-1,true)" id="packagefoldersize" label="packagefoldersize" subsetting="true" type="number"/>
+        <!--showexitbutton>false</showexitbutton-->
+        <setting default="false" id="showexitbuttonbool" label="Activate showexitbutton" type="bool"/>
+        <setting default="false" enable="eq(-1,true)" id="showexitbutton" label="showexitbutton" lvalues="32001|32002" subsetting="true" type="labelenum"/>
+        <!--fullscreen>false</fullscreen-->
+        <setting default="false" id="fullscreenbool" label="Activate fullscreen" type="bool"/>
+        <setting default="false" enable="eq(-1,true)" id="fullscreen" label="fullscreen" lvalues="32001|32002" subsetting="true" type="labelenum"/>
+        <!--splash>false</splash-->
+        <setting default="false" id="splashbool" label="Activate splash" type="bool"/>
+        <setting default="false" enable="eq(-1,true)" id="splash" label="splash" lvalues="32001|32002" subsetting="true" type="labelenum"/>
+        <!--alwaysontop>yes</alwaysontop-->
+        <setting default="false" id="alwaysontopbool" label="Activate alwaysontop" type="bool"/>
+        <setting default="yes" enable="eq(-1,true)" id="alwaysontop" label="alwaysontop" lvalues="yes|no" subsetting="true" type="labelenum"/>
+    </category>
+    <!--/advancedsettings_HEADING-->
+</settings>

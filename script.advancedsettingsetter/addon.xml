@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<addon id="script.advancedsettingsetter"
+       name="Advanced Setting Setter"
+       version="0.0.1"
+       provider-name="KodeKarnage">
+    <requires>
+        <import addon="xbmc.python" version="2.1.0"/>
+        <import addon="script.module.xmltodict" version="0.8.6"/>
+    </requires>
+
+<extension point="xbmc.python.script"
+            library="default.py">
+            <provides>program</provides>
+    </extension>
+
+    <extension point="xbmc.addon.metadata">
+        <summary lang="en">Advanced Setting Setter</summary>
+        <description lang="en">This addon allows you to activate and modify a large number of advanced settings in Kodi without having to manually create and populate an advancedsettings.xml file. WARNING: these settings are for advanced users only. Use at your own risk.</description>
+        <language>en</language>
+        <platform>all</platform>
+        <license>GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007</license>
+        <email>subliminal.karnage at gmail dot com</email>
+        <forum></forum>
+        <source></source>
+    </extension>
+</addon>
