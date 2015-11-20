@@ -1342,29 +1342,6 @@ RuTube - отличная стартовая площадка для незав�
   </extension>
 </addon>
 
-<addon id="plugin.video.seasonvar.ru"
-       name="[COLOR FF00FF00]Сериалы ([/COLOR][COLOR FFFFF000]seasonvar.ru[/COLOR][COLOR FF00FF00])[/COLOR]"
-       version="2.2.5"
-       provider-name="Silen">
-  <requires>
-    <import addon="xbmc.python" version="2.1.0"/>
-  </requires>
-  <extension point="xbmc.python.pluginsource"
-             provides="video"
-             library="default.py">
-    <provides>video</provides>
-  </extension>
-  <extension point="xbmc.addon.metadata">
-    <summary>my-hit.ru</summary>
-    <description>SEASONVAR.RU - Наш сайт создан для вас!
-Вы любите смотреть сериалы, но не можете себе этого позволить, так как их показывают по телевизору в неудобное для вас время? Вам нравится следить за судьбой героев, но вы часто пропускаете очередную серию? Теперь эти проблемы легко решить! На сайте Seasonvar.ru представлены отечественные и зарубежные сериалы, которые вы можете смотреть онлайн совершенно бесплатно.
-
-[COLOR FF00FF00]Contributors: [/COLOR][COLOR FFFFF000]DiMartino, [/COLOR]
-</description>
-    <platform>all</platform>
-  </extension>
-</addon>
-
 <addon id="plugin.video.serialonline.net"
        name="SerialOnline.net"
        version="0.1.0"
