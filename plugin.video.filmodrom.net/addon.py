@@ -6,16 +6,17 @@ import xbmcplugin, xbmcgui
 class SiteScrapper:
 
     def __init__(self):
-        self.base_url = 'http://filmodrom.net/'
+        self.base_url = 'http://filmodrom.in/'
         self.encoding = 'windows-1251'
         self.preg = {
-            'categories': '<li class="level3">\s*<a href="/(.+?)">(.+?)</a>\s*</li>',
+            'categories': '<li[^\>]*><a href="\/(.+?)" title=".+?">(.+?)</a>\s*</li>',
             'videos': '<h4>\s*<a href="(.+?)">(.+?)</a>',
-            'pictures': '<td valign="top">\s*<img src="(.+?)" width="180"',
-            'picture': '<td valign="top"><img src="(.+?)" width="250"',
+            'videos': '<a href="(.+?)" title="(.+?)" class="short-images-link">',
+            'pictures': 'class="short-images-link">\s*<img src="(http://filmodrom.net/|)(.+?)"',
+            'picture': '<div class="fstory-poster">\s*<img src="(http://filmodrom.net/|)(.+?)"',
             'video': 'file=(.+?flv)',
             'serial_list': 'pl=(.+?xml)"',
-            'video_title': '>([^<>]+?)[\&nbsp\;\s]*</h4>'
+            'video_title': '<meta property="og:title" content="(.+?)" />'
         }
         self.headers = {
             'Accept': '*/*',
@@ -31,7 +32,7 @@ class SiteScrapper:
             self.params['url'] = urllib2.unquote(self.params['url'])
 
     def isLinkUseful(self, needle):
-        haystack = ['news/']
+        haystack = ['news/','movies/']
         return needle not in haystack
 
     def addElements(self):
@@ -66,7 +67,10 @@ class SiteScrapper:
     def Categories(self, params):
         for link, title in params['categories']:
             if self.isLinkUseful(link):
-                self.addDir(title, self.base_url + link, 'videos', None, '1')
+                try:
+                    self.addDir(title, self.base_url + link, 'videos', None, '1')
+                except Exception:
+                    self.addDir('Ошибка', '', 'videos', None)
 
     def SubCategories(self, params):
         if params['sub_categories'] is None:
@@ -76,10 +80,13 @@ class SiteScrapper:
         self.mainPage()
         #self.prevPage()
         for i in range(0, len(params['videos'])):
-            if 'page' in self.params:
-                self.addDir(params['videos'][i][1], params['videos'][i][0], 'video', params['pictures'][i], self.params['page'])
-            else:
-                self.addDir(params['videos'][i][1], params['videos'][i][0], 'video', None)
+            try:
+                if 'page' in self.params:
+                    self.addDir(params['videos'][i][1], params['videos'][i][0], 'video', params['pictures'][i][1], self.params['page'])
+                else:
+                    self.addDir(params['videos'][i][1], params['videos'][i][0], 'video', None)
+            except Exception:
+                self.addDir('Ошибка', '', 'video', None)
         self.nexPage()
 
     def Video(self, params):
@@ -90,13 +97,19 @@ class SiteScrapper:
             prefix = False
         if len(params['video']) > 0:
             for i in range(0, len(params['video'])):
-                self.addLink(params['video_title'][i], params['video'][i], params['picture'][0])
+                try:
+                    self.addLink(params['video_title'][i], params['video'][i], params['picture'][i][1])
+                except Exception:
+                    self.addLink('Ошибка', '', '')
         else:
             self.encoding = 'utf-8'
             html = self.getHTML(params['serial_list'][0])
             series = re.compile('\{"comment":"(.+?)","file":"(http://.+?.flv)"\}').findall(html)
             for title, link in series:
-                self.addLink(title, link, params['picture'][0])
+                try:
+                    self.addLink(title, link, '')
+                except Exception:
+                    self.addLink('Ошибка', '', '')
 
     def prevPage(self):
         if 'page' in self.params and int(self.params['page']) > 1:
