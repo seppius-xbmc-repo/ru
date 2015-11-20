@@ -1714,25 +1714,6 @@ RuTube - отличная стартовая площадка для незав�
   </extension>
 </addon>
 
-<addon id="plugin.video.weewza.com"
-       name="Weewza.com"
-       version="1.0.4"
-       provider-name="Silen">
-  <requires>
-    <import addon="xbmc.python" version="2.1.0"/>
-  </requires>
-  <extension point="xbmc.python.pluginsource"
-             provides="video"
-             library="default.py">
-    <provides>video</provides>
-  </extension>
-  <extension point="xbmc.addon.metadata">
-    <summary>Weewza.com</summary>
-    <description>Русское телевидение онлайн.</description>
-    <platform>all</platform>
-  </extension>
-</addon>
-
 <addon id="plugin.video.youtube" name="YouTube" provider-name="TheCollective" version="4.4.6nu5">
   <requires>
     <import addon="xbmc.python" version="2.1.0" />
