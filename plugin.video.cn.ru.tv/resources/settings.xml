@@ -1,7 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>  
-<settings>        <!-- General -->    	
-	<setting label="30651" type="lsep"/> 
-	<setting id="back_date" type="bool"     label="Обратная сортировка дат в EPG"     default="true"/>   		
-	<setting label="30651" type="lsep"/> 
-	<setting id="back_time" type="bool"     label="Обратная сортировка времени в EPG"     default="true"/>   
-</settings> 
