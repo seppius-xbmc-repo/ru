@@ -1,6 +1,0 @@
-# Netscape HTTP Cookie File
-# http://www.netscape.com/newsref/std/cookie_spec.html
-# This is a generated file!  Do not edit.
-
-nogomya.ch	FALSE	/	FALSE		PHPSESSID	36fk7u1b0a72lfnqfcnf0lcpb5
-telik.in.ua	FALSE	/	FALSE	1397429417	PHPSESSID	6c59c41bb96c7be4c9afce4ab2473ef2
