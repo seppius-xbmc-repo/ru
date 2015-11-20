@@ -1563,25 +1563,6 @@ RuTube - отличная стартовая площадка для незав�
   </extension>
 </addon>
 
-<addon id="plugin.video.telepoisk.com"
-       name="[COLOR FF00FF00]Онлайн ТВ + Архив ([/COLOR][COLOR FFFFF000]telepoisk.com[/COLOR][COLOR FF00FF00])[/COLOR]"
-       version="1.0.2"
-       provider-name="Silen">
-  <requires>
-    <import addon="xbmc.python" version="2.1.0"/>
-  </requires>
-  <extension point="xbmc.python.pluginsource"
-             provides="video"
-             library="default.py">
-    <provides>video</provides>
-  </extension>
-  <extension point="xbmc.addon.metadata">
-    <summary>Онлайн ТВ + Архив (telepoisk.com)</summary>
-    <description>Русское телевидение онлайн.</description>
-    <platform>all</platform>
-  </extension>
-</addon>
-
 <addon id="plugin.video.telik.in.ua"
        name="[COLOR FF00FF00]ТВ Онлайн ([/COLOR][COLOR FFFFF000]telik.in.ua[/COLOR][COLOR FF00FF00])[/COLOR]"
        version="1.0.4"
