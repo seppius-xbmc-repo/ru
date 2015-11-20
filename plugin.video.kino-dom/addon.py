@@ -29,7 +29,7 @@ def Search():
     url = 'http://kino-dom.org/engine/ajax/search.php'
     data =  {'query' : text}
     html = getHTML(url, data)
-    genre_links = re.compile('href="(http\:\/\/kino-dom\.org\/[^\/]+\/[^\.]+\.html)"><span\sclass="searchheading">[<b>]*([^<]+)<').findall(html.decode('windows-1251').encode('utf-8'))
+    genre_links = re.compile('href="(http\:\/\/kino-dom\.tv\/[^\/]+\/[^\.]+\.html)"><span\sclass="searchheading">[<b>]*([^<]+)<').findall(html.decode('windows-1251').encode('utf-8'))
     for link, title in genre_links:
         addDir(title, link, 25, None)
 

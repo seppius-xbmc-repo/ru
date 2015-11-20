@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <addon id="plugin.video.kino-dom"
-       name="[COLOR=FFCB00FF]Kino[/COLOR][COLOR=FFFFF000]-Dom.tv[/COLOR]"
-       version="0.0.4"
+       name="[COLOR=FFCB00FF]Kino[/COLOR][COLOR=FFFFF000]-Dom.org[/COLOR]"
+       version="0.0.5"
        provider-name="Nesterov Alexandr">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
@@ -10,9 +10,9 @@
     <provides>video</provides>
   </extension>
   <extension point="xbmc.addon.metadata">
-    <summary>Kino-Dom.tv</summary>
+    <summary>Kino-Dom.org</summary>
     <description>
-    Сериалы с сайта Kino-Dom.tv
+    Сериалы с сайта Kino-Dom.org
     </description>
     <source>https://github.com/alex19pov31/plugin.video.kino-dom.git</source>
     <email>alex19pov31@gmail.com</email>
