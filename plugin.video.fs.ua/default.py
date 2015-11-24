@@ -274,14 +274,14 @@ def getCategories(params):
         show_message('ОШИБКА', 'Неверная страница', 3000)
         return False
 
-    subcategories = categorySubmenu.findAll('a', 'b-header__menu-subsections-item')
+    subcategories = categorySubmenu.findAll('a', 'b-header__menu-section-link')
     if len(subcategories) == 0:
         show_message('ОШИБКА', 'Неверная страница', 3000)
         return False
 
     for subcategory in subcategories:
         label = subcategory.find('span')
-        li = xbmcgui.ListItem('[' + label.string + ']')
+        li = xbmcgui.ListItem('Каталог')
         uri = construct_request({
             'href': httpSiteUrl + subcategory['href'],
             'mode': 'readcategory',

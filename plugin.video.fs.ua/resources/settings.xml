@@ -1,6 +1,6 @@
 <settings>
     <category label="General">
-        <setting id="Site URL" type="text" label="Site URL" default="fs.to"/>
+        <setting id="Site URL" type="text" label="Site URL" default="cxz.to"/>
         <setting id="Proxy URL" type="text" label="Proxy URL"/>
         <setting id="Download Path" type="folder" label="Download Path"/>
         <setting id="Sort by" type="enum" label="30001" default="2" values="Latest activity|Rating|Year|Popularity|Trending"/>
