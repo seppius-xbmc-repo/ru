@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<settings>
+	<category label="Postnauka settings">
+	<setting label="Debug" type="bool" id="debug_enabled" default="true"/>
+	<setting label="Video pages cache time" type="number" id="page_cache" default="1000000000"/>
+	<setting label="Main page cache time" type="number" id="main_cache" default="300"/>
+	</category>
+</settings>
