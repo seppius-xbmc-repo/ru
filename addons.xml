@@ -730,7 +730,7 @@ Paypal: напишите на kit500.development at gmail dot com
 
 <addon id="plugin.video.fs.ua"
        name="Fs.ua"
-       version="1.9.25"
+       version="1.9.27"
        provider-name="x86demon">
     <requires>
         <import addon="xbmc.python" version="2.1.0"/>
@@ -916,23 +916,6 @@ Paypal: напишите на kit500.development at gmail dot com
   <extension point="xbmc.addon.metadata">
     <summary>Кинобаза: Что смотреть? Где скачать?</summary>
     <description>У нас на сайте вы можете найти новинки фильмов в хорошем качестве или HD быстро и без регистрации. Фильмы в HD качестве и DVDRip. Каждый день новые добавления. У нас можно найти что посмотреть сегодня вечером и получить уведомления о появлении новых серий и фильмов в Сети. больше не нужно ждать когда появится фильм онлайн, можно пордписаться на уведомление о выходе</description>
-    <platform>all</platform>
-  </extension>
-</addon>
-
-<addon id="plugin.video.kinoem.by"
-       name="[COLOR FFFFF000]Kinoem[/COLOR][COLOR FF00FF00].by[/COLOR]"
-       version="0.0.3"
-       provider-name="[COLOR FFFFF000]Denis [/COLOR][COLOR FF00FF00]Fomin[/COLOR]">
-  <requires>
-    <import addon="xbmc.python" version="2.1.0"/>
-  </requires>
-  <extension point="xbmc.python.pluginsource" provides="video" library="addon.py">
-    <provides>video</provides>
-  </extension>
-  <extension point="xbmc.addon.metadata">
-    <summary>kinoem.by</summary>
-    <description>Просмотр кино и сериалов онлайн бесплатно, без регистрации и смс на сайте kinoem.by</description>
     <platform>all</platform>
   </extension>
 </addon>
@@ -1423,6 +1406,31 @@ RuTube - отличная стартовая площадка для незав�
     <summary>Сериалы (serialu.net)</summary>
     <description>Русские и зарубежные сериалы предоставляемые сайтом serialu.net.</description>
     <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.serialu2.net" name=".Serialu.net" version="0.0.3" provider-name="Tolin">
+  <requires>
+    <import addon="xbmc.addon" version="12.0.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en">Fiml's from Serialu.net</summary>
+    <summary lang="ru">Фильмы с сайта Serialu.net</summary>
+    <description lang="en">Film's</description>
+    <description lang="ru">Сериалы</description>
+    <disclaimer lang="en"></disclaimer>
+    <language></language>
+    <platform>all</platform>
+    <license></license>
+    <forum></forum>
+    <website></website>
+    <email></email>
+    <source></source>
   </extension>
 </addon>
 

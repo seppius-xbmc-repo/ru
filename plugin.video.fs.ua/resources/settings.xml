@@ -7,7 +7,7 @@
         <setting id="Show hidden materials" type="bool" label="Show hidden materials" default="false"/>
         <setting id="Autoplay next" type="bool" label="30004" default="false"/>
         <setting id="Load main page items" type="bool" label="Load main page items" default="true"/>
-        <setting id="Use flv files for playback" type="bool" label="30005" default="false"/>
+        <!--<setting id="Use flv files for playback" type="bool" label="30005" default="false"/>-->
         <setting id="Show progress" type="bool" label="Show progress" default="false"/>
         <setting type="sep"/>
         <setting id="Login" type="text" label="30002"/>
