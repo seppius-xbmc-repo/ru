@@ -283,9 +283,9 @@ def getCategories(params):
         label = subcategory.find('span')
         li = xbmcgui.ListItem('[' + label.string + ']')
         uri = construct_request({
-            'href': httpSiteUrl + subcategory['href'],
+            'href': get_full_url(subcategory['href']),
             'mode': 'readcategory',
-            'cleanUrl': httpSiteUrl + subcategory['href'],
+            'cleanUrl': get_full_url(subcategory['href']),
             'section': section,
             'start': 0,
             'filter': ''
@@ -384,10 +384,9 @@ def readfavorites(params):
     else:
         coverRegexp = re.compile("url\s*\('([^']+)")
         for item in items:
-            print item
             cover = coverRegexp.findall(str(item['style']))[0]
             title = str(item.find('b', 'subject-link').find('span').string)
-            href = httpSiteUrl + item['href']
+            href = get_full_url(item['href'])
 
             isMusic = "no"
             if re.search('audio', href):
@@ -478,7 +477,7 @@ def readcategory(params):
             title = item.find('span', 'b-poster-detail__title').contents[0]
             if img is not None:
                 cover = img['src']
-                href = httpSiteUrl + link['href']
+                href = get_full_url(link['href'])
 
             if title is not None:
                 plot = []
@@ -607,7 +606,7 @@ def getGenreList(params):
             li = xbmcgui.ListItem(item.string)
             li.setProperty('IsPlayable', 'false')
             uri = construct_request({
-                'href': httpSiteUrl + item['href'].encode('utf-8'),
+                'href': get_full_url(item['href'].encode('utf-8')),
                 'mode': 'readcategory',
                 'section': params['section'],
                 'filter': '',
@@ -854,7 +853,6 @@ def read_directory_unuthorized(params):
                 if materialData is not None:
                     qualities = materialQualityRegexp.findall(linkItem['rel'])
                     itemsCount = item.find('span', 'material-series-count')
-                    print itemsCount
                     if qualities is not None and len(qualities) > 0:
                         qualities = str(qualities[0]).split(',')
                         for quality in qualities:
@@ -896,8 +894,8 @@ def add_directory_item(linkItem, isFolder, playLink, playLinkClass, cover, folde
     if lang is not None:
         title = lang.upper() + ' - ' + title
 
-    if playLink is not None and playLink.name == 'a' and 'href' in playLink:
-        playLink = httpSiteUrl + str(playLink['href'])
+    if playLink is not None and playLink.name == 'a':
+        playLink = get_full_url(str(playLink['href']))
     else:
         playLink = ''
 
@@ -945,7 +943,7 @@ def add_folder_file(item):
     href = item['href']
     referer = item['referer']
     item_type = item['type']
-    useFlv = __settings__.getSetting('Use flv files for playback') == 'true'
+    useFlv = False #__settings__.getSetting('Use flv files for playback') == 'true'
 
     li = xbmcgui.ListItem(
         htmlEntitiesDecode(title),
@@ -1040,7 +1038,7 @@ def render_search_results(params):
 
         for item in items:
             title = str(item.find('span', 'b-search-page__results-item-title').text.encode('utf-8'))
-            href = httpSiteUrl + item['href']
+            href = get_full_url(item['href'])
             cover = item.find('span', 'b-search-page__results-item-image').find('img')['src']
             section = item.find('span', 'b-search-page__results-item-subsection').text
 
