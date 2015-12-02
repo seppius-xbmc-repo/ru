@@ -1465,7 +1465,7 @@ RuTube - отличная стартовая площадка для незав�
 
 <addon id="plugin.video.shura.tv"
        name="Shura.TV"
-       version="1.1.7"
+       version="1.1.8"
        provider-name="AKGDRG">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
