@@ -68,16 +68,9 @@ def get_params():
 INFOTIMER_SHOW = None
 INFOTIMER_HIDE = None
 
-def gettbn(Title):	
-		thumb2 = xbmc.translatePath(os.path.join(ImgPath, Title[:-2]+'.png'))
-		if os.path.isfile(thumb2)==0:
-			thumb2 = os.path.join(ImgPath, Title[:-1]+'.png')
-			if os.path.isfile(thumb2)==0:thumb2=thumb
-			thumb4 = os.path.join(ImgPath, dc.get(xt(Title), ' ')+'.png')
-			if os.path.isfile(thumb4)==1:thumb2=thumb4
-			thumb3 = ru(os.path.join(ImgPath, Title[:-1]+'.png'))
-			if os.path.isfile(thumb3)==1:thumb2=thumb3
-		return thumb2
+def gettbn(Title):
+	thumb2 = xbmc.translatePath(os.path.join(ImgPath, dc.get(xt(Title), ' ')+'.png'))
+	return thumb2
 
 def formating(str):
 	str=str.strip()
@@ -319,8 +312,6 @@ def OpenPage(plugin, num):
 		for i in range(num,len(Lgl)):
 			thumb2 = gettbn(formating(Lgl[i]['name']))
 			item = xbmcgui.ListItem(Lgl[i]['name'], iconImage = thumb2, thumbnailImage = thumb2)
-			
-			
 			epg = PLUGIN_CORE.getLastEPG(Lgl[i]['url'], Lgl[i]['id'])
 			if epg==None or len(epg) <=0:
 				epg = PLUGIN_CORE.getCurrentEPG(Lgl[i]['url'], Lgl[i]['id'])
@@ -437,15 +428,17 @@ def ShowChannelsList(plugin, mode = 'TV'):
 				ch_id = line.split(':')[0]
 				#xbmc.log('[SHURA.TV] Current channel map %s' %ch_id)
 				channelsCountInFile = channelsCountInFile + 1
-
 				for channel in channels:
 					#xbmc.log('[SHURA.TV] Comparing with channel %s' %channel['id'])
 					if channel['id']==ch_id:
 						#xbmc.log('[SHURA.TV] Match found for %s' %channel['id'])
 						epg=''
-						epg = PLUGIN_CORE.getLastEPG(channel['url'], channel['id'])
-						if epg==None or len(epg) <=0:
-							epg = PLUGIN_CORE.getCurrentEPG(channel['url'], channel['id'])
+						try:
+							epg = PLUGIN_CORE.getLastEPG(channel['url'], channel['id'])
+							if epg==None or len(epg) <=0:
+								epg = PLUGIN_CORE.getCurrentEPG(channel['url'], channel['id'])
+						except Exception, e:
+							xbmc.log('[SHURA.TV] Error loading epg for channel%s. Ignore the current epg' % e)
 						epg_start = 0
 						epg_end = 0
 						timerange = '-'

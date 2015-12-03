@@ -100,3 +100,5 @@ Updated keymaps. Now possible to seekInTime by pressing right/left-keys (+1/-1mi
 -small bugfix for channels without current epg.
 [B]1.1.7[/B]
 -small bugfix for channels without current epg.
+[B]1.1.8[/B]
+-new icons added.
