@@ -2236,13 +2236,7 @@ Raadpleeg de lokale wetgeving voordat u deze plugin installeert.</disclaimer>
 	</extension>
 </addon>
 
-<addon id="repository.seppius"
-       name="Seppius XBMC Add-ons"
-	   version="1.0.1"
-	   provider-name="seppius">
-<requires>
-  <import addon="xbmc.addon" version="12.0.0"/>
-</requires>
+<addon id="repository.seppius" name="Seppius XBMC Add-ons" version="1.0.1" provider-name="seppius">
 	<extension point="xbmc.addon.repository" name="Seppius XBMC Add-ons">
 		<info compressed="false">https://github.com/seppius-xbmc-repo/ru/raw/master/addons.xml</info>
 		<checksum>https://github.com/seppius-xbmc-repo/ru/raw/master/addons.xml.md5</checksum>
