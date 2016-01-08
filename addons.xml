@@ -1103,7 +1103,7 @@ Paypal: напишите на kit500.development at gmail dot com
 
 <addon id="plugin.video.my-hit.ru"
        name="[COLOR FF00FF00]Кино портал ([/COLOR][COLOR FFFFF000]my-hit.org[/COLOR][COLOR FF00FF00])[/COLOR]"
-       version="1.2.3"
+       version="1.2.4"
        provider-name="Silen">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
