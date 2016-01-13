@@ -1,0 +1,21 @@
+<window id="14001" type="dialog" allowoverlay="yes">
+  <animation effect="fade" time="50">WindowOpen</animation>
+  <animation effect="fade" time="50">WindowClose</animation>
+  <controls>
+    <control type="image">
+      <posx>0</posx>
+      <posy>0</posy>
+      <width>1280</width>
+      <height>720</height>
+      <texture>backgrounds/universal-fader.png</texture>
+    </control>
+    <control type="label" id="100">
+            <posx>600</posx>
+            <posy>300</posy>
+            <width>200</width>
+            <height>40</height>
+            <font>font12</font>
+            <info>ListItem.Label</info>
+    </control>
+   </controls>
+</window>
