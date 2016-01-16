@@ -63,7 +63,7 @@ def Main(main_url):
     if main_url == None :
         main_url = site_url
         html = Get(main_url)
-        soup = bs(html)
+        soup = bs(html, "html.parser")
         content = soup.find('ul', {'class': 'main_menu'}).find_all('a', attrs={'class': 'main_menu_item_lnk'})
         for num in content:
             if 'news' not in num['href'] and 'deti' not in num['href'] :
@@ -74,7 +74,7 @@ def Main(main_url):
     else :
         print main_url
         cat = main_url.partition(site_url + '/')[-1] #.rpartition('?')[0]
-        soup = bs(Get(main_url))
+        soup = bs(Get(main_url), "html.parser")
         if 'films' in main_url:
             content = soup.find('ul', attrs={'class': 'main_menu'}).find_all('li', attrs={'class': 'mseries_cont'})[1].find('div', {'class': 'submenu01_cont'}).find_all('a')
         elif 'series' in main_url:
@@ -124,7 +124,7 @@ def Content(url):
 
 def Serials(url):
     html = Get(url)
-    content = bs(html)
+    content = bs(html, "html.parser")
     series = content.find('div', {'id': 'series_cont01'})
     if series :
         series = series.find('div', {'class': 'panel01_cont_catalog'}).find_all('a')
@@ -167,7 +167,7 @@ def Search():
 
 def PlayUrl(url):
     html = Get(url);
-    soup = bs(html)
+    soup = bs(html, "html.parser")
     url = GetUrl(soup)
     i = xbmcgui.ListItem(path=url)
     xbmcplugin.setResolvedUrl(h, True, i)
@@ -183,7 +183,7 @@ def GetUrl(soup):
     json_data = json.loads(js)
     #print json_data
     
-    soup = bs(Get(json_data['video'])).find('video')
+    soup = bs(Get(json_data['video']), "html.parser").find('video')
     if 'rutube' in soup['streamer'] :
         url = GetRutubeUrl(soup['streamer'])
     else :
@@ -195,7 +195,7 @@ def GetRutubeUrl(id):
         id = id.partition('rutube://')[-1]
         url = 'http://rutube.ru/api/play/options/' + id + '/?format=xml'
         http = Get(url)
-        soup = bs(http)
+        soup = bs(http, "html.parser")
         url = soup.find('video_balancer').find('m3u8').text
     except:
         return None

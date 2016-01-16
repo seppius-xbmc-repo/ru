@@ -1847,7 +1847,7 @@ Raadpleeg de lokale wetgeving voordat u deze plugin installeert.</disclaimer>
   </extension>
 </addon>
 
-<addon id="plugin.video.zoomby.ru" name="Zoomby.ru" version="0.1.1" provider-name="undeman">
+<addon id="plugin.video.zoomby.ru" name="Zoomby.ru" version="0.1.2" provider-name="undeman">
 	<requires>
 		<import addon="xbmc.python" version="2.1.0" />
 		<import addon="script.module.beautifulsoup4" version="4.3.2"/>
