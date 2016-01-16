@@ -895,7 +895,12 @@ def add_directory_item(linkItem, isFolder, playLink, playLinkClass, cover, folde
         title = lang.upper() + ' - ' + title
 
     if playLink is not None and playLink.name == 'a':
-        playLink = get_full_url(str(playLink['href']))
+        if 'href' in playLink:
+            playLink = get_full_url(str(playLink['href']))
+        elif 'rel' in playLink:
+            playLink = get_full_url(str(playLink['rel']))
+        else:
+            playLink = ''
     else:
         playLink = ''
 
