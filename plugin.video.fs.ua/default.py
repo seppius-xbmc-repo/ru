@@ -91,6 +91,8 @@ headers = {
 
 
 def get_full_url(url):
+    if url.startswith('//'):
+        url = 'http:' + url
     if not '://' in url:
         url = httpSiteUrl + url
     return url
@@ -350,7 +352,7 @@ def getThumbnailImage(src):
 def getImage(src, quality):
     src = src.split('/')
     src[-2] = quality
-    return '/'.join(src)
+    return get_full_url('/'.join(src))
 
 
 def fix_string(string):
