@@ -73,7 +73,7 @@ def Main(main_url):
                     addDir(num.text, site_url + num['href'])
     else :
         print main_url
-        cat = main_url.partition(site_url + '/')[-1].rpartition('?')[0]
+        cat = main_url.partition(site_url + '/')[-1] #.rpartition('?')[0]
         soup = bs(Get(main_url))
         if 'films' in main_url:
             content = soup.find('ul', attrs={'class': 'main_menu'}).find_all('li', attrs={'class': 'mseries_cont'})[1].find('div', {'class': 'submenu01_cont'}).find_all('a')
