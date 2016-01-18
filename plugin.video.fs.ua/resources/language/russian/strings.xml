@@ -13,4 +13,25 @@
     <string id="40004">FS.UA — загрузка завершена</string>
     <string id="40005">FS.UA — не удалось загрузить</string>
     <string id="40006">МБ</string>
+
+    <string id="70001">Использовать Расширенную информацию (РИ)</string>
+    <string id="70002">Загружать описание из РИ</string>
+    <string id="70003">Загружать ФанАрт из РИ</string>
+    <string id="70004">Загружать страну из РИ</string>
+    <string id="70005">Загружать полный список актеров из РИ</string>
+    <string id="70006">Добавить страну в заголовок</string>
+    <string id="70007">Добавить рейтинг в заголовок</string>
+    <string id="70008">Позиция рейтинга</string>
+    <string id="70009">Добавить оригинальное название в описание</string>
+    <string id="70010">Добавить год в описание</string>
+    <string id="70011">Добавить жанр в описание</string>
+    <string id="70012">Добавить режиссера в описание</string>
+    <string id="70013">Добавить 'В ролях' в описание</string>
+    <string id="70014">Максимальное число актеров</string>
+    <string id="70015">Цвет выделения</string>
+    <string id="70016">Цвет оригинального названия</string>
+    <string id="70017">Цвет рейтинга</string>
+    <string id="70018">Все</string>
+    <string id="70019">До</string>
+    <string id="70020">После</string>
 </strings>
