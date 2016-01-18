@@ -10,12 +10,33 @@
     <string id="40001">Download file</string>
     <string id="40002">Destination folder</string>
     <string id="40003">Downloading the file</string>
-    <string id="40004">FS.UA — download completed</string>
-    <string id="40005">FS.UA — failed to download</string>
+    <string id="40004">FS.UA вЂ” download completed</string>
+    <string id="40005">FS.UA вЂ” failed to download</string>
     <string id="40006">Mb</string>
 
     <string id="50001">Add to fs.ua favorites</string>
     <string id="50002">Add to fs.ua watch list</string>
     <string id="50003">Remove from fs.ua favorites</string>
     <string id="50004">Remove from fs.ua watch list</string>
+
+    <string id="70001">Use ExtInfo</string>
+    <string id="70002">Load Plot from ExtInfo</string>
+    <string id="70003">Load Fanart from ExtInfo</string>
+    <string id="70004">Load Country from ExtInfo</string>
+    <string id="70005">Load Full Cast list from ExtInfo</string>
+    <string id="70006">Add Country to title</string>
+    <string id="70007">Add Raiting to title</string>
+    <string id="70008">Raiting position</string>
+    <string id="70009">Add Original Title to plot</string>
+    <string id="70010">Add Year to plot</string>
+    <string id="70011">Add Genre to plot</string>
+    <string id="70012">Add Director to plot</string>
+    <string id="70013">Add Cast to plot</string>
+    <string id="70014">Max Count of Cast persons</string>
+    <string id="70015">Hilight color</string>
+    <string id="70016">Original Title color</string>
+    <string id="70017">Raiting color</string>
+    <string id="70018">All</string>
+    <string id="70019">Before</string>
+    <string id="70020">After</string>
 </strings>
