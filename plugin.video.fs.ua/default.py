@@ -18,6 +18,8 @@
 #   the Free Software Foundation, 675 Mass Ave, Cambridge, MA 02139, USA.
 #   http://www.gnu.org/licenses/gpl.html
 
+# + TAIFUN (TAIFXX) EDIT MARK
+
 import sys
 import os
 import xbmcplugin
@@ -30,6 +32,25 @@ __settings__ = xbmcaddon.Addon(id='plugin.video.fs.ua')
 __addondir__ = xbmc.translatePath(__settings__.getAddonInfo('profile'))
 if not xbmcvfs.exists(__addondir__):
     xbmcvfs.mkdir(__addondir__)
+
+# + SETT
+__USE_Ext_Info = __settings__.getSetting('USE_Ext_Info')
+__USE_Ext_Info_Plot = __settings__.getSetting('USE_Ext_Info_Plot')
+__USE_Ext_Info_Fanart = __settings__.getSetting('USE_Ext_Info_Fanart')
+__USE_Ext_Info_Full_Cast = __settings__.getSetting('USE_Ext_Info_Full_Cast')
+__USE_Cast_Max = __settings__.getSetting('USE_Cast_Max')       
+__USE_Ext_Info_Country = __settings__.getSetting('USE_Ext_Info_Country')
+__ADD_Country_To_Title = __settings__.getSetting('ADD_Country_To_Title')
+__ADD_Cast_To_Plot = __settings__.getSetting('ADD_Cast_To_Plot')
+__ADD_Director_To_Plot = __settings__.getSetting('ADD_Director_To_Plot')
+__ADD_OriginalTitle_To_Plot = __settings__.getSetting('ADD_OriginalTitle_To_Plot')
+__ADD_Rank_To_Title = __settings__.getSetting('ADD_Rank_To_Title')
+__USE_Rank_Pos = __settings__.getSetting('USE_Rank_Pos')
+__ADD_Year_To_Plot = __settings__.getSetting('ADD_Year_To_Plot')
+__ADD_Genre_To_Plot = __settings__.getSetting('ADD_Genre_To_Plot')
+__HL_COOLOR = __settings__.getSetting('HL_COOLOR')
+__OT_COOLOR = __settings__.getSetting('OT_COOLOR')
+__RA_COOLOR = __settings__.getSetting('RA_COOLOR')
 
 # sys.path.append(os.path.join(__settings__.getAddonInfo('path'), 'resources', 'lib'))
 icon = xbmc.translatePath(os.path.join(__settings__.getAddonInfo('path'), 'icon.png'))
@@ -67,7 +88,12 @@ cookiepath = os.path.join(__addondir__, 'plugin.video.fs.ua.cookies.lwp')
 if isinstance(cookiepath, unicode):
     cookiepath = cookiepath.encode('utf8')
 
+# + ADD FOR EXT INFO
+
 h = int(sys.argv[1])
+
+# + ADD FOR EXT INFO
+xbmcplugin.setContent(int(sys.argv[1]), 'movies')
 
 def construct_request(params):
     return '%s?%s' % (sys.argv[0], urllib.urlencode(params))
@@ -91,8 +117,6 @@ headers = {
 
 
 def get_full_url(url):
-    if url.startswith('//'):
-        url = 'http:' + url
     if not '://' in url:
         url = httpSiteUrl + url
     return url
@@ -101,7 +125,7 @@ def get_full_url(url):
 def GET(url, referer, post_params=None):
     headers['Referer'] = referer
     url = get_full_url(url)
-
+    
     if post_params is not None:
         post_params = urllib.urlencode(post_params)
         headers['Content-Type'] = 'application/x-www-form-urlencoded'
@@ -196,7 +220,7 @@ def get_filters(section):
 
 
 def main(params):
-    li = xbmcgui.ListItem('[Видео]')
+    li = xbmcgui.ListItem('[Р’РёРґРµРѕ]')
     uri = construct_request({
         'href': httpSiteUrl + '/video/',
         'mode': 'getCategories',
@@ -206,7 +230,7 @@ def main(params):
     })
     xbmcplugin.addDirectoryItem(h, uri, li, True)
 
-    li = xbmcgui.ListItem('[Аудио]')
+    li = xbmcgui.ListItem('[РђСѓРґРёРѕ]')
     uri = construct_request({
         'href': httpSiteUrl + '/audio/',
         'mode': 'getCategories',
@@ -217,42 +241,42 @@ def main(params):
     xbmcplugin.addDirectoryItem(h, uri, li, True)
 
     if check_login():
-        li = xbmcgui.ListItem('В процессе')
+        li = xbmcgui.ListItem('Р’ РїСЂРѕС†РµСЃСЃРµ')
         uri = construct_request({
             'mode': 'getFavoriteCategories',
             'type': 'inprocess'
         })
         xbmcplugin.addDirectoryItem(h, uri, li, True)
 
-        li = xbmcgui.ListItem('Избранное')
+        li = xbmcgui.ListItem('РР·Р±СЂР°РЅРЅРѕРµ')
         uri = construct_request({
             'mode': 'getFavoriteCategories',
             'type': 'favorites'
         })
         xbmcplugin.addDirectoryItem(h, uri, li, True)
 
-        li = xbmcgui.ListItem('Рекомендуемое')
+        li = xbmcgui.ListItem('Р РµРєРѕРјРµРЅРґСѓРµРјРѕРµ')
         uri = construct_request({
             'mode': 'getFavoriteCategories',
             'type': 'recommended'
         })
         xbmcplugin.addDirectoryItem(h, uri, li, True)
 
-        li = xbmcgui.ListItem('На будущее')
+        li = xbmcgui.ListItem('РќР° Р±СѓРґСѓС‰РµРµ')
         uri = construct_request({
             'mode': 'getFavoriteCategories',
             'type': 'forlater'
         })
         xbmcplugin.addDirectoryItem(h, uri, li, True)
 
-        li = xbmcgui.ListItem('Я рекомендую')
+        li = xbmcgui.ListItem('РЇ СЂРµРєРѕРјРµРЅРґСѓСЋ')
         uri = construct_request({
             'mode': 'getFavoriteCategories',
             'type': 'irecommended'
         })
         xbmcplugin.addDirectoryItem(h, uri, li, True)
 
-        li = xbmcgui.ListItem('Завершенное')
+        li = xbmcgui.ListItem('Р—Р°РІРµСЂС€РµРЅРЅРѕРµ')
         uri = construct_request({
             'mode': 'getFavoriteCategories',
             'type': 'finished'
@@ -273,12 +297,12 @@ def getCategories(params):
     beautifulSoup = BeautifulSoup(http)
     categorySubmenu = beautifulSoup.find('div', 'm-header__menu-section_type_' + section)
     if categorySubmenu is None:
-        show_message('ОШИБКА', 'Неверная страница', 3000)
+        show_message('РћРЁРР‘РљРђ', 'РќРµРІРµСЂРЅР°СЏ СЃС‚СЂР°РЅРёС†Р°', 3000)
         return False
 
     subcategories = categorySubmenu.findAll('a', 'b-header__menu-subsections-item')
     if len(subcategories) == 0:
-        show_message('ОШИБКА', 'Неверная страница', 3000)
+        show_message('РћРЁРР‘РљРђ', 'РќРµРІРµСЂРЅР°СЏ СЃС‚СЂР°РЅРёС†Р°', 3000)
         return False
 
     for subcategory in subcategories:
@@ -314,12 +338,12 @@ def getFavoriteCategories(params):
     beautifulSoup = BeautifulSoup(http)
     favSectionsContainer = beautifulSoup.find('div', 'b-tabpanels')
     if favSectionsContainer is None:
-        show_message('ОШИБКА', 'В избранном пусто', 3000)
+        show_message('РћРЁРР‘РљРђ', 'Р’ РёР·Р±СЂР°РЅРЅРѕРј РїСѓСЃС‚Рѕ', 3000)
         return False
 
     favSections = favSectionsContainer.findAll('div', 'b-category')
     if len(favSections) == 0:
-        show_message('ОШИБКА', 'В избранном пусто', 3000)
+        show_message('РћРЁРР‘РљРђ', 'Р’ РёР·Р±СЂР°РЅРЅРѕРј РїСѓСЃС‚Рѕ', 3000)
         return False
     sectionRegexp = re.compile("\s*\{\s*section:\s*'([^']+)")
     subsectionRegexp = re.compile("subsection:\s*'([^']+)")
@@ -348,11 +372,15 @@ def getPosterImage(src):
 def getThumbnailImage(src):
     return getImage(src, '6')
 
-
+# + COVER CORRECT
 def getImage(src, quality):
     src = src.split('/')
     src[-2] = quality
-    return get_full_url('/'.join(src))
+    src = 'http://' + '/'.join(src)
+    src = src.replace('////','//') 
+    src = src.replace('///','//') # О  т¬ґ·б§¬ жІ«жЎ®р‘ЂІ рђЇ¬ж®їжі± тІј«лћЌ
+    src = src.replace('http://http://','http://')
+    return src
 
 
 def fix_string(string):
@@ -377,11 +405,11 @@ def readfavorites(params):
     beautifulSoup = BeautifulSoup(http)
     itemsContainer = beautifulSoup.find('div', 'b-posters')
     if itemsContainer is None:
-        show_message('ОШИБКА', 'В избранном пусто', 3000)
+        show_message('РћРЁРР‘РљРђ', 'Р’ РёР·Р±СЂР°РЅРЅРѕРј РїСѓСЃС‚Рѕ', 3000)
         return False
     items = itemsContainer.findAll('a')
     if len(items) == 0:
-        show_message('ОШИБКА', 'В избранном пусто', 3000)
+        show_message('РћРЁРР‘РљРђ', 'Р’ РёР·Р±СЂР°РЅРЅРѕРј РїСѓСЃС‚Рѕ', 3000)
         return False
     else:
         coverRegexp = re.compile("url\s*\('([^']+)")
@@ -464,7 +492,7 @@ def readcategory(params):
     items = beautifulSoup.findAll('div', itemsClass)
 
     if len(items) == 0:
-        show_message('ОШИБКА', 'Неверная страница', 3000)
+        show_message('РћРЁРР‘РљРђ', 'РќРµРІРµСЂРЅР°СЏ СЃС‚СЂР°РЅРёС†Р°', 3000)
         return False
     else:
         if start == 0 and 'hideFirstPageData' not in params:
@@ -472,11 +500,123 @@ def readcategory(params):
 
         for item in items:
             cover = None
-            href = None
+            href = None 
+
+            # + EXT INFO VARS
+            originalTitle = ''
+            country = '' 
+            genre = ''  
+            director = ''
+            plotText = ''
+            year = ''  
+            actor = ''
+            fanart = ''
+            cast = []       
 
             img = item.find('img')
             link = item.find('a', itemsClass + '__link')
             title = item.find('span', 'b-poster-detail__title').contents[0]
+
+            # + RANK
+            try:
+               rankPos = float(item.find('span', 'b-poster-detail__vote-positive').contents[0])
+               rankNeg = float(item.find('span', 'b-poster-detail__vote-negative').contents[0])
+               rankAbs = round(rankPos / (rankPos + rankNeg) * 10,1)
+            except:
+               rankAbs = 0
+
+            # + YEAR, COUNTRY, CAST
+            _usep = u'\u25cf'
+            field_Inf_Items = item.findAll('span', 'b-poster-detail__field')
+            try:
+               year_U, country = field_Inf_Items[0].contents[0].replace(_usep,'*').split('*')
+               year = year_U.encode('utf8')
+               country = country.strip()
+            except:
+               year = ''
+               country = ''
+         
+            if __USE_Ext_Info_Full_Cast == 'false':
+               try: actor = field_Inf_Items[1].contents[0].encode('utf8').strip() 
+               except: actor = ''
+               if actor !='': 
+                  cast = actor.split(',')
+                  if __USE_Cast_Max != 'All':
+                     actor = ', '.join(cast[:int(__USE_Cast_Max)])
+
+            # + EXT INFO
+            if __USE_Ext_Info == 'true':
+               subURL = GET(item.find('a', 'b-poster-detail__link')['href'], httpSiteUrl)
+               subHTTP = BeautifulSoup(subURL)
+
+               # + EXT INFO: ORIGINAL TITLE
+               try: originalTitle = subHTTP.find('div', 'b-tab-item__title-origin').contents[0].encode('utf8').strip()
+               except: originalTitle = ''
+               
+               # + EXT INFO: PLOT
+               extplotItems = subHTTP.findAll('p', 'item-decription full')
+               extplotList = []
+               if extplotItems != '':
+                   for extplotItem in extplotItems:
+                      extplotList.append(extplotItem.contents[0].encode('utf8'))  
+
+               if extplotList != '':
+                  plot = extplotList
+               
+               # + EXT INFO: GENRE
+               genreItems = subHTTP.findAll('span', itemprop="genre")
+               genreList = []
+               if genreItems != '':
+                   for genreItem in genreItems:
+                      genreList.append(genreItem.a.span.contents[0].encode('utf8'))  
+
+               if genreList != '':
+                  genre = ', '.join(genreList)
+
+               # + EXT INFO: COUNTRY 
+               if __USE_Ext_Info_Country == 'true':
+                  countryItems = subHTTP.findAll('span', {'class': 'tag-country-flag'})
+                  countryList = []
+                  if countryItems != '':
+                     for countryItem in countryItems:
+                        countryList.append(countryItem.parent.contents[1].replace('&nbsp;', ''))  
+
+                  if countryList != '':
+                     country = ', '.join(countryList)
+
+               # + EXT INFO: DIRECTOR
+               directorItems = subHTTP.findAll('span', itemprop="director")
+               directorList = []
+               if directorItems != '':
+                  for directorItem in directorItems:
+                     directorList.append(directorItem.a.span.contents[0].encode('utf8'))  
+
+               if directorList != '':
+                  director = ', '.join(directorList)
+
+               # + EXT INFO: ACTOR
+               if __USE_Ext_Info_Full_Cast == 'true':
+                  actorItems = subHTTP.findAll('span', itemprop="actor")
+                  actorList = []
+                  if actorItems != '':
+                     for actorItem in actorItems:
+                        actorList.append(actorItem.a.span.contents[0].encode('utf8'))  
+
+                  if actorList != '':
+                     if __USE_Cast_Max != 'Full':
+                        actor = ', '.join(actorList2[:int(__USE_Cast_Max)])
+                     else: actor = ', '.join(actorList2)
+                     cast = actorList2
+
+               # + EXT INFO: FANART
+               if __USE_Ext_Info_Fanart == 'true':
+                  try: 
+                     fanartItem = subHTTP.find('div', 'b-images-other').find('a', 'images-show')
+                     fanartS = fanartItem['style']
+                     fanart = getPosterImage(fanartS.replace('background-image: url(','').replace(');',''))  
+                  except:
+                     fanart = ''
+            
             if img is not None:
                 cover = img['src']
                 href = get_full_url(link['href'])
@@ -488,13 +628,46 @@ def readcategory(params):
                     try:
                         plot.append(detail.encode('utf8'))
                     except:
-                        pass
+                        pass 
+                
                 titleText = htmlEntitiesDecode(title.encode('utf8'))
+                
+                # + PLOTS CORRECT 
+                if plot !='':
+                   plotText = ' '.join(plot)
+                
+                # + ADD EXT INFO:  
+                if country != '' and __ADD_Country_To_Title == 'true':
+                   titleText = titleText + '  [COLOR ' + __HL_COOLOR + '](' + country + ')[/COLOR]'
+
+                if rankAbs != 0 and __ADD_Rank_To_Title == 'true':
+                   if __USE_Rank_Pos == 'Before' or __USE_Rank_Pos == 'Р”Рѕ':
+                      titleText = '[COLOR ' + __RA_COOLOR + ']' + str(rankAbs) + ' * [/COLOR]' + titleText
+                   else: titleText = titleText + ' * [COLOR ' + __RA_COOLOR + ']' + str(rankAbs) + '[/COLOR]' 
+
+                if actor != '' and __ADD_Cast_To_Plot == 'true':
+                   plotText = 'Р’ СЂРѕР»СЏС…: [COLOR ' + __HL_COOLOR + ']' + actor + '[/COLOR]\n' + plotText                
+
+                if director != '' and __ADD_Director_To_Plot == 'true':
+                   plotText = 'Р РµР¶РёСЃСЃРµСЂ: [COLOR ' + __HL_COOLOR + ']' + director + '[/COLOR]\n' + plotText
+
+                if genre != '' and __ADD_Genre_To_Plot == 'true':
+                   plotText = 'Р–Р°РЅСЂ: [COLOR ' + __HL_COOLOR + ']' + genre + '[/COLOR]\n' + plotText
+
+                if year != '' and __ADD_Year_To_Plot == 'true':
+                   plotText = 'Р“РѕРґ: [COLOR ' + __HL_COOLOR + ']' + year + '[/COLOR]\n' + plotText
+
+                if originalTitle != '' and __ADD_OriginalTitle_To_Plot == 'true':
+                   plotText = '[COLOR ' + __OT_COOLOR + ']' + originalTitle + '[/COLOR]\n' + plotText                
+
                 li = xbmcgui.ListItem(titleText, iconImage=getThumbnailImage(cover),
                                       thumbnailImage=getPosterImage(cover))
+    
+                # + EDIT ADD INFO
                 if plot != '':
-                    li.setInfo(type=params['section'], infoLabels={'title': titleText, 'plot': plot})
+                    li.setInfo(type=params['section'], infoLabels={'title': titleText, 'plot': plotText, 'year': year, 'Rating': rankAbs, 'genre': genre, 'cast': cast, 'Country': country, 'OriginalTitle': originalTitle})
                 li.setProperty('IsPlayable', 'false')
+                li.setProperty('fanart_image', fanart)
 
                 id = str(link['href'].split('/')[-1])
                 li.addContextMenuItems([
@@ -546,7 +719,7 @@ def readcategory(params):
 
 def load_first_page_sections(href, params):
     #Add search list item
-    li = xbmcgui.ListItem("[ПОИСК]")
+    li = xbmcgui.ListItem("[РџРћРРЎРљ]")
     li.setProperty('IsPlayable', 'false')
     uri = construct_request({
         'mode': 'runsearch',
@@ -567,7 +740,7 @@ def load_first_page_sections(href, params):
     if groups is not None:
         yearLink = groups.find('a', href=re.compile(r'year'))
         if yearLink is not None:
-            li = xbmcgui.ListItem("[По годам]")
+            li = xbmcgui.ListItem("[РџРѕ РіРѕРґР°Рј]")
             li.setProperty('IsPlayable', 'false')
             uri = construct_request({
                 'mode': 'getGenreList',
@@ -580,7 +753,7 @@ def load_first_page_sections(href, params):
             xbmcplugin.addDirectoryItem(h, uri, li, True)
         genreLink = groups.find('a', href=re.compile(r'genre'))
         if genreLink is not None:
-            li = xbmcgui.ListItem("[Жанры]")
+            li = xbmcgui.ListItem("[Р–Р°РЅСЂС‹]")
             li.setProperty('IsPlayable', 'false')
             uri = construct_request({
                 'mode': 'getGenreList',
@@ -601,7 +774,7 @@ def getGenreList(params):
     items = beautifulSoup.find('div', params['css']).findAll('a')
 
     if len(items) == 0:
-        show_message('ОШИБКА', 'Неверная страница', 3000)
+        show_message('РћРЁРР‘РљРђ', 'РќРµРІРµСЂРЅР°СЏ СЃС‚СЂР°РЅРёС†Р°', 3000)
         return False
     else:
         for item in items:
@@ -802,7 +975,7 @@ def read_directory_unuthorized(params):
         if has_blocked is not None:
             if check_login():
                 li = xbmcgui.ListItem(
-                    '[Показать скрытое]',
+                    '[РџРѕРєР°Р·Р°С‚СЊ СЃРєСЂС‹С‚РѕРµ]',
                     iconImage=getThumbnailImage(cover),
                     thumbnailImage=getPosterImage(cover)
                 )
@@ -818,12 +991,12 @@ def read_directory_unuthorized(params):
 
                 xbmcplugin.addDirectoryItem(h, uri, li, True)
             else:
-                show_message('Blocked content', 'Некоторые файлы заблокированы')
+                show_message('Blocked content', 'РќРµРєРѕС‚РѕСЂС‹Рµ С„Р°Р№Р»С‹ Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅС‹')
 
     mainItems = beautifulSoup.find('ul', 'filelist')
 
     if mainItems is None:
-        show_message('ОШИБКА', 'No filelist', 3000)
+        show_message('РћРЁРР‘РљРђ', 'No filelist', 3000)
         return False
 
     if 'quality' in params and params['quality'] is not None and params['quality'] != 'None' and params['quality'] != '':
@@ -833,7 +1006,7 @@ def read_directory_unuthorized(params):
 
     materialQualityRegexp = re.compile('quality_list:\s*[\'|"]([a-zA-Z0-9,]+)[\'|"]')
     if len(items) == 0:
-        show_message('ОШИБКА', 'Неверная страница', 3000)
+        show_message('РћРЁРР‘РљРђ', 'РќРµРІРµСЂРЅР°СЏ СЃС‚СЂР°РЅРёС†Р°', 3000)
         return False
     else:
         for item in items:
@@ -897,12 +1070,7 @@ def add_directory_item(linkItem, isFolder, playLink, playLinkClass, cover, folde
         title = lang.upper() + ' - ' + title
 
     if playLink is not None and playLink.name == 'a':
-        if 'href' in playLink:
-            playLink = get_full_url(str(playLink['href']))
-        elif 'rel' in playLink:
-            playLink = get_full_url(str(playLink['rel']))
-        else:
-            playLink = ''
+        playLink = get_full_url(str(playLink['href']))
     else:
         playLink = ''
 
@@ -1013,7 +1181,7 @@ def download(params):
 
 def runsearch(params):
     skbd = xbmc.Keyboard()
-    skbd.setHeading('Что ищем?')
+    skbd.setHeading('Р§С‚Рѕ РёС‰РµРј?')
     skbd.doModal()
     if skbd.isConfirmed():
         SearchStr = skbd.getText()
@@ -1035,12 +1203,12 @@ def render_search_results(params):
     results = beautifulSoup.find('div', 'b-search-page__results')
 
     if results is None:
-        show_message('ОШИБКА', 'Ничего не найдено', 3000)
+        show_message('РћРЁРР‘РљРђ', 'РќРёС‡РµРіРѕ РЅРµ РЅР°Р№РґРµРЅРѕ', 3000)
         return False
     else:
         items = results.findAll('a','b-search-page__results-item')
         if len(items) == 0:
-            show_message('ОШИБКА', 'Ничего не найдено', 3000)
+            show_message('РћРЁРР‘РљРђ', 'РќРёС‡РµРіРѕ РЅРµ РЅР°Р№РґРµРЅРѕ', 3000)
             return False
 
         for item in items:
