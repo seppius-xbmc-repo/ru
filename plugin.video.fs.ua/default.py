@@ -220,7 +220,7 @@ def get_filters(section):
 
 
 def main(params):
-    li = xbmcgui.ListItem('[Р’РёРґРµРѕ]')
+    li = xbmcgui.ListItem('[Видео]')
     uri = construct_request({
         'href': httpSiteUrl + '/video/',
         'mode': 'getCategories',
@@ -230,7 +230,7 @@ def main(params):
     })
     xbmcplugin.addDirectoryItem(h, uri, li, True)
 
-    li = xbmcgui.ListItem('[РђСѓРґРёРѕ]')
+    li = xbmcgui.ListItem('[Аудио]')
     uri = construct_request({
         'href': httpSiteUrl + '/audio/',
         'mode': 'getCategories',
@@ -241,42 +241,42 @@ def main(params):
     xbmcplugin.addDirectoryItem(h, uri, li, True)
 
     if check_login():
-        li = xbmcgui.ListItem('Р’ РїСЂРѕС†РµСЃСЃРµ')
+        li = xbmcgui.ListItem('В процессе')
         uri = construct_request({
             'mode': 'getFavoriteCategories',
             'type': 'inprocess'
         })
         xbmcplugin.addDirectoryItem(h, uri, li, True)
 
-        li = xbmcgui.ListItem('РР·Р±СЂР°РЅРЅРѕРµ')
+        li = xbmcgui.ListItem('Избранное')
         uri = construct_request({
             'mode': 'getFavoriteCategories',
             'type': 'favorites'
         })
         xbmcplugin.addDirectoryItem(h, uri, li, True)
 
-        li = xbmcgui.ListItem('Р РµРєРѕРјРµРЅРґСѓРµРјРѕРµ')
+        li = xbmcgui.ListItem('Рекомендуемое')
         uri = construct_request({
             'mode': 'getFavoriteCategories',
             'type': 'recommended'
         })
         xbmcplugin.addDirectoryItem(h, uri, li, True)
 
-        li = xbmcgui.ListItem('РќР° Р±СѓРґСѓС‰РµРµ')
+        li = xbmcgui.ListItem('На будущее')
         uri = construct_request({
             'mode': 'getFavoriteCategories',
             'type': 'forlater'
         })
         xbmcplugin.addDirectoryItem(h, uri, li, True)
 
-        li = xbmcgui.ListItem('РЇ СЂРµРєРѕРјРµРЅРґСѓСЋ')
+        li = xbmcgui.ListItem('Я рекомендую')
         uri = construct_request({
             'mode': 'getFavoriteCategories',
             'type': 'irecommended'
         })
         xbmcplugin.addDirectoryItem(h, uri, li, True)
 
-        li = xbmcgui.ListItem('Р—Р°РІРµСЂС€РµРЅРЅРѕРµ')
+        li = xbmcgui.ListItem('Завершенное')
         uri = construct_request({
             'mode': 'getFavoriteCategories',
             'type': 'finished'
@@ -297,12 +297,12 @@ def getCategories(params):
     beautifulSoup = BeautifulSoup(http)
     categorySubmenu = beautifulSoup.find('div', 'm-header__menu-section_type_' + section)
     if categorySubmenu is None:
-        show_message('РћРЁРР‘РљРђ', 'РќРµРІРµСЂРЅР°СЏ СЃС‚СЂР°РЅРёС†Р°', 3000)
+        show_message('ОШИБКА', 'Неверная страница', 3000)
         return False
 
     subcategories = categorySubmenu.findAll('a', 'b-header__menu-subsections-item')
     if len(subcategories) == 0:
-        show_message('РћРЁРР‘РљРђ', 'РќРµРІРµСЂРЅР°СЏ СЃС‚СЂР°РЅРёС†Р°', 3000)
+        show_message('ОШИБКА', 'Неверная страница', 3000)
         return False
 
     for subcategory in subcategories:
@@ -338,12 +338,12 @@ def getFavoriteCategories(params):
     beautifulSoup = BeautifulSoup(http)
     favSectionsContainer = beautifulSoup.find('div', 'b-tabpanels')
     if favSectionsContainer is None:
-        show_message('РћРЁРР‘РљРђ', 'Р’ РёР·Р±СЂР°РЅРЅРѕРј РїСѓСЃС‚Рѕ', 3000)
+        show_message('ОШИБКА', 'В избранном пусто', 3000)
         return False
 
     favSections = favSectionsContainer.findAll('div', 'b-category')
     if len(favSections) == 0:
-        show_message('РћРЁРР‘РљРђ', 'Р’ РёР·Р±СЂР°РЅРЅРѕРј РїСѓСЃС‚Рѕ', 3000)
+        show_message('ОШИБКА', 'В избранном пусто', 3000)
         return False
     sectionRegexp = re.compile("\s*\{\s*section:\s*'([^']+)")
     subsectionRegexp = re.compile("subsection:\s*'([^']+)")
@@ -378,7 +378,7 @@ def getImage(src, quality):
     src[-2] = quality
     src = 'http://' + '/'.join(src)
     src = src.replace('////','//') 
-    src = src.replace('///','//') # О  т¬ґ·б§¬ жІ«жЎ®р‘ЂІ рђЇ¬ж®їжі± тІј«лћЌ
+    src = src.replace('///','//') 
     src = src.replace('http://http://','http://')
     return src
 
@@ -405,11 +405,11 @@ def readfavorites(params):
     beautifulSoup = BeautifulSoup(http)
     itemsContainer = beautifulSoup.find('div', 'b-posters')
     if itemsContainer is None:
-        show_message('РћРЁРР‘РљРђ', 'Р’ РёР·Р±СЂР°РЅРЅРѕРј РїСѓСЃС‚Рѕ', 3000)
+        show_message('ОШИБКА', 'В избранном пусто', 3000)
         return False
     items = itemsContainer.findAll('a')
     if len(items) == 0:
-        show_message('РћРЁРР‘РљРђ', 'Р’ РёР·Р±СЂР°РЅРЅРѕРј РїСѓСЃС‚Рѕ', 3000)
+        show_message('ОШИБКА', 'В избранном пусто', 3000)
         return False
     else:
         coverRegexp = re.compile("url\s*\('([^']+)")
@@ -492,7 +492,7 @@ def readcategory(params):
     items = beautifulSoup.findAll('div', itemsClass)
 
     if len(items) == 0:
-        show_message('РћРЁРР‘РљРђ', 'РќРµРІРµСЂРЅР°СЏ СЃС‚СЂР°РЅРёС†Р°', 3000)
+        show_message('ОШИБКА', 'Неверная страница', 3000)
         return False
     else:
         if start == 0 and 'hideFirstPageData' not in params:
@@ -641,21 +641,21 @@ def readcategory(params):
                    titleText = titleText + '  [COLOR ' + __HL_COOLOR + '](' + country + ')[/COLOR]'
 
                 if rankAbs != 0 and __ADD_Rank_To_Title == 'true':
-                   if __USE_Rank_Pos == 'Before' or __USE_Rank_Pos == 'Р”Рѕ':
+                   if __USE_Rank_Pos == 'Before' or __USE_Rank_Pos == 'До':
                       titleText = '[COLOR ' + __RA_COOLOR + ']' + str(rankAbs) + ' * [/COLOR]' + titleText
                    else: titleText = titleText + ' * [COLOR ' + __RA_COOLOR + ']' + str(rankAbs) + '[/COLOR]' 
 
                 if actor != '' and __ADD_Cast_To_Plot == 'true':
-                   plotText = 'Р’ СЂРѕР»СЏС…: [COLOR ' + __HL_COOLOR + ']' + actor + '[/COLOR]\n' + plotText                
+                   plotText = 'В ролях: [COLOR ' + __HL_COOLOR + ']' + actor + '[/COLOR]\n' + plotText                
 
                 if director != '' and __ADD_Director_To_Plot == 'true':
-                   plotText = 'Р РµР¶РёСЃСЃРµСЂ: [COLOR ' + __HL_COOLOR + ']' + director + '[/COLOR]\n' + plotText
+                   plotText = 'Режиссер: [COLOR ' + __HL_COOLOR + ']' + director + '[/COLOR]\n' + plotText
 
                 if genre != '' and __ADD_Genre_To_Plot == 'true':
-                   plotText = 'Р–Р°РЅСЂ: [COLOR ' + __HL_COOLOR + ']' + genre + '[/COLOR]\n' + plotText
+                   plotText = 'Жанр: [COLOR ' + __HL_COOLOR + ']' + genre + '[/COLOR]\n' + plotText
 
                 if year != '' and __ADD_Year_To_Plot == 'true':
-                   plotText = 'Р“РѕРґ: [COLOR ' + __HL_COOLOR + ']' + year + '[/COLOR]\n' + plotText
+                   plotText = 'Год: [COLOR ' + __HL_COOLOR + ']' + year + '[/COLOR]\n' + plotText
 
                 if originalTitle != '' and __ADD_OriginalTitle_To_Plot == 'true':
                    plotText = '[COLOR ' + __OT_COOLOR + ']' + originalTitle + '[/COLOR]\n' + plotText                
@@ -719,7 +719,7 @@ def readcategory(params):
 
 def load_first_page_sections(href, params):
     #Add search list item
-    li = xbmcgui.ListItem("[РџРћРРЎРљ]")
+    li = xbmcgui.ListItem("[ПОИСК]")
     li.setProperty('IsPlayable', 'false')
     uri = construct_request({
         'mode': 'runsearch',
@@ -740,7 +740,7 @@ def load_first_page_sections(href, params):
     if groups is not None:
         yearLink = groups.find('a', href=re.compile(r'year'))
         if yearLink is not None:
-            li = xbmcgui.ListItem("[РџРѕ РіРѕРґР°Рј]")
+            li = xbmcgui.ListItem("[По годам]")
             li.setProperty('IsPlayable', 'false')
             uri = construct_request({
                 'mode': 'getGenreList',
@@ -753,7 +753,7 @@ def load_first_page_sections(href, params):
             xbmcplugin.addDirectoryItem(h, uri, li, True)
         genreLink = groups.find('a', href=re.compile(r'genre'))
         if genreLink is not None:
-            li = xbmcgui.ListItem("[Р–Р°РЅСЂС‹]")
+            li = xbmcgui.ListItem("[Жанры]")
             li.setProperty('IsPlayable', 'false')
             uri = construct_request({
                 'mode': 'getGenreList',
@@ -774,7 +774,7 @@ def getGenreList(params):
     items = beautifulSoup.find('div', params['css']).findAll('a')
 
     if len(items) == 0:
-        show_message('РћРЁРР‘РљРђ', 'РќРµРІРµСЂРЅР°СЏ СЃС‚СЂР°РЅРёС†Р°', 3000)
+        show_message('ОШИБКА', 'Неверная страница', 3000)
         return False
     else:
         for item in items:
@@ -975,7 +975,7 @@ def read_directory_unuthorized(params):
         if has_blocked is not None:
             if check_login():
                 li = xbmcgui.ListItem(
-                    '[РџРѕРєР°Р·Р°С‚СЊ СЃРєСЂС‹С‚РѕРµ]',
+                    '[Показать скрытое]',
                     iconImage=getThumbnailImage(cover),
                     thumbnailImage=getPosterImage(cover)
                 )
@@ -991,12 +991,12 @@ def read_directory_unuthorized(params):
 
                 xbmcplugin.addDirectoryItem(h, uri, li, True)
             else:
-                show_message('Blocked content', 'РќРµРєРѕС‚РѕСЂС‹Рµ С„Р°Р№Р»С‹ Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅС‹')
+                show_message('Blocked content', 'Некоторые файлы заблокированы')
 
     mainItems = beautifulSoup.find('ul', 'filelist')
 
     if mainItems is None:
-        show_message('РћРЁРР‘РљРђ', 'No filelist', 3000)
+        show_message('ОШИБКА', 'No filelist', 3000)
         return False
 
     if 'quality' in params and params['quality'] is not None and params['quality'] != 'None' and params['quality'] != '':
@@ -1006,7 +1006,7 @@ def read_directory_unuthorized(params):
 
     materialQualityRegexp = re.compile('quality_list:\s*[\'|"]([a-zA-Z0-9,]+)[\'|"]')
     if len(items) == 0:
-        show_message('РћРЁРР‘РљРђ', 'РќРµРІРµСЂРЅР°СЏ СЃС‚СЂР°РЅРёС†Р°', 3000)
+        show_message('ОШИБКА', 'Неверная страница', 3000)
         return False
     else:
         for item in items:
@@ -1181,7 +1181,7 @@ def download(params):
 
 def runsearch(params):
     skbd = xbmc.Keyboard()
-    skbd.setHeading('Р§С‚Рѕ РёС‰РµРј?')
+    skbd.setHeading('Что ищем?')
     skbd.doModal()
     if skbd.isConfirmed():
         SearchStr = skbd.getText()
@@ -1203,12 +1203,12 @@ def render_search_results(params):
     results = beautifulSoup.find('div', 'b-search-page__results')
 
     if results is None:
-        show_message('РћРЁРР‘РљРђ', 'РќРёС‡РµРіРѕ РЅРµ РЅР°Р№РґРµРЅРѕ', 3000)
+        show_message('ОШИБКА', 'Ничего не найдено', 3000)
         return False
     else:
         items = results.findAll('a','b-search-page__results-item')
         if len(items) == 0:
-            show_message('РћРЁРР‘РљРђ', 'РќРёС‡РµРіРѕ РЅРµ РЅР°Р№РґРµРЅРѕ', 3000)
+            show_message('ОШИБКА', 'Ничего не найдено', 3000)
             return False
 
         for item in items:
@@ -1415,3 +1415,4 @@ if mode is not None:
         pass
     if func:
         func(params)
+
