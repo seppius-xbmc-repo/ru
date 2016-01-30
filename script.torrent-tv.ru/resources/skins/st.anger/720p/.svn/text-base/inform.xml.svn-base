@@ -1,0 +1,152 @@
+<window id="12347">7
+  <allowoverlay>no</allowoverlay>
+  <coordinates>
+
+    <system>1</system>
+
+    <posx>0</posx>
+    <posy>0</posy>
+  </coordinates>
+  <animation effect="fade" time="250">WindowOpen</animation>
+  <animation effect="fade" time="250">WindowClose</animation>
+  <controls>
+    <control type="group" id = "100">
+      <description>Window</description>
+      <control type="image">
+        <posx>350</posx>
+        <posy>200</posy>
+        <width>520</width>
+        <height>290</height>
+        <texture border="40">window.png</texture>
+      </control>
+      <control type="image">
+        <posx>350</posx>
+        <posy>200</posy>
+        <width>520</width>
+        <height>290</height>
+        <texture border="40">window.png</texture>
+      </control>
+      <control type="image">
+        <posx>350</posx>
+        <posy>200</posy>
+        <width>520</width>
+        <height>290</height>
+        <texture border="40">window.png</texture>
+      </control>
+      <control type="group">
+        <control type="group">
+          <control type="image">
+            <posx>355</posx>
+            <posy>205</posy>
+            <width>150</width>
+            <height>150</height>
+            <texture>icon.png</texture>
+          </control>
+          <control type="label">
+            <posx>505</posx>
+            <posy>205</posy>
+            <font>font13</font>
+            <visible>true</visible>
+            <label>[B]Torrent-TV XBMC[/B]</label>
+          </control>
+          <control type="label">
+              <posx>505</posx>
+              <posy>235</posy>
+              <font>font10</font>
+              <visible>true</visible>
+              <label>Контакты:[CR][COLOR=blue]http://torrent-tv.ru/contact.php [CR]http://mytalks.ru [CR]http://vk.com/club46360999 [/COLOR]</label>
+          </control>
+          <control type="label">
+              <posx>505</posx>
+              <posy>330</posy>
+              <font>font10</font>
+              <visible>true</visible>
+              <label>© 2012-2014 Hillside Assets Ltd. Все права защищены</label>
+          </control>
+          <control type="label">
+              <posx>360</posx>
+              <posy>360</posy>
+              <font>font10</font>
+              <visible>true</visible>
+              <label>Пользователь:</label>
+          </control>
+          <control type="label" id="101">
+              <description>User login</description>
+              <posx>464</posx>
+              <posy>360</posy>
+              <font>font10</font>
+              <visible>true</visible>
+              <label>Нет данных</label>
+          </control>
+          <control type="label">
+              <posx>360</posx>
+              <posy>380</posy>
+              <font>font10</font>
+              <visible>true</visible>
+              <label>Баланс:</label>
+          </control>
+          <control type="label" id="102">
+              <description>User Balance</description>
+              <posx>464</posx>
+              <posy>380</posy>
+              <font>font10</font>
+              <visible>true</visible>
+              <label>Нет данных</label>
+          </control>
+          <control type="label">
+              <posx>360</posx>
+              <posy>400</posy>
+              <font>font10</font>
+              <visible>true</visible>
+              <label>[B]Состояние AceStream:[/B]</label>
+          </control>
+          <control type="label">
+              <posx>360</posx>
+              <posy>420</posy>
+              <font>font10</font>
+              <visible>true</visible>
+              <label>Статус:</label>
+          </control>
+          <control type="label" id="103">
+              <description>Status AceStream</description>
+              <posx>464</posx>
+              <posy>420</posy>
+              <font>font10</font>
+              <visible>true</visible>
+              <label>Неизвестно</label>
+          </control>
+          <control type="label">
+              <posx>360</posx>
+              <posy>440</posy>
+              <font>font10</font>
+              <visible>true</visible>
+              <label>Внешний IP:</label>
+          </control>
+          <control type="label" id="105">
+              <description>IP ADDR</description>
+              <posx>464</posx>
+              <posy>440</posy>
+              <font>font10</font>
+              <visible>true</visible>
+              <label>Выясняется</label>
+          </control>
+          <control type="label">
+              <posx>360</posx>
+              <posy>460</posy>
+              <font>font10</font>
+              <visible>true</visible>
+              <label>Порт:</label>
+          </control>
+          <control type="label" id="104">
+              <description>Status AceStream Port</description>
+              <posx>464</posx>
+              <posy>460</posy>
+              <font>font10</font>
+              <visible>true</visible>
+              <label>8621 ([COLOR=green]Открыт[/COLOR])</label>
+          </control>
+        </control>
+      </control>
+    </control>
+  </controls>
+</window>

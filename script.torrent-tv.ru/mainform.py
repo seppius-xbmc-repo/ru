@@ -28,12 +28,7 @@ def LogToXBMC(text, type = 1):
     ttext = ''
     if type == 2:
         ttext = 'ERROR:'
-
-    log = open(defines.ADDON_PATH + '/mainform.log', 'a')
     print '[MainForm %s] %s %s\r' % (time.strftime('%X'),ttext, text)
-    log.write('[MainForm %s] %s %s\r' % (time.strftime('%X'),ttext, text))
-    log.close()
-    del log
 
 class WMainForm(xbmcgui.WindowXML):
     CANCEL_DIALOG  = ( 9, 10, 11, 92, 216, 247, 257, 275, 61467, 61448, )
@@ -91,7 +86,7 @@ class WMainForm(xbmcgui.WindowXML):
         self.translation = []
 
     def getChannels(self, param):
-        data = defines.GET('http://api.torrent-tv.ru/v3/translation_list.php?session=%s&type=%s&typeresult=json' % (self.session, param), cookie = self.session)
+        data = defines.GET('http://1ttvxbmc.top/v3/translation_list.php?session=%s&type=%s&typeresult=json' % (self.session, param), cookie = self.session)
         jdata = json.loads(data)
         if jdata['success'] == 0:
             self.showStatus(jdata['error'])
@@ -135,7 +130,7 @@ class WMainForm(xbmcgui.WindowXML):
                 self.category[WMainForm.CHN_TYPE_FAVOURITE]["channels"].append(li)
 
     def getArcChannels(self, param):
-        data = defines.GET('http://api.torrent-tv.ru/v3/arc_list.php?session=%s&typeresult=json' % self.session, cookie = self.session)
+        data = defines.GET('http://1ttvxbmc.top/v3/arc_list.php?session=%s&typeresult=json' % self.session, cookie = self.session)
         jdata = json.loads(data)
         self.archive = []
         if jdata['success'] == 0:
@@ -156,7 +151,7 @@ class WMainForm(xbmcgui.WindowXML):
             self.archive.append(li)
 
     def getEpg(self, param):
-       data = defines.GET('http://api.torrent-tv.ru/v3/translation_epg.php?session=%s&epg_id=%s&typeresult=json' % (self.session, param), cookie = self.session)
+       data = defines.GET('http://1ttvxbmc.top/v3/translation_epg.php?session=%s&epg_id=%s&typeresult=json' % (self.session, param), cookie = self.session)
        jdata = json.loads(data)
        if jdata['success'] == 0:
           self.epg[param] = []
@@ -174,7 +169,7 @@ class WMainForm(xbmcgui.WindowXML):
         if defines.tryStringToInt(cdn) < 1:
             return
 
-        data = defines.GET('http://api.torrent-tv.ru/v3/translation_screen.php?session=%s&channel_id=%s&typeresult=json&count=1' % (self.session, cdn), cookie = self.session)
+        data = defines.GET('http://1ttvxbmc.top/v3/translation_screen.php?session=%s&channel_id=%s&typeresult=json&count=1' % (self.session, cdn), cookie = self.session)
         jdata = json.loads(data)
         img = self.getControl(WMainForm.IMG_SCREEN)
         img.setImage("")
@@ -187,7 +182,7 @@ class WMainForm(xbmcgui.WindowXML):
 
     def onInit(self):
         try:
-            data = defines.GET('http://api.torrent-tv.ru/v3/version.php?application=xbmc&version=%s' % defines.VERSION)
+            data = defines.GET('http://1ttvxbmc.top/v3/version.php?application=xbmc&version=%s' % defines.VERSION)
             jdata = json.loads(data)
             if jdata['support'] == 0:
                from okdialog import OkDialog
@@ -206,7 +201,7 @@ class WMainForm(xbmcgui.WindowXML):
               defines.ADDON.setSetting("uuid", guid)
             guid = guid.replace('-', '')
             print guid
-            data = defines.GET('http://api.torrent-tv.ru/v3/auth.php?username=%s&password=%s&typeresult=json&application=xbmc&guid=%s' % (defines.ADDON.getSetting('login'), defines.ADDON.getSetting('password'), guid))
+            data = defines.GET('http://1ttvxbmc.top/v3/auth.php?username=%s&password=%s&typeresult=json&application=xbmc&guid=%s' % (defines.ADDON.getSetting('login'), defines.ADDON.getSetting('password'), guid))
             jdata = json.loads(data)
             if jdata['success'] == 0:
                 self.showStatus(jdata['error'])
@@ -365,6 +360,7 @@ class WMainForm(xbmcgui.WindowXML):
             self.playditem = self.selitem_id
             
             self.player.Start(buf)
+            LogToXBMC("Stoped video");
             if xbmc.getCondVisibility("Window.IsVisible(home)"):
                 LogToXBMC("Close from HOME Window")
                 self.close()
@@ -377,9 +373,6 @@ class WMainForm(xbmcgui.WindowXML):
             elif xbmc.getCondVisibility("Window.IsVisible(addonbrowser)"):
                 self.close();
                 LogToXBMC("Is addonbrowser Window")
-            elif xbmc.getCondVisibility("Window.IsMedia"):
-                self.close();
-                LogToXBMC("Is media Window")
             elif xbmc.getCondVisibility("Window.IsVisible(12346)"):
                 self.close();
                 LogToXBMC("Is plugin Window")
@@ -605,7 +598,7 @@ class WMainForm(xbmcgui.WindowXML):
         const_li.setProperty("epg_cdn_id", li.getProperty("epg_cdn_id"))
         const_li.setProperty("date", "%s-%s-%s" % (date.year, date.month, date.day))
         self.list.addItem(const_li)
-        data = defines.GET("http://api.torrent-tv.ru/v3/arc_records.php?session=%s&date=%d-%d-%s&epg_id=%s&typeresult=json" % (self.session, date.day, date.month, date.year, li.getProperty("epg_cdn_id")), cookie = self.session)
+        data = defines.GET("http://1ttvxbmc.top/v3/arc_records.php?session=%s&date=%d-%d-%s&epg_id=%s&typeresult=json" % (self.session, date.day, date.month, date.year, li.getProperty("epg_cdn_id")), cookie = self.session)
         jdata = json.loads(data)
         if jdata["success"] == 0:
             self.showStatus(jdata["error"])

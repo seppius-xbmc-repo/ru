@@ -18,12 +18,7 @@ def LogToXBMC(text, type = 1):
     ttext = ''
     if type == 2:
         ttext = 'ERROR:'
-
-    log = open(defines.ADDON_PATH + '/player.log', 'a')
     print '[MyPlayer %s] %s %s\r' % (time.strftime('%X'),ttext, text)
-    log.write('[MyPlayer %s] %s %s\r' % (time.strftime('%X'),ttext, text))
-    log.close()
-    del log
 
 class MyPlayer(xbmcgui.WindowXML):
     CONTROL_EPG_ID = 109
@@ -106,9 +101,9 @@ class MyPlayer(xbmcgui.WindowXML):
         print li.getProperty("type")
         print li.getProperty("id")
         if (li.getProperty("type") == "channel"):
-            data = defines.GET("http://api.torrent-tv.ru/v3/translation_stream.php?session=%s&channel_id=%s&typeresult=json" % (self.parent.session, li.getProperty("id")));
+            data = defines.GET("http://1ttvxbmc.top/v3/translation_stream.php?session=%s&channel_id=%s&typeresult=json" % (self.parent.session, li.getProperty("id")));
         elif (li.getProperty("type") == "record"):
-            data = defines.GET("http://api.torrent-tv.ru/v3/arc_stream.php?session=%s&record_id=%s&typeresult=json" % (self.parent.session, li.getProperty("id")));
+            data = defines.GET("http://1ttvxbmc.top/v3/arc_stream.php?session=%s&record_id=%s&typeresult=json" % (self.parent.session, li.getProperty("id")));
         else:
             self.parent.showStatus("Неизвестный тип контента")
             return

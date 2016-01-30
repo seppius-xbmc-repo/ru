@@ -11,13 +11,8 @@ import defines
 def LogToXBMC(text, type = 1):
     ttext = ''
     if type == 2:
-        ttext = 'ERROR:'
- 
-    log = open(defines.ADDON_PATH + '/menuform.log', 'a')
+        ttext = 'ERROR:' 
     print '[MenuForm %s] %s %s\r' % (time.strftime('%X'),ttext, text)
-    log.write('[MenuForm %s] %s %s\r' % (time.strftime('%X'),ttext, text))
-    log.close()
-    del log
 
 class MenuForm(xbmcgui.WindowXMLDialog):
     CMD_ADD_FAVOURITE = 'favourite_add'
