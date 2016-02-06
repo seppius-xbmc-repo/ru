@@ -1,4 +1,0 @@
-<settings>
-    <setting id="Show alt title" type="bool" label="30001" default="true"/>
-    <setting id="Show quality" type="bool" label="30002" default="true"/>
-</settings>
