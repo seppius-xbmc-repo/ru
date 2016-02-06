@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<settings>
-	<setting id="username" type="text" label="30001" default="" />
-	<setting id="password" type="text" label="30002" option="hidden" default="" />
-	<setting id="shclosed" type="bool" label="30120" default="true" />
-	<setting id="sub_mode" type="enum" label="30100" lvalues="30101|30102|30103|30104" default="0" />
-	<setting id="ide_mode" type="enum" label="30110" lvalues="30111|30112|30113|30114" default="1" />
-</settings>

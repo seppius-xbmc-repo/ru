@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<settings>
-	<setting id="rtc_uri" type="text" label="rTorrent URI (scgi://addr:port)" default="scgi://127.0.0.1:5000" />
-	<setting id="list_limit" type="enum" label="Длинна списка фильмов и сериалов" values="10|25|50|75|100" default="2" />
-	<setting id="rtc_select" type="bool" label="Выбирать подкаталог в базовом каталоге?" default="true" />
-</settings>
