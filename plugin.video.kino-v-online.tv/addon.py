@@ -13,7 +13,7 @@ class SiteScrapper:
             'videos': '<td class="contentheading" width="100%"><a href="(http://kino-v-online.tv/.+?.html)">(.+?)</a>',
             'pictures': '<div align="justify">\s*<img src="http://kino-v-online.tv/(uploads/posts/.+?.jpg)"',
             'picture': 'poster=http://kino-v-online.tv/(uploads/posts/.+?.jpg)',
-            'video': 'file[\'\=\:]*(http://kino-v-online.tv/.+?.flv)',
+            'video': 'file=(.+?start=0)',
             'video_title': '<h1>(.+?)</h1>',
             'descriptions': '<div class="descript">(.+?)</div>'
         }

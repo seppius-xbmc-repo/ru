@@ -614,7 +614,7 @@ Paypal: напишите на kit500.development at gmail dot com
 
 <addon id="plugin.video.kino-v-online.tv"
        name="[COLOR=FFCB00FF]kino-v[/COLOR][COLOR=FFFFF000]-online.tv[/COLOR]"
-       version="0.0.3"
+       version="0.0.4"
        provider-name="Nesterov Alexandr">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
