@@ -28,7 +28,7 @@ def DEC(s):
 	return s
 
 def genre():
-	wurl = 'http://dream-film.net/'
+	wurl = 'http://dream-film.tv/'
 	http = GET(wurl)
 	if http == None: return False
 	r1 = re.compile('<div id="content" class="cont_pad">(.*?)</ul>',re.S).findall(http)
@@ -36,7 +36,7 @@ def genre():
 	for href, name in r2:
 		i = xbmcgui.ListItem(unicode(name, "windows-1251"), iconImage=icon, thumbnailImage=icon)
 		u  = sys.argv[0] + '?mode=OPEN_MOVIES'
-		u += '&url=%s'%urllib.quote_plus('http://dream-film.net/' + href)
+		u += '&url=%s'%urllib.quote_plus('http://dream-film.tv/' + href)
 		u += '&name=%s'%urllib.quote_plus(name)
 		xbmcplugin.addDirectoryItem(h, u, i, True)
 	
@@ -47,10 +47,10 @@ def OPEN_MOVIES(params):
 	if http == None: return False
 	r1 = re.compile('<div id=\'dle-content\'>(.*?)<div class="small_box2 premiers">',re.S).findall(http)
 	r2 = re.compile('<a href="([^"]+)"><img title=".*?" alt="(.*?)"',re.S).findall(r1[0])
-	r3 = re.compile('src="http://dream-film.net/(.+?)"',re.I).findall(r1[0])
+	r3 = re.compile('src="http://dream-film.tv/(.+?)"',re.I).findall(r1[0])
 	ii = 0
 	for href, alt in r2:
-			img = 'http://dream-film.net/' + r3[ii]
+			img = 'http://dream-film.tv/' + r3[ii]
 			ii = ii + 1
 			i = xbmcgui.ListItem(unicode(alt, "windows-1251"), iconImage=img, thumbnailImage=img)
 			u  = sys.argv[0] + '?mode=FILMS'
@@ -60,7 +60,7 @@ def OPEN_MOVIES(params):
 			xbmcplugin.addDirectoryItem(h, u, i, True)
 	try:
 		rp = re.compile('div class="navigation">(.*?)</div>', re.DOTALL).findall(http)[0]
-		rp2 = re.compile('<span class="nav_ext">...</span> <a href=".*?">24</a> <a href="(.*?)">(.*?)</a>').findall(rp)
+		rp2 = re.compile('<span>.*?<a href="(.*?)">(.*?)</a>').findall(rp)
 		for href, nr in rp2:
 			u = sys.argv[0] + '?mode=OPEN_MOVIES'
 			u += '&url=%s'%urllib.quote_plus(href)
