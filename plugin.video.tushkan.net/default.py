@@ -9,7 +9,7 @@ import xbmcplugin
 import xbmcaddon
 import re,base64,random,time
 
-from BeautifulSoup import BeautifulSoup, BeautifulStoneSoup
+
 from urllib import unquote, quote, quote_plus
 Addon = xbmcaddon.Addon( id = 'plugin.video.tushkan.net' )
 __language__ = Addon.getLocalizedString
@@ -32,7 +32,7 @@ headers  = {
     'Accept-Charset' :'utf-8, utf-16, *;q=0.1',
     'Accept-Encoding':'identity, *;q=0'}
     
-cook_file = xbmc.translatePath('special://temp/'+ 'truba.cookies')
+
 
 def GET(target, post=None):
     target=target.replace('//page','/page')
@@ -62,87 +62,57 @@ def showMessage(heading, message, times = 3000, pics = addon_icon):
 def doSearch(params):
     try: 
         lnk=params['link']
-        if 'tushkan.net' not in lnk: lnk='http://tushkan.net'+lnk
+        if 'tushkan.tv' not in lnk: lnk='http://tushkan.tv'+lnk
         http = GET(lnk)
     except: 
-        lnk='http://tushkan.net/'
+        lnk='http://tushkan.tv/'
         http = GET(lnk)
-    #print lnk
-    beautifulSoup = BeautifulSoup(http)
-    channels=beautifulSoup.findAll(id= re.compile('entryID_[0-9]+'))
-    if channels:
-        for ch in channels: 
-            titl= ch.find('a').find('h3')#.string.encode('utf-8')
-            #print titl.encode('utf-8')
-            img= 'http://tushkan.net'+ch.find('img')['src']
-            link=ch.find('a')['href']
-            hh= re.compile('<b>Оригинальное название:</b>.+')
-            #print ch
-            tttl= (re.findall(hh,str(ch)))
-            #print tttl
-            try: tttl=tttl[0].split('</b>')[1]
-            except: tttl=titl
-            if tttl: 
-                if len(tttl)<5: tttl=titl
-                try:
-                    li = xbmcgui.ListItem(tttl.replace('<br />',''), iconImage = addon_icon, thumbnailImage = img)
-                
-                    uri = construct_request({
+
+    #print http
+    #beautifulSoup = BeautifulSoup(http)
+    names=re.compile('е:<\/b>([^#<]+)<br').findall(http)
+    #print names
+    lnks=re.compile('<a\s*href="([^#<]+)"\s*title="([^"<]+)"[^>]+>\s*<img.*src="([^#<]+)"[^О]*<hr><b>Оригинальное название:<\/b>([^#<]+)<').findall(http)
+    i=0
+    #print len(names), len(lnks)
+    for ch in lnks:
+        title=ch[3].strip()
+        url=ch[0]
+        img= 'http://tushkan.tv'+ch[2]
+        li = xbmcgui.ListItem(title, iconImage = addon_icon, thumbnailImage = img)
+        uri = construct_request({
                         'func': 'openitem',
-                        'mpath': link
-                    })
-                    li.setProperty('fanart_image', addon_fanart)
-                    xbmcplugin.addDirectoryItem(hos, uri, li, True)
-                except: pass
-    else:
-        channels=beautifulSoup.findAll("table",attrs={"class":'eBlock'})
-        for t in  channels: 
-            link=t.find('a')['href']
-            img=t.find('img')['src']
-            titl=link.split('/')[-2]
-            li = xbmcgui.ListItem(titl, iconImage = addon_icon, thumbnailImage = img)
-                
-            uri = construct_request({
-                'func': 'openitem',
-                'mpath': link
-            })
-            li.setProperty('fanart_image', addon_fanart)
-            xbmcplugin.addDirectoryItem(hos, uri, li, True)
-    
-    gogers=beautifulSoup.findAll('a', attrs={'class': 'swchItem'})
-    for n in gogers: 
-        link= n['href']
-        tt= n.find('span').string
-        #print tt
-        if tt==u'\xbb':
-            li = xbmcgui.ListItem('Следующая страница', iconImage = addon_icon, thumbnailImage = addon_icon)
-            uri = construct_request({
-                'func': 'doSearch',
-                'link':link
-            })
-            li.setProperty('fanart_image', addon_fanart)
-            xbmcplugin.addDirectoryItem(hos, uri, li, True)
-    
+                        'mpath': url
+        })
+        li.setProperty('fanart_image', addon_fanart)
+        xbmcplugin.addDirectoryItem(hos, uri, li, True)
+        i=i+1
+        if len(names)<i: i=0
+
+    try:
+        lnk=re.compile('<!-- Next page link -->\s*<a class="swchItem"\s*href="([^"<]+)">').findall(http)[0]
+        li = xbmcgui.ListItem('Следующая страница', iconImage = addon_icon, thumbnailImage = addon_icon)
+        uri = construct_request({
+            'func': 'doSearch',
+            'link':lnk
+        })
+        li.setProperty('fanart_image', addon_fanart)
+        xbmcplugin.addDirectoryItem(hos, uri, li, True)
+    except: pass
     xbmcplugin.endOfDirectory(hos)
 
 def openitem(params):
-    lk="http://tushkan.net"+params['mpath']
+    lk="http://tushkan.tv"+params['mpath']
     http = GET(lk)
     #print lk
-    beautifulSoup = BeautifulSoup(http)
-    #print http
-    titl= beautifulSoup.find('h1')#.string.encode('utf-8')
+
     #print titl.encode('utf-8')
-    try: img= beautifulSoup.findAll('img', attrs={'width':'0'})[0]['src']
-    except: img=addon_icon
+    img=addon_icon
     #print img
-    hh= re.compile('<b>Оригинальное название:</b>.+')
-    #print ch
-    tttl= (re.findall(hh,str(beautifulSoup)))
-    #print tttl
-    try: ttt2=tttl[0].split('</b>')[1]
-    except: ttt2=titl
-    if len(ttt2)<5: ttt2=titl
+
+    ttt=re.compile('title="([^"]+)"\s*src="([^"]+)"><\/div>').findall(http)
+    img="http://tushkan.tv"+ttt[0][1]
+    ttt2=ttt[0][0]
     hh= re.compile('http://.+film/.+.flv')
     tttl= (re.findall(hh,str(http)))
     #img=addon_icon
@@ -161,7 +131,7 @@ def openitem(params):
         tttl= (re.findall(hh,str(http)))
         link=tttl[0]
         http = GET(link)
-
+        #print http
         link=re.findall('pl :"(.+)"',str(http))[0].replace("'",'"')
 
         if link:
@@ -218,7 +188,7 @@ def _doSearch(params):
     if kbd.isConfirmed():
         sts=kbd.getText()
         params={}
-        params['link']='http://tushkan.net/search/?q='+urllib.quote(sts)+'&sfSbm=%D0%98%D1%81%D0%BA%D0%B0%D1%82%D1%8C&a=45'
+        params['link']='http://tushkan.tv/search/?q='+urllib.quote(sts)+'&sfSbm=%D0%98%D1%81%D0%BA%D0%B0%D1%82%D1%8C&a=45'
         params['mode']='link'
         doSearch(params)
  
@@ -243,13 +213,12 @@ def mainScreen(params):
     li.setProperty('fanart_image', addon_fanart)
     xbmcplugin.addDirectoryItem(hos, uri, li, True)
     
-    http = GET('http://tushkan.net/')
+    http = GET('http://tushkan.tv/')
     #print http
-    beautifulSoup = BeautifulSoup(http)
-    gogers=beautifulSoup.findAll('a', attrs={'class': 'catName'})
-    for nn in gogers:
-        link= nn['href']
-        tt= nn.string
+    gogr=re.compile('"catName"\s*href="([^>]+)">([^"]+)<\/a>').findall(http)
+    for nn in gogr:
+        link= nn[0]
+        tt= nn[1]
         li = xbmcgui.ListItem(tt, iconImage = addon_icon, thumbnailImage = addon_icon)
         uri = construct_request({
             'func': 'doSearch',
