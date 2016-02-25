@@ -1,4 +1,4 @@
-#!/usr/bin/python
+﻿#!/usr/bin/python
 # -*- coding: utf-8 -*-
 
 import httplib
@@ -83,7 +83,7 @@ except:
     gbl=[]
 
 def main_menu(params):
-    toParse('AppOpened',{})
+
     li = xbmcgui.ListItem((lang(30010)), addon_fanart, addon_icon)
     li.setProperty('IsPlayable', 'false')
     uri = construct_request({
@@ -117,33 +117,6 @@ def main_menu(params):
 
 
   
-def toParse(what,params):
-    #try:
-
-        #poid=__addon__.getSetting('poid')
-        
-        cc=httplib.HTTPSConnection('api.parse.com',443)
-        cc.connect()
-        params['user']=pcook
-        print json.dumps({"dimensions": params})
-        print '/1/events/%s'%what
-        cc.request('POST', '/1/events/%s'%what,
-        json.dumps({"dimensions": params}),
-        {
-        "X-Parse-Application-Id":"UFH35vkZwVtgheIFTegWhPgHQqgdIARN5xCUkkrW",
-        "X-Parse-REST-API-Key":"FOb2PCacJb4nu34RLp6qH4yvotMZrxM123lo8fjc",
-        "Content-Type":"application/json"
-        })
-        txt=cc.getresponse().read()
-        cc.close()
-        #poid= json.loads(txt)['objectId']
-        #__addon__.setSetting('poid',poid)
-
-        
-            
-        print txt
-        
-    #except: pass
 
  
     
@@ -171,19 +144,21 @@ def get_black(params):	#print games
 def remove_black(params):
     
     if params['mode']=='g': 
-        toParse('remove_BLG',{"nm":params['name']})
+        #toParse('remove_BLG',{"nm":params['name']})
         gbl.remove(params['name'])
         print gbl
         __addon__.setSetting('Gblack',','.join(gbl))
     if params['mode']=='n': 
-        toParse('remove_BLU',{"ch":params['name']})
+        #toParse('remove_BLU',{"ch":params['name']})
         bl.remove(params['name'])
         print bl
         __addon__.setSetting('black',','.join(bl))
 def get_games(params):
-
-    http = GET('https://api.twitch.tv/kraken/games/top?limit=100')
+    try: offset=int(params['offset'])
+    except: offset=0
+    http = GET('https://api.twitch.tv/kraken/games/top?limit=100&offset=%s'%offset)
     json1=json.loads(http)
+    total= int(json1["_total"])
     for entries in json1['top']:
         title= entries['game']['name'].encode('utf-8')
         pic= entries['game']['box']['large']
@@ -197,6 +172,14 @@ def get_games(params):
             'func': 'get_stream_list'
         })
         if title not in gbl: xbmcplugin.addDirectoryItem(hos, uri, li, True)
+    if (int(offset)+100)<total:
+        li = xbmcgui.ListItem('Далее', addon_icon, addon_icon)
+        li.setProperty('IsPlayable', 'false')
+        uri = construct_request({
+            'offset': offset+100,
+            'func': 'get_games'
+        })
+        xbmcplugin.addDirectoryItem(hos, uri, li, True)
     if gsort=='0': xbmcplugin.addSortMethod(hos,xbmcplugin.SORT_METHOD_LABEL)
     xbmcplugin.endOfDirectory(hos)
 #https://api.twitch.tv/kraken/streams/featured
@@ -217,7 +200,7 @@ def get_featured(params):
         ico=entries['stream']['channel']['logo']
         if not ico: ico=pic
         viewers=entries['stream']['viewers']
-        li = xbmcgui.ListItem('[COLOR=FFFF0000](%s)[/COLOR] %s [COLOR=FF00FF00](%s)[/COLOR]'%(name.encode('utf-8'),title,viewers), pic, ico)
+        li = xbmcgui.ListItem(u'[COLOR=FFFF0000]%s[/COLOR] %s\n\r[COLOR=FF00FF00]смотрят: %s [/COLOR]'%(name.encode('utf-8'),title,viewers), pic, ico)
         li.setProperty('IsPlayable', 'true')
         if game: li.addContextMenuItems([('%s в черный список'%name.encode('utf-8'), 'XBMC.RunPlugin(%s?func=addBlack&id=%s&pl=fea)' % (sys.argv[0],  name)),('%s в черный список'%game.encode('utf-8'), 'XBMC.RunPlugin(%s?func=addGBlack&id=%s&pl=fea)' % (sys.argv[0],  game),),])
         else: li.addContextMenuItems([('%s в черный список'%name.encode('utf-8'), 'XBMC.RunPlugin(%s?func=addBlack&id=%s&pl=fea)' % (sys.argv[0],  name)),])
@@ -230,11 +213,11 @@ def get_featured(params):
 
     if csort=='0': xbmcplugin.addSortMethod(hos,xbmcplugin.SORT_METHOD_LABEL)
     xbmc.executebuiltin('Container.SetViewMode(500)')
-    toParse('GetFeatured',{})
+    #toParse('GetFeatured',{})
     xbmcplugin.endOfDirectory(hos)
     
 def addBlack(params):
-    toParse('add_BLG',{"nm":params['id']})
+    #toParse('add_BLG',{"nm":params['id']})
     try: list=__addon__.getSetting('black')
     except: list=''
     list="%s,%s"%(list,params['id'])
@@ -242,7 +225,7 @@ def addBlack(params):
     if params['pl']=='str': xbmc.executebuiltin('Container.Refresh(%s?func=get_stream_list&game=%s)' % (sys.argv[0],params['game'].replace(' ','%2b')))
     if params['pl']=='fea': xbmc.executebuiltin('Container.Refresh(%s?func=get_featured)' % sys.argv[0])
 def addGBlack(params):
-    toParse('add_BLU',{"ch":params['id']})
+    #toParse('add_BLU',{"ch":params['id']})
     try: list=__addon__.getSetting('Gblack')
     except: list=''
     list="%s,%s"%(list,params['id'])
@@ -281,7 +264,7 @@ def get_favorites(params):
         ico=entries['channel']['logo']
         if not ico: ico=pic
         viewers=entries['viewers']
-        li = xbmcgui.ListItem('[COLOR=FFFF0000](%s)[/COLOR] %s [COLOR=FF00FF00](%s)[/COLOR]'%(name.encode('utf-8'),title,viewers), pic, ico)
+        li = xbmcgui.ListItem(u'[COLOR=FFFF0000]%s[/COLOR] %s\n\r[COLOR=FF00FF00]смотрят: %s [/COLOR]'%(name.encode('utf-8'),title,viewers), pic, ico)
         #li.addContextMenuItems([('%s в черный список'%name.encode('utf-8'), 'XBMC.RunPlugin(%s?func=addBlack&id=%s&pl=str&game=%s)' % (sys.argv[0],  name, params['game'])),])
         li.setProperty('IsPlayable', 'true')
         uri = construct_request({
@@ -295,10 +278,12 @@ def get_favorites(params):
     xbmcplugin.endOfDirectory(hos)
     
 def get_stream_list(params):
-    toParse('ShowStreams',{"Game":params['game']})
-    http = GET('https://api.twitch.tv/kraken/streams?game=%s&limit=50'%params['game'])
+    try: offset=int(params['offset'])
+    except: offset=0
+    http = GET('https://api.twitch.tv/kraken/streams?game=%s&limit=100&offset=%s'%(params['game'],offset))
     json1=json.loads(http)
-    #print http
+    
+    total= int(json1["_total"])
     for entries in json1['streams']:
         #print entries['channel']
         try:
@@ -310,16 +295,26 @@ def get_stream_list(params):
         ico=entries['channel']['logo']
         if not ico: ico=pic
         viewers=entries['viewers']
-        li = xbmcgui.ListItem('[COLOR=FFFF0000](%s)[/COLOR] %s [COLOR=FF00FF00](%s)[/COLOR]'%(name.encode('utf-8'),title,viewers), pic, ico)
+        li = xbmcgui.ListItem(u'[COLOR=FFFF0000]%s[/COLOR] %s\n\r[COLOR=FF00FF00]смотрят: %s [/COLOR]'%(name.encode('utf-8'),title,viewers), pic, ico)
         li.addContextMenuItems([('%s в черный список'%name.encode('utf-8'), 'XBMC.RunPlugin(%s?func=addBlack&id=%s&pl=str&game=%s)' % (sys.argv[0],  name, params['game'])),])
         li.setProperty('IsPlayable', 'true')
         uri = construct_request({
             'name': name,
             'game': params['game'],
-            'func': 'get_stream'
+            'func': 'get_stream',
+            
         })
         if name not in bl: xbmcplugin.addDirectoryItem(hos, uri, li)
-
+    
+    if (int(offset)+100)<total:
+        li = xbmcgui.ListItem('Далее', addon_icon, addon_icon)
+        li.setProperty('IsPlayable', 'false')
+        uri = construct_request({
+            'offset': offset+100,
+            'game': params['game'],
+            'func': 'get_stream_list'
+        })
+        xbmcplugin.addDirectoryItem(hos, uri, li, True)
     if csort=='0': xbmcplugin.addSortMethod(hos,xbmcplugin.SORT_METHOD_LABEL)
     xbmc.executebuiltin('Container.SetViewMode(500)')
     xbmcplugin.endOfDirectory(hos)
@@ -327,7 +322,7 @@ def get_stream_list(params):
 def get_stream(params):	
     try: game=params['game'].replace('+',' ')
     except: game=''
-    toParse('Play',{"game":game,"channel":params['name']})
+    #toParse('Play',{"game":game,"channel":params['name']})
     playLive(params['name'],True)
     
     

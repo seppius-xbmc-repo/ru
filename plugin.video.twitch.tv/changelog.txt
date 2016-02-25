@@ -1,5 +1,6 @@
-[B]TODO:[/B]
-- Add archives
+
+[B]Version 0.1.13[/B]
+- Add "more" option
 
 [B]Version 0.0.7[/B]
 - Add icons for channels
