@@ -78,7 +78,8 @@ def doSearch(params):
     for ch in lnks:
         title=ch[3].strip()
         url=ch[0]
-        img= 'http://tushkan.tv'+ch[2]
+        if 'tushkan.tv' in ch[2]: img=ch[2]
+        else:        img= 'http://tushkan.tv'+ch[2]
         li = xbmcgui.ListItem(title, iconImage = addon_icon, thumbnailImage = img)
         uri = construct_request({
                         'func': 'openitem',
