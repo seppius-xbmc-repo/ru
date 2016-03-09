@@ -379,7 +379,7 @@ def readfavorites(params):
     if itemsContainer is None:
         show_message('ОШИБКА', 'В избранном пусто', 3000)
         return False
-    items = itemsContainer.findAll('a')
+    items = itemsContainer.findAll('a', 'b-poster-thin')
     if len(items) == 0:
         show_message('ОШИБКА', 'В избранном пусто', 3000)
         return False
