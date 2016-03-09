@@ -456,7 +456,7 @@ Paypal: напишите на kit500.development at gmail dot com</description>
 
 <addon id="plugin.video.fs.ua"
        name="Fs.ua"
-       version="1.9.29"
+       version="1.9.30"
        provider-name="x86demon">
     <requires>
         <import addon="xbmc.python" version="2.1.0"/>
@@ -2286,12 +2286,12 @@ provider-name="Roman_V_M">
 
 <addon
   id="skin.confluence-plood-jarvis"
-  version="2.8.8"
+  version="2.8.811"
   name="Confluence-plood-jarvis"
   provider-name="Jezz_X, Team Kodi, YLLOW_DRAGON, plood">
   <requires>
     <import addon="xbmc.gui" version="5.10.0"/>
-    <import addon="script.favourites" version="8.0.8"/>
+	<import addon="script.favourites" version="8.0.8"/>
   </requires>
   <extension
     point="xbmc.gui.skin"
