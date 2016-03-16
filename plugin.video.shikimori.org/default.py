@@ -55,7 +55,7 @@ def Main(main_url):
         main_url = site_url
     
     html = GetHTML(main_url)
-    soup = bs(html)
+    soup = bs(html, "html.parser")
     content = soup.find_all('article', attrs={'class': 'c-anime'})
     
     if main_url == site_url :
@@ -67,11 +67,9 @@ def Main(main_url):
             addDir(el['title'], el['href'], iconImg=plugin_icon)
 
     for num in content:
-        title = num.find('a').string.encode('utf-8')
-        if main_url == site_url or '/page/' in main_url :
-            url = num.find('a')['href']
-        else :
-            url = site_url + num.find('a')['href']
+        block = num.find('div', attrs={'class': 'cover'})
+        title = block['data-title'].encode('utf-8')
+        url = block['data-href']
         image = num.find('meta', attrs={'itemprop': 'image'})['content']
         addDir(title, url, iconImg=image, mode="FILMS")
     next = soup.find('a', {'class': 'next'})
@@ -100,7 +98,7 @@ def Search():
         SearchStr = kbd.getText()
         url = 'http://play.shikimori.org/animes/search/' + SearchStr.decode('utf-8')
         html = GetHTML(url.encode('utf-8'))
-        soup = bs(html)
+        soup = bs(html, "html.parser")
         content = soup.find_all('article', attrs={'class': 'c-anime'})
         for num in content:
             title = num.find('a').contents[0]
@@ -112,9 +110,9 @@ def Search():
 
 def GetFilmsList(url_main) :
     html = GetHTML(url_main)
-    soup = bs(html)
+    soup = bs(html, "html.parser")
     content = soup.find('div', attrs={'class': 'c-episodes'})
-    content = content.find_all('div', attrs={'class': 'episode'})
+    content = content.find_all('div', attrs={'class': 'video-variant'})
     for num in content:
         lnk = num.find('a')
         title = 'Эпизод ' + lnk.find('span', attrs={'class': 'episode-num'}).text
@@ -124,8 +122,8 @@ def GetFilmsList(url_main) :
 
 def GetVKUrl(url):
     http = GetHTML(url)
-    soup = bs(http)
-    soup = bs(GetHTML(soup.find('div', {'class':'b-video_player'}).find('iframe')['src']))
+    soup = bs(http, "html.parser")
+    soup = bs(GetHTML(soup.find('div', {'class':'b-video_player'}).find('iframe')['src']), "html.parser")
     sdata1 = soup.find('div', style="position:absolute; top:50%; text-align:center; right:0pt; left:0pt; font-family:Tahoma; font-size:12px; color:#777;")
     video = ''
     if sdata1:
@@ -154,7 +152,7 @@ def GetVKUrl(url):
 
 def GetSibnetUrl(url):
     http = GetHTML(url)
-    soup = bs(http)
+    soup = bs(http, "html.parser")
     # print soup
     player = soup.find('div', {'class':'b-video_player'})
     param = player.find('param', {'name': 'movie'})
@@ -164,7 +162,7 @@ def GetSibnetUrl(url):
         video_id = player.find('iframe')['src']
     print video_id
     http = GetHTML('http://video.sibnet.ru/shell_config_xml.php?videoid=' + video_id.split('=', 1)[1])
-    soup = bs(http)
+    soup = bs(http, "html.parser")
     video = soup.find('file').text
     return video
 
@@ -180,12 +178,12 @@ def GetMyviUrl(url):
         #_startTime = time.time()
         r = s.get(url)
         s.headers.update(headers)
-        soup = bs(r.text)
+        soup = bs(r.text, "html.parser")
         #print "Elapsed time: {:.3f} sec".format(time.time() - _startTime)
         url = soup.find('div', {'class':'player-area'}).find('iframe')['src']
         r = s.get(url, allow_redirects=True)
         UniversalUserID = r.cookies['UniversalUserID']
-        js = bs(r.text).find('body').find('script', {'type': 'text/javascript'}).encode('utf-8')
+        js = bs(r.text, "html.parser").find('body').find('script', {'type': 'text/javascript'}).encode('utf-8')
         js = '{%s}' % (js.decode('utf-8').split('{', 1)[1].rsplit('}', 1)[0])
         js = re.sub(ur'([\s*{\s*,])([a-z]\w*):', ur'\1"\2":', js)
         js = js.replace("'", '"')
@@ -200,12 +198,12 @@ def GetMyviUrl(url):
 
 def GetRutubeUrl(url):
     http = GetHTML(url)
-    soup = bs(http)
+    soup = bs(http, "html.parser")
     try:
         url = soup.find('div', {'class':'b-video_player'}).find('iframe')['src']
         url = 'http://rutube.ru/api/play/options/' + url.split('http://rutube.ru/play/embed/', 1)[1] + '/?format=xml'
         http = GetHTML(url)
-        soup = bs(http)
+        soup = bs(http, "html.parser")
         url = soup.find('video_balancer').find('m3u8').text
     except:
         return None
@@ -213,7 +211,7 @@ def GetRutubeUrl(url):
     
 def PlayUrl(url):
     html = GetHTML(url);
-    soup = bs(html)
+    soup = bs(html, "html.parser")
     player = soup.find('div', {'class':'c-videos'}).find('a', {'class': 'active'}).find('span', {'class': 'video-hosting'}).text
     if 'vk.com' in player:
         url = GetVKUrl(url)
@@ -231,9 +229,9 @@ def PlayUrl(url):
 
 def GetVoicesList(url):
     http = GetHTML(url)
-    soup = bs(http)
+    soup = bs(http, "html.parser")
     content = soup.find('div', attrs={'class': 'c-videos'})
-    content = content.find_all('div', attrs={'class': 'episode'})
+    content = content.find_all('div', attrs={'class': 'video-variant'})
     for voice in content:
         lnk = voice.find('a')
         player = lnk.find('span', attrs={'class': 'video-hosting'}).text
