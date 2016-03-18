@@ -24,13 +24,14 @@ def GetHTML(url):
     cookieJar = cookielib.CookieJar()
     if mode == 'FAVS': cookieJar = Auth(cookieJar)
     opener = urllib2.build_opener(urllib2.HTTPCookieProcessor(cookieJar))
+    opener.addheaders = [("User-Agent", "Mozilla/5.0 (Windows NT 6.2; WOW64; rv:40.0) Gecko/20100101 Firefox/40.0")]
     connection = opener.open(url)
     html = connection.read()
     connection.close()
     return html
 
 def Main():
-    site_url = 'http://baskino.com'
+    site_url = 'http://baskino.club'
     html = GetHTML(site_url)
     soup = bs(html, 'html5lib', from_encoding="utf-8")
     content = soup.find('li', attrs={'class': 'first'})
