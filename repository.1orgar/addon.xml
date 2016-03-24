@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="repository.1orgar" name="1orgar repo" version="1.0.0.1" provider-name="1orgar">
+	<extension point="xbmc.addon.repository" name="1orgar repo">
+		<info compressed="false">http://lorgar.comlu.com/repo/addons.xml</info>
+		<checksum>http://lorgar.comlu.com/repo/addons.xml.md5</checksum>
+		<datadir zip="true">http://lorgar.comlu.com/repo/zips/</datadir>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary>Дополнения из репозитория 1orgar</summary>
+		<description>Дополнения для Kodi</description>
+		<disclaimer>1orgar</disclaimer>
+		<platform>all</platform>
+	</extension>
+</addon>
