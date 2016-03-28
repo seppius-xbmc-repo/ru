@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<addon id="repository.vd" version="1.0.1" name="-=Vd=- Repository" provider-name="-=Vd=-">
+<extension point="xbmc.addon.metadata">
+  <summary lang="en">-=Vd=- Repository</summary>
+  <summary lang="ru">Репозиторий -=Vd=-</summary>
+  <description lang="en">Addon repository by -=Vd=-</description>
+  <description lang="ru">Репозиторий дополнений -=Vd=-</description>
+  <platform>all</platform>
+</extension>
+<extension point="xbmc.addon.repository" name="vd repository">
+  <info compressed="false">http://vadyur.github.io/kodi_repo/repo/addons.xml</info>
+  <checksum>http://vadyur.github.io/kodi_repo/repo/addons.xml.md5</checksum>
+  <datadir zip="true">http://vadyur.github.io/kodi_repo/repo</datadir>
+</extension>
+</addon>
