@@ -1422,7 +1422,7 @@ Russia.ru делает передачи для самой разной ауди�
 
 <addon id="repository.search.db"
 		name="XBMC.ru search db"
-		version="1.1.6"
+		version="1.1.7"
 		provider-name="bigbax">
   <requires>
     <import addon="xbmc.addon" version="12.0.0"/>
@@ -1541,6 +1541,12 @@ Russia.ru делает передачи для самой разной ауди�
 			<info compressed="false">http://afedchin.github.io/repository/addons.xml</info>
 			<checksum>http://afedchin.github.io/repository/addons.xml.md5</checksum>
 			<datadir zip="true">http://afedchin.github.io/repository/</datadir>
+			<hashes>true</hashes>
+		</dir>
+		<dir minversion="14.0.0">
+			<info compressed="false">http://vadyur.github.io/kodi_repo/repo/addons.xml</info>
+			<checksum>http://vadyur.github.io/kodi_repo/repo/addons.xml.md5</checksum>
+			<datadir zip="true">http://vadyur.github.io/kodi_repo/repo</datadir>
 			<hashes>true</hashes>
 		</dir>
 		<dir minversion="14.0.0">
