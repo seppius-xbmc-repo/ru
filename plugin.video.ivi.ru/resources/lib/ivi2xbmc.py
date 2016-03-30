@@ -304,6 +304,17 @@ class dig_player(xbmc.Player):
         self.show=True
         self.playing=False
         self.strt_file=None
+        self.last_ads_time=0
+        self.added=None
+        self.active=True
+        self.min=0
+        last=0
+        self.Time = 0
+        self.TotalTime = 9999
+        self.percent = 0
+        timeout=90
+        self.gltime=time.time()
+        
 
     def report_ads(self, curr_ads):
 
@@ -405,107 +416,93 @@ class dig_player(xbmc.Player):
             self.playing=False
             self.strt_file=flname
 
-    def play_loop(self):
+    def aplay_loop(self):
 
-        self.last_ads_time=0
-        added=None
-        self.active=True
-        self.min=0
-        last=0
-        self.Time = 0
-        self.TotalTime = 9999
-        self.percent = 0
-        timeout=90
-        self.gltime=time.time()
-        while self.active==True:
+        
 
             
-            if xbmc.Player().isPlaying():
-                
-                try:
-                    self.Time = int(self.getTime())
-                    self.TotalTime = self.getTotalTime()
-                    self.percent = (100 * self.Time) / self.TotalTime
-                except:
-                    self.TotalTime = 999999
-                    self.Time = 0
-                    self.percent = 0
+        if xbmc.Player().isPlaying():
+            
+            try:
+                self.Time = int(self.getTime())
+                self.TotalTime = self.getTotalTime()
+                self.percent = (100 * self.Time) / self.TotalTime
+            except:
+                self.TotalTime = 999999
+                self.Time = 0
+                self.percent = 0
 
-                if not self.paused:
-                    last=self.Time
-                    if self.state=='play' and self.content_start:
-                        seconds=int(time.time()-self.content_start)
-                        if seconds<=60:
-                            if self.state=='play' and self.content_start:
-                                self.sendstat('http://api.digitalaccess.ru/logger/content/time/',{'contentid':self.vID,'watchid':self.watchid,'fromstart':int(self.Time),'seconds':seconds})
-                        if seconds>=60: self.min=self.min+1
-                        if self.min>=60:
-                            if self.state=='play' and self.content_start:
-                                self.sendstat('http://api.digitalaccess.ru/logger/content/time/',{'contentid':self.vID,'watchid':self.watchid,'fromstart':int(self.Time),'seconds':seconds})
-                                self.min=0
-                    if self.state!='play' and self.adstart_timer:
-                        self.sendstat('http://api.digitalaccess.ru/logger/adv/time/',{'watchid':quote(self.watchid),'advwatchid':quote(self.advwatchid),'seconds':int(time.time()-self.adstart_timer)})
-                    if self.state!='play' and not self.ended:
+            if not self.paused:
+                last=self.Time
+                if self.state=='play' and self.content_start:
+                    seconds=int(time.time()-self.content_start)
+                    if seconds<=60:
+                        if self.state=='play' and self.content_start:
+                            self.sendstat('http://api.digitalaccess.ru/logger/content/time/',{'contentid':self.vID,'watchid':self.watchid,'fromstart':int(self.Time),'seconds':seconds})
+                    if seconds>=60: self.min=self.min+1
+                    if self.min>=60:
+                        if self.state=='play' and self.content_start:
+                            self.sendstat('http://api.digitalaccess.ru/logger/content/time/',{'contentid':self.vID,'watchid':self.watchid,'fromstart':int(self.Time),'seconds':seconds})
+                            self.min=0
+                if self.state!='play' and self.adstart_timer:
+                    self.sendstat('http://api.digitalaccess.ru/logger/adv/time/',{'watchid':quote(self.watchid),'advwatchid':quote(self.advwatchid),'seconds':int(time.time()-self.adstart_timer)})
+                if self.state!='play' and not self.ended:
 
-                        if (int(self.Time)>=int(self.TotalTime)-2.3 or (int(time.time()-self.gltime)>=(int(self.TotalTime)-1))) and int(self.Time)>5 and not added:
-                            if self.state=='preroll':
-                                self.pre_end=time.time()
-                            i = xbmcgui.ListItem(self.title, iconImage = self.PosterImage, thumbnailImage = self.PosterImage)
-                            i.setProperty('StartOffset', str(self.resume_timer))
-                            added=True
-                            self.state='play'
-                            self.playing=False
-                            self.pause
-                            self.play(self.content,i)
+                    #if (int(self.Time)>=int(self.TotalTime)-2.3 or (int(time.time()-self.gltime)>=(int(self.TotalTime)-1))) and int(self.Time)>5 and not self. added:
+                    if ((int(time.time()-self.gltime)>=(int(self.TotalTime)-1))) and int(self.Time)>5 and not self.added:
+                        if self.state=='preroll':
+                            self.pre_end=time.time()
+                        i = xbmcgui.ListItem(self.title, iconImage = self.PosterImage, thumbnailImage = self.PosterImage)
+                        i.setProperty('StartOffset', str(self.resume_timer))
+                        self.added=True
+                        self.state='play'
+                        self.playing=False
+                        self.pause
+                        self.play(self.content,i)
 
-                    else:
+                else:
 
-                        for m in self.ads:
+                    for m in self.ads:
 
-                            if int(self.Time)==int(m['time']) and int(self.Time)!=self.last_ads_time:
-                                self.resume_timer=int(m['time'])
-                                
-                                try: self.ads.remove(m)
-                                except: pass
-                                self.last_ads_time=int(self.Time)
-                                pre=self.getAds(m['type'])
-                                if pre:
-                                    self.pause
-                                    self.state=m['type']
-                                    iad = xbmcgui.ListItem(language(30011), iconImage = self.PosterImage, thumbnailImage = self.PosterImage)
-                                    self.advid=pre['id']
-                                    self.adv_file=pre['url']
-                                    self.send_ads=pre
-
-                                    added=None
-                                    self.playing=False
-                                    self.play(self.adv_file,iad)
-                                else:
-                                    pass
-
-                        if self.state=='play' and self.credits_begin_time==-1 and self.Time>=int(self.TotalTime)-1.3 and not self.ended:
-                            pre=self.getAds('postroll')
+                        if int(self.Time)==int(m['time']) and int(self.Time)!=self.last_ads_time:
+                            self.resume_timer=int(m['time'])
+                            
+                            try: self.ads.remove(m)
+                            except: pass
+                            self.last_ads_time=int(self.Time)
+                            pre=self.getAds(m['type'])
                             if pre:
                                 self.pause
-                                self.state='postroll'
+                                self.state=m['type']
                                 iad = xbmcgui.ListItem(language(30011), iconImage = self.PosterImage, thumbnailImage = self.PosterImage)
                                 self.advid=pre['id']
                                 self.adv_file=pre['url']
                                 self.send_ads=pre
-                                added=None
-                                self.ended=True
+
+                                self.added=None
                                 self.playing=False
-                                self.play(pre['url'],iad)
-            if not self.isPlaying():
-                timeout=timeout-1
-                if timeout==0: self.active=False
-            else: timeout=90
-            if self.mustEND==1:
-                self.active=False
-                break
-            if int(self.TotalTime)-int(self.Time)>10:
-                time.sleep(.500)
-            else: time.sleep(.500)
+                                self.play(self.adv_file,iad)
+                            else:
+                                pass
+
+                    if self.state=='play' and self.credits_begin_time==-1 and self.Time>=int(self.TotalTime)-1.3 and not self.ended:
+                        pre=self.getAds('postroll')
+                        if pre:
+                            self.pause
+                            self.state='postroll'
+                            iad = xbmcgui.ListItem(language(30011), iconImage = self.PosterImage, thumbnailImage = self.PosterImage)
+                            self.advid=pre['id']
+                            self.adv_file=pre['url']
+                            self.send_ads=pre
+                            self.added=None
+                            self.ended=True
+                            self.playing=False
+                            self.play(pre['url'],iad)
+
+        if self.mustEND==1:
+            self.active=False
+        
+
 
     def onPlayBackEnded( self ):
 
@@ -522,12 +519,14 @@ class dig_player(xbmc.Player):
         track_page_view('','event','5(Video*VideoStopped)',UATRACK=GATrack)
         tracker.track_event(Event('Video','Stopped'), session, visitor)
     def onPlayBackPaused( self ):
+
         self.paused=1
         
     def onPlayBackResumed( self ):
         self.paused=False
 
     def onPlayBackStarted( self ):
+        self.gltime=time.time()
         self.playing=True
         if self.state=='play':
             if not self.content_start:
@@ -586,6 +585,7 @@ class dig_player(xbmc.Player):
     def sleep(self, s):
         xbmc.sleep(s)
     def __del__(self):
+        
         self.active=False
 
 def show_info():
@@ -614,8 +614,13 @@ def playid(params, play=False):
 
         item = xbmcgui.ListItem(path=aplay.strt_file)
         xbmcplugin.setResolvedUrl(int(sys.argv[1]), True, item)
-        aplay.play_loop()
+
+
+        while aplay.active:
+            aplay.aplay_loop()
+            xbmc.sleep(200)
         aplay.stop
+
         aplay.active=False
     else:
         ShowMessage('ivi.ru', 'Forbidden', 2000)

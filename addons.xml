@@ -561,7 +561,7 @@ Paypal: напишите на kit500.development at gmail dot com</description>
   </extension>
 </addon>
 
-<addon id="plugin.video.ivi.ru" name="IVI" version="2.6.8" provider-name="ivi.ru (NuisMons)">
+<addon id="plugin.video.ivi.ru" name="IVI" version="2.6.9" provider-name="ivi.ru (NuisMons)">
   <requires><import addon="xbmc.python" version="2.1.0"/></requires>
   <extension point="xbmc.python.pluginsource" provides="video" library="default.py"><provides>video</provides></extension>
   <extension point="xbmc.addon.metadata">
