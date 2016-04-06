@@ -1191,11 +1191,11 @@ Russia.ru делает передачи для самой разной ауди�
 	</extension>
 </addon>
 
-<addon id="repository.1orgar" name="1orgar repo" version="1.0.0.2" provider-name="1orgar">
+<addon id="repository.1orgar" name="1orgar repo" version="1.0.0.5" provider-name="1orgar">
 	<extension point="xbmc.addon.repository" name="1orgar repo">
-		<info compressed="false">http://lorgar.comlu.com/repo/addons.xml</info>
-		<checksum>http://lorgar.comlu.com/repo/addons.xml.md5</checksum>
-		<datadir zip="true">http://lorgar.comlu.com/repo/zips/</datadir>
+		<info compressed="false">https://github.com/1orgar/kodi/raw/master/addons.xml</info>
+		<checksum>https://github.com/1orgar/kodi/raw/master/addons.xml.md5</checksum>
+		<datadir zip="true">https://github.com/1orgar/kodi/raw/master/zips/</datadir>
 	</extension>
 	<extension point="xbmc.addon.metadata">
 		<summary>Дополнения из репозитория 1orgar</summary>
@@ -1422,7 +1422,7 @@ Russia.ru делает передачи для самой разной ауди�
 
 <addon id="repository.search.db"
 		name="XBMC.ru search db"
-		version="1.1.8"
+		version="1.1.9"
 		provider-name="bigbax">
   <requires>
     <import addon="xbmc.addon" version="12.0.0"/>
@@ -1514,9 +1514,9 @@ Russia.ru делает передачи для самой разной ауди�
 			<hashes>true</hashes>
 		</dir>
 		<dir minversion="14.0.0">
-			<info compressed="false">http://lorgar.comlu.com/repo/addons.xml</info>
-			<checksum>http://lorgar.comlu.com/repo/addons.xml.md5</checksum>
-			<datadir zip="true">http://lorgar.comlu.com/repo/zips/</datadir>
+			<info compressed="false">https://github.com/1orgar/kodi/raw/master/addons.xml</info>
+			<checksum>https://github.com/1orgar/kodi/raw/master/addons.xml.md5</checksum>
+			<datadir zip="true">https://github.com/1orgar/kodi/raw/master/zips/</datadir>
 			<hashes>true</hashes>
 		</dir>
 		<dir minversion="14.0.0">
