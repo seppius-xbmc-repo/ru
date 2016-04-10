@@ -181,6 +181,7 @@ def GetMyviUrl(url):
         soup = bs(r.text, "html.parser")
         #print "Elapsed time: {:.3f} sec".format(time.time() - _startTime)
         url = soup.find('div', {'class':'player-area'}).find('iframe')['src']
+        url = 'http:' + url
         r = s.get(url, allow_redirects=True)
         UniversalUserID = r.cookies['UniversalUserID']
         js = bs(r.text, "html.parser").find('body').find('script', {'type': 'text/javascript'}).encode('utf-8')
@@ -215,7 +216,7 @@ def PlayUrl(url):
     player = soup.find('div', {'class':'c-videos'}).find('a', {'class': 'active'}).find('span', {'class': 'video-hosting'}).text
     if 'vk.com' in player:
         url = GetVKUrl(url)
-    elif 'myvi.tv' in player:
+    elif 'myvi.tv' in player or 'myvi.ru' in player:
         url = GetMyviUrl(url)
     elif 'rutube.ru' in player:
         url = GetRutubeUrl(url)

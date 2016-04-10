@@ -66,7 +66,7 @@ def Main(main_url):
         soup = bs(html, "html.parser")
         content = soup.find('ul', {'class': 'main_menu'}).find_all('a', attrs={'class': 'main_menu_item_lnk'})
         for num in content:
-            if 'news' not in num['href'] and 'deti' not in num['href'] :
+            if 'news' not in num['href'] and 'deti' not in num['href'] and 'music' not in num['href'] :
                 if 'sport' in num['href'] :
                     addDir(num.text, addUrlParams(site_url + num['href']), mode="CONTENT")
                 else :
@@ -75,17 +75,20 @@ def Main(main_url):
         print main_url
         cat = main_url.partition(site_url + '/')[-1] #.rpartition('?')[0]
         soup = bs(Get(main_url), "html.parser")
+        content = None
         if 'films' in main_url:
             content = soup.find('ul', attrs={'class': 'main_menu'}).find_all('li', attrs={'class': 'mseries_cont'})[1].find('div', {'class': 'submenu01_cont'}).find_all('a')
         elif 'series' in main_url:
             content = soup.find('ul', attrs={'class': 'main_menu'}).find_all('li', attrs={'class': 'mseries_cont'})[0].find('div', {'class': 'submenu01_cont'}).find_all('a')
         elif (cat in main_url) and (cat in categories):
             content = soup.find('ul', attrs={'class': 'main_menu'}).find('li', attrs={'class': 'm' + cat + '_cont'}).find('div', {'class': 'submenu01_cont'}).find_all('a')
-        for num in content:
-            label = num.text
-            if label == '':
-                label = 'ТНТ'
-            addDir(label, addUrlParams(site_url + num['href']), mode="CONTENT")
+
+        if content:   
+            for num in content:
+                label = num.text
+                if label == '':
+                    label = 'ТНТ'
+                addDir(label, addUrlParams(site_url + num['href']), mode="CONTENT")
         
 def addDir(title, url, iconImg="DefaultVideo.png", mode="", inbookmarks=False):
     sys_url = sys.argv[0] + '?url=' + urllib.quote_plus(url) + '&mode=' + urllib.quote_plus(str(mode))
