@@ -1422,7 +1422,7 @@ Russia.ru делает передачи для самой разной ауди�
 
 <addon id="repository.search.db"
 		name="XBMC.ru search db"
-		version="1.1.9"
+		version="1.1.10"
 		provider-name="bigbax">
   <requires>
     <import addon="xbmc.addon" version="12.0.0"/>
@@ -1532,9 +1532,9 @@ Russia.ru делает передачи для самой разной ауди�
 			<hashes>true</hashes>
 		</dir>
 		<dir minversion="14.0.0">
-			<info compressed="false">http://xbmc-vk-repo.googlecode.com/svn/trunk/addons/addons.xml</info>
-			<checksum>http://xbmc-vk-repo.googlecode.com/svn/trunk/addons/addons.xml.md5</checksum>
-			<datadir zip="false">http://xbmc-vk-repo.googlecode.com/svn/trunk/addons/</datadir>
+			<info compressed="false">https://github.com/taifxx/xxtrep/raw/master/addons.xml</info>
+			<checksum>https://github.com/taifxx/xxtrep/raw/master/addons.xml.md5</checksum>
+			<datadir zip="true">https://github.com/taifxx/xxtrep/raw/master/</datadir>
 			<hashes>true</hashes>
 		</dir>
 		<dir minversion="14.0.0">
@@ -1706,6 +1706,31 @@ Russia.ru делает передачи для самой разной ауди�
   <checksum>http://vadyur.github.io/kodi_repo/repo/addons.xml.md5</checksum>
   <datadir zip="true">http://vadyur.github.io/kodi_repo/repo</datadir>
 </extension>
+</addon>
+
+<addon id="repository.xxtrep"
+       name="XXTREP XBMC Add-ons"
+	   version="1.0.0"
+	   provider-name="Taifxx">
+<requires>
+  <import addon="xbmc.addon" version="12.0.0"/>
+</requires>
+	<extension point="xbmc.addon.repository" name="XXTREP XBMC Add-ons">
+		<info compressed="false">https://github.com/taifxx/xxtrep/raw/master/addons.xml</info>
+		<checksum>https://github.com/taifxx/xxtrep/raw/master/addons.xml.md5</checksum>
+		<datadir zip="true">https://github.com/taifxx/xxtrep/raw/master/</datadir>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary>Install Add-ons from XXTREP Add-on Repository</summary>
+		<summary lang="en">Install Add-ons from XXTREP Add-on Repository</summary>
+		<summary lang="ru">Установка дополнений репозитория XXTREP</summary>
+		<description>Available add-ons: Add to Lib</description>
+		<description lang="en">Available add-ons: Add to Lib</description>
+		<description lang="ru">Доступные дополнеия: Add to Lib</description>
+		<disclaimer lang="en">Team XBMC did not make all the add-ons on this repository and are not responsible for their content</disclaimer>
+		<disclaimer lang="ru">Разработчики XBMC не являются авторами этих дополнений и не несут ответственность за их содержимое.</disclaimer>
+		<platform>all</platform>
+	</extension>
 </addon>
 
 <addon id="script.advancedsettingsetter"
