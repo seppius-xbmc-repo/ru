@@ -200,11 +200,11 @@ def ProcessSettings(plugin, params):
 		
 		xbmcplugin.endOfDirectory(handle,True,False)
 
-def Archive(plugin, feed, host):
+def Archive(plugin, feed, host, ArchiveOnly):
 	item=xbmcgui.ListItem('', '', '', '')
 	weekepg = PLUGIN_CORE.getWeekEPG(host, feed)
 	arch = PLUGIN_CORE.getArchive(host, feed)
-	if weekepg <>None:
+	if weekepg <>None and ArchiveOnly <> 1:
 		for i in range(len(weekepg)-1,-1,-1):
 			#xbmc.log('[SHURA.TV] first archive2=' +weekepg[i]['name'].encode('utf-8'))
 			CurrentEPG = weekepg[i]['name'].encode('utf-8')
@@ -226,8 +226,8 @@ def Archive(plugin, feed, host):
 						
 			item.setProperty('IsPlayable', 'false')
 			urlArchive = '%s~%s/%s/?archive=%s' % (host.split('~')[0], PLUGIN_CORE.OTT,  feed, weekepg[i]['start_time'])
-			xbmcplugin.addDirectoryItem(handle,'',item, False, 0)	
-	
+			xbmcplugin.addDirectoryItem(handle,'',item, False, 0)
+
 	if arch <> None:
 		for archItems in arch:
 			#xbmc.log('[SHURA.TV] first archive2=' +archItems['name'].encode('utf-8'))
@@ -491,16 +491,15 @@ def ShowChannelsList(plugin, mode = 'TV'):
 						popup = []
 						
 						archive_text = __language__(30006)
-						
-						archive_text = __language__(30011)
-							
 						uri2 = sys.argv[0] + '?mode=Archive&channel=%s&host=%s' % (channel['id'], channel['url'])
 						popup.append((archive_text, 'XBMC.Container.Update(%s)'%uri2))
 						
+						epg_text = __language__(30011)
+						
+						uri2 = sys.argv[0] + '?mode=EPG_Archive&channel=%s&host=%s' % (channel['id'], channel['url'])
+						popup.append((epg_text, 'XBMC.Container.Update(%s)'%uri2))
 						popup.append((__language__(30021), 'Container.Refresh',))
 						
-						uri2 = sys.argv[0] + '?mode=Favourite&channel=%s' % (channel['id'])
-							
 						item.addContextMenuItems(popup, True)
 						index=channels.index(channel)
 						purl = sys.argv[0] + '?mode=OpenPage'\
@@ -605,7 +604,10 @@ xbmc.log('[SHURA.TV] [%s] mode: %s' % (PLUGIN_NAME, mode))
 resetAlarms(PLUGIN_CORE, mode)
 
 if mode == 'archive' or mode == 'Archive':
-	Archive(PLUGIN_CORE, channel, host)
+	Archive(PLUGIN_CORE, channel, host, 1)
+
+elif mode == 'epg_archive' or mode == 'EPG_Archive':
+	Archive(PLUGIN_CORE, channel, host, 0)
 
 elif mode == 'OpenPage':
 	OpenPage(PLUGIN_CORE, num)

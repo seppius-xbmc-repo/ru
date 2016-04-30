@@ -976,7 +976,7 @@ Russia.ru делает передачи для самой разной ауди�
 
 <addon id="plugin.video.shura.tv"
        name="Shura.TV"
-       version="1.1.8"
+       version="1.1.9"
        provider-name="AKGDRG">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
