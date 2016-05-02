@@ -25,4 +25,26 @@
         <setting id="genre" type="labelenum" label="Genre" default="Any" values="Any|pop|hard|dance|soul"/>
         <setting id="aproduction" type="labelenum" label="Production" default="Any" values="Any|our|foreign"/>
     </category>
+    <category label="INFO">
+        <setting id="USE_Ext_Info" type="bool" label="70001" default="true"/>
+        <setting type="sep" visible="true" />
+        <setting id="USE_Ext_Info_Plot" type="bool" label="70002" default="true" enable="eq(-2,true)" visible="eq(-2,true)"/>
+        <setting id="USE_Ext_Info_Fanart" type="bool" label="70003" default="true" enable="eq(-3,true)" visible="eq(-3,true)"/>
+        <setting id="USE_Ext_Info_Country" type="bool" label="70004" default="false" enable="eq(-4,true)" visible="eq(-4,true)"/>
+        <setting id="USE_Ext_Info_Full_Cast" type="bool" label="70005" default="false" enable="eq(-5,true)" visible="eq(-5,true)"/>
+        <setting type="sep" visible="true" />
+        <setting id="ADD_Country_To_Title" type="bool" label="70006" default="true"/>
+        <setting id="ADD_Rank_To_Title" type="bool" label="70007" default="true"/>
+        <setting id="USE_Rank_Pos" type="labelenum" label="70008" default="0" lvalues="70019|70020" enable="eq(-1,true)"/>
+        <setting id="ADD_OriginalTitle_To_Plot" type="bool" label="70009" default="true" enable="eq(-10,true)"/>
+        <setting id="ADD_Year_To_Plot" type="bool" label="70010" default="true"/>
+        <setting id="ADD_Genre_To_Plot" type="bool" label="70011" enable="eq(-12,true)" default="true"/>
+        <setting id="ADD_Director_To_Plot" type="bool" label="70012" default="true" enable="eq(-13,true)"/>
+        <setting id="ADD_Cast_To_Plot" type="bool" label="70013" default="true"/>
+        <setting id="USE_Cast_Max" type="labelenum" label="70014" default="5" enable="eq(-1,true)" values="All|1|2|3|4|5|6|7|8|9|10"/>
+        <setting type="sep" visible="true" />
+        <setting id="HL_COOLOR" type="text" label="70015" default="darkgrey"/>
+        <setting id="OT_COOLOR" type="text" label="70016" default="darkred" enable="eq(-8,true)+eq(-18,true)"/>
+        <setting id="RA_COOLOR" type="text" label="70017" default="white" enable="eq(-11,true)"/>
+    </category>
 </settings>
