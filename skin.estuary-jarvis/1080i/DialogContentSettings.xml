@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+	<defaultcontrol>50</defaultcontrol>
+	<coordinates>
+		<left>200</left>
+		<top>105</top>
+	</coordinates>
+	<include>Animation_DialogPopupOpenClose</include>
+	<controls>
+		<control type="group">
+			<include>Animation_DialogPopupVisible</include>
+			<visible>!Window.IsVisible(sliderdialog)</visible>
+			<include name="DialogBackgroundCommons">
+				<param name="DialogBackgroundWidth" value="1520" />
+				<param name="DialogBackgroundHeight" value="870" />
+				<param name="DialogHeaderLabel" value="$LOCALIZE[20333]" />
+				<param name="DialogHeaderId" value="1" />
+			</include>
+			<control type="image">
+				<left>10</left>
+				<top>80</top>
+				<width>1200</width>
+				<height>790</height>
+				<texture border="40">buttons/dialogbutton-nofo.png</texture>
+			</control>
+            <control type="grouplist" id="50">
+                <description>control area 1</description>
+				<left>30</left>
+				<top>100</top>
+				<width>1160</width>
+				<height>400</height>
+				<onleft>9000</onleft>
+				<onright>9000</onright>
+				<onup>50</onup>
+				<ondown>5</ondown>
+                <control type="spincontrolex" id="20">
+                    <description>Content Picker</description>
+                    <width>1160</width>
+                    <include>DefaultSettingButton</include>
+                    <label>$LOCALIZE[20344]</label>
+                    <reverse>yes</reverse>
+                </control>
+                <control type="group" id="23">
+                    <description>Scraper List</description>
+                    <top>63</top>
+                    <width>1160</width>
+                    <height>210</height>
+                    <control type="image">
+                        <description>Used Scraper Image</description>
+                        <top>0</top>
+                        <left>40</left>
+                        <width>210</width>
+                        <height>210</height>
+                        <aspectratio>keep</aspectratio>
+                        <texture border="5">$INFO[ListItem.Icon]</texture>
+                    </control>
+                    <control type="list" id="21">
+                        <left>250</left>
+                        <top>0</top>
+                        <width>900</width>
+                        <height>210</height>
+                        <onup>21</onup>
+                        <onleft>20</onleft>
+                        <onright>60</onright>
+                        <ondown>21</ondown>
+                        <pagecontrol>60</pagecontrol>
+                        <scrolltime>200</scrolltime>
+                        <include name="DefaultSimpleListLayout">
+                            <param name="width" value="900" />
+                            <param name="list_id" value="21" />
+                            <param name="align" value="left" />
+                        </include>
+                    </control>
+                    <control type="scrollbar" id="60">
+                        <left>1150</left>
+                        <top>0</top>
+                        <width>10</width>
+                        <height>210</height>
+                        <onleft>21</onleft>
+                        <onright>24</onright>
+                        <showonepage>false</showonepage>
+                        <orientation>vertical</orientation>
+                    </control>
+                </control>
+                <control type="button" id="24">
+                    <description>Default Button</description>
+                    <top>273</top>
+                    <width>1160</width>
+                    <include>DefaultSettingButton</include>
+                    <label>$LOCALIZE[31312]</label>     
+                    <label2>[B]$INFO[ListItem.Label][/B]</label2>
+                </control>
+                <control type="button" id="22">
+                    <description>Default Button</description>
+                    <top>336</top>
+                    <width>1160</width>
+                    <include>DefaultSettingButton</include>
+                    <label>- $LOCALIZE[5]</label>
+                </control>
+            </control>            
+            <control type="image">
+				<description>separator image</description>
+                <left>30</left>
+                <top>499</top>
+				<height>3</height>
+				<texture colordiffuse="AAAAAAAA" border="3">dialogs/separator-grey.png</texture>
+                <width>1160</width>
+			</control>                        
+            <control type="grouplist" id="5">
+				<description>control area</description>
+				<left>30</left>
+				<top>502</top>
+				<width>1160</width>
+				<height>750</height>
+				<onleft>9000</onleft>
+				<onright>9000</onright>
+				<onup>5</onup>
+				<ondown>50</ondown>
+			</control>
+			<control type="button" id="7">
+				<description>Default Button</description>
+				<include>DefaultSettingButton</include>
+			</control>
+			<control type="radiobutton" id="8">
+				<description>Default RadioButton</description>
+				<include>DefaultSettingButton</include>
+			</control>
+			<control type="grouplist" id="9000">
+				<left>1210</left>
+				<top>92</top>
+				<orientation>vertical</orientation>
+				<width>300</width>
+				<height>250</height>
+				<itemgap>-10</itemgap>
+				<onleft>5</onleft>
+				<onright>5</onright>
+				<include name="DefaultDialogButton">
+					<param name="id" value="28" />
+					<param name="label" value="$LOCALIZE[186]" />
+				</include>
+				<include name="DefaultDialogButton">
+					<param name="id" value="29" />
+					<param name="label" value="$LOCALIZE[222]" />
+				</include>
+			</control>
+		</control>
+	</controls>
+</window>

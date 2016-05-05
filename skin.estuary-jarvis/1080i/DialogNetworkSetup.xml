@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+	<defaultcontrol>5</defaultcontrol>
+	<coordinates>
+		<left>200</left>
+		<top>105</top>
+	</coordinates>
+	<include>Animation_DialogPopupOpenClose</include>
+	<controls>
+		<control type="group">
+			<include>Animation_DialogPopupVisible</include>
+			<visible>!Window.IsVisible(sliderdialog)</visible>
+			<include name="DialogBackgroundCommons">
+				<param name="DialogBackgroundWidth" value="1520" />
+				<param name="DialogBackgroundHeight" value="870" />
+				<param name="DialogHeaderLabel" value="$LOCALIZE[1007]" />
+				<param name="DialogHeaderId" value="2" />
+			</include>
+			<control type="image">
+				<left>10</left>
+				<top>80</top>
+				<width>1200</width>
+				<height>790</height>
+				<texture border="40">buttons/dialogbutton-nofo.png</texture>
+			</control>
+			<control type="grouplist" id="5">
+				<description>control area</description>
+				<left>29</left>
+				<top>100</top>
+				<width>1160</width>
+				<height>750</height>
+				<onleft>9000</onleft>
+				<onright>9000</onright>
+				<onup>5</onup>
+				<ondown>5</ondown>
+                <control type="spincontrolex" id="10">
+                    <description>Protocol SpinControl</description>
+                    <width>1160</width>
+                    <include>DefaultSettingButton</include>
+                    <label>1008</label>
+                </control>
+                <control type="edit" id="11">
+                    <description>Server Address Button</description>
+                    <width>1160</width>
+                    <include>DefaultSettingButton</include>
+                    <label>-</label>
+                </control>
+                <control type="button" id="12">
+                    <description>Server Browse Button</description>
+                    <width>1160</width>
+                    <include>DefaultSettingButton</include>
+                    <label>- $LOCALIZE[1024]</label>
+                </control>
+                <control type="edit" id="16">
+                    <description>Remote path Button</description>
+                    <width>1160</width>
+                    <include>DefaultSettingButton</include>
+                    <label>-</label>
+                </control>
+                <control type="edit" id="13">
+                    <description>Port Button</description>
+                    <width>1160</width>
+                    <include>DefaultSettingButton</include>
+                    <label>1013</label>
+                </control>
+                <control type="edit" id="14">
+                    <description>Username Button</description>
+                    <width>1160</width>
+                    <include>DefaultSettingButton</include>
+                    <label>1014</label>
+                </control>
+                <control type="edit" id="15">
+                    <description>Password Button</description>
+                    <width>1160</width>
+                    <include>DefaultSettingButton</include>
+                    <label>15052</label>
+                </control>
+			</control>
+			<control type="grouplist" id="9000">
+				<left>1210</left>
+				<top>92</top>
+				<orientation>vertical</orientation>
+				<width>300</width>
+				<height>250</height>
+				<itemgap>-10</itemgap>
+				<onleft>5</onleft>
+				<onright>5</onright>
+				<include name="DefaultDialogButton">
+					<param name="id" value="18" />
+					<param name="label" value="$LOCALIZE[186]" />
+				</include>
+				<include name="DefaultDialogButton">
+					<param name="id" value="19" />
+					<param name="label" value="$LOCALIZE[222]" />
+				</include>
+			</control>
+		</control>
+	</controls>
+</window>
