@@ -18,115 +18,66 @@
 #   the Free Software Foundation, 675 Mass Ave, Cambridge, MA 02139, USA.
 #   http://www.gnu.org/licenses/gpl.html
 
-import sys
-import os
-import xbmcplugin
-import xbmcgui
-import xbmcaddon
-import xbmc
-import xbmcvfs
-
-__settings__ = xbmcaddon.Addon(id='plugin.video.fs.ua')
-__addondir__ = xbmc.translatePath(__settings__.getAddonInfo('profile'))
-if not xbmcvfs.exists(__addondir__):
-    xbmcvfs.mkdir(__addondir__)
-
-# sys.path.append(os.path.join(__settings__.getAddonInfo('path'), 'resources', 'lib'))
-icon = xbmc.translatePath(os.path.join(__settings__.getAddonInfo('path'), 'icon.png'))
-
-import urllib
-import urllib2
-import re
-import cookielib
-import socket
-import simplejson as json
-try:
-    import sqlite3
-    from sqlite3 import dbapi2 as sqlite
-except:
-    pass
-
-import SimpleDownloader as downloader
-from BeautifulSoup import BeautifulSoup, BeautifulStoneSoup
-
-socket.setdefaulttimeout(50)
-
 __author__ = "Dmitry Khrysev"
 __license__ = "GPL"
 __maintainer__ = "Dmitry Khrysev"
 __email__ = "x86demon@gmail.com"
 __status__ = "Production"
 
+import socket
+socket.setdefaulttimeout(50)
+
+import os
+import re
+import sys
+import urllib
+import hashlib
+
+import simplejson as json
+
+import xbmc
+import xbmcaddon
+import xbmcgui
+import xbmcplugin
+import xbmcvfs
+from lib.fsua import FsUa
+from lib.httpclient import HttpClient
+
+import SimpleDownloader as downloader
+from BeautifulSoup import BeautifulSoup
+from lib import strutils, kodi
+
+# from pydev import pydevd
+# pydevd.settrace('localhost', port=63342, stdoutToServer=True, stderrToServer=True)
+
+__settings__ = xbmcaddon.Addon(id='plugin.video.fs.ua')
+__addondir__ = xbmc.translatePath(__settings__.getAddonInfo('profile'))
+icon = xbmc.translatePath(os.path.join(__settings__.getAddonInfo('path'), 'icon.png'))
+cache_path = xbmc.translatePath(os.path.join(__addondir__, 'cache'))
+
+if not xbmcvfs.exists(__addondir__):
+    xbmcvfs.mkdir(__addondir__)
+
+if not xbmcvfs.exists(cache_path):
+    xbmcvfs.mkdir(cache_path)
+
 __language__ = __settings__.getLocalizedString
 
 siteUrl = __settings__.getSetting('Site URL')
-proxyScriptUrl = __settings__.getSetting('Proxy URL')
 httpSiteUrl = 'http://' + siteUrl
-basePingUrl = httpSiteUrl + "/jsplayer.aspx?f=set_file_status"
-cookiepath = os.path.join(__addondir__, 'plugin.video.fs.ua.cookies.lwp')
-if isinstance(cookiepath, unicode):
-    cookiepath = cookiepath.encode('utf8')
+
+client = HttpClient(http_site_url=httpSiteUrl, cookie_path=__addondir__)
+fs_ua = FsUa(settings=__settings__, client=client)
 
 h = int(sys.argv[1])
-
-def construct_request(params):
-    return '%s?%s' % (sys.argv[0], urllib.urlencode(params))
-
-
-def htmlEntitiesDecode(string):
-    return BeautifulStoneSoup(string, convertEntities=BeautifulStoneSoup.HTML_ENTITIES).contents[0]
 
 
 def show_message(heading, message, times=3000):
     xbmc.executebuiltin('XBMC.Notification("%s", "%s", %s, "%s")' % (heading, message, times, icon))
 
 
-headers = {
-'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64; rv:25.0) Gecko/20100101 Firefox/25.0',
-'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-'Accept-Language': 'ru-RU,ru;q=0.9,en;q=0.8',
-'Accept-Charset': 'utf-8, utf-16, *;q=0.1',
-'Accept-Encoding': 'identity, *;q=0'
-}
-
-
-def get_full_url(url):
-    if url.startswith('//'):
-        url = 'http:' + url
-    if not '://' in url:
-        url = httpSiteUrl + url
-    return url
-
-
-def GET(url, referer, post_params=None):
-    headers['Referer'] = referer
-    url = get_full_url(url)
-
-    if post_params is not None:
-        post_params = urllib.urlencode(post_params)
-        headers['Content-Type'] = 'application/x-www-form-urlencoded'
-    elif headers.has_key('Content-Type'):
-        del headers['Content-Type']
-
-    jar = cookielib.LWPCookieJar(cookiepath)
-    if xbmcvfs.exists(cookiepath):
-        jar.load()
-
-    opener = urllib2.build_opener(urllib2.HTTPCookieProcessor(jar))
-    urllib2.install_opener(opener)
-    req = urllib2.Request(url, post_params, headers)
-
-    response = opener.open(req)
-    the_page = response.read()
-    response.close()
-
-    jar.save()
-
-    return the_page
-
-
 def logout(params):
-    GET(httpSiteUrl + '/logout.aspx', httpSiteUrl)
+    client.GET(httpSiteUrl + '/logout.aspx', httpSiteUrl)
     __settings__.setSetting("Login", "")
     __settings__.setSetting("Password", "")
 
@@ -136,7 +87,7 @@ def check_login():
     password = __settings__.getSetting("Password")
 
     if len(login) > 0:
-        http = GET(httpSiteUrl, httpSiteUrl)
+        http = client.GET(httpSiteUrl, httpSiteUrl)
         if http is None:
             return False
 
@@ -144,9 +95,9 @@ def check_login():
         userPanel = beautifulSoup.find('a', 'b-header__user-profile')
 
         if userPanel is None:
-            xbmcvfs.delete(cookiepath)
+            client.remove_cookie()
 
-            loginResponse = GET(httpSiteUrl + '/login.aspx', httpSiteUrl, {
+            loginResponse = client.GET(httpSiteUrl + '/login.aspx', httpSiteUrl, {
                 'login': login,
                 'passwd': password,
                 'remember': 'on'
@@ -163,43 +114,11 @@ def check_login():
     return False
 
 
-def get_url_with_sort_by(url, section, start, view_mode):
-    sortBy = __settings__.getSetting("Sort by")
-    sortByMap = {'0': 'new', '1': 'rating', '2': 'year', '3': 'popularity', '4': 'trend'}
-
-    separator = '?'
-    if separator in url:
-        separator = '&'
-
-    request_params = {
-        'view': view_mode,
-        'sort': sortByMap[sortBy],
-        'page': start
-    }
-    return url + get_filters(section) + separator + urllib.urlencode(request_params)
-
-
-def get_filters(section):
-    filter_params = []
-    ret = ''
-    sectionSettings = {
-        'video': ['mood', 'vproduction', 'quality', 'translation'],
-        'audio': ['genre', 'aproduction']
-    }
-    for settingId in sectionSettings[section]:
-        setting = __settings__.getSetting(settingId)
-        if setting != 'Any':
-            filter_params.append(setting)
-    if len(filter_params) > 0:
-        ret = '/fl_%s/' % ('_'.join(filter_params))
-    return ret
-
-
 def main(params):
     li = xbmcgui.ListItem('[Видео]')
-    uri = construct_request({
+    uri = strutils.construct_request({
         'href': httpSiteUrl + '/video/',
-        'mode': 'getCategories',
+        'mode': 'get_categories',
         'category': 'video',
         'filter': '',
         'firstPage': 'yes'
@@ -207,9 +126,9 @@ def main(params):
     xbmcplugin.addDirectoryItem(h, uri, li, True)
 
     li = xbmcgui.ListItem('[Аудио]')
-    uri = construct_request({
+    uri = strutils.construct_request({
         'href': httpSiteUrl + '/audio/',
-        'mode': 'getCategories',
+        'mode': 'get_categories',
         'category': 'audio',
         'filter': '',
         'firstPage': 'yes'
@@ -218,55 +137,55 @@ def main(params):
 
     if check_login():
         li = xbmcgui.ListItem('В процессе')
-        uri = construct_request({
-            'mode': 'getFavoriteCategories',
+        uri = strutils.construct_request({
+            'mode': 'get_fav_categories',
             'type': 'inprocess'
         })
         xbmcplugin.addDirectoryItem(h, uri, li, True)
 
         li = xbmcgui.ListItem('Избранное')
-        uri = construct_request({
-            'mode': 'getFavoriteCategories',
+        uri = strutils.construct_request({
+            'mode': 'get_fav_categories',
             'type': 'favorites'
         })
         xbmcplugin.addDirectoryItem(h, uri, li, True)
 
         li = xbmcgui.ListItem('Рекомендуемое')
-        uri = construct_request({
-            'mode': 'getFavoriteCategories',
+        uri = strutils.construct_request({
+            'mode': 'get_fav_categories',
             'type': 'recommended'
         })
         xbmcplugin.addDirectoryItem(h, uri, li, True)
 
         li = xbmcgui.ListItem('На будущее')
-        uri = construct_request({
-            'mode': 'getFavoriteCategories',
+        uri = strutils.construct_request({
+            'mode': 'get_fav_categories',
             'type': 'forlater'
         })
         xbmcplugin.addDirectoryItem(h, uri, li, True)
 
         li = xbmcgui.ListItem('Я рекомендую')
-        uri = construct_request({
-            'mode': 'getFavoriteCategories',
+        uri = strutils.construct_request({
+            'mode': 'get_fav_categories',
             'type': 'irecommended'
         })
         xbmcplugin.addDirectoryItem(h, uri, li, True)
 
         li = xbmcgui.ListItem('Завершенное')
-        uri = construct_request({
-            'mode': 'getFavoriteCategories',
+        uri = strutils.construct_request({
+            'mode': 'get_fav_categories',
             'type': 'finished'
         })
         xbmcplugin.addDirectoryItem(h, uri, li, True)
 
-    xbmcplugin.endOfDirectory(h)
+    xbmcplugin.endOfDirectory(h, True)
 
 
-def getCategories(params):
+def get_categories(params):
     section = params['category']
     categoryUrl = urllib.unquote_plus(params['href'])
 
-    http = GET(categoryUrl, httpSiteUrl)
+    http = client.GET(categoryUrl, httpSiteUrl)
     if http is None:
         return False
 
@@ -284,10 +203,10 @@ def getCategories(params):
     for subcategory in subcategories:
         label = subcategory.find('span')
         li = xbmcgui.ListItem('[' + label.string + ']')
-        uri = construct_request({
-            'href': get_full_url(subcategory['href']),
+        uri = strutils.construct_request({
+            'href': client.get_full_url(subcategory['href']),
             'mode': 'readcategory',
-            'cleanUrl': get_full_url(subcategory['href']),
+            'cleanUrl': client.get_full_url(subcategory['href']),
             'section': section,
             'start': 0,
             'filter': ''
@@ -306,8 +225,8 @@ def getCategories(params):
         xbmcplugin.endOfDirectory(h)
 
 
-def getFavoriteCategories(params):
-    http = GET(httpSiteUrl + '/myfavourites.aspx?page=' + params['type'], httpSiteUrl)
+def get_fav_categories(params):
+    http = client.GET(httpSiteUrl + '/myfavourites.aspx?page=' + params['type'], httpSiteUrl)
     if http is None:
         return False
 
@@ -330,126 +249,210 @@ def getFavoriteCategories(params):
         title = str(favSection.find('a', 'item').find('b').string)
         li = xbmcgui.ListItem(title)
 
-        uri = construct_request({
-            'mode': 'readfavorites',
+        uri = strutils.construct_request({
+            'mode': 'read_favs',
             'section': section,
             'subsection': subsection,
             'type': params['type'],
             'page': 0
         })
         xbmcplugin.addDirectoryItem(h, uri, li, True)
-    xbmcplugin.endOfDirectory(h)
+    xbmcplugin.endOfDirectory(h, True)
 
 
-def getPosterImage(src):
-    return getImage(src, '1')
-
-
-def getThumbnailImage(src):
-    return getImage(src, '6')
-
-
-def getImage(src, quality):
-    src = src.split('/')
-    src[-2] = quality
-    return get_full_url('/'.join(src))
-
-
-def fix_string(string):
-    if isinstance(string, unicode):
-        return string.encode('utf8')
-    return string
-
-def readfavorites(params):
+def read_favs(params):
     href = httpSiteUrl + "/myfavourites.aspx?ajax&section=" + params['section'] \
            + "&subsection=" + params['subsection'] \
            + "&rows=1&curpage=" + params['page'] \
-           + "&action=get_list&setrows=3&page=" + params['type']
-    favoritesUrl = urllib.unquote_plus(href)
+           + "&action=get_list&setrows=1&page=" + params['type']
 
-    http = GET(favoritesUrl, httpSiteUrl)
-    if http is None:
+    favorites = read_fav_data(urllib.unquote_plus(href))
+    if len(favorites) == 0:
+        show_message('ОШИБКА', 'В избранном пусто', 3000)
         return False
+
+    for item in favorites:
+        additional = ''
+        if item['season'] > 0:
+            additional = ' (s%se%s)' % (item['season'], item['episode'])
+        li = xbmcgui.ListItem(
+            strutils.html_entities_decode(item['title']) + additional,
+            iconImage=fs_ua.thumbnail(item['cover']),
+            thumbnailImage=fs_ua.poster(item['cover'])
+        )
+        li.setProperty('IsPlayable', 'false')
+
+        id = item['href'].split('/')[-1]
+        li.addContextMenuItems([
+            (
+                __language__(50003), "XBMC.RunPlugin(%s)" % strutils.construct_request({
+                    'mode': 'addto',
+                    'section': 'favorites',
+                    'id': id,
+                    'title': item['title']
+                })
+            ),
+            (
+                __language__(50004), "XBMC.RunPlugin(%s)" % strutils.construct_request({
+                    'mode': 'addto',
+                    'section': 'playlist',
+                    'id': id,
+                    'title': item['title']
+                })
+            )
+        ])
+
+        uri = strutils.construct_request({
+            'href': item['href'],
+            'referer': href,
+            'mode': 'read_dir',
+            'cover': item['cover'],
+            'folder': 0,
+            'isMusic': item['isMusic']
+        })
+        xbmcplugin.addDirectoryItem(h, uri, li, True)
+
+    li = xbmcgui.ListItem('[NEXT PAGE >]')
+    li.setProperty('IsPlayable', 'false')
+    params['page'] = int(params['page']) + 1
+    uri = strutils.construct_request(params)
+    xbmcplugin.addDirectoryItem(h, uri, li, True)
+
+    xbmcplugin.endOfDirectory(h)
+
+
+def read_fav_data(favoritesUrl):
+    favorites = []
+    http = client.GET(favoritesUrl, httpSiteUrl)
+    if http is None:
+        return favorites
 
     data = json.loads(str(http))
     http = data['content'].encode('utf-8')
 
     beautifulSoup = BeautifulSoup(http)
-    itemsContainer = beautifulSoup.find('div', 'b-posters')
-    if itemsContainer is None:
-        show_message('ОШИБКА', 'В избранном пусто', 3000)
-        return False
-    items = itemsContainer.findAll('a', 'b-poster-thin')
+    container = beautifulSoup.find('div', 'b-posters')
+    if container is None:
+        return favorites
+
+    items = container.findAll('div', 'b-poster-thin__wrapper ')
     if len(items) == 0:
-        show_message('ОШИБКА', 'В избранном пусто', 3000)
-        return False
-    else:
-        coverRegexp = re.compile("url\s*\('([^']+)")
-        for item in items:
-            cover = coverRegexp.findall(str(item['style']))[0]
-            title = str(item.find('b', 'subject-link').find('span').string)
-            href = get_full_url(item['href'])
+        return favorites
 
-            isMusic = "no"
-            if re.search('audio', href):
-                isMusic = "yes"
+    cover_regexp = re.compile("url\s*\('([^']+)")
+    episode_regexp = re.compile("s(\d+)e(\d+)")
 
-            li = xbmcgui.ListItem(htmlEntitiesDecode(title), iconImage = getThumbnailImage(cover),
-                                  thumbnailImage = getPosterImage(cover))
-            li.setProperty('IsPlayable', 'false')
+    for wrapper in items:
+        item = wrapper.find('a', 'b-poster-thin')
 
-            id = item['href'].split('/')[-1]
-            li.addContextMenuItems([
-                (
-                    __language__(50003), "XBMC.RunPlugin(%s)" % construct_request({
-                        'mode': 'addto',
-                        'section': 'favorites',
-                        'id': id,
-                        'title': title
-                    })
-                ),
-                (
-                    __language__(50004), "XBMC.RunPlugin(%s)" % construct_request({
-                        'mode': 'addto',
-                        'section': 'playlist',
-                        'id': id,
-                        'title': title
-                    })
+        season = 0
+        episode = 0
+
+        episode_data = episode_regexp.findall(str(wrapper))
+        if episode_data is not None and len(episode_data) > 0:
+            season = episode_data[0][0]
+            episode = episode_data[0][1]
+
+        cover = cover_regexp.findall(str(item['style']))[0]
+        title = str(item.find('b', 'subject-link').find('span').string)
+        href = client.get_full_url(item['href'])
+
+        isMusic = "no"
+        if re.search('audio', href):
+            isMusic = "yes"
+
+        #get_material_details(href)
+
+        favorites.append({
+            'href': href,
+            'title': strutils.html_entities_decode(title),
+            'cover': cover,
+            'season': season,
+            'episode': episode,
+            'isMusic': isMusic
+        })
+
+    return favorites
+
+
+def get_material_details(url):
+    data = {}
+    cache_file_name = '%s.json' % hashlib.md5(url).hexdigest()
+    cache_file_path = os.path.join(cache_path, cache_file_name)
+
+    if xbmcvfs.exists(cache_file_path):
+        fp = open(cache_file_path, 'r')
+        data = json.load(fp)
+        fp.close()
+
+        return data
+
+    http = client.GET(url, httpSiteUrl)
+    if http is None:
+        return data
+
+    cover_regexp = re.compile("url\s*\(([^\)]+)")
+
+    beautifulSoup = BeautifulSoup(http)
+
+    info = beautifulSoup.find('div', 'item-info')
+    genre_element_container = info.findAll('span', {"itemprop" : "genre"})
+    genres = []
+    for genre_element in genre_element_container:
+        genres.append(strutils.fix_string(genre_element.find('span').string.strip()))
+
+    title = strutils.fix_string(beautifulSoup.find('div', 'b-tab-item__title-inner').find('span').string)
+    original_title = strutils.html_entities_decode(beautifulSoup.find('div', 'b-tab-item__title-origin').string)
+    description = beautifulSoup.find('p', 'item-decription').string.encode('utf-8')
+
+    poster = fs_ua.poster(client.get_full_url(beautifulSoup.find('div', 'poster-main').find('img')['src']))
+    print poster
+
+    images_container = beautifulSoup.find('div', 'b-tab-item__screens')
+    image_elements = images_container.findAll('a')
+    images = []
+    for image_element in image_elements:
+        images.append(
+            client.get_full_url(
+                fs_ua.poster(
+                    cover_regexp.findall(str(image_element['style']).strip())[0]
                 )
-            ])
+            )
+        )
 
-            uri = construct_request({
-                'href': href,
-                'referer': href,
-                'mode': 'readdir',
-                'cover': cover,
-                'folder': 0,
-                'isMusic': isMusic
-            })
-            xbmcplugin.addDirectoryItem(h, uri, li, True)
+    rating_positive = beautifulSoup.find('div', 'm-tab-item__vote-value_type_yes').string.strip()
+    rating_negative = beautifulSoup.find('div', 'm-tab-item__vote-value_type_no').string.strip()
 
+    data = {
+        'title': title.strip(),
+        'original_title': original_title.strip(),
+        'poster': poster,
+        'description': description,
+        'images': images,
+        'genres': genres,
+        'rating_positive': rating_positive,
+        'rating_negative': rating_negative
+    }
 
-    li = xbmcgui.ListItem('[NEXT PAGE >]')
-    li.setProperty('IsPlayable', 'false')
-    params['page'] = int(params['page']) + 1
-    uri = construct_request(params)
-    xbmcplugin.addDirectoryItem(h, uri, li, True)
+    fp = open(cache_file_path, 'w')
+    json.dump(data, fp)
+    fp.close()
 
-    xbmcplugin.endOfDirectory(h)
+    return data
 
 
 def readcategory(params):
     start = int(params['start'])
     category_href = urllib.unquote_plus(params['href'])
 
-    categoryUrl = get_url_with_sort_by(
+    categoryUrl = fs_ua.get_url_with_sort_by(
         category_href,
         params['section'],
         params['start'],
         'detailed'
     )
 
-    http = GET(categoryUrl, httpSiteUrl)
+    http = client.GET(categoryUrl, httpSiteUrl)
     if http is None:
         return False
 
@@ -479,7 +482,7 @@ def readcategory(params):
             title = item.find('span', 'b-poster-detail__title').contents[0]
             if img is not None:
                 cover = img['src']
-                href = get_full_url(link['href'])
+                href = client.get_full_url(link['href'])
 
             if title is not None:
                 plot = []
@@ -489,9 +492,9 @@ def readcategory(params):
                         plot.append(detail.encode('utf8'))
                     except:
                         pass
-                titleText = htmlEntitiesDecode(title.encode('utf8'))
-                li = xbmcgui.ListItem(titleText, iconImage=getThumbnailImage(cover),
-                                      thumbnailImage=getPosterImage(cover))
+                titleText = strutils.html_entities_decode(title.encode('utf8'))
+                li = xbmcgui.ListItem(titleText, iconImage=fs_ua.thumbnail(cover),
+                                      thumbnailImage=fs_ua.poster(cover))
                 if plot != '':
                     li.setInfo(type=params['section'], infoLabels={'title': titleText, 'plot': plot})
                 li.setProperty('IsPlayable', 'false')
@@ -499,14 +502,14 @@ def readcategory(params):
                 id = str(link['href'].split('/')[-1])
                 li.addContextMenuItems([
                     (
-                    __language__(50001), "XBMC.RunPlugin(%s)" % construct_request({
+                    __language__(50001), "XBMC.RunPlugin(%s)" % strutils.construct_request({
                             'mode': 'addto',
                             'section': 'favorites',
                             'id': id
                         })
                     ),
                     (
-                    __language__(50002), "XBMC.RunPlugin(%s)" % construct_request({
+                    __language__(50002), "XBMC.RunPlugin(%s)" % strutils.construct_request({
                             'mode': 'addto',
                             'section': 'playlist',
                             'id': id
@@ -518,10 +521,10 @@ def readcategory(params):
                 if params['section'] == 'audio':
                     isMusic = 'yes'
 
-                uri = construct_request({
+                uri = strutils.construct_request({
                     'href': href,
                     'referer': categoryUrl,
-                    'mode': 'readdir',
+                    'mode': 'read_dir',
                     'cover': cover,
                     'folder': 0,
                     'isMusic': isMusic
@@ -531,7 +534,7 @@ def readcategory(params):
 
     li = xbmcgui.ListItem('[NEXT PAGE >]')
     li.setProperty('IsPlayable', 'false')
-    uri = construct_request({
+    uri = strutils.construct_request({
         'href': category_href,
         'mode': 'readcategory',
         'section': params['section'],
@@ -548,14 +551,14 @@ def load_first_page_sections(href, params):
     #Add search list item
     li = xbmcgui.ListItem("[ПОИСК]")
     li.setProperty('IsPlayable', 'false')
-    uri = construct_request({
+    uri = strutils.construct_request({
         'mode': 'runsearch',
         'section': params['section'],
         'url': urllib.unquote_plus(params['cleanUrl'])
     })
     xbmcplugin.addDirectoryItem(h, uri, li, True)
 
-    first_page_data = GET(href, httpSiteUrl)
+    first_page_data = client.GET(href, httpSiteUrl)
     if first_page_data is None:
         return False
 
@@ -569,7 +572,7 @@ def load_first_page_sections(href, params):
         if yearLink is not None:
             li = xbmcgui.ListItem("[По годам]")
             li.setProperty('IsPlayable', 'false')
-            uri = construct_request({
+            uri = strutils.construct_request({
                 'mode': 'getGenreList',
                 'section': params['section'],
                 'filter': params['filter'],
@@ -582,7 +585,7 @@ def load_first_page_sections(href, params):
         if genreLink is not None:
             li = xbmcgui.ListItem("[Жанры]")
             li.setProperty('IsPlayable', 'false')
-            uri = construct_request({
+            uri = strutils.construct_request({
                 'mode': 'getGenreList',
                 'section': params['section'],
                 'filter': params['filter'],
@@ -592,8 +595,9 @@ def load_first_page_sections(href, params):
             })
             xbmcplugin.addDirectoryItem(h, uri, li, True)
 
+
 def getGenreList(params):
-    http = GET(urllib.unquote_plus(params['href']), httpSiteUrl)
+    http = client.GET(urllib.unquote_plus(params['href']), httpSiteUrl)
     if http is None:
         return False
 
@@ -607,8 +611,8 @@ def getGenreList(params):
         for item in items:
             li = xbmcgui.ListItem(item.string)
             li.setProperty('IsPlayable', 'false')
-            uri = construct_request({
-                'href': get_full_url(item['href'].encode('utf-8')),
+            uri = strutils.construct_request({
+                'href': client.get_full_url(item['href'].encode('utf-8')),
                 'mode': 'readcategory',
                 'section': params['section'],
                 'filter': '',
@@ -620,179 +624,14 @@ def getGenreList(params):
         xbmcplugin.endOfDirectory(h)
 
 
-def read_materials(params):
-    folder_url = urllib.unquote_plus(params['href'])
-
-    material_id_regexp = re.compile('\/(\w+)-')
-    material_id = material_id_regexp.findall(folder_url)[0]
-
-    materials_cache_file = os.path.join(__addondir__, 'materials_files_cache-%s.json' % material_id)
-    material_files = []
-    if xbmcvfs.exists(materials_cache_file):
-        if params['folder'] != "0":
-            fp = open(materials_cache_file, 'r')
-            material_files = json.load(fp)
-            fp.close()
-    if len(material_files) == 0:
-        item_data = get_material_ids(material_id, params)
-        item_request_params = urllib.urlencode({
-            'f': 'files_list',
-            'item_id': item_data['id'],
-            'id': 'false',
-            'u': item_data['uid']
-        })
-        material_files_url = '%s/jsfilemanager.aspx?%s' % (httpSiteUrl, item_request_params)
-        material_files_data = GET(material_files_url, folder_url)
-        if material_files_data is None:
-            read_directory_unuthorized(params)
-        material_files = json.loads(material_files_data)
-
-        fp = open(materials_cache_file, 'w')
-        json.dump(material_files, fp)
-        fp.close()
-
-    read_material_files(material_files, params)
-
-
-def read_material_files(files, params):
-    cover = urllib.unquote_plus(params['cover'])
-    href = urllib.unquote_plus(params['href'])
-    for item in files:
-        if (item['fid']) == params['folder']:
-            if item['type'] == 'folder':
-                title = htmlEntitiesDecode(item['name'].encode('utf8'))
-                if 'meta1' in item and item['meta1'] is not None:
-                    title += ' - ' + htmlEntitiesDecode(item['meta1'].encode('utf8'))
-                if 'meta2' in item and item['meta2'] is not None:
-                    title += ' ' + htmlEntitiesDecode(item['meta2'].encode('utf8'))
-                li = xbmcgui.ListItem(
-                    title,
-                    iconImage=getThumbnailImage(cover),
-                    thumbnailImage=getPosterImage(cover)
-                )
-                li.setProperty('IsPlayable', 'false')
-
-                uri = construct_request({
-                    'href': href,
-                    'referer': httpSiteUrl,
-                    'mode': 'readdir',
-                    'cover': cover,
-                    'folder': item['id'],
-                    'isMusic': params['isMusic']
-                })
-
-                xbmcplugin.addDirectoryItem(h, uri, li, True)
-            else:
-                item_type = 'video'
-                if params['isMusic'] == 'yes':
-                    item_type = 'music'
-                add_folder_file({
-                    'title': item['name'],
-                    'cover': cover,
-                    'href': item['link'],
-                    'referer': httpSiteUrl,
-                    'type': item_type
-                })
-
-    xbmcplugin.endOfDirectory(h)
-
-def get_material_ids(material_id, params):
-    materials_cache_file = os.path.join(__addondir__, 'materials_cache.json')
-    if xbmcvfs.exists(materials_cache_file):
-        fp = open(materials_cache_file, 'r')
-        materials_cache = json.load(fp)
-        fp.close()
-    else:
-        materials_cache = {}
-
-    if material_id not in materials_cache:
-        material_edit_url = httpSiteUrl + '/materials/edit/' + material_id + '?win=files'
-
-        http = GET(material_edit_url, httpSiteUrl)
-        if http is None:
-            read_directory_unuthorized(params)
-
-        item_id_regexp = re.compile('ITEM_ID = "(\w+)"')
-        user_id_regexp = re.compile('ITEM_UID = "(\w+)"')
-
-        item_id = item_id_regexp.findall(http)[0]
-        item_uid = user_id_regexp.findall(http)[0]
-
-        item_data = {
-            'id': item_id,
-            'uid': item_uid
-        }
-        materials_cache[material_id] = item_data
-        fp = open(materials_cache_file, 'w')
-        json.dump(materials_cache, fp)
-        fp.close()
-
-    return materials_cache[material_id]
-
-
-def readdir(params):
-    folder = params['folder']
-    if is_hidden_allowed() and folder == '0':
-        if __settings__.getSetting('Show progress') == 'true':
-            add_played_items(params)
-
-        try:
-            read_materials(params)
-        except:
-            read_directory_unuthorized(params)
-    else:
-        read_directory_unuthorized(params)
-
-
-def add_played_items(params):
-    folderUrl = urllib.unquote_plus(params['href'])
-    cover = urllib.unquote_plus(params['cover'])
-    parts = folderUrl.split('/')
-    parts.insert(-1, 'view')
-    playLink = '/'.join(parts)
-    playlist = get_playlist(playLink)
-
-    if playlist is not None:
-        next = None
-        for i, item in enumerate(playlist):
-            if item['fsData']['is_first'] == 1:
-                li = xbmcgui.ListItem(
-                    'Last: %s' % htmlEntitiesDecode(item['fsData']['file_name']),
-                    iconImage=getThumbnailImage(cover),
-                    thumbnailImage=getPosterImage(cover)
-                )
-                li.setProperty('IsPlayable', 'true')
-                xbmcplugin.addDirectoryItem(h, get_full_url(item['url']), li)
-                next = i+1
-                break
-
-        if next is not None and next < len(playlist):
-            nextItem = playlist[next]
-            li = xbmcgui.ListItem(
-                'Next: %s' % htmlEntitiesDecode(nextItem['fsData']['file_name']),
-                iconImage=getThumbnailImage(cover),
-                thumbnailImage=getPosterImage(cover)
-            )
-            li.setProperty('IsPlayable', 'true')
-            xbmcplugin.addDirectoryItem(h, get_full_url(nextItem['url']), li)
-
-
-def is_hidden_allowed():
-    show_hidden = __settings__.getSetting('Show hidden materials') == 'true'
-    return show_hidden
-
-
-def read_directory_unuthorized(params):
+def read_dir(params):
     folderUrl = urllib.unquote_plus(params['href'])
     cover = urllib.unquote_plus(params['cover'])
     folder = params['folder']
 
     getUrl = folderUrl + '?ajax&folder=' + folder
-    if proxyScriptUrl:
-        cookieData = open(cookiepath, 'r').read()
-        getUrl = proxyScriptUrl + '?url=' + urllib.quote(getUrl) + '&cookies=' + urllib.quote(cookieData)
 
-    http = GET(getUrl, httpSiteUrl)
+    http = client.GET(getUrl, httpSiteUrl)
     if http is None:
         return False
 
@@ -800,25 +639,7 @@ def read_directory_unuthorized(params):
     if params['folder'] == '0':
         has_blocked = beautifulSoup.find('div', attrs={'id': 'file-block-text'})
         if has_blocked is not None:
-            if check_login():
-                li = xbmcgui.ListItem(
-                    '[Показать скрытое]',
-                    iconImage=getThumbnailImage(cover),
-                    thumbnailImage=getPosterImage(cover)
-                )
-                li.setProperty('IsPlayable', 'false')
-                uri = construct_request({
-                    'href': folderUrl,
-                    'referer': httpSiteUrl,
-                    'mode': 'read_materials',
-                    'cover': cover,
-                    'folder': "0",
-                    'isMusic': params['isMusic']
-                })
-
-                xbmcplugin.addDirectoryItem(h, uri, li, True)
-            else:
-                show_message('Blocked content', 'Некоторые файлы заблокированы')
+            show_message('Blocked content', 'Некоторые файлы заблокированы')
 
     mainItems = beautifulSoup.find('ul', 'filelist')
 
@@ -876,14 +697,14 @@ def add_directory_item(linkItem, isFolder, playLink, playLinkClass, cover, folde
         lang = str(lang_data[0])
     title = ""
     if isFolder:
-        title = fix_string(linkItem.text)
+        title = strutils.fix_string(linkItem.text)
 
         if (itemsCount):
-                title = "%s (%s)" % (title, fix_string(itemsCount.text))
+                title = "%s (%s)" % (title, strutils.fix_string(itemsCount.text))
 
         lang_quality_el = linkItem.find('font')
         if lang_quality_el:
-            lang_quality = fix_string(lang_quality_el.text)
+            lang_quality = strutils.fix_string(lang_quality_el.text)
             title = title.replace(lang_quality, ' ' + lang_quality)
 
         if quality is not None:
@@ -898,9 +719,9 @@ def add_directory_item(linkItem, isFolder, playLink, playLinkClass, cover, folde
 
     if playLink is not None and playLink.name == 'a':
         if 'href' in playLink:
-            playLink = get_full_url(str(playLink['href']))
+            playLink = client.get_full_url(str(playLink['href']))
         elif 'rel' in playLink:
-            playLink = get_full_url(str(playLink['rel']))
+            playLink = client.get_full_url(str(playLink['rel']))
         else:
             playLink = ''
     else:
@@ -914,17 +735,17 @@ def add_directory_item(linkItem, isFolder, playLink, playLinkClass, cover, folde
 
     if isFolder:
         li = xbmcgui.ListItem(
-            htmlEntitiesDecode(title),
-            iconImage=getThumbnailImage(cover),
-            thumbnailImage=getPosterImage(cover)
+            strutils.html_entities_decode(title),
+            iconImage=fs_ua.thumbnail(cover),
+            thumbnailImage=fs_ua.poster(cover)
         )
         li.setProperty('IsPlayable', 'false')
 
-        uri = construct_request({
+        uri = strutils.construct_request({
             'cover': cover,
             'href': folderUrl,
             'referer': folderUrl,
-            'mode': 'read_directory_unuthorized',
+            'mode': 'read_dir',
             'folder': folder,
             'isMusic': isMusic,
             'quality': quality
@@ -944,64 +765,51 @@ def add_directory_item(linkItem, isFolder, playLink, playLinkClass, cover, folde
             'playLink': playLink
         })
 
+
 def add_folder_file(item):
     title = item['title']
     cover = item['cover']
     href = item['href']
     referer = item['referer']
     item_type = item['type']
-    useFlv = False #__settings__.getSetting('Use flv files for playback') == 'true'
 
     li = xbmcgui.ListItem(
-        htmlEntitiesDecode(title),
-        iconImage=getThumbnailImage(cover),
-        thumbnailImage=getPosterImage(cover),
+        strutils.html_entities_decode(title),
+        iconImage=fs_ua.thumbnail(cover),
+        thumbnailImage=fs_ua.poster(cover),
         path=href
     )
     li.setProperty('IsPlayable', 'true')
 
     li.setInfo(type=item_type, infoLabels={'title': title})
-    playCount = get_playCount(htmlEntitiesDecode(title))
+    playCount = kodi.get_play_count(strutils.html_entities_decode(title))
     if playCount:
         li.setInfo(type=item_type, infoLabels={'title': title, 'playcount': 1})
-    if not useFlv:
         li.addContextMenuItems([
             (
-            __language__(40001), "XBMC.RunPlugin(%s)" % construct_request({
+            __language__(40001), "XBMC.RunPlugin(%s)" % strutils.construct_request({
                 'mode': 'download',
                 'file_url': str(href.encode('utf-8')),
-                'file_name': htmlEntitiesDecode(title)
+                'file_name': strutils.html_entities_decode(title)
             })
             )
         ])
 
-    if item_type == 'music' or (__settings__.getSetting('Autoplay next') == 'true' and not useFlv):
-        uri = construct_request({
+    if item_type == 'music' or (__settings__.getSetting('Autoplay next') == 'true'):
+        uri = strutils.construct_request({
             'file': str(href.encode('utf-8')),
             'referer': referer,
             'mode': 'play',
             'playLink': item['playLink']
         })
-    elif useFlv and 'playLink' in item:
-        uri = construct_request({
-            'playLink': item['playLink'],
-            'referer': referer,
-            'mode': 'playflv',
-            'fallbackHref': href
-        })
-    elif proxyScriptUrl:
-        uri = construct_request({
-            'file': href,
-            'mode': 'playProxy',
-        })
     else:
-        uri = get_full_url(href)
+        uri = client.get_full_url(href)
 
     xbmcplugin.addDirectoryItem(h, uri, li, False)
 
 
 def download(params):
-    fileUrl = get_full_url(urllib.unquote_plus(params['file_url']))
+    fileUrl = client.get_full_url(urllib.unquote_plus(params['file_url']))
     fileName = fileUrl.split('/')[-1]
     download_params = {
         'url': fileUrl,
@@ -1027,7 +835,7 @@ def runsearch(params):
 
 def render_search_results(params):
     searchUrl = urllib.unquote_plus(params['href'])
-    http = GET(searchUrl, httpSiteUrl)
+    http = client.GET(searchUrl, httpSiteUrl)
     if http is None:
         return False
 
@@ -1045,25 +853,25 @@ def render_search_results(params):
 
         for item in items:
             title = str(item.find('span', 'b-search-page__results-item-title').text.encode('utf-8'))
-            href = get_full_url(item['href'])
+            href = client.get_full_url(item['href'])
             cover = item.find('span', 'b-search-page__results-item-image').find('img')['src']
             section = item.find('span', 'b-search-page__results-item-subsection').text
 
             if title is not None:
-                li = xbmcgui.ListItem('[%s] %s' % (htmlEntitiesDecode(section), htmlEntitiesDecode(title)), iconImage=getThumbnailImage(cover),
-                                      thumbnailImage=getPosterImage(cover))
+                li = xbmcgui.ListItem('[%s] %s' % (strutils.html_entities_decode(section), strutils.html_entities_decode(title)), iconImage=fs_ua.thumbnail(cover),
+                                      thumbnailImage=fs_ua.poster(cover))
                 li.setProperty('IsPlayable', 'false')
                 id = item['href'].split('/')[-1]
                 li.addContextMenuItems([
                     (
-                    __language__(50001), "XBMC.RunPlugin(%s)" % construct_request({
+                    __language__(50001), "XBMC.RunPlugin(%s)" % strutils.construct_request({
                             'mode': 'addto',
                             'section': 'favorites',
                             'id': id
                         })
                     ),
                     (
-                    __language__(50002), "XBMC.RunPlugin(%s)" % construct_request({
+                    __language__(50002), "XBMC.RunPlugin(%s)" % strutils.construct_request({
                             'mode': 'addto',
                             'section': 'playlist',
                             'id': id
@@ -1075,10 +883,10 @@ def render_search_results(params):
                 if params['section'] == 'audio':
                     isMusic = 'yes'
 
-                uri = construct_request({
+                uri = strutils.construct_request({
                     'href': href,
                     'referer': searchUrl,
-                    'mode': 'readdir',
+                    'mode': 'read_dir',
                     'cover': cover,
                     'folder': 0,
                     'isMusic': isMusic
@@ -1093,100 +901,19 @@ def addto(params):
     idRegexp = re.compile("([^-]+)")
     itemId = idRegexp.findall(params['id'])[0]
     addToHref = httpSiteUrl + "/addto/" + params['section'] + '/' + itemId + "?json"
-    GET(addToHref, httpSiteUrl)
+    client.GET(addToHref, httpSiteUrl)
     show_message('Result', "Toggled state in " + params['section'], 5000)
 
 
-def playflv(params):
-    plfile = urllib.unquote_plus(params['playLink'])
-
-    jsPlayListItem = get_jsplayer_info(plfile)
-    if jsPlayListItem is not None:
-        url = urllib.urlopen(get_full_url(str(jsPlayListItem['url'])))
-        fileUrl = url.geturl()
-        title = jsPlayListItem['fsData']['file_name']
-    else:
-        fileUrl = urllib.unquote_plus(params['fallbackHref'])
-        title = fileUrl
-
-    set_play_start(plfile)
-
-    i = xbmcgui.ListItem(path=get_full_url(fileUrl), label=title)
-    xbmcplugin.setResolvedUrl(h, True, i)
-
-
-def get_jsplayer_info(playUrl):
-    fileRegExp = re.compile('file=(\d+)')
-    requestedFile = fileRegExp.findall(playUrl)[0]
-
-    playlist = get_playlist(playUrl)
-    if playlist is not None and len(playlist) > 0:
-        for playListItem in playlist:
-            if playListItem['fsData']['file_id'] == requestedFile:
-                return playListItem
-
-    return None
-
-
-def get_playlist(playUrl):
-    try:
-        http = GET(get_full_url(playUrl), httpSiteUrl)
-        if http is None:
-            raise Exception('HTTP Error', 'page loading error')
-
-        playlistRegexp = re.compile("playlist:\s*([^;]+)", re.IGNORECASE + re.DOTALL + re.MULTILINE)
-        playlist = playlistRegexp.findall(http)
-
-        if playlist is not None and len(playlist) > 0:
-            playlist = fix_broken_json(str(playlist[0]).replace('\t\n', '')[0:-1])
-            return json.loads(playlist)
-    except:
-        pass
-
-    return None
-
-
-def send_js_ping(data):
-    pingUrl = basePingUrl + '&' + urllib.urlencode(data)
-    GET(pingUrl, httpSiteUrl)
-
-
-def set_play_start(playUrl):
-    jsPlayListItem = get_jsplayer_info(playUrl)
-    if jsPlayListItem is not None:
-        data = jsPlayListItem['fsData']
-        data['is_begin'] = 1
-        data['is_finish'] = 0
-        send_js_ping(data)
-
-
-def fix_broken_json(data):
-    data = re.sub(r'(\w+):', r'"\1":', data)
-    data = data.replace(': \'', ': "')
-    data = data.replace('\',', '",')
-
-    return data
-
 def play(params):
-    referer = urllib.unquote_plus(params['referer'])
     plfile = urllib.unquote_plus(params['file'])
-    headers['Referer'] = referer
 
-    plfile = urllib.urlopen(get_full_url(plfile))
+    plfile = urllib.urlopen(client.get_full_url(plfile))
     fileUrl = plfile.geturl()
 
-    if 'playLink' in params and params['playLink']:
-        set_play_start(urllib.unquote_plus(params['playLink']))
-
-    i = xbmcgui.ListItem(path=get_full_url(fileUrl))
+    i = xbmcgui.ListItem(path=client.get_full_url(fileUrl))
     xbmcplugin.setResolvedUrl(h, True, i)
 
-def playProxy(params):
-    file = get_full_url(urllib.unquote_plus(params['file']))
-    realFile = GET(proxyScriptUrl + '?resolveUrl=' + urllib.quote(file), httpSiteUrl)
-
-    i = xbmcgui.ListItem(path=realFile)
-    xbmcplugin.setResolvedUrl(h, True, i)
 
 def get_params(paramstring):
     param = []
@@ -1198,47 +925,21 @@ def get_params(paramstring):
         pairsofparams = cleanedparams.split('&')
         param = {}
         for i in range(len(pairsofparams)):
-            splitparams = {}
             splitparams = pairsofparams[i].split('=')
             if (len(splitparams)) == 2:
                 param[splitparams[0]] = splitparams[1]
     return param
 
-# Originally posted by dimnik @ xbmc.ru
-def get_playCount(filename):
-    # Obtaining playback counter
-    playCount = False
-    if not filename or sqlite is None:
-        return playCount
 
-    # get path to database and determine videobase filename
-    basepath = xbmc.translatePath("special://database")
-    for basefile in xbmcvfs.listdir(basepath)[1]:
-        if 'MyVideos' in basefile:
-            videobase = basefile
-            # connect to database
-            db = sqlite.connect(os.path.join(basepath, videobase))
-            try:
-                sqlcur = db.execute('SELECT playCount FROM files WHERE strFilename like ?', ('%'+filename+'%',))
-                res_playCount = sqlcur.fetchall()
-                if res_playCount:
-                    # check in the result data for at the least one played current file
-                    if any(plcount > 0 for plcount in res_playCount):
-                        playCount = True
-            except:
-                print 'Error connection to table file. Database is may be busy'
-            db.close()
-    return playCount
-
-params = get_params(sys.argv[2])
+execution_params = get_params(sys.argv[2])
 
 mode = None
 func = None
 
 try:
-    mode = urllib.unquote_plus(params['mode'])
+    mode = urllib.unquote_plus(execution_params['mode'])
 except:
-    main(params)
+    main(execution_params)
 
 if mode is not None:
     try:
@@ -1246,4 +947,4 @@ if mode is not None:
     except:
         pass
     if func:
-        func(params)
+        func(execution_params)
