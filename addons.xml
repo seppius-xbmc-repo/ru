@@ -2758,12 +2758,12 @@ provider-name="Roman_V_M">
 
 <addon
   id="skin.confluence-plood-jarvis"
-  version="2.8.8.053"
+  version="2.8.8.054"
   name="Confluence-plood-jarvis"
   provider-name="Jezz_X, Team Kodi, YLLOW_DRAGON, plood">
   <requires>
     <import addon="xbmc.gui" version="5.10.0"/>
-    <import addon="script.favourites" version="6.0.3"/>
+	<import addon="script.favourites" version="6.0.3"/>
   </requires>
   <extension
     point="xbmc.gui.skin"
