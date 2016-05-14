@@ -724,7 +724,7 @@ Paypal: напишите на kit500.development at gmail dot com</description>
 
 <addon id="plugin.video.megogo"
 	   name="MEGOGO.NET"
-	   version="1.1.8"
+	   version="1.1.9"
 	   provider-name="Studio-Evolution">
 	<requires>
 		<import addon="xbmc.python" version="2.1.0" />
