@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addon id="repository.search.db"
 		name="XBMC.ru search db"
-		version="1.1.11"
+		version="1.1.12"
 		provider-name="bigbax">
   <requires>
     <import addon="xbmc.addon" version="12.0.0"/>
@@ -57,9 +57,9 @@
 			<hashes>true</hashes>
 		</dir>
 	        <dir minversion="14.0.0">
-			<info compressed="false">https://github.com/xbmc-addon/repository.hal9000/raw/master/addons.xml</info>
-			<checksum>https://github.com/xbmc-addon/repository.hal9000/raw/master/addons.xml.md5</checksum>
-			<datadir zip="true">https://github.com/xbmc-addon/repository.hal9000/raw/master/repo</datadir>
+			<info compressed="false">https://raw.githubusercontent.com/xbmc-addon/repository.hal9000/master/addons.xml</info>
+                        <checksum>https://raw.githubusercontent.com/xbmc-addon/repository.hal9000/master/addons.xml.md5</checksum>
+                        <datadir zip="true">https://raw.githubusercontent.com/xbmc-addon/repository.hal9000/master/repo</datadir>
 			<hashes>true</hashes>
 		</dir>
 		<dir minversion="14.0.0">
