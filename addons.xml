@@ -1363,6 +1363,23 @@ Russia.ru делает передачи для самой разной ауди�
 	</extension>
 </addon>
 
+<addon id="repository.rka" name="Russian Kodi Addons" version="1.0.0" provider-name="HAL9000">
+    <extension point="xbmc.addon.repository" name="Russian Kodi Addons">
+        <info compressed="false">http://repo.koditv.ru/addons.xml</info>
+        <checksum>http://repo.koditv.ru/addons.xml.md5</checksum>
+        <datadir zip="true">http://repo.koditv.ru/datadir</datadir>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <summary lang="en">Install Addons from XBMC.ru</summary>
+        <summary lang="ru">Установить дополнения с форума XBMC.ru</summary>
+        <description lang="en">Download and install add-ons from the Russian Kodi Addons metarepository.[CR]If you find a broken or not working add-on please report it to XBMC.ru</description>
+        <description lang="ru">Загружайте и устанавливайте дополнения из метарепозитория Russian Kodi Addons[CR]Если вы обнаружили нерабочее дополнение, сообщите об этом разработчикам на форуме XBMC.ru</description>
+        <disclaimer lang="en">Team of Russian Kodi Addons did not make all the add-ons on this repository and are not responsible for their content.</disclaimer>
+        <disclaimer lang="ru">Разработчики Russian Kodi Addons не являются авторами всех дополнений в данном репозитории и не несут ответственность за их содержимое.</disclaimer>
+        <platform>all</platform>
+    </extension>
+</addon>
+
 <addon id="repository.romanvm" version="2.0.0" name="Roman V.M. Repository" provider-name="Roman V.M.">
 <extension point="xbmc.addon.metadata">
   <summary lang="en">Roman V.M. Repository</summary>
