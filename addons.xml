@@ -1349,6 +1349,21 @@ Russia.ru делает передачи для самой разной ауди�
 	</extension>
 </addon>
 
+<addon id="repository.mrstealth.isengard" name="Mrstealth XBMC Kodi Isengard" version="1.0.1" provider-name="mrstealth">
+	<extension point="xbmc.addon.repository" name="MrStealth XBMC Add-ons Repository">
+		<info compressed="true">https://github.com/mrstealth/kodi-isengard/raw/master/addons.xml</info>
+		<checksum>https://github.com/mrstealth/kodi-isengard/raw/master/addons.xml.md5</checksum>
+		<datadir zip="true">https://github.com/mrstealth/kodi-isengard/raw/master/</datadir>
+		<hashes>true</hashes>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary>Install Add-ons from MrStealth add-on repository</summary>
+		<description>Download and install add-ons by mrstealth</description>
+		<disclaimer>Add-ons for home usage in Kodi</disclaimer>
+		<platform>all</platform>
+	</extension>
+</addon>
+
 <addon id="repository.myshows.me" name="MyShows.me Kodi Repo" version="1.0.5" provider-name="DiMartino">
 	<extension point="xbmc.addon.repository" name="MyShows.me Kodi Repo">
 		<info compressed="false">http://api.bitbucket.org/1.0/repositories/DiMartino/myshows.me-kodi-repo/raw/default/addons.xml</info>
@@ -1656,21 +1671,6 @@ Russia.ru делает передачи для самой разной ауди�
 		<summary>Install Add-ons from TDW1980 Add-on Repository</summary>
 		<description>Plug-ins for XBMC</description>
 		<disclaimer>There are git my add-ons for XBMC</disclaimer>
-		<platform>all</platform>
-	</extension>
-</addon>
-
-<addon id="repository.tolin" name="TOLIN XBMC Add-on's" version="1.0.0" provider-name="tolin">
-	<extension point="xbmc.addon.repository" name="TOLIN XBMC Add-on's">
-		<info compressed="false">http://tolin-xbmc-repo.googlecode.com/svn/trunk/addons/addons.xml</info>
-		<checksum>http://tolin-xbmc-repo.googlecode.com/svn/trunk/addons/addons.xml.md5</checksum>
-		<datadir zip="false">http://tolin-xbmc-repo.googlecode.com/svn/trunk/addons/</datadir>
-	</extension>
-	<extension point="xbmc.addon.metadata">
-		<summary>Install Add-on's from Tolin Repository</summary>
-		<description>It' a popular Russian and International media resources for XBMC</description>
-		<description>Это популярные Российские и Международные медиа ресурсы для XBMC</description>
-		<disclaimer>All rights reserved</disclaimer>
 		<platform>all</platform>
 	</extension>
 </addon>
