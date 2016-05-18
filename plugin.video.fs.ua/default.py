@@ -92,7 +92,7 @@ def check_login():
             return False
 
         beautifulSoup = BeautifulSoup(http)
-        userPanel = beautifulSoup.find('a', 'b-header__user-profile')
+        userPanel = beautifulSoup.find('a', 'm-header__user-link_favourites')
 
         if userPanel is None:
             client.remove_cookie()
@@ -104,7 +104,7 @@ def check_login():
             })
 
             loginSoup = BeautifulSoup(loginResponse)
-            userPanel = loginSoup.find('a', 'b-header__user-profile')
+            userPanel = loginSoup.find('a', 'm-header__user-link_favourites')
             if userPanel is None:
                 show_message('Login', 'Check login and password', 3000)
             else:
