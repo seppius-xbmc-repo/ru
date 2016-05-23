@@ -456,7 +456,7 @@ Paypal: напишите на kit500.development at gmail dot com</description>
 
 <addon id="plugin.video.fs.ua"
        name="Fs.ua"
-       version="1.9.32"
+       version="1.9.33"
        provider-name="x86demon">
     <requires>
         <import addon="xbmc.python" version="2.1.0"/>

@@ -117,7 +117,7 @@ def check_login():
 def main(params):
     li = xbmcgui.ListItem('[Видео]')
     uri = strutils.construct_request({
-        'href': httpSiteUrl + '/video/',
+        'href': httpSiteUrl,
         'mode': 'get_categories',
         'category': 'video',
         'filter': '',
@@ -125,15 +125,15 @@ def main(params):
     })
     xbmcplugin.addDirectoryItem(h, uri, li, True)
 
-    li = xbmcgui.ListItem('[Аудио]')
-    uri = strutils.construct_request({
-        'href': httpSiteUrl + '/audio/',
-        'mode': 'get_categories',
-        'category': 'audio',
-        'filter': '',
-        'firstPage': 'yes'
-    })
-    xbmcplugin.addDirectoryItem(h, uri, li, True)
+    # li = xbmcgui.ListItem('[Аудио]')
+    # uri = strutils.construct_request({
+    #     'href': httpSiteUrl + '/audio/',
+    #     'mode': 'get_categories',
+    #     'category': 'audio',
+    #     'filter': '',
+    #     'firstPage': 'yes'
+    # })
+    # xbmcplugin.addDirectoryItem(h, uri, li, True)
 
     if check_login():
         li = xbmcgui.ListItem('В процессе')
@@ -190,19 +190,20 @@ def get_categories(params):
         return False
 
     beautifulSoup = BeautifulSoup(http)
-    categorySubmenu = beautifulSoup.find('div', 'm-header__menu-section_type_' + section)
+    # categorySubmenu = beautifulSoup.find('div', 'm-header__menu-section_type_' + section)
+    categorySubmenu = beautifulSoup.find('div', 'b-header__menu')
     if categorySubmenu is None:
         show_message('ОШИБКА', 'Неверная страница', 3000)
         return False
 
-    subcategories = categorySubmenu.findAll('a', 'b-header__menu-subsections-item')
+    subcategories = categorySubmenu.findAll('a', 'b-header__menu-section-link')
     if len(subcategories) == 0:
         show_message('ОШИБКА', 'Неверная страница', 3000)
         return False
 
     for subcategory in subcategories:
-        label = subcategory.find('span')
-        li = xbmcgui.ListItem('[' + label.string + ']')
+        # label = subcategory.find('span')
+        li = xbmcgui.ListItem('[' + subcategory.text + ']')
         uri = strutils.construct_request({
             'href': client.get_full_url(subcategory['href']),
             'mode': 'readcategory',
@@ -406,7 +407,6 @@ def get_material_details(url):
     description = beautifulSoup.find('p', 'item-decription').string.encode('utf-8')
 
     poster = fs_ua.poster(client.get_full_url(beautifulSoup.find('div', 'poster-main').find('img')['src']))
-    print poster
 
     images_container = beautifulSoup.find('div', 'b-tab-item__screens')
     image_elements = images_container.findAll('a')
