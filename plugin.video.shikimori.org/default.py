@@ -70,7 +70,11 @@ def Main(main_url):
         block = num.find('', attrs={'class': 'cover'})
         title_block = num.find('span', attrs={'class': 'name-ru'})
         if title_block == None:
-            title = num.find('span', attrs={'class': 'title'}).getText().encode('utf-8')
+            title_block = num.find('div', attrs={'class': 'name'})
+            if title_block == None:
+                title_block = num.find(['a', 'span'], attrs={'class': 'title'}).getText().encode('utf-8')
+            else:
+                title = title_block.getText().encode('utf-8')
         else:
             title = title_block['data-text'].encode('utf-8')
             
@@ -83,7 +87,7 @@ def Main(main_url):
         addDir(title, url, iconImg=image, mode="FILMS")
     next = soup.find('a', {'class': 'next'})
     if next :
-        addDir('---Следующая страница---', site_url + next['href'], iconImg=plugin_icon)
+        addDir('---Следующая страница---', 'http:' + next['href'], iconImg=plugin_icon)
 
 def addDir(title, url, iconImg="DefaultVideo.png", mode="", inbookmarks=False):
     sys_url = sys.argv[0] + '?url=' + urllib.quote_plus(url) + '&mode=' + urllib.quote_plus(str(mode))
