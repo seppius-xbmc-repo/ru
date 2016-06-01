@@ -117,7 +117,7 @@ def check_login():
 def main(params):
     li = xbmcgui.ListItem('[Видео]')
     uri = strutils.construct_request({
-        'href': httpSiteUrl,
+        'href': httpSiteUrl + '/video/films/',
         'mode': 'get_categories',
         'category': 'video',
         'filter': '',
