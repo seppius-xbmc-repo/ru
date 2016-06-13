@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="WINDOWS-1251"?>
-<scraper date="2016-04-15" framework="1.1">
+<scraper date="2016-06-13" framework="1.1">
 	<NfoUrl dest="3">
 		<RegExp input="$$1" output="&lt;url&gt;\1|User-Agent=Mozilla/5.0%20%28compatible%3B%20MSIE%209.0%3B%20Windows%20NT%206.1%3B%20Trident/5.0%29&amp;Accept-Language=ru-RU&lt;/url&gt;" dest="3">
 			<expression noclean="1">(http://www\.kinopoisk\.ru/level/1/film/[0-9]*/)</expression>
@@ -216,7 +216,7 @@
 			</RegExp>
 			<!--POSTERS Берем с кинопоиска сначала картинку с титульной, потом обложки, потом просто постеры -->
 			<RegExp conditional="posters_from_kinopoisk" input="$$1" output="&lt;thumb preview=&quot;\2&quot;&gt;\3\1&lt;/thumb&gt;" dest="5+">
-				<expression>class=&quot;popupBigImage&quot;[^&gt;]*&apos;(/images/[^&gt;]*jpg)&apos;[^&gt;]*&gt;[^&gt;]*((http://[^/&gt;]*)/[^&gt;]*[.]jpg)</expression>
+				<expression>class=&quot;popupBigImage&quot;[^&gt;]*&apos;(/images/[^&gt;]*jpg)&apos;[^&gt;]*&gt;[^&gt;]*((https*://[^/&gt;]*)/[^&gt;]*[.]jpg)</expression>
 			</RegExp>
 			<RegExp conditional="posters_from_kinopoisk" input="$$1" output="&lt;url cache=&quot;kinopoisk-coverurl-\2&quot; function=&quot;GMP&quot;&gt;http://www.kinopoisk.ru/film/\2/covers/&lt;/url&gt;&lt;url cache=&quot;kinopoisk-posters-\2&quot; function=&quot;GMP&quot;&gt;http://www.kinopoisk.ru\1&lt;/url&gt;" dest="5+">
 				<expression>(/film/(\d+)/posters)</expression>
@@ -229,7 +229,7 @@
 		</RegExp>
 	</GetDetails>
 	<GetPoster dest="4">
-		<RegExp input="$$1" output="&lt;details&gt;&lt;thumb preview=&quot;http://st.kinopoisk.ru/images/poster/sm_\2.jpg&quot;&gt;\1&lt;/thumb&gt;&lt;/details&gt;" dest="4">
+		<RegExp input="$$1" output="&lt;details&gt;&lt;thumb preview=&quot;http://st.kp.yandex.net/images/poster/sm_\2.jpg&quot;&gt;http:\1&lt;/thumb&gt;&lt;/details&gt;" dest="4">
 			<expression repeat="no" noclean="1">&lt;img style=[^&gt;]* id=&quot;image&quot; src=&quot;([^&quot;]+?-(\d+).jpg)&quot;</expression>
 		</RegExp>
 	</GetPoster>
@@ -240,6 +240,9 @@
 			</RegExp>
 			<RegExp input="$$1" output="&lt;url cache=&quot;kinopoisk-picture-\2&quot; function=&quot;GetPoster&quot;&gt;http://www.kinopoisk.ru\1&lt;/url&gt;" dest="8+">
 				<expression repeat="yes" noclean="1">&lt;a href="(/picture/([0-9]+)/)"&gt;&lt;img  src="http://st.[^"]+" width</expression>
+			</RegExp>			
+			<RegExp input="$$1" output="&lt;url cache=&quot;kinopoisk-picture-\2&quot; function=&quot;GetPoster&quot;&gt;http://www.kinopoisk.ru\1&lt;/url&gt;" dest="8+">
+				<expression repeat="yes" noclean="1">&lt;a href=&quot;(/picture/([0-9]+)/)&quot;&gt;&lt;img[ ]*src=&quot;https*://st.[^&quot;]+&quot; width</expression>
 			</RegExp>
 			<RegExp input="$$1" output="\1" dest="7">
 				<expression noclean="1">&lt;div class="navigator"&gt;(.*?)&lt;/div&gt;</expression>
@@ -268,7 +271,7 @@
 		<RegExp input="" output="&lt;!-- ролик --&gt;([^!]*?&lt;div style=&quot;position: relative&quot;&gt;[^&lt;]*(?:&lt;div[^&gt;]*(flag2)&quot;)*[^!]*?class=&quot;all&quot;&gt;([^&lt;]+).*?)&lt;!-- /ролик --&gt;" dest="10">
 			<expression/>
 		</RegExp>
-		<RegExp input="" output="&lt;td width=20&gt;(?:&lt;img src=&quot;http://st.kinopoisk.ru/images/icon-(hd)2.gif&quot;)*[^&lt;]*&lt;/td[^&lt;]*&lt;td[^&lt;]*&lt;a href=&quot;(?:.*?)&amp;type=trailer&amp;link=([^&quot;]+)&quot; class=&quot;continue&quot;&gt;(?:&lt;b&gt;)*(.+?)(?:&lt;/b&gt;)*&lt;/a&gt;" dest="11">
+		<RegExp input="" output="&lt;td width=20&gt;(?:&lt;img src=&quot;http://st.kp.yandex.net/images/icon-(hd)2.gif&quot;)*[^&lt;]*&lt;/td[^&lt;]*&lt;td[^&lt;]*&lt;a href=&quot;(?:.*?)&amp;type=trailer&amp;link=([^&quot;]+)&quot; class=&quot;continue&quot;&gt;(?:&lt;b&gt;)*(.+?)(?:&lt;/b&gt;)*&lt;/a&gt;" dest="11">
 			<expression/>
 		</RegExp>
 		<!-- Собираем всё видео -->
@@ -385,14 +388,14 @@
 			<RegExp input="$$1" output="\1" dest="9">
 				<expression clear="yes" noclean="1">&lt;a name=&quot;actor&quot;&gt;(.*?)&lt;a name</expression>
 			</RegExp>
-			<RegExp conditional="!rus_actor_names" input="$$9" output="&lt;n&gt;\2&lt;r&gt;\3&lt;t&gt;http://st.kinopoisk.ru/images/actor/\1&lt;/e&gt;" dest="9">
+			<RegExp conditional="!rus_actor_names" input="$$9" output="&lt;n&gt;\2&lt;r&gt;\3&lt;t&gt;http://st.kp.yandex.net/images/actor/\1&lt;/e&gt;" dest="9">
 				<expression repeat="yes" trim="3">title=&quot;/images/(?:sm_actor/([0-9]+.jpg)|no-poster.gif)&quot; alt=.+?&quot;name&quot;&gt;&lt;a href=&quot;/name/\d+/&quot;&gt;(.*?)&lt;/a&gt;.+?&quot;role&quot;&gt;[. ]*([^&lt;]*)&lt;</expression>
 			</RegExp>
-			<RegExp conditional="rus_actor_names" input="$$9" output="&lt;n&gt;\2&lt;r&gt;\3&lt;t&gt;http://st.kinopoisk.ru/images/actor/\1&lt;/e&gt;" dest="9">
+			<RegExp conditional="rus_actor_names" input="$$9" output="&lt;n&gt;\2&lt;r&gt;\3&lt;t&gt;http://st.kp.yandex.net/images/actor/\1&lt;/e&gt;" dest="9">
 				<expression repeat="yes" trim="3">title=&quot;/images/(?:sm_actor/([0-9]+.jpg)|no-poster.gif)&quot; alt=.+?&quot;name&quot;&gt;&lt;a href=&quot;/name/\d+/&quot;&gt;([а-яА-Я][^&lt;]*)&lt;/a&gt;.*?&quot;role&quot;&gt;[. ]*([^&lt;]*)&lt;</expression>
 			</RegExp>
 			<RegExp input="$$9" output="&lt;actor&gt;&lt;name&gt;\1&lt;/name&gt;&lt;role&gt;\2&lt;/role&gt;&lt;thumb&gt;\3&lt;/thumb&gt;&lt;/actor&gt;" dest="7">
-				<expression repeat="yes" trim="3">&lt;n&gt;([^&lt;]+)&lt;r&gt;(?:играет |)([^&lt;,]+)[^&lt;]*&lt;t&gt;(?:(http://st.kinopoisk.ru/images/actor/[0-9]+.jpg)&lt;/e&gt;|http://st.kinopoisk.ru/images/actor/&lt;/e&gt;)</expression>
+				<expression repeat="yes" trim="3">&lt;n&gt;([^&lt;]+)&lt;r&gt;(?:играет |)([^&lt;,]+)[^&lt;]*&lt;t&gt;(?:(http://st.kp.yandex.net/images/actor/[0-9]+.jpg)&lt;/e&gt;|http://st.kp.yandex.net/images/actor/&lt;/e&gt;)</expression>
 			</RegExp>
 			<!-- убираем &nbsp; из ролей актёров -->
 			<RegExp input="$$7" output="\1&amp;nbsp;" dest="7">
