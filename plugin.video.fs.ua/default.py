@@ -117,7 +117,7 @@ def check_login():
 def main(params):
     li = xbmcgui.ListItem('[Видео]')
     uri = strutils.construct_request({
-        'href': httpSiteUrl + '/video/films/',
+        'href': httpSiteUrl + '/video/',
         'mode': 'get_categories',
         'category': 'video',
         'filter': '',
@@ -125,15 +125,15 @@ def main(params):
     })
     xbmcplugin.addDirectoryItem(h, uri, li, True)
 
-    # li = xbmcgui.ListItem('[Аудио]')
-    # uri = strutils.construct_request({
-    #     'href': httpSiteUrl + '/audio/',
-    #     'mode': 'get_categories',
-    #     'category': 'audio',
-    #     'filter': '',
-    #     'firstPage': 'yes'
-    # })
-    # xbmcplugin.addDirectoryItem(h, uri, li, True)
+    li = xbmcgui.ListItem('[Аудио]')
+    uri = strutils.construct_request({
+        'href': 'http://brb.to/audio/',
+        'mode': 'get_categories',
+        'category': 'audio',
+        'filter': '',
+        'firstPage': 'yes'
+    })
+    xbmcplugin.addDirectoryItem(h, uri, li, True)
 
     if check_login():
         li = xbmcgui.ListItem('В процессе')
@@ -190,13 +190,19 @@ def get_categories(params):
         return False
 
     beautifulSoup = BeautifulSoup(http)
-    # categorySubmenu = beautifulSoup.find('div', 'm-header__menu-section_type_' + section)
-    categorySubmenu = beautifulSoup.find('div', 'b-header__menu')
+
+    submenuSelector = 'b-header__menu'
+    submenuItemSelector = 'b-header__menu-section-link'
+    if params['category'] == 'audio':
+        submenuSelector = 'b-subsection-menu__items'
+        submenuItemSelector = 'b-subsection-menu__item'
+
+    categorySubmenu = beautifulSoup.find('div', submenuSelector)
     if categorySubmenu is None:
         show_message('ОШИБКА', 'Неверная страница', 3000)
         return False
 
-    subcategories = categorySubmenu.findAll('a', 'b-header__menu-section-link')
+    subcategories = categorySubmenu.findAll('a', submenuItemSelector)
     if len(subcategories) == 0:
         show_message('ОШИБКА', 'Неверная страница', 3000)
         return False
@@ -221,6 +227,7 @@ def get_categories(params):
             'section': section,
             'start': 0,
             'filter': '',
+            'disableFilters': 'yes'
         })
     else:
         xbmcplugin.endOfDirectory(h)
@@ -445,12 +452,14 @@ def readcategory(params):
     start = int(params['start'])
     category_href = urllib.unquote_plus(params['href'])
 
-    categoryUrl = fs_ua.get_url_with_sort_by(
-        category_href,
-        params['section'],
-        params['start'],
-        'detailed'
-    )
+    categoryUrl = category_href
+    if 'disableFilters' not in params:
+        categoryUrl = fs_ua.get_url_with_sort_by(
+            category_href,
+            params['section'],
+            params['start'],
+            'detailed'
+        )
 
     http = client.GET(categoryUrl, httpSiteUrl)
     if http is None:
