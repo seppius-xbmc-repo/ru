@@ -200,25 +200,6 @@ Audio sources are
     </extension>
 </addon>
 
-<addon id="plugin.video.5-tv.ru"
-       name="[COLOR FF00FF00]Пятый[/COLOR] [COLOR FFFFF000]канал[/COLOR]"
-       version="1.0.3"
-       provider-name="Silen">
-  <requires>
-    <import addon="xbmc.python" version="2.1.0"/>
-  </requires>
-  <extension point="xbmc.python.pluginsource"
-             provides="video"
-             library="default.py">
-    <provides>video</provides>
-  </extension>
-  <extension point="xbmc.addon.metadata">
-    <summary>Сериалы (serialu.net)</summary>
-    <description>Пятый канал, Видеоархив программ (5-tv.ru).</description>
-    <platform>all</platform>
-  </extension>
-</addon>
-
 <addon id="plugin.video.IPTV"
        name="IPTV"
        version="0.2.0"
@@ -498,25 +479,6 @@ Paypal: напишите на kit500.development at gmail dot com</description>
   <extension point="xbmc.addon.metadata">
     <summary>Смотрите online-видео с сайта http://guzei.com/live/tv/</summary>
     <description>Смотрите online-видео с сайта http://guzei.com/live/tv/</description>
-    <platform>all</platform>
-  </extension>
-</addon>
-
-<addon id="plugin.video.hdkinoklub.ru"
-       name="[COLOR FF00FF00]Кино портал HD ([/COLOR][COLOR FFFFF000]hdkinoklub.ru[/COLOR][COLOR FF00FF00])[/COLOR]"
-       version="1.0.7"
-       provider-name="Silen">
-  <requires>
-    <import addon="xbmc.python" version="2.1.0"/>
-  </requires>
-  <extension point="xbmc.python.pluginsource"
-             provides="video"
-             library="default.py">
-    <provides>video</provides>
-  </extension>
-  <extension point="xbmc.addon.metadata">
-    <summary>my-hit.ru</summary>
-    <description>Приветствуем Вас на сайте HDkinoKlub.ru - здесь можно совершенно бесплатно и без регистрации смотреть фильмы, сериалы и мультфильмы онлайн в HD качестве..</description>
     <platform>all</platform>
   </extension>
 </addon>
