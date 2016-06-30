@@ -433,27 +433,6 @@ Paypal: напишите на kit500.development at gmail dot com</description>
   </extension>
 </addon>
 
-<addon id="plugin.video.filmodrom.net"
-       name="[COLOR=FFCB00FF]Filmodrom[/COLOR][COLOR=FFFFF000].net[/COLOR]"
-       version="0.0.3"
-       provider-name="Nesterov Alexandr">
-  <requires>
-    <import addon="xbmc.python" version="2.1.0"/>
-  </requires>
-  <extension point="xbmc.python.pluginsource" provides="video" library="addon.py">
-    <provides>video</provides>
-  </extension>
-  <extension point="xbmc.addon.metadata">
-    <summary>filmodrom.net</summary>
-    <description>
-        Плагин для просомтра фильмов с filmodrom.net
-    </description>
-    <source>https://github.com/alex19pov31/plugin.video.filmodrom.net.git</source>
-    <email>alex19pov31@gmail.com</email>
-    <platform>all</platform>
-  </extension>
-</addon>
-
 <addon id="plugin.video.fs.ua"
        name="Fs.ua"
        version="1.9.34"
@@ -613,27 +592,6 @@ Paypal: напишите на kit500.development at gmail dot com</description>
     </extension>
 </addon>
 
-<addon id="plugin.video.kino-v-online.tv"
-       name="[COLOR=FFCB00FF]kino-v[/COLOR][COLOR=FFFFF000]-online.tv[/COLOR]"
-       version="0.0.4"
-       provider-name="Nesterov Alexandr">
-  <requires>
-    <import addon="xbmc.python" version="2.1.0"/>
-  </requires>
-  <extension point="xbmc.python.pluginsource" provides="video" library="addon.py">
-    <provides>video</provides>
-  </extension>
-  <extension point="xbmc.addon.metadata">
-    <summary>kino-v-online.tv</summary>
-    <description>
-        Плагин для просмoтра фильмов с kino-v-online.tv
-    </description>
-    <source>https://github.com/alex19pov31/plugin.video.kino-v-online.tv.git</source>
-    <email>alex19pov31@gmail.com</email>
-    <platform>all</platform>
-  </extension>
-</addon>
-
 <addon id="plugin.video.kinogovno" name="KinoGovno" version="1.2.1" provider-name="x86demon">
     <requires>
         <import addon="xbmc.python" version="2.1.0"/>
@@ -697,27 +655,6 @@ Paypal: напишите на kit500.development at gmail dot com</description>
   <extension point="xbmc.addon.metadata">
     <summary>Kiwi.kz - видео в Казахстане</summary>
 	<description>Kiwi.kz - видео-сервис в Казахстане. Видео-портал, позволяющий вам бесплатно просматривать самое новое, популярное и интересное видео в различных категориях. Загружайте свое видео, просматривайте видео, транслируйте и смотрите видео онлайн.</description>
-    <platform>all</platform>
-  </extension>
-</addon>
-
-<addon id="plugin.video.linecinema"
-       name="[COLOR=FFCB00FF]Line[/COLOR][COLOR=FFFFF000]Cinema[/COLOR]"
-       version="0.0.4"
-       provider-name="Nesterov Alexandr">
-  <requires>
-    <import addon="xbmc.python" version="2.1.0"/>
-  </requires>
-  <extension point="xbmc.python.pluginsource" provides="video" library="addon.py">
-    <provides>video</provides>
-  </extension>
-  <extension point="xbmc.addon.metadata">
-    <summary>LineCinema.org</summary>
-    <description>
-        Плагин для просмотра фильмов с сайта LineCinema.org
-    </description>
-    <source>https://github.com/alex19pov31/plugin.video.linecinema.git</source>
-    <email>alex19pov31@gmail.com</email>
     <platform>all</platform>
   </extension>
 </addon>
