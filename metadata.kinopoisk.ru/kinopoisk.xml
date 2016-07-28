@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="WINDOWS-1251"?>
-<scraper date="2016-06-13" framework="1.1">
+<scraper date="2016-07-28" framework="1.1">
 	<NfoUrl dest="3">
 		<RegExp input="$$1" output="&lt;url&gt;\1|User-Agent=Mozilla/5.0%20%28compatible%3B%20MSIE%209.0%3B%20Windows%20NT%206.1%3B%20Trident/5.0%29&amp;Accept-Language=ru-RU&lt;/url&gt;" dest="3">
 			<expression noclean="1">(http://www\.kinopoisk\.ru/level/1/film/[0-9]*/)</expression>
@@ -87,7 +87,7 @@
 		<RegExp input="$$5" output="&lt;?xml version=&quot;1.0&quot; encoding=&quot;windows-1251&quot; standalone=&quot;yes&quot;?&gt;&lt;details&gt;\1&lt;/details&gt;" dest="3">
 			<!--TITLE (to UTF8)-->
 			<RegExp input="$$1" output="\1" dest="3">
-				<expression trim="1">&lt;title&gt;(.+?)&lt;/title&gt;</expression>
+				<expression trim="1">class="moviename-big" itemprop="name"&gt;(.+?)&lt;/h1&gt;</expression>
 			</RegExp>
 			<RegExp input="$$3" output="&lt;chain function=&quot;TitleToUTF8&quot;&gt;\1&lt;/chain&gt;" dest="5">
 				<expression/>
