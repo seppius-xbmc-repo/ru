@@ -1324,7 +1324,7 @@ Paypal: напишите на kit500.development at gmail dot com</description>
 
 <addon id="repository.search.db"
 		name="XBMC.ru search db"
-		version="1.1.12"
+		version="1.1.14"
 		provider-name="bigbax">
   <requires>
     <import addon="xbmc.addon" version="12.0.0"/>
@@ -1338,9 +1338,21 @@ Paypal: напишите на kit500.development at gmail dot com</description>
 			<hashes>true</hashes>
 		</dir>
 		<dir minversion="13.0.0">
+			<info compressed="false">https://raw.githubusercontent.com/DmitrySandalov/xbmc-repo/master/addons/addons.xml</info>
+                        <checksum>https://raw.githubusercontent.com/DmitrySandalov/xbmc-repo/master/addons/addons.xml.md5</checksum>
+                        <datadir zip="true">https://github.com/DmitrySandalov/xbmc-repo/raw/master/repo/zip</datadir>
+			<hashes>true</hashes>
+		</dir>
+		<dir minversion="13.0.0">
 			<info compressed="false">https://raw.github.com/mrstealth/xbmc-gotham/master/addons.xml</info>
 			<checksum>https://raw.github.com/mrstealth/xbmc-gotham/master/addons.xml.md5</checksum>
 			<datadir zip="true">https://raw.github.com/mrstealth/xbmc-gotham/master/zip/</datadir>
+			<hashes>true</hashes>
+		</dir>
+		<dir minversion="13.0.0">
+			<info compressed="false">https://github.com/jdf76/repository/raw/master/addons.xml</info>
+		        <checksum>https://github.com/jdf76/repository/raw/master/addons.xml.md5</checksum>
+		        <datadir zip="true">https://github.com/jdf76/repository/raw/master/zips</datadir>
 			<hashes>true</hashes>
 		</dir>
 		<dir minversion="14.0.0">
