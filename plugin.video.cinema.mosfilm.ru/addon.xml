@@ -3,9 +3,9 @@
        
 	name="[COLOR FF00FF00]Мосфильм ([/COLOR][COLOR FFFFF000]cinema.mosfilm.ru[/COLOR][COLOR FF00FF00])[/COLOR]"
        
-	version="1.1.2"
+	version="1.1.3"
        
-	provider-name="Silen">
+	provider-name="Silen, Rommi">
   <requires>
 	<import addon="xbmc.python" version="2.1.0"/>
     	<import addon="plugin.video.youtube"/>	
