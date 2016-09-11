@@ -399,6 +399,29 @@ Paypal: напишите на kit500.development at gmail dot com</description>
   </extension>
 </addon>
 
+<addon id="plugin.video.cinema.mosfilm.ru"
+
+	name="[COLOR FF00FF00]Мосфильм ([/COLOR][COLOR FFFFF000]cinema.mosfilm.ru[/COLOR][COLOR FF00FF00])[/COLOR]"
+
+	version="1.1.2"
+
+	provider-name="Silen">
+  <requires>
+	<import addon="xbmc.python" version="2.1.0"/>
+    	<import addon="plugin.video.youtube"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             provides="video"
+             library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Мосфильм (cinema.mosfilm.ru)</summary>
+    <description>Иинтернет-кинотеатр ФГУП «Киноконцерн «Мосфильм» (cinema.mosfilm.ru).</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
 <addon id="plugin.video.dream-film"
        name="[COLOR FFFFF000]Dream[/COLOR][COLOR FF00FF00]-film[/COLOR]"
        version="0.0.5"
@@ -1307,7 +1330,7 @@ Paypal: напишите на kit500.development at gmail dot com</description>
 
 <addon id="repository.search.db"
 		name="XBMC.ru search db"
-		version="1.1.14"
+		version="1.1.15"
 		provider-name="bigbax">
   <requires>
     <import addon="xbmc.addon" version="12.0.0"/>
@@ -1330,12 +1353,6 @@ Paypal: напишите на kit500.development at gmail dot com</description>
 			<info compressed="false">https://raw.github.com/mrstealth/xbmc-gotham/master/addons.xml</info>
 			<checksum>https://raw.github.com/mrstealth/xbmc-gotham/master/addons.xml.md5</checksum>
 			<datadir zip="true">https://raw.github.com/mrstealth/xbmc-gotham/master/zip/</datadir>
-			<hashes>true</hashes>
-		</dir>
-		<dir minversion="13.0.0">
-			<info compressed="false">https://github.com/jdf76/repository/raw/master/addons.xml</info>
-		        <checksum>https://github.com/jdf76/repository/raw/master/addons.xml.md5</checksum>
-		        <datadir zip="true">https://github.com/jdf76/repository/raw/master/zips</datadir>
 			<hashes>true</hashes>
 		</dir>
 		<dir minversion="14.0.0">
