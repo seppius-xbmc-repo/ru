@@ -336,6 +336,12 @@ def getFiles(params):
         xbmc.Player().play(getFile(files[0]), li)
 
 
+def debug(folderUrl):
+    print '-----------------------'
+    print folderUrl
+    print '-----------------------'
+
+
 def runSearch(params):
     skbd = xbmc.Keyboard()
     skbd.setHeading('Что ищем?')
@@ -357,7 +363,7 @@ def play(params):
     file = urllib.unquote_plus(params['file'])
     headers['Referer'] = referer
 
-    i = xbmcgui.ListItem(path=getFile(file))
+    i = xbmcgui.ListItem(path=file + '|User-agent=stagefright')
     xbmcplugin.setResolvedUrl(h, True, i)
 
 
