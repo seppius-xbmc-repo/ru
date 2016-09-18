@@ -698,7 +698,6 @@ def read_dir(params):
 
 
 def add_directory_item(linkItem, isFolder, playLink, playLinkClass, cover, folderUrl, folder, isMusic, quality = None, itemsCount = None):
-    folderRegexp = re.compile('(\d+|language[:\d]+|translation[:\d]+|season[:\d]+)')
     lang = None
     langRegexp = re.compile('\s*m\-(\w+)\s*')
     lang_data = langRegexp.findall(linkItem['class'])
