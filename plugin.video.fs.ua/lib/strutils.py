@@ -22,5 +22,6 @@ def fix_broken_json(data):
     data = re.sub(r'(\w+):', r'"\1":', data)
     data = data.replace(': \'', ': "')
     data = data.replace('\',', '",')
+    data = data.replace('\'}', '"}')
 
     return data

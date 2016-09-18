@@ -738,7 +738,8 @@ def add_directory_item(linkItem, isFolder, playLink, playLinkClass, cover, folde
 
     href = linkItem['href']
     try:
-        folder = folderRegexp.findall(linkItem['rel'])[0]
+        folder_data = json.loads(strutils.fix_broken_json(linkItem['rel']))
+        folder = folder_data['parent_id']
     except:
         pass
 
