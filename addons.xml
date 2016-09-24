@@ -830,7 +830,7 @@ Paypal: напишите на kit500.development at gmail dot com</description>
     </extension>
 </addon>
 
-<addon id="plugin.video.shikimori.org" name="Shikimori.org" version="0.1.7" provider-name="undeman">
+<addon id="plugin.video.shikimori.org" name="Shikimori.org" version="0.1.8" provider-name="undeman">
 	<requires>
 		<import addon="xbmc.python" version="2.1.0" />
 		<import addon="script.module.beautifulsoup4" version="4.3.2"/>
