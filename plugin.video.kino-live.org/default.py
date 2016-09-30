@@ -41,11 +41,12 @@ httpSiteUrl = 'http://' + siteUrl
 
 __settings__ = xbmcaddon.Addon(id='plugin.video.kino-live.org')
 __addondir__ = xbmc.translatePath(__settings__.getAddonInfo('profile'))
-if os.path.exists(__addondir__) == False:
+if not os.path.exists(__addondir__):
     os.mkdir(__addondir__)
 cookiepath = os.path.join(__addondir__, 'plugin.video.kino-live.org.lwp')
 
 h = int(sys.argv[1])
+
 
 def construct_request(params):
     return '%s?%s' % (sys.argv[0], urllib.urlencode(params))
@@ -58,18 +59,20 @@ def htmlEntitiesDecode(string):
 def showMessage(heading, message, times=3000):
     xbmc.executebuiltin('XBMC.Notification("%s", "%s", %s, "%s")' % (heading, message, times, icon))
 
+
 headers = {
-'User-Agent': 'Opera/9.80 (X11; Linux i686; U; ru) Presto/2.7.62 Version/11.00',
-'Accept': ' text/html, application/xml, application/xhtml+xml, image/png, image/jpeg, image/gif, image/x-xbitmap, */*',
-'Accept-Language': 'ru-RU,ru;q=0.9,en;q=0.8',
-'Accept-Charset': 'utf-8, utf-16, *;q=0.1',
-'Accept-Encoding': 'identity, *;q=0'
+    'User-Agent': 'Opera/9.80 (X11; Linux i686; U; ru) Presto/2.7.62 Version/11.00',
+    'Accept': ' text/html, application/xml, application/xhtml+xml, image/png, image/jpeg, image/gif, image/x-xbitmap, */*',
+    'Accept-Language': 'ru-RU,ru;q=0.9,en;q=0.8',
+    'Accept-Charset': 'utf-8, utf-16, *;q=0.1',
+    'Accept-Encoding': 'identity, *;q=0'
 }
+
 
 def GET(url, referer, post_params=None):
     headers['Referer'] = referer
 
-    if post_params != None:
+    if post_params is not None:
         post_params = urllib.urlencode(post_params)
         headers['Content-Type'] = 'application/x-www-form-urlencoded'
     elif headers.has_key('Content-Type'):
@@ -94,7 +97,7 @@ def GET(url, referer, post_params=None):
 
 def logout(params):
     GET(httpSiteUrl + '/index.php?action=logout', httpSiteUrl)
-    __settings__.setSetting("Login", "");
+    __settings__.setSetting("Login", "")
     __settings__.setSetting("Password", "")
 
 
@@ -104,24 +107,25 @@ def check_login():
 
     if len(login) > 0:
         http = GET(httpSiteUrl, httpSiteUrl)
-        if http == None: return None
+        if http is None:
+            return None
 
         beautifulSoup = BeautifulSoup(http)
         userPanel = beautifulSoup.find('a', {"id": "loginlink"})
 
-        if userPanel == None:
+        if userPanel is None:
             os.remove(cookiepath)
 
             loginResponse = GET(httpSiteUrl, httpSiteUrl, {
-            'login': 'submit',
-            'login_name': login,
-            'login_password': password,
-            'submit': 'Вход'
+                'login': 'submit',
+                'login_name': login,
+                'login_password': password,
+                'submit': 'Вход'
             })
 
             loginSoup = BeautifulSoup(loginResponse)
             userPanel = loginSoup.find('a', {"id": "loginlink"})
-            if userPanel == None:
+            if userPanel is None:
                 showMessage('Login', 'Check login and password', 3000)
             else:
                 return userPanel.text.encode('utf-8', 'cp1251')
@@ -132,42 +136,43 @@ def check_login():
 
 def mainScreen(params):
     login = check_login()
-    if login != None:
+    if login is not None:
         li = xbmcgui.ListItem('[Закладки %s]' % login.replace('Привет, ', ''))
         uri = construct_request({
-        'href': httpSiteUrl + '/favorites/',
-        'mode': 'readCategory'
+            'href': httpSiteUrl + '/favorites/',
+            'mode': 'readCategory'
         })
         xbmcplugin.addDirectoryItem(h, uri, li, True)
 
     li = xbmcgui.ListItem('[Категории]')
     uri = construct_request({
-    'href': httpSiteUrl,
-    'mode': 'getCategories'
+        'href': httpSiteUrl,
+        'mode': 'getCategories'
     })
     xbmcplugin.addDirectoryItem(h, uri, li, True)
 
     li = xbmcgui.ListItem('[По годам]')
     uri = construct_request({
-    'mode': 'getTags'
+        'mode': 'getTags'
     })
     xbmcplugin.addDirectoryItem(h, uri, li, True)
 
     li = xbmcgui.ListItem('[Поиск]')
     uri = construct_request({
-    'mode': 'runSearch'
+        'mode': 'runSearch'
     })
     xbmcplugin.addDirectoryItem(h, uri, li, True)
 
     readCategory({
-    'href': httpSiteUrl + '/lastnews/'
-    });
+        'href': httpSiteUrl + '/lastnews/'
+    })
 
 
 def readCategory(params, postParams=None):
     categoryUrl = urllib.unquote_plus(params['href'])
     http = GET(categoryUrl, httpSiteUrl, postParams)
-    if http == None: return False
+    if http is None:
+        return False
 
     beautifulSoup = BeautifulSoup(http)
     content = beautifulSoup.find('div', attrs={'id': 'dle-content'})
@@ -180,17 +185,16 @@ def readCategory(params, postParams=None):
         for data in dataRows:
             img = data.find('img')
             cover = None
-            if img != None:
+            if img is not None:
                 cover = img['src']
                 if cover.find("://") < 0:
                     cover = httpSiteUrl + cover
             titleContainer = data.findPrevious('div', 'ah1')
-            if titleContainer == None:
+            if titleContainer is None:
                 titleContainer = data.findPrevious('h1')
             href = titleContainer.find('a')
             if href is None:
                 titleText = titleContainer.text
-                href = data.findNextSibling('div', 'more').find('a')
             else:
                 titleText = href.text
             titleText = titleText.encode('utf-8', 'cp1251')
@@ -209,25 +213,25 @@ def readCategory(params, postParams=None):
             li.setProperty('IsPlayable', 'false')
             li.setInfo(type='video', infoLabels={'title': titleText, 'plot': plot})
             uri = construct_request({
-            'mode': 'getFiles',
-            'cover': cover,
-            'title': titleText,
-            'href': href
+                'mode': 'getFiles',
+                'cover': cover,
+                'title': titleText,
+                'href': href
             })
             xbmcplugin.addDirectoryItem(h, uri, li, True)
 
-    #TODO: Find a way to use pager in search results
-    if postParams == None:
+    # TODO: Find a way to use pager in search results
+    if postParams is None:
         try:
             pager = content.find('div', 'pages')
             pages = pager.findAll('a')
             nextPageLink = pages[len(pages) - 1]
-            if nextPageLink != None:
+            if nextPageLink is not None:
                 li = xbmcgui.ListItem('[NEXT PAGE >]')
                 li.setProperty('IsPlayable', 'false')
                 uri = construct_request({
-                'href': nextPageLink['href'],
-                'mode': 'readCategory'
+                    'href': nextPageLink['href'],
+                    'mode': 'readCategory'
                 })
                 xbmcplugin.addDirectoryItem(h, uri, li, True)
         except:
@@ -239,7 +243,8 @@ def readCategory(params, postParams=None):
 def getCategories(params):
     categoryUrl = urllib.unquote_plus(params['href'])
     http = GET(categoryUrl, httpSiteUrl)
-    if http == None: return False
+    if http is None:
+        return False
 
     beautifulSoup = BeautifulSoup(http)
     categoryContainer = beautifulSoup.find('ul', 'cats')
@@ -249,9 +254,9 @@ def getCategories(params):
         return False
     else:
         for link in categories:
-            if link != None:
+            if link is not None:
                 title = link.string
-                if title == None:
+                if title is None:
                     title = link.find("h2").string
                 href = link['href']
                 if href.find("://") < 0:
@@ -259,8 +264,8 @@ def getCategories(params):
                 li = xbmcgui.ListItem('[%s]' % title)
                 li.setProperty('IsPlayable', 'false')
                 uri = construct_request({
-                'href': href,
-                'mode': 'readCategory'
+                    'href': href,
+                    'mode': 'readCategory'
                 })
                 xbmcplugin.addDirectoryItem(h, uri, li, True)
 
@@ -269,7 +274,8 @@ def getCategories(params):
 
 def getTags(params):
     http = GET(httpSiteUrl + '/tags/', httpSiteUrl)
-    if http == None: return False
+    if http is None:
+        return False
 
     beautifulSoup = BeautifulSoup(http)
     tagsContainer = beautifulSoup.find('td', 'news')
@@ -280,7 +286,7 @@ def getTags(params):
     else:
         tags.reverse()
         for link in tags:
-            if link != None:
+            if link is not None:
                 title = link.string
                 href = link['href']
                 if href.find("://") < 0:
@@ -288,8 +294,8 @@ def getTags(params):
                 li = xbmcgui.ListItem('[%s]' % title)
                 li.setProperty('IsPlayable', 'false')
                 uri = construct_request({
-                'href': href,
-                'mode': 'readCategory'
+                    'href': href,
+                    'mode': 'readCategory'
                 })
                 xbmcplugin.addDirectoryItem(h, uri, li, True)
 
@@ -302,7 +308,8 @@ def getFiles(params):
     itemName = urllib.unquote_plus(params['title'])
 
     http = GET(folderUrl, httpSiteUrl)
-    if http == None: return False
+    if http is None:
+        return False
 
     playListRegexp = re.compile('pl=([^"]+)', re.IGNORECASE + re.DOTALL + re.MULTILINE)
     playlist = playListRegexp.findall(http)
@@ -315,16 +322,22 @@ def getFiles(params):
         files = fileRegexp.findall(playlistJson)
         i = 0
         for comment in comments:
+            title = itemName + ' - ' + comment
             li = xbmcgui.ListItem(comment, iconImage=cover, thumbnailImage=cover)
             li.setProperty('IsPlayable', 'true')
-            li.setInfo(type='video', infoLabels={'title': itemName + ' - ' + comment})
-            uri = construct_request({
-            'mode': 'play',
-            'file': files[i],
-            'referer': folderUrl
-            })
-            xbmcplugin.addDirectoryItem(h, uri, li)
-            i = i + 1
+            li.setInfo(type='video', infoLabels={'title': title})
+            try:
+                uri = construct_request({
+                    'mode': 'play',
+                    'file': files[i],
+                    'referer': folderUrl,
+                    'cover': cover,
+                    'title': title
+                })
+                xbmcplugin.addDirectoryItem(h, uri, li)
+            except:
+                pass
+            i += 1
         xbmcplugin.endOfDirectory(h)
     else:
         fileRegexp = re.compile('file=([^"]+)', re.IGNORECASE + re.DOTALL + re.MULTILINE)
@@ -333,13 +346,7 @@ def getFiles(params):
         li = xbmcgui.ListItem(itemName, iconImage=cover, thumbnailImage=cover)
         li.setProperty('IsPlayable', 'true')
         li.setInfo(type='video', infoLabels={'title': itemName})
-        xbmc.Player().play(getFile(files[0]), li)
-
-
-def debug(folderUrl):
-    print '-----------------------'
-    print folderUrl
-    print '-----------------------'
+        xbmc.Player().play(files[0] + '|User-agent=stagefright', li)
 
 
 def runSearch(params):
@@ -349,22 +356,26 @@ def runSearch(params):
     if skbd.isConfirmed():
         SearchStr = skbd.getText()
         params = {
-        'href': httpSiteUrl
+            'href': httpSiteUrl
         }
         postParams = {
-        'do': 'search',
-        'subaction': 'search',
-        'story': SearchStr.decode('utf-8').encode('cp1251')
+            'do': 'search',
+            'subaction': 'search',
+            'story': SearchStr.decode('utf-8').encode('cp1251')
         }
         return readCategory(params, postParams)
+
 
 def play(params):
     referer = urllib.unquote_plus(params['referer'])
     file = urllib.unquote_plus(params['file'])
+    cover = urllib.unquote_plus(params['cover'])
+    title = urllib.unquote_plus(params['title'])
     headers['Referer'] = referer
 
-    i = xbmcgui.ListItem(path=file + '|User-agent=stagefright')
-    xbmcplugin.setResolvedUrl(h, True, i)
+    li = xbmcgui.ListItem(path=file + '|User-agent=stagefright', iconImage=cover, thumbnailImage=cover, label=title)
+    li.setInfo(type='video', infoLabels={'title': title})
+    xbmcplugin.setResolvedUrl(h, True, li)
 
 
 def getFile(files):
@@ -376,6 +387,7 @@ def getFile(files):
         if fileUrl:
             file = fileUrl
     return file
+
 
 def get_params(paramstring):
     param = []
@@ -393,6 +405,7 @@ def get_params(paramstring):
                 param[splitparams[0]] = splitparams[1]
     return param
 
+
 params = get_params(sys.argv[2])
 
 mode = None
@@ -403,7 +416,7 @@ try:
 except:
     mainScreen(params)
 
-if (mode != None):
+if (mode is not None):
     try:
         func = globals()[mode]
     except:
