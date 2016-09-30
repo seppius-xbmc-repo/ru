@@ -698,7 +698,6 @@ def read_dir(params):
 
 
 def add_directory_item(linkItem, isFolder, playLink, playLinkClass, cover, folderUrl, folder, isMusic, quality = None, itemsCount = None):
-    folderRegexp = re.compile('(\d+|language[:\d]+|translation[:\d]+)')
     lang = None
     langRegexp = re.compile('\s*m\-(\w+)\s*')
     lang_data = langRegexp.findall(linkItem['class'])
@@ -738,7 +737,8 @@ def add_directory_item(linkItem, isFolder, playLink, playLinkClass, cover, folde
 
     href = linkItem['href']
     try:
-        folder = folderRegexp.findall(linkItem['rel'])[0]
+        folder_data = json.loads(strutils.fix_broken_json(linkItem['rel']))
+        folder = folder_data['parent_id']
     except:
         pass
 

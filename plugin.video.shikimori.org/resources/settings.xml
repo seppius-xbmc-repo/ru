@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<settings>
-	<category label="Settings">
-		<setting id="qual" type="enum" label="Макс. качество" values="240|360|480|720" default="3" />
-	</category>
-</settings>

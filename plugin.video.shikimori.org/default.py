@@ -64,7 +64,7 @@ def Main(main_url):
         submenu = submenu.find_all('a')
         
         for el in submenu:
-            addDir(el['title'], 'http:' + el['href'], iconImg=plugin_icon)
+            addDir(el['title'], 'https:' + el['href'], iconImg=plugin_icon)
 
     for num in content:
         block = num.find('', attrs={'class': 'cover'})
@@ -72,7 +72,7 @@ def Main(main_url):
         if title_block == None:
             title_block = num.find('div', attrs={'class': 'name'})
             if title_block == None:
-                title_block = num.find(['a', 'span'], attrs={'class': 'title'}).getText().encode('utf-8')
+                title = num.find(['a', 'span'], attrs={'class': 'title'}).getText().encode('utf-8')
             else:
                 title = title_block.getText().encode('utf-8')
         else:
@@ -82,12 +82,12 @@ def Main(main_url):
             url = block['data-href']
         else:
             url = block['href']
-        url = 'http:' + url
+        url = 'https:' + url
         image = num.find('meta', attrs={'itemprop': 'image'})['content']
         addDir(title, url, iconImg=image, mode="FILMS")
     next = soup.find('a', {'class': 'next'})
     if next :
-        addDir('---Следующая страница---', 'http:' + next['href'], iconImg=plugin_icon)
+        addDir('---Следующая страница---', 'https:' + next['href'], iconImg=plugin_icon)
 
 def addDir(title, url, iconImg="DefaultVideo.png", mode="", inbookmarks=False):
     sys_url = sys.argv[0] + '?url=' + urllib.quote_plus(url) + '&mode=' + urllib.quote_plus(str(mode))
@@ -109,7 +109,7 @@ def Search():
     kbd.doModal()
     if kbd.isConfirmed():
         SearchStr = kbd.getText()
-        url = 'http://play.shikimori.org/animes/search/' + SearchStr.decode('utf-8')
+        url = 'https://play.shikimori.org/animes/search/' + SearchStr.decode('utf-8')
         html = GetHTML(url.encode('utf-8'))
         soup = bs(html, "html.parser")
         content = soup.find_all('article', attrs={'class': 'c-anime'})
@@ -130,7 +130,7 @@ def GetFilmsList(url_main) :
         lnk = num.find('a')
         title = 'Эпизод ' + lnk.find('span', attrs={'class': 'episode-num'}).text
         # img = num.find('img')['src']
-        url = 'http:' + lnk['href']
+        url = 'https:' + lnk['href']
         addDir(title, url, iconImg="DefaultVideo.png", mode="VOICES")
 
 def GetVKUrl(html):
@@ -138,29 +138,13 @@ def GetVKUrl(html):
     vk_url = 'http:' + soup.find('div', {'class':'b-video_player'}).find('iframe')['src']
     soup = bs(GetHTML(vk_url), "html.parser")
     video = ''
-    js = soup.find_all('script', {'type': 'text/javascript'})[-1].encode('utf-8')
-    p = re.compile('var vars = (.*?);')
-    js = p.findall(js)
-    json_data = json.loads(js[0])
-    if 'url240' in json_data:
-        url240 = json_data['url240']
-    if 'url360' in json_data:
-        url360 = json_data['url360']
-    if 'url480' in json_data:
-        url480 = json_data['url480']
-    if 'url720' in json_data:
-        url720 = json_data['url720']
-    if 'hd' in json_data:
-        hd = json_data['hd']
-    video = url240
-    qual = __settings__.getSetting('qual')
-    if int(hd) >= 3 and int(qual) == 3:
-        video = url720
-    elif int(hd) >= 2 and (int(qual) == 2 or int(qual) == 3):
-        video = url480
-    elif int(hd) >= 1 and (int(qual) == 1 or int(qual) == 2):
-        video = url360
-    return video
+    if soup.find('div', {'id': 'video_ext_msg'}):
+        Notificator('ERROR', 'Video is not available', 3600)
+        return None 
+    
+    source = soup.find('video').find('source')['src']
+    
+    return source
 
 def GetSibnetUrl(html):
     soup = bs(html, "html.parser")
@@ -251,7 +235,7 @@ def GetVoicesList(url):
         if author:
             title += author.text
         # img = num.find('img')['src']
-        url = 'http:' + lnk['href']
+        url = 'https:' + lnk['href']
         # print player.encode('utf-8')
 
         addLink(title, url, iconImg="DefaultVideo.png")
@@ -273,7 +257,7 @@ def get_params():
                 param[splitparams[0]] = splitparams[1]
 
     return param
-site_url = 'http://play.shikimori.org/'
+site_url = 'https://play.shikimori.org/'
 params = get_params()
 print params
 mode = None
