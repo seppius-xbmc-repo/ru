@@ -613,6 +613,25 @@ Paypal: напишите на kit500.development at gmail dot com</description>
     </extension>
 </addon>
 
+<addon id="plugin.video.kinolist"
+       name="Kinolist"
+       version="0.0.1"
+       provider-name="[COLOR FFFFF000]Denis [/COLOR][COLOR FF00FF00]Fomin[/COLOR]">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource" provides="video" library="addon.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>kinolist</summary>
+    <description>
+
+    </description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
 <addon id="plugin.video.kinolist.net"
        name="[COLOR FFFFFFFF]Kinolist.net[/COLOR]"
        version="0.0.2"
