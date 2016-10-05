@@ -1,5 +1,0 @@
-<settings>
-    <setting id="Title Mode" type="enum" label="30001" default="1" values="Ru/En|Ru"/>
-    <setting id="Engine" type="enum" label="30005" default="0" values="ACE engine|Libtorrents"/>
-    <setting id="DownloadDirectory" type="folder" label="30008" default=""/>
-</settings>

@@ -223,43 +223,6 @@ Audio sources are
     </extension>
 </addon>
 
-<addon id="plugin.video.IPTV"
-       name="IPTV"
-       version="0.2.0"
-       provider-name="TDW">
-  <requires>
-    <import addon="xbmc.python" version="2.1.0"/>
-  </requires>
-  <extension point="xbmc.python.pluginsource"
-            library="default.py">
-        <provides>video</provides>
-  </extension>
-  <extension point="xbmc.addon.metadata">
-    <summary>IPTV</summary>
-    <description>Просмотр Internet TV из плейлиста без проверки на доступность. Плейлисты добавлять в подкаталог Playlists</description>
-    <platform>all</platform>
-  </extension>
-</addon>
-
-<addon id="plugin.video.KinoPoisk.ru"
-       name="KinoPoisk"
-       version="1.2.2"
-       provider-name="TDW">
-  <requires>
-    <import addon="xbmc.python" version="2.1.0"/>
-    <import addon="script.module.torrent.ts"/>
-  </requires>
-  <extension point="xbmc.python.pluginsource"
-            library="default.py">
-        <provides>video</provides>
-  </extension>
-  <extension point="xbmc.addon.metadata">
-    <summary>KinoPoisk.ru</summary>
-    <description>Poisk torrentov</description>
-    <platform>all</platform>
-  </extension>
-</addon>
-
 <addon id="plugin.video.TorPoisk"
        name="TorPoisk"
        version="0.9.7"
@@ -508,25 +471,6 @@ Paypal: напишите на kit500.development at gmail dot com</description>
   </extension>
 </addon>
 
-<addon id="plugin.video.guzei.tv"
-       name="GUZEI.TV"
-       version="1.0.8"
-       provider-name="HD-Lab Team">
-  <requires>
-    <import addon="xbmc.python" version="2.1.0"/>
-  </requires>
-  <extension point="xbmc.python.pluginsource"
-             provides="video"
-             library="default.py">
-    <provides>video</provides>
-  </extension>
-  <extension point="xbmc.addon.metadata">
-    <summary>Смотрите online-видео с сайта http://guzei.com/live/tv/</summary>
-    <description>Смотрите online-видео с сайта http://guzei.com/live/tv/</description>
-    <platform>all</platform>
-  </extension>
-</addon>
-
 <addon id="plugin.video.igru.net.ua"
        name="[COLOR FF00FF00]Фильмы ([/COLOR][COLOR FFFFF000]fepcom.net[/COLOR][COLOR FF00FF00])[/COLOR]"
        version="1.1.5"
@@ -670,20 +614,6 @@ Paypal: напишите на kit500.development at gmail dot com</description>
     </extension>
 </addon>
 
-<addon id="plugin.video.kiwi.kz" name="Kiwi.kz" version="1.0.1" provider-name="HD-Lab Team">
-  <requires>
-    <import addon="xbmc.python" version="2.1.0"/>
-  </requires>
-	<extension point="xbmc.python.pluginsource" provides="video, audio" library="default.py">
-		<provides>video audio</provides>
-	</extension>
-  <extension point="xbmc.addon.metadata">
-    <summary>Kiwi.kz - видео в Казахстане</summary>
-	<description>Kiwi.kz - видео-сервис в Казахстане. Видео-портал, позволяющий вам бесплатно просматривать самое новое, популярное и интересное видео в различных категориях. Загружайте свое видео, просматривайте видео, транслируйте и смотрите видео онлайн.</description>
-    <platform>all</platform>
-  </extension>
-</addon>
-
 <addon id="plugin.video.megogo"
 	   name="MEGOGO.NET"
 	   version="1.1.9"
@@ -731,16 +661,6 @@ Paypal: напишите на kit500.development at gmail dot com</description>
   </extension>
 </addon>
 
-<addon id="plugin.video.muzunga.tv" name="Muzunga.TV" version="1.0.3" provider-name="Muzunga.TV">
-  <requires><import addon="xbmc.python" version="2.1.0"/></requires>
-  <extension point="xbmc.python.pluginsource" provides="video" library="default.py"><provides>video</provides></extension>
-  <extension point="xbmc.addon.metadata">
-    <summary>Фильмы, сериалы и телевидение в HD качестве онлайн</summary>
-    <description>Ресурс Muzunga.TV является общедоступным для всех зарегистрированных пользователей и осуществляет свою деятельность с соблюдением действующего законодательства Украины и на основании договора и лицензии на право вещания ДП "УААСП" КТ-3554 от 01.02.2011, обеспечивающим выплаты вознаграждений по авторским и смежным правам.</description>
-    <platform>all</platform>
-  </extension>
-</addon>
-
 <addon id="plugin.video.my-hit.ru"
        name="[COLOR FF00FF00]Кино портал ([/COLOR][COLOR FFFFF000]my-hit.org[/COLOR][COLOR FF00FF00])[/COLOR]"
        version="1.2.5"
@@ -758,18 +678,6 @@ Paypal: напишите на kit500.development at gmail dot com</description>
     <description>Фильмы онлайн, наш кино портал.</description>
     <platform>all</platform>
     <website>http://xbmc.ru/forum/showthread.php?t=1415</website>
-  </extension>
-</addon>
-
-<addon id="plugin.video.myvi.ru" name="МУВИ" version="1.0.2" provider-name="Myvi">
-  <requires><import addon="xbmc.python" version="2.1.0"/></requires>
-  <extension point="xbmc.python.pluginsource" provides="video" library="default.py"><provides>video</provides></extension>
-  <extension point="xbmc.addon.metadata">
-    <summary>Муви.ру - Только лучшие ролики сети!</summary>
-    <description>Это бесплатный сервис для размещения, хранения и просмотра видеофайлов.
-Активное пользовательское сообщество поддерживается социальной сетью сайта с такими функциями, как оценка видео других авторов, участие в обсуждениях, объединение в сообщества по интересам.
-Автоматическая система учета пользовательских интересов (мы называем ее ласково «Моя прелесть») учитывает интересы посетителей, позволяя таргетировать контент под каждого пользователя. Фильтрация контента «Муви» осуществляется самими пользователями, что позволяет в автоматическом режиме отображать на сайте только самые интересные для аудитории ролики.</description>
-    <platform>all</platform>
   </extension>
 </addon>
 
@@ -980,39 +888,6 @@ Paypal: напишите на kit500.development at gmail dot com</description>
         <description>Тестирование TorrentStream</description>
         <platform>all</platform>
     </extension>
-</addon>
-
-<addon id="plugin.video.ts-tv.ru"
-       name="TS-TV.RU"
-       version="1.0.7"
-       provider-name="HD-Lab Team">
-  <requires>
-    <import addon="xbmc.python" version="2.1.0"/>
-  </requires>
-  <extension point="xbmc.python.pluginsource"
-             provides="video"
-             library="default.py">
-    <provides>video</provides>
-  </extension>
-  <extension point="xbmc.addon.metadata">
-    <summary>Телеканалы сайта http://ts-tv.ru/</summary>
-    <description>Первое Альтернативное Концептуальное Телевидение "ТВОЙ СТРОЙ ТВ", Многоканальное, Круглосуточное.</description>
-    <platform>all</platform>
-  </extension>
-</addon>
-
-<addon id="plugin.video.turbofilm.tv" name="Turbofilm.TV" version="1.0.7" provider-name="HD-Lab Team">
-	<requires>
-		<import addon="xbmc.python" version="2.1.0"/>
-	</requires>
-	<extension point="xbmc.python.pluginsource" provides="video" library="default.py">
-		<provides>video</provides>
-	</extension>
-	<extension point="xbmc.addon.metadata">
-		<summary>Смотрите видео с сайта http://turbofilm.tv/</summary>
-		<description>Смотрите видео с сайта http://turbofilm.tv/</description>
-		<platform>all</platform>
-	</extension>
 </addon>
 
 <addon id="plugin.video.tushkan.net"

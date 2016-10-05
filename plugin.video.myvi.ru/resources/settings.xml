@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<settings>
-	<setting id="size"     type="enum" label="Предпочитаемый размер списков" values="10|25|30|50|100" default="2" />
-	<setting id="timeout"  type="enum" label="Время ожидания ответа сервера (сек.)" values="5|10|15|20|30|45|60|100" default="2" />
-</settings>
