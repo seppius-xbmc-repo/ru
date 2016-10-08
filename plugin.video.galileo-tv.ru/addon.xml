@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addon id="plugin.video.galileo-tv.ru"
-       name="[COLOR FF00FF00]Галилео ([/COLOR][COLOR FFFFF000]galileo-tv.ru[/COLOR][COLOR FF00FF00])[/COLOR]"
+       name="Галилео galileo-tv.ru"
        version="1.0.2"
        provider-name="Silen">
   <requires>

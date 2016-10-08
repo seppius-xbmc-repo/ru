@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addon id="repository.search.db"
 		name="XBMC.ru search db"
-		version="1.1.15"
+		version="1.1.16"
 		provider-name="bigbax">
   <requires>
     <import addon="xbmc.addon" version="12.0.0"/>
@@ -18,6 +18,12 @@
 			<info compressed="false">https://raw.githubusercontent.com/DmitrySandalov/xbmc-repo/master/addons/addons.xml</info>
                         <checksum>https://raw.githubusercontent.com/DmitrySandalov/xbmc-repo/master/addons/addons.xml.md5</checksum>
                         <datadir zip="true">https://github.com/DmitrySandalov/xbmc-repo/raw/master/repo/zip</datadir>
+			<hashes>true</hashes>
+		</dir>
+		<dir minversion="13.0.0">
+			<info compressed="false">https://github.com/usersru/ruka/raw/master/addons.xml</info>
+		        <checksum>https://github.com/usersru/ruka/raw/master/addons.xml.md5</checksum>
+		        <datadir zip="true">https://github.com/usersru/ruka/raw/master/</datadir>
 			<hashes>true</hashes>
 		</dir>
 		<dir minversion="13.0.0">

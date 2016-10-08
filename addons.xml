@@ -242,25 +242,6 @@ Audio sources are
   </extension>
 </addon>
 
-<addon id="plugin.video.all-hit"
-       name="all-hit"
-       version="0.0.1"
-       provider-name="[COLOR FFFFF000]Denis [/COLOR][COLOR FF00FF00]Fomin[/COLOR]">
-  <requires>
-    <import addon="xbmc.python" version="2.1.0"/>
-  </requires>
-  <extension point="xbmc.python.pluginsource" provides="video" library="addon.py">
-    <provides>video</provides>
-  </extension>
-  <extension point="xbmc.addon.metadata">
-    <summary>all-hit.tv</summary>
-    <description>
-
-    </description>
-    <platform>all</platform>
-  </extension>
-</addon>
-
 <addon id="plugin.video.arjlover.net"
        name="arjlover.net"
        version="0.0.2"
@@ -383,7 +364,7 @@ Paypal: напишите на kit500.development at gmail dot com</description>
 
 <addon id="plugin.video.cinema.mosfilm.ru"
 
-	name="[COLOR FF00FF00]Мосфильм ([/COLOR][COLOR FFFFF000]cinema.mosfilm.ru[/COLOR][COLOR FF00FF00])[/COLOR]"
+	name="Мосфильм cinema.mosfilm.ru"
 
 	version="1.1.3"
 
@@ -400,23 +381,6 @@ Paypal: напишите на kit500.development at gmail dot com</description>
   <extension point="xbmc.addon.metadata">
     <summary>Мосфильм (cinema.mosfilm.ru)</summary>
     <description>Иинтернет-кинотеатр ФГУП «Киноконцерн «Мосфильм» (cinema.mosfilm.ru).</description>
-    <platform>all</platform>
-  </extension>
-</addon>
-
-<addon id="plugin.video.dream-film"
-       name="[COLOR FFFFF000]Dream[/COLOR][COLOR FF00FF00]-film[/COLOR]"
-       version="0.0.5"
-       provider-name="[COLOR FFFFF000]Denis [/COLOR][COLOR FF00FF00]Fomin[/COLOR]">
-  <requires>
-    <import addon="xbmc.python" version="2.1.0"/>
-  </requires>
-  <extension point="xbmc.python.pluginsource" provides="video" library="addon.py">
-    <provides>video</provides>
-  </extension>
-  <extension point="xbmc.addon.metadata">
-    <summary>Dream-film.net</summary>
-    <description>Cмотреть фильмы, сериалы онлайн, в онлайн кинотеатре Dream-film.net</description>
     <platform>all</platform>
   </extension>
 </addon>
@@ -447,7 +411,7 @@ Paypal: напишите на kit500.development at gmail dot com</description>
 </addon>
 
 <addon id="plugin.video.galileo-tv.ru"
-       name="[COLOR FF00FF00]Галилео ([/COLOR][COLOR FFFFF000]galileo-tv.ru[/COLOR][COLOR FF00FF00])[/COLOR]"
+       name="Галилео galileo-tv.ru"
        version="1.0.2"
        provider-name="Silen">
   <requires>
@@ -472,7 +436,7 @@ Paypal: напишите на kit500.development at gmail dot com</description>
 </addon>
 
 <addon id="plugin.video.igru.net.ua"
-       name="[COLOR FF00FF00]Фильмы ([/COLOR][COLOR FFFFF000]fepcom.net[/COLOR][COLOR FF00FF00])[/COLOR]"
+       name="Фильмы fepcom.net"
        version="1.1.5"
        provider-name="Silen">
   <requires>
@@ -499,27 +463,6 @@ Paypal: напишите на kit500.development at gmail dot com</description>
     <description>Приложение интернет-кинотеатра ivi.ru предоставляет доступ к самой большой бесплатной коллекции лицензионного видео российского интернета.
 С помощью приложения ivi.ru вы можете смотреть фильмы, сериалы, ТВ-программы, мультфильмы в отличном качестве бесплатно и легально.
 Обращаем ваше внимание, что воспроизведение видео возможно только на территории Российской Федерации</description>
-    <platform>all</platform>
-  </extension>
-</addon>
-
-<addon id="plugin.video.kino-dom"
-       name="[COLOR=FFCB00FF]Kino[/COLOR][COLOR=FFFFF000]-Dom.org[/COLOR]"
-       version="0.0.5"
-       provider-name="Nesterov Alexandr">
-  <requires>
-    <import addon="xbmc.python" version="2.1.0"/>
-  </requires>
-  <extension point="xbmc.python.pluginsource" provides="video" library="addon.py">
-    <provides>video</provides>
-  </extension>
-  <extension point="xbmc.addon.metadata">
-    <summary>Kino-Dom.org</summary>
-    <description>
-    Сериалы с сайта Kino-Dom.org
-    </description>
-    <source>https://github.com/alex19pov31/plugin.video.kino-dom.git</source>
-    <email>alex19pov31@gmail.com</email>
     <platform>all</platform>
   </extension>
 </addon>
@@ -555,45 +498,6 @@ Paypal: напишите на kit500.development at gmail dot com</description>
         <description>Scrap trailers from http://kino-govno.com russian website</description>
 	<platform>all</platform>
     </extension>
-</addon>
-
-<addon id="plugin.video.kinolist"
-       name="Kinolist"
-       version="0.0.1"
-       provider-name="[COLOR FFFFF000]Denis [/COLOR][COLOR FF00FF00]Fomin[/COLOR]">
-  <requires>
-    <import addon="xbmc.python" version="2.1.0"/>
-  </requires>
-  <extension point="xbmc.python.pluginsource" provides="video" library="addon.py">
-    <provides>video</provides>
-  </extension>
-  <extension point="xbmc.addon.metadata">
-    <summary>kinolist</summary>
-    <description>
-
-    </description>
-    <platform>all</platform>
-  </extension>
-</addon>
-
-<addon id="plugin.video.kinolist.net"
-       name="[COLOR FFFFFFFF]Kinolist.net[/COLOR]"
-       version="0.0.2"
-       provider-name="XZ">
-  <requires>
-    <import addon="xbmc.python" version="2.1.0"/>
-    <import addon="script.module.beautifulsoup"/>
-  </requires>
-  <extension point="xbmc.python.pluginsource" provides="video" library="addon.py">
-    <provides>video</provides>
-  </extension>
-  <extension point="xbmc.addon.metadata">
-    <summary>Kinolist.net</summary>
-    <description>
-Плагин для просмотра видео сайта Kinolist.net
-    </description>
-    <platform>all</platform>
-  </extension>
 </addon>
 
 <addon id="plugin.video.kinoylei.ru"
@@ -662,7 +566,7 @@ Paypal: напишите на kit500.development at gmail dot com</description>
 </addon>
 
 <addon id="plugin.video.my-hit.ru"
-       name="[COLOR FF00FF00]Кино портал ([/COLOR][COLOR FFFFF000]my-hit.org[/COLOR][COLOR FF00FF00])[/COLOR]"
+       name="Кино портал my-hit.org"
        version="1.2.5"
        provider-name="Silen">
   <requires>
@@ -1243,7 +1147,7 @@ Paypal: напишите на kit500.development at gmail dot com</description>
 
 <addon id="repository.search.db"
 		name="XBMC.ru search db"
-		version="1.1.15"
+		version="1.1.16"
 		provider-name="bigbax">
   <requires>
     <import addon="xbmc.addon" version="12.0.0"/>
@@ -1260,6 +1164,12 @@ Paypal: напишите на kit500.development at gmail dot com</description>
 			<info compressed="false">https://raw.githubusercontent.com/DmitrySandalov/xbmc-repo/master/addons/addons.xml</info>
                         <checksum>https://raw.githubusercontent.com/DmitrySandalov/xbmc-repo/master/addons/addons.xml.md5</checksum>
                         <datadir zip="true">https://github.com/DmitrySandalov/xbmc-repo/raw/master/repo/zip</datadir>
+			<hashes>true</hashes>
+		</dir>
+		<dir minversion="13.0.0">
+			<info compressed="false">https://github.com/usersru/ruka/raw/master/addons.xml</info>
+		        <checksum>https://github.com/usersru/ruka/raw/master/addons.xml.md5</checksum>
+		        <datadir zip="true">https://github.com/usersru/ruka/raw/master/</datadir>
 			<hashes>true</hashes>
 		</dir>
 		<dir minversion="13.0.0">
