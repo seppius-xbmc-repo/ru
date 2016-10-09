@@ -698,7 +698,7 @@ Paypal: напишите на kit500.development at gmail dot com</description>
 </addon>
 
 <addon id="plugin.video.showday.tv"
-       name="[COLOR FF00FF00]Сериалы ([/COLOR][COLOR FFFFF000]showday.tv[/COLOR][COLOR FF00FF00])[/COLOR]"
+       name="Сериалы showday.tv"
        version="1.0.2"
        provider-name="Silen">
   <requires>
