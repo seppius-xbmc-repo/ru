@@ -369,8 +369,6 @@ def read_fav_data(favoritesUrl):
         if re.search('audio', href):
             isMusic = "yes"
 
-        #get_material_details(href)
-
         favorites.append({
             'href': href,
             'title': strutils.html_entities_decode(title),
@@ -381,71 +379,6 @@ def read_fav_data(favoritesUrl):
         })
 
     return favorites
-
-
-def get_material_details(url):
-    data = {}
-    cache_file_name = '%s.json' % hashlib.md5(url).hexdigest()
-    cache_file_path = os.path.join(cache_path, cache_file_name)
-
-    if xbmcvfs.exists(cache_file_path):
-        fp = open(cache_file_path, 'r')
-        data = json.load(fp)
-        fp.close()
-
-        return data
-
-    http = client.GET(url, httpSiteUrl)
-    if http is None:
-        return data
-
-    cover_regexp = re.compile("url\s*\(([^\)]+)")
-
-    beautifulSoup = BeautifulSoup(http)
-
-    info = beautifulSoup.find('div', 'item-info')
-    genre_element_container = info.findAll('span', {"itemprop" : "genre"})
-    genres = []
-    for genre_element in genre_element_container:
-        genres.append(strutils.fix_string(genre_element.find('span').string.strip()))
-
-    title = strutils.fix_string(beautifulSoup.find('div', 'b-tab-item__title-inner').find('span').string)
-    original_title = strutils.html_entities_decode(beautifulSoup.find('div', 'b-tab-item__title-origin').string)
-    description = beautifulSoup.find('p', 'item-decription').string.encode('utf-8')
-
-    poster = fs_ua.poster(client.get_full_url(beautifulSoup.find('div', 'poster-main').find('img')['src']))
-
-    images_container = beautifulSoup.find('div', 'b-tab-item__screens')
-    image_elements = images_container.findAll('a')
-    images = []
-    for image_element in image_elements:
-        images.append(
-            client.get_full_url(
-                fs_ua.poster(
-                    cover_regexp.findall(str(image_element['style']).strip())[0]
-                )
-            )
-        )
-
-    rating_positive = beautifulSoup.find('div', 'm-tab-item__vote-value_type_yes').string.strip()
-    rating_negative = beautifulSoup.find('div', 'm-tab-item__vote-value_type_no').string.strip()
-
-    data = {
-        'title': title.strip(),
-        'original_title': original_title.strip(),
-        'poster': poster,
-        'description': description,
-        'images': images,
-        'genres': genres,
-        'rating_positive': rating_positive,
-        'rating_negative': rating_negative
-    }
-
-    fp = open(cache_file_path, 'w')
-    json.dump(data, fp)
-    fp.close()
-
-    return data
 
 
 def readcategory(params):
@@ -737,8 +670,8 @@ def add_directory_item(linkItem, isFolder, playLink, playLinkClass, cover, folde
 
     href = linkItem['href']
     try:
-        folder_data = json.loads(strutils.fix_broken_json(linkItem['rel']))
-        folder = folder_data['parent_id']
+        folderRegexp = re.compile("parent_id:\s*'([^']+)")
+        folder = folderRegexp.findall(linkItem['rel'])[0]
     except:
         pass
 
