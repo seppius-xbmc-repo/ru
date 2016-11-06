@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addon id="repository.search.db"
 		name="XBMC.ru search db"
-		version="1.1.18"
+		version="1.1.19"
 		provider-name="bigbax">
   <requires>
     <import addon="xbmc.addon" version="12.0.0"/>
@@ -24,7 +24,7 @@
 			<info compressed="false">https://github.com/usersru/ruka/raw/master/addons.xml</info>
 		        <checksum>https://github.com/usersru/ruka/raw/master/addons.xml.md5</checksum>
 		        <datadir zip="true">https://github.com/usersru/ruka/raw/master/</datadir>
-			<hashes>true</hashes>
+			<hashes>false</hashes>
 		</dir>
 		<dir minversion="13.0.0">
 			<info compressed="false">https://raw.github.com/mrstealth/xbmc-gotham/master/addons.xml</info>
@@ -32,17 +32,17 @@
 			<datadir zip="true">https://raw.github.com/mrstealth/xbmc-gotham/master/zip/</datadir>
 			<hashes>true</hashes>
 		</dir>
-		<dir minversion="13.0.0">
+		<dir minversion="16.0.0">
 			<info compressed="false">https://raw.githubusercontent.com/nkvoronov/repository.yellowdragon/jarvis/repo/addons.xml</info>
 			<checksum>https://raw.githubusercontent.com/nkvoronov/repository.yellowdragon/jarvis/repo/addons.xml.md5</checksum>
 			<datadir zip="true">https://raw.githubusercontent.com/nkvoronov/repository.yellowdragon/jarvis/repo/</datadir>
-			<hashes>true</hashes>
+			<hashes>false</hashes>
 		</dir>
-		<dir minversion="13.0.0">
+		<dir minversion="16.9.0">
 			<info compressed="false">https://raw.githubusercontent.com/nkvoronov/repository.yellowdragon/krypton/repo/addons.xml</info>
 			<checksum>https://raw.githubusercontent.com/nkvoronov/repository.yellowdragon/krypton/repo/addons.xml.md5</checksum>
 			<datadir zip="true">https://raw.githubusercontent.com/nkvoronov/repository.yellowdragon/krypton/repo/</datadir>
-			<hashes>true</hashes>
+			<hashes>false</hashes>
 		</dir>
 		<dir minversion="14.0.0">
 			<info compressed="false">https://raw.githubusercontent.com/anteo/xbmc.repository/master/addons.xml</info>
@@ -72,7 +72,7 @@
 			<info compressed="false">http://api.bitbucket.org/1.0/repositories/DiMartino/myshows.me-kodi-repo/raw/default/addons.xml</info>
 			<checksum>http://api.bitbucket.org/1.0/repositories/DiMartino/myshows.me-kodi-repo/raw/default/addons.xml.md5</checksum>
 			<datadir zip="true">http://api.bitbucket.org/1.0/repositories/DiMartino/myshows.me-kodi-repo/raw/default/repo/</datadir>
-			<hashes>true</hashes>
+			<hashes>false</hashes>
 		</dir>
 	        <dir minversion="14.0.0">
 			<info compressed="false">https://github.com/Eugene-Bond/xmbc-plugins/raw/master/addons.xml</info>
@@ -90,7 +90,7 @@
 			<info compressed="false">https://raw.githubusercontent.com/xbmc-addon/repository.hal9000/master/addons.xml</info>
                         <checksum>https://raw.githubusercontent.com/xbmc-addon/repository.hal9000/master/addons.xml.md5</checksum>
                         <datadir zip="true">https://raw.githubusercontent.com/xbmc-addon/repository.hal9000/master/repo</datadir>
-			<hashes>true</hashes>
+			<hashes>false</hashes>
 		</dir>
 		<dir minversion="14.0.0">
 			<info compressed="false">https://github.com/tdw1980/tdw/raw/master/addons.xml</info>
@@ -114,7 +114,7 @@
 			<info compressed="false">https://github.com/Silhouette2022/kodi/raw/master/addons.xml</info>
 			<checksum>https://github.com/Silhouette2022/kodi/raw/master/addons.xml.md5</checksum>
 			<datadir zip="true">https://github.com/Silhouette2022/kodi/raw/master/repo</datadir>
-			<hashes>true</hashes>
+			<hashes>false</hashes>
 		</dir>
 		<dir minversion="14.0.0">
 			<info compressed="false">https://github.com/taifxx/xxtrep/raw/master/addons.xml</info>
@@ -132,7 +132,7 @@
 			<info compressed="false">http://vadyur.github.io/kodi_repo/repo/addons.xml</info>
 			<checksum>http://vadyur.github.io/kodi_repo/repo/addons.xml.md5</checksum>
 			<datadir zip="true">http://vadyur.github.io/kodi_repo/repo</datadir>
-			<hashes>true</hashes>
+			<hashes>false</hashes>
 		</dir>
 		<dir minversion="14.0.0">
 			<info compressed="false">http://romanvm.github.io/kodi_repo/repo/addons.xml</info>
