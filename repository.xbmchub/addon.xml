@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="repository.xbmchub" name="TVADDONS.ag Addon Repository" version="1.0.6" provider-name="tvaddons.ag">
+	<extension point="xbmc.addon.repository" name="TVADDONS.ag Addon Repository">
+	<dir>
+		<info compressed="false">https://offshoregit.com/tvaresolvers/tva-common-repository/raw/master/addons.xml</info>
+		<checksum>https://offshoregit.com/tvaresolvers/tva-common-repository/raw/master/addons.xml.md5</checksum>
+		<datadir zip="true">https://offshoregit.com/tvaresolvers/tva-common-repository/raw/master/zips/</datadir>
+	</dir>
+	<dir>
+		<info compressed="false">https://offshoregit.com/xbmchub/xbmc-hub-repo/raw/master/addons.xml</info>
+		<checksum>https://offshoregit.com/xbmchub/xbmc-hub-repo/raw/master/addons.xml.md5</checksum>
+		<datadir zip="true">https://offshoregit.com/xbmchub/xbmc-hub-repo/raw/master/</datadir>
+	</dir>	
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary>The Best Third Party Addons for Kodi, Brought to you by TVADDONS.ag</summary>
+		<description>The Best Third Party Addons for Kodi, Brought to you by TVADDONS.ag</description>
+		<platform>all</platform>
+                <forum>http://forums.tvaddons.ag/forums/113-TVADDONS-AG-ADDON-REPOSITORY</forum>
+                <website>http://www.tvaddons.ag/</website>
+	</extension>
+</addon>
+
