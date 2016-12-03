@@ -699,7 +699,7 @@ Paypal: напишите на kit500.development at gmail dot com</description>
 
 <addon id="plugin.video.showday.tv"
        name="Сериалы showday.tv"
-       version="1.0.3"
+       version="1.0.4"
        provider-name="Silen">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
