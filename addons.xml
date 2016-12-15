@@ -204,8 +204,9 @@ Audio sources are
 
 <addon id="plugin.video.175h.net"
        name="175h.net"
-       version="0.3"
+       version="0.4"
        provider-name="x86demon">
+    <broken>deprecated</broken>
     <requires>
         <import addon="xbmc.python" version="2.1.0"/>
         <import addon="script.module.beautifulsoup"/>
@@ -387,8 +388,9 @@ Paypal: напишите на kit500.development at gmail dot com</description>
 
 <addon id="plugin.video.fs.ua"
        name="Fs.ua"
-       version="1.9.36"
+       version="1.9.42"
        provider-name="x86demon">
+    <broken>deprecated</broken>
     <requires>
         <import addon="xbmc.python" version="2.1.0"/>
         <import addon="script.module.beautifulsoup"/>
