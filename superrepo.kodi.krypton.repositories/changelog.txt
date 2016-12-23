@@ -1,0 +1,12 @@
+[B]december 24th 2014[/B]
+0.5.206: XBMC > Kodi
+
+[B]july 23th 2013[/B]
+0.3.1: Unicode fix
+0.3.0: Release of XRGv3
+
+[B]february 23th 2013[/B]
+0.2.1: Added translations
+
+[B]february 14th 2013[/B]
+0.2.0: Release of XRGv2
