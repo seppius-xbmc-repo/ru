@@ -646,6 +646,22 @@ Paypal: напишите на kit500.development at gmail dot com</description>
   </extension>
 </addon>
 
+<addon id = "plugin.video.russia.tv.a" name = "Russia.tv.a" version = "2.0.0" provider-name = "kit500">
+  <requires>
+    <import addon = "xbmc.python" version = "2.1.0"/>
+    <import addon = "script.module.beautifulsoup4" version = "4.3.2"/>
+  </requires>
+  <extension point = "xbmc.python.pluginsource" provides = "video" library = "default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point = "xbmc.addon.metadata">
+    <summary>Просмотр видео с сайтов russia.tv, russia2.tv, tvkultura.ru телеканалов ВГТРК Россия 1, Россия 2, Культура</summary>
+    <description>Просмотр видео с сайтов russia.tv, russia2.tv, tvkultura.ru телеканалов ВГТРК Россия 1, Россия 2, Культура</description>
+    <platform>all</platform>
+    <forum>http://xbmc.ru/forum/showthread.php?t=4274</forum>
+  </extension>
+</addon>
+
 <addon id="plugin.video.serialonline.net"
        name="SerialOnline.net"
        version="0.1.0"
