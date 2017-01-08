@@ -2,7 +2,7 @@
 <addons>
 <addon id="metadata.kinopoisk.ru"
        name="KinoPoisk"
-       version="1.0.75.1">
+       version="1.0.75.3">
   <requires>
     <import addon="xbmc.metadata" version="1.0"/>
     <import addon="metadata.common.themoviedb.org" version="1.0.3"/>

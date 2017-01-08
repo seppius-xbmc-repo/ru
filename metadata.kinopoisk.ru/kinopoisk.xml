@@ -452,11 +452,11 @@
 				<expression/>
 			</RegExp>
 			<!-- выбираем по названию фильма -->
-			<RegExp input="$$1" output="&lt;id&gt;\1&lt;/id&gt;&lt;title&gt;\2&lt;/title&gt;&lt;year&gt;\3&lt;/year&gt;" dest="3">
-				<expression noclean="1" repeat="yes">&lt;a href="/title/(tt\d+)/[^"]*?"[^&gt;]*&gt;([^&lt;]+)&lt;/a&gt;[^"]*?"lister-item-year[^&gt;]*?&gt;\((\d+)\)&lt;/span&gt;</expression>
+			<RegExp input="$$1" output="&lt;id&gt;\1&lt;/id&gt;&lt;title&gt;\2&lt;/title&gt;&lt;year&gt;\4&lt;/year&gt;" dest="3">
+				<expression noclean="1" repeat="yes">&lt;a href="/title/(tt\d+)/[^"]*?"[^&gt;]*?&gt;([^&lt;]+)&lt;/a&gt;[^"]*?"lister-item-year[^&gt;]*?&gt;(\([XVI]+\))?\s*?\((\d+)\)&lt;/span&gt;</expression>
 			</RegExp>
 			<RegExp input="$$3" output="\1" dest="7">
-				<expression>&lt;id&gt;(tt\d+)&lt;/id&gt;&lt;title&gt;$$19&lt;/title&gt;&lt;year&gt;$$18&lt;/year&gt;</expression>
+				<expression>&lt;id&gt;(tt\d+)&lt;/id&gt;&lt;title&gt;($$11|$$19)&lt;/title&gt;&lt;year&gt;$$18&lt;/year&gt;</expression>
 			</RegExp>
 			<!-- выбираем первое если нет такого названия -->
 			<RegExp input="$$7" output="$$6" dest="7">
@@ -482,9 +482,9 @@
 					<expression/>
 				</RegExp>
 				<!--
-				<RegExp input="$$20" output="&lt;url function=&quot;GetIMDBIDSecondTry&quot;&gt;http://www.imdb.com/search/title?num_votes=\1,&amp;release_date=\2,\2&amp;title=\3&lt;/url&gt;" dest="6">
-				-->
 				<RegExp input="$$20" output="&lt;url function=&quot;GetIMDBIDSecondTry&quot;&gt;http://www.imdb.com/search/title?release_date=\2&title=\3&title_type=feature,short&lt;/url&gt;" dest="6">
+				-->
+				<RegExp input="$$20" output="&lt;url function=&quot;GetIMDBIDSecondTry&quot;&gt;http://www.imdb.com/search/title?num_votes=\1,&amp;release_date=\2,\2&amp;title=\3&amp;title_type=feature,short&lt;/url&gt;" dest="6">
 					<expression encode="3">(\d+):::(\d+):::(.+)</expression>
 				</RegExp>
 				<expression>^$</expression>
@@ -510,11 +510,11 @@
 				<expression/>
 			</RegExp>
 			<!-- выбираем по названию фильма -->
-			<RegExp input="$$1" output="&lt;id&gt;\1&lt;/id&gt;&lt;title&gt;\2&lt;/title&gt;&lt;year&gt;\3&lt;/year&gt;" dest="3">
-				<expression noclean="1" repeat="yes">&lt;a href="/title/(tt\d+)/[^"]*?"&gt;([^&lt;]+)&lt;/a&gt;[^"]*?"lister-item-year[^&gt;]*?&gt;\((\d+)\)&lt;/span&gt;</expression>
+			<RegExp input="$$1" output="&lt;id&gt;\1&lt;/id&gt;&lt;title&gt;\2&lt;/title&gt;&lt;year&gt;\4&lt;/year&gt;" dest="3">
+				<expression noclean="1" repeat="yes">&lt;a href="/title/(tt\d+)/[^"]*?"[^&gt;]*?&gt;([^&lt;]+)&lt;/a&gt;[^"]*?"lister-item-year[^&gt;]*?&gt;(\([XVI]+\))?\s*?\((\d+)\)&lt;/span&gt;</expression>
 			</RegExp>
 			<RegExp input="$$3" output="\1" dest="7">
-				<expression>&lt;id&gt;(tt\d+)&lt;/id&gt;&lt;title&gt;$$19&lt;/title&gt;&lt;year&gt;$$18&lt;/year&gt;</expression>
+				<expression>&lt;id&gt;(tt\d+)&lt;/id&gt;&lt;title&gt;($$11|$$19)&lt;/title&gt;&lt;year&gt;$$18&lt;/year&gt;</expression>
 			</RegExp>
 			<!-- выбираем первое если нет такого названия -->
 			<RegExp input="$$7" output="$$6" dest="7">
@@ -530,7 +530,7 @@
 				<expression>(tt\d+)</expression>
 			</RegExp>
 			<RegExp input="$$7" output="$$6" dest="2">
-				<RegExp input="none" output="&lt;chain function=&quot;GetIMDBIDGoogleFallback&quot;&gt;XBMC need some data&lt;/chain&gt;" dest="6">
+				<RegExp input="none" output="&lt;chain function=&quot;GetIMDBIDAPIFallback&quot;&gt;XBMC need some data&lt;/chain&gt;" dest="6">
 					<expression />
 				</RegExp>
 				<expression>^$</expression>
@@ -538,11 +538,11 @@
 			<expression noclean="1" />
 		</RegExp>
 	</GetIMDBIDSecondTry>
-	<GetIMDBIDGoogleFallback clearbuffers="no" dest="4">
+	<GetIMDBIDAPIFallback clearbuffers="no" dest="4">
 		<RegExp input="none" output="" dest="4">
 			<expression/>
 		</RegExp>
-		<RegExp input="$$20" output="&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; standalone=&quot;yes&quot;?&gt;&lt;details&gt;&lt;url function=&quot;GetIMDBIDFromGoogle&quot;&gt;http://ajax.googleapis.com/ajax/services/search/web?v=1.0&amp;q=\3+(\2)+site%3Aimdb.com&lt;/url&gt;&lt;/details&gt;" dest="4">
+		<RegExp input="$$20" output="&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; standalone=&quot;yes&quot;?&gt;&lt;details&gt;&lt;url function=&quot;GetIMDBIDFromAPI&quot;&gt;http://api.tmdb.org/3/search/movie?api_key=f7f51775877e0bb6703520952b3c7840&amp;query=\3&amp;year=\2&lt;/url&gt;&lt;/details&gt;" dest="4">
 			<RegExp conditional="!use_world_premier" input="none" output="$$13" dest="18">
 				<expression/>
 			</RegExp>
@@ -554,8 +554,22 @@
 			</RegExp>
 			<expression noclean="1" encode="3">(\d+):::(\d+):::(.+)</expression>
 		</RegExp>
-	</GetIMDBIDGoogleFallback>
-	<GetIMDBIDFromGoogle clearbuffers="no" dest="4">
+	</GetIMDBIDAPIFallback>
+	<GetIMDBIDFromAPI clearbuffers="no" dest="4">
+		<RegExp input="none" output="" dest="4">
+			<expression/>
+		</RegExp>
+		<RegExp input="none" output="&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; standalone=&quot;yes&quot;?&gt;&lt;details&gt;$$2&lt;/details&gt;" dest="4">
+			<RegExp input="none" output="" dest="2">
+				<expression/>
+			</RegExp>
+			<RegExp input="$$1" output="&lt;url function=&quot;GetIMDBIDFromAPIFinal&quot;&gt;http://api.tmdb.org/3/movie/\1?api_key=f7f51775877e0bb6703520952b3c7840&lt;/url&gt;" dest="2">
+				<expression>&quot;id&quot;:([0-9]*),</expression>
+			</RegExp>
+			<expression/>
+		</RegExp>
+	</GetIMDBIDFromAPI>
+	<GetIMDBIDFromAPIFinal clearbuffers="no" dest="4">
 		<RegExp input="none" output="" dest="4">
 			<expression/>
 		</RegExp>
@@ -564,11 +578,11 @@
 				<expression/>
 			</RegExp>
 			<RegExp input="$$1" output="&lt;chain function=&quot;GetIMDBIDData&quot;&gt;\1&lt;/chain&gt;" dest="2">
-				<expression>http://www.imdb.com/title/(tt\d+)/</expression>
+				<expression>imdb_id":"([^"]*)"</expression>
 			</RegExp>
 			<expression/>
 		</RegExp>
-	</GetIMDBIDFromGoogle>
+	</GetIMDBIDFromAPIFinal>
 	<PrepareGetIMDBID clearbuffers="no" dest="4">
 		<RegExp input="none" output="" dest="4">
 			<expression/>
@@ -596,15 +610,15 @@
 		</RegExp>
 		<RegExp input="$$8" output="&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; standalone=&quot;yes&quot;?&gt;&lt;details&gt;\1&lt;/details&gt;" dest="4">
 			<!--
-			<RegExp conditional="!google_search" input="$$20" output="&lt;url function=&quot;GetIMDBIDFirstTry&quot;&gt;http://www.imdb.com/search/title?num_votes=\1,&amp;release_date=\2,\2&amp;title=\3&lt;/url&gt;" dest="6">
-			-->
 			<RegExp conditional="!google_search" input="$$20" output="&lt;url function=&quot;GetIMDBIDFirstTry&quot;&gt;http://www.imdb.com/search/title?release_date=\2&title=\3&title_type=feature,short&lt;/url&gt;" dest="6">
+			-->
+			<RegExp conditional="!google_search" input="$$20" output="&lt;url function=&quot;GetIMDBIDFirstTry&quot;&gt;http://www.imdb.com/search/title?num_votes=\1,&amp;release_date=\2,\2&amp;title=\3&amp;title_type=feature,short&lt;/url&gt;" dest="6">
 				<expression noclean="1" encode="3">(\d+):::(\d+):::(.+)</expression>
 			</RegExp>
-			<RegExp conditional="google_search" input="$$20" output="&lt;chain function=&quot;GetIMDBIDGoogleFallback&quot;&gt;XBMC need some data&lt;/chain&gt;" dest="6">
+			<RegExp conditional="google_search" input="$$20" output="&lt;chain function=&quot;GetIMDBIDAPIFallback&quot;&gt;XBMC need some data&lt;/chain&gt;" dest="6">
 				<expression noclean="1" encode="3">(\d+):::(\d+):::(.+)</expression>
 			</RegExp>
-			<RegExp input="none" output="&lt;chain function=&quot;GetIMDBIDGoogleFallback&quot;&gt;XBMC need some data&lt;/chain&gt;" dest="7">
+			<RegExp input="none" output="&lt;chain function=&quot;GetIMDBIDAPIFallback&quot;&gt;XBMC need some data&lt;/chain&gt;" dest="7">
 				<expression/>
 			</RegExp>
 			<RegExp input="$$17" output="$$7" dest="8">
