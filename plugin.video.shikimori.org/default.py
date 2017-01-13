@@ -109,7 +109,7 @@ def Search():
     kbd.doModal()
     if kbd.isConfirmed():
         SearchStr = kbd.getText()
-        url = 'https://play.shikimori.org/animes/search/' + SearchStr.decode('utf-8')
+        url = url_protocol + '//play.shikimori.org/animes/search/' + SearchStr.decode('utf-8')
         html = GetHTML(url.encode('utf-8'))
         soup = bs(html, "html.parser")
         content = soup.find_all('article', attrs={'class': 'c-anime'})
