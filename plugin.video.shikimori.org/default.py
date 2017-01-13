@@ -64,7 +64,7 @@ def Main(main_url):
         submenu = submenu.find_all('a')
         
         for el in submenu:
-            addDir(el['title'], 'https:' + el['href'], iconImg=plugin_icon)
+            addDir(el['title'], url_protocol + el['href'], iconImg=plugin_icon)
 
     for num in content:
         block = num.find('', attrs={'class': 'cover'})
@@ -82,12 +82,12 @@ def Main(main_url):
             url = block['data-href']
         else:
             url = block['href']
-        url = 'https:' + url
+        url = url_protocol + url
         image = num.find('meta', attrs={'itemprop': 'image'})['content']
         addDir(title, url, iconImg=image, mode="FILMS")
     next = soup.find('a', {'class': 'next'})
     if next :
-        addDir('---Следующая страница---', 'https:' + next['href'], iconImg=plugin_icon)
+        addDir('---Следующая страница---', url_protocol + next['href'], iconImg=plugin_icon)
 
 def addDir(title, url, iconImg="DefaultVideo.png", mode="", inbookmarks=False):
     sys_url = sys.argv[0] + '?url=' + urllib.quote_plus(url) + '&mode=' + urllib.quote_plus(str(mode))
@@ -114,8 +114,13 @@ def Search():
         soup = bs(html, "html.parser")
         content = soup.find_all('article', attrs={'class': 'c-anime'})
         for num in content:
-            title = num.find('a').contents[0]
-            url = site_url + num.find('a')['href']
+            title = num.find('span', attrs={'class': 'title'})
+            if title: title = title.text
+            title_en = num.find('span', attrs={'class': 'name-en'})
+            if title_en: title = title_en.text
+            title_ru = num.find('span', attrs={'class': 'name-ru'})
+            if title_ru: title += " / " + title_ru['data-text']
+            url = url_protocol + num.find('a')['href']
             image = num.find('meta', attrs={'itemprop': 'image'})['content']
             addDir(title, url, iconImg=image, mode="FILMS")
     else:
@@ -124,13 +129,13 @@ def Search():
 def GetFilmsList(url_main) :
     html = GetHTML(url_main)
     soup = bs(html, "html.parser")
-    content = soup.find('div', attrs={'class': 'c-episodes'})
-    content = content.find_all('div', attrs={'class': 'video-variant'})
+    content = soup.find('div', attrs={'class': 'c-anime_video_episodes'})
+    content = content.find_all('div', attrs={'class': 'b-video_variant'})
     for num in content:
         lnk = num.find('a')
         title = 'Эпизод ' + lnk.find('span', attrs={'class': 'episode-num'}).text
         # img = num.find('img')['src']
-        url = 'https:' + lnk['href']
+        url = url_protocol + lnk['href']
         addDir(title, url, iconImg="DefaultVideo.png", mode="VOICES")
 
 def GetVKUrl(html):
@@ -218,7 +223,7 @@ def PlayUrl(url):
         url = GetSibnetUrl(html)
     else :
         Notificator('ERROR', 'Not supported player', 3600)
-        return None  
+        return None
     i = xbmcgui.ListItem(path=url)
     xbmcplugin.setResolvedUrl(h, True, i)
 
@@ -226,16 +231,20 @@ def GetVoicesList(url):
     http = GetHTML(url)
     soup = bs(http, "html.parser")
     content = soup.find('div', attrs={'class': 'c-videos'})
-    content = content.find_all('div', attrs={'class': 'video-variant'})
+    content = content.find_all('div', attrs={'class': 'b-video_variant'})
     for voice in content:
         lnk = voice.find('a')
         player = lnk.find('span', attrs={'class': 'video-hosting'}).text
+
+        if player not in ['vk.com','myvi.tv','myvi.ru','rutube.ru','sibnet.ru']:
+            continue
+
         title = '[' + lnk.find('span', attrs={'class': 'video-kind'}).text + ']' + '[' + player + ']'
         author = lnk.find('span', attrs={'class': 'video-author'})
         if author:
             title += author.text
         # img = num.find('img')['src']
-        url = 'https:' + lnk['href']
+        url = url_protocol + lnk['href']
         # print player.encode('utf-8')
 
         addLink(title, url, iconImg="DefaultVideo.png")
@@ -257,7 +266,8 @@ def get_params():
                 param[splitparams[0]] = splitparams[1]
 
     return param
-site_url = 'https://play.shikimori.org/'
+url_protocol = 'https:'
+site_url = url_protocol+'//play.shikimori.org/'
 params = get_params()
 print params
 mode = None
