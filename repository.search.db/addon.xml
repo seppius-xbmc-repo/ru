@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addon id="repository.search.db"
 		name="XBMC.ru search db"
-		version="1.1.26"
+		version="1.1.27"
 		provider-name="bigbax">
   <requires>
     <import addon="xbmc.addon" version="12.0.0"/>
@@ -107,6 +107,11 @@
 			<info compressed="false">http://vadyur.github.io/kodi_repo/repo/addons.xml</info>
 			<checksum>http://vadyur.github.io/kodi_repo/repo/addons.xml.md5</checksum>
 			<datadir zip="true">http://vadyur.github.io/kodi_repo/repo</datadir>
+		</dir>
+		<dir minversion="14.0.0">
+			<info compressed="false">https://raw.githubusercontent.com/vlmaksime/repository.vlmaksime/master/addons.xml</info>
+			<checksum>https://raw.githubusercontent.com/vlmaksime/repository.vlmaksime/master/addons.xml.md5</checksum>
+			<datadir zip="true">https://raw.githubusercontent.com/vlmaksime/repository.vlmaksime/master/releases/</datadir>
 		</dir>
 		<dir minversion="14.0.0">
 			<info compressed="false">http://romanvm.github.io/kodi_repo/repo/addons.xml</info>

@@ -1129,7 +1129,7 @@ Paypal: напишите на kit500.development at gmail dot com</description>
 
 <addon id="repository.search.db"
 		name="XBMC.ru search db"
-		version="1.1.26"
+		version="1.1.27"
 		provider-name="bigbax">
   <requires>
     <import addon="xbmc.addon" version="12.0.0"/>
@@ -1235,6 +1235,11 @@ Paypal: напишите на kit500.development at gmail dot com</description>
 			<info compressed="false">http://vadyur.github.io/kodi_repo/repo/addons.xml</info>
 			<checksum>http://vadyur.github.io/kodi_repo/repo/addons.xml.md5</checksum>
 			<datadir zip="true">http://vadyur.github.io/kodi_repo/repo</datadir>
+		</dir>
+		<dir minversion="14.0.0">
+			<info compressed="false">https://raw.githubusercontent.com/vlmaksime/repository.vlmaksime/master/addons.xml</info>
+			<checksum>https://raw.githubusercontent.com/vlmaksime/repository.vlmaksime/master/addons.xml.md5</checksum>
+			<datadir zip="true">https://raw.githubusercontent.com/vlmaksime/repository.vlmaksime/master/releases/</datadir>
 		</dir>
 		<dir minversion="14.0.0">
 			<info compressed="false">http://romanvm.github.io/kodi_repo/repo/addons.xml</info>
@@ -1377,6 +1382,23 @@ Paypal: напишите на kit500.development at gmail dot com</description>
   <checksum>http://vadyur.github.io/kodi_repo/repo/addons.xml.md5</checksum>
   <datadir zip="true">http://vadyur.github.io/kodi_repo/repo</datadir>
 </extension>
+</addon>
+
+<addon id="repository.vlmaksime" name="vl.maksime Repository" version="1.0.0" provider-name="vl.maksime">
+	<extension point="xbmc.addon.repository" name="vl.maksime Repository">
+		<info>https://raw.githubusercontent.com/vlmaksime/repository.vlmaksime/master/addons.xml</info>
+		<checksum>https://raw.githubusercontent.com/vlmaksime/repository.vlmaksime/master/addons.xml.md5</checksum>
+		<datadir zip="true">https://raw.githubusercontent.com/vlmaksime/repository.vlmaksime/master/releases/</datadir>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary lang="en">Repository for vl.maksime Kodi add-ons.</summary>
+		<description lang="en">Repository for vl.maksime Kodi add-ons. Add-ons: TVzavr.ru.</description>
+		<disclaimer lang="en"></disclaimer>
+		<summary lang="ru">Репозитарий Kodi для дополнений от vl.maksime.</summary>
+		<description lang="ru">Репозитарий Kodi для дополнений от vl.maksime. Дополнения: TVzavr.ru.</description>
+		<disclaimer lang="ru"></disclaimer>
+		<platform>all</platform>
+	</extension>
 </addon>
 
 <addon id="repository.xbmchub" name="TVADDONS.ag Addon Repository" version="1.0.6" provider-name="tvaddons.ag">
