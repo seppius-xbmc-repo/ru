@@ -956,6 +956,20 @@ Paypal: напишите на kit500.development at gmail dot com</description>
 	</extension>
 </addon>
 
+<addon id="repository.dandy.kodi" name="Dandy's Kodi Repository" version="1.0.5" provider-name="dandy">
+	<extension point="xbmc.addon.repository" name="Dandy Kodi Add-ons Repository">
+		<info compressed="false">https://raw.github.com/dandygithub/kodi/master/addons/addons.xml</info>
+		<checksum>https://raw.github.com/dandygithub/kodi/master/addons/addons.xml.md5</checksum>
+		<datadir zip="true">https://raw.github.com/dandygithub/kodi/master/addons/zip/</datadir>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary>Install Add-ons by Dandy add-on repository</summary>
+		<description>Download and install add-ons by dandy</description>
+		<disclaimer>Add-ons for home usage in Kodi</disclaimer>
+		<platform>all</platform>
+	</extension>
+</addon>
+
 <addon id="repository.dvor85"
        name="dvor85 XBMC Add-ons"
 	   version="1.0.0"
@@ -1129,7 +1143,7 @@ Paypal: напишите на kit500.development at gmail dot com</description>
 
 <addon id="repository.search.db"
 		name="XBMC.ru search db"
-		version="1.1.27"
+		version="1.1.28"
 		provider-name="bigbax">
   <requires>
     <import addon="xbmc.addon" version="12.0.0"/>
@@ -1180,6 +1194,11 @@ Paypal: напишите на kit500.development at gmail dot com</description>
 			<info compressed="false">https://github.com/const586/const-kodi-repo/raw/master/addons/addons.xml</info>
 			<checksum>https://github.com/const586/const-kodi-repo/raw/master/addons/addons.xml.md5</checksum>
 			<datadir zip="true">https://github.com/const586/const-kodi-repo/raw/master/addons</datadir>
+		</dir>
+		<dir minversion="14.0.0">
+			<info compressed="false">https://raw.github.com/dandygithub/kodi/master/addons/addons.xml</info>
+			<checksum>https://raw.github.com/dandygithub/kodi/master/addons/addons.xml.md5</checksum>
+			<datadir zip="true">https://raw.github.com/dandygithub/kodi/master/addons/zip/</datadir>
 		</dir>
 		<dir minversion="14.0.0">
 			<info compressed="false">https://github.com/dvor85/kodi.repo/raw/master/addons.xml</info>
