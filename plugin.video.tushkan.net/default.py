@@ -1,7 +1,7 @@
 ﻿#!/usr/bin/python
 
 
-import urllib2
+import urllib2,antizapret
 import urllib
 import json
 import xbmcgui
@@ -39,7 +39,9 @@ def GET(target, post=None):
     #print target
     try:
         cookiejar = cookielib.MozillaCookieJar()
-        urlOpener = urllib2.build_opener(urllib2.HTTPCookieProcessor(cookiejar))
+        urlOpener = urllib2.build_opener(urllib2.HTTPCookieProcessor(cookiejar),antizapret.AntizapretProxyHandler())
+        urllib2.install_opener(urlOpener)
+        #urlOpener = urllib2.build_opener(urllib2.HTTPCookieProcessor(cookiejar))
         request = urllib2.Request(url = target, data = post, headers = headers)
         url = urlOpener.open(request)
         http=url.read()
