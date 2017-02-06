@@ -1,11 +1,13 @@
 #!/usr/bin/python
 # Writer (c) 2012, MrStealth
-# Rev. 1.0.3
+# Rev. 2.0.1
 # License: GPLv3
 
 import os, sys, json
 import xbmc, xbmcaddon
 
+reload(sys)
+sys.setdefaultencoding("UTF8")
 
 class Translit():
     def __init__(self, encoding='utf-8'):
