@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<settings>
-<category label="300000">
- <setting id="gsort" type="enum" label="30001" lvalues="30002|30003" default="0" />
- <setting id="csort" type="enum" label="30004" lvalues="30002|30003" default="1" />
- <setting id="subs" type="text" label="30011" values="" default="" />
- <setting id="video" type="enum" label="Quality" values="226|360|480|720|Best" default="3" />
-</category>
-</settings>

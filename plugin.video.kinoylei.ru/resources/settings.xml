@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<settings>
-    <setting id="qual" type="enum" label="Качество" values="Хорошее|Плохое" default="0" />
-</settings>

@@ -483,24 +483,6 @@ Paypal: напишите на kit500.development at gmail dot com</description>
     </extension>
 </addon>
 
-<addon id="plugin.video.kinoylei.ru"
-       name="Киноулей"
-       version="0.0.10"
-       provider-name="nuismons">
-    <requires>
-        <import addon="xbmc.python" version="2.1.0" />
-        <import addon="script.module.beautifulsoup"/>
-    </requires>
-    <extension point="xbmc.python.pluginsource" provides="video" library="default.py">
-        <provides>video</provides>
-    </extension>
-    <extension point="xbmc.addon.metadata">
-        <summary>Материалы сайта Киноулей</summary>
-        <description>Самая большая коллекция лучших сериалов мира</description>
-        <platform>all</platform>
-    </extension>
-</addon>
-
 <addon id="plugin.video.megogo"
 	   name="MEGOGO.NET"
 	   version="1.1.9"
@@ -631,42 +613,6 @@ Paypal: напишите на kit500.development at gmail dot com</description>
     <platform>all</platform>
     <forum>http://xbmc.ru/forum/showthread.php?t=4274</forum>
   </extension>
-</addon>
-
-<addon id="plugin.video.serialonline.net"
-       name="SerialOnline.net"
-       version="0.1.0"
-       provider-name="nuismons">
-    <requires>
-        <import addon="xbmc.python" version="2.1.0"/>
-        <import addon="script.module.beautifulsoup"/>
-    </requires>
-    <extension point="xbmc.python.pluginsource" provides="video" library="default.py">
-        <provides>video</provides>
-    </extension>
-    <extension point="xbmc.addon.metadata">
-        <summary>Материалы сайта serialonline.net</summary>
-        <description>Самая большая коллекция лучших сериалов мира</description>
-        <platform>all</platform>
-    </extension>
-</addon>
-
-<addon id="plugin.video.serialonline.netlite"
-       name="SerialOnline.net LITE"
-       version="0.1.0.1"
-       provider-name="nuismons">
-    <requires>
-        <import addon="xbmc.python" version="2.1.0"/>
-        <import addon="script.module.beautifulsoup"/>
-    </requires>
-    <extension point="xbmc.python.pluginsource" provides="video" library="default.py">
-        <provides>video</provides>
-    </extension>
-    <extension point="xbmc.addon.metadata">
-        <summary>Материалы сайта serialonline.net</summary>
-        <description>Самая большая коллекция лучших сериалов мира</description>
-        <platform>all</platform>
-    </extension>
 </addon>
 
 <addon id="plugin.video.shikimori.org" name="Shikimori.org" version="0.1.9" provider-name="undeman">
@@ -859,16 +805,6 @@ Paypal: напишите на kit500.development at gmail dot com</description>
   <extension point="xbmc.addon.metadata">
     <summary>Смотрите видео с сайта http://tvjam.ru/</summary>
     <description>Смотрите видео с сайта http://tvjam.ru/</description>
-    <platform>all</platform>
-  </extension>
-</addon>
-
-<addon id="plugin.video.twitch.tv" name="Twitch.tv" version="0.1.13" provider-name="NuisMons">
-  <requires><import addon="xbmc.python" version="2.1.0"/></requires>
-  <extension point="xbmc.python.pluginsource" provides="video" library="default.py"><provides>video</provides></extension>
-  <extension point="xbmc.addon.metadata">
-    <summary>TwitchTV - является крупнейшим в мире видео вещания игр сообществом.</summary>
-    <description>TwitchTV показывает видео от главных играющих лиц, игроков, турниров, лиг и комментария, в дополнение к самым активным и интересным обсуждениям вокруг видеоигр.</description>
     <platform>all</platform>
   </extension>
 </addon>
