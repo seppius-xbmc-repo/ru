@@ -674,7 +674,7 @@ Paypal: напишите на kit500.development at gmail dot com</description>
 
 <addon id="plugin.video.sreda-obitaniya"
        name="Передачи Российского ТВ"
-       version="0.1.7"
+       version="0.1.8"
        provider-name="NuisMons">
   <requires>
     <import addon="xbmc.python" version="2.1.0" />

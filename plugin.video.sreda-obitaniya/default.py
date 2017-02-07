@@ -182,11 +182,12 @@ def tvcsam(params):
     #http://www.tvc.ru/video/iframe/id/101797/isPlay/true/id_stat/channel/?acc_video_id=/channel/brand/id/2723/show/episodes/episode_id/47027
     #print "%s: url=%s"%(params['title'],params['flink'])
     http=GET("http:"+params['flink'])
-    #print http
+
     #window.pl.data.dataUrl = 'http://www.tvc.ru/video/json/id/102174';
-    lnk=re.compile('.dataUrl\s=\s\'(.+)\'').findall(http)
+    lnk=re.compile('//www.tvc.ru/video/json/id/([0-9]+)').findall(http)
+	
     #print lnk[0]
-    jso=json.loads(GET(lnk[0]))
+    jso=json.loads(GET('http://www.tvc.ru/video/json/id/'+lnk[0]))
     url="http:"+jso['path']['quality'][0]['url']
     item = xbmcgui.ListItem(path=url)
     xbmcplugin.setResolvedUrl(int(sys.argv[1]), True, item)
