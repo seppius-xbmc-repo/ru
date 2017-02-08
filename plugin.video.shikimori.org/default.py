@@ -30,6 +30,8 @@ if REMOTE_DBG:
 
 __settings__ = xbmcaddon.Addon(id='plugin.video.shikimori.org')
 h = int(sys.argv[1])
+kind = __settings__.getSetting('kind') # субтитры озвучка оригинал all
+
 
 plugin_path = __settings__.getAddonInfo('path').replace(';', '')
 plugin_icon = xbmc.translatePath(os.path.join(plugin_path, 'icon.png'))
@@ -68,15 +70,13 @@ def Main(main_url):
 
     for num in content:
         block = num.find('', attrs={'class': 'cover'})
-        title_block = num.find('span', attrs={'class': 'name-ru'})
-        if title_block == None:
-            title_block = num.find('div', attrs={'class': 'name'})
-            if title_block == None:
-                title = num.find(['a', 'span'], attrs={'class': 'title'}).getText().encode('utf-8')
-            else:
-                title = title_block.getText().encode('utf-8')
-        else:
-            title = title_block['data-text'].encode('utf-8')
+
+        title = num.find('span', attrs={'class': 'title'})
+        if title: title = title.text
+        title_en = num.find('span', attrs={'class': 'name-en'})
+        if title_en: title = title_en.text
+        title_ru = num.find('span', attrs={'class': 'name-ru'})
+        if title_ru: title += " / " + title_ru['data-text']
             
         if block.has_attr('data-href'):
             url = block['data-href']
@@ -109,7 +109,7 @@ def Search():
     kbd.doModal()
     if kbd.isConfirmed():
         SearchStr = kbd.getText()
-        url = url_protocol + '//play.shikimori.org/animes/search/' + SearchStr.decode('utf-8')
+        url = site_url + 'animes/search/' + SearchStr.decode('utf-8')
         html = GetHTML(url.encode('utf-8'))
         soup = bs(html, "html.parser")
         content = soup.find_all('article', attrs={'class': 'c-anime'})
@@ -163,8 +163,16 @@ def GetSibnetUrl(html):
     #print video_id
     http = GetHTML('http://video.sibnet.ru/shell_config_xml.php?videoid=' + video_id.split('=', 1)[1])
     soup = bs(http, "html.parser")
-    video = soup.find('file').text
-    return video
+    source = soup.find('file').text
+    return source
+
+def GetSRUrl(html):
+    soup = bs(html, "html.parser")
+    sr_url = 'http:' + soup.find('div', {'class':'b-video_player'}).find('iframe')['src']
+    soup = bs(GetHTML(sr_url), "html.parser")
+    source = soup.find('video').find('source')['src']
+    
+    return source
 
 def GetMyviUrl(html, url):
     headers = {
@@ -221,6 +229,8 @@ def PlayUrl(url):
         url = GetRutubeUrl(html)
     elif 'sibnet.ru' in player:
         url = GetSibnetUrl(html)
+    elif 'sovetromantica.com' in player:
+        url = GetSRUrl(html)
     else :
         Notificator('ERROR', 'Not supported player', 3600)
         return None
@@ -230,24 +240,41 @@ def PlayUrl(url):
 def GetVoicesList(url):
     http = GetHTML(url)
     soup = bs(http, "html.parser")
-    content = soup.find('div', attrs={'class': 'c-videos'})
+    
+    title = soup.find('meta', attrs={'itemprop': 'name'})['content']
+    ep = soup.find('div', attrs={'class': 'c-control episode-title'}).find('b')
+    if ep:
+        title += ' ' + ep.text
+    content = soup.find('div', attrs={'class': 'video-variant-group','data-kind': kind})
+    if not content:
+        content = soup.find('div', attrs={'class': 'video-variant-group'})
     content = content.find_all('div', attrs={'class': 'b-video_variant'})
     for voice in content:
         lnk = voice.find('a')
         player = lnk.find('span', attrs={'class': 'video-hosting'}).text
 
-        if player not in ['vk.com','myvi.tv','myvi.ru','rutube.ru','sibnet.ru']:
+        if player not in ['myvi.tv','myvi.ru','rutube.ru','sibnet.ru','sovetromantica.com','vk.com']:
             continue
 
-        title = '[' + lnk.find('span', attrs={'class': 'video-kind'}).text + ']' + '[' + player + ']'
+        variant = lnk.find('span', attrs={'class': 'video-kind'})
+
+        if variant.text: 
+            variant = {
+                    'Озвучка': 'dub',
+                    'Субтитры': 'sub',
+                    'Оригинал': 'orig',
+                }.get(variant.text, '?')
+        
+        item_title = title + ' [' + variant + ']' + '[' + player + ']'
         author = lnk.find('span', attrs={'class': 'video-author'})
         if author:
-            title += author.text
+            item_title += ' ' + author.text
+
         # img = num.find('img')['src']
         url = url_protocol + lnk['href']
         # print player.encode('utf-8')
 
-        addLink(title, url, iconImg="DefaultVideo.png")
+        addLink(item_title, url, iconImg="DefaultVideo.png")
 
 def get_params():
     param = []
