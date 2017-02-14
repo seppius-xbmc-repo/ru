@@ -260,7 +260,6 @@ def OpenPage(plugin, num):
 
 	playlist = xbmc.PlayList(xbmc.PLAYLIST_VIDEO)
 	playlist.clear()
-	myPlayer=xbmc.PLAYER_CORE_AUTO
 	
 	counter = 0
 	AddOnlyOneFile = __settings__.getSetting('AddOnlyOneChannelToPlaylist')
@@ -391,7 +390,7 @@ def OpenPage(plugin, num):
 				item.setInfo(type="Video", infoLabels={"Title": Lgl[i]['name']})
 			playlist.add(url=Lgl[i]['url'], listitem=item)
 		
-	xbmc.Player(myPlayer).play(playlist)#(url, item) 
+	xbmc.Player().play(playlist)#(url, item) 
 
 		
 def ShowChannelsList(plugin, mode = 'TV'):
