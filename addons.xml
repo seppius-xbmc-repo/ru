@@ -809,6 +809,23 @@ Paypal: напишите на kit500.development at gmail dot com</description>
   </extension>
 </addon>
 
+<addon id="plugin.video.unified.search" name="Unified search" version="2.1.0" provider-name="mrstealth, dandy">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0" />
+    <import addon="script.module.xbmc.helpers" version="2.0.0"/>
+    <import addon="script.module.translit" version="2.0.1"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource" library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Unified search</summary>
+    <description>This addon can find any videos in your plugin collection, which supports unified search (For personal use only)</description>
+    <disclaimer lang="en"></disclaimer>
+    <platform>all</platform>
+  </extension>
+</addon>
+
 <addon id="plugin.video.zoomby.ru" name="Zoomby.ru" version="0.1.3" provider-name="undeman">
 	<requires>
 		<import addon="xbmc.python" version="2.1.0" />
