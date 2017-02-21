@@ -654,7 +654,7 @@ Paypal: напишите на kit500.development at gmail dot com</description>
 
 <addon id="plugin.video.shura.tv"
        name="Shura.TV"
-       version="1.2.0"
+       version="1.2.1"
        provider-name="AKGDRG">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
