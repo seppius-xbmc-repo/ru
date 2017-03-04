@@ -414,6 +414,27 @@ Paypal: напишите на kit500.development at gmail dot com</description>
   </extension>
 </addon>
 
+<addon id="plugin.video.kino-dom"
+       name="Kino-Dom.org"
+       version="0.0.4"
+       provider-name="Nesterov Alexandr">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource" provides="video" library="addon.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Kino-Dom.org</summary>
+    <description>
+    Сериалы с сайта Kino-Dom.org
+    </description>
+    <source>https://github.com/alex19pov31/plugin.video.kino-dom.git</source>
+    <email>alex19pov31@gmail.com</email>
+    <platform>all</platform>
+  </extension>
+</addon>
+
 <addon id="plugin.video.kino-live.org"
        name="kino-live.org"
        version="1.7.8"
