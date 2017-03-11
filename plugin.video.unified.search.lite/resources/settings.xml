@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<settings>
+    <setting label="30005" type="labelenum" id="history_length" values="5|10|15|20|25" default="10" />
+</settings>

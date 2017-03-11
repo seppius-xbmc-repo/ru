@@ -812,6 +812,38 @@ Paypal: напишите на kit500.development at gmail dot com</description>
   </extension>
 </addon>
 
+<addon id="plugin.video.unified.search.lite" version="0.1.1" name="Unified Search Lite" provider-name="vl.maksime">
+    <requires>
+        <import addon="xbmc.python" version="2.1.0"/>
+        <import addon="script.module.simpleplugin" version="2.1.0"/>
+        <import addon="script.module.simplejson" version="3.3.0"/>
+    </requires>
+    <extension point="xbmc.python.pluginsource" library="default.py">
+        <provides>video</provides>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <summary lang="en"></summary>
+        <summary lang="ru"></summary>
+        <description lang="en"></description>
+        <description lang="ru"></description>
+        <disclaimer lang="en"></disclaimer>
+        <disclaimer lang="ru"></disclaimer>
+        <language></language>
+        <platform>all</platform>
+        <license>GNU GENERAL PUBLIC LICENSE. Version 3, 29 June 2007</license>
+        <forum>http://xbmc.ru/forum/showthread.php?t=</forum>
+        <email>vl.maksime@gmail.com</email>
+        <source>https://github.com/vlmaksime/plugin.video.unified.search</source>
+        <news>v0.1.1 (2017-03-11)[CR]- Публичный релиз</news>
+        <assets>
+            <icon>icon.png</icon>
+            <screenshot>resources\media\screenshot-01.jpg</screenshot>
+            <screenshot>resources\media\screenshot-02.jpg</screenshot>
+            <screenshot>resources\media\screenshot-03.jpg</screenshot>
+        </assets>
+    </extension>
+</addon>
+
 <addon id="plugin.video.zoomby.ru" name="Zoomby.ru" version="0.1.3" provider-name="undeman">
 	<requires>
 		<import addon="xbmc.python" version="2.1.0" />
