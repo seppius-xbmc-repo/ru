@@ -185,6 +185,15 @@ def payser(params):
     xbmcplugin.setResolvedUrl(int(sys.argv[1]), True, item)
 
 def _doSearch(params):
+    unified = params.get('unified', False)
+    if unified:
+        keyword = params['keyword']
+        params={}
+        params['link']='http://tushkan.tv/search/?q='+urllib.quote(keyword)+'&sfSbm=%D0%98%D1%81%D0%BA%D0%B0%D1%82%D1%8C&a=45'
+        params['mode']='link'
+        doSearch(params)
+        return
+        
     kbd = xbmc.Keyboard()
     kbd.setDefault('')
     kbd.setHeading('Поиск')
