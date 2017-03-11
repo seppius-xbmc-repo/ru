@@ -273,14 +273,16 @@ def mainScreen(params):
 	xbmcplugin.endOfDirectory(hos)
 
 def run_search(params):
-	kbd = xbmc.Keyboard()
-	kbd.setDefault('')
-	kbd.setHeading('Поиск')
-	kbd.doModal()
-	out=''
-	if kbd.isConfirmed():
-		out = kbd.getText()
-	params['text']=out
+        unified = params.get('unified', False)
+        if not unified:
+            kbd = xbmc.Keyboard()
+            kbd.setDefault('')
+            kbd.setHeading('Поиск')
+            kbd.doModal()
+            out=''
+            if kbd.isConfirmed():
+   		out = kbd.getText()
+	    params['text']=out
 	params['offset']='0'
 	params['limit']='100'
 	search(params)
