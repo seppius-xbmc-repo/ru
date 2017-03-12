@@ -715,7 +715,7 @@ Paypal: напишите на kit500.development at gmail dot com</description>
 </addon>
 
 <addon id="plugin.video.tushkan.net"
-       name="Tushkan.net (UnifiedSearch)"
+       name="Tushkan.net"
        version="0.1.4"
        provider-name="NuisMons">
   <requires>
@@ -730,8 +730,7 @@ Paypal: напишите на kit500.development at gmail dot com</description>
   </extension>
   <extension point="xbmc.addon.metadata">
     <summary>Просмотр видео онлайн tushkan.net</summary>
-    <description>Просмотр видео онлайн tushkan.net.
-    Поддержка поиска плагином Unified search lite</description>
+    <description>Просмотр видео онлайн tushkan.net</description>
     <platform>all</platform>
   </extension>
 </addon>
