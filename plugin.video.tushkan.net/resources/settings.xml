@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <settings>
-    <setting label="Use in Unified Search" type="bool" id="unified_search" default="true" />
+    <setting type="bool" id="united_search" visible="false" default="true" />
     <setting type="text" id="us_command" visible="false" default="func=_doSearch&keyword=" />
 </settings>

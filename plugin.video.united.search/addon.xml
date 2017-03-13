@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<addon id="plugin.video.unified.search.lite" version="0.1.1" name="Unified Search Lite" provider-name="vl.maksime">
+<addon id="plugin.video.united.search" version="0.1.4" name="United Search" provider-name="vl.maksime">
     <requires>
         <import addon="xbmc.python" version="2.1.0"/>
         <import addon="script.module.simpleplugin" version="2.1.0"/>
@@ -9,19 +9,19 @@
         <provides>video</provides>
     </extension>
     <extension point="xbmc.addon.metadata">
-        <summary lang="en"></summary>
-        <summary lang="ru"></summary>
-        <description lang="en"></description>
-        <description lang="ru"></description>
+        <summary lang="en">Unified search for video add-ons</summary>
+        <summary lang="ru">Единый поиск для видеодополнений</summary>
+        <description lang="en">This add-on is intended for search in other video add-ons</description>
+        <description lang="ru">Дополнение предназначено для выполнения поиска в других видеодополнениях</description>
         <disclaimer lang="en"></disclaimer>
         <disclaimer lang="ru"></disclaimer>
         <language></language>
         <platform>all</platform>
         <license>GNU GENERAL PUBLIC LICENSE. Version 3, 29 June 2007</license>
-        <forum>http://xbmc.ru/forum/showthread.php?t=</forum>
+        <forum>http://xbmc.ru/forum/showthread.php?t=14278</forum>
         <email>vl.maksime@gmail.com</email>
-        <source>https://github.com/vlmaksime/plugin.video.unified.search</source>
-        <news>v0.1.1 (2017-03-11)[CR]- Публичный релиз</news>
+        <source>https://github.com/vlmaksime/plugin.video.united.search</source>
+        <news>v0.1.4 (2017-03-13)[CR]- Заменена кодировка передаваемого кодового слова</news>
         <assets>
             <icon>icon.png</icon>
             <screenshot>resources\media\screenshot-01.jpg</screenshot>

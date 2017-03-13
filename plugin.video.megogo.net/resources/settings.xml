@@ -9,6 +9,6 @@
 	<setting type="sep" />
 	<setting id="qual_v" type="enum" label="Качество видео" values="Автоматическое|Низкое 240p-448x252|Среднее 320-576x324|Обычное 360-640x360|Хорошее 480-832x468|Четкое 576-1024x576|Высокое 720-1280x720|Наилучшее 1080-1920x1080" default="0"/>
 	<setting id="list" type="enum" label="Отображение списка" values="Простой список|Постеры|По умолчанию" default="1"/>
-	<setting id="unified_search" type="bool" label="Использовать для поиска в 'Unified Search'" default="true"/>
+	<setting id="united_search" type="bool" visible="false" default="true"/>
 	<setting id="us_command" type="text" visible="false" default="func=run_search&text=" />
 </settings>

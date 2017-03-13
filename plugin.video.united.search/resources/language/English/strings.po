@@ -19,7 +19,7 @@ msgid "Search History"
 msgstr ""
 
 msgctxt "#30002"
-msgid "Search Again..."
+msgid "Search results"
 msgstr ""
 
 msgctxt "#30003"
@@ -27,7 +27,7 @@ msgid "Nothing found!"
 msgstr ""
 
 msgctxt "#30004"
-msgid "New Search..."
+msgid "New Search"
 msgstr ""
 
 msgctxt "#30005"
@@ -36,4 +36,24 @@ msgstr ""
 
 msgctxt "#30006"
 msgid "Please wait. Searching..."
-msgstr "Ожидайте. Выполняется поиск..."
+msgstr ""
+
+msgctxt "#30007"
+msgid "Supported Add-ons"
+msgstr ""
+
+msgctxt "#30008"
+msgid "Settings"
+msgstr ""
+
+msgctxt "#30009"
+msgid "Enable"
+msgstr ""
+
+msgctxt "#30010"
+msgid "Disable"
+msgstr ""
+
+msgctxt "#30011"
+msgid "Last Search"
+msgstr ""

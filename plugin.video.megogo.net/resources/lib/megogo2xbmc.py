@@ -273,8 +273,8 @@ def mainScreen(params):
 	xbmcplugin.endOfDirectory(hos)
 
 def run_search(params):
-        unified = params.get('unified', False)
-        if not unified:
+        usearch = params.get('usearch', False)
+        if not usearch:
             kbd = xbmc.Keyboard()
             kbd.setDefault('')
             kbd.setHeading('Поиск')
@@ -315,7 +315,8 @@ def search(params):
 				uri = '%s?%s' % (sys.argv[0], urllib.urlencode(urip))
 				xbmcplugin.addDirectoryItem(hos, uri, i, True)
 			cnt=cnt+1
-		if cnt==100:
+		usearch = params.get('usearch', False)
+		if not usearch and cnt==100:
 			i = xbmcgui.ListItem('ЕЩЕ!', iconImage = addon_icon , thumbnailImage = addon_icon)
 			i.setProperty('fanart_image', addon_fanart)
 			

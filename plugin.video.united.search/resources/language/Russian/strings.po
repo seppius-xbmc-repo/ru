@@ -19,16 +19,16 @@ msgid "Search History"
 msgstr "История поиска"
 
 msgctxt "#30002"
-msgid "Search Again..."
-msgstr "Повторный поиск..."
+msgid "Search results"
+msgstr "Результаты поиска"
 
 msgctxt "#30003"
 msgid "Nothing found!"
 msgstr "Ничего не найдено!"
 
 msgctxt "#30004"
-msgid "New Search..."
-msgstr "Новый поиск..."
+msgid "New Search"
+msgstr "Новый поиск"
 
 msgctxt "#30005"
 msgid "Search history length"
@@ -37,3 +37,23 @@ msgstr "Длина истории поиска"
 msgctxt "#30006"
 msgid "Please wait. Searching..."
 msgstr "Ожидайте. Выполняется поиск..."
+
+msgctxt "#30007"
+msgid "Supported Add-ons"
+msgstr "Совместимые дополнения"
+
+msgctxt "#30008"
+msgid "Settings"
+msgstr "Настройки"
+
+msgctxt "#30009"
+msgid "Enable"
+msgstr "Включить"
+
+msgctxt "#30010"
+msgid "Disable"
+msgstr "Выключить"
+
+msgctxt "#30011"
+msgid "Last Search"
+msgstr "Последний поиск"
