@@ -1955,7 +1955,7 @@ provider-name="Roman_V_M">
 
 <addon id="script.torrent-tv.ru"
        name="Torrent-TV XBMC"
-       version="1.5.5"
+       version="1.7.0"
        provider-name="Torrent-TV">
     <requires>
 		  <import addon="xbmc.python" version="2.1.0" />
