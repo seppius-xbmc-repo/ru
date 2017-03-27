@@ -2,4 +2,5 @@
 <settings>
     <setting type="bool" id="united_search" visible="false" default="true" />
     <setting type="text" id="us_command" visible="false" default="func=_doSearch&keyword=" />
+    <setting type="bool" id="antizapret" label="Use antizapret" default="true" />
 </settings>

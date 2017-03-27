@@ -716,8 +716,8 @@ Paypal: напишите на kit500.development at gmail dot com</description>
 
 <addon id="plugin.video.tushkan.net"
        name="Tushkan.net"
-       version="0.1.5"
-       provider-name="NuisMons">
+       version="0.2.0"
+       provider-name="NuisMons, dandy">
   <requires>
     <import addon="xbmc.python" version="2.1.0" />
     <import addon="script.module.beautifulsoup"/>
