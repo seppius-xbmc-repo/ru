@@ -120,7 +120,7 @@ def Search():
             if title_en: title = title_en.text
             title_ru = num.find('span', attrs={'class': 'name-ru'})
             if title_ru: title += " / " + title_ru['data-text']
-            url = url_protocol + num.find('a')['href']
+            url = url_protocol + "//play.shikimori.org" + num.find('a')['href']
             image = num.find('meta', attrs={'itemprop': 'image'})['content']
             addDir(title, url, iconImg=image, mode="FILMS")
     else:
@@ -142,7 +142,6 @@ def GetVKUrl(html):
     soup = bs(html, "html.parser")
     vk_url = 'http:' + soup.find('div', {'class':'b-video_player'}).find('iframe')['src']
     soup = bs(GetHTML(vk_url), "html.parser")
-    video = ''
     if soup.find('div', {'id': 'video_ext_msg'}):
         Notificator('ERROR', 'Video is not available', 3600)
         return None 
@@ -220,7 +219,14 @@ def GetRutubeUrl(html):
 def PlayUrl(url):
     html = GetHTML(url);
     soup = bs(html, "html.parser")
-    player = soup.find('div', {'class':'c-videos'}).find('a', {'class': 'active'}).find('span', {'class': 'video-hosting'}).text
+
+    id = soup.find('div',{'class':'b-video_player'})['data-video_id']
+
+    player = soup.find('div', {'class':'c-videos'})
+    player = player.find('div', attrs={'data-video_id': id})
+    player = player.find('span', {'class': 'video-hosting'})
+    player = player.text
+
     if 'vk.com' in player:
         url = GetVKUrl(html)
     elif 'myvi.tv' in player or 'myvi.ru' in player:
