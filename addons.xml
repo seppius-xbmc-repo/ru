@@ -333,7 +333,7 @@ Paypal: напишите на kit500.development at gmail dot com</description>
 
 <addon id="plugin.video.fs.ua"
        name="Fs.ua"
-       version="1.9.42"
+       version="1.9.43"
        provider-name="x86demon">
     <broken>deprecated</broken>
     <requires>
@@ -348,7 +348,7 @@ Paypal: напишите на kit500.development at gmail dot com</description>
         <provides>audio video</provides>
     </extension>
     <extension point="xbmc.addon.metadata">
-        <summary>Просмотр контента с brb.to (fs.ua, fs.to)</summary>
+        <summary>Просмотр контента с FS.life</summary>
         <description>
 На этом портале вы можете найти и, что самое главное бесплатно скачать последний новинки кино, музыкальные
 файлы, любимые видеоклипы и сериалы.

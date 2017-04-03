@@ -18,10 +18,7 @@
 #   the Free Software Foundation, 675 Mass Ave, Cambridge, MA 02139, USA.
 #   http://www.gnu.org/licenses/gpl.html
 
-__author__ = "Dmitry Khrysev"
 __license__ = "GPL"
-__maintainer__ = "Dmitry Khrysev"
-__email__ = "x86demon@gmail.com"
 __status__ = "Production"
 
 import socket
