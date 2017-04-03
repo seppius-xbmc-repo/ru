@@ -771,6 +771,15 @@ def runsearch(params):
         }
         return render_search_results(params)
 
+def unitedsearch(params):
+
+    SearchStr = params.get('keyword', '')
+    searchUrl = '%s/search.aspx?search=%s' % (httpSiteUrl, urllib.quote_plus(SearchStr))
+    params = {
+        'href': searchUrl,
+        'section': 'video'
+    }
+    return render_search_results(params)
 
 def render_search_results(params):
     searchUrl = urllib.unquote_plus(params['href'])
