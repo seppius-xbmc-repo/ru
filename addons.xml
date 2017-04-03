@@ -335,7 +335,6 @@ Paypal: напишите на kit500.development at gmail dot com</description>
        name="Fs.ua"
        version="1.9.43"
        provider-name="x86demon">
-    <broken>deprecated</broken>
     <requires>
         <import addon="xbmc.python" version="2.1.0"/>
         <import addon="script.module.beautifulsoup"/>
