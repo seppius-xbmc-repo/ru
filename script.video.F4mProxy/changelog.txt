@@ -1,3 +1,59 @@
+[B]Version 2.8.6[/B]
+revert URL status, no error to be shown now
+[B]Version 2.8.5[/B]
+HSL bug
+[B]Version 2.8.4[/B]
+fixing wrong incoming URL
+[B]Version 2.8.3[/B]
+relaxed init check
+[B]Version 2.8.2[/B]
+return quickly if not playable - better message
+[B]Version 2.8.1[/B]
+return quickly if not playable
+[B]Version 2.8.0[/B]
+fixes for krypton, still in beta
+[B]Version 2.7.9[/B]
+Multiple try with TSDownloader
+[B]Version 2.7.8[/B]
+HLS quality issue
+[B]Version 2.7.7[/B]
+TSDownloader bug in logging
+[B]Version 2.7.6[/B]
+ua randomization
+[B]Version 2.7.5[/B]
+HLS sleep time
+[B]Version 2.7.3[/B]
+HLS fwd error
+[B]Version 2.7.0[/B]
+HLS fwd error
+[B]Version 2.6.9[/B]
+removed extension
+[B]Version 2.6.8[/B]
+bug fix
+[B]Version 2.6.7[/B]
+proxy and user agent
+[B]Version 2.6.6[/B]
+not so strick check for TS, little more
+[B]Version 2.6.5[/B]
+not so strick check for TS
+[B]Version 2.6.4[/B]
+redirector support
+[B]Version 2.6.3[/B]
+hlsretry little time change
+[B]Version 2.6.2[/B]
+iconImage support
+[B]Version 2.6.1[/B]
+callback in HLSRETRY
+[B]Version 2.6.0[/B]
+HLSRETRY in f4mproxy improvements
+
+[B]Version 2.5.8[/B]
+TSDownloader second improvements again
+
+[B]Version 2.5.7[/B]
+TSDownloader second improvements
+
+
 [B]Version 0.0.1[/B]
 - Initial Release.
 [B]Version 1.0.3[/B]
@@ -47,3 +103,79 @@ HLS DRM Support
 HLS non enc speed supported
 [B]Version 2.1.7[/B]
 support setresolved param
+[B]Version 2.1.8[/B]
+Query string problem
+[B]Version 2.1.9[/B]
+Query string problem
+
+[B]Version 2.2.0[/B]
+Fixed for BBC, now picking up last fragement of last segment
+[B]Version 2.2.2[/B]
+updated the retry
+
+[B]Version 2.2.3[/B]
+added akhds support for tag decrypt and pvtoken
+
+[B]Version 2.2.4[/B]
+removed crypto reference
+
+[B]Version 2.2.5[/B]
+small bug
+
+[B]Version 2.2.6[/B]
+support local copy of pycrypto
+
+[B]Version 2.2.7[/B]
+support pycrypto proxy on Android
+
+[B]Version 2.2.8[/B]
+using libcrypto so file on Android
+[B]Version 2.2.9[/B]
+Default back to slow aes
+[B]Version 2.3.0[/B]
+ondemand load
+
+[B]Version 2.3.1[/B]
+small error in hls
+[B]Version 2.3.2[/B]
+small error in hls
+[B]Version 2.3.3[/B]
+return true when played
+[B]Version 2.3.4[/B]
+renamed util folder due to clash
+[B]Version 2.4.0[/B]
+Support for TSDownloader
+[B]Version 2.4.1[/B]
+slight change for TSDownloader
+[B]Version 2.4.3[/B]
+check if its TS
+[B]Version 2.4.4[/B]
+Play command
+[B]Version 2.4.5[/B]
+Proxy for HLS
+[B]Version 2.4.6[/B]
+check for naughty builds
+[B]Version 2.4.7[/B]
+check for naughty builds online
+[B]Version 2.4.8[/B]
+disabled check for naughty builds online
+[B]Version 2.4.9[/B]
+request module in hls
+[B]Version 2.5.0[/B]
+request module in hls
+[B]Version 2.5.1[/B]
+proxy issue in hls
+[B]Version 2.5.2[/B]
+auth param for hls if you want to ignore key url and pass yours
+[B]Version 2.5.3[/B]
+ignore unknown m3u8 tags
+[B]Version 2.5.4[/B]
+m3u8 more wait of no data
+[B]Version 2.5.5[/B]
+m3u8 more wait of no data
+[B]Version 2.5.6[/B]
+m3u8 fine tuning
+REVERSED
+
+
+
