@@ -166,6 +166,39 @@ Audio sources are
     </extension>
 </addon>
 
+<addon id="plugin.program.super.favourites" name="Super Favourites" version="1.0.43.rus" provider-name="spoyser">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+	<import addon="script.module.metahandler" optional="true" />
+  </requires>
+
+  <extension point="xbmc.python.pluginsource" library="default.py">
+        <provides>video audio executable image</provides>
+  </extension>
+
+  <extension point="xbmc.service" library="service.py" start="startup" />
+
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en">Ваша мультимедиа библиотека.</summary>
+    <description lang="en">Super Favourites лучший способ управления вашим избранным. [CR] [CR] Практически любой пункт в Kodi может быть добавлен в избранное, даже из любых аддонов, которые обычно не дают такую возможность. [CR] [CR] Super Favourites позволяет более эффективно управлять избранным, в том числе создавать отдельные папки, которые в последствии можно копировать и перемещать между собой. [CR] [CR] Super Favourites позволяет создавать свои собственные библиотеки с вашим контентом: любимую музыку,  любимые плейлисты, любимые фильмы, любимые радиостанции, любимые мультфильмы, возможности безграничны, и все это в одной простой в использовании программе.
+</description>
+    <platform>all</platform>
+    <language>en</language>
+    <license>GNU GENERAL PUBLIC LICENSE. Version 2, June 1991</license>
+    <forum>http://forum.xbmc.org/showthread.php?tid=192662</forum>
+    <website></website>
+    <source>https://github.com/spoyser/spoyser-repo/tree/master/plugin.program.super.favourites</source>
+    <email>seanpoyser at gmail.com</email>
+  </extension>
+
+  <extension point="kodi.context.item" library="capture.py">
+      <item>
+        <label>30000</label>
+        <visible>true</visible>
+      </item>
+    </extension>
+</addon>
+
 <addon id="plugin.video.175h.net"
        name="175h.net"
        version="0.4"
@@ -551,6 +584,22 @@ Paypal: напишите на kit500.development at gmail dot com</description>
   <extension point="xbmc.addon.metadata">
     <summary>Просмотр аниме онлайн online.anidub.com</summary>
     <description>Просмотр аниме онлайн online.anidub.com</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.playlistLoader.a" name="Playlist Loader.a" version="1.1.4" provider-name="Avigdor">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+    <import addon="repository.xbmc-israel" />
+  </requires>
+  <extension point="xbmc.python.pluginsource" library="default.py">
+        <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en">Playlist Loader.a</summary>
+    <description lang="en">Playlist Loader.a</description>
+    <description lang="ru">Playlist Loader.altenative - с поддержкой кириллицы в заголовках, в URL плейлистов</description>
     <platform>all</platform>
   </extension>
 </addon>
@@ -1803,6 +1852,31 @@ provider-name="Roman_V_M">
   </extension>
   <extension library="default.py" point="xbmc.service" />
   <extension point='xbmc.python.module'/>
+</addon>
+
+<addon id="script.module.metahandler"
+     name="metahandler"
+     version="2.9.0"
+     provider-name="Eldorado">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0" />
+    <import addon="script.module.simplejson" version="3.3.0"/>
+    <import addon="script.module.addon.common" version="2.0.0"/>
+    <import addon="script.module.myconnpy" version="1.1.6"/>
+  </requires>
+  <extension point="xbmc.python.module" library="lib" />
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en">Downloads Artwork for TV shows, Movies and Music videos for addons and stores them in a local SQLITE database</summary>
+    <description lang="en">Queries, stores, and returns metadata for TV shows, Movies and Musicvideos. [CR]Sources:[CR]www.thetvdb.com[CR]www.themoviedb.org[CR]www.imdb.com</description>
+    <disclaimer lang="en"></disclaimer>
+    <language></language>
+    <platform>all</platform>
+    <license>GNU GENERAL PUBLIC LICENSE. Version 2, June 1991</license>
+    <forum></forum>
+    <website></website>
+    <email></email>
+    <source></source>
+  </extension>
 </addon>
 
 <addon id="script.module.parsedom" name="Parsedom for xbmc plugins" provider-name="TheCollective" version="2.5.2">

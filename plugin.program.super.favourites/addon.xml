@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="plugin.program.super.favourites" name="Super Favourites" version="1.0.43.rus" provider-name="spoyser">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+	<import addon="script.module.metahandler" optional="true" />
+  </requires>
+
+  <extension point="xbmc.python.pluginsource" library="default.py">
+        <provides>video audio executable image</provides>
+  </extension>
+  
+  <extension point="xbmc.service" library="service.py" start="startup" />
+  
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en">Ваша мультимедиа библиотека.</summary>
+    <description lang="en">Super Favourites лучший способ управления вашим избранным. [CR] [CR] Практически любой пункт в Kodi может быть добавлен в избранное, даже из любых аддонов, которые обычно не дают такую возможность. [CR] [CR] Super Favourites позволяет более эффективно управлять избранным, в том числе создавать отдельные папки, которые в последствии можно копировать и перемещать между собой. [CR] [CR] Super Favourites позволяет создавать свои собственные библиотеки с вашим контентом: любимую музыку,  любимые плейлисты, любимые фильмы, любимые радиостанции, любимые мультфильмы, возможности безграничны, и все это в одной простой в использовании программе.
+</description>
+    <platform>all</platform>
+    <language>en</language>
+    <license>GNU GENERAL PUBLIC LICENSE. Version 2, June 1991</license>
+    <forum>http://forum.xbmc.org/showthread.php?tid=192662</forum>
+    <website></website>
+    <source>https://github.com/spoyser/spoyser-repo/tree/master/plugin.program.super.favourites</source>
+    <email>seanpoyser at gmail.com</email>
+  </extension>
+  
+  <extension point="kodi.context.item" library="capture.py">		
+      <item>
+        <label>30000</label>
+        <visible>true</visible>
+      </item>
+    </extension>
+</addon>
