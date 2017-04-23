@@ -1,8 +1,134 @@
-[B][COLOR chartreuse]Информация:[/COLOR][/B]
+[B][COLOR chartreuse]This file contains ALOT of useful information regarding the functionality of Super Favourites[CR]
+PLEASE READ IT!![/COLOR][/B]
 
-[COLOR chartreuse]1.0.43.rus: 09 Октября 2016[/COLOR]
-    - переведено на русский язык
-    - отключен ненужный и нерабочий контент
+
+[COLOR chartreuse]1.0.56: 19th February 2017[/COLOR]
+    - added optional initial path, and include play folder parameters to quicklaunch script
+        usage: xbmc.runscript(special://home/addons/plugin.program.super.favourites/quicklaunch.py,folder1/folder2,True)
+    - fixed playlist parsing
+    - fixed quicklaunch in Krypton
+    - fixed launching ExecuteBuiltin types from the quick launch dialog
+    - fixed launching playable items added from FileManager
+    - fixed launching playable items from widgets
+    - various other fixes due to changes in Krypton
+
+
+[COLOR chartreuse]1.0.55: 9th August 2016[/COLOR]
+    - added workaround ImportError exception caused by Python bug
+
+
+[COLOR chartreuse]1.0.54: 31st July 2016[/COLOR]
+    - version bump as minor increase seemed to not work on some systems
+
+
+[COLOR chartreuse]1.0.53.1: 29th July 2016[/COLOR]
+    - improved handling of "troublesome" items that insist on running from within their own addon
+    - added quick launch script
+          usage: xbmc.runscript(special://home/addons/plugin.program.super.favourites/quicklaunch.py)
+          use to launch the Super Favourites quicklaunch menu
+    - fixed playing of playlists
+    - changed iExplore to explore the folder you are in when you 'OK' the dialog
+    - fixed verifying scripts when the script is just a filename
+    - fixed launching of various items from quick launch dialog
+    - rewrote key programmer logic
+
+
+[COLOR chartreuse]1.0.52: 18th May 2016[/COLOR]
+    - added metadata support via 'Add to Super Favourites' functionality
+    - metadata can also be copied and pasted onto Super Favourites and Super Folders 
+    - fixed numerical labeling when item name contains square brackets []
+    - 'Download using Super Favourites' option can now be added directly to the main Kodi context menu
+    - 'Add to Super Favourites' option can now be added directly to the main Kodi context menu
+    - added sub-menus for various items to the Edit Super Favourite and Edit Super Folder menus
+    - fixed download option when all other options are disabled
+    - iRecommend can now be selected within Super Favourites itself (configurable from settings)
+    - iSearch can now be selected within Super Favourites itself (configurable from settings)
+    - fixed iSearch when keyword contains &
+    - fixed launching iSearch externally 
+    - fixed meta with '&' eg Lost & Found
+    - fixed importing from zip erasing current contents
+    - list returns to current position when editing/deleting items
+    - makes use of xbmcgui.Dialog().contextmenu in Krypton
+
+
+[COLOR chartreuse]1.0.51: 9th April 2016[/COLOR]
+    - added back Play Folder to quick launch menu
+    - added LaunchSFMenu script
+          usage: xbmc.runscript(special://home/addons/plugin.program.super.favourites/LaunchSFMenu.py)
+          use to launch the Super Favourites global menu from skins, other addons, custom buttons, etc
+    - add to Super Favourites option can be configured to remember previous folder
+    - fixed locking of Super Folders
+
+
+[COLOR chartreuse]1.0.50: 15th March 2016[/COLOR]
+    - added ability to copy thumbnails, fanart and description from Super Favourites/Folders to other Super Favourites/Folders
+        - select Copy Super Favourite from the context menu, then select Edit Super Favourite on a second and use the paste menu item(s)
+    - items can now be copied directly from the Super Favourites global menu and pasted into Super Favourites
+    - fixed behaviour when download folder is not available
+
+
+[COLOR chartreuse]1.0.49.1: 11th March 2016[/COLOR]
+    - fixed thumbnails in Estouchy skin
+    - fixed text on cancel button in quick launch dialog in Estouchy skin
+    - fixed importing of Super Favourites
+    - added The Movie Databse (TMDb) api key created specifically for Super Favourites
+
+
+[COLOR chartreuse]1.0.49: 10th March 2016[/COLOR]
+    - quick launch items now sorted alphabetically when configured
+    - numerical labels can be shown on quick launch menu (see Display settings)
+    - quick launch menu now works correctly with shares
+    - iSearch no longer prompts for Search string when first selected
+    - added Estuary style global menu
+    - refactored iSearch behaviour
+    - refactored global menu keymap logic to fix disabling and uninstallation issues
+
+
+[COLOR chartreuse]1.0.48: 15th February 2016[/COLOR]
+    - this release will be forever known as [COLOR cyan][B]THE DKPLAYACLUB-DICK-MOVE RELEASE[/B][/COLOR]
+    - the Super Favourite menu item on the standard context menu can now be disabled
+        - not as easy as you would think!
+    - whitelisted addons will not show the global menu regardless of the global menu setting
+
+
+[COLOR chartreuse]1.0.47.1: 13th February 2016[/COLOR]
+    - linked Super Folders that use the 'folder=' format now maintain the navigation history 
+    - linked Super Folder are now created using the 'folder=' format (instead of 'path=')
+    - fixed 'Super_Favourites_Folder' infolabel when displaying numeric labels
+    - locked Super Folders no longer appear on quick launch dialog
+
+
+[COLOR chartreuse]1.0.47: 12th February 2016[/COLOR]
+    - linked Super Folders now maintain the navigation history
+    - fixed missing Super Folder names in certain views/skins
+    - removed sfOption parameter when manually editing Super Favourites
+    - fixed iRecommend functionality when displaying numeric labels
+
+
+[COLOR chartreuse]1.0.46.1: 3rd February 2016[/COLOR]
+    - removed spurious window ID from favourites
+
+
+[COLOR chartreuse]1.0.46: 2nd February 2016[/COLOR]
+    - remove numeric label when adding to Kodi favourites
+    - fixed moving favourites up and down when items are hidden
+    - fixed images for some iSearch items
+    - fixed launching from widgets - tested in Arctic: Zephyr
+    - infolabels in favourites are now parsed correctly, eg $ INFO[Skin.String(MovieQuery)]
+    - localized strings in favourites are now parsed correctly,  eg $ LOCALIZE[342]
+
+
+[COLOR chartreuse]1.0.45: 14th January 2016[/COLOR]
+    - fixed adding to Kodi favourites
+    - fixed iSearch from file manager window
+    - fixed global menu behaviour in WindowXML windows
+    - added download functionality to global menu 
+        - available if Super Favourites *may* be able to download the current playing video
+
+
+[COLOR chartreuse]1.0.44: 17th December 2015[/COLOR]
+    - version bump
+
 
 [COLOR chartreuse]1.0.43: 16th December 2015[/COLOR]
     - submitted to org

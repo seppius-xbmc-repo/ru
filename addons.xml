@@ -166,22 +166,26 @@ Audio sources are
     </extension>
 </addon>
 
-<addon id="plugin.program.super.favourites" name="Super Favourites" version="1.0.43.rus" provider-name="spoyser">
+<addon id="plugin.program.super.favourites" name="Super Favourites" version="1.0.56.rus" provider-name="spoyser">
   <requires>
-    <import addon="xbmc.python" version="2.1.0"/>
-	<import addon="script.module.metahandler" optional="true" />
+    <import addon="xbmc.python" version="2.14.0"/>
+    <import addon="script.module.metahandler" optional="true" />
   </requires>
 
+
   <extension point="xbmc.python.pluginsource" library="default.py">
-        <provides>video audio executable image</provides>
+        <provides>video audio image executable</provides>
   </extension>
+
 
   <extension point="xbmc.service" library="service.py" start="startup" />
 
+
   <extension point="xbmc.addon.metadata">
-    <summary lang="en">Ваша мультимедиа библиотека.</summary>
-    <description lang="en">Super Favourites лучший способ управления вашим избранным. [CR] [CR] Практически любой пункт в Kodi может быть добавлен в избранное, даже из любых аддонов, которые обычно не дают такую возможность. [CR] [CR] Super Favourites позволяет более эффективно управлять избранным, в том числе создавать отдельные папки, которые в последствии можно копировать и перемещать между собой. [CR] [CR] Super Favourites позволяет создавать свои собственные библиотеки с вашим контентом: любимую музыку,  любимые плейлисты, любимые фильмы, любимые радиостанции, любимые мультфильмы, возможности безграничны, и все это в одной простой в использовании программе.
-</description>
+    <summary lang="en">Put all your favourites bits of all your favourites addons into one easy to use addon.</summary>
+    <summary lang="ru">Ваша мультимедийная библиотека.</summary>
+    <description lang="en">Super Favourites is a better way of managing your Kodi Favourites.[CR][CR]Virtually any menu item within Kodi can be added to Super Favourites, even from addons that don't normally provide this feature.[CR][CR]Super Favourites allows you to better manage your Kodi favourites, including the creation of sub-folders, into which your Kodi favourites can then be copied or moved into.[CR][CR]This allows you to create you own custom addon with just the best bits of your favourite addons. Search your favourite addons, play your favourite music, read your favourite comic strips, select your favourite playlists, browse your favourite movies, listen to your favourite radio stations, watch your favourite cartoons, the possibilities are endless, all from within one easy to use addon.</description>
+    <description lang="ru">Super Favorites - лучший способ управления вашим Избранным в Kodi.[CR][CR]Фактически любой пункт меню в Kodi может быть добавлен в Super Favorites, даже из аддонов, которые обычно не предоставляют эту функцию.</description>
     <platform>all</platform>
     <language>en</language>
     <license>GNU GENERAL PUBLIC LICENSE. Version 2, June 1991</license>
@@ -189,14 +193,43 @@ Audio sources are
     <website></website>
     <source>https://github.com/spoyser/spoyser-repo/tree/master/plugin.program.super.favourites</source>
     <email>seanpoyser at gmail.com</email>
+
+    <news>
+1.0.56: 19th February 2017
+    - added optional initial path, and include play folder parameters to quicklaunch script
+        usage: xbmc.runscript(special://home/addons/plugin.program.super.favourites/quicklaunch.py,folder1/folder2,True)
+    - fixed playlist parsing
+    - fixed quicklaunch in Krypton
+    - fixed launching ExecuteBuiltin types from the quick launch dialog
+    - fixed launching playable items added from FileManager
+    - fixed launching playable items from widgets
+    - various other fixes due to changes in Krypton
+    </news>
+
   </extension>
 
-  <extension point="kodi.context.item" library="capture.py">
-      <item>
-        <label>30000</label>
-        <visible>true</visible>
+
+  <extension point="kodi.context.item">
+    <menu id="kodi.core.main">
+
+      <item library="capture.py">
+        <label>$ADDON[plugin.program.super.favourites 30002]</label>
+        <visible>!IsEmpty(Window(Home).Property(SF_STD_CONTEXTMENU_ENABLED)) + !StringCompare(Container.PluginName,plugin.program.super.favourites)</visible>
       </item>
-    </extension>
+
+      <item library="menu_addtofaves.py">
+        <label>$ADDON[plugin.program.super.favourites 30047]</label>
+        <visible>!IsEmpty(Window(Home).Property(SF_STD_ADDTOFAVES_ENABLED)) + !StringCompare(Container.PluginName,plugin.program.super.favourites)</visible>
+      </item>
+
+      <item library="menu_download.py">
+        <label>$ADDON[plugin.program.super.favourites 30259]</label>
+        <visible>!IsEmpty(Window(Home).Property(SF_STD_DOWNLOAD_ENABLED)) + Player.IsInternetStream</visible>
+      </item>
+
+    </menu>
+  </extension>
+
 </addon>
 
 <addon id="plugin.video.175h.net"
