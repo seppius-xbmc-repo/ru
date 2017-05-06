@@ -153,18 +153,14 @@ def GetVKUrl(html):
 
 def GetSibnetUrl(html):
     soup = bs(html, "html.parser")
-    # print soup
     player = soup.find('div', {'class':'b-video_player'})
-    param = player.find('param', {'name': 'movie'})
-    if param :
-        video_id = param['value']
-    else :
-        video_id = player.find('iframe')['src']
-    #print video_id
-    http = GetHTML('http://video.sibnet.ru/shell_config_xml.php?videoid=' + video_id.split('=', 1)[1])
-    soup = bs(http, "html.parser")
-    source = soup.find('file').text
-    return source
+    content = bs(GetHTML('http:' + player.find('iframe')['src']), "html.parser")
+    js = content.find_all('script', {'type': 'text/javascript'})[3].encode('utf-8')
+    p = re.compile('player.src(.*?);')
+    js = p.findall(js)
+    s = re.compile(',{src: "(.*?)"')
+    src = 'http://video.sibnet.ru/' + s.findall(js[0])[0]
+    return src
 
 def GetSRUrl(html):
     soup = bs(html, "html.parser")
@@ -250,9 +246,6 @@ def GetVoicesList(url):
     soup = bs(http, "html.parser")
     
     title = soup.find('meta', attrs={'itemprop': 'name'})['content']
-    ep = soup.find('div', attrs={'class': 'c-control episode-title'}).find('b')
-    if ep:
-        title += ' ' + ep.text
     content = soup.find('div', attrs={'class': 'video-variant-group','data-kind': kind})
     if not content:
         content = soup.find('div', attrs={'class': 'video-variant-group'})
