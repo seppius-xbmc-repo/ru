@@ -176,7 +176,7 @@ def GetFilmLink(url):
                 #elif 'gidtv.cc' in url:
                 #    url = GetGIDTVUrl(url)
                 #    addLink(title + ' [GIDTV]', infoLabel, url, iconImg=img)
-                elif ('staticdn.nl' or 'moonwalk.cc') in url:
+                elif ('staticdn.nl' or 'moonwalk.cc' or 'staticnlcdn.com') in url:
                     '''url = GetMoonwalkUrl(url)'''
                     print url
                     url = getRealURL(url)
@@ -184,6 +184,9 @@ def GetFilmLink(url):
                     url = url.replace('iframe','index.m3u8')
                     print url
                     addLink(title + ' [HD]', infoLabel, url, iconImg=img)
+                elif ('vkinos.com') in url:
+                    url = getVkinosUrl(url)
+                    addLink(title + ' [mp4]', infoLabel, url, iconImg=img)
             if num.find('div', attrs={'id': re.compile('^videoplayer')}) <> None:
                 url = num.find('script').string
                 url = GetFLASHUrl(url)
@@ -330,6 +333,13 @@ def Auth(cookieJar):
     	__settings__.openSettings()
     	sys.exit()
     return cookieJar
+
+def getVkinosUrl(url):
+    req = urllib2.Request(url)
+    res = urllib2.urlopen(req)
+    html = res.read()
+    lnk = re.compile('(http:\/\/.*.mp4)').findall(html)[0]
+    return lnk
 
 def getRealURL(url):    
     req = urllib2.Request(url)
