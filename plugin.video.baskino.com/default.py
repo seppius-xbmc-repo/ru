@@ -73,7 +73,7 @@ def Search():
     kbd.doModal()
     if kbd.isConfirmed():
         SearchStr = kbd.getText()
-        url = 'http://baskino.com/index.php?do=search&subaction=search&actors_only=0&search_start=1&full_search=0&result_from=1&result_from=1&story=' + SearchStr
+        url = site_url + '/index.php?do=search&subaction=search&actors_only=0&search_start=1&full_search=0&result_from=1&result_from=1&story=' + SearchStr
         GetFilmsList(url)
     else:
         return False
@@ -283,7 +283,7 @@ def touch(url):
         
 def add_bookmark(id):
     cookieJar = Auth(cookielib.CookieJar())
-    url = 'http://baskino.com/engine/ajax/favorites.php?fav_id='+id+'&action=plus&skin=Baskino'
+    url = site_url + '/engine/ajax/favorites.php?fav_id='+id+'&action=plus&skin=Baskino'
     opener = urllib2.build_opener(urllib2.HTTPCookieProcessor(cookieJar))
     connection = opener.open(url)
     connection.close()
@@ -291,7 +291,7 @@ def add_bookmark(id):
 
 def remove_bookmark(id):
     cookieJar = Auth(cookielib.CookieJar())
-    url = 'http://baskino.com/engine/ajax/favorites.php?fav_id='+id+'&action=minus&skin=Baskino'
+    url = site_url + '/engine/ajax/favorites.php?fav_id='+id+'&action=minus&skin=Baskino'
     opener = urllib2.build_opener(urllib2.HTTPCookieProcessor(cookieJar))
     connection = opener.open(url)
     connection.close()
@@ -313,7 +313,7 @@ def Auth(cookieJar):
         sys.exit()
 
     reqData = {'login_name' : username, 'login_password' : password, 'login' : 'submit'}
-    url = 'http://baskino.com/index.php'
+    url = site_url + '/index.php'
     headers = {
             "User-Agent": "Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.0.3) Gecko/2008092417 Firefox/3.0.3",
             "Content-Type" : "application/x-www-form-urlencoded",
@@ -321,7 +321,7 @@ def Auth(cookieJar):
             "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
             "Accept-Language": "en-US,en;q=0.8,bg;q=0.6,it;q=0.4,ru;q=0.2,uk;q=0.2",
             "Accept-Encoding" : "windows-1251,utf-8;q=0.7,*;q=0.7",
-            "Referer": "http://baskino.com/index.php"
+            "Referer": site_url + "/index.php"
     }
     opener = urllib2.build_opener(urllib2.HTTPCookieProcessor(cookieJar))
     conn = urllib2.Request(url, urllib.urlencode(reqData), headers)
