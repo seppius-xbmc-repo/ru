@@ -31,7 +31,7 @@ def GetHTML(url):
     return html
 
 def Main():
-    site_url = 'http://baskino.club'
+    site_url = 'http://baskino.co'
     html = GetHTML(site_url)
     soup = bs(html, 'html5lib', from_encoding="utf-8")
     content = soup.find('li', attrs={'class': 'first'})
