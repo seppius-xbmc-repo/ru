@@ -30,6 +30,27 @@ def GetHTML(url):
     connection.close()
     return html
 
+
+def get_html_with_referer(page_url, referer):
+    cookie_jar = cookielib.CookieJar()
+    if mode == 'FAVS':
+        cookie_jar = Auth(cookie_jar)
+    opener = urllib2.build_opener(urllib2.HTTPCookieProcessor(cookie_jar))
+    opener.addheaders = [("Referer", referer)]
+    connection = opener.open(page_url)
+    html = connection.read()
+    connection.close()
+    return html
+
+
+def post_request(page_url, req_data=None, headers={}):
+    opener = urllib2.build_opener(urllib2.HTTPCookieProcessor())
+    conn = urllib2.Request(page_url, urllib.urlencode(req_data), headers)
+    connection = opener.open(conn)
+    html = connection.read()
+    return html
+
+
 def Main():
     site_url = 'http://baskino.co'
     html = GetHTML(site_url)
@@ -105,7 +126,58 @@ def GetFilmsList(url_main):
                 addDir('---Следующая страница---', url, mode="FILMS")
     except: return False
 
+
+def parse_player_page(url, player_page):
+    manifest_path = re.compile(r'(/manifest.*all)').findall(player_page)[0]
+    compiled_url = "http://" + url.split('/')[2] + manifest_path
+    video_token = re.compile(r"video_token:\s*\S?\'([0-9a-f]*)\S?\'").findall(player_page)[0]
+    mw_key = re.compile(r"mw_key\s?=\s?\'(\w+)\';").findall(player_page)[0]
+    content_type = re.compile(r"content_type:\W*\'(movie)\W?\'").findall(player_page)[0]
+    mw_pid = re.compile(r"mw_pid:\W?(\d*)").findall(player_page)[0]
+    p_domain_id = re.compile(r"p_domain_id:\W?(\d*)").findall(player_page)[0]
+    csrf_token = re.compile(r"csrf-token\W\s?content\s?=\s?\"(\S*)\"").findall(player_page)[0]
+    access_level = re.compile(r"X-Access-Level\S?\':\s?\S?\'([a-f0-9]*)\S?\'").findall(player_page)[0]
+    ad_attr = '0'
+    cookies = get_cookies(player_page)
+    req_data = {"mw_key": mw_key, "content_type": content_type, "mw_pid": mw_pid, "p_domain_id": p_domain_id,
+                "ad_attr": ad_attr, cookies[0]: cookies[1]}
+    headers = {
+        "X-Access-Level": access_level,
+        "X-CSRF-Token": csrf_token,
+        "X-Requested-With": "XMLHttpRequest"
+    }
+    json_data = post_request(compiled_url, req_data, headers)
+    data = json.loads(json_data)
+    html5data = urllib.urlencode({"manifest_m3u8": data["mans"]["manifest_m3u8"],
+                                  "manifest_mp4": data["mans"]["manifest_mp4"], "token": video_token,
+                                  "pid": mw_pid, "debug": 0})
+    html5_player_url = "http://" + url.split('/')[2] + "/video/html5" + "?" + html5data
+    html5_page = GetHTML(html5_player_url)
+
+    # # this should work for mp4 streams
+    # mp4_manifest_link = re.compile("getJSON\S?\S?\'(http\S*json\S*[0-9a-f])\S?\'").findall(html5_page)[0]
+    # mp4file = GetHTML(mp4_manifest_link)
+    # links = json.loads(mp4file)
+
+    # this is for m3u8 streams
+    manifest_link = re.compile("hls\s?:\s?\S?\'(http\S*[0-9a-f])\S?\'").findall(html5_page)[0]
+    manifest_file = get_html_with_referer(manifest_link, html5_player_url)
+    links = re.compile("RESOLUTION=(\d*x\d*)\S*\s*(http\S*m3u8)").findall(manifest_file)
+    return dict(links)
+
+
+def get_cookies(player_page):
+    cookie = re.compile("\s\swindow\[.*\]\[(.*)\]\W?=\W?([a-z0-9\\\' +]*);").findall(player_page)[0]
+    cookie_header = cookie[0]
+    cookie_header = re.sub('\'|\s|\+', '', cookie_header)
+    cookie_data = cookie[1]
+    cookie_data = re.sub('\'|\s|\+', '', cookie_data)
+    cookies = [cookie_header, cookie_data]
+    return cookies
+
+
 def GetFilmLink(url):
+    film_url = url
     html = GetHTML(url)
     #print html
     soup = bs(html, 'html5lib', from_encoding="utf_8")
@@ -176,7 +248,7 @@ def GetFilmLink(url):
                 #elif 'gidtv.cc' in url:
                 #    url = GetGIDTVUrl(url)
                 #    addLink(title + ' [GIDTV]', infoLabel, url, iconImg=img)
-                elif ('staticdn.nl' or 'moonwalk.cc' or 'staticnlcdn.com') in url:
+                elif ('staticdn.nl' or 'moonwalk.cc') in url:
                     '''url = GetMoonwalkUrl(url)'''
                     print url
                     url = getRealURL(url)
@@ -187,6 +259,12 @@ def GetFilmLink(url):
                 elif ('vkinos.com') in url:
                     url = getVkinosUrl(url)
                     addLink(title + ' [mp4]', infoLabel, url, iconImg=img)
+                elif ('staticnlcdn.com') in url:
+                    global film_url
+                    player_page = get_html_with_referer(url, film_url)
+                    mp4_urls = parse_player_page(url, player_page)
+                    for key in mp4_urls.keys():
+                        addLink(title + " [" + key + "]", infoLabel, mp4_urls[key], iconImg=img)
             if num.find('div', attrs={'id': re.compile('^videoplayer')}) <> None:
                 url = num.find('script').string
                 url = GetFLASHUrl(url)
