@@ -1089,28 +1089,6 @@ Paypal: напишите на kit500.development at gmail dot com</description>
 	</extension>
 </addon>
 
-<addon id="repository.exodus" name="Exodus repository" version="3.0.0" provider-name="Exodus">
-	<extension point="xbmc.addon.repository" name="Exodus repository">
-	<dir>
-        <info compressed="false">https://github.com/lewblack125/tva-common/raw/master/addons.xml</info>
-        <checksum>https://github.com/lewblack125/tva-common/raw/master/addons.xml.md5</checksum>
-        <datadir zip="true">https://github.com/lewblack125/tva-common/raw/master/zips/</datadir>
-	</dir>
-    <dir>
-		<info compressed="false">https://github.com/lewblack125/daisy_tulip/raw/master/addons.xml</info>
-		<checksum>https://github.com/lewblack125/daisy_tulip/raw/master/addons.xml.md5</checksum>
-		<datadir zip="true">https://github.com/lewblack125/daisy_tulip/raw/master/zips/</datadir>
-    </dir>
-	</extension>
-	<extension point="xbmc.addon.metadata">
-		<summary lang="en">Exodus repository</summary>
-		<description lang="en">Exodus repository</description>
-		<platform>all</platform>
-		<forum>https://www.tvaddons.ag/forums</forum>
-        <website>https://www.tvaddons.ag</website>
-	</extension>
-</addon>
-
 <addon id="repository.giraffe" name="giraffe Kodi Add-ons" version="1.0.2" provider-name="weirdgiraffe">
 	<extension point="xbmc.addon.repository" name="giraffe Kodi Add-ons">
 			<info compressed="false">https://raw.githubusercontent.com/weirdgiraffe/kodi.addon.repo/master/addons/addons.xml</info>
