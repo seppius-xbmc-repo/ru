@@ -138,12 +138,16 @@ def openitem(params):
 
     #ttt=re.compile('title="([^"]+)"\s*src="([^"]+)"><\/div>').findall(http)
     #ttt=re.compile('title="([^"]+)"\s*src="([^"]+)">').findall(http)
-    ttt=re.compile('itemprop="([^"]+)"\s*src="([^"]+)">').findall(http)
-    ttt_name=re.compile('itemprop="([^"]+)"\s*content="([^"]+)">').findall(http)
+    #ttt=re.compile('itemprop="([^"]+)"\s*src="([^"]+)">').findall(http)
+    ttt=re.compile('data-src="([^"]+)"\s*src="([^"]+)">').findall(http)
+    #ttt_name=re.compile('itemprop="([^"]+)"\s*content="([^"]+)">').findall(http)
+    ttt_name=re.compile('data-url="([^"]+)"\s*data-title="([^"]+)">').findall(http)
     img="http://tushkan.club"+ttt[0][1]
     #ttt2=ttt[0][0]
-    ttt2=ttt_name[1][1]
-    hh= re.compile('http://.+film/.+.flv')
+    #ttt2=ttt_name[1][1]
+    ttt2=ttt_name[0][1]
+    #hh= re.compile('http://.+film/.+.flv')
+    hh= re.compile('http://\S+name=.+.flv')
     tttl= (re.findall(hh,str(http)))
     #img=addon_icon
     if tttl:
@@ -203,7 +207,8 @@ def playitem(params):
     #print params['mpath']
     http = GET(params['mpath'])
     #print http
-    hh= re.compile('http://.+.flv')
+    #hh= re.compile('http://.+.flv')
+    hh= re.compile('http://\S+.flv')
     link= re.findall(hh,str(http))[0]
     if link: item = xbmcgui.ListItem(path=link)
     #item = xbmcgui.ListItem(path=params['mpath'])
