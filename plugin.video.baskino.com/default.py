@@ -278,8 +278,12 @@ def get_film_link(dir_url):
                     print dir_url
                     add_link(title + ' [HD]', info_label, dir_url, icon_img=img)
                 elif 'vkinos.com' in dir_url:
-                    dir_url = get_vkinos_url(dir_url)
-                    add_link(title + ' [mp4]', info_label, dir_url, icon_img=img)
+                    if dir_url[-2:] == '5/':
+                        dir_url = get_vkinos_url(dir_url)
+                        add_link(title + ' [original]', info_label, dir_url, icon_img=img)
+                    else:
+                        dir_url = get_vkinos_url(dir_url)
+                        add_link(title + ' [mp4]', info_label, dir_url, icon_img=img)
                 elif 'staticnlcdn.com' in dir_url:
                     global film_url
                     player_page = get_html_with_referer(dir_url, film_url)
