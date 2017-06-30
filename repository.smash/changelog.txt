@@ -1,0 +1,1 @@
+Version 1.1.0 - Trying to fix repo problems,addon install problems and adding more addons be sure to check for updates

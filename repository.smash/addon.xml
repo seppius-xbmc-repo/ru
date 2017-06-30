@@ -1,0 +1,17 @@
+<addon id="repository.smash" name="Smash repository" version="1.1.3" provider-name="SMASH">
+	<extension point="xbmc.addon.repository" name="Smash repository">
+	<dir>
+        <info compressed="false">http://mediarepos.net/Repos/smashrepo/addons.xml</info>
+        <checksum>http://mediarepos.net/Repos/smashrepo/addons.xml.md5</checksum>
+        <datadir zip="true">http://mediarepos.net/Repos/smashrepo/</datadir>
+	</dir>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary lang="en">Under This Repo, I Will Host Addons With No Home,Bring Life To Dead Addons That Fully Work, Link To Repos From Devs (This will install current version the Dev Has) </summary>
+		<description lang="en">If want to donate its up to you paypal.me/BrianSMASH [CR] [B]Smash Repo Change Log 1.1.3[/B] [CR] - Fixed Icefilms (removed popup) [CR] - Fixed Few Repos [CR] - fixing other things, check for updates before going into vid addons</description>
+		<platform>all</platform>
+		<forum></forum>
+        <website></website>
+		<news>People hate that i got donations cause the community wanted a repo to grab exodus and other working addons for them self and family, i got hit with a ddos and more and to get protection for this is not cheap so i thank everyone who donated and also im sorry for the downtime will try and keep this running good</news>
+	</extension>
+</addon>
