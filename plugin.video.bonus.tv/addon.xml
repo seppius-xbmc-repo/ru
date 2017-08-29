@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Основная информация -->
+<addon id="plugin.video.bonus.tv" version="0.0.1" name="BONUS.TV" provider-name="Limeone">
+<!-- Зависимости -->
+<requires>
+  <import addon="xbmc.python" version="2.1.0"/>
+  <import addon="script.module.beautifulsoup" version="3.2.1"/>
+</requires>
+<!-- Тип (назначение) плагина -->
+<extension point="xbmc.python.pluginsource" library="default.py">
+  <provides>video</provides>
+</extension>
+<!-- Описание -->
+<extension point="xbmc.addon.metadata"> 
+  <summary lang="en">CNET Video Podcasts</summary>
+  <summary lang="ru">видео BONUS-TV</summary>
+  <summary lang="uk">Відео-подкасти CNET</summary>
+  <description lang="en">Addon for watching videos of BONUS-TV from XBMC.</description>
+  <description lang="ru">Дополнение для просмотра видео BONUS-TV из XBMC.</description>
+  <description lang="uk">Надбудова для прегляду відео-подкастів BONUS з XBMC.</description>
+  <platform>all</platform> 
+</extension>
+</addon>
