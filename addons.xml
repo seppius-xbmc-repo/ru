@@ -445,50 +445,6 @@ Paypal: напишите на kit500.development at gmail dot com</description>
     </extension>
 </addon>
 
-<addon id="plugin.video.galileo-tv.ru"
-       name="Галилео galileo-tv.ru"
-       version="1.0.2"
-       provider-name="Silen">
-  <requires>
-    <import addon="xbmc.python" version="2.1.0"/>
-  </requires>
-  <extension point="xbmc.python.pluginsource"
-             provides="video"
-             library="default.py">
-    <provides>video</provides>
-  </extension>
-  <extension point="xbmc.addon.metadata">
-    <summary>my-hit.ru</summary>
-    <description>Галилео - телевизионная развлекательно-познавательная программа канала СТС.
-Выходит с понедельника по пятницу в 17:30.
-Дайджест «Галилео» можно увидеть по воскресеньям в 11:00.
-Ведущий — Александр Пушной.
-Производит программу ООО «ГалилеоМедиа» по лицензии и при содействии «Victoria Production» и «SevenOne International».
-Наш проект является русским вариантом немецкой программы «Galileo» канала ProSieben.
-</description>
-    <platform>all</platform>
-  </extension>
-</addon>
-
-<addon id="plugin.video.igru.net.ua"
-       name="Фильмы fepcom.net"
-       version="1.1.5"
-       provider-name="Silen">
-  <requires>
-    <import addon="xbmc.python" version="2.1.0"/>
-  </requires>
-  <extension point="xbmc.python.pluginsource"
-             provides="video"
-             library="default.py">
-    <provides>video</provides>
-  </extension>
-  <extension point="xbmc.addon.metadata">
-    <summary>Фильмы (igru.net.ua)</summary>
-    <description>Русские и зарубежные фильмы предоставляемые сайтом fepcom.net.</description>
-    <platform>all</platform>
-  </extension>
-</addon>
-
 <addon id="plugin.video.ivi.ru" name="IVI" version="2.6.12" provider-name="ivi.ru (NuisMons)">
   <requires><import addon="xbmc.python" version="2.1.0"/></requires>
   <extension point="xbmc.python.pluginsource" provides="video" library="default.py"><provides>video</provides></extension>
@@ -868,65 +824,6 @@ Paypal: напишите на kit500.development at gmail dot com</description>
   <extension point="xbmc.addon.metadata">
     <summary>Просмотр видео онлайн tushkan.net</summary>
     <description>Просмотр видео онлайн tushkan.net</description>
-    <platform>all</platform>
-  </extension>
-</addon>
-
-<addon id="plugin.video.tv-here.ru"
-       name="TV-HERE.RU"
-       version="1.0.5"
-       provider-name="HD-Lab Team">
-  <requires>
-    <import addon="xbmc.python" version="2.1.0"/>
-  </requires>
-  <extension point="xbmc.python.pluginsource"
-             provides="video"
-             library="default.py">
-    <provides>video</provides>
-  </extension>
-  <extension point="xbmc.addon.metadata">
-    <summary>Смотрите телеканалы с сайта http://tv-here.ru</summary>
-    <description>Смотрите телеканалы с сайта http://tv-here.ru</description>
-    <platform>all</platform>
-  </extension>
-</addon>
-
-<addon id="plugin.video.tvigle.ru"
-       name="Tvigle"
-       version="1.0.6"
-       provider-name="HD-Lab Team">
-  <requires>
-    <import addon="xbmc.python" version="2.1.0"/>
-  </requires>
-  <extension point="xbmc.python.pluginsource"
-             provides="video"
-             library="default.py">
-    <provides>video</provides>
-  </extension>
-  <extension point="xbmc.addon.metadata">
-    <summary>Клипы, музыка, комедии, фильмы, мультфильмы. Бесплатное развлекательное видео на tvigle.ru</summary>
-    <description>Tvigle.ru — это развлекательный портал с качественным видео. Социальная сеть Tvigle объединяет профессионалов и любителей короткометражного видео.
-На нашем сайте вы можете увидеть видео различных жанров: начиная от сериалов, серьезных форматов, заканчивая музыкальными клипами и арт-хаусом. Именно здесь всем творческим людям предоставляется возможность продемонстрировать свои таланты. Ведь неважно кто ты — важны твои идеи и работы.
-Сегодня Tvigle.ru — это десятки тысяч посетителей в день, сотни тысяч просмотров видео и множество талантливых авторских работ.</description>
-    <platform>all</platform>
-  </extension>
-</addon>
-
-<addon id="plugin.video.tvjam.ru"
-       name="TVJAM.RU"
-       version="1.0.5"
-       provider-name="HD-Lab Team">
-  <requires>
-    <import addon="xbmc.python" version="2.1.0"/>
-  </requires>
-  <extension point="xbmc.python.pluginsource"
-             provides="video"
-             library="default.py">
-    <provides>video</provides>
-  </extension>
-  <extension point="xbmc.addon.metadata">
-    <summary>Смотрите видео с сайта http://tvjam.ru/</summary>
-    <description>Смотрите видео с сайта http://tvjam.ru/</description>
     <platform>all</platform>
   </extension>
 </addon>
