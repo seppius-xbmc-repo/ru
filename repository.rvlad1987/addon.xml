@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="repository.rvlad1987" name="rvlad1987 Kodi Add-ons" version="1.0.0" provider-name="Rudnitskii Vlad aka rvlad1987">
+	<extension point="xbmc.addon.repository" name="rvlad1987 Kodi Add-ons">
+		<info compressed="false">https://raw.githubusercontent.com/rvlad1987/repository.rvlad1987.xbmc-addons/master/addons.xml?v=1</info>
+		<checksum>https://raw.githubusercontent.com/rvlad1987/repository.rvlad1987.xbmc-addons/master/addons.xml.md5?v=1</checksum>
+		<datadir zip="true">https://raw.githubusercontent.com/rvlad1987/repository.rvlad1987.xbmc-addons/master/repo</datadir>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary>Дополнения из репозитория rvlad1987</summary>
+		<description>Дополнения для Kodi</description>
+		<disclaimer>Kodi add-on</disclaimer>
+		<platform>all</platform>
+	</extension>
+</addon>
