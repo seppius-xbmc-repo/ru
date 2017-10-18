@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addon id="plugin.video.showday.tv"
-       name="Сериалы showday.tv"
-       version="1.0.4"
-       provider-name="Silen">
+       name="Сериалы Showday"
+                            version="1.0.10"
+       provider-name="Silen,BaRoN!">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
   </requires>
