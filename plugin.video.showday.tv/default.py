@@ -426,11 +426,12 @@ def Get_Info(rec):
     try:
         i.title = rec.find('div', {'class':'text'}).find('h2').find('a').text.encode('utf-8')
     except:
-        i.title = rec.find('div', {'class':'text'}).find('h1').text.encode('utf-8')
+        i.title = rec.find('div', {'class':'content'}).find('a').text.encode('utf-8')
     #-- url
     try:
         i.url = rec.find('div', {'class':'text'}).find('h2').find('a')['href']
     except:
+        i.url = rec.find('div', {'class':'content'}).find('a')['href']
         pass
 
     for p in rec.find('div', {'class':'text'}).findAll('p'):
