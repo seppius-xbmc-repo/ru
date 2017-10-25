@@ -109,10 +109,10 @@ def get_URL(url, post = None, ref = None):
     request = urllib2.Request(url, post)
 
     request.add_header('User-Agent', 'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0; Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1) ; .NET CLR 1.1.4322; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729; .NET4.0C)')
-    request.add_header('Host',	'asbook.net')
+    request.add_header('Host',	'asbook.co')
     request.add_header('Accept', '*/*')
     request.add_header('Accept-Language', 'ru-RU')
-    request.add_header('Referer',	'http://asbook.net')
+    request.add_header('Referer',	'http://asbook.co')
 
     try:
         f = urllib2.urlopen(request)
@@ -211,7 +211,7 @@ def Empty():
 
 # ----- search on site --------------------------------------------------------
 def get_Search_HTML(search_str, page):
-    url = 'http://asbook.net/index.php?do=search'
+    url = 'http://asbook.co/index.php?do=search'
     str = search_str#.decode('utf-8').encode('windows-1251')
 
     values = {
@@ -423,10 +423,14 @@ def Book_Info(params):
     #    if 'var flashvars = {' in j.text:
     #        pl = re.compile('var flashvars = {(.+?)}', re.MULTILINE|re.DOTALL).findall(j.text)
     #        b_url = pl[0].split(',')[1].replace('pl:','').replace('"','')
-    packed_flash_data = soup.find('div', {'class':'b-fullpost__player_wrapper clearfix'}).contents[1].text
-    unpacked_flash_data = eval('unpack' + packed_flash_data[packed_flash_data.find('}(')+1:-1])
-    b_url = re.compile("json_url=\\'(.+?)\'", re.MULTILINE|re.DOTALL).findall(unpacked_flash_data)[0]
+    #packed_flash_data = soup.find('div', {'class':'b-fullpost__player_wrapper clearfix'}).contents[1].text
+    #unpacked_flash_data = eval('unpack' + packed_flash_data[packed_flash_data.find('}(')+1:-1])
+    #b_url = re.compile("json_url=\\'(.+?)\'", re.MULTILINE|re.DOTALL).findall(unpacked_flash_data)[0]
     #-------------- End Change 12/03/2015 Evgenii S------------------------------------
+    #(------------- Change 25/10/2017 rvlad1987----------------------------------------
+    unpacked_flash_data = soup.find('div', {'class':'b-fullpost__player_wrapper clearfix'}).contents[1].text
+    b_url = re.compile("json_url = \'(.+?)\'").findall(unpacked_flash_data)[0]
+    #--------------End Change 25/10/2017 rvlad1987------------------------------------
 
     # -- parsing web page --------------------------------------------------
     html = get_URL(b_url)
@@ -476,7 +480,7 @@ def Genre_List(params):
     xbmcplugin.addDirectoryItem(h, u, i, True)
 
     #-- get generes
-    url = 'http://asbook.net/'
+    url = 'http://asbook.co/'
 
     html = get_URL(url)
     soup = BeautifulSoup(html, fromEncoding="windows-1251")
@@ -497,7 +501,7 @@ def Genre_List(params):
             name = '  [COLOR FF00FF00]'+rec.find('a').text +'[/COLOR]' # [COLOR FF00FFF0]'+rec.find('span').text+'[/COLOR]'
             mode = 'BOOK_LIST'
 
-        url = 'http://asbook.net/'+rec.find('a')['href']
+        url = 'http://asbook.co/'+rec.find('a')['href']
         genre  = rec.find('a').text.encode('utf-8')
         bcount = 0 #rec.find('span').text.replace('(','').replace(')','')
 
@@ -527,7 +531,7 @@ def PLAY(params):
     track = int(urllib.unquote_plus(params['track']))
 
     header = {  'Host'                  :urlparse(url).hostname,
-                'Referer'               :'http://asbook.net/player/uppod.swf',
+                'Referer'               :'http://asbook.co/player/audio.swf',
                 'User-Agent'            :'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0; Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1) ; .NET CLR 1.1.4322; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729; .NET4.0C; .NET4.0E)'
              }
 
@@ -541,10 +545,14 @@ def PLAY(params):
     #    if 'var flashvars = {' in j.text:
     #        pl = re.compile('var flashvars = {(.+?)}', re.MULTILINE|re.DOTALL).findall(j.text)
     #        b_url = pl[0].split(',')[1].replace('pl:','').replace('"','')
-    packed_flash_data = soup.find('div', {'class':'b-fullpost__player_wrapper clearfix'}).contents[1].text
-    unpacked_flash_data = eval('unpack' + packed_flash_data[packed_flash_data.find('}(')+1:-1])
-    b_url = re.compile("json_url=\\'(.+?)\'", re.MULTILINE|re.DOTALL).findall(unpacked_flash_data)[0]
+    #packed_flash_data = soup.find('div', {'class':'b-fullpost__player_wrapper clearfix'}).contents[1].text
+    #unpacked_flash_data = eval('unpack' + packed_flash_data[packed_flash_data.find('}(')+1:-1])
+    #b_url = re.compile("json_url=\\'(.+?)\'", re.MULTILINE|re.DOTALL).findall(unpacked_flash_data)[0]
     #-------------- End Change 12/03/2015 Evgenii S------------------------------------
+    #(------------- Change 25/10/2017 rvlad1987----------------------------------------
+    unpacked_flash_data = soup.find('div', {'class':'b-fullpost__player_wrapper clearfix'}).contents[1].text
+    b_url = re.compile("json_url = \'(.+?)\'").findall(unpacked_flash_data)[0]
+    #--------------End Change 25/10/2017 rvlad1987------------------------------------
     #------------------------------------------------
     html = get_URL(b_url)
 

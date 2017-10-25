@@ -2,7 +2,7 @@
 <addons>
 <addon id="plugin.audio.asbook.ru"
        name="[COLOR FF00FF00]Аудиокниги ([/COLOR][COLOR FFFFF000]asbook.ru[/COLOR][COLOR FF00FF00])[/COLOR]"
-       version="1.0.10"
+       version="1.0.11"
        provider-name="Silen">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
