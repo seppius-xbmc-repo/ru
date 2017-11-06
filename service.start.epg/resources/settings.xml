@@ -1,7 +1,0 @@
-<settings>
-	<category label="Настройка службы ">
-		<setting type="sep" />
-		<setting default="60" id="startScript" label="Провека состояния прокси-сервера через (сек):" type="select" values="15|30|45|60|75|90|105|120" />
-		<setting type="sep" />
-	</category>
-</settings>

@@ -712,8 +712,8 @@ Paypal: напишите на kit500.development at gmail dot com</description>
 
 <addon id="plugin.video.showday.tv"
        name="Сериалы Showday"
-                            version="1.0.11"
-       provider-name="Silen,BaRoN!">
+                            version="1.0.12"
+       provider-name="Silen">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
   </requires>
@@ -1546,19 +1546,6 @@ Paypal: напишите на kit500.development at gmail dot com</description>
   <extension library="lib" point="xbmc.python.module" />
 </addon>
 
-<addon id="script.epg.iptv" name="EPG для pvr.IPTV" version="1.1.2" provider-name="Alex S.Galickij">
-  <requires>
-    <import addon="xbmc.python" version="2.1.0"/>
-  </requires>
-  <extension point="xbmc.python.script" library="addon.py"/>
-  <extension point="xbmc.addon.metadata">
-    <summary lang="ru">Вся информация о возможностях скрипта и его настройках на http://tvbox.link</summary>
-    <description lang="ru">Скрипт предназначен для формирования EPG, в формате xmltv и совместной работы с pvr.IPTVSimple. EPG формируется для заданного города России, Казахстана, Украины и Беларуси, включает в себя региональные каналы и не требует корректировки времени как в PVR addons, так и в плейлисте. В скрипте предусмотрена возможность формирования плейлиста по шаблону, автоматическая настройка pvr.IPTVSimple. Скрипт использует ТВ программу с сайта tv.Yandex.ru.Приятного, Вам, просмотра!</description>
-	<disclaimer lang="ru">Это тестовая, бесплатная версия! Возможны незначительные ошибки, которые могут быть устранены с Вашей помощью. Об ошибках сообщите, пожалуйста, на support@tvbox.link</disclaimer>
-	<platform>all</platform>
-  </extension>
-</addon>
-
 <addon id="script.favourites" name="Favourites script" version="6.0.3" provider-name="ronie, `Black">
 	<requires>
 		<import addon="xbmc.python" version="2.1.0"/>
@@ -2163,45 +2150,6 @@ provider-name="Roman_V_M">
         <description>Русская клавиатура. Русская клавиатура открывается поверх обычной</description>
         <license>GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007</license>
     </extension>
-</addon>
-
-<addon id="service.proxy.tv" name="ProxyTV" version="2.3.9" provider-name="Alexey S.Galickiy">
-  <requires>
-    <import addon="xbmc.python" version="2.7.0"/>
-  </requires>
-  <extension point="xbmc.service" library="starTV.py"/>
-  <extension point="xbmc.addon.metadata">
-    <summary lang="ru">ProxyTV - ТВ по всему Миру! Подробности на http://tvbox.link</summary>
-    <description lang="ru">Служба предназначена для просмотра ТВ на 'PVR IPTV Simple Client' с актуальной программой для любого города в любой точке земного шара!</description>
-	<disclaimer lang="ru">Это тестовая, бесплатная версия! Возможны незначительные ошибки, которые могут быть устранены с Вашей помощью. Техподдержка: support@tvbox.link</disclaimer>
-	<platform>all</platform>
-  </extension>
-</addon>
-
-<addon id="service.proxy.tv3" name="ProxyTV-3" version="3.0.0" provider-name="Alexey S.Galickiy">
-  <requires>
-    <import addon="xbmc.python" version="2.7.0"/>
-  </requires>
-  <extension point="xbmc.service" library="proxytv3.py"/>
-  <extension point="xbmc.addon.metadata">
-    <summary lang="ru">ProxyTV-3</summary>
-    <description lang="ru">Русское ТВ в любой точке земного шара!</description>
-	<disclaimer lang="ru">Тестовая версия!</disclaimer>
-	<platform>all</platform>
-  </extension>
-</addon>
-
-<addon id="service.start.epg" name="Автостарт script.epg.iptv" version="1.0.2" provider-name="Alex S.Galickij">
-  <requires>
-    <import addon="xbmc.python" version="2.1.0"/>
-  </requires>
-  <extension point="xbmc.service" library="addon.py"/>
-  <extension point="xbmc.addon.metadata">
-    <summary lang="ru">Служба автозапуска script.epg.iptv</summary>
-    <description lang="ru">Служба предназначена для автоматизации script.epg.iptv</description>
-	<disclaimer lang="ru">Это тестовая, бесплатная версия! Возможны незначительные ошибки, которые могут быть устранены с Вашей помощью. Техподдержка: support@tvbox.link</disclaimer>
-	<platform>all</platform>
-  </extension>
 </addon>
 
 <addon
