@@ -511,9 +511,13 @@ def Genre_List(params):
     html = get_HTML(url, post)
     soup = BeautifulSoup(html, fromEncoding="utf-8")
 
-    for g in soup.find('ul', {'class':'subcat'}).findAll('a'):
+    for g in soup.find('ul', {'class':'cat'}).findAll('a')+soup.find('ul', {'class':'subcat'}).findAll('a'):
+        gtext = g.text.encode('utf-8').replace(' года', '')
         for rec in soup.find('select', {'class':'rating'}).findAll('option'):
-            if g.text == rec.text.replace('&nbsp;', ''):
+            rectext = rec.text.encode('utf-8').replace('&nbsp;', '')
+            rectext = rectext.replace(' сериалы', '')
+            rectext = rectext.replace(' онлайн', '')
+            if gtext == rectext:
                 i = xbmcgui.ListItem(g.text.encode('utf-8'), iconImage=icon, thumbnailImage=icon)
                 u = sys.argv[0] + '?mode=MOVIE'
                 #-- filter parameters
