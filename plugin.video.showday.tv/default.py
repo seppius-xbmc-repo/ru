@@ -425,12 +425,15 @@ def Serial_Info(params):
 def Get_Info(rec):
     i = Info()
     #-- title
-    i.title = rec.find('div', {'class':'text'}).find('a').text.encode('utf-8')
+    try:
+        i.title = rec.find('div', {'class':'text'}).find('h2').find('a').text.encode('utf-8')
+    except:
+        i.title = rec.find('div', {'class':'content'}).find('a').text.encode('utf-8')
     #-- url
     try:
-        #!!!!! i.url = rec.find('div', {'class':'text'}).find('h4').find('a')['href']
         i.url = rec.find('div', {'class':'text'}).find('h2').find('a')['href']
     except:
+        i.url = rec.find('div', {'class':'content'}).find('a')['href']
         pass
 
     for p in rec.find('div', {'class':'text'}).findAll('p'):

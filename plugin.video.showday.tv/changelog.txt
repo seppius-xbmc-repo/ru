@@ -24,3 +24,6 @@
 
 [B]1.0.14[/B]
 - Nov 15, 2017 merged code by Sarabande: extended list of genres
+
+[B]1.0.17[/B]
+- Nov 19, 2017 : revert search cyrillic
