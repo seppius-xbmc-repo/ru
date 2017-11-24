@@ -27,3 +27,6 @@
 
 [B]1.0.17[/B]
 - Nov 19, 2017 : revert search cyrillic
+
+[B]1.0.18[/B]
+- Nov 24, 2017 : fixed menu genres

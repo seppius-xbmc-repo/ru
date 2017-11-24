@@ -514,7 +514,8 @@ def Genre_List(params):
     html = get_HTML(url, post)
     soup = BeautifulSoup(html, fromEncoding="utf-8")
 
-    for g in soup.find('ul', {'class':'cat'}).findAll('a')+soup.find('ul', {'class':'subcat'}).findAll('a'):
+    #for g in soup.find('ul', {'class':'cat'}).findAll('a')+soup.find('ul', {'class':'subcat'}).findAll('a'):
+    for g in soup.find('ul', {'class':'subcat clearfix'}).findAll('a'):
         gtext = g.text.encode('utf-8').replace(' года', '')
         for rec in soup.find('select', {'class':'rating'}).findAll('option'):
             rectext = rec.text.encode('utf-8').replace('&nbsp;', '')
