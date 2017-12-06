@@ -148,22 +148,26 @@ def get_films_list(url_main):
 
 
 def parse_player_page(player_url, player_page):
-    manifest_path = re.compile(r'(/manifest.*all)').findall(player_page)[0]
-    compiled_url = "http://" + player_url.split('/')[2] + manifest_path
+    js_path = re.compile(r'script src=\"(.*)\"').findall(player_page)[0]
+    js_page = get_html("http://" + player_url.split('/')[2] + js_path)
+
+    manifest_path = re.compile(r'(/manifest.*all)').findall(js_page)[0]
+
     video_token = re.compile(r"video_token:\s*\S?\'([0-9a-f]*)\S?\'").findall(player_page)[0]
-    mw_key = re.compile(r"mw_key\s?=\s?\'(\w+)\';").findall(player_page)[0]
-    content_type = re.compile(r"content_type:\W*\'(movie)\W?\'").findall(player_page)[0]
-    mw_pid = re.compile(r"mw_pid:\W?(\d*)").findall(player_page)[0]
-    p_domain_id = re.compile(r"p_domain_id:\W?(\d*)").findall(player_page)[0]
-    csrf_token = re.compile(r"csrf-token\W\s?content\s?=\s?\"(\S*)\"").findall(player_page)[0]
-    access_level = re.compile(r"X-Access-Level\S?\':\s?\S?\'([a-f0-9]*)\S?\'").findall(player_page)[0]
-    ad_attr = '0'
+    manifest_path = manifest_path.replace("\"+this.options.video_token+\"", video_token)
+    compiled_url = "http://" + player_url.split('/')[2] + manifest_path
+
+    mw_key = re.compile(r"mw_key:\"(\w+)\"").findall(js_page)[0]
+
+    mw_pid = re.compile(r"partner_id:\s*(\w*),").findall(player_page)[0]
+    p_domain_id = re.compile(r"domain_id:\s*(\w*),").findall(player_page)[0]
+    access_level = re.compile(r"user_token:\s*\'(\w*)\',").findall(player_page)[0]
     cookies = get_cookies(player_page)
-    req_data = {"mw_key": mw_key, "content_type": content_type, "mw_pid": mw_pid, "p_domain_id": p_domain_id,
-                "ad_attr": ad_attr, cookies[0]: cookies[1]}
+
+    req_data = {"mw_key": mw_key, "iframe_version": "2.1", "mw_pid": mw_pid, "p_domain_id": p_domain_id,
+                "ad_attr": '0', cookies[0]: cookies[1]}
     headers = {
         "X-Access-Level": access_level,
-        "X-CSRF-Token": csrf_token,
         "X-Requested-With": "XMLHttpRequest"
     }
     json_data = post_request(compiled_url, req_data, headers)
@@ -174,21 +178,17 @@ def parse_player_page(player_url, player_page):
     html5_player_url = "http://" + player_url.split('/')[2] + "/video/html5" + "?" + html5data
     html5_page = get_html(html5_player_url)
 
-    # # this should work for mp4 streams
-    # mp4_manifest_link = re.compile("getJSON\S?\S?\'(http\S*json\S*[0-9a-f])\S?\'").findall(html5_page)[0]
-    # mp4file = get_html(mp4_manifest_link)
-    # links = json.loads(mp4file)
-
-    # this is for m3u8 streams
-    manifest_link = re.compile("hls\s?:\s?\S?\'(http\S*[0-9a-f])\S?\'").findall(html5_page)[0]
-    manifest_file = get_html_with_referer(manifest_link, html5_player_url)
-    links = re.compile("RESOLUTION=(\d*x\d*)\S*\s*(http\S*m3u8)").findall(manifest_file)
-    # noinspection PyTypeChecker
-    return dict(links)
-
+    manifest_link_mp4 = re.compile("manifest\S.*\'(http.*)\'.replace").findall(html5_page)[0]
+    manifest_link_hls = re.compile("manifests.hls.*\'(http.*)\'.replace").findall(html5_page)[0]
+    manifest_file_mp4 = get_html_with_referer(manifest_link_mp4, html5_player_url)
+    manifest_file_hls = get_html_with_referer(manifest_link_hls, html5_player_url)
+    links_mp4 = json.loads(manifest_file_mp4)
+    links_hls = re.compile("RESOLUTION=(\d*x\d*)\S*\s*(http\S*m3u8)").findall(manifest_file_hls)
+    links_mp4.update(links_hls)
+    return dict(links_mp4)
 
 def get_cookies(player_page):
-    cookie = re.compile("\s\swindow\[.*\]\[(.*)\]\W?=\W?([a-z0-9\\\' +]*);").findall(player_page)[0]
+    cookie = re.compile("\s\swindow.(\w*)\s=\s\'(\w*)\';").findall(player_page)[0]
     cookie_header = cookie[0]
     cookie_header = re.sub('\'|\s|\+', '', cookie_header)
     cookie_data = cookie[1]
@@ -285,7 +285,6 @@ def get_film_link(dir_url):
                         dir_url = get_vkinos_url(dir_url)
                         add_link(title + ' [mp4]', info_label, dir_url, icon_img=img)
                 elif 'staticnlcdn.com' in dir_url:
-                    global film_url
                     player_page = get_html_with_referer(dir_url, film_url)
                     mp4_urls = parse_player_page(dir_url, player_page)
                     for key in mp4_urls.keys():
