@@ -292,7 +292,7 @@ Audio sources are
   </extension>
 </addon>
 
-<addon id="plugin.video.baskino.com" name="Baskino.com" version="1.1.12" provider-name="Wispik and gerikss, uaBArt">
+<addon id="plugin.video.baskino.com" name="Baskino.com" version="1.1.13" provider-name="Wispik and gerikss, uaBArt">
   <requires>
     <import addon="xbmc.python" version="2.1.0" />
     <import addon="script.module.beautifulsoup4" version="4.3.2"/>

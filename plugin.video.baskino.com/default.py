@@ -158,16 +158,15 @@ def parse_player_page(player_url, player_page):
     compiled_url = "http://" + player_url.split('/')[2] + manifest_path
 
     mw_key = re.compile(r"mw_key:\"(\w+)\"").findall(js_page)[0]
+    cookie_key = re.compile(r"iframe_version.*,(\w*):e.\w*").findall(js_page)[0]
 
     mw_pid = re.compile(r"partner_id:\s*(\w*),").findall(player_page)[0]
     p_domain_id = re.compile(r"domain_id:\s*(\w*),").findall(player_page)[0]
-    access_level = re.compile(r"user_token:\s*\'(\w*)\',").findall(player_page)[0]
     cookies = get_cookies(player_page)
 
     req_data = {"mw_key": mw_key, "iframe_version": "2.1", "mw_pid": mw_pid, "p_domain_id": p_domain_id,
-                "ad_attr": '0', cookies[0]: cookies[1]}
+                "ad_attr": '0', cookie_key: cookies[1]}
     headers = {
-        "X-Access-Level": access_level,
         "X-Requested-With": "XMLHttpRequest"
     }
     json_data = post_request(compiled_url, req_data, headers)
@@ -186,6 +185,7 @@ def parse_player_page(player_url, player_page):
     links_hls = re.compile("RESOLUTION=(\d*x\d*)\S*\s*(http\S*m3u8)").findall(manifest_file_hls)
     links_mp4.update(links_hls)
     return dict(links_mp4)
+
 
 def get_cookies(player_page):
     cookie = re.compile("\s\swindow.(\w*)\s=\s\'(\w*)\';").findall(player_page)[0]
