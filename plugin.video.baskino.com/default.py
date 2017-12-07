@@ -15,6 +15,7 @@ import xbmcgui
 import xbmcplugin
 from bs4 import BeautifulSoup
 
+debug = False
 __settings__ = xbmcaddon.Addon(id='plugin.video.baskino.com')
 plugin_path = __settings__.getAddonInfo('path').replace(';', '')
 plugin_icon = xbmc.translatePath(os.path.join(plugin_path, 'icon.png'))
@@ -24,10 +25,18 @@ site_url = 'http://baskino.co'
 
 
 def alert(title, message):
+    if debug:
+        print "===== Alert ====="
+        print title
+        print message
     xbmcgui.Dialog().ok(title, message)
 
 
 def notificator(title, message, timeout=500):
+    if debug:
+        print "===== Notificator ====="
+        print title
+        print message
     xbmc.executebuiltin('XBMC.Notification("%s", "%s", %s, "%s")' % (title, message, timeout, plugin_icon))
 
 
@@ -81,8 +90,9 @@ def main():
             add_dir(title, dir_url, dir_mode="FILMS")
 
 
-def add_dir(title, dir_url, icon_img="DefaultVideo.png", dir_mode="", inbookmarks=False):
-    sys_url = sys.argv[0] + '?url=' + urllib.quote_plus(dir_url) + '&mode=' + urllib.quote_plus(str(dir_mode))
+def add_dir(title, dir_url, icon_img="DefaultVideo.png", dir_mode="", referer="", inbookmarks=False):
+    sys_url = sys.argv[0] + '?url=' + urllib.quote_plus(dir_url) + '&mode=' + urllib.quote_plus(str(dir_mode)) + \
+              '&ref=' + urllib.quote_plus(str(referer))
     item = xbmcgui.ListItem(title, iconImage=icon_img, thumbnailImage=icon_img)
     item.setInfo(type='Video', infoLabels={'Title': title})
     dir_id = dir_url.split('-')[0].split('/')[-1]
@@ -95,12 +105,24 @@ def add_dir(title, dir_url, icon_img="DefaultVideo.png", dir_mode="", inbookmark
                                    (context_path, 1, 'mode=add_bookmark&url=' + dir_id)))
     item.addContextMenuItems(context_menu_items)
     xbmcplugin.addDirectoryItem(handle=h, url=sys_url, listitem=item, isFolder=True)
+    if debug:
+        print "===== Add Dir ====="
+        if not isinstance(title, str):
+            print title.encode('utf-8'), sys_url.encode('utf-8')
+        else:
+            print title, sys_url.encode('utf-8')
 
 
 def add_link(title, info_labels, link_url, icon_img="DefaultVideo.png"):
     item = xbmcgui.ListItem(title, iconImage=icon_img, thumbnailImage=icon_img)
     item.setInfo(type='Video', infoLabels=info_labels)
     xbmcplugin.addDirectoryItem(handle=h, url=link_url, listitem=item)
+    if debug:
+        print "===== Add Link ====="
+        if not isinstance(title, str):
+            print title.encode('utf-8'), link_url.encode('utf-8')
+        else:
+            print title, link_url.encode('utf-8')
 
 
 def search():
@@ -147,7 +169,20 @@ def get_films_list(url_main):
         return False
 
 
-def parse_player_page(player_url, player_page):
+def parse_player_page(player_url, player_page, episode_number=0, referer=''):
+    if episode_number == 0:
+        try:
+            episodes = re.compile(r'episodes:\s(.*),').findall(player_page)[0]
+            if episodes == 'null':
+                pass
+            else:
+                episodes_data = json.loads(episodes)
+                for episode in episodes_data:
+                    get_with_referer(player_url, referer, episode[1])
+                return
+        except:
+            pass
+
     js_path = re.compile(r'script src=\"(.*)\"').findall(player_page)[0]
     js_page = get_html("http://" + player_url.split('/')[2] + js_path)
 
@@ -181,9 +216,15 @@ def parse_player_page(player_url, player_page):
     manifest_link_hls = re.compile("manifests.hls.*\'(http.*)\'.replace").findall(html5_page)[0]
     manifest_file_mp4 = get_html_with_referer(manifest_link_mp4, html5_player_url)
     manifest_file_hls = get_html_with_referer(manifest_link_hls, html5_player_url)
-    links_mp4 = json.loads(manifest_file_mp4)
+    try:
+        links_mp4 = json.loads(manifest_file_mp4)
+    except:
+        links_mp4 = re.compile("RESOLUTION=(\d*x\d*)\S*\s*(http\S*m3u8)").findall(manifest_file_mp4)
     links_hls = re.compile("RESOLUTION=(\d*x\d*)\S*\s*(http\S*m3u8)").findall(manifest_file_hls)
-    links_mp4.update(links_hls)
+    if isinstance(links_mp4, list):
+        links_mp4.extend(links_hls)
+    else:
+        links_mp4.update(links_hls)
     return dict(links_mp4)
 
 
@@ -253,7 +294,13 @@ def get_film_link(dir_url):
                         dir_url = get_vk_url(dir_url)
                     else:
                         dir_url = get_flash_url(data[n])
-                    add_link(s.string + ' | ' + ep.string, info_label, dir_url, icon_img=img)
+                    if 'vkinos.com' in dir_url:
+                        dir_url = get_vkinos_url(dir_url)
+                        add_link(s.string + ' | ' + ep.string, info_label, dir_url, icon_img=img)
+                    elif 'staticnlcdn.com' in dir_url:
+                        add_dir(s.string + ' | ' + ep.string, dir_url, img, referer=film_url, dir_mode="REFERER")
+                    else:
+                        add_dir(s.string + ' | ' + ep.string, dir_url, img, dir_mode="FILM_LINK")
                 k = k + 1
         except:
             pass
@@ -298,6 +345,20 @@ def get_film_link(dir_url):
                     add_link(title + ' [MP4]', info_label, dir_url, icon_img=img)
 
     xbmcplugin.setContent(h, 'movies')
+
+
+def get_with_referer(dir_url, film_url, episode_number=0):
+    if episode_number == 0:
+        player_page = get_html_with_referer(dir_url, film_url)
+        parse_player_page(dir_url, player_page, referer=film_url)
+    else:
+        player_page = get_html_with_referer(dir_url + "&episode=" + str(episode_number), film_url)
+        mp4_urls = parse_player_page(dir_url, player_page, episode_number=episode_number, referer=film_url)
+        for key in mp4_urls.keys():
+            if isinstance(key, str):
+                add_link("Серия " + str(episode_number) + " [" + key + "]", None, mp4_urls[key])
+            else:
+                add_link("Серия " + str(episode_number) + " [" + key.encode('utf-8') + "]", None, mp4_urls[key])
 
 
 def get_vk_url(vk_url):
@@ -375,9 +436,7 @@ def get_gidtv_url(link_url):
 
 
 def get_flash_url(link_url):
-    n1 = link_url.find('file:') + 6
-    n2 = link_url.find('.mp4', n1) + 4
-    flash_url = link_url[n1:n2]
+    flash_url = re.compile(r'src=\"(http[^\"]*)\"').findall(link_url)[0]
     return flash_url
 
 
@@ -484,20 +543,24 @@ params = get_params()
 
 mode = None
 url = None
+referer = None
 
-# noinspection PyBroadException
 try:
     mode = urllib.unquote_plus(params['mode'])
 except:
     pass
 
-# noinspection PyBroadException
 try:
     url = urllib.unquote_plus(params['url'])
 except:
     pass
 
-if mode is None:
+try:
+    url = urllib.unquote_plus(params['referer'])
+except:
+    pass
+
+if mode is None or mode == 'MAIN':
     main()
 elif mode == 'SEARCH':
     search()
@@ -505,6 +568,8 @@ elif mode == 'FILMS':
     get_films_list(url)
 elif mode == 'FILM_LINK':
     get_film_link(url)
+elif mode == 'REFERER':
+    get_with_referer(url, referer)
 elif mode == 'FAVS':
     get_films_list(url)
 elif mode == 'add_bookmark':
