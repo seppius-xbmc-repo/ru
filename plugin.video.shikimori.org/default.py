@@ -170,6 +170,41 @@ def GetSRUrl(html):
     
     return source
 
+def GetSAUrl(html,url):
+
+    # return source
+    headers = {
+            "User-Agent": "Mozilla/5.0 (Windows NT 6.2; WOW64; rv:40.0) Gecko/20100101 Firefox/40.0",
+            'referer': url,
+    }
+
+    with requests.session() as s:
+        # logging.basicConfig(level=logging.DEBUG) 
+        # import time
+        #_startTime = time.time()
+        #r = s.get(url)
+        s.headers.update(headers)
+        soup = bs(html, "html.parser")
+        #print "Elapsed time: {:.3f} sec".format(time.time() - _startTime)
+        url = soup.find('div', {'class':'player-area'}).find('iframe')['src']
+        url = 'https:' + url
+        # Alert('debug msg',url)
+        r = s.get(url, allow_redirects=True)
+        sjson = bs(r.text, "html.parser")
+        # sjson = bs(r.text, "html.parser").find('div', {'id':'main-video'}).get_text()
+        sjson = bs(r.text, "html.parser").find('video', {'id':'main-video'})['data-sources']
+        data = json.loads(sjson)
+        url = data[0]['urls'][0]
+        ass = bs(r.text, "html.parser").find('video', {'id':'main-video'})['data-subtitles']
+        if ass:
+            i = xbmcgui.ListItem(path=url)
+            ass = 'https://smotret-anime.ru/'+ass
+            i.setSubtitles(['special://temp/example.srt', ass ])
+            xbmcplugin.setResolvedUrl(h, True, i)
+            # Alert('debug msg','set ass '+ass)
+        else : return url
+    return None
+
 def GetMyviUrl(html, url):
     headers = {
             "User-Agent": "Mozilla/5.0 (Windows NT 6.2; WOW64; rv:40.0) Gecko/20100101 Firefox/40.0",
@@ -205,7 +240,7 @@ def GetRutubeUrl(html):
     soup = bs(html, "html.parser")
     try:
         url = soup.find('div', {'class':'b-video_player'}).find('iframe')['src']
-        url = 'http://rutube.ru/api/play/options/' + url.split('http://rutube.ru/play/embed/', 1)[1] + '/?format=xml'
+        url = 'http://rutube.ru/api/play/options/' + url.split('//rutube.ru/play/embed/', 1)[1] + '/?format=xml'
         http = GetHTML(url)
         soup = bs(http, "html.parser")
         url = soup.find('video_balancer').find('m3u8').text
@@ -235,6 +270,8 @@ def PlayUrl(url):
         url = GetSibnetUrl(html)
     elif 'sovetromantica.com' in player:
         url = GetSRUrl(html)
+    elif 'smotret-anime.ru' in player:
+        url = GetSAUrl(html, url)
     else :
         Notificator('ERROR', 'Not supported player', 3600)
         return None
@@ -246,6 +283,10 @@ def GetVoicesList(url):
     soup = bs(http, "html.parser")
     
     title = soup.find('meta', attrs={'itemprop': 'name'})['content']
+    num = soup.find('div', attrs={'class': 'b-video_player'})
+    if num:
+        if num.has_attr('data-episode'):
+            title += ' ' + num['data-episode']
     content = soup.find('div', attrs={'class': 'video-variant-group','data-kind': kind})
     if not content:
         content = soup.find('div', attrs={'class': 'video-variant-group'})
@@ -254,7 +295,7 @@ def GetVoicesList(url):
         lnk = voice.find('a')
         player = lnk.find('span', attrs={'class': 'video-hosting'}).text
 
-        if player not in ['myvi.tv','myvi.ru','rutube.ru','sibnet.ru','sovetromantica.com','vk.com']:
+        if player not in ['myvi.tv','myvi.ru','rutube.ru','sibnet.ru','sovetromantica.com','vk.com','smotret-anime.ru']:
             continue
 
         variant = lnk.find('span', attrs={'class': 'video-kind'})
