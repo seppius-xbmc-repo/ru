@@ -61,7 +61,7 @@ def Main(main_url):
     content = soup.find_all('article', attrs={'class': 'c-anime'})
     
     if main_url == site_url :
-        addDir('Поиск', site_url, mode="SEARCH")
+        addDir('?????', site_url, mode="SEARCH")
         submenu = soup.find('div', attrs={'class': 'submenu'})
         submenu = submenu.find_all('a')
         
@@ -87,7 +87,7 @@ def Main(main_url):
         addDir(title, url, iconImg=image, mode="FILMS")
     next = soup.find('a', {'class': 'next'})
     if next :
-        addDir('---Следующая страница---', url_protocol + next['href'], iconImg=plugin_icon)
+        addDir('---????????? ????????---', url_protocol + next['href'], iconImg=plugin_icon)
 
 def addDir(title, url, iconImg="DefaultVideo.png", mode="", inbookmarks=False):
     sys_url = sys.argv[0] + '?url=' + urllib.quote_plus(url) + '&mode=' + urllib.quote_plus(str(mode))
@@ -105,7 +105,7 @@ def addLink(title, url, iconImg="DefaultVideo.png"):
 def Search():
     kbd = xbmc.Keyboard()
     kbd.setDefault('')
-    kbd.setHeading("Поиск")
+    kbd.setHeading("?????")
     kbd.doModal()
     if kbd.isConfirmed():
         SearchStr = kbd.getText()
@@ -134,7 +134,7 @@ def GetFilmsList(url_main) :
     content = content.find_all('div', attrs={'class': 'b-video_variant'})
     for num in content:
         lnk = num.find('a')
-        title = 'Эпизод ' + lnk.find('span', attrs={'class': 'episode-num'}).text
+        title = '?????? ' + lnk.find('span', attrs={'class': 'episode-num'}).text
         # img = num.find('img')['src']
         url = url_protocol + lnk['href']
         addDir(title, url, iconImg="DefaultVideo.png", mode="VOICES")
@@ -199,9 +199,10 @@ def GetSAUrl(html,url):
         if ass:
             i = xbmcgui.ListItem(path=url)
             ass = 'https://smotret-anime.ru/'+ass
-            i.setSubtitles(['special://temp/example.srt', ass ])
-            xbmcplugin.setResolvedUrl(h, True, i)
+            i.setSubtitles([ ass ])
             # Alert('debug msg','set ass '+ass)
+            xbmcplugin.setResolvedUrl(h, True, i)
+            return None
         else : return url
     return None
 
@@ -275,8 +276,10 @@ def PlayUrl(url):
     else :
         Notificator('ERROR', 'Not supported player', 3600)
         return None
-    i = xbmcgui.ListItem(path=url)
-    xbmcplugin.setResolvedUrl(h, True, i)
+    if url :
+        i = xbmcgui.ListItem(path=url)
+        xbmcplugin.setResolvedUrl(h, True, i)
+
 
 def GetVoicesList(url):
     http = GetHTML(url)
@@ -302,9 +305,9 @@ def GetVoicesList(url):
 
         if variant.text: 
             variant = {
-                    'Озвучка': 'dub',
-                    'Субтитры': 'sub',
-                    'Оригинал': 'raw',
+                    '???????': 'dub',
+                    '????????': 'sub',
+                    '????????': 'raw',
                 }.get(variant.text, '?')
         
         item_title = title + ' [' + variant + ']' + '[' + player + ']'
