@@ -205,7 +205,7 @@ def GetRutubeUrl(html):
     soup = bs(html, "html.parser")
     try:
         url = soup.find('div', {'class':'b-video_player'}).find('iframe')['src']
-        url = 'http://rutube.ru/api/play/options/' + url.split('http://rutube.ru/play/embed/', 1)[1] + '/?format=xml'
+        url = 'http://rutube.ru/api/play/options/' + url.split('//rutube.ru/play/embed/', 1)[1] + '/?format=xml'
         http = GetHTML(url)
         soup = bs(http, "html.parser")
         url = soup.find('video_balancer').find('m3u8').text
