@@ -2,5 +2,6 @@
 <settings>
 	<category label="Settings">
 		<setting id="kind" type="select" label="Основные варианты видео" values="all|subtitles|fandub|raw" default="all"/>
+		<setting id="nickname" type="text" label="Публичный список пользователя" default="morr"/>
 	</category>
 </settings>
