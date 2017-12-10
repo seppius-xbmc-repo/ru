@@ -31,6 +31,7 @@ if REMOTE_DBG:
 __settings__ = xbmcaddon.Addon(id='plugin.video.shikimori.org')
 h = int(sys.argv[1])
 kind = __settings__.getSetting('kind') #all|subtitles|fandub|raw
+nickname = __settings__.getSetting('nickname') 
 
 
 plugin_path = __settings__.getAddonInfo('path').replace(';', '')
@@ -53,14 +54,17 @@ def GetHTML(url):
 
 
 def Main(main_url):
+
     if main_url == None :
         main_url = site_url
-    
+    # Notificator('nickname '+nickname, main_url, 3600)
     html = GetHTML(main_url)
     soup = bs(html, "html.parser")
     content = soup.find_all('article', attrs={'class': 'c-anime'})
     
     if main_url == site_url :
+        addDir('Список пользователя '+nickname, site_url, mode="MYLIST")
+
         addDir('Поиск', site_url, mode="SEARCH")
         submenu = soup.find('div', attrs={'class': 'submenu'})
         submenu = submenu.find_all('a')
@@ -127,7 +131,39 @@ def Search():
     else:
         return False
 
-def GetFilmsList(url_main) :
+def MyList(main_url):
+    if main_url == site_url :
+        listtypes = {'watching':'Смотрю','rewatching':'Пересматриваю','planned':'Запланировано','completed':'Просмотрено','on_hold':'Отложено','dropped':'Брошено'}
+        for listtype, title in listtypes.iteritems():
+            addDir(title, 'https://shikimori.org/'+nickname+'/list/anime/mylist/'+listtype+'/order-by/name', mode="MYLIST")
+    else :
+        with requests.session() as s:
+            r = s.get(main_url, cookies=dict(list_view='posters'))
+            soup = bs(r.text, "html.parser")
+            content = soup.find_all('article', attrs={'class': 'c-anime'})
+
+            for num in content:
+                block = num.find('', attrs={'class': 'cover'})
+
+                title = num.find('span', attrs={'class': 'title'})
+                if title: title = title.text
+                title_en = num.find('span', attrs={'class': 'name-en'})
+                if title_en: title = title_en.text
+                title_ru = num.find('span', attrs={'class': 'name-ru'})
+                if title_ru: title += " / " + title_ru['data-text']
+            
+                if block.has_attr('data-href'):
+                    url = block['data-href']
+                else:
+                    url = block['href']
+                url = url_protocol + url.replace('//shikimori.org','//play.shikimori.org')
+                image = num.find('meta', attrs={'itemprop': 'image'})['content']
+                addDir(title, url, iconImg=image, mode="FILMS")
+            next = soup.find('a', {'class': 'next'})
+            if next :
+                addDir('---Следующая страница---', url_protocol + next['href'], iconImg=plugin_icon, mode="MYLIST")
+
+def GetFilmsList(url_main):
     html = GetHTML(url_main)
     soup = bs(html, "html.parser")
     content = soup.find('div', attrs={'class': 'c-anime_video_episodes'})
@@ -352,6 +388,7 @@ try: url = urllib.unquote_plus(params['url'])
 except: pass
 
 if mode == None: Main(url)
+elif mode == 'MYLIST': MyList(url)
 elif mode == 'SEARCH': Search()
 elif mode == 'FILMS': GetFilmsList(url)
 elif mode == 'PLAY_URL': PlayUrl(url)
