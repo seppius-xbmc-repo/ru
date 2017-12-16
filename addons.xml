@@ -254,6 +254,24 @@ Audio sources are
     </extension>
 </addon>
 
+<addon id="plugin.video.1kinobig.ru" name="1kinobig.ru" version="1.0.0" provider-name="uaBArt">
+    <requires>
+        <import addon="xbmc.python" version="2.1.0"/>
+    </requires>
+    <extension point="xbmc.python.pluginsource"
+               provides="audio, video"
+               library="default.py">
+        <provides>video</provides>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <summary lang="en">Russian online movies from 1KINOBIG.ru</summary>
+        <summary lang="ru">Смотреть онлайн фильмы без регистрации с сайта 1KINOBIG.ru</summary>
+        <description lang="en">1KINOBIG collected for you huge amount of different movies online in russian</description>
+        <description lang="ru">1Кинобиг собрал для вас просто огромный каталог различных фильмов онлайн, очень много различных новинок в хорошем качестве, теперь вам не придется блудить в поисках очередного кино, потому что у нас есть все бесплатно и можно смотреть онлайн без регистрации</description>
+        <platform>all</platform>
+    </extension>
+</addon>
+
 <addon id="plugin.video.all-hit"
        name="all-hit"
        version="0.0.1"

@@ -1,0 +1,5 @@
+<settings>
+    <category label="General">
+        <setting id="Site URL" type="text" label="Site URL" default="1kinobig.ru"/>
+    </category>
+</settings>
