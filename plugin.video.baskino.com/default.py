@@ -193,14 +193,14 @@ def parse_player_page(player_url, player_page, episode_number=0, referer=''):
     compiled_url = "http://" + player_url.split('/')[2] + manifest_path
 
     mw_key = re.compile(r"mw_key:\"(\w+)\"").findall(js_page)[0]
-    cookie_key = re.compile(r"iframe_version.*,(\w*):e.\w*").findall(js_page)[0]
+    cookie_key = re.compile(r"iframe_version.*\.(\w*)=\w\[\"(\w*)\"\].*ajax").findall(js_page)[0]
 
     mw_pid = re.compile(r"partner_id:\s*(\w*),").findall(player_page)[0]
     p_domain_id = re.compile(r"domain_id:\s*(\w*),").findall(player_page)[0]
     cookies = get_cookies(player_page)
 
     req_data = {"mw_key": mw_key, "iframe_version": "2.1", "mw_pid": mw_pid, "p_domain_id": p_domain_id,
-                "ad_attr": '0', cookie_key: cookies[1]}
+                "ad_attr": '0', cookie_key[0]: cookies[1]}
     headers = {
         "X-Requested-With": "XMLHttpRequest"
     }
@@ -229,7 +229,7 @@ def parse_player_page(player_url, player_page, episode_number=0, referer=''):
 
 
 def get_cookies(player_page):
-    cookie = re.compile("\s\swindow.(\w*)\s=\s\'(\w*)\';").findall(player_page)[0]
+    cookie = re.compile(r"window\[\'(\w*)\'\]\s=\s\'(\w*)\';").findall(player_page)[0]
     cookie_header = cookie[0]
     cookie_header = re.sub('\'|\s|\+', '', cookie_header)
     cookie_data = cookie[1]
