@@ -1569,6 +1569,31 @@ Kodi is a registered trademark of the XBMC Foundation. We are not connected to o
     </extension>
 </addon>
 
+<addon id="script.areswizard" name="[COLOR black].[/COLOR] Ares Wizard" provider-name="AresTeam" version="0.0.69">
+<requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+	<import addon="script.module.six" version="1.9.0" optional="true"/>
+	<import addon="script.module.arrow" version="0.6.0" optional="true"/>
+	<import addon="script.module.requests" version="2.7.0" optional="true"/>
+  </requires>
+ <extension library="default.py" point="xbmc.python.pluginsource">
+ <provides>executable</provides>
+ </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en">Ares Wizard - Your one stop for Kodi setup + maintenance</summary>
+    <description lang="en">Ares Wizard</description>
+    <platform>all</platform>
+  </extension>
+  <extension point="kodi.context.item">
+	  <menu id="kodi.core.main">
+		<item library="resources/uploadlog.py">
+		  <label>Upload Kodi Log via Ares Project</label>
+		  <visible>true</visible>
+		</item>
+	  </menu>
+	</extension>
+ </addon>
+
 <addon id="script.common.plugin.cache" name="Common plugin cache" provider-name="TheCollective" version="2.5.5">
   <requires>
     <import addon="xbmc.python" version="2.1.0" />
@@ -1918,19 +1943,23 @@ provider-name="Roman_V_M">
 
 <addon id="script.module.requests"
        name="requests"
-       version="1.1.0"
-       provider-name="kennethreitz">
+       version="2.12.4"
+       provider-name="kennethreitz, beenje">
   <requires>
-    <import addon="xbmc.python" version="2.1.0"/>
+    <import addon="xbmc.python" version="2.14.0"/>
   </requires>
   <extension point="xbmc.python.module"
              library="lib" />
   <extension point="xbmc.addon.metadata">
     <summary>Python HTTP for Humans</summary>
-    <description>Packed for XBMC from https://github.com/kennethreitz/requests</description>
-    <license>Apache</license>
+    <description>Packed for KODI from https://github.com/kennethreitz/requests</description>
     <platform>all</platform>
+    <language></language>
+    <license>Apache2</license>
+    <forum></forum>
+    <website>http://python-requests.org</website>
     <source>https://github.com/beenje/script.module.requests</source>
+    <email>beenje AT gmail.com</email>
   </extension>
 </addon>
 
@@ -1971,11 +2000,11 @@ provider-name="Roman_V_M">
 
 <addon id="script.module.six"
        name="six"
-       version="1.7.3"
+       version="1.11.0"
        provider-name="gutworth">
   <requires>
     <import addon="xbmc.python"
-    		version="2.1.0"/>
+    		version="2.14.0"/>
   </requires>
   <extension point="xbmc.python.module"
              library="lib" />
