@@ -1,0 +1,13 @@
+Version 2.0.0 - February 2017
+        Data Migration/New Artwork/Name
+
+Version 1.0.1 - May 2016
+	Artwork/Metadata Added
+
+Version 1.0.0 - April 2016
+	Basic/Initial Release
+
+By Merlin
+
+Enjoy
+
