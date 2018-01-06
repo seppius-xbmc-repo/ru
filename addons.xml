@@ -596,27 +596,6 @@ Paypal: напишите на kit500.development at gmail dot com</description>
   </extension>
 </addon>
 
-<addon id="plugin.video.my-hit.ru"
-       name="Кино портал my-hit.org"
-       version="1.2.7"
-       provider-name="Silen">
-  <requires>
-    <import addon="xbmc.python" version="2.1.0"/>
-    <import addon="script.video.F4mProxy" version="2.8.6"/>
-  </requires>
-  <extension point="xbmc.python.pluginsource"
-             provides="video"
-             library="default.py">
-    <provides>video</provides>
-  </extension>
-  <extension point="xbmc.addon.metadata">
-    <summary>my-hit.ru</summary>
-    <description>Фильмы онлайн, наш кино портал.</description>
-    <platform>all</platform>
-    <website>http://xbmc.ru/forum/showthread.php?t=1415</website>
-  </extension>
-</addon>
-
 <addon id="plugin.video.online.anidub.com"
        name="[COLOR=FFFF0000]Ani[/COLOR][COLOR=FF00FF00]DUB[/COLOR]"
        version="0.3.2"
