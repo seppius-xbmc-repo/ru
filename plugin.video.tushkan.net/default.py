@@ -41,7 +41,12 @@ headers2  = {
     'Upgrade-Insecure-Requests':'1',
     'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36'}
 
-def GET(target, post=None, method='post'):
+headers3  = {
+    'Host': 'viho.pro',
+    'Referer': '%1',
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36'}
+
+def GET(target, post=None, method='post', headersl=None):
     target=target.replace('//page','/page')
     #print target
     try:
@@ -52,10 +57,16 @@ def GET(target, post=None, method='post'):
         else: 
             urlOpener = urllib2.build_opener(urllib2.HTTPCookieProcessor(cookiejar))
         urllib2.install_opener(urlOpener)
+        headers_ = headersl
+        if headers_ == None:
+            if method == 'post':
+                headers_ = headers
+            else:
+                headers_ = headers2               
         if method == 'post':
-            request = urllib2.Request(url = target, data = post, headers = headers)
+            request = urllib2.Request(url = target, data = post, headers = headers_)
         else:
-            request = urllib2.Request(url = target, data = post, headers = headers2)
+            request = urllib2.Request(url = target, data = post, headers = headers_)
             request.get_method = lambda: 'GET'
         url = urlOpener.open(request)
         http=url.read()
@@ -130,37 +141,44 @@ def doSearch(params):
 def openitem(params):
     lk="http://tushkan.club"+params['mpath']
     http = GET(lk, method = 'get')
-    #print lk
-
-    #print titl.encode('utf-8')
     img=addon_icon
-    #print img
-
-    #ttt=re.compile('title="([^"]+)"\s*src="([^"]+)"><\/div>').findall(http)
-    #ttt=re.compile('title="([^"]+)"\s*src="([^"]+)">').findall(http)
-    #ttt=re.compile('itemprop="([^"]+)"\s*src="([^"]+)">').findall(http)
     ttt=re.compile('data-src="([^"]+)"\s*src="([^"]+)">').findall(http)
-    #ttt_name=re.compile('itemprop="([^"]+)"\s*content="([^"]+)">').findall(http)
     ttt_name=re.compile('data-url="([^"]+)"\s*data-title="([^"]+)">').findall(http)
     img="http://tushkan.club"+ttt[0][1]
-    #ttt2=ttt[0][0]
-    #ttt2=ttt_name[1][1]
-    ttt2=ttt_name[0][1]
-    #hh= re.compile('http://.+film/.+.flv')
-    hh= re.compile('http://\S+name=.+.flv')
+    ttt2=ttt_name[2][1]
+    hh= re.compile('http://viho.pro/video/embed/\d+/')
     tttl= (re.findall(hh,str(http)))
-    #img=addon_icon
+    headers3['Referer'] = lk
+    http = GET(tttl[0], method = 'get', headersl=headers3)
+    tttl = http.split('"hls":"')[-1].split('"}')[0]
     if tttl:
-        link=tttl[0]
-        li = xbmcgui.ListItem(ttt2, iconImage = img, thumbnailImage = img)
-        li.setInfo(type='Video', infoLabels={'title': ttt2, 'plot': ttt2})
-        uri = construct_request({
-            'func': 'playitem',
-            'mpath': link
-        })
-        li.setProperty('fanart_image', addon_fanart)
-        li.setProperty('IsPlayable', 'true')
-        xbmcplugin.addDirectoryItem(hos, uri, li)
+        if '<div id="series-list-temp"' in http:
+            block = http.split('<div id="series-list-temp"')[-1].split("videoCode")[0]
+            hh = block.split('title="')
+            for  i, hh1 in enumerate(hh):
+                if (i > 0):
+                    hh2 = hh1.split('data-hls="')[-1].split('"><span>')[0]
+                    hh3 = hh1.split('" data-autoplay')[0]
+                    li = xbmcgui.ListItem(hh3, iconImage = img, thumbnailImage = img)
+                    uri = construct_request({
+                            'func': 'payser',
+                            'mpath': hh2
+                    })
+                    li.setInfo(type='Video', infoLabels={'title': hh3, 'plot': hh3})
+                    li.setProperty('fanart_image', addon_fanart)
+                    li.setProperty('IsPlayable', 'true')
+                    xbmcplugin.addDirectoryItem(hos, uri, li)                    
+        else:
+            link=tttl
+            li = xbmcgui.ListItem(ttt2, iconImage = img, thumbnailImage = img)
+            li.setInfo(type='Video', infoLabels={'title': ttt2, 'plot': ttt2})
+            uri = construct_request({
+                'func': 'playitem',
+                'mpath': link
+            })
+            li.setProperty('fanart_image', addon_fanart)
+            li.setProperty('IsPlayable', 'true')
+            xbmcplugin.addDirectoryItem(hos, uri, li)
     else:
         hh = re.compile('"http://.+.txt')
         tttl= (re.findall(hh,str(http)))
@@ -205,11 +223,12 @@ def openitem(params):
     
 def playitem(params):
     #print params['mpath']
-    http = GET(params['mpath'])
+    #http = GET(params['mpath'])
     #print http
     #hh= re.compile('http://.+.flv')
-    hh= re.compile('http://\S+.flv')
-    link= re.findall(hh,str(http))[0]
+    #hh= re.compile('http://\S+.flv')
+    #link= re.findall(hh,str(http))[0]
+    link=params['mpath']
     if link: item = xbmcgui.ListItem(path=link)
     #item = xbmcgui.ListItem(path=params['mpath'])
     xbmcplugin.setResolvedUrl(int(sys.argv[1]), True, item)
