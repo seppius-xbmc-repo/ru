@@ -21,7 +21,7 @@ plugin_path = __settings__.getAddonInfo('path').replace(';', '')
 plugin_icon = xbmc.translatePath(os.path.join(plugin_path, 'icon.png'))
 context_path = xbmc.translatePath(os.path.join(plugin_path, 'default.py'))
 
-site_url = 'http://baskino.co'
+site_url = 'http://baskino.me'
 
 
 def alert(title, message):
@@ -177,8 +177,13 @@ def parse_player_page(player_url, player_page, episode_number=0, referer=''):
                 pass
             else:
                 episodes_data = json.loads(episodes)
+                progress = xbmcgui.DialogProgress()
+                progress.create("Загрузка серий")
                 for episode in episodes_data:
-                    get_with_referer(player_url, referer, episode[1])
+                    percentage = (episode * 100) / (len(episodes_data))
+                    progress.update(percentage, str(episode) + "/" + str(len(episodes_data)))
+                    get_with_referer(player_url, referer, episode)
+                progress.close()
                 return
         except:
             pass
@@ -206,25 +211,27 @@ def parse_player_page(player_url, player_page, episode_number=0, referer=''):
     }
     json_data = post_request(compiled_url, req_data, headers)
     data = json.loads(json_data)
-    html5data = urllib.urlencode({"manifest_m3u8": data["mans"]["manifest_m3u8"],
-                                  "manifest_mp4": data["mans"]["manifest_mp4"], "token": video_token,
-                                  "pid": mw_pid, "debug": 0})
-    html5_player_url = "http://" + player_url.split('/')[2] + "/video/html5" + "?" + html5data
-    html5_page = get_html(html5_player_url)
+    manifest_link_hls = data["mans"]["manifest_m3u8"]
+    manifest_link_mp4 = data["mans"]["manifest_mp4"]
+    links_mp4 = None
+    links_hls = None
+    if manifest_link_hls is not None:
+        manifest_file_hls = get_html(manifest_link_hls)
+        links_hls = re.compile("RESOLUTION=(\d*x\d*)\S*\s*(http\S*m3u8)").findall(manifest_file_hls)
+    if manifest_link_mp4 is not None:
+        manifest_file_mp4 = get_html(manifest_link_mp4)
+        try:
+            links_mp4 = json.loads(manifest_file_mp4)
+        except:
+            links_mp4 = re.compile("RESOLUTION=(\d*x\d*)\S*\s*(http\S*m3u8)").findall(manifest_file_mp4)
 
-    manifest_link_mp4 = re.compile("manifest\S.*\'(http.*)\'.replace").findall(html5_page)[0]
-    manifest_link_hls = re.compile("manifests.hls.*\'(http.*)\'.replace").findall(html5_page)[0]
-    manifest_file_mp4 = get_html_with_referer(manifest_link_mp4, html5_player_url)
-    manifest_file_hls = get_html_with_referer(manifest_link_hls, html5_player_url)
-    try:
-        links_mp4 = json.loads(manifest_file_mp4)
-    except:
-        links_mp4 = re.compile("RESOLUTION=(\d*x\d*)\S*\s*(http\S*m3u8)").findall(manifest_file_mp4)
-    links_hls = re.compile("RESOLUTION=(\d*x\d*)\S*\s*(http\S*m3u8)").findall(manifest_file_hls)
     if isinstance(links_mp4, list):
         links_mp4.extend(links_hls)
     else:
-        links_mp4.update(links_hls)
+        if links_mp4 is None:
+            links_mp4 = links_hls
+        else:
+            links_mp4.update(links_hls)
     return dict(links_mp4)
 
 
