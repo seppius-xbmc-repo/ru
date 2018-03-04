@@ -1,0 +1,16 @@
+[B]Version 4.0.17 (Jan 13, 2018)[/B]
+- Code Base Changes:
+    - None
+- Resolvers Added:
+    - Getvi.tv (azzy9)
+- Resolvers Fixed/Updated:
+    - TheVid (azzy9)
+    - Rapidvideo (azzy9)
+    - Vidzella (azzy9)
+    - AllDebrid (jsergio123)
+    - Tune.pk (Gujal00)
+    - Speedplay (Gujal00)
+- Languages Added/Updated
+    - Italian (MrTruth0)
+- Testers Needed: https://www.tvaddons.co/urlresolver-testing-kodi/
+- Developers Needed: https://www.tvaddons.co/urlresolver-kodi-addon/

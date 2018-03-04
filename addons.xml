@@ -272,25 +272,6 @@ Audio sources are
     </extension>
 </addon>
 
-<addon id="plugin.video.all-hit"
-       name="all-hit"
-       version="0.0.1"
-       provider-name="Denis Fomin">
-  <requires>
-    <import addon="xbmc.python" version="2.1.0"/>
-  </requires>
-  <extension point="xbmc.python.pluginsource" provides="video" library="addon.py">
-    <provides>video</provides>
-  </extension>
-  <extension point="xbmc.addon.metadata">
-    <summary>all-hit.tv</summary>
-    <description>
-
-    </description>
-    <platform>all</platform>
-  </extension>
-</addon>
-
 <addon id="plugin.video.arjlover.net"
        name="arjlover.net"
        version="0.0.2"
@@ -347,29 +328,6 @@ Audio sources are
   </extension>
 </addon>
 
-<!-- Основная информация -->
-<addon id="plugin.video.bonus.tv" version="0.0.1" name="BONUS.TV" provider-name="Limeone">
-<!-- Зависимости -->
-<requires>
-  <import addon="xbmc.python" version="2.1.0"/>
-  <import addon="script.module.beautifulsoup" version="3.2.1"/>
-</requires>
-<!-- Тип (назначение) плагина -->
-<extension point="xbmc.python.pluginsource" library="default.py">
-  <provides>video</provides>
-</extension>
-<!-- Описание -->
-<extension point="xbmc.addon.metadata">
-  <summary lang="en">CNET Video Podcasts</summary>
-  <summary lang="ru">видео BONUS-TV</summary>
-  <summary lang="uk">Відео-подкасти CNET</summary>
-  <description lang="en">Addon for watching videos of BONUS-TV from XBMC.</description>
-  <description lang="ru">Дополнение для просмотра видео BONUS-TV из XBMC.</description>
-  <description lang="uk">Надбудова для прегляду відео-подкастів BONUS з XBMC.</description>
-  <platform>all</platform>
-</extension>
-</addon>
-
 <addon id="plugin.video.cScVOD"
        name="[COLOR FF00FF00]cScVOD[/COLOR]"
        version="2.0.0"
@@ -384,25 +342,6 @@ Audio sources are
   <extension point="xbmc.addon.metadata">
     <summary>cScVOD</summary>
     <description>Удобный аддон с лучшими мультимедиа сайтами</description>
-    <platform>all</platform>
-  </extension>
-</addon>
-
-<addon id="plugin.video.cccp.tv"
-       name="CCCP TV"
-       version="1.0.5"
-       provider-name="HD-Lab Team">
-  <requires>
-    <import addon="xbmc.python" version="2.1.0"/>
-  </requires>
-  <extension point="xbmc.python.pluginsource"
-             provides="video"
-             library="default.py">
-    <provides>video</provides>
-  </extension>
-  <extension point="xbmc.addon.metadata">
-    <summary>Советское ТВ</summary>
-    <description>Советское ТВ</description>
     <platform>all</platform>
   </extension>
 </addon>
@@ -1488,6 +1427,19 @@ Kodi is a registered trademark of the XBMC Foundation. We are not connected to o
 	</extension>
 </addon>
 
+<addon id="repository.kodi.yatse.tv" name="Yatse Kodi Add-on repository" version="1.0.1" provider-name="Yatse">
+	<extension point="xbmc.addon.repository" name="Yatse Kodi Add-on repository">
+		<info compressed="false">https://raw.githubusercontent.com/Tolriq/repository.yatse.kodi/master/zips/addons.xml</info>
+		<checksum>https://raw.githubusercontent.com/Tolriq/repository.yatse.kodi/master/zips/addons.xml.md5</checksum>
+		<datadir zip="true">https://raw.githubusercontent.com/Tolriq/repository.yatse.kodi/master/zips/</datadir>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary lang="en">Yatse repository for Kodi helper addons</summary>
+		<description lang="en">This repository contains scripts and plugins to help Yatse do things that may not be possible to do from JSON api.</description>
+		<genre></genre>
+	</extension>
+</addon>
+
 <addon id="script.advancedsettingsetter"
        name="Advanced Setting Setter"
        version="0.0.1"
@@ -2006,6 +1958,25 @@ provider-name="Roman_V_M">
   <extension point='xbmc.python.module' library='lib' />
 </addon>
 
+<addon id="script.module.urlresolver.yatse" name="URLResolver" version="4.0.18" provider-name="Eldorado, tknorris, tvaddons">
+	<requires>
+		<import addon="xbmc.python" version="2.1.0" />
+		<import addon="script.module.python.twitch" optional="true" />
+		<import addon="script.module.cryptopy" version="1.2.6" optional="true" />
+	</requires>
+	<extension point="xbmc.python.module" library="lib" />
+	<extension point="xbmc.python.pluginsource" library="lib/default.py" />
+	<extension point="xbmc.addon.metadata">
+		<platform>all</platform>
+		<summary lang="en">Resolve common video host URL's to be playable in XBMC/Kodi.</summary>
+		<summary lang="hr">Prilagodi najčešće URL-ove video izvora kako bi radili u XBMC/Kodiju.</summary>
+		<description lang="en">Resolve common video host URL's to be playable in XBMC/Kodi, simplify addon development of video plugins requiring multi video hosts.</description>
+		<description lang="hr">Prilagodi najčešće URL-ove video izvora kako bi radili u XBMC/Kodiju, pojednostavnjuje razvoj priključaka za video dodatke koji zahtjevaju višestruke video izvore.</description>
+        <forum>https://www.tvaddons.co/forums</forum>
+        <website>https://www.tvaddons.co</website>
+	</extension>
+</addon>
+
 <addon id='script.module.xbmc.helpers' version='2.0.0' name='Xbmc helpers module based on Parsedom module' provider-name='mrstealth'>
   <requires>
     <import addon="xbmc.python" version="2.1.0" />
@@ -2139,6 +2110,31 @@ provider-name="Roman_V_M">
 		<summary>Программа передач</summary>
 		<description>Программа передач от Yandex</description>
 		<platform>all</platform>
+	</extension>
+</addon>
+
+<addon id="script.yatse.kodi" name="Yatse Kodi helper script" version="1.0.8" provider-name="Yatse">
+	<requires>
+		<import addon="xbmc.python" version="2.1.0" />
+		<import addon="script.module.urlresolver.yatse" />
+		<import addon="script.module.youtube.dl" optional="true" />
+	</requires>
+	<extension point="xbmc.python.script" library="default.py">
+		<provides>executable</provides>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary lang="en">Yatse helper script for Kodi</summary>
+		<summary lang="ru">Скрипт Yatse для Kodi</summary>
+		<summary lang="fr">Script Yatse helper pour Kodi</summary>
+		<summary lang="de">Yatse-Skript für Kodi</summary>
+		<description lang="en">Yatse helper script for Kodi</description>
+		<description lang="ru">Скрипт для помощи работы Yatse в Kodi</description>
+		<description lang="fr">Script Yatse helper pour Kodi</description>
+		<description lang="de">Yatse-Skript für Kodi</description>
+		<platform>all</platform>
+		<news>1.0.8: Add German translation
+        1.0.7: Add support for Youtube-dl module as a secondary url resolver
+		</news>
 	</extension>
 </addon>
 

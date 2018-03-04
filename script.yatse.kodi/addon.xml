@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="script.yatse.kodi" name="Yatse Kodi helper script" version="1.0.8" provider-name="Yatse">
+	<requires>
+		<import addon="xbmc.python" version="2.1.0" />
+		<import addon="script.module.urlresolver.yatse" />
+		<import addon="script.module.youtube.dl" optional="true" />
+	</requires>
+	<extension point="xbmc.python.script" library="default.py">
+		<provides>executable</provides>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary lang="en">Yatse helper script for Kodi</summary>
+		<summary lang="ru">Скрипт Yatse для Kodi</summary>
+		<summary lang="fr">Script Yatse helper pour Kodi</summary>
+		<summary lang="de">Yatse-Skript für Kodi</summary>
+		<description lang="en">Yatse helper script for Kodi</description>
+		<description lang="ru">Скрипт для помощи работы Yatse в Kodi</description>
+		<description lang="fr">Script Yatse helper pour Kodi</description>
+		<description lang="de">Yatse-Skript für Kodi</description>
+		<platform>all</platform>
+		<news>1.0.8: Add German translation
+        1.0.7: Add support for Youtube-dl module as a secondary url resolver
+		</news>
+	</extension>
+</addon>
