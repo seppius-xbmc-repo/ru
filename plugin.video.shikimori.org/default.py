@@ -70,7 +70,7 @@ def Main(main_url):
         submenu = submenu.find_all('a')
         
         for el in submenu:
-            addDir(el['title'], url_protocol + el['href'], iconImg=plugin_icon)
+            addDir(el['title'], el['href'], iconImg=plugin_icon)
 
     for num in content:
         block = num.find('', attrs={'class': 'cover'})
@@ -86,12 +86,12 @@ def Main(main_url):
             url = block['data-href']
         else:
             url = block['href']
-        url = url_protocol + url
+#         url = url_protocol + url
         image = num.find('meta', attrs={'itemprop': 'image'})['content']
         addDir(title, url, iconImg=image, mode="FILMS")
     next = soup.find('a', {'class': 'next'})
     if next :
-        addDir('---Следующая страница---', url_protocol + next['href'], iconImg=plugin_icon)
+        addDir('---Следующая страница---', next['href'], iconImg=plugin_icon)
 
 def addDir(title, url, iconImg="DefaultVideo.png", mode="", inbookmarks=False):
     sys_url = sys.argv[0] + '?url=' + urllib.quote_plus(url) + '&mode=' + urllib.quote_plus(str(mode))
@@ -135,7 +135,7 @@ def MyList(main_url):
     if main_url == site_url :
         listtypes = {'watching':'Смотрю','rewatching':'Пересматриваю','planned':'Запланировано','completed':'Просмотрено','on_hold':'Отложено','dropped':'Брошено'}
         for listtype, title in listtypes.iteritems():
-            addDir(title, 'https://shikimori.org/'+nickname+'/list/anime/mylist/'+listtype+'/order-by/name', mode="MYLIST")
+            addDir(title, url_protocol + '//shikimori.org/'+nickname+'/list/anime/mylist/'+listtype+'/order-by/name', mode="MYLIST")
     else :
         with requests.session() as s:
             r = s.get(main_url, cookies=dict(list_view='posters'))
@@ -156,7 +156,7 @@ def MyList(main_url):
                     url = block['data-href']
                 else:
                     url = block['href']
-                url = url_protocol + url.replace('//shikimori.org','//play.shikimori.org')
+                url = url.replace('//shikimori.org','//play.shikimori.org')
                 image = num.find('meta', attrs={'itemprop': 'image'})['content']
                 addDir(title, url, iconImg=image, mode="FILMS")
             next = soup.find('a', {'class': 'next'})
@@ -172,7 +172,7 @@ def GetFilmsList(url_main):
         lnk = num.find('a')
         title = 'Эпизод ' + lnk.find('span', attrs={'class': 'episode-num'}).text
         # img = num.find('img')['src']
-        url = url_protocol + lnk['href']
+        url = lnk['href']
         addDir(title, url, iconImg="DefaultVideo.png", mode="VOICES")
 
 def GetVKUrl(html):
@@ -352,7 +352,7 @@ def GetVoicesList(url):
             item_title += ' ' + author.text
 
         # img = num.find('img')['src']
-        url = url_protocol + lnk['href']
+        url = lnk['href']
         # print player.encode('utf-8')
 
         addLink(item_title, url, iconImg="DefaultVideo.png")
