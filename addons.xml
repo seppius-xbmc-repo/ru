@@ -1030,6 +1030,23 @@ Audio sources are
 	</extension>
 </addon>
 
+<addon id="repository.nemiroff" version="1.0.0" name="Nemiroff Repository" provider-name="Nemiroff">
+<extension point="xbmc.addon.metadata">
+  <summary lang="en">Nemiroff Repository</summary>
+  <summary lang="ru">Репозиторий Nemiroff.</summary>
+  <summary lang="uk">Репозиторій Nemiroff</summary>
+  <description lang="en">Addon repository by Nemiroff</description>
+  <description lang="ru">Репозиторий дополнений Nemiroff</description>
+  <description lang="uk">Репозиторій надбудов Nemiroff</description>
+  <platform>all</platform>
+</extension>
+<extension point="xbmc.addon.repository" name="nemiroff repository">
+  <info compressed="false">http://nemiroff.github.io/kodi_repo/repo/addons.xml</info>
+  <checksum>http://nemiroff.github.io/kodi_repo/repo/addons.xml.md5</checksum>
+  <datadir zip="true">http://nemiroff.github.io/kodi_repo/repo</datadir>
+</extension>
+</addon>
+
 <addon id="repository.quasar" name="Quasar Repository" version="0.9.78" provider-name="scakemyer"><requires></requires><extension point="xbmc.addon.repository" name="Quasar Repository"><info compressed="false">http://localhost:65251/repository/scakemyer/plugin.video.quasar/addons.xml</info><checksum>http://localhost:65251/repository/scakemyer/plugin.video.quasar/addons.xml.md5</checksum><datadir zip="true">http://localhost:65251/repository/scakemyer/</datadir></extension><extension point="xbmc.addon.metadata"><platform>all</platform><summary lang="en">GitHub repository for Quasar updates</summary></extension></addon>
 
 <addon id="repository.romanvm" version="2.0.0" name="Roman V.M. Repository" provider-name="Roman V.M.">
