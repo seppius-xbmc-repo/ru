@@ -133,7 +133,7 @@ def search():
     if kbd.isConfirmed():
         search_str = kbd.getText()
         search_url = site_url + '/index.php?do=search&subaction=search&actors_only=0&search_start=1&full_search=0' \
-                                '&result_from=1&result_from=1&story=' + search_str
+                                '&result_from=1&result_from=1&story=' + urllib.quote(search_str)
         get_films_list(search_url)
     else:
         return False
