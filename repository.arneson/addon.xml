@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<addon id="repository.arneson" name="TIDAL2 Addons by arneson" version="0.1.2" provider-name="arneson">
+    <requires>
+        <import addon="xbmc.addon" version="12.0.0"/>
+    </requires>
+    <extension point="xbmc.addon.repository" name="TIDAL2 Addons by arneson">
+        <info compressed="false">https://github.com/arnesongit/repository.arneson/raw/master/addons.xml</info>
+        <checksum>https://github.com/arnesongit/repository.arneson/raw/master/addons.xml.md5</checksum>
+        <datadir zip="true">https://github.com/arnesongit/repository.arneson/raw/master</datadir>
+        <hashes>false</hashes>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <summary>Install TIDAL2 Addons by arneson</summary>
+        <description>Download and install addons by arneson</description>
+        <platform>all</platform>
+    </extension>
+</addon>
