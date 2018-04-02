@@ -10,13 +10,14 @@ import urllib
 import urllib2
 
 import binascii
-from Crypto.Cipher import AES
 
 import xbmc
 import xbmcaddon
 import xbmcgui
 import xbmcplugin
 from bs4 import BeautifulSoup
+
+from lib import pyaes
 
 USER_AGENT = "Mozilla/5.0 (Windows NT 6.2; WOW64; rv:40.0) Gecko/20100101 Firefox/40.0"
 
@@ -184,15 +185,6 @@ class EncryptedData:
         return json.dumps(self, default=lambda o: o.__dict__, sort_keys=True, separators=(',', ':'))
 
 
-def pad(s):
-    block_size = 16
-    return s + (block_size - len(s) % block_size) * chr(block_size - len(s) % block_size)
-
-
-def unpad(s):
-    return s[0:-ord(s[-1])]
-
-
 def generate_vs_request(player_url, player_page):
     mw_pid = re.compile(r"partner_id:\s*(\w*),").findall(player_page)[0]
     p_domain_id = re.compile(r"domain_id:\s*(\w*),").findall(player_page)[0]
@@ -209,9 +201,9 @@ def generate_vs_request(player_url, player_page):
     regex_window_value = r'eval\("window"\)\["' + cookies[0] + r'"\]="(\w+)"'
     window_value = re.compile(regex_window_value).findall(js_page)[0]  # d value
 
-    e_value = re.compile(r'getVideoManifests:function\(\){var e="(\w+)"').findall(js_page)[0]   # key
+    e_value = re.compile(r'getVideoManifests:function\(\){var e="(\w+)"').findall(js_page)[0]  # key
 
-    n_value = re.compile(r'userAgent},n="(\w+)"').findall(js_page)[0]   # iv
+    n_value = re.compile(r'userAgent},n="(\w+)"').findall(js_page)[0]  # iv
 
     t = EncryptedData()
     t.a = mw_pid
@@ -224,8 +216,11 @@ def generate_vs_request(player_url, player_page):
 
     json_string = t.to_json()
 
-    encryptor = AES.new(binascii.a2b_hex(e_value), AES.MODE_CBC, binascii.a2b_hex(n_value))
-    encrypted = encryptor.encrypt(pad(json_string))
+    encrypt_mode = pyaes.AESModeOfOperationCBC(binascii.a2b_hex(e_value), binascii.a2b_hex(n_value))
+    encrypter = pyaes.Encrypter(encrypt_mode)
+    encrypted = ''
+    encrypted += encrypter.feed(json_string)
+    encrypted += encrypter.feed()
 
     return base64.standard_b64encode(encrypted)
 
