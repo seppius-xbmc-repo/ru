@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-
+import base64
 import cookielib
 import json
 import os
@@ -9,13 +9,19 @@ import sys
 import urllib
 import urllib2
 
+import binascii
+from Crypto.Cipher import AES
+
 import xbmc
 import xbmcaddon
 import xbmcgui
 import xbmcplugin
 from bs4 import BeautifulSoup
 
+USER_AGENT = "Mozilla/5.0 (Windows NT 6.2; WOW64; rv:40.0) Gecko/20100101 Firefox/40.0"
+
 debug = False
+
 __settings__ = xbmcaddon.Addon(id='plugin.video.baskino.com')
 plugin_path = __settings__.getAddonInfo('path').replace(';', '')
 plugin_icon = xbmc.translatePath(os.path.join(plugin_path, 'icon.png'))
@@ -45,7 +51,7 @@ def get_html(web_url):
     if mode == 'FAVS':
         cookie_jar = auth(cookie_jar)
     opener = urllib2.build_opener(urllib2.HTTPCookieProcessor(cookie_jar))
-    opener.addheaders = [("User-Agent", "Mozilla/5.0 (Windows NT 6.2; WOW64; rv:40.0) Gecko/20100101 Firefox/40.0")]
+    opener.addheaders = [("User-Agent", USER_AGENT)]
     connection = opener.open(web_url)
     html = connection.read()
     connection.close()
@@ -68,6 +74,7 @@ def post_request(page_url, req_data=None, headers=None):
     if headers is None:
         headers = {}
     opener = urllib2.build_opener(urllib2.HTTPCookieProcessor())
+    opener.addheaders = [("User-Agent", USER_AGENT)]
     conn = urllib2.Request(page_url, urllib.urlencode(req_data), headers)
     connection = opener.open(conn)
     html = connection.read()
@@ -169,6 +176,60 @@ def get_films_list(url_main):
         return False
 
 
+class EncryptedData:
+    def __init__(self):
+        pass
+
+    def to_json(self):
+        return json.dumps(self, default=lambda o: o.__dict__, sort_keys=True, separators=(',', ':'))
+
+
+def pad(s):
+    block_size = 16
+    return s + (block_size - len(s) % block_size) * chr(block_size - len(s) % block_size)
+
+
+def unpad(s):
+    return s[0:-ord(s[-1])]
+
+
+def generate_vs_request(player_url, player_page):
+    mw_pid = re.compile(r"partner_id:\s*(\w*),").findall(player_page)[0]
+    p_domain_id = re.compile(r"domain_id:\s*(\w*),").findall(player_page)[0]
+
+    _mw_adb = False
+
+    video_token = re.compile(r"video_token:\s*\S?\'([0-9a-f]*)\S?\'").findall(player_page)[0]
+
+    cookies = get_cookies(player_page)
+
+    js_path = re.compile(r'script src=\"(.*)\"').findall(player_page)[0]
+    js_page = get_html("http://" + player_url.split('/')[2] + js_path)
+
+    regex_window_value = r'eval\("window"\)\["' + cookies[0] + r'"\]="(\w+)"'
+    window_value = re.compile(regex_window_value).findall(js_page)[0]  # d value
+
+    e_value = re.compile(r'getVideoManifests:function\(\){var e="(\w+)"').findall(js_page)[0]   # key
+
+    n_value = re.compile(r'userAgent},n="(\w+)"').findall(js_page)[0]   # iv
+
+    t = EncryptedData()
+    t.a = mw_pid
+    t.b = p_domain_id
+    t.c = _mw_adb
+    t.d = window_value
+    t.e = video_token
+    # t.f = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36"
+    t.f = USER_AGENT
+
+    json_string = t.to_json()
+
+    encryptor = AES.new(binascii.a2b_hex(e_value), AES.MODE_CBC, binascii.a2b_hex(n_value))
+    encrypted = encryptor.encrypt(pad(json_string))
+
+    return base64.standard_b64encode(encrypted)
+
+
 def parse_player_page(player_url, player_page, episode_number=0, referer=''):
     if episode_number == 0:
         try:
@@ -188,31 +249,15 @@ def parse_player_page(player_url, player_page, episode_number=0, referer=''):
         except:
             pass
 
-    js_path = re.compile(r'script src=\"(.*)\"').findall(player_page)[0]
-    js_page = get_html("http://" + player_url.split('/')[2] + js_path)
+    request_data = generate_vs_request(player_url, player_page)
 
-    manifest_path = re.compile(r'(/manifest.*all)').findall(js_page)[0]
+    compiled_url = "http://" + player_url.split('/')[2] + "/vs"
 
-    video_token = re.compile(r"video_token:\s*\S?\'([0-9a-f]*)\S?\'").findall(player_page)[0]
-    manifest_path = manifest_path.replace("\"+this.options.video_token+\"", video_token)
-    compiled_url = "http://" + player_url.split('/')[2] + manifest_path
-
-    mw_key = re.compile(r"mw_key:\"(\w+)\"").findall(js_page)[0]
-    cookie_key = re.compile(r"iframe_version.*\.(\w*)=\w\[\"(\w*)\"\].*ajax").findall(js_page)[0]
-
-    mw_pid = re.compile(r"partner_id:\s*(\w*),").findall(player_page)[0]
-    p_domain_id = re.compile(r"domain_id:\s*(\w*),").findall(player_page)[0]
-    cookies = get_cookies(player_page)
-
-    req_data = {"mw_key": mw_key, "iframe_version": "2.1", "mw_pid": mw_pid, "p_domain_id": p_domain_id,
-                "ad_attr": '0', cookie_key[0]: cookies[1]}
-    headers = {
-        "X-Requested-With": "XMLHttpRequest"
-    }
-    json_data = post_request(compiled_url, req_data, headers)
+    req_data = {"q": request_data}
+    json_data = post_request(compiled_url, req_data)
     data = json.loads(json_data)
-    manifest_link_hls = data["mans"]["manifest_m3u8"]
-    manifest_link_mp4 = data["mans"]["manifest_mp4"]
+    manifest_link_hls = data["m3u8"]
+    manifest_link_mp4 = data["mp4"]
     links_mp4 = None
     links_hls = None
     if manifest_link_hls is not None:
