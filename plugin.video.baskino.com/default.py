@@ -353,10 +353,13 @@ def get_film_link(dir_url):
             pass
     else:
         content = soup.find_all('div', attrs={'class': 'player_code'})
+        content.sort(key=content_comparator, reverse=True)
         for num in content:
             if num.find('iframe') is not None:
                 dir_url = num.find('iframe')['src']
-                print dir_url
+                if debug:
+                    print num['id']
+                    print dir_url
                 if re.search('(vk.com|vkontakte.ru|vk.me)', dir_url):
                     dir_url = get_vk_url(dir_url)
                     add_link(title + ' [VK]', info_label, dir_url, icon_img=img)
@@ -381,8 +384,14 @@ def get_film_link(dir_url):
                 elif 'staticnlcdn.com' in dir_url:
                     player_page = get_html_with_referer(dir_url, film_url)
                     mp4_urls = parse_player_page(dir_url, player_page)
-                    for key in mp4_urls.keys():
+                    mp4_keys = mp4_urls.keys()
+                    mp4_keys.sort(key=mp4_comparator, reverse=True)
+                    for key in mp4_keys:
                         add_link(title + " [" + key + "]", info_label, mp4_urls[key], icon_img=img)
+                elif 'youtube' in dir_url:
+                    video_id = parse_youtube_link(dir_url)
+                    add_link(u"Анонс " + title, info_label, "plugin://plugin.video.youtube/?action"
+                                                            "=play_video&videoid=" + video_id, icon_img=img)
             if num.find('div', attrs={'id': re.compile('^videoplayer')}) is not None:
                 dir_url = num.find('script').string
                 dir_url = get_flash_url(dir_url)
@@ -394,6 +403,27 @@ def get_film_link(dir_url):
     xbmcplugin.setContent(h, 'movies')
 
 
+def content_comparator(x):
+    import bs4
+    if isinstance(x, bs4.element.Tag):
+        current_id = x['id']
+        if 'hd' in current_id:
+            return 1
+    return 0
+
+
+def mp4_comparator(x):
+    x_unicode = isinstance(x, unicode)
+    if x_unicode:
+        return int(x) + 10000
+    else:
+        return int(x.split('x')[0])
+
+
+def parse_youtube_link(dir_url):
+    return re.findall(r'embed/(\w+)', dir_url)[0]
+
+
 def get_with_referer(dir_url, film_url, episode_number=0):
     if episode_number == 0:
         player_page = get_html_with_referer(dir_url, film_url)
@@ -401,7 +431,9 @@ def get_with_referer(dir_url, film_url, episode_number=0):
     else:
         player_page = get_html_with_referer(dir_url + "&episode=" + str(episode_number), film_url)
         mp4_urls = parse_player_page(dir_url, player_page, episode_number=episode_number, referer=film_url)
-        for key in mp4_urls.keys():
+        mp4_keys = mp4_urls.keys()
+        mp4_keys.sort(key=mp4_comparator, reverse=True)
+        for key in mp4_keys:
             if isinstance(key, str):
                 add_link("Серия " + str(episode_number) + " [" + key + "]", None, mp4_urls[key])
             else:
@@ -536,7 +568,7 @@ def auth(cookie_jar):
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.0.3) Gecko/2008092417 Firefox/3.0.3",
         "Content-Type": "application/x-www-form-urlencoded",
-        "Host": "baskino.com",
+        "Host": site_url.split('/')[2],
         "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
         "Accept-Language": "en-US,en;q=0.8,bg;q=0.6,it;q=0.4,ru;q=0.2,uk;q=0.2",
         "Accept-Encoding": "windows-1251,utf-8;q=0.7,*;q=0.7",
@@ -558,7 +590,11 @@ def get_vkinos_url(vkinos_url):
     req = urllib2.Request(vkinos_url)
     res = urllib2.urlopen(req)
     html = res.read()
-    lnk = re.compile('(http://.*.mp4)').findall(html)[0]
+    try:
+        lnk = re.compile('(http://.*.mp4)"').findall(html)[0]
+    except:
+        lnk = "https://github.com/seppius-xbmc-repo/ru/blob/master/plugin.video.baskino.com/samples/vkerror.mp4?" \
+              "raw=true"
     return lnk
 
 

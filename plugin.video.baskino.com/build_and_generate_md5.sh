@@ -20,7 +20,7 @@ done <addon.xml
 echo ${fileName}
 echo ${folderName}
 cd ..
-zip -FSr ${folderName}/${fileName} ${folderName} -x "*.zip" -x ".*" -x "*.md5" -x "*.sh" -x "*/.idea/*" -x "*.pyc"
+zip -FSr ${folderName}/${fileName} ${folderName} -x "*.zip" -x ".*" -x "*.md5" -x "*.sh" -x "*/.idea/*" -x "*.pyc" -x "*/samples/*"
 cd ${folderName}
 
 #generate md5
