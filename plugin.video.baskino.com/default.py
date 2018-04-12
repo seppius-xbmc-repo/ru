@@ -133,18 +133,24 @@ def add_link(title, info_labels, link_url, icon_img="DefaultVideo.png"):
             print title, link_url.encode('utf-8')
 
 
-def search():
-    kbd = xbmc.Keyboard()
-    kbd.setDefault('')
-    kbd.setHeading("Поиск")
-    kbd.doModal()
-    if kbd.isConfirmed():
-        search_str = kbd.getText()
-        search_url = site_url + '/index.php?do=search&subaction=search&actors_only=0&search_start=1&full_search=0' \
-                                '&result_from=1&result_from=1&story=' + urllib.quote(search_str)
-        get_films_list(search_url)
+def search(search_str):
+    if search_str is None:
+        kbd = xbmc.Keyboard()
+        kbd.setDefault('')
+        kbd.setHeading("Поиск")
+        kbd.doModal()
+        if kbd.isConfirmed():
+            generate_search_list(kbd.getText())
+        else:
+            return False
     else:
-        return False
+        generate_search_list(search_str)
+
+
+def generate_search_list(search_str):
+    search_url = site_url + '/index.php?do=search&subaction=search&actors_only=0&search_start=1&full_search=0' \
+                            '&result_from=1&result_from=1&story=' + urllib.quote(search_str)
+    get_films_list(search_url)
 
 
 def get_films_list(url_main):
@@ -627,6 +633,7 @@ params = get_params()
 mode = None
 url = None
 referer = None
+keyword = None
 
 try:
     mode = urllib.unquote_plus(params['mode'])
@@ -639,14 +646,19 @@ except:
     pass
 
 try:
-    url = urllib.unquote_plus(params['referer'])
+    referer = urllib.unquote_plus(params['referer'])
+except:
+    pass
+
+try:
+    keyword = urllib.unquote_plus(params['keyword'])
 except:
     pass
 
 if mode is None or mode == 'MAIN':
     main()
 elif mode == 'SEARCH':
-    search()
+    search(keyword)
 elif mode == 'FILMS':
     get_films_list(url)
 elif mode == 'FILM_LINK':
