@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="plugin.video.baskino.com" name="Baskino.com" version="1.1.21" provider-name="uaBArt, Wispik and gerikss">
+<addon id="plugin.video.baskino.com" name="Baskino.com" version="1.1.22" provider-name="uaBArt, Wispik and gerikss">
   <requires>
     <import addon="xbmc.python" version="2.1.0" />
     <import addon="script.module.beautifulsoup4" version="4.3.2"/>
@@ -15,6 +15,8 @@
     <platform>all</platform>
     <language>ru</language>
     <news>
+27.04.2018 - 1.1.22
+ - Исправлены поля настроек для авторизации
 12.04.2018 - 1.1.21
  - Добавлена поддержка United Search
 04.04.2018 - 1.1.20
@@ -22,9 +24,6 @@
  - Добавлена сортировка по качеству
  - Исправлена аутентификация и закладки
  - Добавлен базовый парсер анонсов
-03.04.2018 - 1.1.19
- - Добавлена реализация AES шифрования на питоне вместо нативной (хоть и медленно, но будет работать на всех устройствах)
- - Убраны невалидные импорты
     </news>
   </extension>
 </addon>
