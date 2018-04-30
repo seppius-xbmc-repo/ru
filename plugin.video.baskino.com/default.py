@@ -350,7 +350,7 @@ def get_film_link(dir_url):
                     if 'vkinos.com' in dir_url:
                         dir_url = get_vkinos_url(dir_url)
                         add_link(s.string + ' | ' + ep.string, info_label, dir_url, icon_img=img)
-                    elif 'staticnlcdn.com' in dir_url:
+                    elif 'staticnlcdn.com' or 'previewer.cc' in dir_url:
                         add_dir(s.string + ' | ' + ep.string, dir_url, img, referer=film_url, dir_mode="REFERER")
                     else:
                         add_dir(s.string + ' | ' + ep.string, dir_url, img, dir_mode="FILM_LINK")
