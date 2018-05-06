@@ -5,7 +5,7 @@ import json
 
 from Crypto.Cipher import AES
 
-import lib.pyaes
+from lib.pyaes import Encrypter, AESModeOfOperationCBC
 
 partner_id = 918
 domain_id = 515601
@@ -49,7 +49,7 @@ line = ""
 
 encr = AESModeOfOperationCBC(binascii.a2b_hex(key), binascii.a2b_hex(iv))
 encrypter = Encrypter(encr)
-ciphertext = ''
+ciphertext = bytes()
 ciphertext += encrypter.feed(r)
 ciphertext += encrypter.feed()
 
@@ -57,5 +57,7 @@ encryptor = AES.new(binascii.a2b_hex(key), AES.MODE_CBC, binascii.a2b_hex(iv))
 encrypted2 = encryptor.encrypt(pad(r))
 
 
-print "Cipher1 (CBC): " + base64.standard_b64encode(ciphertext)
-print "Cipher2 (CBC): " + base64.standard_b64encode(encrypted2)
+print ("Cipher1 (CBC): ")
+print (base64.standard_b64encode(ciphertext))
+print ("Cipher2 (CBC): ")
+print (base64.standard_b64encode(encrypted2))

@@ -1,15 +1,12 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 import base64
-import cookielib
+import binascii
+from future.utils import PY3
 import json
 import os
 import re
 import sys
-import urllib
-import urllib2
-
-import binascii
 
 import xbmc
 import xbmcaddon
@@ -19,11 +16,25 @@ from bs4 import BeautifulSoup
 
 from lib import pyaes
 
+if PY3:
+    import urllib.parse as urllib_parse
+    import urllib.request as urllib_request
+    import http.cookiejar as cookielib
+else:
+    import urllib2 as urllib_request
+    import urllib as urllib_parse
+    import cookielib as cookielib
+
 USER_AGENT = "Mozilla/5.0 (Windows NT 6.2; WOW64; rv:40.0) Gecko/20100101 Firefox/40.0"
 
 debug = False
 
-__settings__ = xbmcaddon.Addon(id='plugin.video.baskino.com')
+# todo fix temp solution for kodistubs in PY3
+if PY3:
+    __settings__ = xbmcaddon.Addon()
+else:
+    __settings__ = xbmcaddon.Addon(id='plugin.video.baskino.com')
+
 plugin_path = __settings__.getAddonInfo('path').replace(';', '')
 plugin_icon = xbmc.translatePath(os.path.join(plugin_path, 'icon.png'))
 context_path = xbmc.translatePath(os.path.join(plugin_path, 'default.py'))
@@ -33,50 +44,59 @@ site_url = 'http://baskino.me'
 
 def alert(title, message):
     if debug:
-        print "===== Alert ====="
-        print title
-        print message
+        print("===== Alert =====")
+        print(title)
+        print(message)
     xbmcgui.Dialog().ok(title, message)
 
 
 def notificator(title, message, timeout=500):
     if debug:
-        print "===== Notificator ====="
-        print title
-        print message
+        print("===== Notificator =====")
+        print(title)
+        print(message)
     xbmc.executebuiltin('XBMC.Notification("%s", "%s", %s, "%s")' % (title, message, timeout, plugin_icon))
+
+
+def play_url(web_url):
+    if debug:
+        print_str = "Playing url: " + web_url
+        print (print_str)
+    item = xbmcgui.ListItem(path=web_url)
+    xbmcplugin.setResolvedUrl(handle=h, succeeded=True, listitem=item)
 
 
 def get_html(web_url):
     cookie_jar = cookielib.CookieJar()
     if mode == 'FAVS':
         cookie_jar = auth(cookie_jar)
-    opener = urllib2.build_opener(urllib2.HTTPCookieProcessor(cookie_jar))
+    opener = urllib_request.build_opener(urllib_request.HTTPCookieProcessor(cookie_jar))
     opener.addheaders = [("User-Agent", USER_AGENT)]
     connection = opener.open(web_url)
     html = connection.read()
     connection.close()
-    return html
+    return html.decode('utf-8')
 
 
 def get_html_with_referer(page_url, referer):
     cookie_jar = cookielib.CookieJar()
     if mode == 'FAVS':
         cookie_jar = auth(cookie_jar)
-    opener = urllib2.build_opener(urllib2.HTTPCookieProcessor(cookie_jar))
-    opener.addheaders = [("Referer", referer)]
+    opener = urllib_request.build_opener(urllib_request.HTTPCookieProcessor(cookie_jar))
+    if referer is not None:
+        opener.addheaders = [("Referer", referer)]
     connection = opener.open(page_url)
     html = connection.read()
     connection.close()
-    return html
+    return html.decode('utf-8')
 
 
 def post_request(page_url, req_data=None, headers=None):
     if headers is None:
         headers = {}
-    opener = urllib2.build_opener(urllib2.HTTPCookieProcessor())
+    opener = urllib_request.build_opener(urllib_request.HTTPCookieProcessor())
     opener.addheaders = [("User-Agent", USER_AGENT)]
-    conn = urllib2.Request(page_url, urllib.urlencode(req_data), headers)
+    conn = urllib_request.Request(page_url, urllib_parse.urlencode(req_data).encode('utf-8'), headers)
     connection = opener.open(conn)
     html = connection.read()
     return html
@@ -84,7 +104,7 @@ def post_request(page_url, req_data=None, headers=None):
 
 def main():
     html = get_html(site_url)
-    soup = BeautifulSoup(html, 'html5lib', from_encoding="utf-8")
+    soup = BeautifulSoup(html, 'html5lib')
     content = soup.find('li', attrs={'class': 'first'})
     content = content.find_all('li')
     add_dir('Поиск', site_url + '/index.php', dir_mode="SEARCH")
@@ -99,8 +119,9 @@ def main():
 
 
 def add_dir(title, dir_url, icon_img="DefaultVideo.png", dir_mode="", referer="", inbookmarks=False):
-    sys_url = sys.argv[0] + '?url=' + urllib.quote_plus(dir_url) + '&mode=' + urllib.quote_plus(str(dir_mode)) + \
-              '&ref=' + urllib.quote_plus(str(referer))
+    sys_url = sys.argv[0] + '?url=' + urllib_parse.quote_plus(dir_url) + '&mode=' + urllib_parse.quote_plus(
+        str(dir_mode)) + \
+              '&referer=' + urllib_parse.quote_plus(str(referer))
     item = xbmcgui.ListItem(title, iconImage=icon_img, thumbnailImage=icon_img)
     item.setInfo(type='Video', infoLabels={'Title': title})
     dir_id = dir_url.split('-')[0].split('/')[-1]
@@ -114,23 +135,28 @@ def add_dir(title, dir_url, icon_img="DefaultVideo.png", dir_mode="", referer=""
     item.addContextMenuItems(context_menu_items)
     xbmcplugin.addDirectoryItem(handle=h, url=sys_url, listitem=item, isFolder=True)
     if debug:
-        print "===== Add Dir ====="
+        print("===== Add Dir =====")
         if not isinstance(title, str):
-            print title.encode('utf-8'), sys_url.encode('utf-8')
+            print(title.encode('utf-8'))
+            print(sys_url.encode('utf-8'))
         else:
-            print title, sys_url.encode('utf-8')
+            print(title)
+            print(sys_url.encode('utf-8'))
 
 
 def add_link(title, info_labels, link_url, icon_img="DefaultVideo.png"):
     item = xbmcgui.ListItem(title, iconImage=icon_img, thumbnailImage=icon_img)
     item.setInfo(type='Video', infoLabels=info_labels)
+    item.setProperty('IsPlayable', 'true')
     xbmcplugin.addDirectoryItem(handle=h, url=link_url, listitem=item)
     if debug:
-        print "===== Add Link ====="
+        print("===== Add Link =====")
         if not isinstance(title, str):
-            print title.encode('utf-8'), link_url.encode('utf-8')
+            print(title.encode('utf-8'))
+            print(link_url.encode('utf-8'))
         else:
-            print title, link_url.encode('utf-8')
+            print(title)
+            print(link_url.encode('utf-8'))
 
 
 def search(search_str):
@@ -149,13 +175,13 @@ def search(search_str):
 
 def generate_search_list(search_str):
     search_url = site_url + '/index.php?do=search&subaction=search&actors_only=0&search_start=1&full_search=0' \
-                            '&result_from=1&result_from=1&story=' + urllib.quote(search_str)
+                            '&result_from=1&result_from=1&story=' + urllib_parse.quote(search_str)
     get_films_list(search_url)
 
 
 def get_films_list(url_main):
     html = get_html(url_main)
-    soup = BeautifulSoup(html, 'html5lib', from_encoding="utf-8")
+    soup = BeautifulSoup(html, 'html5lib')
     content = soup.find_all('div', attrs={'class': 'postcover'})
     for num in content:
         title = num.find('img')['title']
@@ -224,7 +250,7 @@ def generate_vs_request(player_url, player_page):
 
     encrypt_mode = pyaes.AESModeOfOperationCBC(binascii.a2b_hex(e_value), binascii.a2b_hex(n_value))
     encrypter = pyaes.Encrypter(encrypt_mode)
-    encrypted = ''
+    encrypted = bytes()
     encrypted += encrypter.feed(json_string)
     encrypted += encrypter.feed()
 
@@ -294,7 +320,7 @@ def get_cookies(player_page):
 def get_film_link(dir_url):
     film_url = dir_url
     html = get_html(dir_url)
-    soup = BeautifulSoup(html, 'html5lib', from_encoding="utf_8")
+    soup = BeautifulSoup(html, 'html5lib')
     content = soup.find('div', attrs={'class': 'info'})
     content = content.find_all('tr')
     for num in content:
@@ -312,7 +338,7 @@ def get_film_link(dir_url):
 
     content = soup.find('div', attrs={'id': re.compile('^news')})
     info = content.contents[0]
-    if not isinstance(info, unicode):
+    if not isinstance(info, str):
         info = ''
     # noinspection PyUnboundLocalVariable
     info_label = {'title': title, 'year': year, 'genre': genre, 'plot': info, 'director': director, 'country': country}
@@ -364,8 +390,8 @@ def get_film_link(dir_url):
             if num.find('iframe') is not None:
                 dir_url = num.find('iframe')['src']
                 if debug:
-                    print num['id']
-                    print dir_url
+                    print(num['id'])
+                    print(dir_url)
                 if re.search('(vk.com|vkontakte.ru|vk.me)', dir_url):
                     dir_url = get_vk_url(dir_url)
                     add_link(title + ' [VK]', info_label, dir_url, icon_img=img)
@@ -374,11 +400,11 @@ def get_film_link(dir_url):
                 #    add_link(title + ' [GIDTV]', info_label, dir_url, iconImg=img)
                 elif ('staticdn.nl' or 'moonwalk.cc') in dir_url:
                     '''dir_url = get_moonwalk_url(dir_url)'''
-                    print dir_url
+                    print(dir_url)
                     dir_url = get_real_url(dir_url)
-                    print dir_url
+                    print(dir_url)
                     dir_url = dir_url.replace('iframe', 'index.m3u8')
-                    print dir_url
+                    print(dir_url)
                     add_link(title + ' [HD]', info_label, dir_url, icon_img=img)
                 elif 'vkinos.com' in dir_url:
                     if dir_url[-2:] == '5/':
@@ -390,14 +416,15 @@ def get_film_link(dir_url):
                 elif 'staticnlcdn.com' in dir_url:
                     player_page = get_html_with_referer(dir_url, film_url)
                     mp4_urls = parse_player_page(dir_url, player_page)
-                    mp4_keys = mp4_urls.keys()
+                    mp4_keys = list(mp4_urls.keys())
                     mp4_keys.sort(key=mp4_comparator, reverse=True)
                     for key in mp4_keys:
                         add_link(title + " [" + key + "]", info_label, mp4_urls[key], icon_img=img)
                 elif 'youtube' in dir_url:
                     video_id = parse_youtube_link(dir_url)
-                    add_link(u"Анонс " + title, info_label, "plugin://plugin.video.youtube/?action"
-                                                            "=play_video&videoid=" + video_id, icon_img=img)
+                    youtube_url = urllib_parse.quote_plus("plugin://plugin.video.youtube/play/?video_id=" + video_id)
+                    sys_url = sys.argv[0] + '?url=' + youtube_url + '&mode=PLAY'
+                    add_link(u"Анонс " + title, info_label, sys_url, icon_img=img)
             if num.find('div', attrs={'id': re.compile('^videoplayer')}) is not None:
                 dir_url = num.find('script').string
                 dir_url = get_flash_url(dir_url)
@@ -419,8 +446,7 @@ def content_comparator(x):
 
 
 def mp4_comparator(x):
-    x_unicode = isinstance(x, unicode)
-    if x_unicode:
+    if x.isdigit():
         return int(x) + 10000
     else:
         return int(x.split('x')[0])
@@ -437,7 +463,7 @@ def get_with_referer(dir_url, film_url, episode_number=0):
     else:
         player_page = get_html_with_referer(dir_url + "&episode=" + str(episode_number), film_url)
         mp4_urls = parse_player_page(dir_url, player_page, episode_number=episode_number, referer=film_url)
-        mp4_keys = mp4_urls.keys()
+        mp4_keys = list(mp4_urls.keys())
         mp4_keys.sort(key=mp4_comparator, reverse=True)
         for key in mp4_keys:
             if isinstance(key, str):
@@ -448,12 +474,12 @@ def get_with_referer(dir_url, film_url, episode_number=0):
 
 def get_vk_url(vk_url):
     http = get_html(vk_url)
-    soup = BeautifulSoup(http, 'html5lib', from_encoding="utf-8")
+    soup = BeautifulSoup(http, 'html5lib')
     sdata1 = soup.find('div',
                        style="position:absolute; top:50%; text-align:center; right:0pt; left:0pt; font-family:Tahoma; "
                              "font-size:12px; color:#777;")
     if sdata1:
-        print sdata1.string.strip().encode('utf-8')
+        print(sdata1.string.strip().encode('utf-8'))
         return False
     for rec in soup.find_all('param', {'name': 'flashvars'}):
         fv = {}
@@ -488,7 +514,7 @@ def get_vk_url(vk_url):
                 # noinspection PyUnboundLocalVariable
                 vk_url = fv['cache360']
         except:
-            print 'Vk parser failed'
+            print('Vk parser failed')
             return False
     return vk_url
 
@@ -496,15 +522,15 @@ def get_vk_url(vk_url):
 def get_moonwalk_url(link_url):
     token = re.findall('http://moonwalk.cc/video/(.+?)/', link_url)[0]
 
-    req = urllib2.Request('http://moonwalk.cc/sessions/create_session',
-                          data='video_token=' + token + '&video_secret=HIV5')
+    req = urllib_request.Request('http://moonwalk.cc/sessions/create_session',
+                                 data='video_token=' + token + '&video_secret=HIV5')
     # noinspection PyBroadException
     try:
-        response = urllib2.urlopen(req)
+        response = urllib_request.urlopen(req)
         html = response.read()
         response.close()
     except Exception:
-        print 'GET: Error getting page ' + link_url
+        print('GET: Error getting page ' + link_url)
         return None
 
     page = json.loads(html)
@@ -526,10 +552,10 @@ def get_flash_url(link_url):
 
 
 def touch(link_url):
-    req = urllib2.Request(link_url)
+    req = urllib_request.Request(link_url)
     # noinspection PyBroadException
     try:
-        res = urllib2.urlopen(req)
+        res = urllib_request.urlopen(req)
         res.close()
         return True
     except:
@@ -539,7 +565,7 @@ def touch(link_url):
 def add_bookmark(bookmark_id):
     cookie_jar = auth(cookielib.CookieJar())
     fav_url = site_url + '/engine/ajax/favorites.php?fav_id=' + bookmark_id + '&action=plus&skin=Baskino'
-    opener = urllib2.build_opener(urllib2.HTTPCookieProcessor(cookie_jar))
+    opener = urllib_request.build_opener(urllib_request.HTTPCookieProcessor(cookie_jar))
     connection = opener.open(fav_url)
     connection.close()
     notificator('Добавление закладки', 'Закладка добавлена', 3000)
@@ -548,7 +574,7 @@ def add_bookmark(bookmark_id):
 def remove_bookmark(bookmark_id):
     cookie_jar = auth(cookielib.CookieJar())
     fav_url = site_url + '/engine/ajax/favorites.php?fav_id=' + bookmark_id + '&action=minus&skin=Baskino'
-    opener = urllib2.build_opener(urllib2.HTTPCookieProcessor(cookie_jar))
+    opener = urllib_request.build_opener(urllib_request.HTTPCookieProcessor(cookie_jar))
     connection = opener.open(fav_url)
     connection.close()
     notificator('Удаление закладки', 'Закладка удалена', 3000)
@@ -566,7 +592,7 @@ def auth(cookie_jar):
 
     if username == "" or password == "":
         alert('Вы не авторизованы', 'Укажите логин и пароль в настройках приложения')
-        print 'Пользователь не аторизован. Выход.'
+        print('Пользователь не аторизован. Выход.')
         sys.exit()
 
     req_data = {'login_name': username, 'login_password': password, 'login': 'submit'}
@@ -580,10 +606,11 @@ def auth(cookie_jar):
         "Accept-Encoding": "windows-1251,utf-8;q=0.7,*;q=0.7",
         "Referer": site_url + "/index.php"
     }
-    opener = urllib2.build_opener(urllib2.HTTPCookieProcessor(cookie_jar))
-    conn = urllib2.Request(req_url, urllib.urlencode(req_data), headers)
+    opener = urllib_request.build_opener(urllib_request.HTTPCookieProcessor(cookie_jar))
+    conn = urllib_request.Request(req_url, urllib_parse.urlencode(req_data).encode('utf-8'), headers)
     connection = opener.open(conn)
     html = connection.read()
+    html = html.decode('utf-8')
     connection.close()
     if 'Ошибка авторизации' in html:
         alert('Проверьте логин и пароль', 'Неверный логин либо пароль')
@@ -593,8 +620,8 @@ def auth(cookie_jar):
 
 
 def get_vkinos_url(vkinos_url):
-    req = urllib2.Request(vkinos_url)
-    res = urllib2.urlopen(req)
+    req = urllib_request.Request(vkinos_url)
+    res = urllib_request.urlopen(req)
     html = res.read()
     try:
         lnk = re.compile('(http://.*.mp4)"').findall(html)[0]
@@ -605,8 +632,8 @@ def get_vkinos_url(vkinos_url):
 
 
 def get_real_url(req_url):
-    req = urllib2.Request(req_url)
-    res = urllib2.urlopen(req)
+    req = urllib_request.Request(req_url)
+    res = urllib_request.urlopen(req)
     final_url = res.geturl()
     return final_url
 
@@ -636,22 +663,22 @@ referer = None
 keyword = None
 
 try:
-    mode = urllib.unquote_plus(params['mode'])
+    mode = urllib_parse.unquote_plus(params['mode'])
 except:
     pass
 
 try:
-    url = urllib.unquote_plus(params['url'])
+    url = urllib_parse.unquote_plus(params['url'])
 except:
     pass
 
 try:
-    referer = urllib.unquote_plus(params['referer'])
+    referer = urllib_parse.unquote_plus(params['referer'])
 except:
     pass
 
 try:
-    keyword = urllib.unquote_plus(params['keyword'])
+    keyword = urllib_parse.unquote_plus(params['keyword'])
 except:
     pass
 
@@ -667,6 +694,8 @@ elif mode == 'REFERER':
     get_with_referer(url, referer)
 elif mode == 'FAVS':
     get_films_list(url)
+elif mode == 'PLAY':
+    play_url(url)
 elif mode == 'add_bookmark':
     add_bookmark(url)
 elif mode == 'remove_bookmark':

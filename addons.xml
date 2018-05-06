@@ -310,12 +310,13 @@ Audio sources are
   </extension>
 </addon>
 
-<addon id="plugin.video.baskino.com" name="Baskino.com" version="1.1.23" provider-name="uaBArt, Wispik and gerikss">
+<addon id="plugin.video.baskino.com" name="Baskino.com" version="1.1.24" provider-name="uaBArt, Wispik and gerikss">
   <requires>
     <import addon="xbmc.python" version="2.1.0" />
     <import addon="script.module.beautifulsoup4" version="4.3.2"/>
     <import addon="script.module.html5lib" version="0.999.0"/>
-    <import addon="script.module.six" version="1.5.2"/>
+    <import addon="script.module.future" version="0.16.0.4"/>
+    <import addon="plugin.video.youtube" version="3.0.0" optional="true"/>
   </requires>
   <extension point="xbmc.python.pluginsource" provides="video" library="default.py">
     <provides>video</provides>
@@ -326,12 +327,13 @@ Audio sources are
     <platform>all</platform>
     <language>ru</language>
     <news>
+06.05.2018 - 1.1.24
+ - Исправлена работа анонсов с YouTube
+ - Код переписан для будущей поддержки Python 3
 30.04.2018 - 1.1.23
  - Добавлена поддержка старых серверов previewer.cc
 27.04.2018 - 1.1.22
  - Исправлены поля настроек для авторизации
-12.04.2018 - 1.1.21
- - Добавлена поддержка United Search
     </news>
   </extension>
 </addon>
