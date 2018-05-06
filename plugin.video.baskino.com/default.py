@@ -41,6 +41,16 @@ context_path = xbmc.translatePath(os.path.join(plugin_path, 'default.py'))
 
 site_url = 'http://baskino.me'
 
+antizapret_settings = __settings__.getSetting("antizapret")
+antizapret_enabled = antizapret_settings == "true"
+if antizapret_enabled:
+    try:
+        import antizapret as az
+        print ("AntiZapret imported")
+    except:
+        antizapret_enabled = False
+        xbmc.executebuiltin("InstallAddon(script.module.antizapret)")
+
 
 def alert(title, message):
     if debug:
@@ -70,7 +80,11 @@ def get_html(web_url):
     cookie_jar = cookielib.CookieJar()
     if mode == 'FAVS':
         cookie_jar = auth(cookie_jar)
-    opener = urllib_request.build_opener(urllib_request.HTTPCookieProcessor(cookie_jar))
+    if antizapret_enabled:
+        opener = urllib_request.build_opener(urllib_request.HTTPCookieProcessor(cookie_jar),
+                                             az.AntizapretProxyHandler())
+    else:
+        opener = urllib_request.build_opener(urllib_request.HTTPCookieProcessor(cookie_jar))
     opener.addheaders = [("User-Agent", USER_AGENT)]
     connection = opener.open(web_url)
     html = connection.read()
@@ -82,7 +96,11 @@ def get_html_with_referer(page_url, referer):
     cookie_jar = cookielib.CookieJar()
     if mode == 'FAVS':
         cookie_jar = auth(cookie_jar)
-    opener = urllib_request.build_opener(urllib_request.HTTPCookieProcessor(cookie_jar))
+    if antizapret_enabled:
+        opener = urllib_request.build_opener(urllib_request.HTTPCookieProcessor(cookie_jar),
+                                             az.AntizapretProxyHandler())
+    else:
+        opener = urllib_request.build_opener(urllib_request.HTTPCookieProcessor(cookie_jar))
     if referer is not None:
         opener.addheaders = [("Referer", referer)]
     connection = opener.open(page_url)
@@ -94,7 +112,11 @@ def get_html_with_referer(page_url, referer):
 def post_request(page_url, req_data=None, headers=None):
     if headers is None:
         headers = {}
-    opener = urllib_request.build_opener(urllib_request.HTTPCookieProcessor())
+    if antizapret_enabled:
+        opener = urllib_request.build_opener(urllib_request.HTTPCookieProcessor(),
+                                             az.AntizapretProxyHandler())
+    else:
+        opener = urllib_request.build_opener(urllib_request.HTTPCookieProcessor())
     opener.addheaders = [("User-Agent", USER_AGENT)]
     conn = urllib_request.Request(page_url, urllib_parse.urlencode(req_data).encode('utf-8'), headers)
     connection = opener.open(conn)
@@ -565,7 +587,11 @@ def touch(link_url):
 def add_bookmark(bookmark_id):
     cookie_jar = auth(cookielib.CookieJar())
     fav_url = site_url + '/engine/ajax/favorites.php?fav_id=' + bookmark_id + '&action=plus&skin=Baskino'
-    opener = urllib_request.build_opener(urllib_request.HTTPCookieProcessor(cookie_jar))
+    if antizapret_enabled:
+        opener = urllib_request.build_opener(urllib_request.HTTPCookieProcessor(cookie_jar),
+                                             az.AntizapretProxyHandler())
+    else:
+        opener = urllib_request.build_opener(urllib_request.HTTPCookieProcessor(cookie_jar))
     connection = opener.open(fav_url)
     connection.close()
     notificator('Добавление закладки', 'Закладка добавлена', 3000)
@@ -574,7 +600,11 @@ def add_bookmark(bookmark_id):
 def remove_bookmark(bookmark_id):
     cookie_jar = auth(cookielib.CookieJar())
     fav_url = site_url + '/engine/ajax/favorites.php?fav_id=' + bookmark_id + '&action=minus&skin=Baskino'
-    opener = urllib_request.build_opener(urllib_request.HTTPCookieProcessor(cookie_jar))
+    if antizapret_enabled:
+        opener = urllib_request.build_opener(urllib_request.HTTPCookieProcessor(cookie_jar),
+                                             az.AntizapretProxyHandler())
+    else:
+        opener = urllib_request.build_opener(urllib_request.HTTPCookieProcessor(cookie_jar))
     connection = opener.open(fav_url)
     connection.close()
     notificator('Удаление закладки', 'Закладка удалена', 3000)
@@ -606,7 +636,11 @@ def auth(cookie_jar):
         "Accept-Encoding": "windows-1251,utf-8;q=0.7,*;q=0.7",
         "Referer": site_url + "/index.php"
     }
-    opener = urllib_request.build_opener(urllib_request.HTTPCookieProcessor(cookie_jar))
+    if antizapret_enabled:
+        opener = urllib_request.build_opener(urllib_request.HTTPCookieProcessor(cookie_jar),
+                                             az.AntizapretProxyHandler())
+    else:
+        opener = urllib_request.build_opener(urllib_request.HTTPCookieProcessor(cookie_jar))
     conn = urllib_request.Request(req_url, urllib_parse.urlencode(req_data).encode('utf-8'), headers)
     connection = opener.open(conn)
     html = connection.read()
