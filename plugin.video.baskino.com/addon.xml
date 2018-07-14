@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="plugin.video.baskino.com" name="Baskino.com" version="1.1.25" provider-name="uaBArt, Wispik and gerikss">
+<addon id="plugin.video.baskino.com" name="Baskino.com" version="1.1.26" provider-name="uaBArt, Wispik and gerikss">
   <requires>
     <import addon="xbmc.python" version="2.1.0" />
     <import addon="script.module.beautifulsoup4" version="4.3.2"/>
@@ -17,13 +17,13 @@
     <platform>all</platform>
     <language>ru</language>
     <news>
+14.07.2018 - 1.1.26
+ - Немного исправлен парсер (возможно временно)
 07.05.2018 - 1.1.25
  - Добавлена поддержка AntiZapret
 06.05.2018 - 1.1.24
  - Исправлена работа анонсов с YouTube
  - Код переписан для будущей поддержки Python 3
-30.04.2018 - 1.1.23
- - Добавлена поддержка старых серверов previewer.cc
     </news>
   </extension>
 </addon>

@@ -257,7 +257,7 @@ def generate_vs_request(player_url, player_page):
 
     e_value = re.compile(r'getVideoManifests:function\(\){var e="(\w+)"').findall(js_page)[0]  # key
 
-    n_value = re.compile(r'userAgent},n="(\w+)"').findall(js_page)[0]  # iv
+    r_value = re.compile(r'r="(\w+)",o').findall(js_page)[0]  # iv
 
     t = EncryptedData()
     t.a = mw_pid
@@ -270,7 +270,7 @@ def generate_vs_request(player_url, player_page):
 
     json_string = t.to_json()
 
-    encrypt_mode = pyaes.AESModeOfOperationCBC(binascii.a2b_hex(e_value), binascii.a2b_hex(n_value))
+    encrypt_mode = pyaes.AESModeOfOperationCBC(binascii.a2b_hex('7316d0c4' + e_value), binascii.a2b_hex(r_value))
     encrypter = pyaes.Encrypter(encrypt_mode)
     encrypted = bytes()
     encrypted += encrypter.feed(json_string)
