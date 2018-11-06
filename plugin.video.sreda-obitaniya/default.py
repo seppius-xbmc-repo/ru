@@ -58,14 +58,16 @@ def main(params):
     listitem=xbmcgui.ListItem("Естественный Отбор ТВЦ",addon_icon, addon_icon)
     uri = construct_request({
             'func': 'tvcMain',
-            'link':'http://www.tvc.ru/channel/brand/id/2723/show/episodes'
+            'link':'http://www.tvc.ru/channel/brand/id/2723/show/episodes/page/',
+            'page':'1',
             })
     xbmcplugin.addDirectoryItem(hos, uri, listitem, True)
     
     listitem=xbmcgui.ListItem("Без обмана ТВЦ",addon_icon, addon_icon)
     uri = construct_request({
             'func': 'tvcMain',
-            'link':'http://www.tvc.ru/channel/brand/id/73/show/episodes'
+            'link':'http://www.tvc.ru/channel/brand/id/73/show/episodes/page/',
+            'page':'1',
             })
     xbmcplugin.addDirectoryItem(hos, uri, listitem, True)
     
@@ -96,7 +98,7 @@ def main(params):
             'func': 'samMain',
             'link':'http://urgantshow.ru/episodes'
             })
-    xbmcplugin.addDirectoryItem(hos, uri, listitem, True)
+    #xbmcplugin.addDirectoryItem(hos, uri, listitem, True)
     '''
     listitem=xbmcgui.ListItem("Вечерний Ургант",addon_icon, addon_icon)
     uri = construct_request({
@@ -124,7 +126,7 @@ def main(params):
     xbmcplugin.endOfDirectory(handle=hos, succeeded=True, updateListing=False, cacheToDisc=True)
 
 def tvcMain(params):
-    link=params['link']
+    link=params['link']+params['page']
     #print link, params
     http = GET(link)
     if http == None: return False
@@ -133,7 +135,7 @@ def tvcMain(params):
                     <div class="video-ico"></div>
             </a>'''
     #print http
-    lnks=re.compile('episodes__item\">[^\"]+\"([^\"<]+)\".+url=\"?(.+)\">[^<]*[^=]+=\"([^\"<]+)\"').findall(http)
+    lnks=re.compile('series__item\">[^\"]+\"[^\"<]+".+href="([^"]+)">.*\n+.*.*\n+.*.*\n+.*<img src="([^"]+)".+alt="([^"]+)"').findall(http)
     ttls=re.compile('class=\"b-brand-episode__anons\">[\s]+([^<]+)[\s^<]*<').findall(http)
     
         
@@ -147,11 +149,12 @@ def tvcMain(params):
     #print len(lnks)
     #print len(ttls)
     for vid in lnks:
+        
         #print vid
-        img= vid[2]
+        img= vid[1]
         link=vid[0]
-        flink=vid[1]
-        title= ttls[i].replace("&quot;","")
+        flink=vid[0]
+        title= vid[2].replace("&quot;","")
         i=i+1
         #duration= vid.find('div', attrs={'class':'duration'}).string.encode('utf-8')
         #dur=int(duration.split(':')[0])*60+int(duration.split(':')[1])
@@ -166,29 +169,34 @@ def tvcMain(params):
         listitem.setProperty('IsPlayable', 'true')
         if "Анонс" not in title: xbmcplugin.addDirectoryItem(hos, uri, listitem)
         
-    nxt=re.compile('<li class=\"b-paging__item b-paging__next\">\s+<a\shref=\"([^\"<]+)\" title=\"(.+)\"></a').findall(http)
-    if len(nxt)>0:
-        nxntt=nxt[0][1]
-        nxlnk="http://www.tvc.ru"+nxt[0][0]
-        listitem=xbmcgui.ListItem("Еще",addon_icon, addon_icon)
-        uri = construct_request({
-                'func': 'tvcMain',
-                'link':nxlnk
-                })
-        xbmcplugin.addDirectoryItem(hos, uri, listitem, True)
+    #nxt=re.compile('<li class=\"b-paging__item b-paging__next\">\s+<a\shref=\"([^\"<]+)\" title=\"(.+)\"></a').findall(http)
+    #if len(nxt)>0:
+    nxntt=int(params['page'])+1
+    #print nxntt
+    #nxlnk="http://www.tvc.ru"+nxt[0][0]
+    listitem=xbmcgui.ListItem("Еще",addon_icon, addon_icon)
+    uri = construct_request({
+            'func': 'tvcMain',
+            'link':params['link'],
+            'page':nxntt
+            })
+    xbmcplugin.addDirectoryItem(hos, uri, listitem, True)
     xbmcplugin.endOfDirectory(handle=hos, succeeded=True, updateListing=False, cacheToDisc=True)  
 
 def tvcsam(params):
     #http://www.tvc.ru/video/iframe/id/101797/isPlay/true/id_stat/channel/?acc_video_id=/channel/brand/id/2723/show/episodes/episode_id/47027
     #print "%s: url=%s"%(params['title'],params['flink'])
-    http=GET("http:"+params['flink'])
-
+    #print "http://www.tvc.ru/"+params['flink']
+    http=GET("http://www.tvc.ru/"+params['flink'])
+    ll=re.compile('video/iframe/id/([0-9]+)/').findall(http)
+    #print ll[0]
+    #print http
     #window.pl.data.dataUrl = 'http://www.tvc.ru/video/json/id/102174';
-    lnk=re.compile('//www.tvc.ru/video/json/id/([0-9]+)').findall(http)
-	
+    #lnk=re.compile('//www.tvc.ru/video/json/id/([0-9]+)').findall(http)
+    #print lnk
     #print lnk[0]
-    jso=json.loads(GET('http://www.tvc.ru/video/json/id/'+lnk[0]))
-    url="http:"+jso['path']['quality'][0]['url']
+    jso=json.loads(GET('http://www.tvc.ru/video/json/id/'+ll[0]))
+    url=jso['path']['quality'][0]['url']
     item = xbmcgui.ListItem(path=url)
     xbmcplugin.setResolvedUrl(int(sys.argv[1]), True, item)
   
@@ -196,6 +204,7 @@ def samMain(params):
     link='http://russia.tv/video/show/brand_id/5214'
     http = GET(link)
     if http == None: return False
+    
     beautifulSoup = BeautifulSoup(http)
     #print beautifulSoup
     content = beautifulSoup.find('div',attrs={'class':'content'})
@@ -214,8 +223,9 @@ def samMain(params):
     xbmcplugin.addDirectoryItem(hos, uri, listitem)
     content = beautifulSoup.findAll('li',attrs={'class':'item '})
     for vid in content:
-        print vid
-        img= vid.find('img', attrs={'class':'lazyload'})['data-original']
+        #print vid
+        img= "https:"+vid.find('img', attrs={'class':'lazyload'})['data-original']
+        #print img
         link="http://russia.tv"+ vid.find('a', attrs={'class':'pic '})['href'].replace('/viewtype/picture','')
         title= vid.find('img', attrs={'class':'lazyload'})['alt']
         duration= vid.find('div', attrs={'class':'duration'}).string.encode('utf-8')
@@ -234,17 +244,17 @@ def samMain(params):
     
 def plsam(params):
     link=params['link']
-    #print link
+    print link
     http = GET(link)
     beautifulSoup = BeautifulSoup(http)
-    #print beautifulSoup
+    print beautifulSoup
     link= beautifulSoup.find('iframe',attrs={'allowfullscreen':'allowfullscreen'})['src']#.replace('/swf/','/video/')
     http1 = GET(link)
     #print link
     #print http1
     #" window.pl.data = {video:{"mp4":"https://cdnng-v.rtr-vesti.ru/_cdn_auth/secure/v/vh/mp4/hd-wide/001/545/021.mp4?auth=mh&vid=1545021","m3u8":"
     vid=re.findall('"m3u8":"(.+)"},picture',str(http1))[0].replace('\/','/')
-    print GET(vid)
+    #print GET(vid)
     item = xbmcgui.ListItem(path=vid)
     xbmcplugin.setResolvedUrl(int(sys.argv[1]), True, item)
 def urgMain(params):
@@ -304,7 +314,8 @@ def mainMain(params):
     mjson=json.loads(http)
     for  lind in mjson:
         linkA="http:"+ lind['mbr'][0]['src']
-        img="http:"+ lind['poster']
+        #print lind['poster']
+        img=lind['poster']
         title=lind['title']
         listitem=xbmcgui.ListItem(title,img, img)
         #listitem.setInfo(type='video', infoLabels = mysetInfo)

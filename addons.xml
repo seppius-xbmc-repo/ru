@@ -670,7 +670,7 @@ Audio sources are
 
 <addon id="plugin.video.sreda-obitaniya"
        name="Передачи Российского ТВ"
-       version="0.1.8"
+       version="0.1.9"
        provider-name="NuisMons">
   <requires>
     <import addon="xbmc.python" version="2.1.0" />
