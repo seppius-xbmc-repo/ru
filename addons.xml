@@ -1110,7 +1110,7 @@ Audio sources are
 
 <addon id="repository.search.db"
 		name="XBMC.ru search db"
-		version="1.1.34"
+		version="1.1.35"
 		provider-name="bigbax">
   <requires>
     <import addon="xbmc.addon" version="12.0.0"/>
@@ -1124,13 +1124,13 @@ Audio sources are
 		</dir>
 		<dir minversion="13.0.0">
 			<info compressed="false">https://raw.githubusercontent.com/weirdgiraffe/kodi.addon.repo/master/addons/addons.xml</info>
-                        <checksum>https://raw.githubusercontent.com/weirdgiraffe/kodi.addon.repo/master/addons/addons.xml.md5</checksum>
-                        <datadir zip="true">https://raw.githubusercontent.com/weirdgiraffe/kodi.addon.repo/master/addons/</datadir>
+            <checksum>https://raw.githubusercontent.com/weirdgiraffe/kodi.addon.repo/master/addons/addons.xml.md5</checksum>
+            <datadir zip="true">https://raw.githubusercontent.com/weirdgiraffe/kodi.addon.repo/master/addons/</datadir>
 		</dir>
 		<dir minversion="13.0.0">
 			<info compressed="false">https://raw.githubusercontent.com/DmitrySandalov/xbmc-repo/master/addons/addons.xml</info>
-                        <checksum>https://raw.githubusercontent.com/DmitrySandalov/xbmc-repo/master/addons/addons.xml.md5</checksum>
-                        <datadir zip="true">https://github.com/DmitrySandalov/xbmc-repo/raw/master/repo/zip</datadir>
+            <checksum>https://raw.githubusercontent.com/DmitrySandalov/xbmc-repo/master/addons/addons.xml.md5</checksum>
+            <datadir zip="true">https://github.com/DmitrySandalov/xbmc-repo/raw/master/repo/zip</datadir>
 		</dir>
 		<dir minversion="13.0.0">
 			<info compressed="false">https://raw.github.com/mrstealth/xbmc-gotham/master/addons.xml</info>
@@ -1177,12 +1177,12 @@ Audio sources are
 			<checksum>https://github.com/dvor85/kodi.repo/raw/master/addons.xml.md5</checksum>
 			<datadir zip="true">https://github.com/dvor85/kodi.repo/raw/master/</datadir>
 		</dir>
-	        <dir minversion="14.0.0">
+        <dir minversion="14.0.0">
 			<info compressed="false">http://api.bitbucket.org/1.0/repositories/DiMartino/myshows.me-kodi-repo/raw/default/addons.xml</info>
 			<checksum>http://api.bitbucket.org/1.0/repositories/DiMartino/myshows.me-kodi-repo/raw/default/addons.xml.md5</checksum>
 			<datadir zip="true">http://api.bitbucket.org/1.0/repositories/DiMartino/myshows.me-kodi-repo/raw/default/repo/</datadir>
 		</dir>
-	        <dir minversion="14.0.0">
+        <dir minversion="14.0.0">
 			<info compressed="false">https://github.com/Eugene-Bond/xmbc-plugins/raw/master/addons.xml</info>
 			<checksum>https://github.com/Eugene-Bond/xmbc-plugins/raw/master/addons.xml.md5</checksum>
 			<datadir zip="true">https://github.com/Eugene-Bond/xmbc-plugins/raw/master/</datadir>
@@ -1192,16 +1192,15 @@ Audio sources are
 			<checksum>https://raw.githubusercontent.com/evgen-dev/repository.evgen_dev.xbmc-addons/master/addons.xml.md5?v=1</checksum>
 			<datadir zip="true">https://raw.githubusercontent.com/evgen-dev/repository.evgen_dev.xbmc-addons/master/repo</datadir>
 		</dir>
-	        <dir minversion="14.0.0">
+        <dir minversion="14.0.0">
 			<info compressed="false">https://raw.githubusercontent.com/xbmc-addon/repository.hal9000/master/addons.xml</info>
-                        <checksum>https://raw.githubusercontent.com/xbmc-addon/repository.hal9000/master/addons.xml.md5</checksum>
-                        <datadir zip="true">https://raw.githubusercontent.com/xbmc-addon/repository.hal9000/master/repo</datadir>
+            <checksum>https://raw.githubusercontent.com/xbmc-addon/repository.hal9000/master/addons.xml.md5</checksum>
+            <datadir zip="true">https://raw.githubusercontent.com/xbmc-addon/repository.hal9000/master/repo</datadir>
 		</dir>
-        </dir>
-	        <dir minversion="14.0.0">
+        <dir minversion="14.0.0">
 			<info compressed="false">https://raw.githubusercontent.com/virserg/kodirepo/master/addons.xml</info>
-                        <checksum>https://raw.githubusercontent.com/virserg/kodirepo/master/addons.xml.md5</checksum>
-                        <datadir zip="true">https://raw.githubusercontent.com/virserg/kodirepo/master/zips</datadir>
+            <checksum>https://raw.githubusercontent.com/virserg/kodirepo/master/addons.xml.md5</checksum>
+            <datadir zip="true">https://raw.githubusercontent.com/virserg/kodirepo/master/zips</datadir>
 		</dir>
 		<dir minversion="14.0.0">
 			<info compressed="false">https://github.com/tdw1980/tdw/raw/master/addons.xml</info>
@@ -1210,8 +1209,8 @@ Audio sources are
 		</dir>
 		<dir minversion="14.0.0">
 			<info compressed="false">https://raw.githubusercontent.com/rvlad1987/repository.rvlad1987.xbmc-addons/master/addons.xml</info>
-		        <checksum>https://raw.githubusercontent.com/rvlad1987/repository.rvlad1987.xbmc-addons/master/addons.xml.md5</checksum>
-		        <datadir zip="true">https://raw.githubusercontent.com/rvlad1987/repository.rvlad1987.xbmc-addons/master/repo</datadir>
+            <checksum>https://raw.githubusercontent.com/rvlad1987/repository.rvlad1987.xbmc-addons/master/addons.xml.md5</checksum>
+            <datadir zip="true">https://raw.githubusercontent.com/rvlad1987/repository.rvlad1987.xbmc-addons/master/repo</datadir>
 		</dir>
 		<dir minversion="14.0.0">
 			<info compressed="false">https://github.com/snakefishh/mnn-xbmc-repo/raw/master/addons.xml</info>
@@ -1240,8 +1239,8 @@ Audio sources are
 		</dir>
 		<dir minversion="14.0.0">
 			<info>https://vlmaksime.github.io/repository.vlmaksime/addons.xml</info>
-                        <checksum>https://vlmaksime.github.io/repository.vlmaksime/addons.xml.md5</checksum>
-                        <datadir zip="true">https://vlmaksime.github.io/repository.vlmaksime/releases/</datadir>
+            <checksum>https://vlmaksime.github.io/repository.vlmaksime/addons.xml.md5</checksum>
+            <datadir zip="true">https://vlmaksime.github.io/repository.vlmaksime/releases/</datadir>
 		</dir>
 		<dir minversion="14.0.0">
 			<info compressed="false">http://romanvm.github.io/kodi_repo/repo/addons.xml</info>
