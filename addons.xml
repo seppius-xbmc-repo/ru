@@ -1110,7 +1110,7 @@ Audio sources are
 
 <addon id="repository.search.db"
 		name="XBMC.ru search db"
-		version="1.1.33"
+		version="1.1.34"
 		provider-name="bigbax">
   <requires>
     <import addon="xbmc.addon" version="12.0.0"/>
@@ -1196,6 +1196,12 @@ Audio sources are
 			<info compressed="false">https://raw.githubusercontent.com/xbmc-addon/repository.hal9000/master/addons.xml</info>
                         <checksum>https://raw.githubusercontent.com/xbmc-addon/repository.hal9000/master/addons.xml.md5</checksum>
                         <datadir zip="true">https://raw.githubusercontent.com/xbmc-addon/repository.hal9000/master/repo</datadir>
+		</dir>
+        </dir>
+	        <dir minversion="14.0.0">
+			<info compressed="false">https://raw.githubusercontent.com/virserg/kodirepo/master/addons.xml</info>
+                        <checksum>https://raw.githubusercontent.com/virserg/kodirepo/master/addons.xml.md5</checksum>
+                        <datadir zip="true">https://raw.githubusercontent.com/virserg/kodirepo/master/zips</datadir>
 		</dir>
 		<dir minversion="14.0.0">
 			<info compressed="false">https://github.com/tdw1980/tdw/raw/master/addons.xml</info>
