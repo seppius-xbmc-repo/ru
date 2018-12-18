@@ -1110,7 +1110,7 @@ Audio sources are
 
 <addon id="repository.search.db"
 		name="XBMC.ru search db"
-		version="1.1.35"
+		version="1.1.36"
 		provider-name="bigbax">
   <requires>
     <import addon="xbmc.addon" version="12.0.0"/>
@@ -1151,11 +1151,6 @@ Audio sources are
 			<info compressed="false">https://raw.githubusercontent.com/nkvoronov/repository.yellowdragon/krypton/repo/addons.xml</info>
 			<checksum>https://raw.githubusercontent.com/nkvoronov/repository.yellowdragon/krypton/repo/addons.xml.md5</checksum>
 			<datadir zip="true">https://raw.githubusercontent.com/nkvoronov/repository.yellowdragon/krypton/repo/</datadir>
-		</dir>
-		<dir minversion="14.0.0">
-			<info compressed="false">https://afedchin-repo.herokuapp.com/addons.xml</info>
-			<checksum>https://afedchin-repo.herokuapp.com/addons.xml.md5</checksum>
-			<datadir zip="true">https://afedchin-repo.herokuapp.com/</datadir>
 		</dir>
 		<dir minversion="14.0.0">
 			<info compressed="false">https://raw.githubusercontent.com/anteo/xbmc.repository/master/addons.xml</info>
@@ -1251,7 +1246,7 @@ Audio sources are
 	<extension point="xbmc.addon.metadata">
 		<summary lang="en_US">Install Add-ons for XBMC, Kodi.tv</summary>
 		<summary lang="ru">Установить дополнения для XBMC, Kodi.tv</summary>
-		<description lang="ru">Загружайте и устанавливайте плагины авторов русского форума XBMC[CR]Если вы обнаружили нерабочее дополнение, сообщите об этом разработчику плагина в разделе "Помощь по плагинам" русского форума.</description>
+		<description lang="ru">Плагины авторов русского форума XBMC[CR]Если вы обнаружили нерабочее дополнение, сообщите об этом разработчику плагина в разделе "Помощь по плагинам" русского форума xbmc.ru.</description>
 		<disclaimer lang="en_US">Team-Kodi did not make the add-ons on this repository and are not responsible for their content</disclaimer>
 		<disclaimer lang="ru">Разработчики Kodi не являются авторами дополнений в данном репозитории и не несут ответственность за их содержимое.</disclaimer>
 		<platform>all</platform>
