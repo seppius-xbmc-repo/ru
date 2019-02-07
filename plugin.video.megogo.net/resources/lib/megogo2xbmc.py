@@ -9,12 +9,24 @@ import urllib
 import urllib2
 import hashlib
 import sys
-import os
+import os, platform
 import xbmcplugin
 import xbmcgui
 import xbmc
 import xbmcaddon
-import re
+import re, cookielib ,base64, requests
+
+
+platform_version    = xbmc.getInfoLabel('System.BuildVersion').split(" ")[0]
+if int(platform_version.split(".")[0]) >= 14:
+    name = 'Kodi'
+else:
+    name = 'Xbmc'
+    
+print '%s/%s-%s' % (name, platform_version, platform.platform(aliased=0, terse=0)[:40])
+    
+conf=""
+genr={}
 
 __addon__ = xbmcaddon.Addon( id = 'plugin.video.megogo.net' )
 __language__ = __addon__.getLocalizedString
@@ -34,7 +46,12 @@ MAX_DELAY=600
 hos = int(sys.argv[1])
 xbmcplugin.setContent(hos, 'movies')
 
-UA = '%s/%s %s/%s/%s' % (addon_type, addon_id, urllib.quote_plus(addon_author), addon_version, urllib.quote_plus(addon_name))
+try:
+    UA                  = '%s/%s-%s' % (name, platform_version, platform.platform(aliased=0, terse=0)[:40])
+except:
+    data                = os.uname()
+    UA                  = '%s/%s-%s-%s-%s' % (name, platform_version, data[0], data[2], data[-1])
+    UA                  = UA[:50]
 
 sort=None
 if __addon__.getSetting('sort_v')=='0':sortr='add'
@@ -70,7 +87,9 @@ cu = c.cursor()
 from urllib import unquote, quote, quote_plus
 import time
 
-def add_to_db(n, item):
+
+
+def add_to_db(n, item, base='cache'):
     err=0
     m = hashlib.md5()
     m.update(str(n))
@@ -79,58 +98,61 @@ def add_to_db(n, item):
     litm=str(len(data))
     try:
         old=[]
-        for row in cu.execute('SELECT time FROM cache ORDER BY time'):
+        for row in cu.execute('SELECT time FROM %s ORDER BY time'%base):
             tout = row[0]
             delay=int(time.time())-int(tout)
             if int(delay)>MAX_DELAY:
                 old.append(tout)
 
         for dels in old:
-            print 'запись удалена %s'%str(dels)
-            cu.execute("DELETE FROM cache WHERE time = '%s'" % dels)
+           #print 'запись удалена %s'%str(dels)
+            cu.execute("DELETE FROM %s WHERE time = '%s'" %(base,dels))
             c.commit()
     except: pass
 
     try:
-        cu.execute("INSERT INTO cache VALUES ('%s','%s','%s')"%(req,data,int(time.time())))
+        cu.execute("INSERT INTO %s VALUES ('%s','%s','%s')"%(base,req,data,int(time.time())))
         c.commit()
     except:
-        cu.execute("CREATE TABLE cache (link, data, time int)")
+        cu.execute("CREATE TABLE %s (link, data, time int)"%base)
         c.commit()
-        cu.execute("INSERT INTO cache VALUES ('%s','%s','%s')"%(req,data,int(time.time())))
+        cu.execute("INSERT INTO %s VALUES ('%s','%s','%s')"%(base,req,data,int(time.time())))
         c.commit()
 
 
-def get_inf_db(n):
+def get_inf_db(n, base='cache'):
     m = hashlib.md5()
     m.update(str(n))
     req=m.hexdigest()
-    cu.execute("SELECT time FROM cache WHERE link = '%s'" % req)
+    cu.execute("SELECT time FROM %s WHERE link = '%s'" % (base, req))
     c.commit()
     tout = cu.fetchone()[0]
     if int(tout)>0:
         delay=int(time.time())-int(tout)
-        if int(delay)>MAX_DELAY:
-            cu.execute("DELETE FROM cache WHERE link = '%s'" % req)
+        if int(delay)>MAX_DELAY and base!='cookie':
+            cu.execute("DELETE FROM %s WHERE link = '%s'" % (base,req))
             c.commit()
             info=''
         else:
-            cu.execute("SELECT data FROM cache WHERE link = '%s'" % req)
+            cu.execute("SELECT data FROM %s WHERE link = '%s'" % (base,req))
             c.commit()
             info = cu.fetchone()
             
             info= unquote(str(info))
-            info=info[3:(len(info)-3)].decode()
+            #print info[3:(len(info)-3)]
+            info=info[3:(len(info)-3)]#.decode()
         return info
     else: return ''
         
-def GET(mCmd, mParams):
+def GET(url, mCmd, mParams):
+
+    url="https://api.megogo.net/v1/"+url
     remc=mCmd
     remp=mParams
     session=__addon__.getSetting('session')
     if mParams==[]: mParams={}
-    if len(session)>1: mParams['session']=session
     
+
     req_p1 = []
     req_p2 = []
     if mParams:
@@ -142,45 +164,64 @@ def GET(mCmd, mParams):
     req_hash = ''.join(req_p2)
     m = hashlib.md5()
     m.update('%s%s'%(req_hash,'acfed32a68da1d7c'))
-    target = 'http://megogo.net/p/%s?%s&sign=%s' % (mCmd, req_params, '%s%s' % (m.hexdigest(), '_xbmc'))
+    target = '%s/%s?%s&sign=%s' % (url, mCmd, req_params, '%s%s' % (m.hexdigest(), '_xbmc'))
+   #print target
+    try: cookie = json.loads(base64.b64decode(get_inf_db("login","cookie")))
+    except: cookie=None
+    if cookie=={}: cookie=None
     try:
         http=get_inf_db(target)
     except: http=""
+   #print "saved cook as %s"%cookie
+    cookies = None
     if len(http)<6:
         try:
-            req = urllib2.Request(url = target, data = None, headers = {'User-Agent':UA})
-            resp = urllib2.urlopen(req)
-            http = resp.read()
-            resp.close()
-        except:
-            __addon__.setSetting('session','')
-            login()
-            try:
-                req = urllib2.Request(url = target, data = None, headers = {'User-Agent':UA})
-                resp = urllib2.urlopen(req)
-                http = resp.read()
-                resp.close()
-            except: pass
-            print 'error'
+            #session = requests.session()
+            request = requests.get(url = target, cookies = cookie, headers = {'User-Agent':UA})
+            http = request.text
+            cookies = requests.utils.dict_from_cookiejar(request.cookies)
+           #print cookies
+            if not isinstance(http, str):
+                http=http.encode('utf-8')
+            add_to_db(target,http)    
+           #print cookies
+            if not cookie and cookies: add_to_db("login",base64.b64encode(str(cookies).replace("'", '"')),'cookie')
+                
+        except: 
+           #print "Error GET"
+            cookies = None
+            return None
+            
+   #print 'add cookie:%s as %s'%(cookies, base64.b64encode(str(cookies).replace("'", '"')))
+        
+    #if mCmd in ["login","configuration"]:  http=http.encode('utf-8')
 
-    add_to_db(target,http)
+    #print base64.b64encode(str(cookies).replace("'", '"'))
     
-    oo= get_inf_db(target)
+    
+    
+
+    #add_to_db(target,http)
+    
+    #oo= get_inf_db(target)
     try:
         return json.loads(http)
     except:
-        print 'error'
+       #print 'error'
         return None
         
 
 def login():
-    data = GET('login', {'login': __addon__.getSetting('username'), 'pwd':__addon__.getSetting('password')})
+
+    data = GET('auth', 'login', {'login': __addon__.getSetting('username'), 'password':__addon__.getSetting('password'), 'remember':"1"})
     if data:
         urip = {'func': 'run_settings'}
         uri = '%s?%s' % (sys.argv[0], urllib.urlencode(urip))
         if data['result'] == 'ok':
-            fav= data['user']['favorites']
-            session = data['session']
+            #print data['data']['tokens']['remember_me_token']
+            #fav= data['user']['favorites']
+            #session = data['session']
+            session=data['data']['tokens']['remember_me_token']
             __addon__.setSetting('session',session)
         else:
             __addon__.setSetting('session','')
@@ -197,20 +238,23 @@ def run_settings(params):
 def mainScreen(params):
     session=__addon__.getSetting('session')
     
-    data = GET('login', {'login': __addon__.getSetting('username'), 'pwd':__addon__.getSetting('password')})
+    data = GET('auth','login', {'login': __addon__.getSetting('username'), 'password':__addon__.getSetting('password'),  'remember':"1"})
     if data:
         urip = {'func': 'run_settings'}
         uri = '%s?%s' % (sys.argv[0], urllib.urlencode(urip))
         if data['result'] == 'ok':
-            fav= data['user']['favorites']
-            session = data['session']
+            #fav= data['user']['favorites']
+            #session = data['session']
+            session=data['data']['tokens']['remember_me_token']
             __addon__.setSetting('session',session)
-            user = data['user']
+            user = data['data']
             if len(user['nickname']):
                 username = user['nickname']
             else:
                 username = user['email']
-            usr_avatar = 'http://megogo.net%s' % user['avatar_url']
+      
+            if user['avatar']: usr_avatar = 'http://megogo.net%s' % user['avatar']
+            else: usr_avatar = ""
             i = xbmcgui.ListItem('[COLOR FF0FF000]%s - MEGOGO.NET приветствует Вас![/COLOR]' % username.encode('utf-8'), iconImage = usr_avatar, thumbnailImage = usr_avatar)
     
             xbmcplugin.addDirectoryItem(hos, uri, i, True)
@@ -234,17 +278,23 @@ def mainScreen(params):
         i.setProperty('fanart_image', addon_fanart)
                 #i.setInfo(type = 'video', infoLabels = {'title':title})
         xbmcplugin.addDirectoryItem(hos, uri, i, True)
-    data = GET('categories', [])
+    data = GET('','configuration', [])
+    conf=data
+    for n in conf['data']['genres']:
+        genr[n['id']]=n['title']
+        
+    #print genr
     if data:
-        for cat in data['category_list']:
+        for cat in data['data']['categories']:
             title = '%s' % (cat['title'])
-            urip = {'func':'genres', 'category': cat['id'], 'offset': 0, 'limit': 100, 'cname':title.encode('utf-8')}
+            #print json.dumps(cat['genres'])
+            urip = {'func':'genres', 'category': cat['id'], 'offset': 0, 'limit': 100, 'cname':title.encode('utf-8') , 'genres':cat['genres']}
             if session: urip['session'] = session
             uri = '%s?%s' % (sys.argv[0], urllib.urlencode(urip))
             i = xbmcgui.ListItem(title, iconImage = addon_icon, thumbnailImage = addon_icon)
             i.setProperty('fanart_image', addon_fanart)
             i.setInfo(type = 'video', infoLabels = {'title':title})
-            if int(cat['total_num'])>0: xbmcplugin.addDirectoryItem(hos, uri, i, True)
+            xbmcplugin.addDirectoryItem(hos, uri, i, True)
     
     
     
@@ -289,15 +339,15 @@ def run_search(params):
     
 def search(params):
     session=__addon__.getSetting('session')
-    data = GET('search', params)
-    print data
+    data = GET('','search', params)
+    #print data
     cnt=0
     if data:
-        for video in data['video_list']:
-            print video['type']
-            if not(int(video['type'])==5):
+        for video in data['data']['video_list']:
+            #print video
+            if video['show']=='show':
                 vdata=getInfo(video)
-                poster = u'http://megogo.net%s' % video['image']['big']
+                poster = video['image']['big']
                 title=video['title'].replace('&nbsp;',' ')
                 if vdata['fav']=='1': title='* '+title
                 i = xbmcgui.ListItem(title, iconImage = poster , thumbnailImage = poster)
@@ -311,12 +361,12 @@ def search(params):
                 i.setProperty('IsPlayable', 'true')
                 i.setInfo(type = 'video', infoLabels = {'title':title})
                 i.setInfo(type='video', infoLabels = vdata['info'])
-                if int(video['isSeries'])==0:
-                    xbmcplugin.addDirectoryItem(hos, uri, i, False)
-                if int(video['isSeries'])==1:
-                    urip = {'func':'playseries', 'video': video['id'], 'poster':poster, 'sname':title.encode('utf-8').replace('&nbsp;',' ')}
-                    uri = '%s?%s' % (sys.argv[0], urllib.urlencode(urip))
-                    xbmcplugin.addDirectoryItem(hos, uri, i, True)
+                #if int(video['isSeries'])==0:
+                #    xbmcplugin.addDirectoryItem(hos, uri, i, False)
+                #if int(video['isSeries'])==1:
+                urip = {'func':'playseries', 'video': video['id'], 'poster':poster, 'sname':title.encode('utf-8').replace('&nbsp;',' ')}
+                uri = '%s?%s' % (sys.argv[0], urllib.urlencode(urip))
+                if 'advod' in video['delivery_rules']: xbmcplugin.addDirectoryItem(hos, uri, i, True)
                 cnt=cnt+1
         usearch = params.get('usearch', False)
         if not usearch and cnt==100:
@@ -338,13 +388,17 @@ def search(params):
         
     
 def genres(params):
-    session=__addon__.getSetting('session')
+    #print "PARA"
+    #print params
+    #print eval(params['genres'])
+    #print conf
+    #session=__addon__.getSetting('session')
     tnames=['[COLOR FFFFF000]Новинки[/COLOR]','[COLOR FFFFF000]Последние поступления[/COLOR]','[COLOR FFFFF000]С высоким рейтингом[/COLOR]','[COLOR FFFFF000]Популярные[/COLOR]']
     tvalues=['year','add','rate','popular']
     n=0
     while n<4:
         urip = {'func':'videos', 'sort':tvalues[n],'category': params['category'], 'offset': '0', 'limit': '100', 'category_name':params['cname']}
-        urip['session'] = session
+        #urip['session'] = session
         uri = '%s?%s' % (sys.argv[0], urllib.urlencode(urip))
         i = xbmcgui.ListItem(tnames[n], iconImage = addon_icon, thumbnailImage = addon_icon)
         xbmcplugin.addDirectoryItem(hos, uri, i, True)
@@ -354,17 +408,24 @@ def genres(params):
     urip = {'func': 'run_search', 'cat_id':params['category']}
     uri = '%s?%s' % (sys.argv[0], urllib.urlencode(urip))
     xbmcplugin.addDirectoryItem(hos, uri, li, True)
-    if session:
-        data=GET('genres', {'session':session, 'category':params['category']})
-    else: data=GET('genres', {'category':params['category']})
+    #if session:
+    #    data=GET('','genres', {'session':session, 'category':params['category']})
+    #data=GET('','genres', {'category':params['category']})
+    data = GET('','configuration', [])
+    conf=data
+    for n in conf['data']['genres']:
+        genr[n['id']]=n['title']
+    genre_list=[]
+    
     if data:
-        for genre in data['genre_list']:
-            #print genre
-            urip = {'func':'videos', 'genre':genre['id'],'category': params['category'], 'offset': '0', 'limit': '100', 'genre_name':(genre['title'].encode('utf-8')), 'category_name':params['cname']}
-            urip['session'] = session
-            uri = '%s?%s' % (sys.argv[0], urllib.urlencode(urip))
-            i = xbmcgui.ListItem(genre['title'], iconImage = addon_icon, thumbnailImage = addon_icon)
-            if int(genre['total_num'])>0: xbmcplugin.addDirectoryItem(hos, uri, i, True)
+        for genre in data['data']['genres']:
+            if genre['id'] in eval(params['genres']):
+                urip = {'func':'videos', 'genre':genre['id'],'category': params['category'], 'offset': '0', 'limit': '100', 'genre_id':genre['id'], 'category_name':params['cname']}
+                #urip['session'] = session
+                uri = '%s?%s' % (sys.argv[0], urllib.urlencode(urip))
+                i = xbmcgui.ListItem(genre['title'], iconImage = addon_icon, thumbnailImage = addon_icon)
+                #if int(genre['total_num'])>0: 
+                xbmcplugin.addDirectoryItem(hos, uri, i, True)
     xbmcplugin.endOfDirectory(hos)
     
     
@@ -374,7 +435,7 @@ def recomendations(params):
     i.setProperty('IsPlayable', 'false')
     xbmcplugin.addDirectoryItem(hos, '', i, False)
     session=__addon__.getSetting('session')
-    data = GET('recommend', [])
+    data = GET('','recommend', [])
     if data:
         for video in data['video_list']:
             vdata=getInfo(video)
@@ -402,9 +463,9 @@ def recomendations(params):
     if __addon__.getSetting('list')=='0': xbmc.executebuiltin('Container.SetViewMode(0)')
     xbmcplugin.endOfDirectory(hos)
 def addFav(params):
-    data = GET('addfavorite', {'video':params['id']})
+    data = GET('user/favorite','add', {'video_id':params['id']})
 def delFav(params):
-    data = GET('removefavorite', {'video':params['id']})
+    data = GET('user/favorite','delete', {'video_id':params['id']})
 
 def favorites(params):
     
@@ -416,11 +477,12 @@ def favorites(params):
     del params['mode']
     session=__addon__.getSetting('session')
     if session:
-        data = GET(mode, [])
+        data = GET('user',mode, [])
+       #print data
         if data:
-            for video in data['video_list']:
+            for video in data['data']['video_list']:
                 vdata=getInfo(video)
-                poster = u'http://megogo.net%s' % video['image']['big']
+                poster = video['image']['big']
                 title=video['title'].replace('&nbsp;',' ')
                 i = xbmcgui.ListItem(title, iconImage = poster , thumbnailImage = poster)
                 if vdata['fav']=='1': i.addContextMenuItems([('Удалить из Избранного MEGOGO', 'XBMC.RunPlugin(%s?func=delFav&id=%s)' % (sys.argv[0],  video['id']),)])
@@ -431,12 +493,10 @@ def favorites(params):
                 i.setProperty('IsPlayable', 'true')
                 i.setInfo(type = 'video', infoLabels = {'title':title})
                 i.setInfo(type='video', infoLabels = vdata['info'])
-                if int(video['isSeries'])==0:
-                    xbmcplugin.addDirectoryItem(hos, uri, i, False)
-                if int(video['isSeries'])==1:
-                    urip = {'func':'playseries','sname':title.encode('utf-8').replace('&nbsp;',' '), 'video': video['id'], 'poster':poster}
-                    uri = '%s?%s' % (sys.argv[0], urllib.urlencode(urip))
-                    xbmcplugin.addDirectoryItem(hos, uri, i, True)
+                
+                urip = {'func':'playseries','sname':title.encode('utf-8').replace('&nbsp;',' '), 'video': video['id'], 'poster':poster}
+                uri = '%s?%s' % (sys.argv[0], urllib.urlencode(urip))
+                xbmcplugin.addDirectoryItem(hos, uri, i, True)
     if __addon__.getSetting('list')=='1': xbmc.executebuiltin('Container.SetViewMode(500)')
     if __addon__.getSetting('list')=='0': xbmc.executebuiltin('Container.SetViewMode(0)')
     xbmcplugin.endOfDirectory(hos)
@@ -492,14 +552,15 @@ def videos(params):
             xbmcplugin.addDirectoryItem(hos, uri, li, True)
     except: pass
     if int(params['offset'])==-1: params['offset']='0'
-    data = GET('videos', params)
+    data = GET('','video', params)
     cnt=0
     
-    
+    #print data
     if data:
-        for video in data['video_list']:
+        for video in data['data']['video_list']:
+            
             vdata=getInfo(video)
-            poster = u'http://megogo.net%s' % video['image']['big']
+            poster = video['image']['big']
             title=video['title'].replace('&nbsp;',' ')
             if vdata['fav']=='1': title='* '+title
             i = xbmcgui.ListItem(title, iconImage = poster , thumbnailImage = poster)
@@ -507,15 +568,19 @@ def videos(params):
                 if vdata['fav']=='0': i.addContextMenuItems([('В Избранное MEGOGO', 'XBMC.RunPlugin(%s?func=addFav&id=%s)' % (sys.argv[0],  video['id']),)])
                 if vdata['fav']=='1': i.addContextMenuItems([('Удалить из Избранного MEGOGO', 'XBMC.RunPlugin(%s?func=delFav&id=%s)' % (sys.argv[0],  video['id']),)])
             i.setProperty('fanart_image', addon_fanart)
-            urip = {'func':'play', 'video': video['id']}
+            urip = {'func':'play', 'video_id': video['id']}
             if session: urip['session'] = session
             uri = '%s?%s' % (sys.argv[0], urllib.urlencode(urip))
             i.setProperty('IsPlayable', 'true')
             i.setInfo(type = 'video', infoLabels = {'title':title})
             i.setInfo(type='video', infoLabels = vdata['info'])
-            if int(video['isSeries'])==0:
-                xbmcplugin.addDirectoryItem(hos, uri, i, False)
-            if int(video['isSeries'])==1:
+            
+            
+            #ggg=GET('video','info', {'id': str(video['id'])})
+            #print ggg
+            #if int(video['isSeries'])==0:
+            if 'advod' in video['delivery_rules']: #xbmcplugin.addDirectoryItem(hos, uri, i, False)
+            #if int(video['isSeries'])==1:
                 urip = {'func':'playseries', 'video': video['id'], 'poster':poster, 'sname':title.encode('utf-8').replace('&nbsp;',' ')}
                 uri = '%s?%s' % (sys.argv[0], urllib.urlencode(urip))
                 xbmcplugin.addDirectoryItem(hos, uri, i, True)
@@ -584,66 +649,105 @@ def getInfo(video):
     return export
     
 def playseries(params):
-    i = xbmcgui.ListItem('[COLOR FF0FF000]%s[/COLOR]'%params['sname'], iconImage = addon_icon, thumbnailImage = addon_icon)
-    i.setProperty('IsPlayable', 'false')
-    xbmcplugin.addDirectoryItem(hos, '', i, False)
+    
     poster=params['poster']
     del params['poster']
-    try:    session = params['session']
-    except: session = None
-    data = GET('video', params)
-    seasons= data['video'][0]['season_list']
+    #try:    session = params['session']
+    #except: session = None
+    data=GET('video','info', {'id': str(params['video'])})
+   #print data
+    seasons= data['data']['season_list']
     if len(seasons)>1:
+        i = xbmcgui.ListItem('[COLOR FF0FF000]%s[/COLOR]'%params['sname'], iconImage = addon_icon, thumbnailImage = addon_icon)
+        i.setProperty('IsPlayable', 'false')
+        #xbmcplugin.addDirectoryItem(hos, '', i, False)
         if data:
             for season in seasons:
                 #poster = None
-                if season['title_orig']: title='%s (%s)' % (season['title'], season['title_orig'])
+                if season['title_original']: title='%s (%s)' % (season['title'], season['title_original'])
                 else: title=season['title']
                 i = xbmcgui.ListItem(title, iconImage = poster , thumbnailImage = poster)
-                urip = {'func':'playepisodes', 'video': params['video'], 'season':season['id'], 'sname':params['sname'], 'title':title.encode('utf-8')}
-                if session: urip['session'] = session
+                urip = {'func':'playepisodes', 'video_id': params['video'], 'season':season['id'], 'sname':params['sname'], 'title':title.encode('utf-8')}
+                #if session: urip['session'] = session
                 uri = '%s?%s' % (sys.argv[0], urllib.urlencode(urip))
                 xbmcplugin.addDirectoryItem(hos, uri, i, True)
         xbmcplugin.endOfDirectory(hos)
     else: 
-        urip = {'func':'playepisodes', 'video': params['video'], 'season':seasons[0]['id']}
-        playepisodes(urip)
+        try: 
+            i = xbmcgui.ListItem('[COLOR FF0FF000]%s[/COLOR]'%params['sname'], iconImage = addon_icon, thumbnailImage = addon_icon)
+            
+            #xbmcplugin.addDirectoryItem(hos, '', i, False)
+            urip = {'func':'playepisodes', 'video_id': params['video'], 'season':seasons[0]['id'], 'one':"0"}
+            i.setProperty('IsPlayable', 'false')
+            xbmcplugin.addDirectoryItem(hos, '', i, False)
+            playepisodes(urip)
+        except: 
+            i = xbmcgui.ListItem(params['sname'], iconImage = poster , thumbnailImage = poster)
+            urip = {'func':'playepisodes', 'video_id': params['video'], 'season':"[]", 'one':"1"}
+            urip = {'func':'play', 'video_id': params['video']}
+            i.setProperty('IsPlayable', 'true')
+            uri = '%s?%s' % (sys.argv[0], urllib.urlencode(urip))
+            xbmcplugin.addDirectoryItem(hos, uri, i, False)
+            xbmcplugin.endOfDirectory(hos)
+        #playepisodes(urip)
 
 def playepisodes(params):
+    #print params('season')
     try:
-        i = xbmcgui.ListItem('[COLOR FF0FF000]%s, %s[/COLOR]'%(params['sname'],params['title']), iconImage = addon_icon, thumbnailImage = addon_icon)
-        i.setProperty('IsPlayable', 'false')
-        xbmcplugin.addDirectoryItem(hos, '', i, False)
+        if params('season')=="[]":
+            urip = {'func':'play', 'video_id': params['video_id']}
+            i.setProperty('IsPlayable', 'true')
+            uri = '%s?%s' % (sys.argv[0], urllib.urlencode(urip))
+            xbmcplugin.addDirectoryItem(hos, uri, i, False)
+        else:
+            i = xbmcgui.ListItem('[COLOR FF0FF000]%s, %s[/COLOR]'%(params['sname'],params['title']), iconImage = addon_icon, thumbnailImage = addon_icon)
+            i.setProperty('IsPlayable', 'false')
+            xbmcplugin.addDirectoryItem(hos, '', i, False)
     except: pass
     ses=params['season']
     del params['season']
     try:    session = params['session']
     except: session = None
-    data = GET('video', params)
-    seasons= data['video'][0]['season_list']
+    data=GET('video','info', {'id': str(params['video_id'])})
+    seasons= data['data']['season_list']
     if data:
-        for season in seasons:
-            poster = None
-            if int(season['id'])==int(ses):
-                for episodes in season['episode_list']:
-                    title=episodes['title']
-                    if len(episodes['title_orig'])>0: title='%s (%s)' % (episodes['title'], episodes['title_orig'])
-                    poster = episodes['poster']
-                    i = xbmcgui.ListItem(title, iconImage = poster , thumbnailImage = poster)
-                    urip = {'func':'playepisodes', 'video': episodes['id']}
-                    urip = {'func':'play', 'video': episodes['id']}
-                    if session: urip['session'] = session
-                    i.setProperty('IsPlayable', 'true')
-                    uri = '%s?%s' % (sys.argv[0], urllib.urlencode(urip))
-                    xbmcplugin.addDirectoryItem(hos, uri, i, False)
+        #for season in seasons:
+        poster = None
+        # if int(season['id'])==int(ses):
+            # for episodes in season['episode_list']:
+                # title=episodes['title']
+                # if len(episodes['title_original'])>0: title='%s (%s)' % (episodes['title'], episodes['title_original'])
+                # poster = episodes['image']
+                # i = xbmcgui.ListItem(title, iconImage = poster , thumbnailImage = poster)
+                # #urip = {'func':'playepisodes', 'video_id': episodes['id']}
+                # urip = {'func':'play', 'video_id': episodes['id']}
+
+                # i.setProperty('IsPlayable', 'true')
+                # uri = '%s?%s' % (sys.argv[0], urllib.urlencode(urip))
+                # xbmcplugin.addDirectoryItem(hos, uri, i, False)
+        #else:
+        data=GET('video','episodes', {'id': str(ses)})
+        for episodes in data['data']:
+            title=episodes['title']
+            if len(episodes['title_original'])>0: title='%s (%s)' % (episodes['title'], episodes['title_original'])
+            poster = episodes['image']
+            i = xbmcgui.ListItem(title, iconImage = poster , thumbnailImage = poster)
+            #urip = {'func':'playepisodes', 'video_id': episodes['id']}
+            urip = {'func':'play', 'video_id': episodes['id']}
+
+            i.setProperty('IsPlayable', 'true')
+            uri = '%s?%s' % (sys.argv[0], urllib.urlencode(urip))
+            xbmcplugin.addDirectoryItem(hos, uri, i, False)
     xbmcplugin.endOfDirectory(hos)
 
 def play(params):
+    #print params
     qu= __addon__.getSetting('qual_v')
     bitrate=['240','320','360','480','576','720','1080']
     if qu>0: params['bitrate']=bitrate[int(qu)-1]
-    data = GET('info', params)
-    i = xbmcgui.ListItem( path = data['src'] )
+    data = GET('','stream', params)
+    #print data
+    i = xbmcgui.ListItem( path = data['data']['src'] )
     xbmcplugin.setResolvedUrl(hos, True, i)
 
     
