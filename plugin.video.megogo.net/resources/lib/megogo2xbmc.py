@@ -163,9 +163,10 @@ def GET(url, mCmd, mParams):
     req_params = '&'.join(req_p1)
     req_hash = ''.join(req_p2)
     m = hashlib.md5()
-    m.update('%s%s'%(req_hash,'acfed32a68da1d7c'))
-    target = '%s/%s?%s&sign=%s' % (url, mCmd, req_params, '%s%s' % (m.hexdigest(), '_xbmc'))
-   #print target
+    m.update('%s%s'%(req_hash,'63ee38849d'))
+    
+    target =( '%s/%s?%s&sign=%s' % (url, mCmd, req_params, '%s%s' % (m.hexdigest(), '_kodi_j1')))#.replace('//','/')
+    print target
     try: cookie = json.loads(base64.b64decode(get_inf_db("login","cookie")))
     except: cookie=None
     if cookie=={}: cookie=None
@@ -231,6 +232,9 @@ def logout(params):
     __addon__.setSetting('session','')
     __addon__.setSetting('username','')
     __addon__.setSetting('password','')
+    cu.execute("DROP TABLE IF EXISTS cookie")
+    cu.execute("DROP TABLE IF EXISTS cache")
+    c.commit()
 
 def run_settings(params):
     __addon__.openSettings()
@@ -268,7 +272,7 @@ def mainScreen(params):
     i = xbmcgui.ListItem(title, iconImage = addon_icon, thumbnailImage = addon_icon)
     i.setProperty('fanart_image', addon_fanart)
             #i.setInfo(type = 'video', infoLabels = {'title':title})
-    xbmcplugin.addDirectoryItem(hos, uri, i, True)
+    #xbmcplugin.addDirectoryItem(hos, uri, i, True)
     if session:
         urip = {'func':'favorites', 'mode':'lastview' }
         urip['session'] = session
@@ -277,9 +281,10 @@ def mainScreen(params):
         i = xbmcgui.ListItem(title, iconImage = addon_icon, thumbnailImage = addon_icon)
         i.setProperty('fanart_image', addon_fanart)
                 #i.setInfo(type = 'video', infoLabels = {'title':title})
-        xbmcplugin.addDirectoryItem(hos, uri, i, True)
+        #xbmcplugin.addDirectoryItem(hos, uri, i, True)
     data = GET('','configuration', [])
     conf=data
+    print conf
     for n in conf['data']['genres']:
         genr[n['id']]=n['title']
         
@@ -294,7 +299,7 @@ def mainScreen(params):
             i = xbmcgui.ListItem(title, iconImage = addon_icon, thumbnailImage = addon_icon)
             i.setProperty('fanart_image', addon_fanart)
             i.setInfo(type = 'video', infoLabels = {'title':title})
-            xbmcplugin.addDirectoryItem(hos, uri, i, True)
+            if cat['id']!=20: xbmcplugin.addDirectoryItem(hos, uri, i, True)
     
     
     
@@ -388,6 +393,8 @@ def search(params):
         
     
 def genres(params):
+    print params
+    if int(params['category'])==23: tvshow(params)
     #print "PARA"
     #print params
     #print eval(params['genres'])
@@ -501,10 +508,29 @@ def favorites(params):
     if __addon__.getSetting('list')=='0': xbmc.executebuiltin('Container.SetViewMode(0)')
     xbmcplugin.endOfDirectory(hos)
 
-
+def tvshow(params):
+    print "TV"
+    http=GET('','tv',{'limit':'100'})
+    ids=[]
+    if http:
+        for pak in http['data']['packages']:
+            print pak['title']
+            for ch in pak['channels']:
+                #print ch
+                if ch['is_available']==True and ch['id'] not in ids: 
+                    ids.append(ch['id'])
+                    poster=ch['image']['big']
+                    i = xbmcgui.ListItem(ch['title'], iconImage = poster , thumbnailImage = poster)
+                    i.setProperty('fanart_image', addon_fanart)
+                    urip = {'func':'play', 'video_id': ch['id']}
+                    uri = '%s?%s' % (sys.argv[0], urllib.urlencode(urip))
+                    i.setProperty('IsPlayable', 'true')
+                    xbmcplugin.addDirectoryItem(hos, uri, i, False)
+                    print "%s:%s"%(ch['title'].encode('utf-8'),ch['is_available'])
+    xbmcplugin.endOfDirectory(hos)
 
 def videos(params):
-
+    
     session=__addon__.getSetting('session')
     try:
         if not params['sort']: params['sort']=sort
