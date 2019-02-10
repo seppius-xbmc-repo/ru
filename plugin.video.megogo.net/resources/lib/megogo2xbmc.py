@@ -458,8 +458,8 @@ def recomendations(params):
             if session: urip['session'] = session
             uri = '%s?%s' % (sys.argv[0], urllib.urlencode(urip))
             i.setProperty('IsPlayable', 'true')
-            i.setInfo(type = 'video', infoLabels = {'title':title})
-            i.setInfo(type='video', infoLabels = vdata['info'])
+            i.setInfo(type = 'Video', infoLabels = {'title':title})
+            i.setInfo(type='Video', infoLabels = vdata['info'])
             if int(video['isSeries'])==0:
                 xbmcplugin.addDirectoryItem(hos, uri, i, False)
             if int(video['isSeries'])==1:
@@ -598,8 +598,8 @@ def videos(params):
             if session: urip['session'] = session
             uri = '%s?%s' % (sys.argv[0], urllib.urlencode(urip))
             i.setProperty('IsPlayable', 'true')
-            i.setInfo(type = 'video', infoLabels = {'title':title})
-            i.setInfo(type='video', infoLabels = vdata['info'])
+            i.setInfo(type = 'Video', infoLabels = {'title':title})
+            i.setInfo(type='Video', infoLabels = vdata['info'])
             
             
             #ggg=GET('video','info', {'id': str(video['id'])})
@@ -635,6 +635,7 @@ def setmode():
     
     
 def getInfo(video):
+    
     mysetInfo={}
     try: poster=video['poster']
     except: poster=None
@@ -693,6 +694,7 @@ def playseries(params):
                 if season['title_original']: title='%s (%s)' % (season['title'], season['title_original'])
                 else: title=season['title']
                 i = xbmcgui.ListItem(title, iconImage = poster , thumbnailImage = poster)
+                i.setInfo(type = 'Video', infoLabels = {'title':title})
                 urip = {'func':'playepisodes', 'video_id': params['video'], 'season':season['id'], 'sname':params['sname'], 'title':title.encode('utf-8')}
                 #if session: urip['session'] = session
                 uri = '%s?%s' % (sys.argv[0], urllib.urlencode(urip))
@@ -701,7 +703,7 @@ def playseries(params):
     else: 
         try: 
             i = xbmcgui.ListItem('[COLOR FF0FF000]%s[/COLOR]'%params['sname'], iconImage = addon_icon, thumbnailImage = addon_icon)
-            
+            i.setInfo(type = 'Video', infoLabels = {})
             #xbmcplugin.addDirectoryItem(hos, '', i, False)
             urip = {'func':'playepisodes', 'video_id': params['video'], 'season':seasons[0]['id'], 'one':"0"}
             i.setProperty('IsPlayable', 'false')
@@ -709,6 +711,7 @@ def playseries(params):
             playepisodes(urip)
         except: 
             i = xbmcgui.ListItem(params['sname'], iconImage = poster , thumbnailImage = poster)
+            i.setInfo(type = 'Video', infoLabels = {})
             urip = {'func':'playepisodes', 'video_id': params['video'], 'season':"[]", 'one':"1"}
             urip = {'func':'play', 'video_id': params['video']}
             i.setProperty('IsPlayable', 'true')
@@ -723,6 +726,7 @@ def playepisodes(params):
         if params('season')=="[]":
             urip = {'func':'play', 'video_id': params['video_id']}
             i.setProperty('IsPlayable', 'true')
+            i.setInfo(type = 'Video', infoLabels = {'title':title})
             uri = '%s?%s' % (sys.argv[0], urllib.urlencode(urip))
             xbmcplugin.addDirectoryItem(hos, uri, i, False)
         else:
@@ -760,7 +764,7 @@ def playepisodes(params):
             i = xbmcgui.ListItem(title, iconImage = poster , thumbnailImage = poster)
             #urip = {'func':'playepisodes', 'video_id': episodes['id']}
             urip = {'func':'play', 'video_id': episodes['id']}
-
+            i.setInfo(type = 'Video', infoLabels = {'title':title})
             i.setProperty('IsPlayable', 'true')
             uri = '%s?%s' % (sys.argv[0], urllib.urlencode(urip))
             xbmcplugin.addDirectoryItem(hos, uri, i, False)
