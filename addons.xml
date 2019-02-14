@@ -1113,7 +1113,7 @@ Audio sources are
 
 <addon id="repository.search.db"
 		name="XBMC.ru search db"
-		version="1.1.36"
+		version="1.1.37"
 		provider-name="bigbax">
   <requires>
     <import addon="xbmc.addon" version="12.0.0"/>
@@ -1176,9 +1176,9 @@ Audio sources are
 			<datadir zip="true">https://github.com/dvor85/kodi.repo/raw/master/</datadir>
 		</dir>
         <dir minversion="14.0.0">
-			<info compressed="false">http://api.bitbucket.org/1.0/repositories/DiMartino/myshows.me-kodi-repo/raw/default/addons.xml</info>
-			<checksum>http://api.bitbucket.org/1.0/repositories/DiMartino/myshows.me-kodi-repo/raw/default/addons.xml.md5</checksum>
-			<datadir zip="true">http://api.bitbucket.org/1.0/repositories/DiMartino/myshows.me-kodi-repo/raw/default/repo/</datadir>
+			<info compressed="false">https://api.bitbucket.org/1.0/repositories/DiMartino/myshows.me-kodi-repo/raw/default/addons.xml</info>
+			<checksum>https://api.bitbucket.org/1.0/repositories/DiMartino/myshows.me-kodi-repo/raw/default/addons.xml.md5</checksum>
+			<datadir zip="true">https://api.bitbucket.org/1.0/repositories/DiMartino/myshows.me-kodi-repo/raw/default/repo/</datadir>
 		</dir>
         <dir minversion="14.0.0">
 			<info compressed="false">https://github.com/Eugene-Bond/xmbc-plugins/raw/master/addons.xml</info>
@@ -1231,9 +1231,9 @@ Audio sources are
 			<datadir zip="true">https://github.com/taifxx/xxtrep/raw/master/</datadir>
 		</dir>
 		<dir minversion="14.0.0">
-			<info compressed="false">http://vadyur.github.io/kodi_repo/repo/addons.xml</info>
-			<checksum>http://vadyur.github.io/kodi_repo/repo/addons.xml.md5</checksum>
-			<datadir zip="true">http://vadyur.github.io/kodi_repo/repo</datadir>
+			<info compressed="false">https://vadyur.github.io/kodi_repo/repo/addons.xml</info>
+			<checksum>https://vadyur.github.io/kodi_repo/repo/addons.xml.md5</checksum>
+			<datadir zip="true">https://vadyur.github.io/kodi_repo/repo</datadir>
 		</dir>
 		<dir minversion="14.0.0">
 			<info>https://vlmaksime.github.io/repository.vlmaksime/addons.xml</info>
@@ -1241,9 +1241,9 @@ Audio sources are
             <datadir zip="true">https://vlmaksime.github.io/repository.vlmaksime/releases/</datadir>
 		</dir>
 		<dir minversion="14.0.0">
-			<info compressed="false">http://romanvm.github.io/kodi_repo/repo/addons.xml</info>
-			<checksum>http://romanvm.github.io/kodi_repo/repo/addons.xml.md5</checksum>
-			<datadir zip="true">http://romanvm.github.io/kodi_repo/repo</datadir>
+			<info compressed="false">https://romanvm.github.io/kodi_repo/repo/addons.xml</info>
+			<checksum>https://romanvm.github.io/kodi_repo/repo/addons.xml.md5</checksum>
+			<datadir zip="true">https://romanvm.github.io/kodi_repo/repo</datadir>
 		</dir>
 	</extension>
 	<extension point="xbmc.addon.metadata">
