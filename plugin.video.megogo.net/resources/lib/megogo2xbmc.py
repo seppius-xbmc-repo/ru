@@ -23,7 +23,12 @@ if int(platform_version.split(".")[0]) >= 14:
 else:
     name = 'Xbmc'
     
-print '%s/%s-%s' % (name, platform_version, platform.platform(aliased=0, terse=0)[:40])
+print name
+print platform_version
+
+try: plfm= platform.platform(aliased=0, terse=0)[:40]
+except: plfm="Android"
+print '%s/%s-%s' % (name, platform_version, plfm)
     
 conf=""
 genr={}
@@ -524,6 +529,7 @@ def tvshow(params):
                     i.setProperty('fanart_image', addon_fanart)
                     urip = {'func':'play', 'video_id': ch['id']}
                     uri = '%s?%s' % (sys.argv[0], urllib.urlencode(urip))
+                    i.setInfo(type = 'Video', infoLabels = {'title':ch['title']})
                     i.setProperty('IsPlayable', 'true')
                     xbmcplugin.addDirectoryItem(hos, uri, i, False)
                     print "%s:%s"%(ch['title'].encode('utf-8'),ch['is_available'])
