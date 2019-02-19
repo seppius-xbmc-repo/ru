@@ -541,7 +541,7 @@ def tvshow(params):
     xbmcplugin.endOfDirectory(hos)
 
 def videos(params):
-    
+    TotalCNT=0
     session=__addon__.getSetting('session')
     try:
         if not params['sort']: params['sort']=sort
@@ -591,53 +591,63 @@ def videos(params):
     if int(params['offset'])==-1: params['offset']='0'
     data = GET('','video', params)
     cnt=0
-    
+    print 'params:%s'%params
     #print data
     if data:
-        for video in data['data']['video_list']:
-            
-            vdata=getInfo(video)
-            poster = video['image']['big']
-            title=video['title'].replace('&nbsp;',' ')
-            if vdata['fav']=='1': title='* '+title
-            i = xbmcgui.ListItem(title, iconImage = poster , thumbnailImage = poster)
-            if session:
-                if vdata['fav']=='0': i.addContextMenuItems([('В Избранное MEGOGO', 'XBMC.RunPlugin(%s?func=addFav&id=%s)' % (sys.argv[0],  video['id']),)])
-                if vdata['fav']=='1': i.addContextMenuItems([('Удалить из Избранного MEGOGO', 'XBMC.RunPlugin(%s?func=delFav&id=%s)' % (sys.argv[0],  video['id']),)])
-            i.setProperty('fanart_image', addon_fanart)
-            urip = {'func':'play', 'video_id': video['id']}
-            if session: urip['session'] = session
-            uri = '%s?%s' % (sys.argv[0], urllib.urlencode(urip))
-            i.setProperty('IsPlayable', 'true')
-            i.setInfo(type = 'Video', infoLabels = {'title':title})
-            i.setInfo(type='Video', infoLabels = vdata['info'])
-            
-            
-            #ggg=GET('video','info', {'id': str(video['id'])})
-            #print ggg
-            #if int(video['isSeries'])==0:
-            if 'advod' in video['delivery_rules']: #xbmcplugin.addDirectoryItem(hos, uri, i, False)
-            #if int(video['isSeries'])==1:
-                print video
-                urip = {'func':'playseries', 'video': video['id'], 'poster':poster, 'sname':title.encode('utf-8').replace('&nbsp;',' ')}
+        while True:
+            for video in data['data']['video_list']:
+                
+                vdata=getInfo(video)
+                poster = video['image']['big']
+                title=video['title'].replace('&nbsp;',' ')
+                if vdata['fav']=='1': title='* '+title
+                i = xbmcgui.ListItem(title, iconImage = poster , thumbnailImage = poster)
+                if session:
+                    if vdata['fav']=='0': i.addContextMenuItems([('В Избранное MEGOGO', 'XBMC.RunPlugin(%s?func=addFav&id=%s)' % (sys.argv[0],  video['id']),)])
+                    if vdata['fav']=='1': i.addContextMenuItems([('Удалить из Избранного MEGOGO', 'XBMC.RunPlugin(%s?func=delFav&id=%s)' % (sys.argv[0],  video['id']),)])
+                i.setProperty('fanart_image', addon_fanart)
+                urip = {'func':'play', 'video_id': video['id']}
+                if session: urip['session'] = session
                 uri = '%s?%s' % (sys.argv[0], urllib.urlencode(urip))
-                print surd
-                if ('surdoperevod' in video['slug'] and surd==True) or (not 'surdoperevod' in video['slug']) or (surd==True):
-                    xbmcplugin.addDirectoryItem(hos, uri, i, True)
-            cnt=cnt+1
-        if cnt==100:
-            i = xbmcgui.ListItem('ЕЩЕ!', iconImage = addon_icon , thumbnailImage = addon_icon)
-            i.setProperty('fanart_image', addon_fanart)
-            
-            params['func'] = 'videos'
-            params['offset'] = int(params['offset']) + int(params['limit']) # TODO x3
-            
-            uri = '%s?%s' % (sys.argv[0], urllib.urlencode(params))
+                i.setProperty('IsPlayable', 'true')
+                i.setInfo(type = 'Video', infoLabels = {'title':title})
+                i.setInfo(type='Video', infoLabels = vdata['info'])
+                
+                
+                #ggg=GET('video','info', {'id': str(video['id'])})
+                #print ggg
+                #if int(video['isSeries'])==0:
+                if 'advod' in video['delivery_rules']: #xbmcplugin.addDirectoryItem(hos, uri, i, False)
+                #if int(video['isSeries'])==1:
+                    #print video
+                    urip = {'func':'playseries', 'video': video['id'], 'poster':poster, 'sname':title.encode('utf-8').replace('&nbsp;',' ')}
+                    uri = '%s?%s' % (sys.argv[0], urllib.urlencode(urip))
+                    print surd
+                    if ('surdoperevod' in video['slug'] and surd==True) or (not 'surdoperevod' in video['slug']) or (surd==True):
+                        TotalCNT=TotalCNT+1
+                        xbmcplugin.addDirectoryItem(hos, uri, i, True)
+                cnt=cnt+1
+            if TotalCNT<int(params['limit']):
+                params['offset'] = str(int(params['offset']) + int(params['limit']))
+                print "params['offset']:%s"%params['offset']
+                print 'params:%s'%params
+                data = GET('','video', params)
+                cnt=0
+            if TotalCNT>=int(params['limit']) or not data: break
+            print "TotalCNT:%s"%TotalCNT
+    if cnt==100:
+        i = xbmcgui.ListItem('ЕЩЕ!', iconImage = addon_icon , thumbnailImage = addon_icon)
+        i.setProperty('fanart_image', addon_fanart)
+        
+        params['func'] = 'videos'
+        params['offset'] = int(params['offset']) + int(params['limit']) # TODO x3
+        
+        uri = '%s?%s' % (sys.argv[0], urllib.urlencode(params))
 
-            i.setInfo(type = 'video', infoLabels = {'title':'ЕЩЕ!'})
+        i.setInfo(type = 'video', infoLabels = {'title':'ЕЩЕ!'})
 
-            xbmcplugin.addDirectoryItem(hos, uri, i, True)
-            
+        xbmcplugin.addDirectoryItem(hos, uri, i, True)
+        
     if __addon__.getSetting('list')=='1': xbmc.executebuiltin('Container.SetViewMode(500)')
     if __addon__.getSetting('list')=='0': xbmc.executebuiltin('Container.SetViewMode(0)')
     xbmcplugin.endOfDirectory(hos)
