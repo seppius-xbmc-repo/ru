@@ -11,4 +11,5 @@
 	<setting id="list" type="enum" label="Отображение списка" values="Простой список|Постеры|По умолчанию" default="1"/>
 	<setting id="united_search" type="bool" visible="false" default="true"/>
 	<setting id="us_command" type="text" visible="false" default="func=run_search&text=" />
+    <setting id="surd" type="bool" label="Отображать медиа с сурдопереводом" default="true"/>
 </settings>

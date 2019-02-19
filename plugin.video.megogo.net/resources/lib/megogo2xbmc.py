@@ -59,6 +59,10 @@ except:
     UA                  = UA[:50]
 
 sort=None
+surd=False
+
+if __addon__.getSetting('surd')=="true": surd=True
+
 if __addon__.getSetting('sort_v')=='0':sortr='add'
 if __addon__.getSetting('sort_v')=='1':sort='year'
 if __addon__.getSetting('sort_v')=='2':sort='rate'
@@ -432,6 +436,7 @@ def genres(params):
     if data:
         for genre in data['data']['genres']:
             if genre['id'] in eval(params['genres']):
+                print genre
                 urip = {'func':'videos', 'genre':genre['id'],'category': params['category'], 'offset': '0', 'limit': '100', 'genre_id':genre['id'], 'category_name':params['cname']}
                 #urip['session'] = session
                 uri = '%s?%s' % (sys.argv[0], urllib.urlencode(urip))
@@ -613,9 +618,12 @@ def videos(params):
             #if int(video['isSeries'])==0:
             if 'advod' in video['delivery_rules']: #xbmcplugin.addDirectoryItem(hos, uri, i, False)
             #if int(video['isSeries'])==1:
+                print video
                 urip = {'func':'playseries', 'video': video['id'], 'poster':poster, 'sname':title.encode('utf-8').replace('&nbsp;',' ')}
                 uri = '%s?%s' % (sys.argv[0], urllib.urlencode(urip))
-                xbmcplugin.addDirectoryItem(hos, uri, i, True)
+                print surd
+                if ('surdoperevod' in video['slug'] and surd==True) or (not 'surdoperevod' in video['slug']) or (surd==True):
+                    xbmcplugin.addDirectoryItem(hos, uri, i, True)
             cnt=cnt+1
         if cnt==100:
             i = xbmcgui.ListItem('ЕЩЕ!', iconImage = addon_icon , thumbnailImage = addon_icon)
@@ -688,7 +696,7 @@ def playseries(params):
     #try:    session = params['session']
     #except: session = None
     data=GET('video','info', {'id': str(params['video'])})
-   #print data
+    print data
     seasons= data['data']['season_list']
     if len(seasons)>1:
         i = xbmcgui.ListItem('[COLOR FF0FF000]%s[/COLOR]'%params['sname'], iconImage = addon_icon, thumbnailImage = addon_icon)
