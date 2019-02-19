@@ -633,7 +633,9 @@ def videos(params):
                 print 'params:%s'%params
                 data = GET('','video', params)
                 cnt=0
+                #print data
             if TotalCNT>=int(params['limit']) or not data: break
+            if data['data']['has_more']==False: break
             print "TotalCNT:%s"%TotalCNT
     if cnt==100:
         i = xbmcgui.ListItem('ЕЩЕ!', iconImage = addon_icon , thumbnailImage = addon_icon)
