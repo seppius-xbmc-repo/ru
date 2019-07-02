@@ -1113,7 +1113,7 @@ Audio sources are
 
 <addon id="repository.search.db"
 		name="XBMC.ru search db"
-		version="1.1.37"
+		version="1.1.38"
 		provider-name="bigbax">
   <requires>
     <import addon="xbmc.addon" version="12.0.0"/>
@@ -1174,11 +1174,6 @@ Audio sources are
 			<info compressed="false">https://github.com/dvor85/kodi.repo/raw/master/addons.xml</info>
 			<checksum>https://github.com/dvor85/kodi.repo/raw/master/addons.xml.md5</checksum>
 			<datadir zip="true">https://github.com/dvor85/kodi.repo/raw/master/</datadir>
-		</dir>
-        <dir minversion="14.0.0">
-			<info compressed="false">https://api.bitbucket.org/1.0/repositories/DiMartino/myshows.me-kodi-repo/raw/default/addons.xml</info>
-			<checksum>https://api.bitbucket.org/1.0/repositories/DiMartino/myshows.me-kodi-repo/raw/default/addons.xml.md5</checksum>
-			<datadir zip="true">https://api.bitbucket.org/1.0/repositories/DiMartino/myshows.me-kodi-repo/raw/default/repo/</datadir>
 		</dir>
         <dir minversion="14.0.0">
 			<info compressed="false">https://github.com/Eugene-Bond/xmbc-plugins/raw/master/addons.xml</info>
