@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<addon id="repository.srg70" version="1.1.3" name="srg70 Repository" provider-name="srg70">
+<extension point="xbmc.addon.metadata">
+  <summary lang="en">srg70 Repository</summary>
+  <summary lang="ru">Репозиторий srg70</summary>
+  <description lang="en">Repository of platform specific repositories.</description>
+  <description lang="ru">Главный репозиторий для репозиториев под разные платформы. </description>
+  <platform>all</platform>
+</extension>
+<extension point="xbmc.addon.repository" name="srg70 repository">
+  <info compressed="false">https://github.com/srg70/kodi_repo/raw/master/repo/addons.xml</info>
+  <checksum>https://github.com/srg70/kodi_repo/raw/master/repo/addons.xml.md5</checksum>
+  <datadir zip="true">https://github.com/srg70/kodi_repo/raw/master/repo</datadir>
+</extension>
+</addon>
