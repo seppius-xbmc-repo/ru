@@ -357,29 +357,6 @@ Audio sources are
   </extension>
 </addon>
 
-<addon id="plugin.video.cinema.mosfilm.ru"
-
-	name="Мосфильм cinema.mosfilm.ru"
-
-	version="1.1.3"
-
-	provider-name="Silen, Rommi">
-  <requires>
-	<import addon="xbmc.python" version="2.1.0"/>
-    	<import addon="plugin.video.youtube"/>
-  </requires>
-  <extension point="xbmc.python.pluginsource"
-             provides="video"
-             library="default.py">
-    <provides>video</provides>
-  </extension>
-  <extension point="xbmc.addon.metadata">
-    <summary>Мосфильм (cinema.mosfilm.ru)</summary>
-    <description>Иинтернет-кинотеатр ФГУП «Киноконцерн «Мосфильм» (cinema.mosfilm.ru).</description>
-    <platform>all</platform>
-  </extension>
-</addon>
-
 <addon id="plugin.video.fs.ua"
        name="Fs.ua"
        version="1.9.44"
@@ -1113,7 +1090,7 @@ Audio sources are
 
 <addon id="repository.search.db"
 		name="XBMC.ru search db"
-		version="1.1.39"
+		version="1.1.40"
 		provider-name="bigbax">
   <requires>
     <import addon="xbmc.addon" version="12.0.0"/>
@@ -1144,6 +1121,11 @@ Audio sources are
 			<info compressed="false">https://raw.github.com/mrstealth/xbmc-gotham/master/addons.xml</info>
 			<checksum>https://raw.github.com/mrstealth/xbmc-gotham/master/addons.xml.md5</checksum>
 			<datadir zip="true">https://raw.github.com/mrstealth/xbmc-gotham/master/zip/</datadir>
+		</dir>
+        <dir minversion="16.0.0">
+			<info compressed="false">https://nemiroff.github.io/kodi_repo/repo/addons.xml</info>
+			<checksum>https://nemiroff.github.io/kodi_repo/repo/addons.xml.md5</checksum>
+			<datadir zip="true">https://nemiroff.github.io/kodi_repo/repo</datadir>
 		</dir>
 		<dir minversion="16.0.0">
 			<info compressed="false">https://raw.githubusercontent.com/nkvoronov/repository.yellowdragon/jarvis/repo/addons.xml</info>
