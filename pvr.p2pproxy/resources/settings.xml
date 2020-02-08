@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<settings>
+  <!-- M3U -->
+  <category label="30010">
+    <setting id="ServerUrl" type="text" label="30012" default="http://127.0.0.1:8081/"/>
+	 <setting id="TimeZone" type="slider" range="-12,.5,12" label="30024" option="float" default="4"/>
+  </category>
+</settings>

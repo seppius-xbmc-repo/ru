@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addon id="repository.search.db"
 		name="XBMC.ru search db"
-		version="1.1.40"
+		version="1.1.41"
 		provider-name="bigbax">
   <requires>
     <import addon="xbmc.addon" version="12.0.0"/>
@@ -103,11 +103,6 @@
             <checksum>https://github.com/srg70/kodi_leia/raw/master/repo/linux-x86/addons.xml.md5</checksum>
             <datadir zip="true">https://github.com/srg70/kodi_leia/raw/master/repo/linux-x86</datadir>
         </dir>
-		<dir minversion="14.0.0">
-			<info compressed="false">https://github.com/const586/const-kodi-repo/raw/master/addons/addons.xml</info>
-			<checksum>https://github.com/const586/const-kodi-repo/raw/master/addons/addons.xml.md5</checksum>
-			<datadir zip="true">https://github.com/const586/const-kodi-repo/raw/master/addons</datadir>
-		</dir>
 		<dir minversion="14.0.0">
 			<info compressed="false">https://raw.github.com/dandygithub/kodi/master/addons/addons.xml</info>
 			<checksum>https://raw.github.com/dandygithub/kodi/master/addons/addons.xml.md5</checksum>

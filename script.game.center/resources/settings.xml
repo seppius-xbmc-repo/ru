@@ -1,0 +1,8 @@
+<settings>
+  <category label="Общие">
+    <setting id="game.folder" type="folder" label="Библиотека игр"/>
+  </category>
+  <category label="Эмуляторы">
+    <setting id="emu.nes.command" type="text" default='e:/games/emulators/dendy/fceu.exe %ROM%' />
+  </category>
+</settings>
