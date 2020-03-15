@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addon id="repository.search.db"
 		name="XBMC.ru search db"
-		version="1.1.41"
+		version="1.1.42"
 		provider-name="bigbax">
   <requires>
     <import addon="xbmc.addon" version="12.0.0"/>
@@ -52,6 +52,16 @@
 			<info compressed="false">https://raw.githubusercontent.com/nkvoronov/repository.yellowdragon.dev/leia/repo/addons.xml</info>
 			<checksum>https://raw.githubusercontent.com/nkvoronov/repository.yellowdragon.dev/leia/repo/addons.xml.md5</checksum>
 			<datadir zip="true">https://raw.githubusercontent.com/nkvoronov/repository.yellowdragon.dev/leia/repo/</datadir>
+		</dir>
+        <dir minversion="16.9.0">
+			<info compressed="false">https://raw.githubusercontent.com/nkvoronov/repository.yellowdragon/leia/repo/addons.xml</info>
+			<checksum>https://raw.githubusercontent.com/nkvoronov/repository.yellowdragon/leia/repo/addons.xml.md5</checksum>
+			<datadir zip="true">https://raw.githubusercontent.com/nkvoronov/repository.yellowdragon/leia/repo/</datadir>
+		</dir>
+        <dir minversion="16.9.0">
+			<info compressed="false">https://raw.githubusercontent.com/nkvoronov/repository.yellowdragon.ext/leia/repo/addons.xml</info>
+			<checksum>https://raw.githubusercontent.com/nkvoronov/repository.yellowdragon.ext/leia/repo/addons.xml.md5</checksum>
+			<datadir zip="true">https://raw.githubusercontent.com/nkvoronov/repository.yellowdragon.ext/leia/repo/</datadir>
 		</dir>
         <dir minversion="16.0.0">
 			<info compressed="false">https://github.com/srg70/kodi_repo/raw/master/repo/addons.xml</info>
