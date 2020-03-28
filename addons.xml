@@ -1471,6 +1471,25 @@ Audio sources are
 	</extension>
 </addon>
 
+    <addon id="repository.twilight0" name="Twilight0 Addon Repository" version="1.1.0" provider-name="Twilight0">
+        <extension point="xbmc.addon.repository" name="Twilight0 Addon Repository">
+            <info compressed="false">http://raw.githubusercontent.com/Twilight0/repo.twilight0/master/_zips/addons.xml</info>
+            <checksum>http://raw.githubusercontent.com/Twilight0/repo.twilight0/master/_zips/addons.xml.md5</checksum>
+            <datadir zip="true">http://raw.githubusercontent.com/Twilight0/repo.twilight0/master/_zips/</datadir>
+            <hashes>false</hashes>
+            <dir>
+                <info compressed="false">https://raw.githubusercontent.com/Twilight0/repo.twilight0.libs/master/_zips/addons.xml</info>
+                <checksum>https://raw.githubusercontent.com/Twilight0/repo.twilight0.libs/master/_zips/addons.xml.md5</checksum>
+                <datadir zip="true">https://raw.githubusercontent.com/Twilight0/repo.twilight0.libs/master/_zips/</datadir>
+            </dir>
+        </extension>
+        <extension point="xbmc.addon.metadata">
+            <summary>Repository for various of my add-ons</summary>
+            <description>Repository for various of my add-ons</description>
+            <platform>all</platform>
+    </extension>
+</addon>
+
 <addon id="repository.vd" version="1.0.1" name="-=Vd=- Repository" provider-name="-=Vd=-">
 <extension point="xbmc.addon.metadata">
   <summary lang="en">-=Vd=- Repository</summary>
