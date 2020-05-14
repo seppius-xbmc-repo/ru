@@ -1,11 +1,13 @@
 ﻿#!/usr/bin/python
+# -*- coding: utf-8 -*-
 
-import httplib, urllib, urllib2, ssl, socket
+import urllib
 import urlparse
 import re, cookielib, base64
 import sys
 import os
 import contextlib
+import requests
 
 import xbmcplugin
 import xbmcgui
@@ -18,145 +20,59 @@ import time
 import random
 import datetime
 
-from BeautifulSoup import BeautifulSoup, BeautifulStoneSoup
+from BeautifulSoup import BeautifulSoup
 from ASCore import TSengine,_TSPlayer
-from urllib import unquote, quote
 
-
-reload(sys)  
+reload(sys)
 sys.setdefaultencoding('utf8')
 
-class ClassInfo2(xbmcgui.Window):
-  def __init__(self):
-    http = GET(params["url"])
-    beautifulSoup = BeautifulSoup(http)
-    all = beautifulSoup.find('div',attrs={'class':'mn_wrap'})
-
-    if (all == None):
-        showMessage("Ошибка", "Информация не найдена")
-        return	
-
-    menu = all.find('ul', attrs={"class": "men w200"})
-    mitems = menu.findAll('a')
-    sp = "";
-    fc = 1;
-
-    for link in mitems:
-        if "Раздают" in link.getText().encode('utf-8'):
-            sp = link.find('span', attrs={'class': 'floatright'}).getText()
-        elif 'Скачивают' in link.getText().encode('utf-8'):
-            sp =  sp + '/' + link.find('span', attrs={'class': 'floatright'}).getText()
-
-    star = menu.find('div', attrs={'class' : 'starbar'}).findAll('a')
-    tag_title = None
-    for tag in all.contents:
-        if (tag.name == "div"):
-            tag_title = tag
-            break;
-    
-    title = "[COLOR=FF008BEE][%s][%s]%s[/COLOR]" % (star.__len__(),sp.encode('utf-8'),tag_title.h1.a.getText().encode('utf-8'))
-    xinfo = all.find('div', attrs={'class':'mn1_content'}).findAll('div', attrs={'class' : 'bx1 justify'})
-    isBlock = False
-    if xinfo.__len__() == 4:
-        isBlock = True
-        title = '[COLOR=FFFF0000]%s[/COLOR]' % xinfo[0].b.getText()
-        xinfo = xinfo[2:]
-    elif xinfo.__len__() > 2:
-        xinfo = xinfo[1:]
-    sinfo = '%s' % xinfo[0]
-
-    year = sinfo[sinfo.find('<b>Год выпуска:</b>')+30:]
-    year = year[:year.find('<br />')]
-    genre = sinfo[sinfo.find('<b>Жанр:</b>') + 16:]
-    genre = genre[:genre.find('<br />')]
-
-    plot = "";
-    plot = get_plot(xinfo[0].h2)
-    plot = plot + '\n' + get_plot(xinfo[1].p)
-    
-    tech = all.find('div', attrs={'class':'justify mn2 pad5x5'})
-    plot = plot + '\n' + get_plot(tech)    
-
-    border = 50		
-    self.strActionInfo = xbmcgui.ControlTextBox(border, border, 1280 - border *2, 720, 'font24', "0xFFFFFFFF")    
-    self.addControl(self.strActionInfo)
-    self.strActionInfo.setText(plot)
-
-    self.button0 = xbmcgui.ControlButton(border + 540, border + 600, 113, 50, "ЗАКРЫТЬ")
-    self.addControl(self.button0)
-    self.setFocus(self.button0)
- 
-  def onControl(self, control):
-    if control == self.button0:
-      self.close()
-
-class ProxyDescriptor:
-    def __init__(self, proxyHost, proxyPort, proxyUser, proxyPassword):
-        self.host = proxyHost
-        self.port = proxyPort
-        self.proxyUser = proxyUser
-        self.proxyPassword = proxyPassword
-
-    def need_login(self):
-        return not (self.proxyUser is None)
-
-    def build_handlers(self, handlers):
-        proxy_handler = urllib2.ProxyHandler({'http': 'http://%s:%s/' % (self.host, self.port)})
-        handlers.append(proxy_handler)
-        if self.need_login():
-            proxy_auth_handler = urllib2.ProxyBasicAuthHandler()
-            proxy_auth_handler.add_password('realm', 'host', self.proxyUser, self.proxyPassword)
-            handlers.append(proxy_auth_handler)
-
-
-class ConnectionBuilder:
-    def __init__(self, proxy):
-        self.proxy = proxy
-
-    def build_connection(self, cookiejar = None):
-        if cookiejar is None:
-            cookiejar = cookielib.CookieJar()
-        context = ssl.SSLContext(ssl.PROTOCOL_TLSv1)        
-        handlers = [urllib2.HTTPCookieProcessor(cookiejar),urllib2.HTTPSHandler(context=context)]
-        if not (self.proxy is None):
-            self.proxy.build_handlers(handlers)
-        opener = urllib2.build_opener(*handlers)
-        opener.addheaders = [('User-Agent','Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0; Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1) ; .NET CLR 1.1.4322; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729; .NET4.0C)'),
-                             ('Accept', '*/*'), ('Accept-Language', 'ru-RU')]
-        return opener
-
-
-    
 __addon__ = xbmcaddon.Addon( id = 'plugin.video.const.kinozal.tv' )
+
+if __addon__.getSetting('site_url') == '0':
+    siteurl = 'https://kinozal-tv.appspot.com'
+    urlpos = 2
+else:
+    siteurl = 'http://kinozal.tv'
+    urlpos = 1
+imgurl = siteurl
+if __addon__.getSetting('use_proxy') == 'true' and __addon__.getSetting('img_appspot') == 'true':
+    imgurl = 'https://kinozal-tv.appspot.com'
+
+headers = {'User-Agent' : 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36',
+           'Accept' : '*/*','Accept-Language' : 'ru,en-US;q=0.7,en;q=0.3','Referer' : siteurl,
+           'Accept-Encoding' : 'gzip, deflate','Host' : siteurl.replace('https://','').replace('http://',''),'Connection' : 'Keep-Alive'}
+def PrepareStr(str):
+    return str.replace('&quot;','"')
 
 where=['названии','имени актера','жанре','формула']
 show=['везде','фильмы','мультфильмы','сериалы','шоу','музыку']
 cshow=['0','1002','1003','1001','1006','1004']
-form=['Все','DVDRip','HDRip','HD Blu-Ray и Remux', 'TVRip']
-cform=['0','1','3','4','5']
+form=['Все','DVD/BD/HD(Rip)','BD/HD(Rip)(1080|720)','Blu-Ray и BD Remux','TVRip','3D','4K']
+cform=['0','1','3','4','5','6','7']
 filter=['Все','Золото','Серебро']
 cfilter=['0','11','12']
-print 'YEAR' 
+sorting=['Залит','Сидам','Пирам','Размер','Комментариям','Скачали']
+csorting=['0','1','2','3','4','5']
+
 try:
     iwhere=int(__addon__.getSetting('where'))
     ishow=int(__addon__.getSetting('show'))
     iform=int(__addon__.getSetting('form'))
     ifilter=int(__addon__.getSetting('filter'))
+    isorting=int(__addon__.getSetting('sorting'))
     iyear = __addon__.getSetting('year')
-    print 'YEAR %s' %  iwhere
     querry=__addon__.getSetting('querry')
 except:
     __addon__.setSetting('where','0')
     __addon__.setSetting('show','0')
     __addon__.setSetting('form','0')
-    __addon__.setSetting('filter','1')
+    __addon__.setSetting('filter','0')
+    __addon__.setSetting('sorting','1')
     __addon__.setSetting('querry','')
-    import datetime
-    __addon__.setSetting('year', str(datetime.date.today().year))
-
+    __addon__.setSetting('year', '')
 
 hos = int(sys.argv[1])
-           
+
 xbmcplugin.setContent(int(hos), 'movies')
 
 __language__ = __addon__.getLocalizedString
@@ -169,7 +85,6 @@ addon_id      = __addon__.getAddonInfo('id')
 addon_author  = __addon__.getAddonInfo('author')
 addon_name    = __addon__.getAddonInfo('name')
 addon_version = __addon__.getAddonInfo('version')
-
 
 def showMessage(heading, message, times = 3000, pics = addon_icon):
     try: xbmc.executebuiltin('XBMC.Notification("%s", "%s", %s, "%s")' % (heading.encode('utf-8'), message.encode('utf-8'), times, pics.encode('utf-8')))
@@ -185,35 +100,36 @@ ktv_folder=__addon__.getSetting('download_path')
 ktv_cookies_uid=__addon__.getSetting('cookies_uid')
 ktv_cookies_pass=__addon__.getSetting('cookies_pass')
 
-ktv_use_proxy=__addon__.getSetting('use_proxy')
-ktv_proxy_host=__addon__.getSetting('proxy_host')
-ktv_proxy_port=__addon__.getSetting('proxy_port')
+ktv_use_proxy = __addon__.getSetting("use_proxy")
+ktv_proxy_host = __addon__.getSetting('proxy_host')
+ktv_proxy_port = __addon__.getSetting('proxy_port')
 
-ktv_proxy_user=None
-ktv_proxy_password =None
-ktv_use_proxy_auth=__addon__.getSetting('use_proxy_auth')
-if ktv_use_proxy_auth:
-    ktv_proxy_user=__addon__.getSetting('proxy_user')
-    ktv_proxy_password=__addon__.getSetting('proxy_password')
-
+ktv_proxy_user = ''
+ktv_proxy_password = ''
+ktv_use_proxy_auth = __addon__.getSetting('use_proxy_auth')
+if ktv_use_proxy_auth == 'true':
+    ktv_proxy_user = __addon__.getSetting('proxy_user')
+    ktv_proxy_password = __addon__.getSetting('proxy_password')
 
 if not ktv_login or not ktv_password: __addon__.openSettings()
 
 ktv_proxy = None
-if ktv_use_proxy:
-    ktv_proxy = ProxyDescriptor(ktv_proxy_host, ktv_proxy_port, ktv_proxy_user, ktv_proxy_password)
-
-connection_builder = ConnectionBuilder(ktv_proxy)
-
+if ktv_use_proxy == 'true':
+    proxy_auth = ''
+    if ktv_use_proxy_auth == 'true':
+        proxy_auth = ktv_proxy_user + ':' + ktv_proxy_password + '@'
+    ktv_proxy = {
+        'http': 'http://'+proxy_auth+ktv_proxy_host+':'+ktv_proxy_port,
+        'https': 'http://'+proxy_auth+ktv_proxy_host+':'+ktv_proxy_port,
+        }
 
 def login_or_none():
-    cookiejar = cookielib.CookieJar()
-    url_opener = connection_builder.build_connection(cookiejar)
+    cookiejar = requests.cookies.RequestsCookieJar()
     values = {'username': ktv_login, 'password':ktv_password}
-    data = urllib.urlencode(values)
-    request = urllib2.Request("https://kinozal-tv.appspot.com/takelogin.php", data)
-    url_opener.open(request)
-    getted=None
+    s = requests.Session()
+    r = s.post(siteurl + "/takelogin.php",data=values,cookies=cookiejar,headers=headers,proxies=ktv_proxy)
+    getted=True
+    cookiejar.update(s.cookies)
     for cook in cookiejar:
         if cook.name=='pass':
             getted=True
@@ -222,7 +138,6 @@ def login_or_none():
         return  None
     else:
         return cookiejar
-
 
 if not ktv_cookies_uid or not ktv_cookies_pass:
     getted=None
@@ -238,7 +153,6 @@ if not ktv_cookies_uid or not ktv_cookies_pass:
     else: 
         showMessage('Ошибка','Не верен логин или пароль', 5000)   
         __addon__.openSettings()
-# JSON понадобится, когда будет несколько файлов в торренте
 try:
     import json
 except ImportError:
@@ -255,16 +169,17 @@ except ImportError:
 def construct_request(params):
     return '%s?%s' % (sys.argv[0], urllib.urlencode(params))
 
-    
-def GET(target, post=None):
-    #print target
+def GET(target, post = None, needlogin = False):
     try:
-        req = urllib2.Request(target, post)
-        cookiejar = login_or_none()
-        url_opener = connection_builder.build_connection(cookiejar)
-        http = None
-        with contextlib.closing(url_opener.open(req)) as resp:
-            http = resp.read()
+        if needlogin:
+            cookiejar = login_or_none()
+        else:
+            cookiejar = None
+        if post is None:
+            r = requests.get(target,headers=headers,cookies=cookiejar,proxies=ktv_proxy)
+        else:
+            r = requests.post(target,data=post,headers=headers,cookies=cookiejar,proxies=ktv_proxy)
+        http = r.content
         return http
     except Exception, e:
         xbmc.log( '[%s]: GET EXCEPT [%s]' % (addon_id, e), 4 )
@@ -273,9 +188,9 @@ def GET(target, post=None):
         
 def mainScreen(params):
     PlaceFolder('Закладки', {'func':'get_bookmarks'})
-    PlaceFolder('Главная',{'func': 'get_main', 'link':'https://kinozal-tv.appspot.com/'})
+    PlaceFolder('Главная',{'func': 'get_main', 'link':siteurl + '/'})
     PlaceFolder('Топ раздач',{'func': 'get_top'})
-    PlaceFolder('Новинки',{'func': 'get_top1', 'link':'https://kinozal-tv.appspot.com/novinki.php'})
+    PlaceFolder('Новинки',{'func': 'get_top1', 'link':siteurl + '/novinki.php'})
     PlaceFolder('Раздачи',{'func': 'get_search'})
     PlaceFolder('Поиск раздач',{'func': 'get_customsearch'})
     xbmcplugin.endOfDirectory(hos)
@@ -295,20 +210,24 @@ def get_custom(params):
     ishow=int(__addon__.getSetting('show'))
     iform=int(__addon__.getSetting('form'))
     ifilter=int(__addon__.getSetting('filter'))
+    isorting=int(__addon__.getSetting('sorting'))
     dialog = xbmcgui.Dialog()
     if par==1:
-        iwhere=dialog.select('Фильтр', where)
+        iwhere=dialog.select('Искать в', where)
     if par==2:
         ishow=dialog.select('Фильтр', show)
     if par==3:
-        iform=dialog.select('Фильтр', form)
+        iform=dialog.select('Формат', form)
     if par==4:
         ifilter=dialog.select('Фильтр', filter)
+    if par==5:
+        isorting=dialog.select('Сортировка', sorting)
 
     __addon__.setSetting('where',str(iwhere))
     __addon__.setSetting('show',str(ishow))
     __addon__.setSetting('form',str(iform))
     __addon__.setSetting('filter',str(ifilter))
+    __addon__.setSetting('sorting',str(isorting))
     xbmc.executebuiltin('Container.Refresh(%s?func=get_customsearch)' % sys.argv[0])
 
 def get_customsearch(params):
@@ -322,6 +241,7 @@ def get_customsearch(params):
     PlaceLink('Искать %s'%show[ishow],{'func': 'get_custom', 'par':'2'})
     PlaceLink('Формат: %s'%form[iform],{'func': 'get_custom', 'par':'3'})
     PlaceLink('Фильтр: %s'%filter[ifilter],{'func': 'get_custom', 'par':'4'})
+    PlaceLink('Сортровка: %s'%sorting[isorting],{'func': 'get_custom', 'par':'5'})
     PlaceLink('Год: %s' % iyear, {'func': 'get_querry', 'par':'year'})
     PlaceLink('Искать: %s'%querry,{'func': 'get_querry'})
     PlaceFolder('Поиск',{'func': 'get_search','s':'1'})
@@ -351,7 +271,6 @@ def get_querry(params):
         if skbd.isConfirmed():
             SearchStr = skbd.getText()
             params['search']=SearchStr.replace(' ','+').decode('utf-8').encode('cp1251')
-            #print params['search']
         else:
             params['search']=''
         __addon__.setSetting('querry',str(SearchStr))
@@ -377,10 +296,9 @@ def get_main(params):
         if not check_item_by_tytle(title):
             continue
         img= film.find('a').find('img')['src']
-        if 'http' not in img: img='https://kinozal-tv.appspot.com/%s'%img
-        lik=  str(film.find('a')['href']).split('=')
-        torrlink= 'https://kinozal-tv.appspot.com/download.php/%s/[kinozal.tv]id%s.torrent'%(lik[1],lik[1])
-        print torrlink
+        if 'http' not in img: img = imgurl + '/%s'%img
+        lik =  str(film.find('a')['href']).split('=')
+        torrlink = siteurl + '/download.php/%s/[kinozal.tv]id%s.torrent'%(lik[1],lik[1])
         info = {}
         desc = '%s' % film.find('div', attrs={'class':'tp1_desc1'})
         genre = desc[desc.find("<b>Жанр:</b>")+17:]
@@ -412,12 +330,12 @@ def get_main(params):
         li.setInfo(type = "video", infoLabels = info)
         uri = construct_request({
             'func': 'get_info',
-            'url': "https://kinozal-tv.appspot.com/" + film.find('a')["href"],
+            'url': siteurl + "/" + film.find('a')["href"],
         })
         xbmcplugin.addDirectoryItem(hos, uri, li, True)
     xbmcplugin.endOfDirectory(hos)
 
-    xbmc.executebuiltin('Container.SetViewMode(%s)' % 503)   
+    xbmc.executebuiltin('Container.SetViewMode(%s)' % 503)
 
 def get_view_mode():
         view_mode = ""
@@ -429,7 +347,6 @@ def get_view_mode():
                     return view_mode
                     break
             except:
-                print 'error'
                 pass
         return view_mode
 
@@ -497,12 +414,11 @@ def get_detail_torr3(container):
 
 def get_by_genre(img, info, id):
     lis = []
-    detail = GET('https://kinozal-tv.appspot.com/ajax/details_get.php?id=%s&sr=101' % id) 
+    detail = GET(siteurl + '/ajax/details_get.php?id=%s&sr=101' % id) 
     bsdetail = BeautifulSoup(detail.decode('cp1251'))
     xdetails = bsdetail.findAll('tr', attrs={'class':'first'})
 
     for xdet in xdetails:
-
         det = get_detail_torr_1(xdet)
         sp = det['sp']
         title = det['title']
@@ -515,7 +431,7 @@ def get_by_genre(img, info, id):
         dict['folder'] = True
         uri = construct_request({
             'func': 'get_info',
-            'url': "https://kinozal-tv.appspot.com/" + url,
+            'url': siteurl + "/" + url,
         })
         dict['url'] = uri
         dict['id'] = ''
@@ -524,7 +440,7 @@ def get_by_genre(img, info, id):
 
 def get_by_persone(img,info, id):
     lis = []
-    detail = GET('https://kinozal-tv.appspot.com/ajax/details_get.php?id=%s&sr=102' % id) 
+    detail = GET(siteurl + '/ajax/details_get.php?id=%s&sr=102' % id) 
     bsdetail = BeautifulSoup(detail.decode('cp1251'))
     xdetails = bsdetail.findAll('tr')
     xdetails = xdetails[1:]
@@ -541,7 +457,7 @@ def get_by_persone(img,info, id):
         dict['folder'] = True
         uri = construct_request({
             'func': 'get_info',
-            'url': "https://kinozal-tv.appspot.com/" + url,
+            'url': siteurl + "/" + url,
         })
         dict['url'] = uri
         dict['id'] = ''
@@ -550,7 +466,7 @@ def get_by_persone(img,info, id):
 
 def get_by_seed(img, info, id):
     lis = []
-    detail = GET('https://kinozal-tv.appspot.com/ajax/details_get.php?id=%s&sr=103' % id) 
+    detail = GET(siteurl + '/ajax/details_get.php?id=%s&sr=103' % id) 
     bsdetail = BeautifulSoup(detail.decode('cp1251'))
     xdetails = bsdetail.findAll('tr')
     xdetails = xdetails[1:]
@@ -567,7 +483,7 @@ def get_by_seed(img, info, id):
         dict['folder'] = True
         uri = construct_request({
             'func': 'get_info',
-            'url': "https://kinozal-tv.appspot.com/" + url,
+            'url': siteurl + "/" + url,
         })
         dict['url'] = uri
         dict['id'] = ''
@@ -592,7 +508,7 @@ def get_by_like(container, img, info, id):
             dict['folder'] = True
             uri = construct_request({
                 'func': 'get_info',
-                'url': "https://kinozal-tv.appspot.com/" + url,
+                'url': siteurl + "/" + url,
             })
             dict['url'] = uri
             dict['id'] = ''
@@ -600,22 +516,65 @@ def get_by_like(container, img, info, id):
     return lis
 
 def get_info2(params):  
-    mydisplay = ClassInfo2()
-    mydisplay.doModal()
-    del mydisplay
-
-def get_info(params):
-    current_view = get_view_mode();
     http = GET(params["url"])
     beautifulSoup = BeautifulSoup(http)
     all = beautifulSoup.find('div',attrs={'class':'mn_wrap'})
 
     if (all == None):
+        showMessage("Ошибка", "Информация не найдена")
+        return
+
+    xinfo = all.find('div', attrs={'class':'mn1_content'}).findAll('div', attrs={'class' : 'bx1 justify'})
+    if xinfo.__len__() == 4:
+        xinfo = xinfo[2:]
+    elif xinfo.__len__() > 2:
+        xinfo = xinfo[1:]
+
+    plot = "";
+    plot = get_plot(xinfo[0].h2)
+    plot = plot + '\n' + get_plot(xinfo[1].p)
+    tech = all.find('div', attrs={'class':'justify mn2 pad5x5'})
+    plot = plot + '\n' + get_plot(tech)
+    dialog = xbmcgui.Dialog()
+    dialog.textviewer('Информация о раздаче', plot)
+
+def get_comm(params):  
+    http = GET(params["url"])
+    beautifulSoup = BeautifulSoup(http)
+
+    if (all == None):
+        showMessage("Ошибка", "Информация не найдена")
+        return
+
+    cms = beautifulSoup.findAll("div", attrs={'class': 'mn2 cmet_bx'})
+
+    plot = ""
+    for cmsa in cms: 
+        plot = plot + '[COLOR red]' + get_plot(cmsa.a) + '[/COLOR]' + '\r\n' + get_plot(cmsa.find('div', attrs={'class':'tx'})).replace('\n',' ').replace('\r','') + '\r\n'
+    dialog = xbmcgui.Dialog()
+    dialog.textviewer('Комментарии', PrepareStr(plot))
+
+def get_soup(http):
+    beautifulSoup = BeautifulSoup(http)
+    http = beautifulSoup.find('div',attrs={'class':'mn_wrap'})
+    return http
+
+def get_info(params):
+    current_view = get_view_mode();
+    http = GET(params["url"])
+    all = get_soup(http)
+
+    if (all == None):
+        http = GET(params["url"],None,True)
+        all = get_soup(http)
+
+    if (all == None):
         showMessage("Ошибка", "Торрент не найден")
         return
+
     img = all.find('img',attrs={'class':"p200"})["src"]
     if 'http' not in img: 
-        img='https://kinozal-tv.appspot.com%s'%img
+        img = imgurl + '%s'%img
     menu = all.find('ul', attrs={"class": "men w200"})
     mitems = menu.findAll('a')
     sp = "";
@@ -639,9 +598,9 @@ def get_info(params):
             break;
     
     title = "[COLOR=FF008BEE][%s][%s]%s[/COLOR]" % (star.__len__(),sp.encode('utf-8'),tag_title.h1.a.getText().encode('utf-8'))
-    id = params["url"].split('=')[2]
-    #link = 'http://kinozal.tv/download.php/%s/[kinozal.tv]id%s.torrent' % (id, id)
-    link = 'https://kinozal-tv.appspot.com/download.php?id=%s' % id
+    id = params["url"].split('=')[urlpos]
+    #link = siteurl + '/download.php/%s/[kinozal.tv]id%s.torrent' % (id, id)
+    link = siteurl + '/download.php?id=%s' % id
     xinfo = all.find('div', attrs={'class':'mn1_content'}).findAll('div', attrs={'class' : 'bx1 justify'})
     isBlock = False
     if xinfo.__len__() == 4:
@@ -653,21 +612,20 @@ def get_info(params):
     sinfo = '%s' % xinfo[0]
     info = {}
     year = sinfo[sinfo.find('<b>Год выпуска:</b>')+30:]
-    year = year[:year.find('<br />')]
+    year = year[:year.find('<br />')].strip()
     genre = sinfo[sinfo.find('<b>Жанр:</b>') + 16:]
-    genre = genre[:genre.find('<br />')]
+    genre = genre[:genre.find('<br />')].strip()
     info['year'] = year
     info['genre'] = genre
     plot = "";
-
     plot = get_plot(xinfo[0].h2)
     plot = plot + '\n' + get_plot(xinfo[1].p)
-    
     tech = all.find('div', attrs={'class':'justify mn2 pad5x5'})
     plot = plot + '\n' + get_plot(tech)
+    plot = plot.replace('[B]Год выпуска:[/B] ' + year + '\r\n','')
+    plot = plot.replace('[B]Жанр:[/B] ' + genre + '\r\n','')
     info['plot'] = plot
     li = xbmcgui.ListItem(title, title, img, img)
-
     li.setProperty('fanart_image', img)
     li.setInfo(type='video', infoLabels=info)
     if isBlock:
@@ -684,11 +642,12 @@ def get_info(params):
         if fc == 1:
             li.setProperty('IsPlayable', 'true')
 
+
     menulist = []
     if bookmark:
         addbookmarkuri = construct_request({
             'func': 'http_request',
-            'url': "https://kinozal-tv.appspot.com/" + bookmark
+            'url': siteurl + "/" + bookmark
         })
         menulist.append(('[COLOR FF669933]Добавить[/COLOR][COLOR FFB77D00] в Закладки[/COLOR]', 'XBMC.RunPlugin(%s)' % (addbookmarkuri)))
     
@@ -699,9 +658,9 @@ def get_info(params):
     })
     menulist.append(('[COLOR FF669933]Скачать[/COLOR]', 'XBMC.RunPlugin(%s)' % downloaduri))
     li.addContextMenuItems(menulist)
-
+    li.select(True)
     xbmcplugin.addDirectoryItem(hos, uri, li, fc > 1)
-    
+
     all = all.find('div', attrs={'class':'mn1_content'})
     bx1 = all.findAll('div', attrs={'class':'bx1'})
     bx1 = bx1[2]
@@ -712,6 +671,7 @@ def get_info(params):
 
         li.setProperty('fanart_image', img)
         li.setInfo(type='video', infoLabels=info)
+        
         dict['li'] = li
         dict['folder'] = False
         dict['url'] = ''
@@ -741,17 +701,16 @@ def get_info(params):
             for li2 in lis_seed:
                 xbmcplugin.addDirectoryItem(hos, li2['url'], li2['li'], li2['folder'])
     xbmcplugin.endOfDirectory(hos)
-
     xbmc.executebuiltin('Container.SetViewMode(%s)' % 504)
 
 def get_search(params):
-
     try:
         if params.has_key('s'):
             g=int(__addon__.getSetting('where'))
             c=cshow[ishow]
             v=cform[iform]
             w=cfilter[ifilter]
+            t=csorting[isorting]
             qu= querry.decode('utf-8').encode('cp1251')
             iyear=__addon__.getSetting('year')
         else:
@@ -759,20 +718,18 @@ def get_search(params):
             c = 0
             v = 0
             w = 0
+            t = 0
             qu = ""
             iyear = "0"
 
-        link='https://kinozal-tv.appspot.com/browse.php?s=%s&g=%s&c=%s&v=%s&d=%s&w=%s&t=0&f=0'%(urllib.quote_plus(qu),g,c,v,iyear, w)
+        link = siteurl + '/browse.php?s=%s&g=%s&c=%s&v=%s&d=%s&w=%s&t=%s&f=0'%(urllib.quote_plus(qu),g,c,v,iyear,w,t)
 
     except Exception, e:
-        print 'Error %s' % e
         return
-        link='https://kinozal-tv.appspot.com/browse.php?s=&g=0&c=0&v=0&d=0&w=0&t=0&f=0'
-    print link
+        link = siteurl + '/browse.php?s=&g=0&c=0&v=0&d=0&w=0&t=0&f=0'
     http = GET(link)
     beautifulSoup = BeautifulSoup(http)
     cat= beautifulSoup.findAll('tr')
-#	print cat
     leng=len(cat)
     for film in cat:
         try:
@@ -790,13 +747,13 @@ def get_search(params):
                 title = '[COLOR=FFDDDDDD]%s[/COLOR]' % title
             link=xa['href']
             lik=  link.split('=')
-            #glink='http://kinozal.tv%s'%link
+            #glink=siteurl + '%s'%link
             #data= GET(glink)
             #dataSoup = BeautifulSoup(data)
             #img= dataSoup.find('li', attrs={'class':'img'}).find('img')['src']
-            #if 'http' not in img: img='http://kinozal.tv%s'%img
+            #if 'http' not in img: img=siteurl + '%s'%img
             img = addon_icon
-            torrlink= 'https://kinozal-tv.appspot.com/download.php/%s/[kinozal.tv]id%s.torrent'%(lik[1],lik[1])
+            torrlink = siteurl + '/download.php/%s/[kinozal.tv]id%s.torrent'%(lik[1],lik[1])
             li = xbmcgui.ListItem('%s\r\n[COLOR=FF008BEE](peers: %s seeds:%s size%s)[/COLOR]'%(title,peers, seeds, size),addon_icon,img)
             li.setProperty('fanart_image', img)
             #uri = construct_request({
@@ -808,7 +765,7 @@ def get_search(params):
             #})
             uri = construct_request({
                 'func': 'get_info',
-                'url': "https://kinozal-tv.appspot.com/" + xa["href"],
+                'url': siteurl + "/" + xa["href"],
             })
             xbmcplugin.addDirectoryItem(hos, uri, li, True, totalItems=leng)
     
@@ -818,7 +775,7 @@ def get_search(params):
     xbmc.executebuiltin('Container.SetViewMode(%s)' % 51)
 
 def get_years(params):
-    http = GET('https://kinozal-tv.appspot.com/top.php')
+    http = GET(siteurl + '/top.php')
     beautifulSoup = BeautifulSoup(http)
     years = beautifulSoup.find('select',attrs={"class":"w100 styled"})
     years = years.findAll('option')
@@ -827,24 +784,24 @@ def get_years(params):
         li = xbmcgui.ListItem(n.string.encode('utf-8'),addon_icon,addon_icon)
         uri = construct_request({
             'func': 'get_top1',
-            'link':'https://kinozal-tv.appspot.com/top.php?w=0&t=%s&d=%s&f=0&s=0' % (params['genre'], n['value'])
+            'link':siteurl + '/top.php?w=0&t=%s&d=%s&f=0&s=0' % (params['genre'], n['value'])
         })
         xbmcplugin.addDirectoryItem(hos, uri, li, True)
     xbmcplugin.endOfDirectory(hos)
 
 def get_top(params):
-    http = GET('https://kinozal-tv.appspot.com/top.php')
+    http = GET(siteurl + '/top.php')
     beautifulSoup = BeautifulSoup(http)
     cat = beautifulSoup.find('select',attrs={"class":"w100p styled"})
     cat = cat.findAll('option')
-	
+
     for n in cat:
         if int(n['value']) not in [5,6,7,8,4,41,42,43,44]:
             li = xbmcgui.ListItem(n.string.encode('utf-8'),addon_icon,addon_icon)
             uri = construct_request({
                 'func': 'get_years',
                 'genre': n['value']
-            })		
+            })
 
             xbmcplugin.addDirectoryItem(hos, uri, li, True)
     xbmcplugin.endOfDirectory(hos)
@@ -854,13 +811,12 @@ def get_top1(params):
     beautifulSoup = BeautifulSoup(http)
     content = beautifulSoup.find('div', attrs={'class': 'bx1 stable'})
     cats=content.findAll('a')
-    #print cats
     for m in cats: 
         tit= m['title']
         lik=  str(m['href']).split('=')
         img=m.find('img')['src']
-        if 'http' not in img: img='https://kinozal-tv.appspot.com%s'%img
-        torrlink= 'https://kinozal-tv.appspot.com/download.php/%s/[kinozal.tv]id%s.torrent'%(lik[1],lik[1])
+        if 'http' not in img: img = imgurl + '%s'%img
+        torrlink= siteurl + '/download.php/%s/[kinozal.tv]id%s.torrent'%(lik[1],lik[1])
 
         li = xbmcgui.ListItem(tit,addon_icon,img)
         li.setProperty('fanart_image', img)
@@ -868,9 +824,14 @@ def get_top1(params):
         menulist = []
         infouri = construct_request({
             'func': 'get_info2',
-            'url': "https://kinozal-tv.appspot.com/" + m['href'],
+            'url': siteurl + "/" + m['href'],
+        })
+        commuri = construct_request({
+            'func': 'get_comm',
+            'url': siteurl + "/" + m['href'],
         })
         menulist.append(('Информация о раздаче', 'XBMC.RunPlugin(%s)' % infouri))
+        menulist.append(('Комментарии', 'XBMC.RunPlugin(%s)' % commuri))
         li.addContextMenuItems(menulist)
 
         #uri = construct_request({
@@ -882,10 +843,9 @@ def get_top1(params):
         #})
         uri = construct_request({
             'func': 'get_info',
-            'url': "https://kinozal-tv.appspot.com/" + m['href'],
+            'url': siteurl + "/" + m['href'],
         })
         xbmcplugin.addDirectoryItem(hos, uri, li, True)
-        #print tit
     xbmcplugin.endOfDirectory(hos)
     xbmc.executebuiltin('Container.SetViewMode(%s)' % 500)
     
@@ -907,13 +867,7 @@ def get_folder(params):
     xbmcplugin.endOfDirectory(hos)
 
 def http_request(params):
-    cookiejar = login_or_none()
-    url_opener = connection_builder.build_connection(cookiejar)
-    # TODO: reimplement
-    req = params['url']
-    http = None
-    with contextlib.closing(url_opener.open(req)) as resp:
-        http = resp.read()
+    http = GET(params['url'])
     return http
 
 def del_bookmark(params):
@@ -921,11 +875,7 @@ def del_bookmark(params):
     xbmc.executebuiltin("Container.Refresh")
 
 def get_bookmarks(params):
-    cookiejar = login_or_none()
-    req = 'https://kinozal-tv.appspot.com/bookmarks.php?type=1'
-    url_opener = connection_builder.build_connection(cookiejar)
-    url = url_opener.open(req)
-    http = url.read()
+    http = GET(siteurl + '/bookmarks.php?type=1')
     beautifulSoup = BeautifulSoup(http)
     
     bx20 = beautifulSoup.find('div', attrs={'class': 'content'}).find('div', attrs={'class':'bx2_0'});
@@ -940,59 +890,23 @@ def get_bookmarks(params):
             li = xbmcgui.ListItem(desc['title'],addon_icon,addon_icon)
             uri = construct_request({
                 'func': 'get_info',
-                'url': "https://kinozal-tv.appspot.com/" + desc['url'],
+                'url': siteurl + "/" + desc['url'],
             })
             tds = line.findAll("td", attrs={'class': 's'})
             delbookmarkuri = construct_request({
                 'func': 'del_bookmark',
-                'url': "https://kinozal-tv.appspot.com/" + tds[tds.__len__()-1].a['href']
+                'url': siteurl + "/" + tds[tds.__len__()-1].a['href']
             })
             li.addContextMenuItems([('[COLOR FF669933]Удалить[/COLOR][COLOR FFB77D00] из Закладок[/COLOR]', 'XBMC.RunPlugin(%s)' % (delbookmarkuri),)])
             xbmcplugin.addDirectoryItem(hos, uri, li, True)
     xbmcplugin.endOfDirectory(hos)
 
-def download(params):
-    cookiejar = login_or_none()
-    torr_link = params['url']
-    url_opener = connection_builder.build_connection(cookiejar)
-    request = urllib2.Request(torr_link)
-    url = url_opener.open(request)
-    red = url.read()
-    if '<!DOCTYPE HTML>' in red:
-      showMessage('Ошибка', 'Проблема при скачивании ')
-    filename=xbmc.translatePath(ktv_folder + params['filename'])
-    f = open(filename, 'wb')
-    f.write(red)
-    f.close()
-    showMessage('kinozal.tv', 'Торрент-файл скачан') 
-
 def play(params):
-    print 'palyyy'
-    filename=xbmc.translatePath(ktv_folder + params['filename'])
-    ''' if os.path.isfile(filename): 
-        try: 
-            #f = open(filename, 'rb').read()
-            yel=base64.b64encode(open(filename, 'rb').read())
-            #red=f.read
-            #f.close
-            #print red.encode('utf-8')
-        except: pass
-    else:	'''
 
-    cookiejar = login_or_none()
-    torr_link=params['torr_url']
-    url_opener = connection_builder.build_connection(cookiejar)
-    request = urllib2.Request(torr_link)
-    print torr_link
-    url = url_opener.open(request)
-    red = url.read()
+    red = GET(params['torr_url'],None,True)
     if '<!DOCTYPE HTML>' in red:
         showMessage('Ошибка','Проблема при скачивании (превышен лимит?)')
         return False
-    filename=xbmc.translatePath(ktv_folder + params['filename'])
-    #f = open(filename, 'wb')
-    #f.write(red)
-    #f.close
     yel=base64.b64encode(red)
     torr_link=yel
     start_torr(torr_link, params['img'])
@@ -1049,7 +963,6 @@ def addplist(params):
     xbmc.PlayList(xbmc.PLAYLIST_VIDEO).add(uri,li)
 
 def play_url2(params):
-    print 'play'
     torr_link=urllib.unquote(params["torr_url"])
     img=urllib.unquote_plus(params["img"])
     title=urllib.unquote_plus(params["title"])

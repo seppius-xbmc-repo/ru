@@ -1,14 +1,15 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <settings>
-  <category label="Настройки">
-    <setting id="login" type="text" label="Логин" default="" />
-    <setting id="password" type="text" option="hidden" label="Пароль" enable="!eq(-1,)" default="" />
-	<setting id="download_path" type="folder" label="Папка для .torrent файлов" default="" />
-    <setting id="use_proxy"  type="bool" label="Использовать прокси" default="false"/>
-    <setting id="proxy_host" type="text" label="Proxy Host" default="" visible="eq(-1,true)" />
-    <setting id="proxy_port" type="number" label="Proxy Port" visible="eq(-2,true)"  />
-    <setting id="use_proxy_auth"  type="bool" label="Прокси требует авторизации" default="false" visible="eq(-3,true)"/>
-    <setting id="proxy_user" type="text" label="Proxy User" default="" visible="eq(-1,true)"/>
-    <setting id="proxy_password" type="text" label="Proxy Password" default="" visible="eq(-2,true)" />
-  </category>
+    <category label="Настройки">
+        <setting id="site_url" type="enum" label="Сайт" default="0" values="kinozal-tv.appspot.com|kinozal.tv"/>
+        <setting id="login" type="text" label="Логин" default=""/>
+        <setting id="password" type="text" option="hidden" label="Пароль" enable="!eq(-1,)" default=""/>
+        <setting id="download_path" type="folder" label="Папка для .torrent файлов" default=""/>
+        <setting id="use_proxy"  type="bool" label="Использовать прокси" default="false"/>
+        <setting id="proxy_host" type="text" label="Proxy Host" default="" visible="eq(-1,true)"/>
+        <setting id="proxy_port" type="number" label="Proxy Port" visible="eq(-2,true)"/>
+        <setting id="img_appspot" type="bool" label="Брать картинки с kinozal-tv.appspot.com" default="true" visible="eq(-3,true)"/>
+        <setting id="use_proxy_auth"  type="bool" label="Прокси требует авторизации" default="false" visible="eq(-4,true)"/>
+        <setting id="proxy_user" type="text" label="Proxy User" default="" visible="eq(-1,true)"/>
+        <setting id="proxy_password" type="text" label="Proxy Password" default="" visible="eq(-2,true)" />
+    </category>
 </settings>
