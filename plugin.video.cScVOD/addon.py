@@ -402,7 +402,7 @@ def Play(params):
         i = xbmcgui.ListItem(title, url, img, img)
         xbmc.Player().play(url, i)
     else:
-        showMessage('Not playable stram', url, 2000)
+        showMessage('Not playable stream', url, 2000)
 
 
 def get_params(paramstring):
