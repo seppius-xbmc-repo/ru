@@ -1,20 +1,21 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addon id="plugin.video.const.kinozal.tv"
-       name="kinozal.tv by const"
-       version="1.1.5"
-       provider-name="nuismons">
-    <requires>
-        <import addon="xbmc.python" version="2.1.0"/>
-        <import addon="script.module.beautifulsoup"/>
-        <import addon="script.module.torrent.ts"/>
-        <import addon="script.module.requests" version="2.12.4"/>
-    </requires>
-    <extension point="xbmc.python.pluginsource" provides="video" library="default.py">
-        <provides>video</provides>
-    </extension>
-    <extension point="xbmc.addon.metadata">
-        <summary>const.kinozal.tv</summary>
-        <description>kinozal.tv by const</description>
-        <platform>all</platform>
-    </extension>
+	   name="kinozal.tv"
+	   version="1.1.6"
+	   provider-name="nuismons">
+	<requires>
+		<import addon="xbmc.python" version="2.1.0"/>
+		<import addon="script.module.beautifulsoup"/>
+		<import addon="script.module.requests" version="2.12.4"/>
+		<import addon="plugin.video.tam"/>
+	</requires>
+	<extension point="xbmc.python.pluginsource" provides="video" library="default.py">
+		<provides>video</provides>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary>const.kinozal.tv</summary>
+		<description>kinozal.tv - торрент трекер фильмов и сериалов[CR][CR]История изменений:[CR]1. Воспроизведение через TAM[CR]2. Исправлены закладки[CR]3. История просмотров[CR]4. Повторное использование .torrent файлов
+		</description>
+		<platform>all</platform>
+	</extension>
 </addon>
