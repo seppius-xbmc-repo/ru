@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import urllib, urlparse, requests, contextlib
-import re, cookielib, sys, os #,base64
+import re, cookielib, sys, os
 
 import xbmcplugin
 import xbmcgui
@@ -10,10 +10,6 @@ import xbmcaddon
 import xbmc
 import xbmcaddon
 
-#import threading
-#import time
-#import random
-	
 from BeautifulSoup import BeautifulSoup
 
 reload(sys)
@@ -36,21 +32,22 @@ headers = {'User-Agent' : 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit
 		   'Accept-Encoding' : 'gzip, deflate','Host' : siteurl.replace('https://','').replace('http://',''),'Connection' : 'Keep-Alive'}
 
 def torrkill(params):
-	import shutil
-	folder = __addon__.getAddonInfo('path') + '\\torrents'
-	for filename in os.listdir(folder):
-		file_path = os.path.join(folder, filename)
-		try:
-			if os.path.isfile(file_path) or os.path.islink(file_path):
-				os.unlink(file_path)
-			elif os.path.isdir(file_path):
-				shutil.rmtree(file_path)
-		except Exception as e:
-			showMessage('Ошибка','Failed to delete %s. Reason: %s' % (file_path, e))
-	showMessage('Информация','Папка торрентов очищена')
+	if xbmcgui.Dialog().yesno('Очистка папки','Очистить папку торрентов ?',autoclose=15000):
+		import shutil
+		folder = __addon__.getAddonInfo('path') + '\\torrents'
+		for filename in os.listdir(folder):
+			file_path = os.path.join(folder, filename)
+			try:
+				if os.path.isfile(file_path) or os.path.islink(file_path):
+					os.unlink(file_path)
+				elif os.path.isdir(file_path):
+					shutil.rmtree(file_path)
+			except Exception as e:
+				showMessage('Ошибка','Failed to delete %s. Reason: %s' % (file_path, e))
+		showMessage('Информация','Папка торрентов очищена')
 
 def PrepareStr(x):#('&#39;','’'), ('&#145;','‘')
-	L=[('&#039;',"'"),('&amp;',"&"),('&#133;','…'),('&#38;','&'),('&#34;','"'), ('&#39;','"'), ('&#145;','"'), ('&#146;','"'), ('&#147;','“'), ('&#148;','”'), ('&#149;','•'), ('&#150;','–'), ('&#151;','—'), ('&#152;','?'), ('&#153;','™'), ('&#154;','s'), ('&#155;','›'), ('&#156;','?'), ('&#157;',''), ('&#158;','z'), ('&#159;','Y'), ('&#160;',''), ('&#161;','?'), ('&#162;','?'), ('&#163;','?'), ('&#164;','¤'), ('&#165;','?'), ('&#166;','¦'), ('&#167;','§'), ('&#168;','?'), ('&#169;','©'), ('&#170;','?'), ('&#171;','«'), ('&#172;','¬'), ('&#173;',''), ('&#174;','®'), ('&#175;','?'), ('&#176;','°'), ('&#177;','±'), ('&#178;','?'), ('&#179;','?'), ('&#180;','?'), ('&#181;','µ'), ('&#182;','¶'), ('&#183;','·'), ('&#184;','?'), ('&#185;','?'), ('&#186;','?'), ('&#187;','»'), ('&#188;','?'), ('&#189;','?'), ('&#190;','?'), ('&#191;','?'), ('&#192;','A'), ('&#193;','A'), ('&#194;','A'), ('&#195;','A'), ('&#196;','A'), ('&#197;','A'), ('&#198;','?'), ('&#199;','C'), ('&#200;','E'), ('&#201;','E'), ('&#202;','E'), ('&#203;','E'), ('&#204;','I'), ('&#205;','I'), ('&#206;','I'), ('&#207;','I'), ('&#208;','?'), ('&#209;','N'), ('&#210;','O'), ('&#211;','O'), ('&#212;','O'), ('&#213;','O'), ('&#214;','O'), ('&#215;','?'), ('&#216;','O'), ('&#217;','U'), ('&#218;','U'), ('&#219;','U'), ('&#220;','U'), ('&#221;','Y'), ('&#222;','?'), ('&#223;','?'), ('&#224;','a'), ('&#225;','a'), ('&#226;','a'), ('&#227;','a'), ('&#228;','a'), ('&#229;','a'), ('&#230;','?'), ('&#231;','c'), ('&#232;','e'), ('&#233;','e'), ('&#234;','e'), ('&#235;','e'), ('&#236;','i'), ('&#237;','i'), ('&#238;','i'), ('&#239;','i'), ('&#240;','?'), ('&#241;','n'), ('&#242;','o'), ('&#243;','o'), ('&#244;','o'), ('&#245;','o'), ('&#246;','o'), ('&#247;','?'), ('&#248;','o'), ('&#249;','u'), ('&#250;','u'), ('&#251;','u'), ('&#252;','u'), ('&#253;','y'), ('&#254;','?'), ('&#255;','y'), ('&laquo;','"'), ('&raquo;','"'), ('&nbsp;',' '), ('&mdash;','-')]
+	L=[('&quot;','"'),('&#039;',"'"),('&amp;',"&"),('&#133;','…'),('&#38;','&'),('&#34;','"'), ('&#39;','"'), ('&#145;','"'), ('&#146;','"'), ('&#147;','“'), ('&#148;','”'), ('&#149;','•'), ('&#150;','–'), ('&#151;','—'), ('&#152;','?'), ('&#153;','™'), ('&#154;','s'), ('&#155;','›'), ('&#156;','?'), ('&#157;',''), ('&#158;','z'), ('&#159;','Y'), ('&#160;',''), ('&#161;','?'), ('&#162;','?'), ('&#163;','?'), ('&#164;','¤'), ('&#165;','?'), ('&#166;','¦'), ('&#167;','§'), ('&#168;','?'), ('&#169;','©'), ('&#170;','?'), ('&#171;','«'), ('&#172;','¬'), ('&#173;',''), ('&#174;','®'), ('&#175;','?'), ('&#176;','°'), ('&#177;','±'), ('&#178;','?'), ('&#179;','?'), ('&#180;','?'), ('&#181;','µ'), ('&#182;','¶'), ('&#183;','·'), ('&#184;','?'), ('&#185;','?'), ('&#186;','?'), ('&#187;','»'), ('&#188;','?'), ('&#189;','?'), ('&#190;','?'), ('&#191;','?'), ('&#192;','A'), ('&#193;','A'), ('&#194;','A'), ('&#195;','A'), ('&#196;','A'), ('&#197;','A'), ('&#198;','?'), ('&#199;','C'), ('&#200;','E'), ('&#201;','E'), ('&#202;','E'), ('&#203;','E'), ('&#204;','I'), ('&#205;','I'), ('&#206;','I'), ('&#207;','I'), ('&#208;','?'), ('&#209;','N'), ('&#210;','O'), ('&#211;','O'), ('&#212;','O'), ('&#213;','O'), ('&#214;','O'), ('&#215;','?'), ('&#216;','O'), ('&#217;','U'), ('&#218;','U'), ('&#219;','U'), ('&#220;','U'), ('&#221;','Y'), ('&#222;','?'), ('&#223;','?'), ('&#224;','a'), ('&#225;','a'), ('&#226;','a'), ('&#227;','a'), ('&#228;','a'), ('&#229;','a'), ('&#230;','?'), ('&#231;','c'), ('&#232;','e'), ('&#233;','e'), ('&#234;','e'), ('&#235;','e'), ('&#236;','i'), ('&#237;','i'), ('&#238;','i'), ('&#239;','i'), ('&#240;','?'), ('&#241;','n'), ('&#242;','o'), ('&#243;','o'), ('&#244;','o'), ('&#245;','o'), ('&#246;','o'), ('&#247;','?'), ('&#248;','o'), ('&#249;','u'), ('&#250;','u'), ('&#251;','u'), ('&#252;','u'), ('&#253;','y'), ('&#254;','?'), ('&#255;','y'), ('&laquo;','"'), ('&raquo;','"'), ('&nbsp;',' '), ('&mdash;','-')]
 	for i in L:
 		x=x.replace(i[0], i[1])
 	return x
@@ -138,7 +135,7 @@ def login_or_none():
 	cookiejar = requests.cookies.RequestsCookieJar()
 	values = {'username': ktv_login, 'password':ktv_password}
 	s = requests.Session()
-	r = s.post(siteurl + "/takelogin.php",data=values,cookies=cookiejar,headers=headers,proxies=ktv_proxy)
+	r = s.post(siteurl + "/takelogin.php",data=values,cookies=cookiejar,headers=headers,proxies=ktv_proxy,timeout=60)
 	getted=True
 	cookiejar.update(s.cookies)
 	for cook in cookiejar:
@@ -187,9 +184,9 @@ def GET(target, post = None, needlogin = False):
 		else:
 			cookiejar = None
 		if post is None:
-			r = requests.get(target,headers=headers,cookies=cookiejar,proxies=ktv_proxy)
+			r = requests.get(target,headers=headers,cookies=cookiejar,proxies=ktv_proxy,timeout=60)
 		else:
-			r = requests.post(target,data=post,headers=headers,cookies=cookiejar,proxies=ktv_proxy)
+			r = requests.post(target,data=post,headers=headers,cookies=cookiejar,proxies=ktv_proxy,timeout=60)
 		http = r.content
 		return http
 	except Exception, e:
@@ -204,7 +201,8 @@ def mainScreen(params):
 	PlaceFolder('Главная',{'func': 'get_main', 'link':siteurl + '/'})
 	PlaceFolder('Топ раздач',{'func': 'get_top'})
 	PlaceFolder('Новинки',{'func': 'get_top1', 'link':siteurl + '/novinki.php'})
-	PlaceFolder('Раздачи',{'func': 'get_search'})
+	PlaceFolder('Раздачи',{'func': 'get_search','from_person':'0'})
+	PlaceFolder('Персоны',{'func': 'get_person','from_add_person':'0'})
 	PlaceFolder('Поиск раздач',{'func': 'get_customsearch'})
 	PlaceFolder('История',{'func': 'get_history'})
 	PlaceFolder('Настройки',{'func': 'open_settings'})
@@ -245,6 +243,181 @@ def get_custom(params):
 	__addon__.setSetting('sorting',str(isorting))
 	xbmc.executebuiltin('Container.Refresh(%s?func=get_customsearch)' % sys.argv[0])
 
+def get_person_search(params):
+	keyboard = xbmc.Keyboard('','Поиск персоны')
+	keyboard.doModal()
+	if (keyboard.isConfirmed() == False):
+		return
+	http = GET(siteurl + '/personsearch.php?s=' + urllib.quote_plus(keyboard.getText()))
+	http = http.decode('cp1251').encode('utf8')
+	http = http.replace('class="prs2"','class="prs"')
+	f = '<div class="prs">'
+	if f not in http:
+		showMessage('Не найдено','Персоны не найдены')
+		return
+	http = http[http.find(f) + len(f):]
+	http = http[:http.find('</div>')]
+	all = BeautifulSoup(http)
+	if all == None:
+		return
+	all = all.findAll('a')
+	L = [[],[]]
+	for aa in all:
+		tit = aa.get('title')
+		pu = aa.get('href')
+		pu = pu.split('=')[2]
+		#pi = aa.find('img').get('src')
+		#li = xbmcgui.ListItem(tit,tit,pi,pi)
+		L[0].append(tit)
+		L[1].append(pu)
+
+	dialog = xbmcgui.Dialog()
+	ret = dialog.select('Найдено персон', L[0])
+	if ret == -1:
+		return
+	http = GET(siteurl + '/bookmarks.php?type=4&add=' + L[1][ret],None,True)
+	xbmc.executebuiltin("Container.Refresh")
+
+def get_person_film_adv(ss,http):
+	f = ss + '</div><div class=pad10x10>'
+	http = http[http.find(f) + len(f):]
+	http = http[:http.find('<div class="bx1">')-13]
+	http = re.sub('\r\n', '', http)
+	L = http.split('<br />')
+	a = ["(сериал)", "(короткометражный)", "(ТВ)", "(видео, короткометражный)","(видео)"]
+	for i in L:
+		i = i.strip()
+		if any(name in i[4:5] for name in (' ', '	')):
+			year = i[0:13]
+			if "–" in year.replace(' ','')[0:7]:
+				if "..." in year:
+					year = i[0:12]
+			else:
+				year = i[0:5]
+
+			name = i[len(year):]
+			serial = ''
+			for s in a:
+				if s in name:
+					name = name.replace(' ' + s,'')
+					serial = s + ' ';
+			whom = ''
+			idx = name.find("...")
+			if idx > 0: whom = name[idx+3:].strip()
+			name = name.replace("... " + whom,'')
+			if whom != '': whom = '(%s)' % whom.replace('...','').strip()
+			L1 = name.split('/')
+			rname = ''
+			oname = ''
+			if len(L1) > 1:
+				rname = L1[0].strip()
+				oname = PrepareStr(L1[1].strip())
+			else: 
+				rname = name.strip()
+			rname = PrepareStr(rname)
+			pn = '[COLOR=FFDDDDDD]%s %s(%s)[/COLOR]\r\n[COLOR=FF008BEE]%s %s[/COLOR]\r\n' % (rname,serial,year.strip(),oname,whom)
+			li = xbmcgui.ListItem(pn,pn,addon_icon,addon_icon)
+			if oname == '': oname = rname;
+			idx = oname.find('(')
+			if idx > 0:
+				oname = oname[0:idx].strip()
+			uri = construct_request({
+				'sname': oname,
+				'syear': year[0:4],
+				'from_person': '1',
+				'func': 'get_search'
+			})
+			xbmcplugin.addDirectoryItem(hos, uri, li, True)
+
+def get_person_film(params):
+	http = GET(siteurl + '/' + params['url'])
+	http = http.decode('cp1251').encode('utf8')
+	uri = construct_request({
+		'func': 'get_search'
+	})
+	if '<div class=b><span class="bulet"></span>Фильмография</div>' in http:
+		s = 'Фильмография'
+		li = xbmcgui.ListItem('------------ [UPPERCASE]' + s + '[/UPPERCASE] ------------')
+		xbmcplugin.addDirectoryItem(hos,uri,li,False)
+		get_person_film_adv(s,http)
+	if '<div class=b><span class="bulet"></span>Режиссер</div>' in http:
+		s = 'Режиссер'
+		li = xbmcgui.ListItem('------------ [UPPERCASE]' + s + '[/UPPERCASE] ------------')
+		xbmcplugin.addDirectoryItem(hos,uri,li,False)
+		get_person_film_adv(s,http)
+
+	xbmcplugin.setContent(int(sys.argv[1]), 'movies')
+	xbmcplugin.endOfDirectory(hos)
+	xbmc.executebuiltin('Container.SetViewMode(%s)' % 51)
+
+def get_person_info(params):
+	http = GET(siteurl + '/' + params['url'])
+	http = http.decode('cp1251').encode('utf8')
+	f = '<div class=b><span class="bulet"></span>Краткая биография</div>'
+	http = http[http.find(f) - 17:]
+	http = http[:http.find('<div class="clear"></div></div>')]
+	http = http.replace('	',' ')
+	if (http == None):
+		showMessage("Ошибка", "Информация не найдена")
+		return	
+	replacements = [('\r\n',''),('</b><br /><br />','[/B]\r\n'),('<div class=b><span class="bulet"></span>','[B]\r\n'),('</div><div class=pad10x10>','[/B]\r\n'),
+					(r'<div.*?>', ''), ('</div>', ''),(r'<a .*?>',''),('</a>',''),('<br />','\r\n'),('<b>','[B]'),('</b>','[/B]')]
+	for pat,repl in replacements:
+		http = re.sub(pat, repl, http)
+	http = re.sub(r'<div.*?>', '', http)
+	dialog = xbmcgui.Dialog()
+	dialog.textviewer('Информация о персоне ' + params['name'], http)
+
+def get_person(params):
+	if params['from_add_person'] == '2':
+		http = GET(siteurl + '/' + params['urldel'],None,True)
+		xbmc.executebuiltin("Container.Refresh")
+	http = GET(siteurl + '/bookmarks.php?type=4',None,True)
+	http = http.decode('cp1251').encode('utf8') #сделать функцию
+	all = BeautifulSoup(http)
+	li = xbmcgui.ListItem('Добавить персону')
+	uri = construct_request({
+		'func': 'get_person_search',
+	})
+	xbmcplugin.addDirectoryItem(hos, uri, li, True)
+	for div in all.findAll('div', attrs={'class':'bx5x5'}):
+		nn = div.find('a',attrs = {'class': 'sbab'}).text
+		pb = div.findAll('li')[1].text
+		pn = '[COLOR=FFDDDDDD]%s[/COLOR]\r\n[COLOR=FF008BEE]%s[/COLOR]\r\n' % (nn,pb.replace('Дата рождения:',''))
+		pi = div.find('img').get('src')
+		pu = div.findAll('a')[1].get('href')
+		pd = div.findAll('a')[0].get('href')
+		li = xbmcgui.ListItem(pn, pn, pi, pi)
+		menulist = []
+		uri = construct_request({
+			'name': nn,
+			'func': 'get_person_info',
+			'url': pu
+		})
+		menulist.append(('Информация о персоне', 'XBMC.RunPlugin(%s)' % uri))
+		uri = construct_request({
+			'from_add_person': '2',
+			'urldel': pd,
+			'func': 'get_person'
+		})
+		menulist.append(('Удалить из персон', 'XBMC.RunPlugin(%s)' % uri))
+		uri = construct_request({
+			'from_person': '2',
+			'sname': nn,
+			'func': 'get_search'
+		})
+		menulist.append(('Top раздач персоны', 'Container.Update(%s)' % uri))
+		li.addContextMenuItems(menulist)
+		uri = construct_request({
+			'name': nn,
+			'url': pu,
+			'func': 'get_person_film'
+		})
+		xbmcplugin.addDirectoryItem(hos, uri, li, True)
+	xbmcplugin.setContent(int(sys.argv[1]), 'movies')
+	xbmcplugin.endOfDirectory(hos)
+	xbmc.executebuiltin('Container.SetViewMode(%s)' % 51)
+
 def get_history(params):
 	http = GET(siteurl + '/hytorrents.php',None,True)
 	http = http.decode('cp1251').encode('utf8')
@@ -270,18 +443,18 @@ def get_history(params):
 		menulist = []
 		infouri = construct_request({
 			'func': 'get_info2',
-			'url': siteurl + "/" + url,
+			'url': siteurl + "/" + url
 		})
 		commuri = construct_request({
 			'func': 'get_comm',
-			'url': siteurl + "/" + url,
+			'url': siteurl + "/" + url
 		})
 		menulist.append(('Информация о раздаче', 'XBMC.RunPlugin(%s)' % infouri))
 		menulist.append(('Комментарии', 'XBMC.RunPlugin(%s)' % commuri))
 		li.addContextMenuItems(menulist)
 		uri = construct_request({
 			'func': 'get_info',
-			'url': siteurl + "/" + url,
+			'url': siteurl + "/" + url
 		})
 		xbmcplugin.addDirectoryItem(hos, uri, li, True)
 	xbmcplugin.setContent(int(sys.argv[1]), 'movies')
@@ -291,9 +464,9 @@ def get_history(params):
 def get_customsearch(params):
 	
 	try:
-		par=int(params['par'])
+		par = int(params['par'])
 	except:
-		par=None	  
+		par=None
 
 	PlaceLink('Искать в %s'%where[iwhere],{'func': 'get_custom', 'par':'1'})
 	PlaceLink('Искать %s'%show[ishow],{'func': 'get_custom', 'par':'2'})
@@ -302,7 +475,7 @@ def get_customsearch(params):
 	PlaceLink('Сортровка: %s'%sorting[isorting],{'func': 'get_custom', 'par':'5'})
 	PlaceLink('Год: %s' % iyear, {'func': 'get_querry', 'par':'year'})
 	PlaceLink('Искать: %s'%querry,{'func': 'get_querry'})
-	PlaceFolder('Поиск',{'func': 'get_search','s':'1'})
+	PlaceFolder('Поиск',{'func': 'get_search','s':'1','from_person':'0'})
 	xbmcplugin.endOfDirectory(hos)   
 
 def get_querry(params):
@@ -321,7 +494,7 @@ def get_querry(params):
 		elif int(iyear) > int(datetime.date.today().year):
 			showMessage('', '%s > %s' % (iyear, datetime.date.today().year))
 			iyear = datetime.date.today().year
-		__addon__.setSetting('year', str(iyear))	   
+		__addon__.setSetting('year', str(iyear))
 		
 	else:	
 		skbd = xbmc.Keyboard()
@@ -389,7 +562,7 @@ def get_main(params):
 		li.setInfo(type = "video", infoLabels = info)
 		uri = construct_request({
 			'func': 'get_info',
-			'url': siteurl + "/" + film.find('a')["href"],
+			'url': siteurl + "/" + film.find('a')["href"]
 		})
 		xbmcplugin.addDirectoryItem(hos, uri, li, True)
 	xbmcplugin.endOfDirectory(hos)
@@ -412,7 +585,7 @@ def get_plot(container):
 	plot = ""
 	for tag in container.contents:
 		if tag.__class__.__name__ == 'NavigableString':
-			plot = plot + '%s' % tag
+			plot = plot + '%s' % PrepareStr(tag)
 		elif tag.name == 'b':
 			plot = plot + '[B]' + tag.getText() + '[/B]'
 		elif tag.name == 'br':
@@ -489,7 +662,7 @@ def get_by_genre(img, info, id):
 		dict['folder'] = True
 		uri = construct_request({
 			'func': 'get_info',
-			'url': siteurl + "/" + url,
+			'url': siteurl + "/" + url
 		})
 		dict['url'] = uri
 		dict['id'] = ''
@@ -515,7 +688,7 @@ def get_by_persone(img,info, id):
 		dict['folder'] = True
 		uri = construct_request({
 			'func': 'get_info',
-			'url': siteurl + "/" + url,
+			'url': siteurl + "/" + url
 		})
 		dict['url'] = uri
 		dict['id'] = ''
@@ -541,7 +714,7 @@ def get_by_seed(img, info, id):
 		dict['folder'] = True
 		uri = construct_request({
 			'func': 'get_info',
-			'url': siteurl + "/" + url,
+			'url': siteurl + "/" + url
 		})
 		dict['url'] = uri
 		dict['id'] = ''
@@ -566,7 +739,7 @@ def get_by_like(container, img, info, id):
 			dict['folder'] = True
 			uri = construct_request({
 				'func': 'get_info',
-				'url': siteurl + "/" + url,
+				'url': siteurl + "/" + url
 			})
 			dict['url'] = uri
 			dict['id'] = ''
@@ -764,40 +937,45 @@ def get_info(params):
 
 def get_search(params):
 	try:
-		if params.has_key('s'):
-			g=int(__addon__.getSetting('where'))
-			c=cshow[ishow]
-			v=cform[iform]
-			w=cfilter[ifilter]
-			t=csorting[isorting]
-			qu= querry.decode('utf-8').encode('cp1251')
-			iyear=__addon__.getSetting('year')
+		if params['from_person'] == '2':
+			qu = params['sname']
+			link = siteurl + '/browse.php?s=%s&g=1&t=1' % (urllib.quote_plus(qu))
+		elif params['from_person'] == '1':
+			qu = params['sname']
+			iyear = params['syear']
+			link = siteurl + '/browse.php?s=%s&d=%s&t=1' % (urllib.quote_plus(qu),iyear)
 		else:
-			g = 0
-			c = 0
-			v = 0
-			w = 0
-			t = 0
-			qu = ""
-			iyear = "0"
-
-		link = siteurl + '/browse.php?s=%s&g=%s&c=%s&v=%s&d=%s&w=%s&t=%s&f=0'%(urllib.quote_plus(qu),g,c,v,iyear,w,t)
-
+			if params.has_key('s'):
+				g = int(__addon__.getSetting('where'))
+				c = cshow[ishow]
+				v = cform[iform]
+				w = cfilter[ifilter]
+				t = csorting[isorting]
+				qu = querry.decode('utf-8').encode('cp1251')
+				iyear = __addon__.getSetting('year')
+			else:
+				g = 0
+				c = 0
+				v = 0
+				w = 0
+				t = 0
+				qu = ""
+				iyear = "0"
+			link = siteurl + '/browse.php?s=%s&g=%s&c=%s&v=%s&d=%s&w=%s&t=%s&f=0'%(urllib.quote_plus(qu),g,c,v,iyear,w,t)
 	except Exception, e:
 		return
 		link = siteurl + '/browse.php?s=&g=0&c=0&v=0&d=0&w=0&t=0&f=0'
 	http = GET(link)
 	beautifulSoup = BeautifulSoup(http)
-	cat= beautifulSoup.findAll('tr')
-	leng=len(cat)
+	cat = beautifulSoup.findAll('tr')
+	leng = len(cat)
 	for film in cat:
 		try:
-			
-			size= film.findAll('td', attrs={'class':'s'})[1].string
-			peers= film.findAll('td', attrs={'class':'sl_s'})[0].string
-			seeds= film.findAll('td', attrs={'class':'sl_p'})[0].string
+			size = film.findAll('td', attrs={'class':'s'})[1].string
+			peers = film.findAll('td', attrs={'class':'sl_s'})[0].string
+			seeds = film.findAll('td', attrs={'class':'sl_p'})[0].string
 			xa = film.find('td', attrs={'class':'nam'}).find('a')
-			title= PrepareStr(xa.string)
+			title = PrepareStr(xa.string)
 			if xa['class'] == 'r1':
 				title = '[COLOR=FFDCAF35]%s[/COLOR]' % title
 			elif xa['class'] == 'r2':
@@ -813,7 +991,7 @@ def get_search(params):
 			#if 'http' not in img: img=siteurl + '%s'%img
 			img = addon_icon
 			torrlink = siteurl + '/download.php/%s/[kinozal.tv]id%s.torrent'%(lik[1],lik[1])
-			li = xbmcgui.ListItem('%s\r\n[COLOR=FF008BEE](peers: %s seeds:%s size%s)[/COLOR]'%(title,peers, seeds, size),addon_icon,img)
+			li = xbmcgui.ListItem('%s\r\n[COLOR=FF008BEE](peers: %s seeds: %s size%s)[/COLOR]'%(title,peers,seeds,size),addon_icon,img)
 			li.setProperty('fanart_image', img)
 			#uri = construct_request({
 			#	'func': 'play',
@@ -822,15 +1000,20 @@ def get_search(params):
 			#	'img':addon_icon,
 			#	'title':title
 			#})
+			menulist = []
+			infouri = construct_request({
+				'func': 'get_info2',
+				'url': siteurl + "/" + xa["href"]
+			})
+			menulist.append(('Информация о раздаче', 'XBMC.RunPlugin(%s)' % infouri))
+			li.addContextMenuItems(menulist)
 			uri = construct_request({
 				'func': 'get_info',
-				'url': siteurl + "/" + xa["href"],
+				'url': siteurl + "/" + xa["href"]
 			})
 			xbmcplugin.addDirectoryItem(hos, uri, li, True, totalItems=leng)
-	
 		except: pass
 	xbmcplugin.endOfDirectory(hos)
-	#(50,51,500,501,508,503,504,515,505,511,550,551,560)
 	xbmc.executebuiltin('Container.SetViewMode(%s)' % 51)
 
 def get_years(params):
@@ -883,18 +1066,18 @@ def get_top1(params):
 		menulist = []
 		infouri = construct_request({
 			'func': 'get_info2',
-			'url': siteurl + "/" + m['href'],
+			'url': siteurl + "/" + m['href']
 		})
 		commuri = construct_request({
 			'func': 'get_comm',
-			'url': siteurl + "/" + m['href'],
+			'url': siteurl + "/" + m['href']
 		})
 		menulist.append(('Информация о раздаче', 'XBMC.RunPlugin(%s)' % infouri))
 		menulist.append(('Комментарии', 'XBMC.RunPlugin(%s)' % commuri))
 		li.addContextMenuItems(menulist)
 		uri = construct_request({
 			'func': 'get_info',
-			'url': siteurl + "/" + m['href'],
+			'url': siteurl + "/" + m['href']
 		})
 		xbmcplugin.addDirectoryItem(hos, uri, li, True)
 	xbmcplugin.endOfDirectory(hos)
@@ -922,7 +1105,7 @@ def get_bookmarks(params):
 			li = xbmcgui.ListItem(PrepareStr(desc['title']),addon_icon,addon_icon)
 			uri = construct_request({
 				'func': 'get_info',
-				'url': siteurl + "/" + desc['url'],
+				'url': siteurl + "/" + desc['url']
 			})
 			tds = line.findAll("td", attrs={'class': 's'})
 			delbookmarkuri = construct_request({
@@ -962,7 +1145,7 @@ def play_torrent(params):
 			ind = 0
 			cind= 0
 			for i in L:
-				name = ru(i['path'][-1])
+				name = i['path'][-1]
 				if '.srt' not in name: 
 					ind = cind
 					tm += 1
@@ -973,7 +1156,7 @@ def play_torrent(params):
 				ind = 0
 				img = params["img"]
 				for i in L:
-					name = ru(i['path'][-1])
+					name = i['path'][-1]
 					if name[-4:] != '.srt':
 						li = xbmcgui.ListItem(name, iconImage=img, thumbnailImage=img)
 						uri = construct_request({
@@ -1009,10 +1192,8 @@ def play(fle, ind):
 	xbmcplugin.setResolvedUrl(int(sys.argv[1]), True, item)
 	#xbmc.executebuiltin("Container.Refresh")
 
-def ru(x):return unicode(x,'utf8', 'ignore')
-
 def debug(s):
-	fl = open(os.path.join(ru(__addon__.getAddonInfo('path')),"test.txt"), "a+")
+	fl = open(os.path.join(__addon__.getAddonInfo('path'),"test.txt"), "a+")
 	fl.write(s)
 	fl.close()
 
