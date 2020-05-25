@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addon id="plugin.video.const.kinozal.tv"
 	   name="kinozal.tv"
-	   version="1.1.7"
+	   version="1.1.8"
 	   provider-name="nuismons">
 	<requires>
 		<import addon="xbmc.python" version="2.1.0"/>
@@ -14,7 +14,7 @@
 	</extension>
 	<extension point="xbmc.addon.metadata">
 		<summary>const.kinozal.tv</summary>
-		<description>kinozal.tv - торрент трекер фильмов и сериалов[CR][CR]История изменений:[CR]1. Добавлен раздел "Персоны"[CR]2. Исправлены ошибки
+		<description>kinozal.tv - торрент трекер фильмов и сериалов[CR][CR]История изменений:[CR]1. Исправлены ошибки
 		</description>
 		<platform>all</platform>
 	</extension>

@@ -1,8 +1,8 @@
 ﻿#!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-import urllib, urlparse, requests, contextlib
-import re, cookielib, sys, os
+import urllib,urlparse,requests,contextlib
+import re,cookielib,sys,os
 
 import xbmcplugin
 import xbmcgui
@@ -31,10 +31,13 @@ headers = {'User-Agent' : 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit
 		   'Accept' : '*/*','Accept-Language' : 'ru,en-US;q=0.7,en;q=0.3','Referer' : siteurl,
 		   'Accept-Encoding' : 'gzip, deflate','Host' : siteurl.replace('https://','').replace('http://',''),'Connection' : 'Keep-Alive'}
 
+def human(s):
+	return s.decode('cp1251').encode('utf8')
+
 def torrkill(params):
 	if xbmcgui.Dialog().yesno('Очистка папки','Очистить папку торрентов ?',autoclose=15000):
 		import shutil
-		folder = __addon__.getAddonInfo('path') + '\\torrents'
+		folder = os.path.join(__addon__.getAddonInfo('path'),'torrents')
 		for filename in os.listdir(folder):
 			file_path = os.path.join(folder, filename)
 			try:
@@ -94,7 +97,7 @@ addon_author  = __addon__.getAddonInfo('author')
 addon_name	= __addon__.getAddonInfo('name')
 addon_version = __addon__.getAddonInfo('version')
 
-def showMessage(heading, message, times = 3000, pics = addon_icon):
+def showMessage(heading, message, times = 5000, pics = addon_icon):
 	try: xbmc.executebuiltin('XBMC.Notification("%s", "%s", %s, "%s")' % (heading.encode('utf-8'), message.encode('utf-8'), times, pics.encode('utf-8')))
 	except Exception, e:
 		xbmc.log( '[%s]: showMessage: Transcoding UTF-8 failed [%s]' % (addon_id, e), 2 )
@@ -248,8 +251,7 @@ def get_person_search(params):
 	keyboard.doModal()
 	if (keyboard.isConfirmed() == False):
 		return
-	http = GET(siteurl + '/personsearch.php?s=' + urllib.quote_plus(keyboard.getText()))
-	http = http.decode('cp1251').encode('utf8')
+	http = human(GET(siteurl + '/personsearch.php?s=' + urllib.quote_plus(keyboard.getText())))
 	http = http.replace('class="prs2"','class="prs"')
 	f = '<div class="prs">'
 	if f not in http:
@@ -330,17 +332,16 @@ def get_person_film_adv(ss,http):
 			xbmcplugin.addDirectoryItem(hos, uri, li, True)
 
 def get_person_film(params):
-	http = GET(siteurl + '/' + params['url'])
-	http = http.decode('cp1251').encode('utf8')
+	http = human(GET(siteurl + '/' + params['url']))
 	uri = construct_request({
 		'func': 'get_search'
 	})
-	if '<div class=b><span class="bulet"></span>Фильмография</div>' in http:
+	if 'Фильмография</div>' in http:
 		s = 'Фильмография'
 		li = xbmcgui.ListItem('------------ [UPPERCASE]' + s + '[/UPPERCASE] ------------')
 		xbmcplugin.addDirectoryItem(hos,uri,li,False)
 		get_person_film_adv(s,http)
-	if '<div class=b><span class="bulet"></span>Режиссер</div>' in http:
+	if 'Режиссер</div>' in http:
 		s = 'Режиссер'
 		li = xbmcgui.ListItem('------------ [UPPERCASE]' + s + '[/UPPERCASE] ------------')
 		xbmcplugin.addDirectoryItem(hos,uri,li,False)
@@ -351,8 +352,7 @@ def get_person_film(params):
 	xbmc.executebuiltin('Container.SetViewMode(%s)' % 51)
 
 def get_person_info(params):
-	http = GET(siteurl + '/' + params['url'])
-	http = http.decode('cp1251').encode('utf8')
+	http = human(GET(siteurl + '/' + params['url']))
 	f = '<div class=b><span class="bulet"></span>Краткая биография</div>'
 	http = http[http.find(f) - 17:]
 	http = http[:http.find('<div class="clear"></div></div>')]
@@ -372,8 +372,7 @@ def get_person(params):
 	if params['from_add_person'] == '2':
 		http = GET(siteurl + '/' + params['urldel'],None,True)
 		xbmc.executebuiltin("Container.Refresh")
-	http = GET(siteurl + '/bookmarks.php?type=4',None,True)
-	http = http.decode('cp1251').encode('utf8') #сделать функцию
+	http = human(GET(siteurl + '/bookmarks.php?type=4',None,True))
 	all = BeautifulSoup(http)
 	li = xbmcgui.ListItem('Добавить персону')
 	uri = construct_request({
@@ -419,8 +418,7 @@ def get_person(params):
 	xbmc.executebuiltin('Container.SetViewMode(%s)' % 51)
 
 def get_history(params):
-	http = GET(siteurl + '/hytorrents.php',None,True)
-	http = http.decode('cp1251').encode('utf8')
+	http = human(GET(siteurl + '/hytorrents.php',None,True))
 	f = '<td class="z">Залит</td></tr>'
 	http = http[http.find(f) + len(f) + 1:]
 	http = http[:http.find('</table></div>')]
@@ -1119,7 +1117,7 @@ def get_bookmarks(params):
 def play_torrent(params):
 	try:
 		id = params['torr_id']
-		fle = os.path.join(__addon__.getAddonInfo('path') + '\\torrents\\',id + '.torrent')
+		fle = os.path.join(__addon__.getAddonInfo('path'),'torrents',id + '.torrent')
 		if os.path.isfile(fle) and (__addon__.getSetting("use_save_torr") == 'true'):
 			f = open(fle, "rb")
 			torr_data = f.read()
@@ -1186,7 +1184,7 @@ def play_url(params):
 	play(params["torr_id"],params["ind"])
 
 def play(fle, ind):	
-	fle = os.path.join(__addon__.getAddonInfo('path') + '\\torrents\\',fle + '.torrent')
+	fle = os.path.join(__addon__.getAddonInfo('path'),'torrents',fle + '.torrent')
 	purl = "plugin://plugin.video.tam/?mode=play&url=" + urllib.quote_plus(fle) + "&ind=" + str(ind)
 	item = xbmcgui.ListItem(path=purl)
 	xbmcplugin.setResolvedUrl(int(sys.argv[1]), True, item)
