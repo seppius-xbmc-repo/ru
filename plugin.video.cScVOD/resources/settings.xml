@@ -1,7 +1,0 @@
-<settings>
-	<setting id="mac" label="MAC-адрес" type="text" default="" />
-	<setting id="vk" label="Выбор качества ВКонтакте" type="enum" values="On|Off" default="1" /> 
-	<setting id="fanart" label="Картинка как фон" type="enum" values="On|Off" default="1" />
-	<setting id="requestTimeOut" label="Время запроса" type="enum" values="5|10|20|30" default="0" />
-	<setting id="list" type="enum" label="Вид списка" values="Media info 1|Миниатюры|Media info 2|Media info 3|Карусель постеров" default="0"/>	
-</settings>
