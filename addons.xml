@@ -509,6 +509,30 @@ Audio sources are
   </extension>
 </addon>
 
+<addon id="plugin.video.playlistLoader" name="Playlist Loader" version="1.2.2ru" provider-name="Avigdor">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource" library="default.py">
+        <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en">Playlist Loader</summary>
+    <summary lang="he">Playlist Loader</summary>
+    <description lang="en">Playlist Loader</description>
+    <description lang="he">Playlist Loader</description>
+    <platform>all</platform>
+	<news>
+1.2.2
+- Added #EXTGRP tag support
+1.2.0
+- (fix) support strings.xml (old Kodi versions).
+1.1.9
+- Added an option to show groups in channels lists.
+	</news>
+  </extension>
+</addon>
+
 <addon id="plugin.video.playlistLoader.a" name="Playlist Loader.a" version="1.1.4" provider-name="Avigdor">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>

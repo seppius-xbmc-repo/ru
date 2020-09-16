@@ -1,0 +1,56 @@
+1.2.2
+- Added #EXTGRP tag support
+1.2.0
+- (fix) support strings.xml (old Kodi versions).
+1.1.9
+- Added an option to show groups in channels lists (addon settings).
+1.1.8
+- Added the possibility to add lists from SMB.
+- Bugfix for playing only last item in some lists.
+1.1.7
+- Addon moved back to my repo.
+1.1.6
+- Bugfix.
+1.1.5
+- Bugfix for Lists with none English names not worked well. (Thanks HAL9000)
+1.1.4
+- Bugfix for last ver.
+1.1.3
+- Added support redirected links.
+1.1.2
+- Added support routing acestream links to plexus.
+1.1.1
+- Bugfix for last ver.
+1.1.0
+- Added an option to give a cache time (in minutes) for remote lists. (context menu \ new list)
+1.0.9
+- Bugfix.
+1.0.8
+- Added option to change (edit) list and favorites properties (context menu).
+- Added option to move items in list and favorites-list (context menu).
+1.0.7
+- Added option to set logos for lists and channels.
+- Added option to set logos base url or folder for m3u lists.
+1.0.6
+- Fix for checking if file exist before backup.
+1.0.5
+- Fix for names in some encodings.
+- Added backup for files is there was problems while trying to read data.
+- Added option to delete playlist file and favourites file from addon settings.
+1.0.4
+- Fix for channel name in some encodings.
+- Change: select playlist source after you enter the playlist name.
+1.0.3
+- Added supoort for hebrew
+1.0.2
+- Added support for adding a channel from a list to favorites list (right click on channel)
+- Added support for adding a channel manually to favorites list
+1.0.1
+- Fix for some channels was missing from list 
+- Fix for addind a list with empty url
+1.0.0
+- Added support for local lists (file) and remote lists (url)
+0.0.7:
+- Initial release
+  support plx and m3u lists.
+  you can remove a list by right click on it and choose remove from menu.
