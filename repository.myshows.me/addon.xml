@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="repository.myshows.me" name="MyShows.me Kodi Repo" version="1.0.6" provider-name="DiMartino">
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="repository.myshows.me" name="MyShows.me Kodi Repo" version="1.0.7" provider-name="DiMartino">
 	<extension point="xbmc.addon.repository" name="MyShows.me Kodi Repo">
-		<info compressed="false">https://bitbucket.org/DiMartino/myshows.me-kodi-repo/raw/default/addons.xml</info>
-		<checksum>https://bitbucket.org/DiMartino/myshows.me-kodi-repo/raw/default/addons.xml.md5</checksum>
-		<datadir zip="true">https://bitbucket.org/DiMartino/myshows.me-kodi-repo/raw/default/repo/</datadir>
+		<info compressed="true">https://raw.github.com/DiMartinoX/repository.myshows.me/master/repo/addons.xml</info>
+		<checksum>https://raw.github.com/DiMartinoX/repository.myshows.me/master/repo/addons.xml.md5</checksum>
+		<datadir zip="true">https://raw.github.com/DiMartinoX/repository.myshows.me/master/repo/</datadir>
 	</extension>
 	<extension point="xbmc.addon.metadata">
 		<summary>Устанавливайте дополнения из репозитория MyShows.me</summary>
