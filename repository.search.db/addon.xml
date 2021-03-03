@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addon id="repository.search.db"
 		name="XBMC.ru search db"
-		version="1.1.50"
+		version="1.1.51"
 		provider-name="bigbax">
   <requires>
     <import addon="xbmc.addon" version="12.0.0"/>
@@ -23,7 +23,7 @@
 			<checksum>https://raw.github.com/dandygithub/kodi/master/addons/addons.xml.md5</checksum>
 			<datadir zip="true">https://raw.github.com/dandygithub/kodi/master/addons/zip/</datadir>
 		</dir>
-        <dir minversion="18.9.0">
+        <dir minversion="18.9.701">
 			<info compressed="false">https://raw.github.com/dandygithub/kodi/matrix/addons/addons.xml</info>
 			<checksum>https://raw.github.com/dandygithub/kodi/matrix/addons/addons.xml.md5</checksum>
 			<datadir zip="true">https://raw.github.com/dandygithub/kodi/matrix/addons/zip/</datadir>
@@ -78,12 +78,12 @@
 			<checksum>https://raw.github.com/mrstealth/xbmc-gotham/master/addons.xml.md5</checksum>
 			<datadir zip="true">https://raw.github.com/mrstealth/xbmc-gotham/master/zip/</datadir>
 		</dir>
-        <dir minversion="16.0.0">
+        <dir minversion="16.0.0" maxversion="18.9.0">
 			<info compressed="false">https://nemiroff.github.io/kodi_repo/repo/addons.xml</info>
 			<checksum>https://nemiroff.github.io/kodi_repo/repo/addons.xml.md5</checksum>
 			<datadir zip="true">https://nemiroff.github.io/kodi_repo/repo</datadir>
 		</dir>
-        <dir minversion="18.9.0">
+        <dir minversion="18.9.701">
 			<info compressed="false">https://nemiroff.github.io/kodi_repo/repo/addons_matrix.xml</info>
 			<checksum>https://nemiroff.github.io/kodi_repo/repo/addons_matrix.xml.md5</checksum>
 			<datadir zip="true">https://nemiroff.github.io/kodi_repo/repo</datadir>
@@ -113,12 +113,12 @@
 			<checksum>https://raw.githubusercontent.com/nkvoronov/repository.yellowdragon.ext/leia/repo/addons.xml.md5</checksum>
 			<datadir zip="true">https://raw.githubusercontent.com/nkvoronov/repository.yellowdragon.ext/leia/repo/</datadir>
 		</dir>
-        <dir minversion="18.9.0">
+        <dir minversion="18.9.701">
 			<info compressed="false">https://raw.githubusercontent.com/nkvoronov/repository.yellowdragon/matrix/repo/addons.xml</info>
 			<checksum>https://raw.githubusercontent.com/nkvoronov/repository.yellowdragon/matrix/repo/addons.xml.md5</checksum>
 			<datadir zip="true">https://raw.githubusercontent.com/nkvoronov/repository.yellowdragon/matrix/repo/</datadir>
 		</dir>
-        <dir minversion="18.9.0">
+        <dir minversion="18.9.701">
 			<info compressed="false">https://raw.githubusercontent.com/nkvoronov/repository.yellowdragon.dev/matrix/repo/addons.xml</info>
 			<checksum>https://raw.githubusercontent.com/nkvoronov/repository.yellowdragon.dev/matrix/repo/addons.xml.md5</checksum>
 			<datadir zip="true">https://raw.githubusercontent.com/nkvoronov/repository.yellowdragon.dev/matrix/repo/</datadir>
@@ -218,12 +218,12 @@
 			<checksum>https://vlmaksime.github.io/repository.vlmaksime/repo/helix/repository.xml.md5</checksum>
 			<datadir zip="true">https://vlmaksime.github.io/repository.vlmaksime/repo/helix/</datadir>
 		</dir>
-		<dir minversion="18.9.0">
+		<dir minversion="18.9.701">
 			<info>https://vlmaksime.github.io/repository.vlmaksime/repo/matrix/repository.xml</info>
 			<checksum>https://vlmaksime.github.io/repository.vlmaksime/repo/matrix/repository.xml.md5</checksum>
 			<datadir zip="true">https://vlmaksime.github.io/repository.vlmaksime/repo/matrix/</datadir>
 		</dir>
-        <dir minversion="18.9.0">
+        <dir minversion="18.9.701">
           <info>https://vlmaksime.github.io/repository.vlmaksime/repo/matrix/addons.xml</info>
           <checksum>https://vlmaksime.github.io/repository.vlmaksime/repo/matrix/addons.xml.md5</checksum>
           <datadir zip="true">https://vlmaksime.github.io/repository.vlmaksime/repo/matrix/</datadir>
