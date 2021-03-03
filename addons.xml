@@ -1136,7 +1136,7 @@ Audio sources are
 
 <addon id="repository.search.db"
 		name="XBMC.ru search db"
-		version="1.1.49"
+		version="1.1.50"
 		provider-name="bigbax">
   <requires>
     <import addon="xbmc.addon" version="12.0.0"/>
@@ -1188,12 +1188,12 @@ Audio sources are
 			<checksum>https://raw.githubusercontent.com/evgen-dev/repository.evgen_dev.xbmc-addons/master/addons.xml.md5?v=1</checksum>
 			<datadir zip="true">https://raw.githubusercontent.com/evgen-dev/repository.evgen_dev.xbmc-addons/master/repo</datadir>
 		</dir>
-        <dir minversion="16.0.0">
+        <dir minversion="16.0.0" maxversion="18.9.0">
 			<info compressed="false">https://github.com/Eviloid/kodi.repository/raw/master/addons.xml</info>
 			<checksum>https://github.com/Eviloid/kodi.repository/raw/master/addons.xml.md5</checksum>
 			<datadir zip="true">https://github.com/Eviloid/kodi.repository/raw/master/</datadir>
 		</dir>
-        <dir minversion="18.9.0">
+        <dir minversion="18.9.701">
 			<info compressed="false">https://github.com/Eviloid/kodi.repository/raw/master/matrix/addons.xml</info>
 			<checksum>https://github.com/Eviloid/kodi.repository/raw/master/matrix/addons.xml.md5</checksum>
 			<datadir zip="true">https://github.com/Eviloid/kodi.repository/raw/master/matrix/</datadir>
