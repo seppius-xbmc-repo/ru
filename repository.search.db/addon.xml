@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addon id="repository.search.db"
 		name="XBMC.ru search db"
-		version="1.1.46"
+		version="1.1.47"
 		provider-name="bigbax">
   <requires>
     <import addon="xbmc.addon" version="12.0.0"/>
@@ -13,27 +13,57 @@
 			<checksum>https://github.com/seppius-xbmc-repo/ru/raw/master/addons.xml.md5</checksum>
 			<datadir zip="true">https://github.com/seppius-xbmc-repo/ru/raw/master/</datadir>
 		</dir>
-		<dir minversion="13.0.0">
-			<info compressed="false">https://raw.githubusercontent.com/weirdgiraffe/kodi.addon.repo/master/addons/addons.xml</info>
-            <checksum>https://raw.githubusercontent.com/weirdgiraffe/kodi.addon.repo/master/addons/addons.xml.md5</checksum>
-            <datadir zip="true">https://raw.githubusercontent.com/weirdgiraffe/kodi.addon.repo/master/addons/</datadir>
+        <dir minversion="14.0.0">
+			<info compressed="false">https://raw.githubusercontent.com/anteo/xbmc.repository/master/addons.xml</info>
+			<checksum>https://raw.githubusercontent.com/anteo/xbmc.repository/master/addons.xml.md5</checksum>
+			<datadir zip="true">https://raw.githubusercontent.com/anteo/xbmc.repository/master</datadir>
 		</dir>
-		<dir minversion="13.0.0">
-			<info compressed="false">https://raw.githubusercontent.com/DmitrySandalov/xbmc-repo/master/addons/addons.xml</info>
-            <checksum>https://raw.githubusercontent.com/DmitrySandalov/xbmc-repo/master/addons/addons.xml.md5</checksum>
-            <datadir zip="true">https://github.com/DmitrySandalov/xbmc-repo/raw/master/repo/zip</datadir>
+        <dir minversion="14.0.0">
+			<info compressed="false">https://raw.github.com/dandygithub/kodi/master/addons/addons.xml</info>
+			<checksum>https://raw.github.com/dandygithub/kodi/master/addons/addons.xml.md5</checksum>
+			<datadir zip="true">https://raw.github.com/dandygithub/kodi/master/addons/zip/</datadir>
 		</dir>
         <dir minversion="13.0.0">
 			<info compressed="false">https://raw.github.com/DiMartinoX/repository.myshows.me/master/repo/addons.xml</info>
             <checksum>https://raw.github.com/DiMartinoX/repository.myshows.me/master/repo/addons.xml.md5</checksum>
             <datadir zip="true">https://raw.github.com/DiMartinoX/repository.myshows.me/master/repo/</datadir>
 		</dir>
+        <dir minversion="13.0.0">
+			<info compressed="false">https://raw.githubusercontent.com/DmitrySandalov/xbmc-repo/master/addons/addons.xml</info>
+            <checksum>https://raw.githubusercontent.com/DmitrySandalov/xbmc-repo/master/addons/addons.xml.md5</checksum>
+            <datadir zip="true">https://github.com/DmitrySandalov/xbmc-repo/raw/master/repo/zip</datadir>
+		</dir>
+        <dir minversion="14.0.0">
+			<info compressed="false">https://github.com/dvor85/kodi.repo/raw/master/addons.xml</info>
+			<checksum>https://github.com/dvor85/kodi.repo/raw/master/addons.xml.md5</checksum>
+			<datadir zip="true">https://github.com/dvor85/kodi.repo/raw/master/</datadir>
+		</dir>
+        <dir minversion="14.0.0">
+			<info compressed="false">https://github.com/Eugene-Bond/xmbc-plugins/raw/master/addons.xml</info>
+			<checksum>https://github.com/Eugene-Bond/xmbc-plugins/raw/master/addons.xml.md5</checksum>
+			<datadir zip="true">https://github.com/Eugene-Bond/xmbc-plugins/raw/master/</datadir>
+		</dir>
+        <dir minversion="14.0.0">
+			<info compressed="false">https://raw.githubusercontent.com/evgen-dev/repository.evgen_dev.xbmc-addons/master/addons.xml?v=1</info>
+			<checksum>https://raw.githubusercontent.com/evgen-dev/repository.evgen_dev.xbmc-addons/master/addons.xml.md5?v=1</checksum>
+			<datadir zip="true">https://raw.githubusercontent.com/evgen-dev/repository.evgen_dev.xbmc-addons/master/repo</datadir>
+		</dir>
+        <dir minversion="18.9.0">
+			<info compressed="false">https://github.com/Eviloid/kodi.repository/raw/master/addons.xml</info>
+			<checksum>https://github.com/Eviloid/kodi.repository/raw/master/addons.xml.md5</checksum>
+			<datadir zip="true">https://github.com/Eviloid/kodi.repository/raw/master/</datadir>
+		</dir>
+        <dir minversion="14.0.0">
+			<info compressed="false">https://raw.githubusercontent.com/xbmc-addon/repository.hal9000/master/addons.xml</info>
+            <checksum>https://raw.githubusercontent.com/xbmc-addon/repository.hal9000/master/addons.xml.md5</checksum>
+            <datadir zip="true">https://raw.githubusercontent.com/xbmc-addon/repository.hal9000/master/repo</datadir>
+		</dir>
         <dir minversion="16.0.0">
 			<info compressed="false">https://github.com/lysyiklad/repokodi/raw/master/addons.xml</info>
 			<checksum>https://github.com/lysyiklad/repokodi/raw/master/addons.xml.md5</checksum>
 			<datadir zip="true">https://github.com/lysyiklad/repokodi/raw/master/</datadir>
 		</dir>
-		<dir minversion="13.0.0">
+        <dir minversion="13.0.0">
 			<info compressed="false">https://raw.github.com/mrstealth/xbmc-gotham/master/addons.xml</info>
 			<checksum>https://raw.github.com/mrstealth/xbmc-gotham/master/addons.xml.md5</checksum>
 			<datadir zip="true">https://raw.github.com/mrstealth/xbmc-gotham/master/zip/</datadir>
@@ -43,30 +73,65 @@
 			<checksum>https://nemiroff.github.io/kodi_repo/repo/addons.xml.md5</checksum>
 			<datadir zip="true">https://nemiroff.github.io/kodi_repo/repo</datadir>
 		</dir>
-		<dir minversion="16.0.0">
+        <dir minversion="18.9.0">
+			<info compressed="false">https://nemiroff.github.io/kodi_repo/repo/addons_matrix.xml</info>
+			<checksum>https://nemiroff.github.io/kodi_repo/repo/addons_matrix.xml.md5</checksum>
+			<datadir zip="true">https://nemiroff.github.io/kodi_repo/repo</datadir>
+		</dir>
+        <dir minversion="18.0.0">
 			<info compressed="false">https://raw.githubusercontent.com/nkvoronov/repository.yellowdragon/jarvis/repo/addons.xml</info>
 			<checksum>https://raw.githubusercontent.com/nkvoronov/repository.yellowdragon/jarvis/repo/addons.xml.md5</checksum>
 			<datadir zip="true">https://raw.githubusercontent.com/nkvoronov/repository.yellowdragon/jarvis/repo/</datadir>
 		</dir>
-		<dir minversion="16.9.0">
+		<dir minversion="18.0.0">
 			<info compressed="false">https://raw.githubusercontent.com/nkvoronov/repository.yellowdragon/krypton/repo/addons.xml</info>
 			<checksum>https://raw.githubusercontent.com/nkvoronov/repository.yellowdragon/krypton/repo/addons.xml.md5</checksum>
 			<datadir zip="true">https://raw.githubusercontent.com/nkvoronov/repository.yellowdragon/krypton/repo/</datadir>
 		</dir>
-        <dir minversion="16.9.0">
+        <dir minversion="18.0.0">
 			<info compressed="false">https://raw.githubusercontent.com/nkvoronov/repository.yellowdragon.dev/leia/repo/addons.xml</info>
 			<checksum>https://raw.githubusercontent.com/nkvoronov/repository.yellowdragon.dev/leia/repo/addons.xml.md5</checksum>
 			<datadir zip="true">https://raw.githubusercontent.com/nkvoronov/repository.yellowdragon.dev/leia/repo/</datadir>
 		</dir>
-        <dir minversion="16.9.0">
+        <dir minversion="18.0.0">
 			<info compressed="false">https://raw.githubusercontent.com/nkvoronov/repository.yellowdragon/leia/repo/addons.xml</info>
 			<checksum>https://raw.githubusercontent.com/nkvoronov/repository.yellowdragon/leia/repo/addons.xml.md5</checksum>
 			<datadir zip="true">https://raw.githubusercontent.com/nkvoronov/repository.yellowdragon/leia/repo/</datadir>
 		</dir>
-        <dir minversion="16.9.0">
+        <dir minversion="18.0.0">
 			<info compressed="false">https://raw.githubusercontent.com/nkvoronov/repository.yellowdragon.ext/leia/repo/addons.xml</info>
 			<checksum>https://raw.githubusercontent.com/nkvoronov/repository.yellowdragon.ext/leia/repo/addons.xml.md5</checksum>
 			<datadir zip="true">https://raw.githubusercontent.com/nkvoronov/repository.yellowdragon.ext/leia/repo/</datadir>
+		</dir>
+        <dir minversion="18.9.0">
+			<info compressed="false">https://raw.githubusercontent.com/nkvoronov/repository.yellowdragon/matrix/repo/addons.xml</info>
+			<checksum>https://raw.githubusercontent.com/nkvoronov/repository.yellowdragon/matrix/repo/addons.xml.md5</checksum>
+			<datadir zip="true">https://raw.githubusercontent.com/nkvoronov/repository.yellowdragon/matrix/repo/</datadir>
+		</dir>
+        <dir minversion="18.9.0">
+			<info compressed="false">https://raw.githubusercontent.com/nkvoronov/repository.yellowdragon.dev/matrix/repo/addons.xml</info>
+			<checksum>https://raw.githubusercontent.com/nkvoronov/repository.yellowdragon.dev/matrix/repo/addons.xml.md5</checksum>
+			<datadir zip="true">https://raw.githubusercontent.com/nkvoronov/repository.yellowdragon.dev/matrix/repo/</datadir>
+		</dir>
+        <dir minversion="14.0.0">
+			<info compressed="false">https://romanvm.github.io/kodi_repo/repo/addons.xml</info>
+			<checksum>https://romanvm.github.io/kodi_repo/repo/addons.xml.md5</checksum>
+			<datadir zip="true">https://romanvm.github.io/kodi_repo/repo</datadir>
+		</dir>
+        <dir minversion="14.0.0">
+			<info compressed="false">https://raw.githubusercontent.com/rvlad1987/repository.rvlad1987.xbmc-addons/master/addons.xml</info>
+            <checksum>https://raw.githubusercontent.com/rvlad1987/repository.rvlad1987.xbmc-addons/master/addons.xml.md5</checksum>
+            <datadir zip="true">https://raw.githubusercontent.com/rvlad1987/repository.rvlad1987.xbmc-addons/master/repo</datadir>
+		</dir>
+        <dir minversion="14.0.0">
+			<info compressed="false">https://github.com/Silhouette2022/kodi/raw/master/addons.xml</info>
+			<checksum>https://github.com/Silhouette2022/kodi/raw/master/addons.xml.md5</checksum>
+			<datadir zip="true">https://github.com/Silhouette2022/kodi/raw/master/repo</datadir>
+		</dir>
+        <dir minversion="14.0.0">
+			<info compressed="false">https://github.com/snakefishh/mnn-xbmc-repo/raw/master/addons.xml</info>
+			<checksum>https://github.com/snakefishh/mnn-xbmc-repo/raw/master/addons.xml.md5</checksum>
+			<datadir zip="true">https://github.com/snakefishh/mnn-xbmc-repo/raw/master/</datadir>
 		</dir>
         <dir minversion="16.0.0">
 			<info compressed="false">https://github.com/srg70/kodi_repo/raw/master/repo/addons.xml</info>
@@ -103,12 +168,7 @@
             <checksum>https://github.com/srg70/kodi_leia/raw/master/repo/linux-x64/addons.xml.md5</checksum>
             <datadir zip="true">https://github.com/srg70/kodi_leia/raw/master/repo/linux-x64</datadir>
         </dir>
-		<dir minversion="14.0.0">
-			<info compressed="false">https://raw.githubusercontent.com/anteo/xbmc.repository/master/addons.xml</info>
-			<checksum>https://raw.githubusercontent.com/anteo/xbmc.repository/master/addons.xml.md5</checksum>
-			<datadir zip="true">https://raw.githubusercontent.com/anteo/xbmc.repository/master</datadir>
-		</dir>
-        <dir minversion="17.0.0">
+         <dir minversion="17.0.0">
             <info compressed="false">https://github.com/srg70/kodi_repo/raw/master/repo/linux-x86/addons.xml</info>
             <checksum>https://github.com/srg70/kodi_repo/raw/master/repo/linux-x86/addons.xml.md5</checksum>
             <datadir zip="true">https://github.com/srg70/kodi_repo/raw/master/repo/linux-x86</datadir>
@@ -118,72 +178,27 @@
             <checksum>https://github.com/srg70/kodi_leia/raw/master/repo/linux-x86/addons.xml.md5</checksum>
             <datadir zip="true">https://github.com/srg70/kodi_leia/raw/master/repo/linux-x86</datadir>
         </dir>
-		<dir minversion="14.0.0">
-			<info compressed="false">https://raw.github.com/dandygithub/kodi/master/addons/addons.xml</info>
-			<checksum>https://raw.github.com/dandygithub/kodi/master/addons/addons.xml.md5</checksum>
-			<datadir zip="true">https://raw.github.com/dandygithub/kodi/master/addons/zip/</datadir>
-		</dir>
-		<dir minversion="14.0.0">
-			<info compressed="false">https://github.com/dvor85/kodi.repo/raw/master/addons.xml</info>
-			<checksum>https://github.com/dvor85/kodi.repo/raw/master/addons.xml.md5</checksum>
-			<datadir zip="true">https://github.com/dvor85/kodi.repo/raw/master/</datadir>
+        <dir minversion="14.0.0">
+			<info compressed="false">https://github.com/taifxx/xxtrep/raw/master/addons.xml</info>
+			<checksum>https://github.com/taifxx/xxtrep/raw/master/addons.xml.md5</checksum>
+			<datadir zip="true">https://github.com/taifxx/xxtrep/raw/master/</datadir>
 		</dir>
         <dir minversion="14.0.0">
-			<info compressed="false">https://github.com/Eugene-Bond/xmbc-plugins/raw/master/addons.xml</info>
-			<checksum>https://github.com/Eugene-Bond/xmbc-plugins/raw/master/addons.xml.md5</checksum>
-			<datadir zip="true">https://github.com/Eugene-Bond/xmbc-plugins/raw/master/</datadir>
-		</dir>
-		<dir minversion="14.0.0">
-			<info compressed="false">https://raw.githubusercontent.com/evgen-dev/repository.evgen_dev.xbmc-addons/master/addons.xml?v=1</info>
-			<checksum>https://raw.githubusercontent.com/evgen-dev/repository.evgen_dev.xbmc-addons/master/addons.xml.md5?v=1</checksum>
-			<datadir zip="true">https://raw.githubusercontent.com/evgen-dev/repository.evgen_dev.xbmc-addons/master/repo</datadir>
+			<info compressed="false">https://github.com/tdw1980/tdw/raw/master/addons.xml</info>
+			<checksum>https://github.com/tdw1980/tdw/raw/master/addons.xml.md5</checksum>
+			<datadir zip="true">https://github.com/tdw1980/tdw/raw/master/</datadir>
 		</dir>
         <dir minversion="14.0.0">
-			<info compressed="false">https://raw.githubusercontent.com/xbmc-addon/repository.hal9000/master/addons.xml</info>
-            <checksum>https://raw.githubusercontent.com/xbmc-addon/repository.hal9000/master/addons.xml.md5</checksum>
-            <datadir zip="true">https://raw.githubusercontent.com/xbmc-addon/repository.hal9000/master/repo</datadir>
+			<info compressed="false">https://bitbucket.org/vadyur/kodi_repo/raw/master/repo/addons.xml</info>
+			<checksum>https://bitbucket.org/vadyur/kodi_repo/raw/master/repo/addons.xml.md5</checksum>
+			<datadir zip="true">https://bitbucket.org/vadyur/kodi_repo/raw/master/repo</datadir>
 		</dir>
         <dir minversion="14.0.0">
 			<info compressed="false">https://raw.githubusercontent.com/virserg/kodirepo/master/addons.xml</info>
             <checksum>https://raw.githubusercontent.com/virserg/kodirepo/master/addons.xml.md5</checksum>
             <datadir zip="true">https://raw.githubusercontent.com/virserg/kodirepo/master/zips</datadir>
 		</dir>
-		<dir minversion="14.0.0">
-			<info compressed="false">https://github.com/tdw1980/tdw/raw/master/addons.xml</info>
-			<checksum>https://github.com/tdw1980/tdw/raw/master/addons.xml.md5</checksum>
-			<datadir zip="true">https://github.com/tdw1980/tdw/raw/master/</datadir>
-		</dir>
-		<dir minversion="14.0.0">
-			<info compressed="false">https://raw.githubusercontent.com/rvlad1987/repository.rvlad1987.xbmc-addons/master/addons.xml</info>
-            <checksum>https://raw.githubusercontent.com/rvlad1987/repository.rvlad1987.xbmc-addons/master/addons.xml.md5</checksum>
-            <datadir zip="true">https://raw.githubusercontent.com/rvlad1987/repository.rvlad1987.xbmc-addons/master/repo</datadir>
-		</dir>
-		<dir minversion="14.0.0">
-			<info compressed="false">https://github.com/snakefishh/mnn-xbmc-repo/raw/master/addons.xml</info>
-			<checksum>https://github.com/snakefishh/mnn-xbmc-repo/raw/master/addons.xml.md5</checksum>
-			<datadir zip="true">https://github.com/snakefishh/mnn-xbmc-repo/raw/master/</datadir>
-		</dir>
-		<dir minversion="14.0.0">
-			<info compressed="false">https://github.com/1orgar/kodi/raw/master/addons.xml</info>
-			<checksum>https://github.com/1orgar/kodi/raw/master/addons.xml.md5</checksum>
-			<datadir zip="true">https://github.com/1orgar/kodi/raw/master/zips/</datadir>
-		</dir>
-		<dir minversion="14.0.0">
-			<info compressed="false">https://github.com/Silhouette2022/kodi/raw/master/addons.xml</info>
-			<checksum>https://github.com/Silhouette2022/kodi/raw/master/addons.xml.md5</checksum>
-			<datadir zip="true">https://github.com/Silhouette2022/kodi/raw/master/repo</datadir>
-		</dir>
-		<dir minversion="14.0.0">
-			<info compressed="false">https://github.com/taifxx/xxtrep/raw/master/addons.xml</info>
-			<checksum>https://github.com/taifxx/xxtrep/raw/master/addons.xml.md5</checksum>
-			<datadir zip="true">https://github.com/taifxx/xxtrep/raw/master/</datadir>
-		</dir>
-		<dir minversion="14.0.0">
-			<info compressed="false">https://bitbucket.org/vadyur/kodi_repo/raw/master/repo/addons.xml</info>
-			<checksum>https://bitbucket.org/vadyur/kodi_repo/raw/master/repo/addons.xml.md5</checksum>
-			<datadir zip="true">https://bitbucket.org/vadyur/kodi_repo/raw/master/repo</datadir>
-		</dir>
-		<dir minversion="14.0.0">
+        <dir minversion="14.0.0">
 			<info>https://vlmaksime.github.io/repository.vlmaksime/repo/helix/addons.xml</info>
 			<checksum>https://vlmaksime.github.io/repository.vlmaksime/repo/helix/addons.xml.md5</checksum>
 			<datadir zip="true">https://vlmaksime.github.io/repository.vlmaksime/repo/helix/</datadir>
@@ -204,9 +219,14 @@
           <datadir zip="true">https://vlmaksime.github.io/repository.vlmaksime/repo/matrix/</datadir>
         </dir>
 		<dir minversion="14.0.0">
-			<info compressed="false">https://romanvm.github.io/kodi_repo/repo/addons.xml</info>
-			<checksum>https://romanvm.github.io/kodi_repo/repo/addons.xml.md5</checksum>
-			<datadir zip="true">https://romanvm.github.io/kodi_repo/repo</datadir>
+			<info compressed="false">https://raw.githubusercontent.com/weirdgiraffe/kodi.addon.repo/master/addons/addons.xml</info>
+            <checksum>https://raw.githubusercontent.com/weirdgiraffe/kodi.addon.repo/master/addons/addons.xml.md5</checksum>
+            <datadir zip="true">https://raw.githubusercontent.com/weirdgiraffe/kodi.addon.repo/master/addons/</datadir>
+		</dir>
+		<dir minversion="14.0.0">
+			<info compressed="false">https://github.com/1orgar/kodi/raw/master/addons.xml</info>
+			<checksum>https://github.com/1orgar/kodi/raw/master/addons.xml.md5</checksum>
+			<datadir zip="true">https://github.com/1orgar/kodi/raw/master/zips/</datadir>
 		</dir>
         <dir minversion="14.0.0">
 			<info compressed="false">https://notabug.org/d3c_d3v/AddonRepo/raw/master/_repo/addons.xml</info>
@@ -216,10 +236,10 @@
 	</extension>
 	<extension point="xbmc.addon.metadata">
 		<summary lang="en_US">Install Add-ons for XBMC, Kodi.tv</summary>
-		<summary lang="ru">Установить дополнения для XBMC, Kodi.tv</summary>
-		<description lang="ru">Плагины авторов русского форума XBMC[CR]Если вы обнаружили нерабочее дополнение, сообщите об этом разработчику плагина в разделе "Помощь по плагинам" русского форума xbmc.ru.</description>
-		<disclaimer lang="en_US">Team-Kodi did not make the add-ons on this repository and are not responsible for their content</disclaimer>
-		<disclaimer lang="ru">Разработчики Kodi не являются авторами дополнений в данном репозитории и не несут ответственность за их содержимое.</disclaimer>
+		<summary lang="ru">Дополнения для Kodi.tv</summary>
+		<description lang="ru">Плагины авторов форума XBMC[CR]Если вы обнаружили нерабочее дополнение, сообщите об этом разработчику плагина в соответствующей теме раздела "Помощь по плагинам" русского форума xbmc.ru.</description>
+		<disclaimer lang="en_US">Official Team Kodi did not make the add-ons on this repository and are not responsible for their content</disclaimer>
+		<disclaimer lang="ru">Разработчики Official Team Kodi не являются авторами дополнений в данном репозитории и не несут ответственность за их содержимое.</disclaimer>
 		<platform>all</platform>
 	</extension>
 </addon>
