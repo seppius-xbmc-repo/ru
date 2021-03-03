@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addon id="repository.search.db"
 		name="XBMC.ru search db"
-		version="1.1.48"
+		version="1.1.49"
 		provider-name="bigbax">
   <requires>
     <import addon="xbmc.addon" version="12.0.0"/>
@@ -53,10 +53,15 @@
 			<checksum>https://raw.githubusercontent.com/evgen-dev/repository.evgen_dev.xbmc-addons/master/addons.xml.md5?v=1</checksum>
 			<datadir zip="true">https://raw.githubusercontent.com/evgen-dev/repository.evgen_dev.xbmc-addons/master/repo</datadir>
 		</dir>
-        <dir minversion="18.9.0">
+        <dir minversion="16.0.0">
 			<info compressed="false">https://github.com/Eviloid/kodi.repository/raw/master/addons.xml</info>
 			<checksum>https://github.com/Eviloid/kodi.repository/raw/master/addons.xml.md5</checksum>
 			<datadir zip="true">https://github.com/Eviloid/kodi.repository/raw/master/</datadir>
+		</dir>
+        <dir minversion="18.9.0">
+			<info compressed="false">https://github.com/Eviloid/kodi.repository/raw/master/matrix/addons.xml</info>
+			<checksum>https://github.com/Eviloid/kodi.repository/raw/master/matrix/addons.xml.md5</checksum>
+			<datadir zip="true">https://github.com/Eviloid/kodi.repository/raw/master/matrix/</datadir>
 		</dir>
         <dir minversion="14.0.0">
 			<info compressed="false">https://raw.githubusercontent.com/xbmc-addon/repository.hal9000/master/addons.xml</info>
