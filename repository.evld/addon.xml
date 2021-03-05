@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<addon id="repository.evld" version="2.0.0" name="Eviloid Kodi add-ons" provider-name="Eviloid">
+  <extension point="xbmc.addon.metadata">
+    <summary>Install Addons from repository</summary>
+    <description>Addon repository by Eviloid</description>
+    <platform>all</platform>
+    <assets>
+      <icon>icon.png</icon>
+    </assets>
+  </extension>
+  <extension point="xbmc.addon.repository" name="Eviloid repository">
+    <dir minversion="1.0.0" maxversion="18.9.0">
+      <info compressed="false">https://github.com/Eviloid/kodi.repository/raw/master/addons.xml</info>
+      <checksum>https://github.com/Eviloid/kodi.repository/raw/master/addons.xml.md5</checksum>
+      <datadir zip="true">https://github.com/Eviloid/kodi.repository/raw/master/</datadir>
+    </dir>
+    <dir minversion="18.9.701">
+      <info compressed="false">https://github.com/Eviloid/kodi.repository/raw/master/matrix/addons.xml</info>
+      <checksum>https://github.com/Eviloid/kodi.repository/raw/master/matrix/addons.xml.md5</checksum>
+      <datadir zip="true">https://github.com/Eviloid/kodi.repository/raw/master/matrix/</datadir>
+    </dir>
+  </extension>
+</addon>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<addon id="repository.niv" name="NIV82 repository" version="1.0.3" provider-name="NIV">
+
+	<extension point="xbmc.addon.repository" name="NIV82 repository">
+		<dir minversion="1.0.0" maxversion="18.9.0">
+			<info compressed="false">https://raw.githubusercontent.com/NIV82/kodi_repo/main/release/addons.xml</info>
+			<checksum>https://raw.githubusercontent.com/NIV82/kodi_repo/main/release/addons.xml.md5</checksum>
+			<datadir zip="true">https://github.com/NIV82/kodi_repo/raw/main/release/</datadir>
+		</dir>
+		<dir minversion="18.9.701">
+			<info compressed="false">https://raw.githubusercontent.com/NIV82/kodi_repo/main/matrix/addons.xml</info>
+			<checksum>https://raw.githubusercontent.com/NIV82/kodi_repo/main/matrix/addons.xml.md5</checksum>
+			<datadir zip="true">https://github.com/NIV82/kodi_repo/raw/main/matrix/</datadir>
+		</dir>
+	</extension>
+
+	<extension point="xbmc.addon.metadata">
+		<summary lang="en">Install Add-ons from NIV82 repository</summary>
+		<summary lang="ru">Установить дополнения NIV82</summary>
+		<description lang="en">Download and install add-ons from the NIV82 repository.</description>
+		<description lang="ru">Загружайте и устанавливайте обновления из репозитория NIV82.</description>
+		<platform>all</platform>
+		<assets>
+		<icon>icon.png</icon>
+		</assets>
+	</extension>
+	
+</addon>
