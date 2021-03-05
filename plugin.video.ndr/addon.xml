@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="plugin.video.ndr" name="НЦР" version="1.0.3" provider-name="Yuri Yuriev">
+  <requires>
+    <import addon="xbmc.python" version="3.0.0" />
+  </requires>
+  <extension point="xbmc.python.pluginsource" library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary lang="ru">НЦР</summary>
+    <license>GNU General Public License, v2</license>
+    <description lang="ru">НЦР — Новые Цифровые Релизы</description>
+    <platform>all</platform>
+    <website>https://ndr.neocities.org/ndr.html</website>
+    <assets>
+      <icon>icon.png</icon>
+    </assets>
+  </extension>
+</addon>

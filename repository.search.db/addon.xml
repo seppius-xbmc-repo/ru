@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addon id="repository.search.db"
 		name="XBMC.ru search db"
-		version="1.1.51"
+		version="1.1.52"
 		provider-name="bigbax">
   <requires>
     <import addon="xbmc.addon" version="12.0.0"/>
@@ -251,5 +251,8 @@
 		<disclaimer lang="en_US">Official Team Kodi did not make the add-ons on this repository and are not responsible for their content</disclaimer>
 		<disclaimer lang="ru">Разработчики Official Team Kodi не являются авторами дополнений в данном репозитории и не несут ответственность за их содержимое.</disclaimer>
 		<platform>all</platform>
+        <assets>
+			<icon>icon.png</icon>
+		</assets>
 	</extension>
 </addon>

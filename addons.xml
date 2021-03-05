@@ -489,6 +489,25 @@ Audio sources are
   </extension>
 </addon>
 
+<addon id="plugin.video.ndr" name="НЦР" version="1.0.3" provider-name="Yuri Yuriev">
+  <requires>
+    <import addon="xbmc.python" version="3.0.0" />
+  </requires>
+  <extension point="xbmc.python.pluginsource" library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary lang="ru">НЦР</summary>
+    <license>GNU General Public License, v2</license>
+    <description lang="ru">НЦР — Новые Цифровые Релизы</description>
+    <platform>all</platform>
+    <website>https://ndr.neocities.org/ndr.html</website>
+    <assets>
+      <icon>icon.png</icon>
+    </assets>
+  </extension>
+</addon>
+
 <addon id="plugin.video.online.anidub.com"
        name="[COLOR=FFFF0000]Ani[/COLOR][COLOR=FF00FF00]DUB[/COLOR]"
        version="0.3.2"
@@ -1136,7 +1155,7 @@ Audio sources are
 
 <addon id="repository.search.db"
 		name="XBMC.ru search db"
-		version="1.1.51"
+		version="1.1.52"
 		provider-name="bigbax">
   <requires>
     <import addon="xbmc.addon" version="12.0.0"/>
@@ -1386,6 +1405,9 @@ Audio sources are
 		<disclaimer lang="en_US">Official Team Kodi did not make the add-ons on this repository and are not responsible for their content</disclaimer>
 		<disclaimer lang="ru">Разработчики Official Team Kodi не являются авторами дополнений в данном репозитории и не несут ответственность за их содержимое.</disclaimer>
 		<platform>all</platform>
+        <assets>
+			<icon>icon.png</icon>
+		</assets>
 	</extension>
 </addon>
 
