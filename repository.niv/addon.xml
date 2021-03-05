@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 
-<addon id="repository.niv" name="NIV82 repository" version="1.0.3" provider-name="NIV">
+<addon id="repository.niv" name="NIV82 repository" version="1.0.4" provider-name="NIV">
 
 	<extension point="xbmc.addon.repository" name="NIV82 repository">
 		<dir minversion="1.0.0" maxversion="18.9.0">

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addon id="repository.search.db"
 		name="XBMC.ru search db"
-		version="1.1.52"
+		version="1.1.53"
 		provider-name="bigbax">
   <requires>
     <import addon="xbmc.addon" version="12.0.0"/>
@@ -87,6 +87,16 @@
 			<info compressed="false">https://nemiroff.github.io/kodi_repo/repo/addons_matrix.xml</info>
 			<checksum>https://nemiroff.github.io/kodi_repo/repo/addons_matrix.xml.md5</checksum>
 			<datadir zip="true">https://nemiroff.github.io/kodi_repo/repo</datadir>
+		</dir>
+        <dir minversion="1.0.0" maxversion="18.9.0">
+			<info compressed="false">https://raw.githubusercontent.com/NIV82/kodi_repo/main/release/addons.xml</info>
+			<checksum>https://raw.githubusercontent.com/NIV82/kodi_repo/main/release/addons.xml.md5</checksum>
+			<datadir zip="true">https://github.com/NIV82/kodi_repo/raw/main/release/</datadir>
+		</dir>
+		<dir minversion="18.9.701">
+			<info compressed="false">https://raw.githubusercontent.com/NIV82/kodi_repo/main/matrix/addons.xml</info>
+			<checksum>https://raw.githubusercontent.com/NIV82/kodi_repo/main/matrix/addons.xml.md5</checksum>
+			<datadir zip="true">https://github.com/NIV82/kodi_repo/raw/main/matrix/</datadir>
 		</dir>
         <dir minversion="18.0.0">
 			<info compressed="false">https://raw.githubusercontent.com/nkvoronov/repository.yellowdragon/jarvis/repo/addons.xml</info>
