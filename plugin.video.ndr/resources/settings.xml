@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<settings>
+  <category label="Основные">
+    <setting id="mode" type="enum" label="Режим" values="Новинки|Легенды" default="0"/>
+    <setting type="sep"/>
+    <setting id="use_engine" type="enum" label="Использовать" values="Elementum|TorrServer" default="0"/>
+    <setting type="ipaddress" id="ts-host" label="IP" visible="eq(-1,1)" default="127.0.0.1"/>
+    <setting type="number" id="ts-port" label="Порт" visible="eq(-2,1)" default="8090"/>
+    <setting type="bool" id="auto_play" label="Автовоспроизведение" default="false"/>
+    <setting type="text" label="Запускается торрент с наилучшим качеством" enable="false" visible="eq(-1,true)"/>
+  </category>
+</settings>
