@@ -1207,7 +1207,7 @@ Audio sources are
 
 <addon id="repository.search.db"
 		name="XBMC.ru search db"
-		version="1.1.54"
+		version="1.1.55"
 		provider-name="bigbax">
   <requires>
     <import addon="xbmc.addon" version="12.0.0"/>
@@ -1344,17 +1344,23 @@ Audio sources are
 			<checksum>https://romanvm.github.io/kodi_repo/repo/addons.xml.md5</checksum>
 			<datadir zip="true">https://romanvm.github.io/kodi_repo/repo</datadir>
 		</dir>
-        <dir minversion="14.0.0">
+        <dir minversion="16.0.0" maxversion="18.9.0">
 			<info compressed="false">https://raw.githubusercontent.com/rvlad1987/repository.rvlad1987.xbmc-addons/master/addons.xml</info>
             <checksum>https://raw.githubusercontent.com/rvlad1987/repository.rvlad1987.xbmc-addons/master/addons.xml.md5</checksum>
             <datadir zip="true">https://raw.githubusercontent.com/rvlad1987/repository.rvlad1987.xbmc-addons/master/repo</datadir>
+		</dir>
+        <dir minversion="18.9.701">
+			<info compressed="false">https://raw.githubusercontent.com/rvlad1987/repository.rvlad1987.xbmc-addons/master/matrix/addons.xml</info>
+			<checksum>https://raw.githubusercontent.com/rvlad1987/repository.rvlad1987.xbmc-addons/master/matrix/addons.xml.md5</checksum>
+			<datadir zip="true">https://raw.githubusercontent.com/rvlad1987/repository.rvlad1987.xbmc-addons/master/matrix/repo</datadir>
+			<hashes>false</hashes>
 		</dir>
         <dir minversion="14.0.0">
 			<info compressed="false">https://github.com/Silhouette2022/kodi/raw/master/addons.xml</info>
 			<checksum>https://github.com/Silhouette2022/kodi/raw/master/addons.xml.md5</checksum>
 			<datadir zip="true">https://github.com/Silhouette2022/kodi/raw/master/repo</datadir>
 		</dir>
-        <dir minversion="14.0.0">
+        <dir minversion="16.0.0" maxversion="18.9.0">
 			<info compressed="false">https://github.com/snakefishh/mnn-xbmc-repo/raw/master/addons.xml</info>
 			<checksum>https://github.com/snakefishh/mnn-xbmc-repo/raw/master/addons.xml.md5</checksum>
 			<datadir zip="true">https://github.com/snakefishh/mnn-xbmc-repo/raw/master/</datadir>
