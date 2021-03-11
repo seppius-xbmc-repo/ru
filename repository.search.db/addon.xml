@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addon id="repository.search.db"
 		name="XBMC.ru search db"
-		version="1.1.57"
+		version="1.1.58"
 		provider-name="bigbax">
   <requires>
     <import addon="xbmc.addon" version="12.0.0"/>
@@ -62,6 +62,11 @@
 			<info compressed="false">https://github.com/Eviloid/kodi.repository/raw/master/matrix/addons.xml</info>
 			<checksum>https://github.com/Eviloid/kodi.repository/raw/master/matrix/addons.xml.md5</checksum>
 			<datadir zip="true">https://github.com/Eviloid/kodi.repository/raw/master/matrix/</datadir>
+		</dir>
+        <dir minversion="18.9.701">
+			<info compressed="false">https://raw.githubusercontent.com/eXoterr/kodi_pub/master/addons.xml</info>
+			<checksum>https://raw.githubusercontent.com/eXoterr/kodi_pub/master/addons.xml.md5</checksum>
+			<datadir zip="true">https://raw.githubusercontent.com/eXoterr/kodi_pub/master/</datadir>
 		</dir>
         <dir minversion="1.0.0" maxversion="18.9.0">
 			<info compressed="false">https://raw.githubusercontent.com/xbmc-addon/repository.hal9000/master/addons.xml</info>
