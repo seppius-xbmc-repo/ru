@@ -568,38 +568,6 @@ Audio sources are
   </extension>
 </addon>
 
-<addon id="plugin.video.quasar" name="Quasar" version="0.9.78" provider-name="scakemyer">
-    <requires>
-        <import addon="xbmc.addon" version="16.0.0" />
-        <import addon="xbmc.python" version="2.24.0" />
-        <import addon="repository.quasar" optional="true" />
-        <import addon="script.quasar.burst" optional="true" />
-    </requires>
-    <extension point="xbmc.python.pluginsource" library="navigation.py">
-        <provides>video</provides>
-    </extension>
-    <extension point="xbmc.service" library="service.py" start="startup" />
-    <extension point="xbmc.python.module" library="resources/site-packages" />
-    <extension point="xbmc.subtitle.module" library="navigation.py" />
-    <extension point="xbmc.addon.metadata">
-        <summary lang="en">Quasar: Torrent streaming</summary>
-        <description lang="en">Quasar is a torrent finding and streaming engine. It doesn't go on torrent websites for legal reasons. However, it calls specially crafted add-ons (called providers) that are installed separately.[CR]This project is a fork of the well known, but no longer maintained Pulsar project from steeve.</description>
-        <language>en el es de fi fr he hr it nl pt ro sk</language>
-        <platform>all</platform>
-        <website>https://github.com/scakemyer/plugin.video.quasar</website>
-        <source>https://github.com/scakemyer/plugin.video.quasar</source>
-        <forum>http://forum.kodi.tv/showthread.php?tid=257967</forum>
-        <license>Non commercial. See https://github.com/scakemyer/plugin.video.quasar/blob/master/LICENSE</license>
-        <assets>
-            <icon>icon.png</icon>
-            <fanart>fanart.jpg</fanart>
-            <screenshot>resources/screenshots/home.jpg</screenshot>
-            <screenshot>resources/screenshots/movies.jpg</screenshot>
-            <screenshot>resources/screenshots/webui.png</screenshot>
-        </assets>
-    </extension>
-</addon>
-
 <addon id = "plugin.video.russia.tv.a" name = "Russia.tv.a" version = "2.0.0" provider-name = "kit500">
   <requires>
     <import addon = "xbmc.python" version = "2.1.0"/>
@@ -819,41 +787,6 @@ Audio sources are
     </extension>
 </addon>
 
-<addon
-  id="pvr.p2pproxy"
-  version="0.0.4"
-  name="PVR P2pProxy Client"
-  provider-name="const86">
-  <requires>
-    <c-pluff version="0.1"/>
-    <import addon="xbmc.pvr" version="1.9.2"/>
-  </requires>
-  <extension
-    point="xbmc.pvrclient"
-    library_linux="p2pproxy.pvr"
-    library_osx="p2pproxy.pvr"
-    library_wingl="pvr.p2pproxy.dll"
-    library_windx="pvr.p2pproxy.dll"
-    library_android="p2pproxy.so" />
-  <extension point="xbmc.addon.metadata">
-    <platform>linux windx wingl osx android</platform>
-  </extension>
-</addon>
-
-<addon id="repository.1orgar" name="1orgar repo" version="1.0.0.5" provider-name="1orgar">
-	<extension point="xbmc.addon.repository" name="1orgar repo">
-		<info compressed="false">https://github.com/1orgar/kodi/raw/master/addons.xml</info>
-		<checksum>https://github.com/1orgar/kodi/raw/master/addons.xml.md5</checksum>
-		<datadir zip="true">https://github.com/1orgar/kodi/raw/master/zips/</datadir>
-	</extension>
-	<extension point="xbmc.addon.metadata">
-		<summary>Дополнения из репозитория 1orgar</summary>
-		<description>Дополнения для Kodi</description>
-		<disclaimer>1orgar</disclaimer>
-		<platform>all</platform>
-	</extension>
-</addon>
-
 <addon id="repository.GRecoTM" name=" GRecoTM Repository" version="2.2" provider-name="GRecoTM">
 	<extension point="xbmc.addon.repository" name="GRecoTM Repository">
 		<info compressed="false">http://grrepo.grecotm.com/Plugins/addons.xml</info>
@@ -865,21 +798,6 @@ Audio sources are
 		<description>All you need for a GREEK KODI-ΟΤΙ χρειάζεσαι για ένα Ελληνικό KODI</description>
 		<platform>all</platform>
 	</extension>
-</addon>
-
-<addon id="repository.anteo" name="Anteo's Add-on Repository" version="0.0.1" provider-name="anteo">
-    <extension point="xbmc.addon.repository" name="Anteo's Add-on Repository">
-        <info compressed="false">https://raw.githubusercontent.com/anteo/xbmc.repository/master/addons.xml</info>
-        <checksum>https://raw.githubusercontent.com/anteo/xbmc.repository/master/addons.xml.md5</checksum>
-        <datadir zip="true">https://raw.githubusercontent.com/anteo/xbmc.repository/master</datadir>
-    </extension>
-    <extension point="xbmc.addon.metadata">
-        <summary lang="en">Anteo's addons</summary>
-        <description lang="en">Download and install addons by Anteo</description>
-        <summary lang="ru">Репозиторий Anteo</summary>
-        <description lang="ru">Скачивание и установка плагинов от Anteo</description>
-        <platform>all</platform>
-    </extension>
 </addon>
 
 <addon id="repository.arneson" name="TIDAL2 Addons by arneson" version="0.1.2" provider-name="arneson">
@@ -897,20 +815,6 @@ Audio sources are
         <description>Download and install addons by arneson</description>
         <platform>all</platform>
     </extension>
-</addon>
-
-<addon id="repository.bond" name="Eugene Bond XBMC Add-ons" version="1.0.1" provider-name="Eugene Bond">
-	<extension point="xbmc.addon.repository" name="Eugene Bond XBMC Add-ons">
-		<info compressed="false">https://github.com/Eugene-Bond/xmbc-plugins/raw/master/addons.xml</info>
-		<checksum>https://github.com/Eugene-Bond/xmbc-plugins/raw/master/addons.xml.md5</checksum>
-		<datadir zip="true">https://github.com/Eugene-Bond/xmbc-plugins/raw/master/</datadir>
-	</extension>
-	<extension point="xbmc.addon.metadata">
-		<summary>Install Add-ons from Bond's Add-on Repository</summary>
-		<description>Plug-ins for XBMC</description>
-		<disclaimer>There are add-ons that allow viewing popular Russian IPTV providers in the program XBMC</disclaimer>
-		<platform>all</platform>
-	</extension>
 </addon>
 
 <addon id="repository.const"
@@ -1006,22 +910,6 @@ Audio sources are
     </dir>
   </extension>
 </addon>
-
-<addon id="repository.giraffe" name="giraffe Kodi Add-ons" version="1.0.2" provider-name="weirdgiraffe">
-	<extension point="xbmc.addon.repository" name="giraffe Kodi Add-ons">
-			<info compressed="false">https://raw.githubusercontent.com/weirdgiraffe/kodi.addon.repo/master/addons/addons.xml</info>
-			<checksum>https://raw.githubusercontent.com/weirdgiraffe/kodi.addon.repo/master/addons/addons.xml.md5</checksum>
-			<datadir zip="true">https://raw.githubusercontent.com/weirdgiraffe/kodi.addon.repo/master/addons/</datadir>
-	</extension>
-	<extension point="xbmc.addon.metadata">
-		<summary>repo to keep my addons up to date</summary>
-		<description>Plug-ins for Kodi</description>
-		<disclaimer>Some addons for Kodi</disclaimer>
-		<platform>all</platform>
-	</extension>
-</addon>
-<!-- vim:fenc=utf-8:ts=4
--->
 
 <addon id="repository.hal9000" name="HAL9000 Add-on Repository" version="1.0.1" provider-name="HAL9000">
     <extension point="xbmc.addon.repository" name="HAL9000 Add-on Repository">
@@ -1205,7 +1093,7 @@ Audio sources are
 
 <addon id="repository.search.db"
 		name="XBMC.ru search db"
-		version="1.1.58"
+		version="1.1.59"
 		provider-name="bigbax">
   <requires>
     <import addon="xbmc.addon" version="12.0.0"/>
@@ -1281,6 +1169,11 @@ Audio sources are
 			<info compressed="false">https://github.com/lysyiklad/repokodi/raw/master/addons.xml</info>
 			<checksum>https://github.com/lysyiklad/repokodi/raw/master/addons.xml.md5</checksum>
 			<datadir zip="true">https://github.com/lysyiklad/repokodi/raw/master/</datadir>
+		</dir>
+        <dir minversion="18.9.701">
+			<info compressed="false">http://rcstv.ru/static/other/xbmc/addons.xml</info>
+		    <checksum>http://rcstv.ru/static/other/xbmc/addons.xml.md5</checksum>
+		    <datadir zip="true">http://rcstv.ru/static/other/xbmc/data/</datadir>
 		</dir>
         <dir minversion="1.0.0" maxversion="18.9.0">
 			<info compressed="false">https://nemiroff.github.io/kodi_repo/repo/addons.xml</info>
@@ -1428,7 +1321,7 @@ Audio sources are
             <checksum>https://raw.githubusercontent.com/virserg/kodirepo/master/addons.xml.md5</checksum>
             <datadir zip="true">https://raw.githubusercontent.com/virserg/kodirepo/master/zips</datadir>
 		</dir>
-        <dir minversion="1.0.0" maxversion="18.9.701">
+        <dir minversion="18.9.701">
 			<info compressed="false">https://raw.githubusercontent.com/virserg/kodirepo/master/matrix/addons.xml</info>
             <checksum>https://raw.githubusercontent.com/virserg/kodirepo/master/matrix/addons.xml.md5</checksum>
             <datadir zip="true">https://raw.githubusercontent.com/virserg/kodirepo/master/matrix/zips</datadir>
