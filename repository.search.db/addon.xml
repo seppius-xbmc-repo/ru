@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addon id="repository.search.db"
 		name="XBMC.ru search db"
-		version="1.1.62"
+		version="1.1.63"
 		provider-name="bigbax">
   <requires>
     <import addon="xbmc.addon" version="12.0.0"/>
@@ -32,11 +32,6 @@
 			<info compressed="false">https://raw.github.com/DiMartinoX/repository.myshows.me/master/repo/addons.xml</info>
             <checksum>https://raw.github.com/DiMartinoX/repository.myshows.me/master/repo/addons.xml.md5</checksum>
             <datadir zip="true">https://raw.github.com/DiMartinoX/repository.myshows.me/master/repo/</datadir>
-		</dir>
-        <dir minversion="1.0.0" maxversion="18.9.0">
-			<info compressed="false">https://raw.githubusercontent.com/DmitrySandalov/xbmc-repo/master/addons/addons.xml</info></info>
-            <checksum>https://raw.githubusercontent.com/DmitrySandalov/xbmc-repo/master/addons/addons.xml.md5</checksum>
-            <datadir zip="true">https://raw.githubusercontent.com/DmitrySandalov/xbmc-repo/master/repo/zip</datadir>
 		</dir>
         <dir minversion="18.9.701">
 			<info compressed="false">https://raw.githubusercontent.com/DmitrySandalov/xbmc-repo/master/addons/addons.xml</info>
@@ -82,11 +77,6 @@
 			<info compressed="false">https://github.com/lysyiklad/repokodi/raw/master/addons.xml</info>
 			<checksum>https://github.com/lysyiklad/repokodi/raw/master/addons.xml.md5</checksum>
 			<datadir zip="true">https://github.com/lysyiklad/repokodi/raw/master/</datadir>
-		</dir>
-        <dir minversion="18.9.701">
-			<info compressed="false">http://rcstv.ru/static/other/xbmc/addons.xml</info>
-		    <checksum>http://rcstv.ru/static/other/xbmc/addons.xml.md5</checksum>
-		    <datadir zip="true">http://rcstv.ru/static/other/xbmc/data/</datadir>
 		</dir>
         <dir minversion="1.0.0" maxversion="18.9.0">
 			<info compressed="false">https://nemiroff.github.io/kodi_repo/repo/addons.xml</info>

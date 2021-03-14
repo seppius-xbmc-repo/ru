@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<settings>
-    <category label="General">
-        <setting id="video_res" type="select" label="Resolution" values="HD|SD|LD" default="HD" />
-    </category>
-</settings>
