@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="plugin.video.1tv-latest-news" name="1tv Channel" version="1.1.0" provider-name="Dmitry Sandalov">
+    <requires>
+        <import addon="xbmc.python" version="2.1.0"/>
+    </requires>
+    <extension point="xbmc.python.pluginsource" library="addon.py">
+        <provides>video</provides>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <summary lang="en">1tv Video Archive</summary>
+        <description lang="en">Plays media from 1tv (Russia)</description>
+        <disclaimer lang="en"></disclaimer>
+        <language></language>
+        <platform>all</platform>
+        <license>GNU GPL v2.0</license>
+        <forum>http://xbmc.ru/forum/showthread.php?t=4715</forum>
+        <website>https://github.com/DmitrySandalov/xbmc-repo</website>
+        <email>dmitry@sandalov.org</email>
+        <source>https://github.com/DmitrySandalov/xbmc-repo</source>
+    </extension>
+</addon>

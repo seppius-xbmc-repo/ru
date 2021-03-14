@@ -1,0 +1,37 @@
+v1.1.0
+- Fix #14 Some sport items could not be played
+- Fix #13 HD quality is not working
+- Fix #12 Doc section not working anymore
+- Fix #11 Some tvshows could not be played
+- Fix #10 Posters are displayed incorrectly
+- Fix #9 Add Sport section
+
+v1.0.9
+- Fix #8 Can't find "Vechernyi Urgant" in tv programs
+
+v1.0.8
+- Add shows, doc
+- Disable news autoplay
+
+v1.0.7
+- Fix #7 UnicodeDecodeError in get_last_edition()
+
+v1.0.6
+- Fix #6 Video resolution setting
+
+v1.0.5
+- Fix #5 Ошибка при старте
+- Remote link format change (site redesign)
+
+v1.0.4
+- Fix #4 Remote link format change
+
+v1.0.3
+- Fix #2 start crash without network connection
+- Fix #3 news link on weekends
+
+v1.0.2
+- Fix #1 Python 2.6 support
+
+v1.0.1
+- Initial version
