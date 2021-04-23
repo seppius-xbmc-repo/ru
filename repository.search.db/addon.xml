@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addon id="repository.search.db"
 		name="XBMC.ru search db"
-		version="1.1.66"
+		version="1.1.67"
 		provider-name="bigbax">
   <requires>
     <import addon="xbmc.addon" version="12.0.0"/>
@@ -14,9 +14,14 @@
 			<datadir zip="true">https://github.com/seppius-xbmc-repo/ru/raw/master/</datadir>
 		</dir>
         <dir minversion="1.0.0" maxversion="18.9.0">
-			<info compressed="false">https://abratchik.github.io/kodi.repository/addons.xml</info>
-			<checksum>https://abratchik.github.io/kodi.repository/addons.xml.md5</checksum>
-			<datadir zip="true">https://abratchik.github.io/kodi.repository/</datadir>
+			<info compressed="false">https://abratchik.github.io/kodi.repository/leia/addons.xml</info>
+			<checksum>https://abratchik.github.io/kodi.repository/leia/addons.xml.md5</checksum>
+			<datadir zip="true">https://abratchik.github.io/kodi.repository/leia/</datadir>
+		</dir>
+        <dir minversion="18.9.701">
+			<info compressed="false">https://abratchik.github.io/kodi.repository/matrix/addons.xml</info>
+			<checksum>https://abratchik.github.io/kodi.repository/matrix/addons.xml.md5</checksum>
+			<datadir zip="true">https://abratchik.github.io/kodi.repository/matrix/</datadir>
 		</dir>
         <dir minversion="1.0.0" maxversion="18.9.0">
 			<info compressed="false">https://raw.githubusercontent.com/anteo/xbmc.repository/master/addons.xml</info>
