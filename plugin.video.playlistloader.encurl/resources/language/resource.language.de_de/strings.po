@@ -1,0 +1,217 @@
+# Kodi Media Center language file
+# Addon Name: Playlist Loader
+# Addon id: plugin.video.playlistloader
+
+msgid ""
+msgstr ""
+
+"Last-Translator: Publish3r\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgctxt "#30000"
+msgid "Settings"
+msgstr "Einstellungen"
+
+msgctxt "#30001"
+msgid "Add a new list"
+msgstr "Neue Liste hinzufügen"
+
+msgctxt "#30002"
+msgid "Select playlist source"
+msgstr "Quelle der Playlist"
+
+msgctxt "#30003"
+msgid "Favorites"
+msgstr "Favoriten"
+
+msgctxt "#30004"
+msgid "List name"
+msgstr "Name der Liste"
+
+msgctxt "#30005"
+msgid "List URL"
+msgstr "URL der Liste"
+
+msgctxt "#30006"
+msgid "Choose list"
+msgstr "Liste wählen"
+
+msgctxt "#30007"
+msgid "has the same address"
+msgstr "hat die gleiche Adresse"
+
+msgctxt "#30008"
+msgid "Remove from Playlist Loader"
+msgstr "Aus Playlist Loader entfernen"
+
+msgctxt "#30009"
+msgid "Add to Playlist Loader favorites"
+msgstr "Zu Playlist Loader Favoriten hinzufügen"
+
+msgctxt "#30010"
+msgid "Remove from Playlist Loader favorites"
+msgstr "Aus Playlist Loader Favoriten entfernen"
+
+msgctxt "#30011"
+msgid "is already in favorites"
+msgstr "ist bereits in den Favoriten vorhanden"
+
+msgctxt "#30012"
+msgid "zu den Favoriten hinzugefügt"
+msgstr ""
+
+msgctxt "#30013"
+msgid "Add a new channel"
+msgstr "Neuen Kanal hinzufügen"
+
+msgctxt "#30014"
+msgid "Channel name"
+msgstr "Kanal Name"
+
+msgctxt "#30015"
+msgid "Channel URL"
+msgstr "Kanal URL"
+
+msgctxt "#30016"
+msgid "Remote-list (URL)"
+msgstr "Online-Liste (URL)"
+
+msgctxt "#30017"
+msgid "Local-list (File)"
+msgstr "Lokale Liste (Datei)"
+
+msgctxt "#30018"
+msgid "Select channels logos source"
+msgstr "Quelle der Kanallogos wählen"
+
+msgctxt "#30019"
+msgid "Channels logos base URL"
+msgstr "Basis-URL für Kanallogos"
+
+msgctxt "#30020"
+msgid "Channels logos Folder"
+msgstr "Kanal Logos Ordner"
+
+msgctxt "#30021"
+msgid "None"
+msgstr "Überspringen"
+
+msgctxt "#30022"
+msgid "Choose List logo"
+msgstr "Logo für die Liste wählen"
+
+msgctxt "#30023"
+msgid "Choose channel logo"
+msgstr "Logo für den Kanal wählen"
+
+msgctxt "#30024"
+msgid "Logo from URL"
+msgstr "Logo (URL)"
+
+msgctxt "#30025"
+msgid "Logo from file"
+msgstr "Logo (Datei)"
+
+msgctxt "#30026"
+msgid "Rename"
+msgstr "Umbenennen"
+
+msgctxt "#30027"
+msgid "Change source"
+msgstr "Quelle ändern"
+
+msgctxt "#30028"
+msgid "Change logo"
+msgstr "Logo ändern"
+
+msgctxt "#30029"
+msgid "Change channels logos source"
+msgstr "Quelle der Kanallogos ändern"
+
+msgctxt "#30030"
+msgid "Move up"
+msgstr "Verschiebe nach oben"
+
+msgctxt "#30031"
+msgid "Move down"
+msgstr "Verschiebe nach unten"
+
+msgctxt "#30032"
+msgid "Move to"
+msgstr "Verschieben"
+
+msgctxt "#30033"
+msgid "Select a new location"
+msgstr "Neuen Speicherort wählen"
+
+msgctxt "#30034"
+msgid "Select minutes for cache the list on disc"
+msgstr "Liste zwischenspeichern (Minuten)"
+
+msgctxt "#30035"
+msgid "Change caching time of list"
+msgstr "Caching-Zeit der Liste ändern"
+
+msgctxt "#30036"
+msgid "Show groups in channels lists"
+msgstr "Gruppen in Kanallisten anzeigen"
+
+msgctxt "#30037"
+msgid "Yes"
+msgstr "Ja"
+
+msgctxt "#30038"
+msgid "No"
+msgstr "Nein"
+
+msgctxt "#30039"
+msgid "click to change"
+msgstr "ändern (klicken)"
+
+msgctxt "#30040"
+msgid "Add new directory"
+msgstr "Neuen Ordner hinzufügen"
+
+msgctxt "#30041"
+msgid "Add to existing directory"
+msgstr "In Ordner verschieben"
+
+msgctxt "#30042"
+msgid "Select an icon for this directory ( optional )"
+msgstr "Symbol für den Ordner wählen ( optional )"
+
+msgctxt "#30043"
+msgid "Delete directory and content"
+msgstr "Ordner und Inhalt löschen"
+
+msgctxt "#30044"
+msgid "Delete directory and move contents to root"
+msgstr "Ordner löschen und Inhalt ins Hauptverzeichnis verschieben"
+
+msgctxt "#30045"
+msgid "Change / Remove EPG source"
+msgstr "EPG Quelle ändern / entfernen"
+
+msgctxt "#30046"
+msgid "Select EPG source"
+msgstr "EPG Quelle wählen"
+
+msgctxt "#30047"
+msgid "EPG URL"
+msgstr "EPG (URL)"
+
+msgctxt "#30048"
+msgid "Local EPG"
+msgstr "EPG (Datei)"
+
+msgctxt "#30101"
+msgid "Delete Playlists file"
+msgstr "Wiedergabelistendatei löschen"
+
+msgctxt "#30102"
+msgid "Delete Favourites file"
+msgstr "Favoriten-Datei löschen"
