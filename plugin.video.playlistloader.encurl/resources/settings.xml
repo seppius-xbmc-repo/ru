@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<settings>
-    <category label="30000">
-        <setting id="makeGroups" type="bool" label="30036" default="true" />
-        <setting id="actDelPlaylists" type="action" label="30101" action="RunPlugin(plugin://plugin.video.playlistloader.encurl/default.py?mode=27&url=settings)" option="close" />
-        <setting id="actDelFavourites" type="action" label="30102" action="RunPlugin(plugin://plugin.video.playlistloader.encurl/default.py?mode=39&url=settings)" option="close" />
-    </category>
-</settings>
