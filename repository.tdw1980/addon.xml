@@ -1,20 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addon id="repository.tdw1980" 
        name="TDW1980 Add-ons" 
-	   version="1.0.2" 
+	   version="1.0.3" 
 	   provider-name="TDW1980">
 <requires>
   <import addon="xbmc.addon" version="12.0.0"/>
 </requires>	
 	<extension point="xbmc.addon.repository" name="TDW1980 XBMC Add-ons">
+                        <dir minversion="13.0.0">
 		<info compressed="false">https://github.com/tdw1980/tdw/raw/master/addons.xml</info>
 		<checksum>https://github.com/tdw1980/tdw/raw/master/addons.xml.md5</checksum>
 		<datadir zip="true">https://github.com/tdw1980/tdw/raw/master/</datadir>
+                        </dir>
 	</extension>
 	<extension point="xbmc.addon.metadata">
 		<summary>Install Add-ons from TDW1980 Add-on Repository</summary>
-		<description>Plug-ins for XBMC</description>
-		<disclaimer>There are git my add-ons for XBMC</disclaimer>
+		<description>Plug-ins for KODI</description>
+		<disclaimer>There are git my add-ons for KODI</disclaimer>
 		<platform>all</platform>
+                                <assets>
+			<icon>icon.png</icon>
+		</assets>
 	</extension>
 </addon>
