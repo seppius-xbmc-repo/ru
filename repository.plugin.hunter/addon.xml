@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="repository.search.db"
-		name="XBMC.ru search db"
-		version="1.1.69"
+<addon id="repository.plugin.hunter"
+		name="Search plugins in repositories"
+		version="1.1.0"
 		provider-name="bigbax">
   <requires>
     <import addon="xbmc.addon" version="12.0.0"/>
