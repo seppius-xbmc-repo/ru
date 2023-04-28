@@ -1433,7 +1433,7 @@ Audio sources are
 
 <addon id="repository.search.db"
 		name="XBMC.ru search db"
-		version="1.1.69"
+		version="1.1.70"
 		provider-name="bigbax">
   <requires>
     <import addon="xbmc.addon" version="12.0.0"/>
@@ -1711,6 +1711,11 @@ Audio sources are
 			<checksum>https://github.com/1orgar/kodi/raw/master/addons.xml.md5</checksum>
 			<datadir zip="true">https://github.com/1orgar/kodi/raw/master/zips/</datadir>
 		</dir>
+		<dir>
+			<info compressed="false">https://raw.githubusercontent.com/zeltorix/kodi/main/repository/release/addons.xml</info>
+			<checksum>https://raw.githubusercontent.com/zeltorix/kodi/main/repository/release/addons.xml.md5</checksum>
+			<datadir zip="true">https://github.com/zeltorix/kodi/raw/main/repository/release/</datadir>
+		</dir>
 	</extension>
 	<extension point="xbmc.addon.metadata">
 		<summary lang="en_US">Install Add-ons for XBMC, Kodi.tv</summary>
@@ -1952,6 +1957,36 @@ Kodi is a registered trademark of the XBMC Foundation. We are not connected to o
 		<description lang="en">This repository contains scripts and plugins to help Yatse do things that may not be possible to do from JSON api.</description>
 		<genre></genre>
 	</extension>
+</addon>
+
+<addon id="repository.zeltorix" name="ZelToRiX Add-on repository" version="0.0.27" provider-name="ZelToRiX">
+  <extension point="xbmc.addon.repository" name="ZelToRiX Add-on repository">
+    <dir minversion="19.0.0">
+      <info compressed="false">https://raw.githubusercontent.com/zeltorix/kodi/main/repository/release/addons.xml</info>
+      <checksum>https://raw.githubusercontent.com/zeltorix/kodi/main/repository/release/addons.xml.md5</checksum>
+      <datadir zip="true">https://github.com/zeltorix/kodi/raw/main/repository/release/</datadir>
+    </dir>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en">Install Add-ons from ZelToRiX repository</summary>
+    <summary lang="ru">Установить дополнения от ZelToRiX</summary>
+    <description lang="en">Download and install add-ons from the ZelToRiX add-on repository</description>
+    <description lang="ru">Репозитории дополнений для разных проектов.</description>
+    <source>https://github.com/zeltorix/kodi/raw/main/source/release/repository</source>
+    <platform>all</platform>
+    <news>
+      v0.0.6 (2023-01-30)
+      [new] Эксперименты с репозиторием
+      [fix] Наконец-то всё работает не только у меня
+      v0.0.1 (2023-01-27)
+      [new] Создание репозитории для Kodi 19
+      [fix] ...
+    </news>
+    <platform>all</platform>
+    <assets>
+      <icon>icon.jpg</icon>
+    </assets>
+  </extension>
 </addon>
 
 <addon id="script.advancedsettingsetter"
