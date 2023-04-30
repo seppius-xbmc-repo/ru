@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addon id="repository.search.db"
 		name="XBMC.ru search db"
-		version="1.1.70"
+		version="1.1.71"
 		provider-name="bigbax">
   <requires>
     <import addon="xbmc.addon" version="12.0.0"/>
@@ -109,14 +109,19 @@
 			<datadir zip="true">https://nemiroff.github.io/kodi_repo/repo</datadir>
 		</dir>
         <dir>
-			<info compressed="false">https://raw.githubusercontent.com/NIV82/kodi_repo/main/release/addons.xml</info>
-			<checksum>https://raw.githubusercontent.com/NIV82/kodi_repo/main/release/addons.xml.md5</checksum>
-			<datadir zip="true">https://github.com/NIV82/kodi_repo/raw/main/release/</datadir>
+			<info compressed="false">https://raw.githubusercontent.com/NIV82/kodi_repo/main/leia/addons.xml</info>
+			<checksum>https://raw.githubusercontent.com/NIV82/kodi_repo/main/leia/addons.xml.md5</checksum>
+			<datadir zip="true">https://github.com/NIV82/kodi_repo/raw/main/leia/</datadir>
 		</dir>
 		<dir>
 			<info compressed="false">https://raw.githubusercontent.com/NIV82/kodi_repo/main/matrix/addons.xml</info>
 			<checksum>https://raw.githubusercontent.com/NIV82/kodi_repo/main/matrix/addons.xml.md5</checksum>
 			<datadir zip="true">https://github.com/NIV82/kodi_repo/raw/main/matrix/</datadir>
+		</dir>
+		<dir>
+			<info compressed="false">https://raw.githubusercontent.com/NIV82/kodi_repo/main/nexus/addons.xml</info>
+			<checksum>https://raw.githubusercontent.com/NIV82/kodi_repo/main/nexus/addons.xml.md5</checksum>
+			<datadir zip="true">https://github.com/NIV82/kodi_repo/raw/main/nexus/</datadir>
 		</dir>
         <dir>
 			<info compressed="false">https://raw.githubusercontent.com/nkvoronov/repository.yellowdragon/jarvis/repo/addons.xml</info>
