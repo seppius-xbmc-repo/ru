@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='utf-8'?>
-<addon id="repository.zeltorix" name="ZelToRiX Add-on repository" version="0.0.27" provider-name="ZelToRiX">
+<addon id="repository.zeltorix" name="ZelToRiX Add-on repository" version="0.0.28" provider-name="ZelToRiX">
   <extension point="xbmc.addon.repository" name="ZelToRiX Add-on repository">
     <dir minversion="19.0.0">
-      <info compressed="false">https://raw.githubusercontent.com/zeltorix/kodi/main/repository/release/addons.xml</info>
-      <checksum>https://raw.githubusercontent.com/zeltorix/kodi/main/repository/release/addons.xml.md5</checksum>
+      <info compressed="false">https://raw.githubusercontent.com/Zeltorix/kodi/main/repository/release/addons.xml</info>
+      <checksum>https://raw.githubusercontent.com/Zeltorix/kodi/main/repository/release/addons.xml.md5</checksum>
       <datadir zip="true">https://github.com/zeltorix/kodi/raw/main/repository/release/</datadir>
     </dir>
   </extension>
