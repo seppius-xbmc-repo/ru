@@ -1059,21 +1059,29 @@ Audio sources are
 	</extension>
 </addon>
 
-<addon id="repository.nemiroff" version="1.0.0" name="Nemiroff Repository" provider-name="Nemiroff">
-<extension point="xbmc.addon.metadata">
-  <summary lang="en">Nemiroff Repository</summary>
-  <summary lang="ru">Репозиторий Nemiroff.</summary>
-  <summary lang="uk">Репозиторій Nemiroff</summary>
-  <description lang="en">Addon repository by Nemiroff</description>
-  <description lang="ru">Репозиторий дополнений Nemiroff</description>
-  <description lang="uk">Репозиторій надбудов Nemiroff</description>
-  <platform>all</platform>
-</extension>
-<extension point="xbmc.addon.repository" name="nemiroff repository">
-  <info compressed="false">http://nemiroff.github.io/kodi_repo/repo/addons.xml</info>
-  <checksum>http://nemiroff.github.io/kodi_repo/repo/addons.xml.md5</checksum>
-  <datadir zip="true">http://nemiroff.github.io/kodi_repo/repo</datadir>
-</extension>
+<addon id="repository.nemiroff" version="1.0.2~matrix" name="Nemiroff Repository" provider-name="Nemiroff">
+  <requires>
+        <import addon="xbmc.python" version="3.0.0"/>
+  </requires>
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en">Nemiroff Repository</summary>
+    <summary lang="ru">Репозиторий Nemiroff.</summary>
+    <summary lang="uk">Репозиторій Nemiroff</summary>
+    <description lang="en">Addon repository by Nemiroff</description>
+    <description lang="ru">Репозиторий дополнений Nemiroff</description>
+    <description lang="uk">Репозиторій надбудов Nemiroff</description>
+    <platform>all</platform>
+    <assets>
+      <icon>icon.png</icon>
+    </assets>
+  </extension>
+  <extension point="xbmc.addon.repository" name="nemiroff repository">
+    <dir>
+    <info compressed="false">https://nemiroff.github.io/kodi_repo/repo/addons_matrix.xml</info>
+    <checksum>https://nemiroff.github.io/kodi_repo/repo/addons_matrix.xml.md5</checksum>
+    <datadir zip="true">https://nemiroff.github.io/kodi_repo/repo</datadir>
+    </dir>
+  </extension>
 </addon>
 
 
@@ -1438,7 +1446,7 @@ Audio sources are
 
 <addon id="repository.search.db"
         name="XBMC.ru search db"
-        version="1.1.74"
+        version="1.1.77"
         provider-name="bigbax">
   <requires>
     <import addon="xbmc.addon" version="12.0.0"/>
@@ -1494,6 +1502,11 @@ Audio sources are
             <info compressed="false">https://rcstv.ru/static/other/xbmc/addons.xml</info>
             <checksum>https://rcstv.ru/static/other/xbmc/addons.xml.md5</checksum>
             <datadir zip="true">https://rcstv.ru/static/other/xbmc/data/</datadir>
+        </dir>
+        <dir>
+            <info compressed="false">https://nemiroff.github.io/kodi_repo/repo/addons_matrix.xml</info>
+            <checksum>https://nemiroff.github.io/kodi_repo/repo/addons_matrix.xml.md5</checksum>
+            <datadir zip="true">https://nemiroff.github.io/kodi_repo/repo</datadir>
         </dir>
         <dir>
             <info compressed="false">https://raw.githubusercontent.com/NIV82/kodi_repo/main/release/addons.xml</info>
