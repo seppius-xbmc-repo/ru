@@ -1,13 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="repository.search.db"
-        name="XBMC.ru search db"
-        version="1.1.77"
-        provider-name="bigbax">
+<?xml version='1.0' encoding='utf-8'?>
+<addon id="repository.search.db" name="XBMC.ru search db" version="1.1.78" provider-name="bigbax">
   <requires>
-    <import addon="xbmc.addon" version="12.0.0"/>
+    <import addon="xbmc.addon" version="12.0.0" />
   </requires>
-    <extension point="xbmc.addon.repository"
-        name="XBMC.ru search db">
+    <extension point="xbmc.addon.repository" name="XBMC.ru search db">
         <dir>
             <info compressed="true">https://github.com/seppius-xbmc-repo/ru/raw/master/addons.xml</info>
             <checksum>https://github.com/seppius-xbmc-repo/ru/raw/master/addons.xml.md5</checksum>
@@ -149,10 +145,35 @@
             <checksum>https://vlmaksime.github.io/repository.vlmaksime/repo/matrix/addons.xml.md5</checksum>
             <datadir zip="true">https://vlmaksime.github.io/repository.vlmaksime/repo/matrix/</datadir>
         </dir>
-        <dir>
-           <info compressed="false">https://raw.githubusercontent.com/Zeltorix/kodi/main/repository/release/addons.xml</info>
-           <checksum>https://raw.githubusercontent.com/Zeltorix/kodi/main/repository/release/addons.xml.md5</checksum>
-           <datadir zip="true">https://github.com/zeltorix/kodi/raw/main/repository/release/</datadir>
+        <dir minversion="19.0.0">
+            <info compressed="false">https://raw.githubusercontent.com/Zeltorix/kodi/main/repository/packages/addons.xml</info>
+            <checksum>https://raw.githubusercontent.com/Zeltorix/kodi/main/repository/packages/addons.xml.md5</checksum>
+            <datadir zip="true">https://github.com/Zeltorix/kodi/raw/main/repository/packages/</datadir>
+        </dir>
+        <dir minversion="19.0.0">
+            <info compressed="false">https://raw.githubusercontent.com/Zeltorix/kodi/main/repository/utility/addons.xml</info>
+            <checksum>https://raw.githubusercontent.com/Zeltorix/kodi/main/repository/utility/addons.xml.md5</checksum>
+            <datadir zip="true">https://github.com/Zeltorix/kodi/raw/main/repository/utility/</datadir>
+        </dir>
+        <dir minversion="19.0.0">
+            <info compressed="false">https://raw.githubusercontent.com/Zeltorix/kodi/main/repository/release/addons.xml</info>
+            <checksum>https://raw.githubusercontent.com/Zeltorix/kodi/main/repository/release/addons.xml.md5</checksum>
+            <datadir zip="true">https://github.com/Zeltorix/kodi/raw/main/repository/release/</datadir>
+        </dir>
+        <dir minversion="19.0.0">
+            <info compressed="false">https://raw.githubusercontent.com/Zeltorix/kodi/main/repository/release_int/addons.xml</info>
+            <checksum>https://raw.githubusercontent.com/Zeltorix/kodi/main/repository/release_int/addons.xml.md5</checksum>
+            <datadir zip="true">https://github.com/Zeltorix/kodi/raw/main/repository/release_int/</datadir>
+        </dir>
+        <dir minversion="19.0.0">
+            <info compressed="false">https://raw.githubusercontent.com/Zeltorix/kodi/main/repository/third_party/addons.xml</info>
+            <checksum>https://raw.githubusercontent.com/Zeltorix/kodi/main/repository/third_party/addons.xml.md5</checksum>
+            <datadir zip="true">https://github.com/Zeltorix/kodi/raw/main/repository/third_party/</datadir>
+        </dir>
+        <dir minversion="19.0.0">
+            <info compressed="false">https://raw.githubusercontent.com/Zeltorix/kodi/main/repository/third_party_int/addons.xml</info>
+            <checksum>https://raw.githubusercontent.com/Zeltorix/kodi/main/repository/third_party_int/addons.xml.md5</checksum>
+            <datadir zip="true">https://github.com/Zeltorix/kodi/raw/main/repository/third_party_int/</datadir>
         </dir>
     </extension>
     <extension point="xbmc.addon.metadata">
