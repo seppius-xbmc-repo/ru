@@ -7,9 +7,11 @@
   <import addon="xbmc.addon" version="12.0.0"/>
 </requires>	
 	<extension point="xbmc.addon.repository" name="Const Kodi Add-ons">
+		<dir>
 		<info compressed="false">https://github.com/const586/const-kodi-repo/raw/master/addons/addons.xml</info>
 		<checksum>https://github.com/const586/const-kodi-repo/raw/master/addons/addons.xml.md5</checksum>
 		<datadir zip="true">https://github.com/const586/const-kodi-repo/raw/master/addons</datadir>
+		</dir>
 	</extension>
 	<extension point="xbmc.addon.metadata">
 		<summary>Install Add-ons from const Add-on Repository</summary>

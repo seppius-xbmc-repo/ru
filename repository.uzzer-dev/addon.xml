@@ -4,10 +4,12 @@
             <import addon="xbmc.addon" version="12.0.0"/>
         </requires>
         <extension point="xbmc.addon.repository" name="Uzzer Kodi Addons">
+            <dir>
             <info compressed="false">https://notabug.org/d3c_d3v/AddonRepo/raw/master/_repo/addons.xml</info>
             <checksum>https://notabug.org/d3c_d3v/AddonRepo/raw/master/_repo/addons.xml.md5</checksum>
             <datadir zip="true">https://notabug.org/d3c_d3v/AddonRepo/raw/master/_repo/</datadir>
             <hashes>false</hashes>
+            </dir>
         </extension>
         <extension point="xbmc.addon.metadata">
             <summary>Repo for my addons</summary>

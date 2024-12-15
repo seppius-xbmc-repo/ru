@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addon id="repository.seppius" name="Seppius XBMC Add-ons" version="1.0.1" provider-name="seppius">	
 	<extension point="xbmc.addon.repository" name="Seppius XBMC Add-ons">
+		<dir>
 		<info compressed="false">https://github.com/seppius-xbmc-repo/ru/raw/master/addons.xml</info>
 		<checksum>https://github.com/seppius-xbmc-repo/ru/raw/master/addons.xml.md5</checksum>
 		<datadir zip="true">https://github.com/seppius-xbmc-repo/ru/raw/master/</datadir>
+		</dir>
 	</extension>
 	<extension point="xbmc.addon.metadata">
 		<summary>Install Add-ons from RUS Add-on Repository</summary>

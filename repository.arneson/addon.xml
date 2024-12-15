@@ -4,10 +4,12 @@
         <import addon="xbmc.addon" version="12.0.0"/>
     </requires>
     <extension point="xbmc.addon.repository" name="TIDAL2 Addons by arneson">
+        <dir>
         <info compressed="false">https://github.com/arnesongit/repository.arneson/raw/master/addons.xml</info>
         <checksum>https://github.com/arnesongit/repository.arneson/raw/master/addons.xml.md5</checksum>
         <datadir zip="true">https://github.com/arnesongit/repository.arneson/raw/master</datadir>
         <hashes>false</hashes>
+        </dir>
     </extension>
     <extension point="xbmc.addon.metadata">
         <summary>Install TIDAL2 Addons by arneson</summary>

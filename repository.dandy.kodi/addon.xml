@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addon id="repository.dandy.kodi" name="Dandy's Kodi Repository" version="1.0.5" provider-name="dandy">
 	<extension point="xbmc.addon.repository" name="Dandy Kodi Add-ons Repository">
+		<dir>
 		<info compressed="false">https://raw.github.com/dandygithub/kodi/master/addons/addons.xml</info>
 		<checksum>https://raw.github.com/dandygithub/kodi/master/addons/addons.xml.md5</checksum>
 		<datadir zip="true">https://raw.github.com/dandygithub/kodi/master/addons/zip/</datadir>
+		</dir>
 	</extension>
 	<extension point="xbmc.addon.metadata">
 		<summary>Install Add-ons by Dandy add-on repository</summary>

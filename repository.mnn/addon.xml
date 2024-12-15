@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addon id="repository.mnn" name="MNN Xbmc Add-ons" version="1.0.3" provider-name="MazurokNN">
 	<extension point="xbmc.addon.repository" name="MNN Xbmc Add-ons">
+		<dir>
 		<info compressed="false">https://github.com/snakefishh/mnn-xbmc-repo/raw/master/addons.xml</info>
 		<checksum>https://github.com/snakefishh/mnn-xbmc-repo/raw/master/addons.xml.md5</checksum>
 		<datadir zip="true">https://github.com/snakefishh/mnn-xbmc-repo/raw/master/</datadir>
+		</dir>
 	</extension>
 	<extension point="xbmc.addon.metadata">
 		<summary>Install Add-ons from MNN Add-on Repository</summary>

@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addon id="repository.silhouette" name="Silhouette XBMC Add-ons" version="2.0.4" provider-name="Silhouette">
 	<extension point="xbmc.addon.repository" name="Silhouette XBMC Add-ons">
+		<dir>
 		<info compressed="false">https://raw.githubusercontent.com/silhouette2022/kodi/master/addons.xml</info>
 		<checksum>https://raw.githubusercontent.com/silhouette2022/kodi/master/addons.xml.md5</checksum>
 		<datadir zip="true">https://raw.githubusercontent.com/silhouette2022/kodi/master/repo</datadir>
+		</dir>
 	</extension>
 	<extension point="xbmc.addon.metadata">
 		<summary>Install Add-ons from Silhouette Add-on Repository</summary>

@@ -1,9 +1,11 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addon id="repository.kodi-senyor" name="kodi senyor repository" version="1.2.1" provider-name="kodi senyor">
 	<extension point="xbmc.addon.repository" name="kodi senyor repository">
+		<dir>
 			<info compressed="false">https://github.com/kobiko3030/repository.kodisenyor/raw/master/addons.xml</info>
 			<checksum>https://github.com/kobiko3030/repository.kodisenyor/raw/master/addons.xml.md5</checksum>
 			<datadir zip="true">https://github.com/kobiko3030/repository.kodisenyor/raw/master/Zips/</datadir>
+		</dir>
 	</extension>
 	<extension point="xbmc.addon.metadata">
 		<summary lang="en">kodi-senyor.co.il repo</summary>
