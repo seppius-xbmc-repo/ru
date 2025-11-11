@@ -1085,23 +1085,18 @@ Audio sources are
 </addon>
 
 
-<addon id="repository.niv" name="NIV82 repository" version="1.0.6" provider-name="NIV">
+<addon id="repository.niv" name="NIV82 repository" version="1.0.9" provider-name="NIV">
 
 	<extension point="xbmc.addon.repository" name="NIV82 repository">
-		<dir minversion="17.9.910" maxversion="18.9.0">
-			<info compressed="false">https://raw.githubusercontent.com/NIV82/kodi_repo/main/leia/addons.xml</info>
-			<checksum>https://raw.githubusercontent.com/NIV82/kodi_repo/main/leia/addons.xml.md5</checksum>
-			<datadir zip="true">https://github.com/NIV82/kodi_repo/raw/main/leia/</datadir>
+        <dir>
+			<info compressed="false">https://raw.githubusercontent.com/NIV82/kodi_repo/main/packages/addons.xml</info>
+			<checksum>https://raw.githubusercontent.com/NIV82/kodi_repo/main/packages/addons.xml.md5</checksum>
+			<datadir zip="true">https://github.com/NIV82/kodi_repo/raw/main/packages/</datadir>
 		</dir>
-		<dir minversion="19.1.0" maxversion="19.6.0">
-			<info compressed="false">https://raw.githubusercontent.com/NIV82/kodi_repo/main/matrix/addons.xml</info>
-			<checksum>https://raw.githubusercontent.com/NIV82/kodi_repo/main/matrix/addons.xml.md5</checksum>
-			<datadir zip="true">https://github.com/NIV82/kodi_repo/raw/main/matrix/</datadir>
-		</dir>
-		<dir minversion="20.0.0">
-			<info compressed="false">https://raw.githubusercontent.com/NIV82/kodi_repo/main/nexus/addons.xml</info>
-			<checksum>https://raw.githubusercontent.com/NIV82/kodi_repo/main/nexus/addons.xml.md5</checksum>
-			<datadir zip="true">https://github.com/NIV82/kodi_repo/raw/main/nexus/</datadir>
+		<dir>
+			<info compressed="false">https://raw.githubusercontent.com/NIV82/kodi_repo/main/release/addons.xml</info>
+			<checksum>https://raw.githubusercontent.com/NIV82/kodi_repo/main/release/addons.xml.md5</checksum>
+			<datadir zip="true">https://github.com/NIV82/kodi_repo/raw/main/release/</datadir>
 		</dir>
 	</extension>
 
@@ -1228,14 +1223,14 @@ Audio sources are
 			<datadir zip="true">https://nemiroff.github.io/kodi_repo/repo</datadir>
 		</dir>
         <dir>
+			<info compressed="false">https://raw.githubusercontent.com/NIV82/kodi_repo/main/packages/addons.xml</info>
+			<checksum>https://raw.githubusercontent.com/NIV82/kodi_repo/main/packages/addons.xml.md5</checksum>
+			<datadir zip="true">https://github.com/NIV82/kodi_repo/raw/main/packages/</datadir>
+		</dir>
+		<dir>
 			<info compressed="false">https://raw.githubusercontent.com/NIV82/kodi_repo/main/release/addons.xml</info>
 			<checksum>https://raw.githubusercontent.com/NIV82/kodi_repo/main/release/addons.xml.md5</checksum>
 			<datadir zip="true">https://github.com/NIV82/kodi_repo/raw/main/release/</datadir>
-		</dir>
-		<dir>
-			<info compressed="false">https://raw.githubusercontent.com/NIV82/kodi_repo/main/matrix/addons.xml</info>
-			<checksum>https://raw.githubusercontent.com/NIV82/kodi_repo/main/matrix/addons.xml.md5</checksum>
-			<datadir zip="true">https://github.com/NIV82/kodi_repo/raw/main/matrix/</datadir>
 		</dir>
         <dir>
 			<info compressed="false">https://raw.githubusercontent.com/nkvoronov/repository.yellowdragon/jarvis/repo/addons.xml</info>
@@ -1446,7 +1441,7 @@ Audio sources are
 
 <addon id="repository.search.db"
         name="XBMC.ru search db"
-        version="1.1.78"
+        version="1.1.79"
         provider-name="bigbax">
   <requires>
     <import addon="xbmc.addon" version="12.0.0"/>
@@ -1509,10 +1504,15 @@ Audio sources are
             <datadir zip="true">https://nemiroff.github.io/kodi_repo/repo</datadir>
         </dir>
         <dir>
-            <info compressed="false">https://raw.githubusercontent.com/NIV82/kodi_repo/main/release/addons.xml</info>
-            <checksum>https://raw.githubusercontent.com/NIV82/kodi_repo/main/release/addons.xml.md5</checksum>
-            <datadir zip="true">https://github.com/NIV82/kodi_repo/raw/main/release/</datadir>
-        </dir>
+			<info compressed="false">https://raw.githubusercontent.com/NIV82/kodi_repo/main/packages/addons.xml</info>
+			<checksum>https://raw.githubusercontent.com/NIV82/kodi_repo/main/packages/addons.xml.md5</checksum>
+			<datadir zip="true">https://github.com/NIV82/kodi_repo/raw/main/packages/</datadir>
+		</dir>
+		<dir>
+			<info compressed="false">https://raw.githubusercontent.com/NIV82/kodi_repo/main/release/addons.xml</info>
+			<checksum>https://raw.githubusercontent.com/NIV82/kodi_repo/main/release/addons.xml.md5</checksum>
+			<datadir zip="true">https://github.com/NIV82/kodi_repo/raw/main/release/</datadir>
+		</dir>
         <dir>
             <info compressed="false">https://raw.githubusercontent.com/nkvoronov/repository.yellowdragon/jarvis/repo/addons.xml</info>
             <checksum>https://raw.githubusercontent.com/nkvoronov/repository.yellowdragon/jarvis/repo/addons.xml.md5</checksum>
