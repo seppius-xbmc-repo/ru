@@ -10,8 +10,10 @@
   <platform>all</platform>
 </extension>
 <extension point="xbmc.addon.repository" name="romanvm repository">
+  <dir>
   <info compressed="false">http://romanvm.github.io/kodi_repo/repo/addons.xml</info>
   <checksum>http://romanvm.github.io/kodi_repo/repo/addons.xml.md5</checksum>
   <datadir zip="true">http://romanvm.github.io/kodi_repo/repo</datadir>
+  </dir>
 </extension>
 </addon>

@@ -4,9 +4,11 @@
 	   version="1.0.0" 
 	   provider-name="dvor85">
 	<extension point="xbmc.addon.repository" name="dvor85 XBMC Add-ons">
+		<dir>
 		<info compressed="false">https://github.com/dvor85/kodi.repo/raw/master/addons.xml</info>
 		<checksum>https://github.com/dvor85/kodi.repo/raw/master/addons.xml.md5</checksum>
 		<datadir zip="true">https://github.com/dvor85/kodi.repo/raw/master/</datadir>
+		</dir>
 	</extension>
 	<extension point="xbmc.addon.metadata">
 		<summary>Install Add-ons from RUS Add-on Repository</summary>

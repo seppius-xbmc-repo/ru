@@ -1,9 +1,11 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addon id="repository.vlmaksime" name="vl.maksime Add-on repository" version="2.0.0" provider-name="vl.maksime">
     <extension point="xbmc.addon.repository">
+        <dir>
         <info>https://vlmaksime.github.io/repository.vlmaksime/addons.xml</info>
         <checksum>https://vlmaksime.github.io/repository.vlmaksime/addons.xml.md5</checksum>
         <datadir zip="true">https://vlmaksime.github.io/repository.vlmaksime/releases/</datadir>
+        </dir>
     </extension>
     <extension point="xbmc.addon.metadata">
         <summary lang="en">Install Add-ons from vl.maksime</summary>

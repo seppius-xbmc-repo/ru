@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addon id="repository.GRecoTM" name=" GRecoTM Repository" version="2.2" provider-name="GRecoTM">
 	<extension point="xbmc.addon.repository" name="GRecoTM Repository">
+		<dir>
 		<info compressed="false">http://grrepo.grecotm.com/Plugins/addons.xml</info>
 		<checksum>http://grrepo.grecotm.com/Plugins/addons.xml.md5</checksum>
 		<datadir zip="true">http://grrepo.grecotm.com/Plugins/</datadir>
+		</dir>
 	</extension>
 	<extension point="xbmc.addon.metadata">
 		<summary>GRecoTM Repository</summary>

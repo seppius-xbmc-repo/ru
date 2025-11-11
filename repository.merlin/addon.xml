@@ -4,9 +4,11 @@
             <import addon="xbmc.addon" version="12.0.0"/>
         </requires>
 		<extension point="xbmc.addon.repository" name="Merlin Repository">
+			<dir>
 			<info compressed="false">http://mrepo.uk/merlinrepo/addons.xml</info>
 			<checksum>http://mrepo.uk/merlinrepo/addons.xml.md5</checksum>
 			<datadir zip="true">http://mrepo.uk/merlinrepo/addons/</datadir>
+			</dir>
 		</extension>
 		<extension point="xbmc.addon.metadata">
 			<summary>Host Of Add-Ons And Repositories</summary>
